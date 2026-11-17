@@ -49,11 +49,16 @@ jobs:
           fi
           echo "fingerprint=$FP" >> "$GITHUB_OUTPUT"
 
-      - name: Sync canonical briefing (uses Drive API if GOOGLE_SERVICE_ACCOUNT_JSON is set, else local snapshot)
+      - name: Sync canonical briefing (when GOOGLE_SERVICE_ACCOUNT_JSON is configured)
         env:
           GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
           GOOGLE_DOC_ID: ${{ secrets.GOOGLE_DOC_ID }}
-        run: npm run sync:doc
+        run: |
+          if [ -n "$GOOGLE_SERVICE_ACCOUNT_JSON" ]; then
+            npm run sync:doc
+          else
+            echo "Using committed canonical src/data/*.json snapshot (verified by Vitest)."
+          fi
 
       - name: Run Zero-Key Federal & Backbone OSINT Collector
         env:
@@ -70,7 +75,7 @@ jobs:
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
             git add src/data/liveSignals.json src/data/feedHealth.json
-            git diff --cached --quiet || (git commit -m "chore(osint): update zero-key liveSignals & feedHealth [skip ci]" && git pull --rebase origin main && git push origin HEAD:main)
+            git diff --cached --quiet || (git commit -m "chore(osint): update zero-key liveSignals & feedHealth [skip ci]" && git pull --rebase --autostash origin main && git push origin HEAD:main)
           else
             echo "Signal set unchanged since prior snapshot; skipping repository commit."
           fi
