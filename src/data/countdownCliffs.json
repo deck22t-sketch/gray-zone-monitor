@@ -1,0 +1,58 @@
+[
+  {
+    "targetDateISO": "2026-11-18",
+    "targetTimestampISO": "2026-11-18T15:00:00.000Z",
+    "dateLabel": "Nov. 18, 2026",
+    "milestone": "House Homeland Security \"Worldwide Threats\" Hearing (10:00 a.m. ET) & Anthropic IPO Pricing",
+    "actionExposure": "Track DHS Sec. Mullin's sworn testimony on the 10-event outage wave, Gang of Eight briefing outcomes, and AI credit/equity pricing."
+  },
+  {
+    "targetDateISO": "2026-11-20",
+    "targetTimestampISO": "2026-11-20T22:00:00.000Z",
+    "dateLabel": "Nov. 20, 2026",
+    "milestone": "Microsoft 365 Outage Final PIR Due",
+    "actionExposure": "Audit regional isolation failure and unpoliced retry-storm backoff logic across enterprise cloud services."
+  },
+  {
+    "targetDateISO": "2026-11-27",
+    "targetTimestampISO": "2026-11-27T22:00:00.000Z",
+    "dateLabel": "Nov. 27, 2026",
+    "milestone": "China Gallium/Germanium/Antimony Pause Expiry",
+    "actionExposure": "Review raw material stockpiles for U.S. AESA radar, night vision, and munitions production line continuity."
+  },
+  {
+    "targetDateISO": "2026-12-31",
+    "targetTimestampISO": "2026-12-31T22:00:00.000Z",
+    "dateLabel": "Dec. 31, 2026",
+    "milestone": "SEC Mandatory U.S. Treasury Cash Clearing Go-Live",
+    "actionExposure": "Verify DTCC/FICC clearing member connectivity and intraday liquidity buffer readiness for ~$550B/day cash volume."
+  },
+  {
+    "targetDateISO": "2027-01-01",
+    "targetTimestampISO": "2027-01-01T22:00:00.000Z",
+    "dateLabel": "Jan. 1, 2027",
+    "milestone": "DFARS Upstream Chinese REE Defense Ban",
+    "actionExposure": "Enforce full origin certification for NdFeB magnets and heavy REE components in defense procurement."
+  },
+  {
+    "targetDateISO": "2027-01-08",
+    "targetTimestampISO": "2027-01-08T22:00:00.000Z",
+    "dateLabel": "Jan. 8, 2027",
+    "milestone": "FCC Submarine Cable SLTE Foreign Reports Due",
+    "actionExposure": "Submit annual foreign adversary equipment reports under 91 FR 73480 / DA 26-1229 for subsea landing stations."
+  },
+  {
+    "targetDateISO": "2027-01-10",
+    "targetTimestampISO": "2027-01-10T22:00:00.000Z",
+    "dateLabel": "Jan. 10, 2027",
+    "milestone": "China MOFCOM 0.1% REE Content Waiver Expiry",
+    "actionExposure": "Prepare for potential global export license suspensions on finished goods containing trace heavy REEs."
+  },
+  {
+    "targetDateISO": "2027-03-15",
+    "targetTimestampISO": "2027-03-15T22:00:00.000Z",
+    "dateLabel": "Mar. 15, 2027",
+    "milestone": "CA/B Forum 100-Day Public TLS Lifetime Enforced",
+    "actionExposure": "Implement automated certificate issuance (ACME) across web and OT infrastructure ahead of 100-day cliff."
+  }
+]

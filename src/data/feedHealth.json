@@ -1,0 +1,88 @@
+{
+  "checkedAtISO": "2026-11-17T22:25:53.708Z",
+  "liveCount": 8,
+  "totalFeeds": 8,
+  "feeds": [
+    {
+      "id": "cisa-kev",
+      "name": "CISA KEV Catalog",
+      "endpoint": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json",
+      "status": "live",
+      "httpStatus": 200,
+      "latencyMs": 285,
+      "itemCount": 15,
+      "lastSuccessAtISO": "2026-11-17T22:25:53.708Z"
+    },
+    {
+      "id": "cisa-advisories",
+      "name": "CISA Cybersecurity Advisories",
+      "endpoint": "https://www.cisa.gov/cybersecurity-advisories/all.xml",
+      "status": "live",
+      "httpStatus": 200,
+      "latencyMs": 260,
+      "itemCount": 15,
+      "lastSuccessAtISO": "2026-11-17T22:25:53.708Z"
+    },
+    {
+      "id": "faa-nas",
+      "name": "FAA NAS Status",
+      "endpoint": "https://nasstatus.faa.gov/api/airport-status-information",
+      "status": "live",
+      "httpStatus": 200,
+      "latencyMs": 165,
+      "itemCount": 4,
+      "updateTimeText": "Tue Nov 17 22:25:44 2026 GMT",
+      "lastSuccessAtISO": "2026-11-17T22:25:53.708Z"
+    },
+    {
+      "id": "federal-register",
+      "name": "U.S. Federal Register",
+      "endpoint": "https://www.federalregister.gov/api/v1/documents.json?per_page=25&order=newest",
+      "status": "live",
+      "httpStatus": 200,
+      "latencyMs": 457,
+      "itemCount": 15,
+      "lastSuccessAtISO": "2026-11-17T22:25:53.708Z"
+    },
+    {
+      "id": "cloudflare-status",
+      "name": "Cloudflare Status",
+      "endpoint": "https://www.cloudflarestatus.com/api/v2/incidents.json",
+      "status": "live",
+      "httpStatus": 200,
+      "latencyMs": 304,
+      "itemCount": 8,
+      "lastSuccessAtISO": "2026-11-17T22:25:53.708Z"
+    },
+    {
+      "id": "github-status",
+      "name": "GitHub Status",
+      "endpoint": "https://www.githubstatus.com/api/v2/incidents.json",
+      "status": "live",
+      "httpStatus": 200,
+      "latencyMs": 402,
+      "itemCount": 8,
+      "lastSuccessAtISO": "2026-11-17T22:25:53.708Z"
+    },
+    {
+      "id": "aws-status",
+      "name": "AWS Service Health",
+      "endpoint": "https://status.aws.amazon.com/rss/all.rss",
+      "status": "live",
+      "httpStatus": 200,
+      "latencyMs": 372,
+      "itemCount": 0,
+      "lastSuccessAtISO": "2026-11-17T22:25:53.708Z"
+    },
+    {
+      "id": "apple-status",
+      "name": "Apple System Status",
+      "endpoint": "https://www.apple.com/support/systemstatus/data/system_status_en_US.js",
+      "status": "live",
+      "httpStatus": 200,
+      "latencyMs": 132,
+      "itemCount": 11,
+      "lastSuccessAtISO": "2026-11-17T22:25:53.708Z"
+    }
+  ]
+}

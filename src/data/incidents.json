@@ -1,0 +1,202 @@
+[
+  {
+    "eventId": "#1",
+    "window": "Nov. 12–13, 2026 (~18–24+ hrs)",
+    "entity": "Microsoft 365",
+    "sector": "Global Cloud, Enterprise & Healthcare",
+    "classification": "hybrid_transition_bug",
+    "impact": "Disrupted Outlook, Teams, SharePoint & Copilot across 70+ countries; hospital \"Code Grey\" alerts & clinical workarounds; ~USD 7B est. global loss (DistilINFO; IVN)",
+    "vector": "Dormant July 2026 gateway lock-contention bug + Teams failover + 14% maintenance outage + ~10-hr \"thundering herd\" stall; degraded Defender XDR & Purview (GeekWire)",
+    "status": "Restored; final PIR due Nov. 20, 2026.",
+    "sources": [
+      {
+        "label": "DistilINFO",
+        "url": "https://distilinfo.com/2026/11/16/microsoft-healthcare-outage/"
+      },
+      {
+        "label": "IVN",
+        "url": "https://ivn.us/are-major-bank-outages-at-chase-bank-of-america-connected-to-faa-outlook-failures/"
+      },
+      {
+        "label": "GeekWire",
+        "url": "https://www.geekwire.com/2026/what-went-wrong-with-outlook-microsoft-blames-thundering-herds-and-a-bug-unnoticed-for-months/"
+      }
+    ]
+  },
+  {
+    "eventId": "#2",
+    "window": "Nov. 13, 2026 (3:54–8:15 p.m. ET)",
+    "entity": "FAA / L3Harris FTI Backbone",
+    "sector": "National Aviation / ATC",
+    "classification": "hybrid_transition_bug",
+    "impact": "4.5-hr nationwide ground stop; ~12,462 flight disruptions; 17 of 22 ARTCCs destabilized; ~USD 345M Big-Four airline earnings hit",
+    "vector": "Two-router broadcast flood (El Dorado, AR Friday 3:30 p.m. ET cutover + 3-wk-old Amarillo, TX Juniper router on legacy TDM); HPE cites installer config (WTTW / AP)",
+    "status": "Nov. 17: FAA halted router rollout & powered off all ~400 installed Juniper routers; Florida FBI/lab probe active.",
+    "sources": [
+      {
+        "label": "WTTW / AP",
+        "url": "https://news.wttw.com/2026/11/17/faa-halts-installation-routers-led-ground-stop"
+      }
+    ]
+  },
+  {
+    "eventId": "#3",
+    "window": "Nov. 13–14, 2026",
+    "entity": "Workday",
+    "sector": "WD1 Enterprise HR, Payroll & Finance Cloud",
+    "classification": "hybrid_transition_bug",
+    "impact": "Multi-hour production lockdown across enterprise & university WD1 tenants disrupting logins, timekeeping, accounting & APIs (FAU OIT)",
+    "vector": "DR test unexpectedly connected to live production DBs, causing inconsistent production data; non-cyber (Logistics Viewpoints)",
+    "status": "Restored Nov. 14; manual enterprise payroll/HR/API data reconciliation ongoing.",
+    "sources": [
+      {
+        "label": "FAU OIT",
+        "url": "https://wordpress.fau.edu/oit/2026/11/13/"
+      },
+      {
+        "label": "Logistics Viewpoints",
+        "url": "https://logisticsviewpoints.com/2026/11/16/microsoft-workday-and-the-hidden-fragility-of-the-digital-supply-chain/"
+      }
+    ]
+  },
+  {
+    "eventId": "#4",
+    "window": "Nov. 13–17, 2026 (OPTIMJACK)",
+    "entity": "Optimizely, Kissmetrics, StorifyMe & minute-ly",
+    "sector": "Web Supply Chain — 178 Orgs",
+    "classification": "malicious_attack",
+    "impact": "Infected 188 JS snippets across Zoom, HSBC, Equifax, Salesforce, BBC, CNN, Fox News, Peacock, GitLab & Optimizely login; clippers, skimmers & .icu iOS exploit routing (StepSecurity)",
+    "vector": "Confirmed Malicious Attack via Optimizely account signup flow; 26 payload mutations (Report URI)",
+    "status": "1688360[.]cc placed on hold Nov. 17; wallets swept toward HitBTC; manual audit of Project JS required for atob()/inline fallbacks.",
+    "sources": [
+      {
+        "label": "StepSecurity",
+        "url": "https://www.stepsecurity.io/blog/optimjack-optimizely-hosted-scripts-crypto-clipper-card-skimmer"
+      },
+      {
+        "label": "Report URI",
+        "url": "https://blog.report-uri.com/worlds-largest-brands-infected-with-malware-via-optimizely/"
+      }
+    ]
+  },
+  {
+    "eventId": "#5",
+    "window": "Nov. 16, 2026 (Morning – Evening)",
+    "entity": "JPMorgan Chase & Zelle Rails",
+    "sector": "Tier-1 Banking / G-SIB",
+    "classification": "hybrid_transition_bug",
+    "impact": "~4,800+ Chase outage reports; branch teller & ATM disruptions; counterparty Zelle/transfer delays across BofA, Wells Fargo, U.S. Bank, Capital One & Truist (AP News)",
+    "vector": "Software bug in on-premise hardware systems + queued peak traffic re-crashes; non-cyber (TIME)",
+    "status": "Restored Monday night; Tuesday ACH/Zelle cleared cleanly; JPM closed -2.3% Monday.",
+    "sources": [
+      {
+        "label": "AP News",
+        "url": "https://apnews.com/article/bank-outage-chase-wells-fargo-truist-50fee2693c22f597fa6ca51a97ef2cda"
+      },
+      {
+        "label": "TIME",
+        "url": "https://time.com/article/2026/11/16/bank-outage-down-jpmorgan-chase-technical-issue/"
+      }
+    ]
+  },
+  {
+    "eventId": "#6",
+    "window": "Nov. 16, 2026 (~1:30–4:30 p.m. CST)",
+    "entity": "United Airlines",
+    "sector": "Commercial Aviation",
+    "classification": "hybrid_transition_bug",
+    "impact": "Mainline departures held nationwide (418 flights delayed); airborne & United Express unaffected (CBS News)",
+    "vector": "Widespread system outage in pre-departure weight-and-balance dispatch system; cyber ruled out (The Guardian)",
+    "status": "Resolved Monday evening after ~1 hr 40 min; operations normal Tuesday.",
+    "sources": [
+      {
+        "label": "CBS News",
+        "url": "https://www.cbsnews.com/news/united-airlines-system-outage-departing-flights/"
+      },
+      {
+        "label": "The Guardian",
+        "url": "https://www.theguardian.com/us-news/2026/nov/16/united-airlines-system-outage"
+      }
+    ]
+  },
+  {
+    "eventId": "#7",
+    "window": "Nov. 17, 2026 (~8:17 a.m. CST onward)",
+    "entity": "Marriott International",
+    "sector": "Global Hospitality — 10,200+ Properties",
+    "classification": "unspecified",
+    "impact": "Sign-in, online booking, Bonvoy app, and property check-in disruptions (AP News; Gulf News)",
+    "vector": "Unspecified technical disruption; root cause pending",
+    "status": "Monitoring Marriott post-mortem for shared cloud, CDN, identity, or payment-gateway overlap.",
+    "sources": [
+      {
+        "label": "AP News",
+        "url": "https://apnews.com/article/apple-marriott-technology-outages-ff097d2a0bec767baf38a1bd8eff5829"
+      },
+      {
+        "label": "Gulf News",
+        "url": "https://gulfnews.com/world/americas/marriott-website-and-app-hit-by-reported-outage-disrupting-hotel-bookings-1.500751023"
+      }
+    ]
+  },
+  {
+    "eventId": "#8",
+    "window": "Nov. 17, 2026 (Morning – Afternoon)",
+    "entity": "National Security Agency — NSANet",
+    "sector": "Classified Intelligence Enclave",
+    "classification": "hybrid_transition_bug",
+    "impact": "Internal classified network degraded/offline; Fort Meade ordered \"Code Gray\"/\"Code Yellow\" staggered arrivals to prevent login storms; Five Eyes unaffected (CBS News)",
+    "vector": "Scheduled routine maintenance/patching after weeks of instability; White House/NSA rule out cyberattack (Fox News)",
+    "status": "Active restoration; bipartisan Gang of Eight briefing demands & Nov. 18 House Homeland Security hearing.",
+    "sources": [
+      {
+        "label": "CBS News",
+        "url": "https://www.cbsnews.com/news/nsa-network-down-classified-fort-meade/"
+      },
+      {
+        "label": "Fox News",
+        "url": "https://www.foxnews.com/live-news/tech-outages-microsoft-banks-faa-fbi-11-17-26"
+      }
+    ]
+  },
+  {
+    "eventId": "#9",
+    "window": "Nov. 17, 2026 (Morning – Midday)",
+    "entity": "Charles Schwab & Enterprise SaaS (Lever)",
+    "sector": "Brokerage & Cloud SaaS",
+    "classification": "hybrid_transition_bug",
+    "impact": "Client web login failures at Schwab (trading & mobile unaffected); ~3-hr backend 504 outage at Lever (Fox News; IsDown)",
+    "vector": "Schwab cited \"brief webpage loading issue\"; SaaS backend gateway timeouts",
+    "status": "Resolved Tuesday; tracking heightened Downdetector sensitivity vs. shared CDN strain.",
+    "sources": [
+      {
+        "label": "Fox News",
+        "url": "https://www.foxnews.com/live-news/tech-outages-microsoft-banks-faa-fbi-11-17-26"
+      },
+      {
+        "label": "IsDown",
+        "url": "https://isdown.app/status/lever/incidents/688454-lever-backend-services-outage"
+      }
+    ]
+  },
+  {
+    "eventId": "#10",
+    "window": "Nov. 17, 2026 (~11:33 a.m. CST onward)",
+    "entity": "Apple Ecosystem & iOS/Gmail Cascade",
+    "sector": "Consumer, Payments & Enterprise",
+    "classification": "client_cascade",
+    "impact": "Outages across App Store/Connect, iCloud Sign-In (>1,800 reports), Apple Pay (>2,300), Apple Music, AppleCare & Business/School Manager; caused downstream iOS Gmail login errors (Tom's Guide; 9to5Mac)",
+    "vector": "Apple confirmed an \"internal update caused some outages this morning\"; Google confirmed Workspace/Gmail remained 100% healthy",
+    "status": "Recovering Tuesday afternoon; monitoring residual iCloud/App Store Connect auth tokens.",
+    "sources": [
+      {
+        "label": "Tom's Guide",
+        "url": "https://www.tomsguide.com/news/live/apple-outage-november-17-2026"
+      },
+      {
+        "label": "9to5Mac",
+        "url": "https://9to5mac.com/2026/11/17/icloud-app-store-and-other-apple-services-hit-by-ongoing-outage/"
+      }
+    ]
+  }
+]

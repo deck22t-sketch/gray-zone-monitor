@@ -1,0 +1,100 @@
+[
+  {
+    "id": "#1",
+    "domain": "Hybrid Legacy-to-IP \"Transition Trap\" & Retry Storms",
+    "horizon": "Immediate (Active)",
+    "horizonGroup": "Immediate",
+    "likelihood": "High",
+    "blastRadius": "Severe (National ATC, IC/NSANet, Apple Ecosystem, G-SIBs, Cloud)",
+    "tripwire": "Daytime edge cutovers on unsegmented TDM/IP networks (on Nov. 17 the FAA halted all new router installations and powered off installed Juniper routers, reverting to 25-year-old Cisco gear across ~400 installed sites out of 3,600+); unpoliced \"thundering herd\" recovery floods; routine software patching knocking NSANet offline (forcing Fort Meade staggered arrivals to prevent simultaneous login storms); Apple \"internal update\" knocking out iCloud sign-ins, App Store, and Apple Pay/Business services",
+    "mitigation": "Enforce control-plane policing, strict night maintenance windows, and cold-start client/agent retry throttling.",
+    "sources": []
+  },
+  {
+    "id": "#2",
+    "domain": "Third-Party Web, SaaS & Insider Supply-Chain Tampering (\"Poison Pill\")",
+    "horizon": "Immediate (Active)",
+    "horizonGroup": "Immediate",
+    "likelihood": "High",
+    "blastRadius": "High (Cross-Sector Enterprise & CI/CD)",
+    "tripwire": "SaaS signup/staging flaws (OPTIMJACK across 178 orgs), MSP exploits (ScreenConnect), or salaried DPRK remote IT contractors (FBI PSA261013)",
+    "mitigation": "Audit SaaS custom JS fields for atob()/inline payloads, enforce two-person staging integrity, and screen remote contractors for proxy/subcontracting indicators.",
+    "sources": [
+      {
+        "label": "FBI PSA261013",
+        "url": "https://www.ic3.gov/PSA/2026/PSA261013"
+      }
+    ]
+  },
+  {
+    "id": "#3",
+    "domain": "Active Third-Theater Attrition & Destructive OT/Wiper Intrusions",
+    "horizon": "Immediate (2026 Active)",
+    "horizonGroup": "Immediate",
+    "likelihood": "High",
+    "blastRadius": "High (Defense Munitions, Energy, Water & VMs)",
+    "tripwire": "Operation Epic Fury ($38B burn / Hormuz shock), Iranian PLC attacks (CISA AA26-097A), Check Point->ESXi destroy_v6 wiper, and kinetic drone strikes on Middle East/Eastern Europe data centers",
+    "mitigation": "Eliminate public internet exposure on PLC ports (44818, 2222, 102, 502, 22), lock PLC physical key-switches in Run, and maintain cross-region/cross-cloud immutable backups.",
+    "sources": [
+      {
+        "label": "CISA AA26-097A",
+        "url": "https://www.cisa.gov/news-events/cybersecurity-advisories/aa26-097a"
+      }
+    ]
+  },
+  {
+    "id": "#4",
+    "domain": "Imminent Chinese Critical Mineral & API Export Chokepoints",
+    "horizon": "10–54 Days (Nov. 27, 2026 – Jan. 10, 2027)",
+    "horizonGroup": "10–54 Days",
+    "likelihood": "Moderate–High (Elevated after Nov. 16 U.S. BIS overseas AI chip curbs)",
+    "blastRadius": "Severe (Defense Radars, Semiconductors, Magnets & Critical Drugs)",
+    "tripwire": "Expiry of Ga/Ge/Sb ban pause (Nov. 27) and 0.1% extraterritorial REE waiver (Jan. 10, 2027) amid U.S.–China Shenzhen summit friction",
+    "mitigation": "Audit tier-2/3 defense, RF chip, magnet, and hospital sterile-injectable KSM buffer inventories ahead of Nov. 27 and Jan. 1 DFARS bans.",
+    "sources": []
+  },
+  {
+    "id": "#5",
+    "domain": "Agentic Bank Runs, $10M Instant Rails & Treasury Clearing Concentration",
+    "horizon": "0–44 Days (Dec. 31, 2026 Cliff)",
+    "horizonGroup": "10–54 Days",
+    "likelihood": "Moderate",
+    "blastRadius": "Catastrophic (Intraday Liquidity & Repo Markets)",
+    "tripwire": "Autonomous AI cash-management agents reacting to outage telemetry over 24/7 $10M RTP/FedNow rails; SEC mandatory Treasury cash clearing (~$550B/day) concentrating at DTCC/FICC on Dec. 31",
+    "mitigation": "Deploy velocity caps and human-in-the-loop consent on agentic banking APIs; stress-test FICC intraday margin and non-bank processor (FIS/Fiserv) failover.",
+    "sources": []
+  },
+  {
+    "id": "#6",
+    "domain": "Sub-IP Blind Spots: Silent GNSS Spoofing, Grid Transformers & 100-Day TLS",
+    "horizon": "0–118 Days (Mar. 15, 2027 TLS Cliff)",
+    "horizonGroup": "10–54 Days",
+    "likelihood": "High",
+    "blastRadius": "High (Aviation NOPAC Routes, Trading PTP Clocks & Power/PKI)",
+    "tripwire": "+193% GNSS spoofing corrupting aircraft/PTP clocks without loss-of-signal alarms; 128–144 week transformer lead times; 100-day TLS max validity (Mar. 15, 2027)",
+    "mitigation": "Add terrestrial/atomic PTP holdover and spoofing detection, secure critical cooling/transformer spares, and automate ACME certificate renewal.",
+    "sources": []
+  },
+  {
+    "id": "#7",
+    "domain": "Non-Cyber Regulatory Clocks, Liability Caps & AI Privilege Waivers",
+    "horizon": "Immediate (Active)",
+    "horizonGroup": "Immediate",
+    "likelihood": "High",
+    "blastRadius": "Moderate–High (Fines, Uninsured Loss & Litigation Discovery)",
+    "tripwire": "\"Just a bug\" outages triggering 36h OCC/Fed, 4h vendor, and 4h EU DORA CTPP clocks; IT fee caps (Delta v. CrowdStrike); AI prompt privilege waiver (Rakoff Feb. 2026)",
+    "mitigation": "Separate counsel-directed forensic retainers from IT budgets, ban non-confidential commercial AI tools in incident response, and price parametric cloud cover.",
+    "sources": []
+  },
+  {
+    "id": "#8",
+    "domain": "Opportunistic Two-Front Great-Power Escalation (Russia–China Entente)",
+    "horizon": "Medium Term (2027–2030)",
+    "horizonGroup": "2027–2030",
+    "likelihood": "Moderate",
+    "blastRadius": "Catastrophic (Global Trade, Homeland Logistics & War Exclusions)",
+    "tripwire": "2027 PLA Taiwan readiness milestone coinciding with Russian post-ceasefire reconstitution or Volt Typhoon homeland mobilization paralysis",
+    "mitigation": "Track CISA out-of-band firmware/config directives, maritime quarantine/shadow-fleet tripwires, and LMA cyber war-exclusion accumulation exposure.",
+    "sources": []
+  }
+]

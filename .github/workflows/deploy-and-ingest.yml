@@ -1,0 +1,98 @@
+name: Deploy & Zero-Key OSINT Ingest
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+  schedule:
+    # 9:00 AM CST (15:00 UTC) and 3:00 PM CST (21:00 UTC) daily
+    - cron: '0 15,21 * * *'
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: 'pages-and-osint-main'
+  cancel-in-progress: false
+
+jobs:
+  ingest-build-deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Capture pre-ingest signal fingerprint
+        id: pre_sig
+        run: |
+          if [ -f src/data/liveSignals.json ]; then
+            FP=$(node -e "const d=require('./src/data/liveSignals.json'); console.log(JSON.stringify((d.signals||[]).map(s=>s.id+':'+s.title+':'+s.severity)));" | sha256sum | awk '{print $1}')
+          else
+            FP="empty"
+          fi
+          echo "fingerprint=$FP" >> "$GITHUB_OUTPUT"
+
+      - name: Sync canonical briefing (uses Drive API if GOOGLE_SERVICE_ACCOUNT_JSON is set, else local snapshot)
+        env:
+          GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+          GOOGLE_DOC_ID: ${{ secrets.GOOGLE_DOC_ID }}
+        run: npm run sync:doc
+
+      - name: Run Zero-Key Federal & Backbone OSINT Collector
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: npm run ingest:signals
+
+      - name: Commit updated liveSignals.json & feedHealth.json if new signals arrived
+        env:
+          PRE_FP: ${{ steps.pre_sig.outputs.fingerprint }}
+        run: |
+          POST_FP=$(node -e "const d=require('./src/data/liveSignals.json'); console.log(JSON.stringify((d.signals||[]).map(s=>s.id+':'+s.title+':'+s.severity)));" | sha256sum | awk '{print $1}')
+          if [ "$PRE_FP" != "$POST_FP" ]; then
+            echo "New or updated OSINT signals detected ($PRE_FP -> $POST_FP). Committing back to main..."
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add src/data/liveSignals.json src/data/feedHealth.json
+            git diff --cached --quiet || (git commit -m "chore(osint): update zero-key liveSignals & feedHealth [skip ci]" && git pull --rebase origin main && git push origin HEAD:main)
+          else
+            echo "Signal set unchanged since prior snapshot; skipping repository commit."
+          fi
+
+      - name: Run Vitest verification suite
+        run: npm test
+
+      - name: Build static Next.js 15 portal
+        env:
+          GITHUB_ACTIONS: 'true'
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          SITE_PASSCODE: ${{ secrets.SITE_PASSCODE || 'PUBLIC' }}
+        run: npm run build
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload static export artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./out
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

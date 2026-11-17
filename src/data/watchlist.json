@@ -1,0 +1,65 @@
+[
+  {
+    "id": "#1",
+    "signal": "Firmware & Bootloader Hash Mandate",
+    "mechanism": "Out-of-band CISA Emergency Directive ordering agencies to verify Juniper/Cisco OS cryptographic hashes against offline vendor gold images.",
+    "forensicMeaning": "Modified firmware or a persistent implant was discovered in the supply chain or staging pipeline.",
+    "sources": []
+  },
+  {
+    "id": "#2",
+    "signal": "Sudden KEV Catalog Addition",
+    "mechanism": "Mid-week addition of a Juniper Junos or Cisco routing/onboarding CVE to CISA's Known Exploited Vulnerabilities (KEV) catalog with a 72-hour remediation deadline.",
+    "forensicMeaning": "Forensics confirmed an existing onboarding or routing-daemon flaw was weaponized prior to deployment.",
+    "sources": []
+  },
+  {
+    "id": "#3",
+    "signal": "Joint \"Living-off-the-Land\" Config Advisory",
+    "mechanism": "Co-sealed CISA/FBI/NSA advisory directing critical infrastructure operators to audit staging servers, configuration databases, TACACS+/RADIUS logs, and broadcast templates.",
+    "forensicMeaning": "No malware was used; valid credentials and native router features were abused inside the deployment workflow.",
+    "sources": []
+  },
+  {
+    "id": "#4",
+    "signal": "Dual-Custody & MSP Access Mandates",
+    "mechanism": "OMB/CISA guidance requiring two-person integrity on field router cutovers, air-gapped staging laptops, and third-party contractor credential resets.",
+    "forensicMeaning": "Investigators traced the fault to deliberate human insider action (HUMINT recruitment or contractor sabotage).",
+    "sources": []
+  },
+  {
+    "id": "#5",
+    "signal": "Non-Public TSA / DOT Security Directives",
+    "mechanism": "Quiet directives issued to freight rail, pipeline, and maritime port operators mandating immediate control-plane policing on hybrid TDM/IP circuits.",
+    "forensicMeaning": "Intelligence officials view the aviation storm as a proof-of-concept test and are hardening defense-mobilization corridors.",
+    "sources": []
+  },
+  {
+    "id": "#6",
+    "signal": "FS-ISAC, OCC & Shared Telecom/MSP Telemetry",
+    "mechanism": "Out-of-band FS-ISAC sector alert elevations, OCC/Treasury notices, overnight ACH/Zelle batch reconciliation delays into Tuesday, or shared BGP/Azure/MSP vector advisories (including active contractor tooling campaigns such as ConnectWise ScreenConnect exploitation).",
+    "forensicMeaning": "Connects Monday's Tier-1 banking disruption to a shared telecommunications, identity, or third-party vendor layer rather than an isolated internal Chase ledger/code release.",
+    "sources": []
+  },
+  {
+    "id": "#7",
+    "signal": "Cross-Sector Tier-1, Consumer Ecosystem & Classified Enclave Scan",
+    "mechanism": "Daily sweep of Downdetector spikes, sector ISACs, FAA/DOT notices, DoD/IC network status, Gang of Eight congressional readouts, hospitality/brokerage portals, and SaaS DR/gateway locks.",
+    "forensicMeaning": "Tests whether clustered \"internal update\" bugs across civilian, consumer, and classified enclaves share common enterprise routing, identity, or CI/CD dependencies.",
+    "sources": []
+  },
+  {
+    "id": "#8",
+    "signal": "Active Iranian OT/PLC, Perimeter Wiper & DPRK Contractor Telemetry",
+    "mechanism": "Auditing public PLC/modem ports (44818, 2222, 102, 502, 22) per CISA AA26-097A, hunting Check Point CVE-2026-123039 -> SSH VMware ESXi destroy_v6 wiper lateral movement, and screening remote IT contractors against FBI PSA261013 indicators.",
+    "forensicMeaning": "Detects live destructive OT/hypervisor wipers and salaried DPRK insider access inside enterprise staging pipelines.",
+    "sources": []
+  },
+  {
+    "id": "#9",
+    "signal": "Sub-IP GNSS/PTP Drift, Retry-Storm Throttling & Deepfake Alert Noise",
+    "mechanism": "Monitoring NOPAC/regional GNSS spoofing, rooftop PTP clock holdover divergence, cold-start login/retry throttling, $10M RTP/FedNow agentic velocity, and manipulated-video blackout disinformation around federal EAS tests.",
+    "forensicMeaning": "Separates sub-IP timing manipulation, machine-speed liquidity risk, and client-side auth spillovers (e.g., Apple->Gmail) from viral panic.",
+    "sources": []
+  }
+]
