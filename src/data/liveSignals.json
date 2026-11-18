@@ -1,7 +1,7 @@
 {
-  "ingestedAtISO": "2026-11-18T06:25:32.026Z",
+  "ingestedAtISO": "2026-11-18T15:43:59.752Z",
   "ingestionMode": "ZERO_KEY_PUBLIC_FEEDS",
-  "totalSignals": 78,
+  "totalSignals": 77,
   "signals": [
     {
       "id": "cisa-adv-icsa-26-321-11",
@@ -28,31 +28,6 @@
         "ICS-OT-PLC"
       ],
       "markdownRow": "| #11+ — Nov 17, 2026 | Siemens meta-iot2050 (ICS / Critical OT) | View CSAF Summary meta-iot2050 (https://github.com/siemens/meta-iot2050) from V01.03.01 contains a Command Injection vulnerability in the firmware update tool that could allow an attacker which is able to manipulate a configuration file to have arbitrary comm… ([CISA Advisory](https://www.cisa.gov/news-events/ics-advisories/icsa-26-321-11)) | ICS/OT vulnerability or PLC exposure advisory | Live Wire (CRITICAL) — Watchlist #1, #8 |"
-    },
-    {
-      "id": "github-status-hnf21m9jkl3c",
-      "sourceId": "github-status",
-      "sourceName": "GitHub Status",
-      "attributionText": "Source: GitHub System Status (www.githubstatus.com)",
-      "publishedAtISO": "2026-11-13T15:23:49.347Z",
-      "title": "GitHub: Incident with Git Operations and Pull Requests [RESOLVED]",
-      "summary": "On November 10, 2026, from approximately 15:00 UTC to 17:55 UTC, GitHub experienced degraded performance affecting repository pages, pull requests, and GitHub Actions. Customers may have seen slow or failed page loads and delays processing pull request update…",
-      "url": "https://stspg.io/16nsnk2th3rv",
-      "severity": "critical",
-      "watchlistMatches": [
-        "#2",
-        "#7"
-      ],
-      "riskMatrixMatches": [
-        "#2"
-      ],
-      "countdownMatches": [],
-      "tags": [
-        "GitHub",
-        "impact:critical",
-        "status:resolved"
-      ],
-      "markdownRow": "| #11+ — Nov 10, 2026 | GitHub (Developer & CI/CD Backbone) | Incident with Git Operations and Pull Requests (critical impact; resolved) ([GitHub Status](https://stspg.io/16nsnk2th3rv)) | On November 10, 2026, from approximately 15:00 UTC to 17:55 UTC, GitHub experienced degraded performance affecting repository pag… | Live Wire (CRITICAL) — Watchlist #2, #7 |"
     },
     {
       "id": "kev-cve-2026-123039",
@@ -187,16 +162,17 @@
       "markdownRow": "| #11+ — 2026-11-10 | Google Chromium (Enterprise / Edge Security) | Google Chromium contains a use-after-free vulnerability in the XML component that could allow a remote attacker to execute arbitrary code i… ([CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search_api_fulltext=CVE-2026-125350)) | Active exploitation confirmed (CVE-2026-125350); due 2026-11-24 | Live Wire (CRITICAL) — Watchlist #2, #8 |"
     },
     {
-      "id": "faa-delay-fll-1",
+      "id": "faa-gdp-sfo-1",
       "sourceId": "faa-nas",
       "sourceName": "FAA NAS Status",
-      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Wed Nov 18 06:25:00 2026 GMT",
-      "publishedAtISO": "2026-11-18T06:25:00.000Z",
-      "title": "FAA Arrival/Departure Delay: FLL",
-      "summary": "General Arrival/Departure Delay Info at FLL — Reason: TM Initiatives:MIT:WX. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Wed Nov 18 06:25:00 2026 GMT)",
+      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Wed Nov 18 15:43:08 2026 GMT",
+      "publishedAtISO": "2026-11-18T15:43:08.000Z",
+      "title": "FAA Ground Delay Program: SFO (Avg 1 hour and 12 minutes)",
+      "summary": "GDP at SFO — Reason: wind, Avg delay: 1 hour and 12 minutes, Max: 2 hours and 10 minutes. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Wed Nov 18 15:43:08 2026 GMT)",
       "url": "https://nasstatus.faa.gov/",
       "severity": "elevated",
       "watchlistMatches": [
+        "#5",
         "#7"
       ],
       "riskMatrixMatches": [
@@ -205,19 +181,19 @@
       "countdownMatches": [],
       "tags": [
         "FAA-NAS",
-        "Arrival-Departure-Delay",
-        "FLL"
+        "Ground-Delay",
+        "SFO"
       ],
-      "markdownRow": "| #11+ — Wed Nov 18 06:25:00 2026 GMT | FAA NAS — FLL (Commercial Aviation) | Arrival/Departure delays reported at FLL ([FAA NAS Status](https://nasstatus.faa.gov/)) | FAA NAS General Arrival/Departure Delay Info: TM Initiatives:MIT:WX | Live Wire (ELEVATED) — Watchlist #7 |"
+      "markdownRow": "| #11+ — Wed Nov 18 15:43:08 2026 GMT | FAA NAS — SFO (National Aviation / ATC) | Ground Delay Program at SFO (1 hour and 12 minutes) ([FAA NAS Status](https://nasstatus.faa.gov/)) | FAA NAS Ground Delay Programs: wind | Live Wire (ELEVATED) — Watchlist #5, #7 |"
     },
     {
-      "id": "faa-delay-mia-2",
+      "id": "faa-delay-lga-2",
       "sourceId": "faa-nas",
       "sourceName": "FAA NAS Status",
-      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Wed Nov 18 06:25:00 2026 GMT",
-      "publishedAtISO": "2026-11-18T06:25:00.000Z",
-      "title": "FAA Arrival/Departure Delay: MIA",
-      "summary": "General Arrival/Departure Delay Info at MIA — Reason: TM Initiatives:MIT:WX. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Wed Nov 18 06:25:00 2026 GMT)",
+      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Wed Nov 18 15:43:08 2026 GMT",
+      "publishedAtISO": "2026-11-18T15:43:08.000Z",
+      "title": "FAA Arrival/Departure Delay: LGA",
+      "summary": "General Arrival/Departure Delay Info at LGA — Reason: WX:Wind. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Wed Nov 18 15:43:08 2026 GMT)",
       "url": "https://nasstatus.faa.gov/",
       "severity": "elevated",
       "watchlistMatches": [
@@ -230,18 +206,18 @@
       "tags": [
         "FAA-NAS",
         "Arrival-Departure-Delay",
-        "MIA"
+        "LGA"
       ],
-      "markdownRow": "| #11+ — Wed Nov 18 06:25:00 2026 GMT | FAA NAS — MIA (Commercial Aviation) | Arrival/Departure delays reported at MIA ([FAA NAS Status](https://nasstatus.faa.gov/)) | FAA NAS General Arrival/Departure Delay Info: TM Initiatives:MIT:WX | Live Wire (ELEVATED) — Watchlist #7 |"
+      "markdownRow": "| #11+ — Wed Nov 18 15:43:08 2026 GMT | FAA NAS — LGA (Commercial Aviation) | Arrival/Departure delays reported at LGA ([FAA NAS Status](https://nasstatus.faa.gov/)) | FAA NAS General Arrival/Departure Delay Info: WX:Wind | Live Wire (ELEVATED) — Watchlist #7 |"
     },
     {
       "id": "faa-closure-sna-3",
       "sourceId": "faa-nas",
       "sourceName": "FAA NAS Status",
-      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Wed Nov 18 06:25:00 2026 GMT",
-      "publishedAtISO": "2026-11-18T06:25:00.000Z",
+      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Wed Nov 18 15:43:08 2026 GMT",
+      "publishedAtISO": "2026-11-18T15:43:08.000Z",
       "title": "FAA Airport Closures: SNA",
-      "summary": "SNA: !SNA 11/020 SNA AD AP CLSD DLY 0730-1415 2611150730-2611211415 | Reopen: Nov 21 at 14:15 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Wed Nov 18 06:25:00 2026 GMT)",
+      "summary": "SNA: !SNA 11/020 SNA AD AP CLSD DLY 0730-1415 2611150730-2611211415 | Reopen: Nov 21 at 14:15 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Wed Nov 18 15:43:08 2026 GMT)",
       "url": "https://nasstatus.faa.gov/",
       "severity": "elevated",
       "watchlistMatches": [
@@ -256,31 +232,436 @@
         "Airport-Closure",
         "SNA"
       ],
-      "markdownRow": "| #11+ — Wed Nov 18 06:25:00 2026 GMT | FAA NAS — SNA (National Aviation / Airport Ops) | Airport Closures active at SNA until Nov 21 at 14:15 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !SNA 11/020 SNA AD AP CLSD DLY 0730-1415 2611150730-2611211415 | Live Wire (ELEVATED) — Watchlist #7 |"
+      "markdownRow": "| #11+ — Wed Nov 18 15:43:08 2026 GMT | FAA NAS — SNA (National Aviation / Airport Ops) | Airport Closures active at SNA until Nov 21 at 14:15 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !SNA 11/020 SNA AD AP CLSD DLY 0730-1415 2611150730-2611211415 | Live Wire (ELEVATED) — Watchlist #7 |"
     },
     {
-      "id": "faa-closure-pns-4",
-      "sourceId": "faa-nas",
-      "sourceName": "FAA NAS Status",
-      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Wed Nov 18 06:25:00 2026 GMT",
-      "publishedAtISO": "2026-11-18T06:25:00.000Z",
-      "title": "FAA Airport Closures: PNS",
-      "summary": "PNS: !PNS 11/040 PNS AD AP CLSD EXC HEL OPS 2611180600-2611181100 | Reopen: Nov 18 at 11:00 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Wed Nov 18 06:25:00 2026 GMT)",
-      "url": "https://nasstatus.faa.gov/",
+      "id": "cloudflare-status-2wjvsj2kqt07",
+      "sourceId": "cloudflare-status",
+      "sourceName": "Cloudflare Status",
+      "attributionText": "Source: Cloudflare System Status (www.cloudflarestatus.com)",
+      "publishedAtISO": "2026-11-18T15:03:07.334Z",
+      "title": "Cloudflare: R2 Downloads Stalling in Japan [RESOLVED]",
+      "summary": "This incident has been resolved.",
+      "url": "https://www.cloudflarestatus.com/incidents/2wjvsj2kqt07",
       "severity": "elevated",
       "watchlistMatches": [
+        "#6",
         "#7"
       ],
       "riskMatrixMatches": [
-        "#1"
+        "#1",
+        "#2"
       ],
       "countdownMatches": [],
       "tags": [
-        "FAA-NAS",
-        "Airport-Closure",
-        "PNS"
+        "Cloudflare",
+        "impact:minor",
+        "status:resolved"
       ],
-      "markdownRow": "| #11+ — Wed Nov 18 06:25:00 2026 GMT | FAA NAS — PNS (National Aviation / Airport Ops) | Airport Closures active at PNS until Nov 18 at 11:00 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !PNS 11/040 PNS AD AP CLSD EXC HEL OPS 2611180600-2611181100 | Live Wire (ELEVATED) — Watchlist #7 |"
+      "markdownRow": "| #11+ — Nov 18, 2026 | Cloudflare (Global CDN & Edge) | R2 Downloads Stalling in Japan (minor impact; resolved) ([Cloudflare Status](https://www.cloudflarestatus.com/incidents/2wjvsj2kqt07)) | This incident has been resolved. | Live Wire (ELEVATED) — Watchlist #6, #7 |"
+    },
+    {
+      "id": "fedreg-2026-23522",
+      "sourceId": "federal-register",
+      "sourceName": "U.S. Federal Register",
+      "attributionText": "Source: U.S. Federal Register (2026-23522 — Federal Communications Commission)",
+      "publishedAtISO": "2026-11-18T13:00:00.000Z",
+      "title": "Protecting Consumers From SIM-Swap and Port-Out Fraud (2026-23522)",
+      "summary": "In this document, the Wireline Competition Bureau (Bureau) announces that the Office of Management and Budget (OMB) has approved, for a period of three years, the information collection associated with Telephone Number Portability. This document is consistent…",
+      "url": "https://www.federalregister.gov/documents/2026/11/18/2026-23522/protecting-consumers-from-sim-swap-and-port-out-fraud",
+      "severity": "elevated",
+      "watchlistMatches": [
+        "#9"
+      ],
+      "riskMatrixMatches": [
+        "#6"
+      ],
+      "countdownMatches": [
+        "2027-01-08"
+      ],
+      "tags": [
+        "Federal-Register",
+        "Rule",
+        "FCC-Telecom-Subsea"
+      ],
+      "markdownRow": "| #11+ — 2026-11-18 | Federal Communications Commission (Federal Regulatory) | Protecting Consumers From SIM-Swap and Port-Out Fraud ([FR 2026-23522](https://www.federalregister.gov/documents/2026/11/18/2026-23522/protecting-consumers-from-sim-swap-and-port-out-fraud)) | Rule filing mapped to Risk #6 | Live Wire (ELEVATED) — Watchlist #9 |"
+    },
+    {
+      "id": "fedreg-2026-23481",
+      "sourceId": "federal-register",
+      "sourceName": "U.S. Federal Register",
+      "attributionText": "Source: U.S. Federal Register (2026-23481 — Federal Communications Commission)",
+      "publishedAtISO": "2026-11-18T13:00:00.000Z",
+      "title": "Information Collection Being Submitted for Review and Approval to Office of Management and Budget (2026-23481)",
+      "summary": "As part of its continuing effort to reduce paperwork burdens, as required by the Paperwork Reduction Act (PRA) of 1995, the Federal Communications Commission (FCC or the Commission) invites the general public and other Federal Agencies to take this opportunit…",
+      "url": "https://www.federalregister.gov/documents/2026/11/18/2026-23481/information-collection-being-submitted-for-review-and-approval-to-office-of-management-and-budget",
+      "severity": "elevated",
+      "watchlistMatches": [
+        "#9"
+      ],
+      "riskMatrixMatches": [
+        "#6"
+      ],
+      "countdownMatches": [
+        "2027-01-08"
+      ],
+      "tags": [
+        "Federal-Register",
+        "Notice",
+        "FCC-Telecom-Subsea"
+      ],
+      "markdownRow": "| #11+ — 2026-11-18 | Federal Communications Commission (Federal Regulatory) | Information Collection Being Submitted for Review and Approval to Office of Management and Budget ([FR 2026-23481](https://www.federalregister.gov/documents/2026/11/18/2026-23481/information-collection-being-submitted-for-review-and-approval-to-office-of-management-and-budget)) | Notice filing mapped to Risk #6 | Live Wire (ELEVATED) — Watchlist #9 |"
+    },
+    {
+      "id": "fedreg-2026-23470",
+      "sourceId": "federal-register",
+      "sourceName": "U.S. Federal Register",
+      "attributionText": "Source: U.S. Federal Register (2026-23470 — Securities and Exchange Commission)",
+      "publishedAtISO": "2026-11-18T13:00:00.000Z",
+      "title": "Agency Information Collection Activities; Submission for OMB Review; Comment Request; Extension: Rule 19a-1 (2026-23470)",
+      "summary": "Notice published by Securities and Exchange Commission (2026-23470).",
+      "url": "https://www.federalregister.gov/documents/2026/11/18/2026-23470/agency-information-collection-activities-submission-for-omb-review-comment-request-extension-rule",
+      "severity": "elevated",
+      "watchlistMatches": [
+        "#6"
+      ],
+      "riskMatrixMatches": [
+        "#5",
+        "#7"
+      ],
+      "countdownMatches": [
+        "2026-12-31"
+      ],
+      "tags": [
+        "Federal-Register",
+        "Notice",
+        "SEC-Clearing"
+      ],
+      "markdownRow": "| #11+ — 2026-11-18 | Securities and Exchange Commission (Federal Regulatory) | Agency Information Collection Activities; Submission for OMB Review; Comment Request; Extension: Rule 19a-1 ([FR 2026-23470](https://www.federalregister.gov/documents/2026/11/18/2026-23470/agency-information-collection-activities-submission-for-omb-review-comment-request-extension-rule)) | Notice filing mapped to Risk #5, #7 | Live Wire (ELEVATED) — Watchlist #6 |"
+    },
+    {
+      "id": "fedreg-2026-23467",
+      "sourceId": "federal-register",
+      "sourceName": "U.S. Federal Register",
+      "attributionText": "Source: U.S. Federal Register (2026-23467 — Federal Communications Commission)",
+      "publishedAtISO": "2026-11-18T13:00:00.000Z",
+      "title": "Sunshine Act; Open Commission Meeting Thursday, November 19, 2026 (2026-23467)",
+      "summary": "The Commission will consider a Report and Order that would authorize non- federal operation of radio frequency jamming solutions in the limited context of correctional facilities, in compliance with applicable congressional statutes. It will also consider a F…",
+      "url": "https://www.federalregister.gov/documents/2026/11/18/2026-23467/sunshine-act-open-commission-meeting-thursday-november-19-2026",
+      "severity": "elevated",
+      "watchlistMatches": [
+        "#9"
+      ],
+      "riskMatrixMatches": [
+        "#6"
+      ],
+      "countdownMatches": [
+        "2027-01-08"
+      ],
+      "tags": [
+        "Federal-Register",
+        "Notice",
+        "FCC-Telecom-Subsea"
+      ],
+      "markdownRow": "| #11+ — 2026-11-18 | Federal Communications Commission (Federal Regulatory) | Sunshine Act; Open Commission Meeting Thursday, November 19, 2026 ([FR 2026-23467](https://www.federalregister.gov/documents/2026/11/18/2026-23467/sunshine-act-open-commission-meeting-thursday-november-19-2026)) | Notice filing mapped to Risk #6 | Live Wire (ELEVATED) — Watchlist #9 |"
+    },
+    {
+      "id": "fedreg-2026-23427",
+      "sourceId": "federal-register",
+      "sourceName": "U.S. Federal Register",
+      "attributionText": "Source: U.S. Federal Register (2026-23427 — Securities and Exchange Commission)",
+      "publishedAtISO": "2026-11-18T13:00:00.000Z",
+      "title": "Self-Regulatory Organizations; NYSE Arca, Inc.; Notice of Filing and Immediate Effectiveness of Proposed Rule Change To Amend Its Rules its Rules To Permit the Listing of Binary Options Overlying Key Performance Indicators (2026-23427)",
+      "summary": "Notice published by Securities and Exchange Commission (2026-23427).",
+      "url": "https://www.federalregister.gov/documents/2026/11/18/2026-23427/self-regulatory-organizations-nyse-arca-inc-notice-of-filing-and-immediate-effectiveness-of-proposed",
+      "severity": "elevated",
+      "watchlistMatches": [
+        "#6"
+      ],
+      "riskMatrixMatches": [
+        "#5",
+        "#7"
+      ],
+      "countdownMatches": [
+        "2026-12-31"
+      ],
+      "tags": [
+        "Federal-Register",
+        "Notice",
+        "SEC-Clearing"
+      ],
+      "markdownRow": "| #11+ — 2026-11-18 | Securities and Exchange Commission (Federal Regulatory) | Self-Regulatory Organizations; NYSE Arca, Inc.; Notice of Filing and Immediate Effectiveness of Proposed Rule Change To Amend Its Rules its… ([FR 2026-23427](https://www.federalregister.gov/documents/2026/11/18/2026-23427/self-regulatory-organizations-nyse-arca-inc-notice-of-filing-and-immediate-effectiveness-of-proposed)) | Notice filing mapped to Risk #5, #7 | Live Wire (ELEVATED) — Watchlist #6 |"
+    },
+    {
+      "id": "fedreg-2026-23426",
+      "sourceId": "federal-register",
+      "sourceName": "U.S. Federal Register",
+      "attributionText": "Source: U.S. Federal Register (2026-23426 — Securities and Exchange Commission)",
+      "publishedAtISO": "2026-11-18T13:00:00.000Z",
+      "title": "Self-Regulatory Organizations; CME Securities Clearing Inc.; Notice of Filing of Proposed Rule Change for Transaction Submission Amendments (2026-23426)",
+      "summary": "Notice published by Securities and Exchange Commission (2026-23426).",
+      "url": "https://www.federalregister.gov/documents/2026/11/18/2026-23426/self-regulatory-organizations-cme-securities-clearing-inc-notice-of-filing-of-proposed-rule-change",
+      "severity": "elevated",
+      "watchlistMatches": [
+        "#6"
+      ],
+      "riskMatrixMatches": [
+        "#5",
+        "#7"
+      ],
+      "countdownMatches": [
+        "2026-12-31"
+      ],
+      "tags": [
+        "Federal-Register",
+        "Notice",
+        "SEC-Clearing"
+      ],
+      "markdownRow": "| #11+ — 2026-11-18 | Securities and Exchange Commission (Federal Regulatory) | Self-Regulatory Organizations; CME Securities Clearing Inc.; Notice of Filing of Proposed Rule Change for Transaction Submission Amendments ([FR 2026-23426](https://www.federalregister.gov/documents/2026/11/18/2026-23426/self-regulatory-organizations-cme-securities-clearing-inc-notice-of-filing-of-proposed-rule-change)) | Notice filing mapped to Risk #5, #7 | Live Wire (ELEVATED) — Watchlist #6 |"
+    },
+    {
+      "id": "fedreg-2026-23425",
+      "sourceId": "federal-register",
+      "sourceName": "U.S. Federal Register",
+      "attributionText": "Source: U.S. Federal Register (2026-23425 — Securities and Exchange Commission)",
+      "publishedAtISO": "2026-11-18T13:00:00.000Z",
+      "title": "Self-Regulatory Organizations; NYSE American LLC; Notice of Filing and Immediate Effectiveness of Proposed Change To Amend Its Rules To Permit the Listing of Binary Options Overlying Key Performance Indicators (2026-23425)",
+      "summary": "Notice published by Securities and Exchange Commission (2026-23425).",
+      "url": "https://www.federalregister.gov/documents/2026/11/18/2026-23425/self-regulatory-organizations-nyse-american-llc-notice-of-filing-and-immediate-effectiveness-of",
+      "severity": "elevated",
+      "watchlistMatches": [
+        "#6"
+      ],
+      "riskMatrixMatches": [
+        "#5",
+        "#7"
+      ],
+      "countdownMatches": [
+        "2026-12-31"
+      ],
+      "tags": [
+        "Federal-Register",
+        "Notice",
+        "SEC-Clearing"
+      ],
+      "markdownRow": "| #11+ — 2026-11-18 | Securities and Exchange Commission (Federal Regulatory) | Self-Regulatory Organizations; NYSE American LLC; Notice of Filing and Immediate Effectiveness of Proposed Change To Amend Its Rules To Per… ([FR 2026-23425](https://www.federalregister.gov/documents/2026/11/18/2026-23425/self-regulatory-organizations-nyse-american-llc-notice-of-filing-and-immediate-effectiveness-of)) | Notice filing mapped to Risk #5, #7 | Live Wire (ELEVATED) — Watchlist #6 |"
+    },
+    {
+      "id": "fedreg-2026-23424",
+      "sourceId": "federal-register",
+      "sourceName": "U.S. Federal Register",
+      "attributionText": "Source: U.S. Federal Register (2026-23424 — Securities and Exchange Commission)",
+      "publishedAtISO": "2026-11-18T13:00:00.000Z",
+      "title": "Self-Regulatory Organizations; Cboe Exchange, Inc.; Notice of Filing and Immediate Effectiveness of a Proposed Rule Change To Amend its Fees Schedule (2026-23424)",
+      "summary": "Notice published by Securities and Exchange Commission (2026-23424).",
+      "url": "https://www.federalregister.gov/documents/2026/11/18/2026-23424/self-regulatory-organizations-cboe-exchange-inc-notice-of-filing-and-immediate-effectiveness-of-a",
+      "severity": "elevated",
+      "watchlistMatches": [
+        "#6"
+      ],
+      "riskMatrixMatches": [
+        "#5",
+        "#7"
+      ],
+      "countdownMatches": [
+        "2026-12-31"
+      ],
+      "tags": [
+        "Federal-Register",
+        "Notice",
+        "SEC-Clearing"
+      ],
+      "markdownRow": "| #11+ — 2026-11-18 | Securities and Exchange Commission (Federal Regulatory) | Self-Regulatory Organizations; Cboe Exchange, Inc.; Notice of Filing and Immediate Effectiveness of a Proposed Rule Change To Amend its Fee… ([FR 2026-23424](https://www.federalregister.gov/documents/2026/11/18/2026-23424/self-regulatory-organizations-cboe-exchange-inc-notice-of-filing-and-immediate-effectiveness-of-a)) | Notice filing mapped to Risk #5, #7 | Live Wire (ELEVATED) — Watchlist #6 |"
+    },
+    {
+      "id": "fedreg-2026-23423",
+      "sourceId": "federal-register",
+      "sourceName": "U.S. Federal Register",
+      "attributionText": "Source: U.S. Federal Register (2026-23423 — Securities and Exchange Commission)",
+      "publishedAtISO": "2026-11-18T13:00:00.000Z",
+      "title": "Self-Regulatory Organizations; New York Stock Exchange LLC; Order Instituting Proceedings To Determine Whether To Approve or Disapprove a Proposed Rule Change To Amend Sections 303A.00 and 303A.07 of the NYSE Listed Company Manual (2026-23423)",
+      "summary": "Notice published by Securities and Exchange Commission (2026-23423).",
+      "url": "https://www.federalregister.gov/documents/2026/11/18/2026-23423/self-regulatory-organizations-new-york-stock-exchange-llc-order-instituting-proceedings-to-determine",
+      "severity": "elevated",
+      "watchlistMatches": [
+        "#6"
+      ],
+      "riskMatrixMatches": [
+        "#5",
+        "#7"
+      ],
+      "countdownMatches": [
+        "2026-12-31"
+      ],
+      "tags": [
+        "Federal-Register",
+        "Notice",
+        "SEC-Clearing"
+      ],
+      "markdownRow": "| #11+ — 2026-11-18 | Securities and Exchange Commission (Federal Regulatory) | Self-Regulatory Organizations; New York Stock Exchange LLC; Order Instituting Proceedings To Determine Whether To Approve or Disapprove a P… ([FR 2026-23423](https://www.federalregister.gov/documents/2026/11/18/2026-23423/self-regulatory-organizations-new-york-stock-exchange-llc-order-instituting-proceedings-to-determine)) | Notice filing mapped to Risk #5, #7 | Live Wire (ELEVATED) — Watchlist #6 |"
+    },
+    {
+      "id": "fedreg-2026-23422",
+      "sourceId": "federal-register",
+      "sourceName": "U.S. Federal Register",
+      "attributionText": "Source: U.S. Federal Register (2026-23422 — Securities and Exchange Commission)",
+      "publishedAtISO": "2026-11-18T13:00:00.000Z",
+      "title": "Self-Regulatory Organizations; The Nasdaq Stock Market LLC; Notice of Filing and Immediate Effectiveness of Proposed Rule Change To Provide Transparency to the Process for Selection of an Initial Trading Date (2026-23422)",
+      "summary": "Notice published by Securities and Exchange Commission (2026-23422).",
+      "url": "https://www.federalregister.gov/documents/2026/11/18/2026-23422/self-regulatory-organizations-the-nasdaq-stock-market-llc-notice-of-filing-and-immediate",
+      "severity": "elevated",
+      "watchlistMatches": [
+        "#6"
+      ],
+      "riskMatrixMatches": [
+        "#5",
+        "#7"
+      ],
+      "countdownMatches": [
+        "2026-12-31"
+      ],
+      "tags": [
+        "Federal-Register",
+        "Notice",
+        "SEC-Clearing"
+      ],
+      "markdownRow": "| #11+ — 2026-11-18 | Securities and Exchange Commission (Federal Regulatory) | Self-Regulatory Organizations; The Nasdaq Stock Market LLC; Notice of Filing and Immediate Effectiveness of Proposed Rule Change To Provide… ([FR 2026-23422](https://www.federalregister.gov/documents/2026/11/18/2026-23422/self-regulatory-organizations-the-nasdaq-stock-market-llc-notice-of-filing-and-immediate)) | Notice filing mapped to Risk #5, #7 | Live Wire (ELEVATED) — Watchlist #6 |"
+    },
+    {
+      "id": "fedreg-2026-23421",
+      "sourceId": "federal-register",
+      "sourceName": "U.S. Federal Register",
+      "attributionText": "Source: U.S. Federal Register (2026-23421 — Securities and Exchange Commission)",
+      "publishedAtISO": "2026-11-18T13:00:00.000Z",
+      "title": "Self-Regulatory Organizations; NYSE American LLC; Notice of Filing and Immediate Effectiveness of a Proposed Rule Change To Amend the NYSE American Options Fee Schedule To Lower Certain Initiating Participant Rebates in Customer Best Execution Auctions (2026-23421)",
+      "summary": "Notice published by Securities and Exchange Commission (2026-23421).",
+      "url": "https://www.federalregister.gov/documents/2026/11/18/2026-23421/self-regulatory-organizations-nyse-american-llc-notice-of-filing-and-immediate-effectiveness-of-a",
+      "severity": "elevated",
+      "watchlistMatches": [
+        "#6"
+      ],
+      "riskMatrixMatches": [
+        "#5",
+        "#7"
+      ],
+      "countdownMatches": [
+        "2026-12-31"
+      ],
+      "tags": [
+        "Federal-Register",
+        "Notice",
+        "SEC-Clearing"
+      ],
+      "markdownRow": "| #11+ — 2026-11-18 | Securities and Exchange Commission (Federal Regulatory) | Self-Regulatory Organizations; NYSE American LLC; Notice of Filing and Immediate Effectiveness of a Proposed Rule Change To Amend the NYSE… ([FR 2026-23421](https://www.federalregister.gov/documents/2026/11/18/2026-23421/self-regulatory-organizations-nyse-american-llc-notice-of-filing-and-immediate-effectiveness-of-a)) | Notice filing mapped to Risk #5, #7 | Live Wire (ELEVATED) — Watchlist #6 |"
+    },
+    {
+      "id": "fedreg-2026-23416",
+      "sourceId": "federal-register",
+      "sourceName": "U.S. Federal Register",
+      "attributionText": "Source: U.S. Federal Register (2026-23416 — Treasury Department, Comptroller of the Currency, Federal Reserve System, Federal Deposit Insurance Corporation, National Credit Union Administration)",
+      "publishedAtISO": "2026-11-18T13:00:00.000Z",
+      "title": "Proposed Third-Party Risk Management Guidance; Extension of Comment Period (2026-23416)",
+      "summary": "On September 15, 2026, the OCC, Board, FDIC, and NCUA (collectively, the agencies) published in the Federal Register a proposed interagency guidance and request for comment on third-party risk management. The proposed guidance would reflect the agencies' supe…",
+      "url": "https://www.federalregister.gov/documents/2026/11/18/2026-23416/proposed-third-party-risk-management-guidance-extension-of-comment-period",
+      "severity": "elevated",
+      "watchlistMatches": [
+        "#9",
+        "#6"
+      ],
+      "riskMatrixMatches": [
+        "#6",
+        "#5",
+        "#7"
+      ],
+      "countdownMatches": [
+        "2027-01-08",
+        "2026-12-31"
+      ],
+      "tags": [
+        "Federal-Register",
+        "Notice",
+        "FCC-Telecom-Subsea",
+        "SEC-Clearing",
+        "Regulatory-Resilience"
+      ],
+      "markdownRow": "| #11+ — 2026-11-18 | Treasury Department, Comptroller of the Currency, Federal Reserve System, Federal Deposit Insurance Corporation, National Credit Union Administration (Federal Regulatory) | Proposed Third-Party Risk Management Guidance; Extension of Comment Period ([FR 2026-23416](https://www.federalregister.gov/documents/2026/11/18/2026-23416/proposed-third-party-risk-management-guidance-extension-of-comment-period)) | Notice filing mapped to Risk #6, #5, #7 | Live Wire (ELEVATED) — Watchlist #9, #6 |"
+    },
+    {
+      "id": "cloudflare-status-76lqmua6x3tk",
+      "sourceId": "cloudflare-status",
+      "sourceName": "Cloudflare Status",
+      "attributionText": "Source: Cloudflare System Status (www.cloudflarestatus.com)",
+      "publishedAtISO": "2026-11-18T10:56:57.188Z",
+      "title": "Cloudflare: Network Performance Issues in North America [RESOLVED]",
+      "summary": "Between approximately 07:00 UTC and 10:00 UTC Cloudflare investigated issues with network performance in North America. This has since been resolved.",
+      "url": "https://www.cloudflarestatus.com/incidents/76lqmua6x3tk",
+      "severity": "elevated",
+      "watchlistMatches": [
+        "#6",
+        "#7"
+      ],
+      "riskMatrixMatches": [
+        "#1",
+        "#2"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "Cloudflare",
+        "impact:minor",
+        "status:resolved"
+      ],
+      "markdownRow": "| #11+ — Nov 18, 2026 | Cloudflare (Global CDN & Edge) | Network Performance Issues in North America (minor impact; resolved) ([Cloudflare Status](https://www.cloudflarestatus.com/incidents/76lqmua6x3tk)) | Between approximately 07:00 UTC and 10:00 UTC Cloudflare investigated issues with network performance in North America. This has… | Live Wire (ELEVATED) — Watchlist #6, #7 |"
+    },
+    {
+      "id": "github-status-891rm8181xdf",
+      "sourceId": "github-status",
+      "sourceName": "GitHub Status",
+      "attributionText": "Source: GitHub System Status (www.githubstatus.com)",
+      "publishedAtISO": "2026-11-18T09:34:15.907Z",
+      "title": "GitHub: Degraded Availability for MAI Code 2 Flash in Copilot [RESOLVED]",
+      "summary": "This incident has been resolved. Thank you for your patience and understanding as we addressed this issue. A detailed root cause analysis will be shared as soon as it is available.",
+      "url": "https://stspg.io/3sbmvyy2ctyx",
+      "severity": "elevated",
+      "watchlistMatches": [
+        "#2",
+        "#7"
+      ],
+      "riskMatrixMatches": [
+        "#2"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "GitHub",
+        "impact:minor",
+        "status:resolved"
+      ],
+      "markdownRow": "| #11+ — Nov 18, 2026 | GitHub (Developer & CI/CD Backbone) | Degraded Availability for MAI Code 2 Flash in Copilot (minor impact; resolved) ([GitHub Status](https://stspg.io/3sbmvyy2ctyx)) | This incident has been resolved. Thank you for your patience and understanding as we addressed this issue. A detailed root cause… | Live Wire (ELEVATED) — Watchlist #2, #7 |"
+    },
+    {
+      "id": "cloudflare-status-njt9j3k2zdfw",
+      "sourceId": "cloudflare-status",
+      "sourceName": "Cloudflare Status",
+      "attributionText": "Source: Cloudflare System Status (www.cloudflarestatus.com)",
+      "publishedAtISO": "2026-11-18T08:46:42.445Z",
+      "title": "Cloudflare: Network disruption across multiple colocations in India [RESOLVED]",
+      "summary": "This incident has been resolved.",
+      "url": "https://www.cloudflarestatus.com/incidents/njt9j3k2zdfw",
+      "severity": "elevated",
+      "watchlistMatches": [
+        "#6",
+        "#7"
+      ],
+      "riskMatrixMatches": [
+        "#1",
+        "#2"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "Cloudflare",
+        "impact:minor",
+        "status:resolved"
+      ],
+      "markdownRow": "| #11+ — Nov 18, 2026 | Cloudflare (Global CDN & Edge) | Network disruption across multiple colocations in India (minor impact; resolved) ([Cloudflare Status](https://www.cloudflarestatus.com/incidents/njt9j3k2zdfw)) | This incident has been resolved. | Live Wire (ELEVATED) — Watchlist #6, #7 |"
     },
     {
       "id": "cloudflare-status-k3r9i5tbre4i",
@@ -413,58 +794,6 @@
       "markdownRow": "| #11+ — Nov 17, 2026 | Cloudflare (Global CDN & Edge) | Issues with Durable Objects and Dependent Services (minor impact; resolved) ([Cloudflare Status](https://www.cloudflarestatus.com/incidents/ylj5po752g6h)) | This incident has been resolved. | Live Wire (ELEVATED) — Watchlist #6, #7 |"
     },
     {
-      "id": "cloudflare-status-gcn9xop0f7zm",
-      "sourceId": "cloudflare-status",
-      "sourceName": "Cloudflare Status",
-      "attributionText": "Source: Cloudflare System Status (www.cloudflarestatus.com)",
-      "publishedAtISO": "2026-11-17T22:08:34.050Z",
-      "title": "Cloudflare: R2 elevated errors and timeouts for requests from South America [RESOLVED]",
-      "summary": "This incident has been resolved.",
-      "url": "https://www.cloudflarestatus.com/incidents/gcn9xop0f7zm",
-      "severity": "elevated",
-      "watchlistMatches": [
-        "#6",
-        "#7"
-      ],
-      "riskMatrixMatches": [
-        "#1",
-        "#2"
-      ],
-      "countdownMatches": [],
-      "tags": [
-        "Cloudflare",
-        "impact:minor",
-        "status:resolved"
-      ],
-      "markdownRow": "| #11+ — Nov 17, 2026 | Cloudflare (Global CDN & Edge) | R2 elevated errors and timeouts for requests from South America (minor impact; resolved) ([Cloudflare Status](https://www.cloudflarestatus.com/incidents/gcn9xop0f7zm)) | This incident has been resolved. | Live Wire (ELEVATED) — Watchlist #6, #7 |"
-    },
-    {
-      "id": "cloudflare-status-du63c25qjgjs",
-      "sourceId": "cloudflare-status",
-      "sourceName": "Cloudflare Status",
-      "attributionText": "Source: Cloudflare System Status (www.cloudflarestatus.com)",
-      "publishedAtISO": "2026-11-17T18:00:07.525Z",
-      "title": "Cloudflare: Network performance issues in Los Angeles (LAX) and Frankfurt (FRA) datacenters [RESOLVED]",
-      "summary": "This incident has been resolved.",
-      "url": "https://www.cloudflarestatus.com/incidents/du63c25qjgjs",
-      "severity": "elevated",
-      "watchlistMatches": [
-        "#6",
-        "#7"
-      ],
-      "riskMatrixMatches": [
-        "#1",
-        "#2"
-      ],
-      "countdownMatches": [],
-      "tags": [
-        "Cloudflare",
-        "impact:minor",
-        "status:resolved"
-      ],
-      "markdownRow": "| #11+ — Nov 17, 2026 | Cloudflare (Global CDN & Edge) | Network performance issues in Los Angeles (LAX) and Frankfurt (FRA) datacenters (minor impact; resolved) ([Cloudflare Status](https://www.cloudflarestatus.com/incidents/du63c25qjgjs)) | This incident has been resolved. | Live Wire (ELEVATED) — Watchlist #6, #7 |"
-    },
-    {
       "id": "apple-app-store-1000005988",
       "sourceId": "apple-status",
       "sourceName": "Apple System Status",
@@ -513,32 +842,6 @@
       "markdownRow": "| #11+ — 11/17/2026 08:45 PST | Apple — Volume Purchase Program (Consumer, Payments & Enterprise) | Outage (Some users were affected); status: resolved ([Apple System Status](https://www.apple.com/support/systemstatus/)) | Users may have been unable to make purchases. | Live Wire (ELEVATED) — Watchlist #7 |"
     },
     {
-      "id": "cloudflare-status-5831aw44ia7i",
-      "sourceId": "cloudflare-status",
-      "sourceName": "Cloudflare Status",
-      "attributionText": "Source: Cloudflare System Status (www.cloudflarestatus.com)",
-      "publishedAtISO": "2026-11-17T16:37:10.717Z",
-      "title": "Cloudflare: Turnstile verification failures [RESOLVED]",
-      "summary": "This incident has been resolved.",
-      "url": "https://www.cloudflarestatus.com/incidents/5831aw44ia7i",
-      "severity": "elevated",
-      "watchlistMatches": [
-        "#6",
-        "#7"
-      ],
-      "riskMatrixMatches": [
-        "#1",
-        "#2"
-      ],
-      "countdownMatches": [],
-      "tags": [
-        "Cloudflare",
-        "impact:minor",
-        "status:resolved"
-      ],
-      "markdownRow": "| #11+ — Nov 17, 2026 | Cloudflare (Global CDN & Edge) | Turnstile verification failures (minor impact; resolved) ([Cloudflare Status](https://www.cloudflarestatus.com/incidents/5831aw44ia7i)) | This incident has been resolved. | Live Wire (ELEVATED) — Watchlist #6, #7 |"
-    },
-    {
       "id": "apple-applecare-on-device-2000005801",
       "sourceId": "apple-status",
       "sourceName": "Apple System Status",
@@ -560,383 +863,6 @@
         "AppleCare on Device"
       ],
       "markdownRow": "| #11+ — 11/17/2026 08:15 PST | Apple — AppleCare on Device (Consumer, Payments & Enterprise) | Outage (All users were affected); status: resolved ([Apple System Status](https://www.apple.com/support/systemstatus/)) | AppleCare purchase was temporarily unavailable. | Live Wire (ELEVATED) — Watchlist #7 |"
-    },
-    {
-      "id": "fedreg-2026-23400",
-      "sourceId": "federal-register",
-      "sourceName": "U.S. Federal Register",
-      "attributionText": "Source: U.S. Federal Register (2026-23400 — Federal Communications Commission)",
-      "publishedAtISO": "2026-11-17T13:00:00.000Z",
-      "title": "Protecting Consumers From SIM-Swap and Port-Out Fraud (2026-23400)",
-      "summary": "In this document, the Wireline Competition Bureau (Bureau) announces that the Office of Management and Budget (OMB) has approved, for a period of three years, the information collection associated with the Commission's rules adopted in the SIM Swap and Port-O…",
-      "url": "https://www.federalregister.gov/documents/2026/11/17/2026-23400/protecting-consumers-from-sim-swap-and-port-out-fraud",
-      "severity": "elevated",
-      "watchlistMatches": [
-        "#9"
-      ],
-      "riskMatrixMatches": [
-        "#6"
-      ],
-      "countdownMatches": [
-        "2027-01-08"
-      ],
-      "tags": [
-        "Federal-Register",
-        "Rule",
-        "FCC-Telecom-Subsea"
-      ],
-      "markdownRow": "| #11+ — 2026-11-17 | Federal Communications Commission (Federal Regulatory) | Protecting Consumers From SIM-Swap and Port-Out Fraud ([FR 2026-23400](https://www.federalregister.gov/documents/2026/11/17/2026-23400/protecting-consumers-from-sim-swap-and-port-out-fraud)) | Rule filing mapped to Risk #6 | Live Wire (ELEVATED) — Watchlist #9 |"
-    },
-    {
-      "id": "fedreg-2026-23397",
-      "sourceId": "federal-register",
-      "sourceName": "U.S. Federal Register",
-      "attributionText": "Source: U.S. Federal Register (2026-23397 — Transportation Department, Federal Aviation Administration)",
-      "publishedAtISO": "2026-11-17T13:00:00.000Z",
-      "title": "Modernizing to Electronic Payments (2026-23397)",
-      "summary": "FAA proposes to modernize its payment systems to require electronic payments and eliminate the option to pay by paper payment methods such as cash, money orders, and paper checks. This proposal complies with Executive Order 14247 titled \"Modernizing Payments…",
-      "url": "https://www.federalregister.gov/documents/2026/11/17/2026-23397/modernizing-to-electronic-payments",
-      "severity": "elevated",
-      "watchlistMatches": [
-        "#9",
-        "#5"
-      ],
-      "riskMatrixMatches": [
-        "#6",
-        "#1"
-      ],
-      "countdownMatches": [
-        "2027-01-08"
-      ],
-      "tags": [
-        "Federal-Register",
-        "Proposed Rule",
-        "FCC-Telecom-Subsea",
-        "FAA-Regulatory"
-      ],
-      "markdownRow": "| #11+ — 2026-11-17 | Transportation Department, Federal Aviation Administration (Federal Regulatory) | Modernizing to Electronic Payments ([FR 2026-23397](https://www.federalregister.gov/documents/2026/11/17/2026-23397/modernizing-to-electronic-payments)) | Proposed Rule filing mapped to Risk #6, #1 | Live Wire (ELEVATED) — Watchlist #9, #5 |"
-    },
-    {
-      "id": "fedreg-2026-23388",
-      "sourceId": "federal-register",
-      "sourceName": "U.S. Federal Register",
-      "attributionText": "Source: U.S. Federal Register (2026-23388 — Federal Communications Commission)",
-      "publishedAtISO": "2026-11-17T13:00:00.000Z",
-      "title": "Information Collection Being Reviewed by the Federal Communications Commission (2026-23388)",
-      "summary": "As part of its continuing effort to reduce paperwork burdens, and as required by the Paperwork Reduction Act (PRA) of 1995, the Federal Communications Commission (FCC or the Commission) invites the general public and other Federal agencies to take this opport…",
-      "url": "https://www.federalregister.gov/documents/2026/11/17/2026-23388/information-collection-being-reviewed-by-the-federal-communications-commission",
-      "severity": "elevated",
-      "watchlistMatches": [
-        "#9"
-      ],
-      "riskMatrixMatches": [
-        "#6"
-      ],
-      "countdownMatches": [
-        "2027-01-08"
-      ],
-      "tags": [
-        "Federal-Register",
-        "Notice",
-        "FCC-Telecom-Subsea"
-      ],
-      "markdownRow": "| #11+ — 2026-11-17 | Federal Communications Commission (Federal Regulatory) | Information Collection Being Reviewed by the Federal Communications Commission ([FR 2026-23388](https://www.federalregister.gov/documents/2026/11/17/2026-23388/information-collection-being-reviewed-by-the-federal-communications-commission)) | Notice filing mapped to Risk #6 | Live Wire (ELEVATED) — Watchlist #9 |"
-    },
-    {
-      "id": "fedreg-2026-23385",
-      "sourceId": "federal-register",
-      "sourceName": "U.S. Federal Register",
-      "attributionText": "Source: U.S. Federal Register (2026-23385 — Federal Communications Commission)",
-      "publishedAtISO": "2026-11-17T13:00:00.000Z",
-      "title": "Modernizing the Commission's National Environmental Policy Act Rules (2026-23385)",
-      "summary": "In this document (Order), the Federal Communications Commission (\"Commission\" or \"FCC\") takes action to cut through outdated and unnecessary burdens that have slowed deployment of critical communications networks. These reforms restore balance to the Commissi…",
-      "url": "https://www.federalregister.gov/documents/2026/11/17/2026-23385/modernizing-the-commissions-national-environmental-policy-act-rules",
-      "severity": "elevated",
-      "watchlistMatches": [
-        "#9"
-      ],
-      "riskMatrixMatches": [
-        "#6"
-      ],
-      "countdownMatches": [
-        "2027-01-08"
-      ],
-      "tags": [
-        "Federal-Register",
-        "Rule",
-        "FCC-Telecom-Subsea"
-      ],
-      "markdownRow": "| #11+ — 2026-11-17 | Federal Communications Commission (Federal Regulatory) | Modernizing the Commission's National Environmental Policy Act Rules ([FR 2026-23385](https://www.federalregister.gov/documents/2026/11/17/2026-23385/modernizing-the-commissions-national-environmental-policy-act-rules)) | Rule filing mapped to Risk #6 | Live Wire (ELEVATED) — Watchlist #9 |"
-    },
-    {
-      "id": "fedreg-2026-23341",
-      "sourceId": "federal-register",
-      "sourceName": "U.S. Federal Register",
-      "attributionText": "Source: U.S. Federal Register (2026-23341 — Securities and Exchange Commission)",
-      "publishedAtISO": "2026-11-17T13:00:00.000Z",
-      "title": "Self-Regulatory Organizations; Nasdaq Texas, LLC; Notice of Filing and Immediate Effectiveness of Proposed Rule Change To Amend Rule General 8 Regarding Fees for Interfirm Cabinet Connectivity (2026-23341)",
-      "summary": "Notice published by Securities and Exchange Commission (2026-23341).",
-      "url": "https://www.federalregister.gov/documents/2026/11/17/2026-23341/self-regulatory-organizations-nasdaq-texas-llc-notice-of-filing-and-immediate-effectiveness-of",
-      "severity": "elevated",
-      "watchlistMatches": [
-        "#6"
-      ],
-      "riskMatrixMatches": [
-        "#5",
-        "#7"
-      ],
-      "countdownMatches": [
-        "2026-12-31"
-      ],
-      "tags": [
-        "Federal-Register",
-        "Notice",
-        "SEC-Clearing"
-      ],
-      "markdownRow": "| #11+ — 2026-11-17 | Securities and Exchange Commission (Federal Regulatory) | Self-Regulatory Organizations; Nasdaq Texas, LLC; Notice of Filing and Immediate Effectiveness of Proposed Rule Change To Amend Rule Genera… ([FR 2026-23341](https://www.federalregister.gov/documents/2026/11/17/2026-23341/self-regulatory-organizations-nasdaq-texas-llc-notice-of-filing-and-immediate-effectiveness-of)) | Notice filing mapped to Risk #5, #7 | Live Wire (ELEVATED) — Watchlist #6 |"
-    },
-    {
-      "id": "fedreg-2026-23340",
-      "sourceId": "federal-register",
-      "sourceName": "U.S. Federal Register",
-      "attributionText": "Source: U.S. Federal Register (2026-23340 — Securities and Exchange Commission)",
-      "publishedAtISO": "2026-11-17T13:00:00.000Z",
-      "title": "Self-Regulatory Organizations; The Nasdaq Stock Market LLC; Notice of Filing and Immediate Effectiveness of Proposed Rule Change To Amend Rule General 8 Regarding Fees for Interfirm Cabinet Connectivity (2026-23340)",
-      "summary": "Notice published by Securities and Exchange Commission (2026-23340).",
-      "url": "https://www.federalregister.gov/documents/2026/11/17/2026-23340/self-regulatory-organizations-the-nasdaq-stock-market-llc-notice-of-filing-and-immediate",
-      "severity": "elevated",
-      "watchlistMatches": [
-        "#6"
-      ],
-      "riskMatrixMatches": [
-        "#5",
-        "#7"
-      ],
-      "countdownMatches": [
-        "2026-12-31"
-      ],
-      "tags": [
-        "Federal-Register",
-        "Notice",
-        "SEC-Clearing"
-      ],
-      "markdownRow": "| #11+ — 2026-11-17 | Securities and Exchange Commission (Federal Regulatory) | Self-Regulatory Organizations; The Nasdaq Stock Market LLC; Notice of Filing and Immediate Effectiveness of Proposed Rule Change To Amend R… ([FR 2026-23340](https://www.federalregister.gov/documents/2026/11/17/2026-23340/self-regulatory-organizations-the-nasdaq-stock-market-llc-notice-of-filing-and-immediate)) | Notice filing mapped to Risk #5, #7 | Live Wire (ELEVATED) — Watchlist #6 |"
-    },
-    {
-      "id": "fedreg-2026-23339",
-      "sourceId": "federal-register",
-      "sourceName": "U.S. Federal Register",
-      "attributionText": "Source: U.S. Federal Register (2026-23339 — Securities and Exchange Commission)",
-      "publishedAtISO": "2026-11-17T13:00:00.000Z",
-      "title": "Self-Regulatory Organizations; Financial Industry Regulatory Authority, Inc.; Notice of Filing and Immediate Effectiveness of Proposed Rule Change To Amend FINRA Rule 6121.02 Concerning the Resumption of Trading Following a Level 3 Market-Wide Circuit Breaker Halt in Connection With the Industry's Expansion of Trading Hours to 23 Hours Per Day, 5 Days Per Week (2026-23339)",
-      "summary": "Notice published by Securities and Exchange Commission (2026-23339).",
-      "url": "https://www.federalregister.gov/documents/2026/11/17/2026-23339/self-regulatory-organizations-financial-industry-regulatory-authority-inc-notice-of-filing-and",
-      "severity": "elevated",
-      "watchlistMatches": [
-        "#6"
-      ],
-      "riskMatrixMatches": [
-        "#5",
-        "#7"
-      ],
-      "countdownMatches": [
-        "2026-12-31"
-      ],
-      "tags": [
-        "Federal-Register",
-        "Notice",
-        "SEC-Clearing"
-      ],
-      "markdownRow": "| #11+ — 2026-11-17 | Securities and Exchange Commission (Federal Regulatory) | Self-Regulatory Organizations; Financial Industry Regulatory Authority, Inc.; Notice of Filing and Immediate Effectiveness of Proposed Rule… ([FR 2026-23339](https://www.federalregister.gov/documents/2026/11/17/2026-23339/self-regulatory-organizations-financial-industry-regulatory-authority-inc-notice-of-filing-and)) | Notice filing mapped to Risk #5, #7 | Live Wire (ELEVATED) — Watchlist #6 |"
-    },
-    {
-      "id": "fedreg-2026-23338",
-      "sourceId": "federal-register",
-      "sourceName": "U.S. Federal Register",
-      "attributionText": "Source: U.S. Federal Register (2026-23338 — Securities and Exchange Commission)",
-      "publishedAtISO": "2026-11-17T13:00:00.000Z",
-      "title": "Self-Regulatory Organizations; 24X National Exchange LLC; Notice of Filing and Immediate Effectiveness of Proposed Rule Change To Amend the Warrant Performance Incentive Program (2026-23338)",
-      "summary": "Notice published by Securities and Exchange Commission (2026-23338).",
-      "url": "https://www.federalregister.gov/documents/2026/11/17/2026-23338/self-regulatory-organizations-24x-national-exchange-llc-notice-of-filing-and-immediate-effectiveness",
-      "severity": "elevated",
-      "watchlistMatches": [
-        "#6"
-      ],
-      "riskMatrixMatches": [
-        "#5",
-        "#7"
-      ],
-      "countdownMatches": [
-        "2026-12-31"
-      ],
-      "tags": [
-        "Federal-Register",
-        "Notice",
-        "SEC-Clearing"
-      ],
-      "markdownRow": "| #11+ — 2026-11-17 | Securities and Exchange Commission (Federal Regulatory) | Self-Regulatory Organizations; 24X National Exchange LLC; Notice of Filing and Immediate Effectiveness of Proposed Rule Change To Amend the… ([FR 2026-23338](https://www.federalregister.gov/documents/2026/11/17/2026-23338/self-regulatory-organizations-24x-national-exchange-llc-notice-of-filing-and-immediate-effectiveness)) | Notice filing mapped to Risk #5, #7 | Live Wire (ELEVATED) — Watchlist #6 |"
-    },
-    {
-      "id": "fedreg-2026-23337",
-      "sourceId": "federal-register",
-      "sourceName": "U.S. Federal Register",
-      "attributionText": "Source: U.S. Federal Register (2026-23337 — Securities and Exchange Commission)",
-      "publishedAtISO": "2026-11-17T13:00:00.000Z",
-      "title": "Self-Regulatory Organizations; The Depository Trust Company; Notice of Filing of Partial Amendment No. 1 and Notice of Designation of Longer Period for Commission Action on Proposed Rule Change To Establish and Implement AnnounceDirect for the Submission of Corporate Action Announcements (2026-23337)",
-      "summary": "Notice published by Securities and Exchange Commission (2026-23337).",
-      "url": "https://www.federalregister.gov/documents/2026/11/17/2026-23337/self-regulatory-organizations-the-depository-trust-company-notice-of-filing-of-partial-amendment-no",
-      "severity": "elevated",
-      "watchlistMatches": [
-        "#6"
-      ],
-      "riskMatrixMatches": [
-        "#5",
-        "#7"
-      ],
-      "countdownMatches": [
-        "2026-12-31"
-      ],
-      "tags": [
-        "Federal-Register",
-        "Notice",
-        "SEC-Clearing"
-      ],
-      "markdownRow": "| #11+ — 2026-11-17 | Securities and Exchange Commission (Federal Regulatory) | Self-Regulatory Organizations; The Depository Trust Company; Notice of Filing of Partial Amendment No. 1 and Notice of Designation of Longe… ([FR 2026-23337](https://www.federalregister.gov/documents/2026/11/17/2026-23337/self-regulatory-organizations-the-depository-trust-company-notice-of-filing-of-partial-amendment-no)) | Notice filing mapped to Risk #5, #7 | Live Wire (ELEVATED) — Watchlist #6 |"
-    },
-    {
-      "id": "fedreg-2026-23336",
-      "sourceId": "federal-register",
-      "sourceName": "U.S. Federal Register",
-      "attributionText": "Source: U.S. Federal Register (2026-23336 — Securities and Exchange Commission)",
-      "publishedAtISO": "2026-11-17T13:00:00.000Z",
-      "title": "Self-Regulatory Organizations; New York Stock Exchange LLC; Notice of Filing and Immediate Effectiveness of Proposed Rule Change To Amend its Price List (2026-23336)",
-      "summary": "Notice published by Securities and Exchange Commission (2026-23336).",
-      "url": "https://www.federalregister.gov/documents/2026/11/17/2026-23336/self-regulatory-organizations-new-york-stock-exchange-llc-notice-of-filing-and-immediate",
-      "severity": "elevated",
-      "watchlistMatches": [
-        "#6"
-      ],
-      "riskMatrixMatches": [
-        "#5",
-        "#7"
-      ],
-      "countdownMatches": [
-        "2026-12-31"
-      ],
-      "tags": [
-        "Federal-Register",
-        "Notice",
-        "SEC-Clearing"
-      ],
-      "markdownRow": "| #11+ — 2026-11-17 | Securities and Exchange Commission (Federal Regulatory) | Self-Regulatory Organizations; New York Stock Exchange LLC; Notice of Filing and Immediate Effectiveness of Proposed Rule Change To Amend i… ([FR 2026-23336](https://www.federalregister.gov/documents/2026/11/17/2026-23336/self-regulatory-organizations-new-york-stock-exchange-llc-notice-of-filing-and-immediate)) | Notice filing mapped to Risk #5, #7 | Live Wire (ELEVATED) — Watchlist #6 |"
-    },
-    {
-      "id": "fedreg-2026-23335",
-      "sourceId": "federal-register",
-      "sourceName": "U.S. Federal Register",
-      "attributionText": "Source: U.S. Federal Register (2026-23335 — Securities and Exchange Commission)",
-      "publishedAtISO": "2026-11-17T13:00:00.000Z",
-      "title": "Self-Regulatory Organizations; Cboe Clear U.S., LLC; Notice of Filing and Immediate Effectiveness of Proposed Rule Change To Amend Its Fee Schedule To Adopt a Broker-Dealer Clearing Member Incentive Program and Reduce the Clearing Fee for Securities Contracts (2026-23335)",
-      "summary": "Notice published by Securities and Exchange Commission (2026-23335).",
-      "url": "https://www.federalregister.gov/documents/2026/11/17/2026-23335/self-regulatory-organizations-cboe-clear-us-llc-notice-of-filing-and-immediate-effectiveness-of",
-      "severity": "elevated",
-      "watchlistMatches": [
-        "#6"
-      ],
-      "riskMatrixMatches": [
-        "#5",
-        "#7"
-      ],
-      "countdownMatches": [
-        "2026-12-31"
-      ],
-      "tags": [
-        "Federal-Register",
-        "Notice",
-        "SEC-Clearing"
-      ],
-      "markdownRow": "| #11+ — 2026-11-17 | Securities and Exchange Commission (Federal Regulatory) | Self-Regulatory Organizations; Cboe Clear U.S., LLC; Notice of Filing and Immediate Effectiveness of Proposed Rule Change To Amend Its Fee… ([FR 2026-23335](https://www.federalregister.gov/documents/2026/11/17/2026-23335/self-regulatory-organizations-cboe-clear-us-llc-notice-of-filing-and-immediate-effectiveness-of)) | Notice filing mapped to Risk #5, #7 | Live Wire (ELEVATED) — Watchlist #6 |"
-    },
-    {
-      "id": "fedreg-2026-23334",
-      "sourceId": "federal-register",
-      "sourceName": "U.S. Federal Register",
-      "attributionText": "Source: U.S. Federal Register (2026-23334 — Securities and Exchange Commission)",
-      "publishedAtISO": "2026-11-17T13:00:00.000Z",
-      "title": "Self-Regulatory Organizations; NYSE American LLC; Notice of Filing of Proposed Change Amending Section 341 of the NYSE American Company Guide To Address Multi-Step Transactions (2026-23334)",
-      "summary": "Notice published by Securities and Exchange Commission (2026-23334).",
-      "url": "https://www.federalregister.gov/documents/2026/11/17/2026-23334/self-regulatory-organizations-nyse-american-llc-notice-of-filing-of-proposed-change-amending-section",
-      "severity": "elevated",
-      "watchlistMatches": [
-        "#6"
-      ],
-      "riskMatrixMatches": [
-        "#5",
-        "#7"
-      ],
-      "countdownMatches": [
-        "2026-12-31"
-      ],
-      "tags": [
-        "Federal-Register",
-        "Notice",
-        "SEC-Clearing"
-      ],
-      "markdownRow": "| #11+ — 2026-11-17 | Securities and Exchange Commission (Federal Regulatory) | Self-Regulatory Organizations; NYSE American LLC; Notice of Filing of Proposed Change Amending Section 341 of the NYSE American Company Gui… ([FR 2026-23334](https://www.federalregister.gov/documents/2026/11/17/2026-23334/self-regulatory-organizations-nyse-american-llc-notice-of-filing-of-proposed-change-amending-section)) | Notice filing mapped to Risk #5, #7 | Live Wire (ELEVATED) — Watchlist #6 |"
-    },
-    {
-      "id": "fedreg-2026-23333",
-      "sourceId": "federal-register",
-      "sourceName": "U.S. Federal Register",
-      "attributionText": "Source: U.S. Federal Register (2026-23333 — Securities and Exchange Commission)",
-      "publishedAtISO": "2026-11-17T13:00:00.000Z",
-      "title": "Self-Regulatory Organizations; MIAX Sapphire, LLC; Notice of Filing and Immediate Effectiveness of a Proposed Rule Change To Amend the MIAX Sapphire Options Exchange Fee Schedule To Exclude Options Volume Executed During Extended Trading Hours From Calculations Applicable for Certain Fees, Rebates, and Discounts (2026-23333)",
-      "summary": "Notice published by Securities and Exchange Commission (2026-23333).",
-      "url": "https://www.federalregister.gov/documents/2026/11/17/2026-23333/self-regulatory-organizations-miax-sapphire-llc-notice-of-filing-and-immediate-effectiveness-of-a",
-      "severity": "elevated",
-      "watchlistMatches": [
-        "#6"
-      ],
-      "riskMatrixMatches": [
-        "#5",
-        "#7"
-      ],
-      "countdownMatches": [
-        "2026-12-31"
-      ],
-      "tags": [
-        "Federal-Register",
-        "Notice",
-        "SEC-Clearing"
-      ],
-      "markdownRow": "| #11+ — 2026-11-17 | Securities and Exchange Commission (Federal Regulatory) | Self-Regulatory Organizations; MIAX Sapphire, LLC; Notice of Filing and Immediate Effectiveness of a Proposed Rule Change To Amend the MIAX… ([FR 2026-23333](https://www.federalregister.gov/documents/2026/11/17/2026-23333/self-regulatory-organizations-miax-sapphire-llc-notice-of-filing-and-immediate-effectiveness-of-a)) | Notice filing mapped to Risk #5, #7 | Live Wire (ELEVATED) — Watchlist #6 |"
-    },
-    {
-      "id": "fedreg-2026-23332",
-      "sourceId": "federal-register",
-      "sourceName": "U.S. Federal Register",
-      "attributionText": "Source: U.S. Federal Register (2026-23332 — Securities and Exchange Commission)",
-      "publishedAtISO": "2026-11-17T13:00:00.000Z",
-      "title": "Self-Regulatory Organizations; MIAX Emerald, LLC; Notice of Filing and Immediate Effectiveness of a Proposed Rule Change To Amend the MIAX Emerald Options Exchange Fee Schedule To Exclude Options Volume Executed During Extended Trading Hours From Calculations Applicable for Certain Fees, Rebates, and Discounts (2026-23332)",
-      "summary": "Notice published by Securities and Exchange Commission (2026-23332).",
-      "url": "https://www.federalregister.gov/documents/2026/11/17/2026-23332/self-regulatory-organizations-miax-emerald-llc-notice-of-filing-and-immediate-effectiveness-of-a",
-      "severity": "elevated",
-      "watchlistMatches": [
-        "#6"
-      ],
-      "riskMatrixMatches": [
-        "#5",
-        "#7"
-      ],
-      "countdownMatches": [
-        "2026-12-31"
-      ],
-      "tags": [
-        "Federal-Register",
-        "Notice",
-        "SEC-Clearing"
-      ],
-      "markdownRow": "| #11+ — 2026-11-17 | Securities and Exchange Commission (Federal Regulatory) | Self-Regulatory Organizations; MIAX Emerald, LLC; Notice of Filing and Immediate Effectiveness of a Proposed Rule Change To Amend the MIAX… ([FR 2026-23332](https://www.federalregister.gov/documents/2026/11/17/2026-23332/self-regulatory-organizations-miax-emerald-llc-notice-of-filing-and-immediate-effectiveness-of-a)) | Notice filing mapped to Risk #5, #7 | Live Wire (ELEVATED) — Watchlist #6 |"
     },
     {
       "id": "kev-cve-2026-115731",
@@ -1605,13 +1531,13 @@
       "markdownRow": "| #11+ — 2026-11-06 | SonicWall SonicOS SSLVPN (Enterprise / Edge Security) | SonicWall SonicOS SSLVPN contains a use of single-factor authentication vulnerability that may allow a user with valid credentials for an a… ([CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search_api_fulltext=CVE-2026-19868)) | Active exploitation confirmed (CVE-2026-19868); due 2026-11-20 | Live Wire (ELEVATED) — Watchlist #2 |"
     },
     {
-      "id": "faa-closure-lax-5",
+      "id": "faa-closure-lax-4",
       "sourceId": "faa-nas",
       "sourceName": "FAA NAS Status",
-      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Wed Nov 18 06:25:00 2026 GMT",
-      "publishedAtISO": "2026-11-18T06:25:00.000Z",
+      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Wed Nov 18 15:43:08 2026 GMT",
+      "publishedAtISO": "2026-11-18T15:43:08.000Z",
       "title": "FAA Airport Closures: LAX (GA NOTAM Restriction)",
-      "summary": "LAX: !LAX 05/277 LAX AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR CTC ATLANTIC AVIATION 310-258-9884 OR SIGNATURE AVIATION 310-410-9605 2605271826-2705281600 | Reopen: May 28 at 16:00 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Wed Nov 18 06:25:00 2026 GMT)",
+      "summary": "LAX: !LAX 05/277 LAX AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR CTC ATLANTIC AVIATION 310-258-9884 OR SIGNATURE AVIATION 310-410-9605 2605271826-2705281600 | Reopen: May 28 at 16:00 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Wed Nov 18 15:43:08 2026 GMT)",
       "url": "https://nasstatus.faa.gov/",
       "severity": "info",
       "watchlistMatches": [
@@ -1626,16 +1552,16 @@
         "Airport-Closure",
         "LAX"
       ],
-      "markdownRow": "| #11+ — Wed Nov 18 06:25:00 2026 GMT | FAA NAS — LAX (National Aviation / Airport Ops) | Airport Closures active at LAX until May 28 at 16:00 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !LAX 05/277 LAX AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR CTC ATLANTIC AVIATION 310-258-9884 OR SIGNATURE A… | Live Wire (INFO) — Watchlist #7 |"
+      "markdownRow": "| #11+ — Wed Nov 18 15:43:08 2026 GMT | FAA NAS — LAX (National Aviation / Airport Ops) | Airport Closures active at LAX until May 28 at 16:00 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !LAX 05/277 LAX AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR CTC ATLANTIC AVIATION 310-258-9884 OR SIGNATURE A… | Live Wire (INFO) — Watchlist #7 |"
     },
     {
-      "id": "faa-closure-san-6",
+      "id": "faa-closure-san-5",
       "sourceId": "faa-nas",
       "sourceName": "FAA NAS Status",
-      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Wed Nov 18 06:25:00 2026 GMT",
-      "publishedAtISO": "2026-11-18T06:25:00.000Z",
+      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Wed Nov 18 15:43:08 2026 GMT",
+      "publishedAtISO": "2026-11-18T15:43:08.000Z",
       "title": "FAA Airport Closures: SAN (GA NOTAM Restriction)",
-      "summary": "SAN: !SAN 10/004 SAN AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC PPR 619-298-7704 2610011633-2701010800 | Reopen: Jan 01 at 08:00 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Wed Nov 18 06:25:00 2026 GMT)",
+      "summary": "SAN: !SAN 10/004 SAN AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC PPR 619-298-7704 2610011633-2701010800 | Reopen: Jan 01 at 08:00 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Wed Nov 18 15:43:08 2026 GMT)",
       "url": "https://nasstatus.faa.gov/",
       "severity": "info",
       "watchlistMatches": [
@@ -1650,16 +1576,16 @@
         "Airport-Closure",
         "SAN"
       ],
-      "markdownRow": "| #11+ — Wed Nov 18 06:25:00 2026 GMT | FAA NAS — SAN (National Aviation / Airport Ops) | Airport Closures active at SAN until Jan 01 at 08:00 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !SAN 10/004 SAN AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC PPR 619-298-7704 2610011633-2701010800 | Live Wire (INFO) — Watchlist #7 |"
+      "markdownRow": "| #11+ — Wed Nov 18 15:43:08 2026 GMT | FAA NAS — SAN (National Aviation / Airport Ops) | Airport Closures active at SAN until Jan 01 at 08:00 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !SAN 10/004 SAN AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC PPR 619-298-7704 2610011633-2701010800 | Live Wire (INFO) — Watchlist #7 |"
     },
     {
-      "id": "faa-closure-las-7",
+      "id": "faa-closure-las-6",
       "sourceId": "faa-nas",
       "sourceName": "FAA NAS Status",
-      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Wed Nov 18 06:25:00 2026 GMT",
-      "publishedAtISO": "2026-11-18T06:25:00.000Z",
+      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Wed Nov 18 15:43:08 2026 GMT",
+      "publishedAtISO": "2026-11-18T15:43:08.000Z",
       "title": "FAA Airport Closures: LAS (GA NOTAM Restriction)",
-      "summary": "LAS: !LAS 10/160 LAS AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR 702-261-7775 2610281926-2701272300 | Reopen: Jan 27 at 23:00 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Wed Nov 18 06:25:00 2026 GMT)",
+      "summary": "LAS: !LAS 10/160 LAS AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR 702-261-7775 2610281926-2701272300 | Reopen: Jan 27 at 23:00 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Wed Nov 18 15:43:08 2026 GMT)",
       "url": "https://nasstatus.faa.gov/",
       "severity": "info",
       "watchlistMatches": [
@@ -1674,7 +1600,79 @@
         "Airport-Closure",
         "LAS"
       ],
-      "markdownRow": "| #11+ — Wed Nov 18 06:25:00 2026 GMT | FAA NAS — LAS (National Aviation / Airport Ops) | Airport Closures active at LAS until Jan 27 at 23:00 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !LAS 10/160 LAS AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR 702-261-7775 2610281926-2701272300 | Live Wire (INFO) — Watchlist #7 |"
+      "markdownRow": "| #11+ — Wed Nov 18 15:43:08 2026 GMT | FAA NAS — LAS (National Aviation / Airport Ops) | Airport Closures active at LAS until Jan 27 at 23:00 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !LAS 10/160 LAS AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR 702-261-7775 2610281926-2701272300 | Live Wire (INFO) — Watchlist #7 |"
+    },
+    {
+      "id": "fedreg-C1-2026-22307",
+      "sourceId": "federal-register",
+      "sourceName": "U.S. Federal Register",
+      "attributionText": "Source: U.S. Federal Register (C1-2026-22307 — Transportation Department, Federal Aviation Administration)",
+      "publishedAtISO": "2026-11-18T13:00:00.000Z",
+      "title": "Airworthiness Directives; BRP-Rotax GmbH & Co KG (Formerly BRP-POWERTRAIN GMBH & CO KG and Bombardier-Rotax GmbH) Engines (C1-2026-22307)",
+      "summary": "Rule published by Transportation Department, Federal Aviation Administration (C1-2026-22307).",
+      "url": "https://www.federalregister.gov/documents/2026/11/18/C1-2026-22307/airworthiness-directives-brp-rotax-gmbh-and-co-kg-formerly-brp-powertrain-gmbh-and-co-kg-and",
+      "severity": "info",
+      "watchlistMatches": [
+        "#5"
+      ],
+      "riskMatrixMatches": [
+        "#1"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "Federal-Register",
+        "Rule",
+        "FAA-Regulatory"
+      ],
+      "markdownRow": "| #11+ — 2026-11-18 | Transportation Department, Federal Aviation Administration (Federal Regulatory) | Airworthiness Directives; BRP-Rotax GmbH & Co KG (Formerly BRP-POWERTRAIN GMBH & CO KG and Bombardier-Rotax GmbH) Engines ([FR C1-2026-22307](https://www.federalregister.gov/documents/2026/11/18/C1-2026-22307/airworthiness-directives-brp-rotax-gmbh-and-co-kg-formerly-brp-powertrain-gmbh-and-co-kg-and)) | Rule filing mapped to Risk #1 | Live Wire (INFO) — Watchlist #5 |"
+    },
+    {
+      "id": "fedreg-2026-23525",
+      "sourceId": "federal-register",
+      "sourceName": "U.S. Federal Register",
+      "attributionText": "Source: U.S. Federal Register (2026-23525 — Transportation Department, Federal Aviation Administration)",
+      "publishedAtISO": "2026-11-18T13:00:00.000Z",
+      "title": "Accepted Means of Compliance; Airworthiness Standards: Normal Category Airplanes (2026-23525)",
+      "summary": "This document announces the availability of ASTM International (ASTM) consensus standards for use as an FAA-accepted means of compliance (MOC) to the applicable airworthiness standards for normal category airplanes. The FAA accepts ASTM F3264-25, \"Standard Sp…",
+      "url": "https://www.federalregister.gov/documents/2026/11/18/2026-23525/accepted-means-of-compliance-airworthiness-standards-normal-category-airplanes",
+      "severity": "info",
+      "watchlistMatches": [
+        "#5"
+      ],
+      "riskMatrixMatches": [
+        "#1"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "Federal-Register",
+        "Rule",
+        "FAA-Regulatory"
+      ],
+      "markdownRow": "| #11+ — 2026-11-18 | Transportation Department, Federal Aviation Administration (Federal Regulatory) | Accepted Means of Compliance; Airworthiness Standards: Normal Category Airplanes ([FR 2026-23525](https://www.federalregister.gov/documents/2026/11/18/2026-23525/accepted-means-of-compliance-airworthiness-standards-normal-category-airplanes)) | Rule filing mapped to Risk #1 | Live Wire (INFO) — Watchlist #5 |"
+    },
+    {
+      "id": "fedreg-2026-23437",
+      "sourceId": "federal-register",
+      "sourceName": "U.S. Federal Register",
+      "attributionText": "Source: U.S. Federal Register (2026-23437 — Transportation Department, Federal Aviation Administration)",
+      "publishedAtISO": "2026-11-18T13:00:00.000Z",
+      "title": "Amendment of Class D and Class E Airspace; Naples, FL (2026-23437)",
+      "summary": "This action proposes to amend Class D surface airspace in Naples, FL, to properly contain instrument flight rule procedures. It also proposes to remove the Class E transition airspace extensions, as they are no longer necessary. Additionally, it proposes to r…",
+      "url": "https://www.federalregister.gov/documents/2026/11/18/2026-23437/amendment-of-class-d-and-class-e-airspace-naples-fl",
+      "severity": "info",
+      "watchlistMatches": [
+        "#5"
+      ],
+      "riskMatrixMatches": [
+        "#1"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "Federal-Register",
+        "Proposed Rule",
+        "FAA-Regulatory"
+      ],
+      "markdownRow": "| #11+ — 2026-11-18 | Transportation Department, Federal Aviation Administration (Federal Regulatory) | Amendment of Class D and Class E Airspace; Naples, FL ([FR 2026-23437](https://www.federalregister.gov/documents/2026/11/18/2026-23437/amendment-of-class-d-and-class-e-airspace-naples-fl)) | Proposed Rule filing mapped to Risk #1 | Live Wire (INFO) — Watchlist #5 |"
     },
     {
       "id": "apple-apple-business-2000005804",
@@ -1846,30 +1844,6 @@
         "Auth-Cascade-Watch"
       ],
       "markdownRow": "| #11+ — 11/17/2026 08:45 PST | Apple — iCloud Web Apps (iCloud.com) (Consumer, Payments & Enterprise) | Performance (Some users were affected); status: resolved ([Apple System Status](https://www.apple.com/support/systemstatus/)) | This service may have been slow or unavailable.; Watchlist #9 auth cascade check | Live Wire (INFO) — Watchlist #7, #9 |"
-    },
-    {
-      "id": "fedreg-2026-23372",
-      "sourceId": "federal-register",
-      "sourceName": "U.S. Federal Register",
-      "attributionText": "Source: U.S. Federal Register (2026-23372 — Transportation Department, Federal Aviation Administration)",
-      "publishedAtISO": "2026-11-17T13:00:00.000Z",
-      "title": "Airworthiness Directives; Daher Aircraft, SAS (2026-23372)",
-      "summary": "The FAA proposes to supersede Airworthiness Directive (AD) 2015-17-10, which applies to certain SOCATA (type certificate currently held by Daher Aircraft, SAS) (Daher) Model TBM 700 airplanes. AD 2015- 17-10 requires repetitively inspecting the forging body o…",
-      "url": "https://www.federalregister.gov/documents/2026/11/17/2026-23372/airworthiness-directives-daher-aircraft-sas",
-      "severity": "info",
-      "watchlistMatches": [
-        "#5"
-      ],
-      "riskMatrixMatches": [
-        "#1"
-      ],
-      "countdownMatches": [],
-      "tags": [
-        "Federal-Register",
-        "Proposed Rule",
-        "FAA-Regulatory"
-      ],
-      "markdownRow": "| #11+ — 2026-11-17 | Transportation Department, Federal Aviation Administration (Federal Regulatory) | Airworthiness Directives; Daher Aircraft, SAS ([FR 2026-23372](https://www.federalregister.gov/documents/2026/11/17/2026-23372/airworthiness-directives-daher-aircraft-sas)) | Proposed Rule filing mapped to Risk #1 | Live Wire (INFO) — Watchlist #5 |"
     },
     {
       "id": "cisa-adv-critical-java-vulnerability-requires-immediate-patching",
