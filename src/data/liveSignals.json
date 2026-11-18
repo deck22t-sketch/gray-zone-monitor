@@ -1,7 +1,7 @@
 {
-  "ingestedAtISO": "2026-11-18T17:03:36.333Z",
+  "ingestedAtISO": "2026-11-18T17:17:42.030Z",
   "ingestionMode": "ZERO_KEY_PUBLIC_FEEDS",
-  "totalSignals": 78,
+  "totalSignals": 79,
   "signals": [
     {
       "id": "kev-cve-2026-115731",
@@ -239,10 +239,10 @@
       "id": "faa-gdp-sfo-1",
       "sourceId": "faa-nas",
       "sourceName": "FAA NAS Status",
-      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Wed Nov 18 17:03:32 2026 GMT",
-      "publishedAtISO": "2026-11-18T17:03:32.000Z",
+      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Wed Nov 18 17:16:54 2026 GMT",
+      "publishedAtISO": "2026-11-18T17:16:54.000Z",
       "title": "FAA Ground Delay Program: SFO (Avg 1 hour and 32 minutes)",
-      "summary": "GDP at SFO — Reason: wind, Avg delay: 1 hour and 32 minutes, Max: 5 hours and 41 minutes. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Wed Nov 18 17:03:32 2026 GMT)",
+      "summary": "GDP at SFO — Reason: wind, Avg delay: 1 hour and 32 minutes, Max: 5 hours and 41 minutes. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Wed Nov 18 17:16:54 2026 GMT)",
       "url": "https://nasstatus.faa.gov/",
       "severity": "elevated",
       "watchlistMatches": [
@@ -258,16 +258,16 @@
         "Ground-Delay",
         "SFO"
       ],
-      "markdownRow": "| #11+ — Wed Nov 18 17:03:32 2026 GMT | FAA NAS — SFO (National Aviation / ATC) | Ground Delay Program at SFO (1 hour and 32 minutes) ([FAA NAS Status](https://nasstatus.faa.gov/)) | FAA NAS Ground Delay Programs: wind | Live Wire (ELEVATED) — Watchlist #5, #7 |"
+      "markdownRow": "| #11+ — Wed Nov 18 17:16:54 2026 GMT | FAA NAS — SFO (National Aviation / ATC) | Ground Delay Program at SFO (1 hour and 32 minutes) ([FAA NAS Status](https://nasstatus.faa.gov/)) | FAA NAS Ground Delay Programs: wind | Live Wire (ELEVATED) — Watchlist #5, #7 |"
     },
     {
       "id": "faa-delay-djt-2",
       "sourceId": "faa-nas",
       "sourceName": "FAA NAS Status",
-      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Wed Nov 18 17:03:32 2026 GMT",
-      "publishedAtISO": "2026-11-18T17:03:32.000Z",
+      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Wed Nov 18 17:16:54 2026 GMT",
+      "publishedAtISO": "2026-11-18T17:16:54.000Z",
       "title": "FAA Arrival/Departure Delay: DJT",
-      "summary": "General Arrival/Departure Delay Info at DJT — Reason: WX:Thunderstorms. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Wed Nov 18 17:03:32 2026 GMT)",
+      "summary": "General Arrival/Departure Delay Info at DJT — Reason: WX:Thunderstorms. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Wed Nov 18 17:16:54 2026 GMT)",
       "url": "https://nasstatus.faa.gov/",
       "severity": "elevated",
       "watchlistMatches": [
@@ -282,16 +282,16 @@
         "Arrival-Departure-Delay",
         "DJT"
       ],
-      "markdownRow": "| #11+ — Wed Nov 18 17:03:32 2026 GMT | FAA NAS — DJT (Commercial Aviation) | Arrival/Departure delays reported at DJT ([FAA NAS Status](https://nasstatus.faa.gov/)) | FAA NAS General Arrival/Departure Delay Info: WX:Thunderstorms | Live Wire (ELEVATED) — Watchlist #7 |"
+      "markdownRow": "| #11+ — Wed Nov 18 17:16:54 2026 GMT | FAA NAS — DJT (Commercial Aviation) | Arrival/Departure delays reported at DJT ([FAA NAS Status](https://nasstatus.faa.gov/)) | FAA NAS General Arrival/Departure Delay Info: WX:Thunderstorms | Live Wire (ELEVATED) — Watchlist #7 |"
     },
     {
       "id": "faa-delay-mia-3",
       "sourceId": "faa-nas",
       "sourceName": "FAA NAS Status",
-      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Wed Nov 18 17:03:32 2026 GMT",
-      "publishedAtISO": "2026-11-18T17:03:32.000Z",
+      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Wed Nov 18 17:16:54 2026 GMT",
+      "publishedAtISO": "2026-11-18T17:16:54.000Z",
       "title": "FAA Arrival/Departure Delay: MIA",
-      "summary": "General Arrival/Departure Delay Info at MIA — Reason: WX:Thunderstorms. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Wed Nov 18 17:03:32 2026 GMT)",
+      "summary": "General Arrival/Departure Delay Info at MIA — Reason: WX:Thunderstorms. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Wed Nov 18 17:16:54 2026 GMT)",
       "url": "https://nasstatus.faa.gov/",
       "severity": "elevated",
       "watchlistMatches": [
@@ -306,16 +306,40 @@
         "Arrival-Departure-Delay",
         "MIA"
       ],
-      "markdownRow": "| #11+ — Wed Nov 18 17:03:32 2026 GMT | FAA NAS — MIA (Commercial Aviation) | Arrival/Departure delays reported at MIA ([FAA NAS Status](https://nasstatus.faa.gov/)) | FAA NAS General Arrival/Departure Delay Info: WX:Thunderstorms | Live Wire (ELEVATED) — Watchlist #7 |"
+      "markdownRow": "| #11+ — Wed Nov 18 17:16:54 2026 GMT | FAA NAS — MIA (Commercial Aviation) | Arrival/Departure delays reported at MIA ([FAA NAS Status](https://nasstatus.faa.gov/)) | FAA NAS General Arrival/Departure Delay Info: WX:Thunderstorms | Live Wire (ELEVATED) — Watchlist #7 |"
     },
     {
-      "id": "faa-closure-sna-4",
+      "id": "faa-delay-sea-4",
       "sourceId": "faa-nas",
       "sourceName": "FAA NAS Status",
-      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Wed Nov 18 17:03:32 2026 GMT",
-      "publishedAtISO": "2026-11-18T17:03:32.000Z",
+      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Wed Nov 18 17:16:54 2026 GMT",
+      "publishedAtISO": "2026-11-18T17:16:54.000Z",
+      "title": "FAA Arrival/Departure Delay: SEA",
+      "summary": "General Arrival/Departure Delay Info at SEA — Reason: RWY:Construction. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Wed Nov 18 17:16:54 2026 GMT)",
+      "url": "https://nasstatus.faa.gov/",
+      "severity": "elevated",
+      "watchlistMatches": [
+        "#7"
+      ],
+      "riskMatrixMatches": [
+        "#1"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "FAA-NAS",
+        "Arrival-Departure-Delay",
+        "SEA"
+      ],
+      "markdownRow": "| #11+ — Wed Nov 18 17:16:54 2026 GMT | FAA NAS — SEA (Commercial Aviation) | Arrival/Departure delays reported at SEA ([FAA NAS Status](https://nasstatus.faa.gov/)) | FAA NAS General Arrival/Departure Delay Info: RWY:Construction | Live Wire (ELEVATED) — Watchlist #7 |"
+    },
+    {
+      "id": "faa-closure-sna-5",
+      "sourceId": "faa-nas",
+      "sourceName": "FAA NAS Status",
+      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Wed Nov 18 17:16:54 2026 GMT",
+      "publishedAtISO": "2026-11-18T17:16:54.000Z",
       "title": "FAA Airport Closures: SNA",
-      "summary": "SNA: !SNA 11/020 SNA AD AP CLSD DLY 0730-1415 2611150730-2611211415 | Reopen: Nov 21 at 14:15 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Wed Nov 18 17:03:32 2026 GMT)",
+      "summary": "SNA: !SNA 11/020 SNA AD AP CLSD DLY 0730-1415 2611150730-2611211415 | Reopen: Nov 21 at 14:15 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Wed Nov 18 17:16:54 2026 GMT)",
       "url": "https://nasstatus.faa.gov/",
       "severity": "elevated",
       "watchlistMatches": [
@@ -330,7 +354,7 @@
         "Airport-Closure",
         "SNA"
       ],
-      "markdownRow": "| #11+ — Wed Nov 18 17:03:32 2026 GMT | FAA NAS — SNA (National Aviation / Airport Ops) | Airport Closures active at SNA until Nov 21 at 14:15 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !SNA 11/020 SNA AD AP CLSD DLY 0730-1415 2611150730-2611211415 | Live Wire (ELEVATED) — Watchlist #7 |"
+      "markdownRow": "| #11+ — Wed Nov 18 17:16:54 2026 GMT | FAA NAS — SNA (National Aviation / Airport Ops) | Airport Closures active at SNA until Nov 21 at 14:15 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !SNA 11/020 SNA AD AP CLSD DLY 0730-1415 2611150730-2611211415 | Live Wire (ELEVATED) — Watchlist #7 |"
     },
     {
       "id": "cloudflare-status-2wjvsj2kqt07",
@@ -1605,13 +1629,13 @@
       "markdownRow": "| #11+ — 2026-11-06 | SonicWall SonicOS SSLVPN (Enterprise / Edge Security) | SonicWall SonicOS SSLVPN contains a use of single-factor authentication vulnerability that may allow a user with valid credentials for an a… ([CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search_api_fulltext=CVE-2026-19868)) | Active exploitation confirmed (CVE-2026-19868); due 2026-11-20 | Live Wire (ELEVATED) — Watchlist #2 |"
     },
     {
-      "id": "faa-closure-lax-5",
+      "id": "faa-closure-lax-6",
       "sourceId": "faa-nas",
       "sourceName": "FAA NAS Status",
-      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Wed Nov 18 17:03:32 2026 GMT",
-      "publishedAtISO": "2026-11-18T17:03:32.000Z",
+      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Wed Nov 18 17:16:54 2026 GMT",
+      "publishedAtISO": "2026-11-18T17:16:54.000Z",
       "title": "FAA Airport Closures: LAX (GA NOTAM Restriction)",
-      "summary": "LAX: !LAX 05/277 LAX AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR CTC ATLANTIC AVIATION 310-258-9884 OR SIGNATURE AVIATION 310-410-9605 2605271826-2705281600 | Reopen: May 28 at 16:00 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Wed Nov 18 17:03:32 2026 GMT)",
+      "summary": "LAX: !LAX 05/277 LAX AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR CTC ATLANTIC AVIATION 310-258-9884 OR SIGNATURE AVIATION 310-410-9605 2605271826-2705281600 | Reopen: May 28 at 16:00 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Wed Nov 18 17:16:54 2026 GMT)",
       "url": "https://nasstatus.faa.gov/",
       "severity": "info",
       "watchlistMatches": [
@@ -1626,16 +1650,16 @@
         "Airport-Closure",
         "LAX"
       ],
-      "markdownRow": "| #11+ — Wed Nov 18 17:03:32 2026 GMT | FAA NAS — LAX (National Aviation / Airport Ops) | Airport Closures active at LAX until May 28 at 16:00 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !LAX 05/277 LAX AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR CTC ATLANTIC AVIATION 310-258-9884 OR SIGNATURE A… | Live Wire (INFO) — Watchlist #7 |"
+      "markdownRow": "| #11+ — Wed Nov 18 17:16:54 2026 GMT | FAA NAS — LAX (National Aviation / Airport Ops) | Airport Closures active at LAX until May 28 at 16:00 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !LAX 05/277 LAX AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR CTC ATLANTIC AVIATION 310-258-9884 OR SIGNATURE A… | Live Wire (INFO) — Watchlist #7 |"
     },
     {
-      "id": "faa-closure-san-6",
+      "id": "faa-closure-san-7",
       "sourceId": "faa-nas",
       "sourceName": "FAA NAS Status",
-      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Wed Nov 18 17:03:32 2026 GMT",
-      "publishedAtISO": "2026-11-18T17:03:32.000Z",
+      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Wed Nov 18 17:16:54 2026 GMT",
+      "publishedAtISO": "2026-11-18T17:16:54.000Z",
       "title": "FAA Airport Closures: SAN (GA NOTAM Restriction)",
-      "summary": "SAN: !SAN 10/004 SAN AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC PPR 619-298-7704 2610011633-2701010800 | Reopen: Jan 01 at 08:00 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Wed Nov 18 17:03:32 2026 GMT)",
+      "summary": "SAN: !SAN 10/004 SAN AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC PPR 619-298-7704 2610011633-2701010800 | Reopen: Jan 01 at 08:00 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Wed Nov 18 17:16:54 2026 GMT)",
       "url": "https://nasstatus.faa.gov/",
       "severity": "info",
       "watchlistMatches": [
@@ -1650,16 +1674,16 @@
         "Airport-Closure",
         "SAN"
       ],
-      "markdownRow": "| #11+ — Wed Nov 18 17:03:32 2026 GMT | FAA NAS — SAN (National Aviation / Airport Ops) | Airport Closures active at SAN until Jan 01 at 08:00 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !SAN 10/004 SAN AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC PPR 619-298-7704 2610011633-2701010800 | Live Wire (INFO) — Watchlist #7 |"
+      "markdownRow": "| #11+ — Wed Nov 18 17:16:54 2026 GMT | FAA NAS — SAN (National Aviation / Airport Ops) | Airport Closures active at SAN until Jan 01 at 08:00 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !SAN 10/004 SAN AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC PPR 619-298-7704 2610011633-2701010800 | Live Wire (INFO) — Watchlist #7 |"
     },
     {
-      "id": "faa-closure-las-7",
+      "id": "faa-closure-las-8",
       "sourceId": "faa-nas",
       "sourceName": "FAA NAS Status",
-      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Wed Nov 18 17:03:32 2026 GMT",
-      "publishedAtISO": "2026-11-18T17:03:32.000Z",
+      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Wed Nov 18 17:16:54 2026 GMT",
+      "publishedAtISO": "2026-11-18T17:16:54.000Z",
       "title": "FAA Airport Closures: LAS (GA NOTAM Restriction)",
-      "summary": "LAS: !LAS 10/160 LAS AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR 702-261-7775 2610281926-2701272300 | Reopen: Jan 27 at 23:00 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Wed Nov 18 17:03:32 2026 GMT)",
+      "summary": "LAS: !LAS 10/160 LAS AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR 702-261-7775 2610281926-2701272300 | Reopen: Jan 27 at 23:00 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Wed Nov 18 17:16:54 2026 GMT)",
       "url": "https://nasstatus.faa.gov/",
       "severity": "info",
       "watchlistMatches": [
@@ -1674,7 +1698,7 @@
         "Airport-Closure",
         "LAS"
       ],
-      "markdownRow": "| #11+ — Wed Nov 18 17:03:32 2026 GMT | FAA NAS — LAS (National Aviation / Airport Ops) | Airport Closures active at LAS until Jan 27 at 23:00 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !LAS 10/160 LAS AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR 702-261-7775 2610281926-2701272300 | Live Wire (INFO) — Watchlist #7 |"
+      "markdownRow": "| #11+ — Wed Nov 18 17:16:54 2026 GMT | FAA NAS — LAS (National Aviation / Airport Ops) | Airport Closures active at LAS until Jan 27 at 23:00 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !LAS 10/160 LAS AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR 702-261-7775 2610281926-2701272300 | Live Wire (INFO) — Watchlist #7 |"
     },
     {
       "id": "fedreg-C1-2026-22307",
