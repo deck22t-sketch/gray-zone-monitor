@@ -10,10 +10,20 @@ import {
   Gavel,
   Building2,
   ArrowRight,
+  ArrowDown,
 } from 'lucide-react';
 import { usePortal } from '@/context/PortalContext';
 import { NarrativeAccordion } from '@/components/shell/NarrativeAccordion';
 import { TacticalFigure } from '@/components/shell/TacticalFigure';
+import { SectionNavStrip } from '@/components/shell/SectionNavStrip';
+
+const CONTAGION_NAV_ITEMS = [
+  { id: 'gsib-flow-section', code: '01', label: 'Contagion Topology', badge: '3' },
+  { id: 'ai-runs-section', code: '02', label: 'AI Runs & ANT IPO' },
+  { id: 'nsc-ladder-section', code: '03', label: 'NSC Attribution Ladder' },
+  { id: 'legal-clocks-section', code: '04', label: 'War Clauses & Clocks' },
+  { id: 'contagion-verbatim-section', code: '05', label: 'Verbatim Sec. 7' },
+];
 
 const CONTAGION_SCENARIOS = [
   {
@@ -57,7 +67,7 @@ const CONTAGION_SCENARIOS = [
     stage3: {
       tag: 'LIQUIDITY & AI CREDIT SPIRAL',
       heading: 'Mid-Tier Deposit Drain & SPE Debt Repricing',
-      body: 'Rapid intraday HQLA depletion collides with >$3.8T in Big-7 tech debt + off-balance-sheet GPU SPEs (~15% of private AI data-center debt held by U.S. life insurers).',
+      body: 'Rapid intraday HQLA depletion collides with >$3.8T in Big-7 tech debt + off-balance-sheet GPU SPEs (~15% of private AI data-center debt held by U.S. life insurers) and tonight’s up to $90.4B Anthropic (ANT) IPO pricing.',
     },
     circuitBreaker:
       'Implement programmatic velocity circuit-breakers on API-initiated RTP/FedNow outbound sweeps and pre-positioned Federal Reserve Standing Repo / Discount Window collateral.',
@@ -167,24 +177,28 @@ export function ContagionView() {
 
   return (
     <div className="space-y-9">
+      {/* Sticky In-Page Section Wayfinding */}
+      <SectionNavStrip items={CONTAGION_NAV_ITEMS} ariaLabel="Contagion & Legal sections" />
+
       {/* Header */}
-      <section className="glass-panel rounded-2xl p-6 space-y-2">
+      <section className="glass-panel rounded-2xl p-6 sm:p-7 space-y-2.5">
         <div className="flex items-center gap-2 font-mono-tactical text-xs text-[#38BDF8]">
           <Scale className="w-4 h-4" />
           <span>SECTION 7 · FINANCIAL CONTAGION, ATTRIBUTION DOCTRINE &amp; LEGAL MATRIX</span>
         </div>
-        <h1 className="text-2xl sm:text-3xl font-semibold text-white tracking-tight">
+        <h1 className="text-2xl sm:text-3xl font-semibold text-white tracking-tight leading-tight">
           G-SIB Counterparty Cascades, $10M Agentic Bank Runs, War Exclusions &amp; Legal Clocks
         </h1>
-        <p className="text-sm text-gray-300 max-w-4xl leading-relaxed">
+        <p className="text-sm sm:text-[15px] text-gray-200 max-w-4xl leading-[1.68]">
           Analyzing how single-node hardware failures trigger multi-bank retail panics, why
-          autonomous AI agents over $10M RTP/FedNow rails and Dec. 31 DTCC/FICC Treasury clearing
-          concentrate systemic liquidity risk, and how LMA war exclusions and Judge Rakoff&rsquo;s
-          Feb. 2026 AI privilege waiver reshape incident response.
+          autonomous AI agents over $10M RTP/FedNow rails, tonight&rsquo;s up to $90.4B Anthropic
+          (<code>ANT</code>) IPO, and Dec. 31 DTCC/FICC Treasury clearing concentrate systemic
+          liquidity risk, and how LMA war exclusions and Judge Rakoff&rsquo;s Feb. 2026 AI privilege
+          waiver reshape incident response.
         </p>
       </section>
 
-      {/* Editorial Plate 05: Systemic Financial Clearing Core & Circuit-Breaker Architecture */}
+      {/* Editorial Plate 05 */}
       <TacticalFigure
         src="/images/contagion-clearing-vault.jpg"
         alt="Isometric dark-glass architectural visualization of concentric financial counterparty nodes and cyan liquidity conduits converging into a central amber clearing core with crimson circuit-breaker gates"
@@ -195,14 +209,18 @@ export function ContagionView() {
         metrics={[
           { label: 'Dec. 31 FICC Cliff', value: '~$550B / Day Cash Treasuries', tone: 'amber' },
           { label: 'Instant Run Rails', value: '$10M RTP / FedNow Single Cap', tone: 'crimson' },
-          { label: 'AI Debt Leverage', value: '>$800B Debt + >$3T GPU SPEs', tone: 'cyan' },
+          { label: 'Tonight: ANT IPO', value: 'Up to $90.4B @ $1.3T–$1.4T Val', tone: 'cyan' },
           { label: 'Mandatory Clocks', value: '4h DORA / 36h OCC Non-Cyber', tone: 'emerald' },
         ]}
         caption="Modern clearinghouses (Fedwire, CHIPS, DTCC/FICC) and P2P rails (Zelle/EWS, RTP, FedNow) concentrate counterparty settlement onto shared telecom and on-premise hardware layers—meaning a single G-SIB or utility node stall cascades across healthy peer institutions within minutes."
       />
 
       {/* Interactive 3-Scenario Contagion Topology Simulator */}
-      <section aria-labelledby="gsib-flow-heading" className="glass-card rounded-2xl p-6 space-y-5">
+      <section
+        id="gsib-flow-section"
+        aria-labelledby="gsib-flow-heading"
+        className="glass-card rounded-2xl p-6 space-y-5 scroll-mt-nav"
+      >
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3 border-b border-white/10 pb-4">
           <div className="space-y-1">
             <div className="flex items-center gap-2">
@@ -247,23 +265,28 @@ export function ContagionView() {
             <span className="font-mono-tactical text-[11px] text-[#F59E0B]">
               {activeScenario.badge}
             </span>
-            <h3 className="text-base font-semibold text-white mt-0.5">{activeScenario.title}</h3>
+            <h3 className="text-base sm:text-lg font-semibold text-white mt-0.5">
+              {activeScenario.title}
+            </h3>
           </div>
           <span className="font-mono-tactical text-xs px-2.5 py-1 rounded bg-[#10B981]/10 border border-[#10B981]/30 text-[#10B981]">
             {activeScenario.coreStatus}
           </span>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-11 gap-3 items-stretch text-xs">
+        <div className="grid grid-cols-1 lg:grid-cols-11 gap-3 items-stretch text-[13px]">
           {/* Origin Node */}
           <div className="lg:col-span-3 rounded-xl bg-[#EF4444]/10 border border-[#EF4444]/40 p-4 space-y-2">
             <span className="font-mono-tactical text-[10px] text-[#EF4444] uppercase">
               {activeScenario.stage1.tag}
             </span>
             <h4 className="text-sm font-semibold text-white">{activeScenario.stage1.heading}</h4>
-            <p className="text-gray-300 leading-relaxed">{activeScenario.stage1.body}</p>
+            <p className="text-gray-200 leading-relaxed">{activeScenario.stage1.body}</p>
           </div>
 
+          <div className="flex lg:hidden items-center justify-center py-0.5 text-[#F59E0B]">
+            <ArrowDown className="w-5 h-5" />
+          </div>
           <div className="hidden lg:flex lg:col-span-1 items-center justify-center text-[#F59E0B]">
             <ArrowRight className="w-6 h-6" />
           </div>
@@ -274,9 +297,12 @@ export function ContagionView() {
               {activeScenario.stage2.tag}
             </span>
             <h4 className="text-sm font-semibold text-white">{activeScenario.stage2.heading}</h4>
-            <p className="text-gray-300 leading-relaxed">{activeScenario.stage2.body}</p>
+            <p className="text-gray-200 leading-relaxed">{activeScenario.stage2.body}</p>
           </div>
 
+          <div className="flex lg:hidden items-center justify-center py-0.5 text-[#38BDF8]">
+            <ArrowDown className="w-5 h-5" />
+          </div>
           <div className="hidden lg:flex lg:col-span-1 items-center justify-center text-[#38BDF8]">
             <ArrowRight className="w-6 h-6" />
           </div>
@@ -287,30 +313,33 @@ export function ContagionView() {
               {activeScenario.stage3.tag}
             </span>
             <h4 className="text-sm font-semibold text-white">{activeScenario.stage3.heading}</h4>
-            <p className="text-gray-300 leading-relaxed">{activeScenario.stage3.body}</p>
+            <p className="text-gray-200 leading-relaxed">{activeScenario.stage3.body}</p>
           </div>
         </div>
 
-        <div className="obsidian-surface rounded-xl px-4 py-3 text-xs text-gray-300">
-          <span className="font-mono-tactical text-[#10B981]">CIRCUIT-BREAKER &amp; CONTAINMENT: </span>
+        <div className="obsidian-surface rounded-xl px-4 py-3.5 text-[13px] text-gray-200 leading-relaxed">
+          <span className="font-mono-tactical text-xs text-[#10B981]">
+            CIRCUIT-BREAKER &amp; CONTAINMENT:{' '}
+          </span>
           {activeScenario.circuitBreaker}
         </div>
       </section>
 
-      {/* Visual Flow 2: Autonomous AI Bank Runs + Dec 31 Treasury Clearing Cliff */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+      {/* Visual Flow 2: Autonomous AI Bank Runs + Anthropic S-1 IPO + Dec 31 Treasury Clearing Cliff */}
+      <div id="ai-runs-section" className="grid grid-cols-1 lg:grid-cols-2 gap-5 scroll-mt-nav">
         <section className="glass-card rounded-2xl p-6 space-y-4">
           <div className="flex items-center gap-2">
             <Bot className="w-4 h-4 text-[#EF4444]" />
             <h2 className="text-sm font-mono-tactical uppercase tracking-wider text-white">
-              Sec. 7.5 · Autonomous AI Bank Runs ($10M Rails) &amp; Circular AI Debt
+              Sec. 7.5 · Agentic Runs ($10M Rails), Circular AI Debt &amp; Tonight&rsquo;s ANT IPO
             </h2>
           </div>
 
-          <p className="text-xs text-gray-300 leading-relaxed">
-            On Nov. 16, 2026, Fed Gov. Michael Barr warned that autonomous AI cash-management agents
-            reacting to real-time outage or social telemetry can trigger machine-speed deposit runs
-            across 24/7/365 instant rails before human risk committees convene.
+          <p className="text-[13.5px] text-gray-200 leading-relaxed">
+            Fed Gov. Michael Barr (Nov. 16) warned that autonomous AI cash-management agents can
+            trigger machine-speed runs over 24/7 rails—colliding with circular AI infrastructure
+            leverage as Anthropic prices its landmark Nasdaq IPO (ticker <code>ANT</code>) tonight
+            (Nov. 18 ET; debut Nov. 19).
           </p>
 
           <div className="grid grid-cols-2 gap-3 text-xs">
@@ -320,19 +349,25 @@ export function ContagionView() {
               <p className="text-[11px] text-gray-400 mt-0.5">+ Uncapped 24/7 stablecoin rails</p>
             </div>
             <div className="obsidian-surface rounded-xl p-3.5">
-              <p className="font-mono-tactical text-lg font-semibold text-[#F59E0B]">87% Consensus</p>
-              <p className="text-gray-200 font-medium">Fed Financial Vulnerability Survey</p>
-              <p className="text-[11px] text-gray-400 mt-0.5">Ranked AI top systemic risk</p>
+              <p className="font-mono-tactical text-lg font-semibold text-[#F59E0B]">Up to $90.4B</p>
+              <p className="text-gray-200 font-medium">Anthropic (ANT) S-1 Raise Tonight</p>
+              <p className="text-[11px] text-gray-400 mt-0.5">
+                825M sh @ $70–$78 (~6x) · $1.3T–$1.4T val
+              </p>
             </div>
             <div className="obsidian-surface rounded-xl p-3.5">
               <p className="font-mono-tactical text-lg font-semibold text-white">&gt;$3.8T Total</p>
-              <p className="text-gray-200 font-medium">Big-7 Tech Balance + SPE GPU Debt</p>
-              <p className="text-[11px] text-gray-400 mt-0.5">&gt;$800B debt + &gt;$3T off-sheet</p>
+              <p className="text-gray-200 font-medium">Big-7 Balance + Off-Sheet GPU SPEs</p>
+              <p className="text-[11px] text-gray-400 mt-0.5">
+                ~15% AI DC debt held by U.S. life insurers
+              </p>
             </div>
             <div className="obsidian-surface rounded-xl p-3.5">
-              <p className="font-mono-tactical text-lg font-semibold text-[#38BDF8]">~15% Held</p>
-              <p className="text-gray-200 font-medium">U.S. Life Insurer AI Data-Center Debt</p>
-              <p className="text-[11px] text-gray-400 mt-0.5">Ahead of $1.5T+ Anthropic IPO</p>
+              <p className="font-mono-tactical text-lg font-semibold text-[#38BDF8]">$104.04B Loss</p>
+              <p className="text-gray-200 font-medium">ANT 9M 2026 Net Loss ($33.24B Rev)</p>
+              <p className="text-[11px] text-gray-400 mt-0.5">
+                &gt;$430M crypto perp OI · 87% Fed AI risk rank
+              </p>
             </div>
           </div>
         </section>
@@ -345,33 +380,39 @@ export function ContagionView() {
             </h2>
           </div>
 
-          <p className="text-xs text-gray-300 leading-relaxed">
+          <p className="text-[13.5px] text-gray-200 leading-relaxed">
             Structural clearinghouse concentration accelerates on <strong>December 31, 2026</strong>,
             when the SEC&rsquo;s mandatory central clearing rule for eligible U.S. Treasury cash
             trades goes live at DTCC&rsquo;s Fixed Income Clearing Corporation (FICC), followed by
             repo transactions on <strong>June 30, 2027</strong>.
           </p>
 
-          <div className="space-y-2.5 text-xs">
-            <div className="obsidian-surface rounded-xl p-3.5 flex items-center justify-between">
+          <div className="space-y-2.5 text-[13px]">
+            <div className="obsidian-surface rounded-xl p-3.5 flex items-center justify-between gap-2">
               <div>
                 <p className="font-semibold text-white">DTCC / FICC Cash Treasury Mandate</p>
-                <p className="text-gray-400">Interdealer &amp; ATS cash volume concentrating Dec. 31</p>
+                <p className="text-xs text-gray-400">
+                  Interdealer &amp; ATS cash volume concentrating Dec. 31
+                </p>
               </div>
-              <span className="font-mono-tactical text-sm font-semibold text-[#F59E0B]">
+              <span className="font-mono-tactical text-sm font-semibold text-[#F59E0B] shrink-0">
                 ~$550B / day
               </span>
             </div>
-            <div className="obsidian-surface rounded-xl p-3.5 flex items-center justify-between">
+            <div className="obsidian-surface rounded-xl p-3.5 flex items-center justify-between gap-2">
               <div>
                 <p className="font-semibold text-white">Phase 2 Treasury Repo Mandate</p>
-                <p className="text-gray-400">Intraday margin &amp; telecom single-point exposure</p>
+                <p className="text-xs text-gray-400">
+                  Intraday margin &amp; telecom single-point exposure
+                </p>
               </div>
-              <span className="font-mono-tactical text-xs text-[#38BDF8]">June 30, 2027</span>
+              <span className="font-mono-tactical text-xs text-[#38BDF8] shrink-0">
+                June 30, 2027
+              </span>
             </div>
             <div className="obsidian-surface rounded-xl p-3.5">
               <p className="font-semibold text-white">Non-Bank Core Utility Concentration</p>
-              <p className="text-gray-400 mt-0.5">
+              <p className="text-xs sm:text-[13px] text-gray-300 mt-0.5 leading-relaxed">
                 Single-node technical faults at <strong>FIS, Fiserv, ADP</strong>, or Change
                 Healthcare-class clearing gateways (OFR Brief 24-05) freeze multi-institution
                 settlement without direct G-SIB compromise.
@@ -382,7 +423,11 @@ export function ContagionView() {
       </div>
 
       {/* 4-Step NSC Cyber Attribution Escalation Ladder */}
-      <section aria-labelledby="nsc-ladder-heading" className="glass-panel rounded-2xl p-6 space-y-4">
+      <section
+        id="nsc-ladder-section"
+        aria-labelledby="nsc-ladder-heading"
+        className="glass-panel rounded-2xl p-6 space-y-4 scroll-mt-nav"
+      >
         <div className="flex flex-wrap items-center justify-between gap-2">
           <div className="flex items-center gap-2">
             <ShieldAlert className="w-4 h-4 text-[#38BDF8]" />
@@ -408,7 +453,7 @@ export function ContagionView() {
                 onClick={() => setSelectedRung(idx)}
                 className={`text-left rounded-xl p-4 border transition cursor-pointer ${
                   active
-                    ? 'bg-[#111827] border-[#38BDF8]/60'
+                    ? 'surface-elevated border-[#38BDF8]/60 shadow-lg'
                     : 'glass-card border-white/10'
                 }`}
               >
@@ -420,15 +465,15 @@ export function ContagionView() {
           })}
         </div>
 
-        <div className="obsidian-surface rounded-xl p-4 text-xs space-y-2">
-          <p className="font-mono-tactical text-[#38BDF8]">
+        <div className="obsidian-surface rounded-xl p-4 sm:p-5 text-[13.5px] space-y-2.5">
+          <p className="font-mono-tactical text-xs text-[#38BDF8]">
             {ATTRIBUTION_LADDER[selectedRung].rung} OPERATIONAL MECHANISM —{' '}
             {ATTRIBUTION_LADDER[selectedRung].title.toUpperCase()}
           </p>
           <p className="text-gray-200 leading-relaxed">
             {ATTRIBUTION_LADDER[selectedRung].purpose}
           </p>
-          <p className="text-gray-400 pt-2 border-t border-white/[0.07]">
+          <p className="text-xs sm:text-[13px] text-gray-400 pt-2.5 border-t border-white/[0.07] leading-relaxed">
             <strong className="text-gray-200">Why Washington Delays Public Attribution:</strong> (1)
             Protect counterintelligence/SIGINT implants; (2) Prevent public panic &amp; copycat
             exploitation of unpatched single points of failure; (3) Control escalation until ICD 203
@@ -439,8 +484,10 @@ export function ContagionView() {
       </section>
 
       {/* LMA War Exclusions vs Parametric Cloud Bonds + Non-Cyber Legal Clocks & Rakoff AI Privilege */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-5">
-        {/* LMA War Exclusions */}
+      <div
+        id="legal-clocks-section"
+        className="grid grid-cols-1 lg:grid-cols-12 gap-5 scroll-mt-nav"
+      >
         <section className="lg:col-span-5 glass-card rounded-2xl p-6 space-y-4">
           <div className="flex items-center gap-2">
             <Gavel className="w-4 h-4 text-[#F59E0B]" />
@@ -449,12 +496,12 @@ export function ContagionView() {
             </h2>
           </div>
 
-          <div className="space-y-3 text-xs">
-            <div className="obsidian-surface rounded-xl p-3.5 space-y-1">
+          <div className="space-y-3 text-[13px]">
+            <div className="obsidian-surface rounded-xl p-4 space-y-1.5">
               <p className="font-semibold text-white">
                 Merck NotPetya Ruling ($1.4B) vs. Modern LMA Cyber War Clauses
               </p>
-              <p className="text-gray-300 leading-relaxed">
+              <p className="text-gray-200 leading-relaxed">
                 NJ Appellate courts (A-1879-21, May 2023) limited legacy war exclusions to kinetic
                 hostilities. Insurers responded with rewritten LMA clauses excluding peacetime
                 state-backed attacks causing &ldquo;major detrimental impact&rdquo; on state
@@ -463,11 +510,11 @@ export function ContagionView() {
               </p>
             </div>
 
-            <div className="obsidian-surface rounded-xl p-3.5 space-y-1">
+            <div className="obsidian-surface rounded-xl p-4 space-y-1.5">
               <p className="font-semibold text-white">
                 Vendor Fee Caps (Delta v. CrowdStrike) &amp; Parametric Cat Bonds
               </p>
-              <p className="text-gray-300 leading-relaxed">
+              <p className="text-gray-200 leading-relaxed">
                 Standard cloud MSAs cap vendor liability at monthly fees absent gross negligence, and
                 cyber CBI excludes upstream FAA/utility shutdowns. Enterprises increasingly transfer
                 tail risk via parametric cloud cover (Hannover Re <strong>$35M Cumulus Re 2026-1</strong>;
@@ -475,7 +522,7 @@ export function ContagionView() {
               </p>
             </div>
 
-            <div className="rounded-xl bg-[#EF4444]/10 border border-[#EF4444]/35 p-3.5 space-y-1">
+            <div className="rounded-xl bg-[#EF4444]/10 border border-[#EF4444]/35 p-4 space-y-1.5">
               <p className="font-mono-tactical text-[11px] text-[#EF4444] uppercase font-semibold">
                 Judge Jed S. Rakoff — Feb. 2026 S.D.N.Y. AI Privilege Waiver
               </p>
@@ -489,7 +536,6 @@ export function ContagionView() {
           </div>
         </section>
 
-        {/* Non-Cyber Regulatory Clocks */}
         <section className="lg:col-span-7 glass-card rounded-2xl p-6 space-y-4">
           <div className="flex items-center gap-2">
             <Clock className="w-4 h-4 text-[#EF4444]" />
@@ -502,18 +548,18 @@ export function ContagionView() {
             {LEGAL_CLOCKS.map((item, idx) => (
               <div
                 key={idx}
-                className="obsidian-surface rounded-xl p-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs"
+                className="obsidian-surface rounded-xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-[13px]"
               >
-                <div className="space-y-1">
-                  <div className="flex items-center gap-2">
+                <div className="space-y-1.5">
+                  <div className="flex flex-wrap items-center gap-2">
                     <span
-                      className={`font-mono-tactical text-xs font-semibold px-2 py-0.5 rounded border ${item.color}`}
+                      className={`font-mono-tactical text-xs font-semibold px-2.5 py-0.5 rounded border ${item.color}`}
                     >
                       {item.clock}
                     </span>
                     <span className="font-semibold text-white">{item.regime}</span>
                   </div>
-                  <p className="text-gray-300">{item.scope}</p>
+                  <p className="text-gray-200 leading-relaxed">{item.scope}</p>
                   <p className="font-mono-tactical text-[11px] text-gray-400">
                     Cyber-Only Trigger? {item.cyberOnly}
                   </p>
@@ -526,6 +572,7 @@ export function ContagionView() {
 
       {/* Verbatim Section 7 Narrative */}
       <NarrativeAccordion
+        id="contagion-verbatim-section"
         sections={sec7}
         heading="Complete Verbatim Narrative — Section 7 (Financial Contagion, Attribution & War Exclusions)"
       />

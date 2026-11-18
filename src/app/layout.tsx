@@ -3,6 +3,7 @@ import './globals.css';
 import { PortalProvider } from '@/context/PortalContext';
 import { VaultGate } from '@/components/shell/VaultGate';
 import { TopNav } from '@/components/shell/TopNav';
+import { PortalFooter } from '@/components/shell/PortalFooter';
 import { SourceDrawer } from '@/components/shell/SourceDrawer';
 import { ChangelogDrawer } from '@/components/shell/ChangelogDrawer';
 import { CommandSearchModal } from '@/components/shell/CommandSearchModal';
@@ -40,19 +41,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <VaultGate>
             <div className="min-h-screen flex flex-col">
               <TopNav />
-              <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-7">
+              <main className="flex-1 max-w-[1380px] w-full mx-auto px-4 sm:px-6 lg:px-8 py-7 sm:py-8">
                 {children}
               </main>
-              <footer className="border-t border-white/10 bg-[#0A0E17] py-6 mt-12">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs font-mono-tactical text-gray-500">
-                  <div>
-                    GRAY-ZONE &amp; CRITICAL INFRASTRUCTURE RISK MONITOR · CANONICAL BRIEFING EDITION: NOV 17, 2026
-                  </div>
-                  <div>
-                    INGESTION: ZERO-KEY PUBLIC FEDERAL &amp; BACKBONE FEEDS · SOURCE ATTRIBUTION VERIFIED
-                  </div>
-                </div>
-              </footer>
+              <PortalFooter />
             </div>
             <SourceDrawer />
             <ChangelogDrawer />

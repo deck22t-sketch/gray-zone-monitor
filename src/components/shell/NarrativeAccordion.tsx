@@ -7,11 +7,14 @@ import { RichTextWithCitations } from './RichTextWithCitations';
 
 function RenderBlocks({ blocks, contextLabel }: { blocks: ContentBlock[]; contextLabel: string }) {
   return (
-    <div className="space-y-3.5">
+    <div className="space-y-4">
       {blocks.map((block, bIdx) => {
         if (block.type === 'paragraph') {
           return (
-            <p key={bIdx} className="text-sm text-gray-300 leading-relaxed">
+            <p
+              key={bIdx}
+              className="text-[13.5px] sm:text-sm text-gray-200 leading-[1.72] max-w-4xl"
+            >
               <RichTextWithCitations text={block.text} contextLabel={contextLabel} />
             </p>
           );
@@ -21,12 +24,12 @@ function RenderBlocks({ blocks, contextLabel }: { blocks: ContentBlock[]; contex
           return (
             <ListTag
               key={bIdx}
-              className={`space-y-2 pl-5 text-sm text-gray-300 leading-relaxed ${
+              className={`space-y-2.5 pl-5 text-[13.5px] sm:text-sm text-gray-200 leading-[1.7] max-w-4xl ${
                 block.ordered ? 'list-decimal' : 'list-disc'
               }`}
             >
               {block.items.map((item, iIdx) => (
-                <li key={iIdx}>
+                <li key={iIdx} className="pl-1">
                   <RichTextWithCitations text={item.text} contextLabel={contextLabel} />
                 </li>
               ))}
@@ -35,25 +38,28 @@ function RenderBlocks({ blocks, contextLabel }: { blocks: ContentBlock[]; contex
         }
         if (block.type === 'table') {
           return (
-            <div key={bIdx} className="overflow-x-auto rounded-lg border border-white/10 my-3">
+            <div key={bIdx} className="overflow-x-auto rounded-xl border border-white/10 my-3">
               <table className="w-full text-left border-collapse text-xs">
                 <thead>
-                  <tr className="bg-[#111827] border-b border-white/10">
+                  <tr className="bg-[#0F1624] border-b border-white/10">
                     {block.table.headers.map((h, hIdx) => (
                       <th
                         key={hIdx}
-                        className="px-3.5 py-2.5 font-mono-tactical uppercase tracking-wider text-[11px] text-gray-300"
+                        className="px-4 py-3 font-mono-tactical uppercase tracking-wider text-[11px] text-gray-300"
                       >
                         {h}
                       </th>
                     ))}
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-white/[0.07]">
+                <tbody className="divide-y divide-white/[0.07] bg-[#0A0E17]/60">
                   {block.table.rows.map((row, rIdx) => (
-                    <tr key={rIdx} className="hover:bg-white/[0.025]">
+                    <tr key={rIdx} className="hover:bg-white/[0.03]">
                       {row.map((cell, cIdx) => (
-                        <td key={cIdx} className="px-3.5 py-2.5 text-gray-300 align-top leading-relaxed">
+                        <td
+                          key={cIdx}
+                          className="px-4 py-3 text-gray-200 align-top leading-relaxed"
+                        >
                           <RichTextWithCitations text={cell} contextLabel={contextLabel} />
                         </td>
                       ))}
@@ -74,10 +80,12 @@ export function NarrativeAccordion({
   sections,
   heading = 'Canonical Executive Briefing Narrative & Verbatim Evidence',
   defaultOpenFirst = false,
+  id,
 }: {
   sections: NarrativeSection[];
   heading?: string;
   defaultOpenFirst?: boolean;
+  id?: string;
 }) {
   const [openIds, setOpenIds] = useState<Record<string, boolean>>(() => {
     if (defaultOpenFirst && sections[0]) {
@@ -86,40 +94,41 @@ export function NarrativeAccordion({
     return {};
   });
 
-  function toggle(id: string) {
-    setOpenIds((prev) => ({ ...prev, [id]: !prev[id] }));
+  function toggle(secId: string) {
+    setOpenIds((prev) => ({ ...prev, [secId]: !prev[secId] }));
   }
 
   if (sections.length === 0) return null;
 
+  const allExpanded = sections.every((s) => openIds[s.id]);
+
   return (
-    <section className="space-y-3">
-      <div className="flex items-center justify-between">
+    <section id={id} className="space-y-3.5 scroll-mt-nav">
+      <div className="flex flex-wrap items-center justify-between gap-2">
         <div className="flex items-center gap-2">
           <BookOpen className="w-4 h-4 text-[#38BDF8]" />
-          <h2 className="text-sm font-mono-tactical uppercase tracking-wider text-gray-300">
+          <h2 className="text-sm font-mono-tactical uppercase tracking-wider text-white">
             {heading}
           </h2>
         </div>
         <button
           type="button"
           onClick={() => {
-            const allOpen = sections.every((s) => openIds[s.id]);
             const next: Record<string, boolean> = {};
-            if (!allOpen) {
+            if (!allExpanded) {
               sections.forEach((s) => {
                 next[s.id] = true;
               });
             }
             setOpenIds(next);
           }}
-          className="text-xs font-mono-tactical text-[#38BDF8] hover:underline cursor-pointer"
+          className="px-3 py-1 rounded-lg bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 text-xs font-mono-tactical text-[#38BDF8] transition cursor-pointer"
         >
-          {sections.every((s) => openIds[s.id]) ? 'Collapse All Sections' : 'Expand All Sections'}
+          {allExpanded ? 'Collapse All Verbatim Sections' : 'Expand All Verbatim Sections'}
         </button>
       </div>
 
-      <div className="space-y-2.5">
+      <div className="space-y-3">
         {sections.map((sec) => {
           const isOpen = Boolean(openIds[sec.id]);
           return (
@@ -127,16 +136,20 @@ export function NarrativeAccordion({
               <button
                 type="button"
                 onClick={() => toggle(sec.id)}
-                className="w-full flex items-center justify-between px-5 py-3.5 text-left cursor-pointer"
+                className="w-full flex items-center justify-between px-5 py-4 text-left cursor-pointer hover:bg-white/[0.02] transition"
               >
                 <div className="flex items-center gap-3">
-                  <span className="font-mono-tactical text-xs px-2 py-0.5 rounded bg-white/[0.06] border border-white/10 text-[#38BDF8]">
+                  <span className="font-mono-tactical text-xs font-semibold px-2.5 py-0.5 rounded bg-[#0E1524] border border-white/15 text-[#38BDF8]">
                     SEC {sec.number}
                   </span>
-                  <span className="font-medium text-sm text-white">{sec.title}</span>
+                  <span className="font-semibold text-sm sm:text-base text-white">
+                    {sec.title}
+                  </span>
                 </div>
-                <div className="flex items-center gap-2 text-xs font-mono-tactical text-gray-400">
-                  <span>{sec.subsections.length} subsections</span>
+                <div className="flex items-center gap-2.5 text-xs font-mono-tactical text-gray-400 shrink-0">
+                  <span className="hidden sm:inline">
+                    {sec.subsections.length} subsection{sec.subsections.length === 1 ? '' : 's'}
+                  </span>
                   {isOpen ? (
                     <ChevronDown className="w-4 h-4 text-[#38BDF8]" />
                   ) : (
@@ -146,7 +159,7 @@ export function NarrativeAccordion({
               </button>
 
               {isOpen && (
-                <div className="px-5 pb-5 pt-2 border-t border-white/[0.08] space-y-5">
+                <div className="px-5 sm:px-6 pb-6 pt-3 border-t border-white/[0.08] space-y-6 bg-[#0A0E17]/40">
                   {sec.blocks.length > 0 && (
                     <RenderBlocks
                       blocks={sec.blocks}
@@ -154,9 +167,12 @@ export function NarrativeAccordion({
                     />
                   )}
                   {sec.subsections.map((sub) => (
-                    <div key={sub.id} className="space-y-2.5 pt-2 border-t border-white/[0.05]">
-                      <h3 className="text-sm font-semibold text-white flex items-center gap-2">
-                        <span className="font-mono-tactical text-xs text-[#F59E0B]">
+                    <div
+                      key={sub.id}
+                      className="space-y-3 pt-4 border-t border-white/[0.06] pl-3 sm:pl-4 border-l-2 border-l-[#38BDF8]/35"
+                    >
+                      <h3 className="text-sm sm:text-base font-semibold text-white flex flex-wrap items-center gap-2">
+                        <span className="font-mono-tactical text-xs px-2 py-0.5 rounded bg-[#F59E0B]/10 border border-[#F59E0B]/30 text-[#F59E0B]">
                           {sub.code}
                         </span>
                         <span>{sub.title}</span>

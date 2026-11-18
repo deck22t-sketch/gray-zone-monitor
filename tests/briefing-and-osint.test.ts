@@ -70,7 +70,19 @@ describe('Phase 1: Canonical Google Doc Deterministic Parser & Fail-Safe Validat
     expect(ev10?.classification).toBe('client_cascade');
 
     const ev7 = bundle.incidents.find((i) => i.eventId === '#7');
-    expect(ev7?.classification).toBe('unspecified');
+    expect(ev7?.classification).toBe('hybrid_transition_bug');
+    expect(ev7?.status).toContain('Resolved Tuesday evening');
+
+    // Verify 'unspecified' fallback still activates when root cause is pending
+    const pendingBundle = parseBriefingMarkdown(
+      markdown.replace(
+        'Technical issue affecting sign-in capabilities; cyber ruled out by Marriott',
+        'Unspecified technical disruption; root cause pending'
+      )
+    );
+    expect(pendingBundle.incidents.find((i) => i.eventId === '#7')?.classification).toBe(
+      'unspecified'
+    );
 
     // 3. Nine-Point Watchlist (9 rows)
     expect(bundle.watchlist).toHaveLength(9);
@@ -92,6 +104,7 @@ describe('Phase 1: Canonical Google Doc Deterministic Parser & Fail-Safe Validat
     expect(bundle.countdownCliffs[7].targetDateISO).toBe('2027-03-15');
 
     // 5. Narrative Sections (Sections 1–8 preserved including Section 6.7; Section 9 strictly omitted)
+    expect(bundle.sections.docDate).toBe('November 18, 2026');
     expect(bundle.sections.executiveSummary.pillars).toHaveLength(6);
     expect(bundle.sections.narrativeSections).toHaveLength(8);
     expect(bundle.sections.narrativeSections.map((s) => s.number)).toEqual([
@@ -105,8 +118,8 @@ describe('Phase 1: Canonical Google Doc Deterministic Parser & Fail-Safe Validat
     const sec6 = bundle.sections.narrativeSections.find((s) => s.number === 6);
     expect(sec6?.subsections.some((sub) => sub.code === '6.7')).toBe(true);
 
-    // Verify Section 10 Primary Sources Vault
-    expect(bundle.sections.primarySources.length).toBeGreaterThanOrEqual(50);
+    // Verify Section 10 Primary Sources Vault (Nov. 18 update expanded to 98 verified URLs)
+    expect(bundle.sections.primarySources.length).toBeGreaterThanOrEqual(90);
   });
 
   it('aborts overwriting existing src/data/*.json when malformed markdown fails Zod validation', () => {

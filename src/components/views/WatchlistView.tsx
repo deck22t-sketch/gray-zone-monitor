@@ -11,6 +11,7 @@ import {
   ExternalLink,
   CheckCircle2,
   AlertCircle,
+  ShieldAlert,
 } from 'lucide-react';
 import { usePortal } from '@/context/PortalContext';
 import { FeedId, PrimarySourceEntry, SignalSeverity } from '@/types/schemas';
@@ -37,6 +38,7 @@ export function WatchlistView() {
   const [severityFilter, setSeverityFilter] = useState<'ALL' | SignalSeverity>('ALL');
   const [feedFilter, setFeedFilter] = useState<'ALL' | FeedId>('ALL');
   const [watchlistIdFilter, setWatchlistIdFilter] = useState<string>('ALL');
+  const [liveQuery, setLiveQuery] = useState('');
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [bulkCopied, setBulkCopied] = useState(false);
 
@@ -88,6 +90,7 @@ export function WatchlistView() {
   }, [liveSignals.signals]);
 
   const filteredSignals = useMemo(() => {
+    const q = liveQuery.trim().toLowerCase();
     return liveSignals.signals.filter((sig) => {
       if (severityFilter !== 'ALL' && sig.severity !== severityFilter) return false;
       if (feedFilter !== 'ALL' && sig.sourceId !== feedFilter) return false;
@@ -97,9 +100,13 @@ export function WatchlistView() {
       ) {
         return false;
       }
+      if (q) {
+        const hay = `${sig.title} ${sig.summary} ${sig.sourceName} ${sig.tags.join(' ')}`.toLowerCase();
+        if (!hay.includes(q)) return false;
+      }
       return true;
     });
-  }, [liveSignals.signals, severityFilter, feedFilter, watchlistIdFilter]);
+  }, [liveSignals.signals, severityFilter, feedFilter, watchlistIdFilter, liveQuery]);
 
   const filteredSources = useMemo(() => {
     return sections.primarySources.filter((src) => {
@@ -131,7 +138,7 @@ export function WatchlistView() {
   return (
     <div className="space-y-8">
       {/* Header + 3-Tab Switcher */}
-      <section className="glass-panel rounded-2xl p-6 space-y-5">
+      <section className="glass-panel rounded-2xl p-6 sm:p-7 space-y-5">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div className="space-y-1">
             <div className="flex items-center gap-2 font-mono-tactical text-xs text-[#38BDF8]">
@@ -196,8 +203,64 @@ export function WatchlistView() {
 
       {/* TAB 1: 9-Point Watchlist Board */}
       {activeTab === 'watchlist' && (
-        <section aria-label="9-Point Cross-Sector Watchlist" className="space-y-4">
-          <p className="text-xs text-gray-400">
+        <section aria-label="9-Point Cross-Sector Watchlist" className="space-y-5">
+          {/* Active Nov. 17–18 Threat Spotlight Strip */}
+          <div className="surface-elevated rounded-2xl p-5 space-y-3 border border-[#EF4444]/30">
+            <div className="flex flex-wrap items-center justify-between gap-2">
+              <div className="flex items-center gap-2">
+                <ShieldAlert className="w-4 h-4 text-[#EF4444]" />
+                <span className="font-mono-tactical text-xs font-semibold uppercase tracking-wider text-white">
+                  Active Nov. 17–18 Detections Across Watchlist #2 &amp; #8
+                </span>
+              </div>
+              <span className="font-mono-tactical text-[11px] text-[#F59E0B]">
+                Remediation Clocks Active
+              </span>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs sm:text-[13px]">
+              <div className="obsidian-surface rounded-xl p-3.5 space-y-1">
+                <span className="font-mono-tactical text-[10px] text-[#EF4444] uppercase font-semibold">
+                  WATCHLIST #2 · CISA KEV (DUE DEC. 1)
+                </span>
+                <p className="font-semibold text-white">
+                  Perforce Puppet Enterprise (CVE-2026-115731)
+                </p>
+                <p className="text-gray-300 leading-relaxed text-xs">
+                  CVSS 9.4 deserialization RCE actively exploited in the wild; compromises fleet
+                  configuration management templates.
+                </p>
+              </div>
+
+              <div className="obsidian-surface rounded-xl p-3.5 space-y-1">
+                <span className="font-mono-tactical text-[10px] text-[#F59E0B] uppercase font-semibold">
+                  WATCHLIST #2 · CISA / CANADA ALERT
+                </span>
+                <p className="font-semibold text-white">
+                  &ldquo;Java4Shell&rdquo; OpenJDK RCE (CVE-2026-114938)
+                </p>
+                <p className="text-gray-300 leading-relaxed text-xs">
+                  Unauthenticated Base64 RCE in OpenJDK/HotSpot (Java 17/21/25/27) impacting Jira,
+                  Confluence, Jenkins &amp; Keycloak.
+                </p>
+              </div>
+
+              <div className="obsidian-surface rounded-xl p-3.5 space-y-1">
+                <span className="font-mono-tactical text-[10px] text-[#38BDF8] uppercase font-semibold">
+                  WATCHLIST #8 · FBI FLASH ADVISORY
+                </span>
+                <p className="font-semibold text-white">
+                  LLM-Driven &ldquo;ARTEX&rdquo; Intrusion Framework
+                </p>
+                <p className="text-gray-300 leading-relaxed text-xs">
+                  Autonomous LLM attack chain breaching U.S. energy, manufacturing &amp; telecom
+                  networks in <strong>under 3 hours</strong>.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <p className="text-xs sm:text-[13px] text-gray-400">
             Even if strategic White House attribution is withheld to prevent market contagion, CISA
             and sector regulators must issue defensive directives if forensic teardowns uncover
             supply-chain or staging tampering. Click any indicator&rsquo;s live signal badge to
@@ -214,7 +277,7 @@ export function WatchlistView() {
                 >
                   <div className="space-y-3">
                     <div className="flex items-center justify-between gap-2">
-                      <span className="font-mono-tactical text-xs font-semibold px-2.5 py-0.5 rounded bg-[#111827] border border-white/15 text-[#38BDF8]">
+                      <span className="font-mono-tactical text-xs font-semibold px-2.5 py-0.5 rounded bg-[#0E1524] border border-white/15 text-[#38BDF8]">
                         WATCHLIST {item.id}
                       </span>
                       <button
@@ -233,7 +296,7 @@ export function WatchlistView() {
                       {item.signal}
                     </h2>
 
-                    <div className="obsidian-surface rounded-lg p-3 text-xs space-y-1">
+                    <div className="obsidian-surface rounded-lg p-3.5 text-[13px] space-y-1">
                       <p className="font-mono-tactical text-[10px] uppercase text-gray-400">
                         Public Regulatory / Technical Mechanism
                       </p>
@@ -241,11 +304,11 @@ export function WatchlistView() {
                     </div>
                   </div>
 
-                  <div className="space-y-2 pt-2 border-t border-white/[0.08] text-xs">
+                  <div className="space-y-2 pt-2.5 border-t border-white/[0.08] text-[13px]">
                     <p className="font-mono-tactical text-[10px] uppercase text-[#F59E0B]">
                       Underlying Forensic Meaning
                     </p>
-                    <p className="text-gray-300 leading-relaxed">{item.forensicMeaning}</p>
+                    <p className="text-gray-200 leading-relaxed">{item.forensicMeaning}</p>
                     <CitationChipList
                       sources={item.sources}
                       contextLabel={`Watchlist ${item.id}: ${item.signal}`}
@@ -287,7 +350,7 @@ export function WatchlistView() {
                     onClick={() => setFeedFilter(selected ? 'ALL' : f.id)}
                     className={`text-left rounded-xl p-3 border transition cursor-pointer ${
                       selected
-                        ? 'bg-[#111827] border-[#38BDF8]/60'
+                        ? 'surface-elevated border-[#38BDF8]/60'
                         : 'obsidian-surface hover:border-white/20'
                     }`}
                   >
@@ -347,8 +410,8 @@ export function WatchlistView() {
             </div>
           </div>
 
-          {/* Filter Bar + Bulk Export */}
-          <div className="flex flex-wrap items-center justify-between gap-3">
+          {/* Filter Bar + Keyword Search + Bulk Export */}
+          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3">
             <div className="flex flex-wrap items-center gap-1.5">
               {(['ALL', 'critical', 'elevated', 'info'] as const).map((sev) => (
                 <button
@@ -384,11 +447,22 @@ export function WatchlistView() {
                   Feed: {feedFilter} ×
                 </button>
               )}
+
+              <div className="relative w-full sm:w-60">
+                <Search className="w-3.5 h-3.5 text-gray-500 absolute left-2.5 top-2.5" />
+                <input
+                  type="text"
+                  value={liveQuery}
+                  onChange={(e) => setLiveQuery(e.target.value)}
+                  placeholder="Filter CVE, airport, vendor…"
+                  className="w-full pl-8 pr-3 py-1.5 rounded-lg bg-[#0E1524] border border-white/15 text-xs text-white placeholder-gray-500 focus:outline-none focus:border-[#38BDF8]"
+                />
+              </div>
             </div>
 
             <div className="flex flex-wrap items-center gap-3">
               <span className="font-mono-tactical text-xs text-gray-400">
-                Showing {filteredSignals.length} of {liveSignals.totalSignals} normalized signals
+                Showing {filteredSignals.length} of {liveSignals.totalSignals} signals
               </span>
               {filteredSignals.length > 0 && (
                 <button
@@ -478,7 +552,7 @@ export function WatchlistView() {
                     </div>
                   </div>
 
-                  <p className="text-xs text-gray-300 leading-relaxed">{sig.summary}</p>
+                  <p className="text-[13px] text-gray-200 leading-relaxed">{sig.summary}</p>
 
                   {sig.aiEnrichment && (
                     <div className="obsidian-surface rounded-lg p-3 text-xs space-y-1 border border-[#38BDF8]/30">
@@ -561,8 +635,8 @@ export function WatchlistView() {
                 type="text"
                 value={vaultQuery}
                 onChange={(e) => setVaultQuery(e.target.value)}
-                placeholder="Search 86 primary sources…"
-                className="w-full pl-8 pr-3 py-1.5 rounded-lg bg-[#111827] border border-white/15 text-xs text-white placeholder-gray-500 focus:outline-none focus:border-[#38BDF8]"
+                placeholder={`Search ${sections.primarySources.length} primary sources…`}
+                className="w-full pl-8 pr-3 py-1.5 rounded-lg bg-[#0E1524] border border-white/15 text-xs text-white placeholder-gray-500 focus:outline-none focus:border-[#38BDF8]"
               />
             </div>
           </div>

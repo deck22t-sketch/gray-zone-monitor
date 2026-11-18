@@ -237,19 +237,39 @@ function inferSourceDomainTag(
   if (/merck|rakoff|debevoise|insurancejournal|njcourts|privilege|war exclusion/.test(hay)) {
     return 'Legal & Insurance';
   }
-  if (/faa|transportation\.gov|l3harris|gao-26-107992|aerocorner|united-airlines|wttw|spoofing|ops\.group/.test(hay)) {
+  if (
+    /faa|transportation\.gov|l3harris|gao-26-107992|aerocorner|united-airlines|wttw|spoofing|ops\.group|mashable.*faa|el-dorado|amarillo|ground-stop/.test(
+      hay
+    )
+  ) {
     return 'Aviation & FAA';
   }
-  if (/jpmorgan|chase|federalreserve|sec\.gov|dtcc|fsisac|admiralmarkets|bank-outage|schwab/.test(hay)) {
+  if (
+    /jpmorgan|chase|federalreserve|sec\.gov|dtcc|fsisac|admiralmarkets|bank-outage|schwab|anthropic|tmgm|briefs\.co|nasdaq|ipo|s-1/.test(
+      hay
+    )
+  ) {
     return 'Financial & Banking';
   }
-  if (/mineral|rare-earth|gallium|manufacturersalliance|csis|mlq\.ai|chip-curbs|bis|submarine-cable|91-fr-73480|da-26-1229/.test(hay)) {
+  if (
+    /mineral|rare-earth|gallium|manufacturersalliance|csis|mlq\.ai|chip-curbs|bis|submarine-cable|91-fr-73480|da-26-1229/.test(
+      hay
+    )
+  ) {
     return 'Supply Chain & Minerals';
   }
-  if (/cisa|ic3\.gov|psa261013|volt-typhoon|aa24-038a|aa26-097a|optimizely|optimjack|stepsecurity|report-uri|bleepingcomputer|esxi|digicert|tls/.test(hay)) {
+  if (
+    /cisa|ic3\.gov|psa261013|volt-typhoon|aa24-038a|aa26-097a|optimizely|optimjack|stepsecurity|report-uri|bleepingcomputer|esxi|digicert|tls|blackkite|thehackernews|industrialcyber|puppet|perforce|java4shell|artex|nsa\.gov|cyber\.gc\.ca|cve-2026-/.test(
+      hay
+    )
+  ) {
     return 'Cyber & OT Advisories';
   }
-  if (/bolshevi|kremlin|putin|crimea|dignity|euromaidan|rusi|taiwan|epic-fury|iran-war|soufan|OEF_Q3/i.test(hay)) {
+  if (
+    /bolshevi|kremlin|putin|crimea|dignity|euromaidan|rusi|taiwan|epic-fury|iran-war|soufan|oef_q3|manila|rubio|state\.gov|homeland\.house\.gov/i.test(
+      hay
+    )
+  ) {
     return 'Geopolitics & Doctrine';
   }
   return 'Outage Telemetry';
@@ -846,11 +866,35 @@ export function syncBriefingToDataDir(markdownPath: string, outputDataDir: strin
     }
   }
 
-  const changelog = computeChangelogDiff({
-    previousIncidents,
-    previousRiskMatrix,
-    nextBundle: bundle,
-  });
+  const changelogFile = path.join(outputDataDir, 'changelog.json');
+  let existingSameHashChangelog: ChangelogData | null = null;
+  if (fs.existsSync(changelogFile)) {
+    try {
+      const parsedExisting = JSON.parse(fs.readFileSync(changelogFile, 'utf8')) as ChangelogData;
+      if (
+        parsedExisting.docHash === bundle.docHash &&
+        (parsedExisting.addedIncidents.length > 0 ||
+          parsedExisting.updatedStatuses.length > 0 ||
+          parsedExisting.riskShifts.length > 0)
+      ) {
+        existingSameHashChangelog = parsedExisting;
+      }
+    } catch {
+      existingSameHashChangelog = null;
+    }
+  }
+
+  const changelog = existingSameHashChangelog
+    ? ChangelogDataSchema.parse({
+        ...existingSameHashChangelog,
+        syncedAtISO: new Date().toISOString(),
+        docDate: bundle.sections.docDate,
+      })
+    : computeChangelogDiff({
+        previousIncidents,
+        previousRiskMatrix,
+        nextBundle: bundle,
+      });
 
   fs.mkdirSync(outputDataDir, { recursive: true });
 

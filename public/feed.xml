@@ -6,12 +6,12 @@
     <atom:link href="https://deck22t-sketch.github.io/gray-zone-monitor/feed.xml" rel="self" type="application/rss+xml" />
     <description>Executive Briefing &amp; Keyless Federal/Backbone OSINT Telemetry (CISA, FAA NAS, Federal Register, Cloud Status)</description>
     <language>en-us</language>
-    <lastBuildDate>Wed, 18 Nov 2026 06:23:53 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 18 Nov 2026 17:16:21 GMT</lastBuildDate>
     <item>
       <title>[Tracked #1] Microsoft 365 (Global Cloud, Enterprise &amp; Healthcare)</title>
       <link>https://distilinfo.com/2026/11/16/microsoft-healthcare-outage/</link>
       <guid isPermaLink="false">grayzone-incident-1</guid>
-      <pubDate>Wed, 18 Nov 2026 06:23:53 GMT</pubDate>
+      <pubDate>Wed, 18 Nov 2026 17:16:21 GMT</pubDate>
       <category>hybrid_transition_bug</category>
       <description>Nov. 12–13, 2026 (~18–24+ hrs) — Impact: Disrupted Outlook, Teams, SharePoint &amp; Copilot across 70+ countries; hospital &quot;Code Grey&quot; alerts &amp; clinical workarounds; ~USD 7B est. global loss (DistilINFO; IVN) | Vector: Dormant July 2026 gateway lock-contention bug + Teams failover + 14% maintenance outage + ~10-hr &quot;thundering herd&quot; stall; degraded Defender XDR &amp; Purview (GeekWire) | Status: Restored; final PIR due Nov. 20, 2026.</description>
     </item>
@@ -19,15 +19,15 @@
       <title>[Tracked #2] FAA / L3Harris FTI Backbone (National Aviation / ATC)</title>
       <link>https://news.wttw.com/2026/11/17/faa-halts-installation-routers-led-ground-stop</link>
       <guid isPermaLink="false">grayzone-incident-2</guid>
-      <pubDate>Wed, 18 Nov 2026 06:23:53 GMT</pubDate>
+      <pubDate>Wed, 18 Nov 2026 17:16:21 GMT</pubDate>
       <category>hybrid_transition_bug</category>
-      <description>Nov. 13, 2026 (3:54–8:15 p.m. ET) — Impact: 4.5-hr nationwide ground stop; ~12,462 flight disruptions; 17 of 22 ARTCCs destabilized; ~USD 345M Big-Four airline earnings hit | Vector: Two-router broadcast flood (El Dorado, AR Friday 3:30 p.m. ET cutover + 3-wk-old Amarillo, TX Juniper router on legacy TDM); HPE cites installer config (WTTW / AP) | Status: Nov. 17: FAA halted router rollout &amp; powered off all ~400 installed Juniper routers; Florida FBI/lab probe active.</description>
+      <description>Nov. 13, 2026 (3:54–8:15 p.m. ET) — Impact: 4.5-hr nationwide ground stop; ~12,462 flight disruptions; 17 of 22 ARTCCs destabilized; ~USD 345M Big-Four airline earnings hit | Vector: Two-router broadcast flood (El Dorado, AR Friday 3:30 p.m. ET cutover + 3-wk-old Amarillo, TX Juniper router on legacy TDM); HPE cites installer config (WTTW / AP) | Status: Nov. 17: FAA halted router rollout &amp; powered off all ~400 installed Juniper routers; Florida FBI/lab probe active. WaPo reports on-site FAA official tested &amp; signed off on El Dorado cutover 8 mins before ground stop; White House formed multi-agency &quot;tiger team.&quot;</description>
     </item>
     <item>
       <title>[Tracked #3] Workday (WD1 Enterprise HR, Payroll &amp; Finance Cloud)</title>
       <link>https://wordpress.fau.edu/oit/2026/11/13/</link>
       <guid isPermaLink="false">grayzone-incident-3</guid>
-      <pubDate>Wed, 18 Nov 2026 06:23:53 GMT</pubDate>
+      <pubDate>Wed, 18 Nov 2026 17:16:21 GMT</pubDate>
       <category>hybrid_transition_bug</category>
       <description>Nov. 13–14, 2026 — Impact: Multi-hour production lockdown across enterprise &amp; university WD1 tenants disrupting logins, timekeeping, accounting &amp; APIs (FAU OIT) | Vector: DR test unexpectedly connected to live production DBs, causing inconsistent production data; non-cyber (Logistics Viewpoints) | Status: Restored Nov. 14; manual enterprise payroll/HR/API data reconciliation ongoing.</description>
     </item>
@@ -35,15 +35,15 @@
       <title>[Tracked #4] Optimizely, Kissmetrics, StorifyMe &amp; minute-ly (Web Supply Chain — 178 Orgs)</title>
       <link>https://www.stepsecurity.io/blog/optimjack-optimizely-hosted-scripts-crypto-clipper-card-skimmer</link>
       <guid isPermaLink="false">grayzone-incident-4</guid>
-      <pubDate>Wed, 18 Nov 2026 06:23:53 GMT</pubDate>
+      <pubDate>Wed, 18 Nov 2026 17:16:21 GMT</pubDate>
       <category>malicious_attack</category>
-      <description>Nov. 13–17, 2026 (OPTIMJACK) — Impact: Infected 188 JS snippets across Zoom, HSBC, Equifax, Salesforce, BBC, CNN, Fox News, Peacock, GitLab &amp; Optimizely login; clippers, skimmers &amp; .icu iOS exploit routing (StepSecurity) | Vector: Confirmed Malicious Attack via Optimizely account signup flow; 26 payload mutations (Report URI) | Status: 1688360[.]cc placed on hold Nov. 17; wallets swept toward HitBTC; manual audit of Project JS required for atob()/inline fallbacks.</description>
+      <description>Nov. 13–17, 2026 (OPTIMJACK) — Impact: Infected 188 JS snippets across Zoom, HSBC, Equifax, Salesforce, BBC, CNN, Fox News, Peacock, GitLab &amp; Optimizely login; clippers, skimmers &amp; .icu iOS exploit routing (StepSecurity) | Vector: Confirmed Malicious Attack via Optimizely account signup flow; 26 payload mutations (Report URI); active 16–19 hrs via projectJS (affecting custom CNAMEs too), seeded from webshell[.]lol (04:21 UTC Nov. 16); remediated by Optimizely (Black Kite) | Status: 1688360[.]cc placed on hold Nov. 17; wallets swept toward HitBTC; manual audit of Project JS required for atob()/inline fallbacks.</description>
     </item>
     <item>
       <title>[Tracked #5] JPMorgan Chase &amp; Zelle Rails (Tier-1 Banking / G-SIB)</title>
       <link>https://apnews.com/article/bank-outage-chase-wells-fargo-truist-50fee2693c22f597fa6ca51a97ef2cda</link>
       <guid isPermaLink="false">grayzone-incident-5</guid>
-      <pubDate>Wed, 18 Nov 2026 06:23:53 GMT</pubDate>
+      <pubDate>Wed, 18 Nov 2026 17:16:21 GMT</pubDate>
       <category>hybrid_transition_bug</category>
       <description>Nov. 16, 2026 (Morning – Evening) — Impact: ~4,800+ Chase outage reports; branch teller &amp; ATM disruptions; counterparty Zelle/transfer delays across BofA, Wells Fargo, U.S. Bank, Capital One &amp; Truist (AP News) | Vector: Software bug in on-premise hardware systems + queued peak traffic re-crashes; non-cyber (TIME) | Status: Restored Monday night; Tuesday ACH/Zelle cleared cleanly; JPM closed -2.3% Monday.</description>
     </item>
@@ -51,7 +51,7 @@
       <title>[Tracked #6] United Airlines (Commercial Aviation)</title>
       <link>https://www.cbsnews.com/news/united-airlines-system-outage-departing-flights/</link>
       <guid isPermaLink="false">grayzone-incident-6</guid>
-      <pubDate>Wed, 18 Nov 2026 06:23:53 GMT</pubDate>
+      <pubDate>Wed, 18 Nov 2026 17:16:21 GMT</pubDate>
       <category>hybrid_transition_bug</category>
       <description>Nov. 16, 2026 (~1:30–4:30 p.m. CST) — Impact: Mainline departures held nationwide (418 flights delayed); airborne &amp; United Express unaffected (CBS News) | Vector: Widespread system outage in pre-departure weight-and-balance dispatch system; cyber ruled out (The Guardian) | Status: Resolved Monday evening after ~1 hr 40 min; operations normal Tuesday.</description>
     </item>
@@ -59,23 +59,23 @@
       <title>[Tracked #7] Marriott International (Global Hospitality — 10,200+ Properties)</title>
       <link>https://apnews.com/article/apple-marriott-technology-outages-ff097d2a0bec767baf38a1bd8eff5829</link>
       <guid isPermaLink="false">grayzone-incident-7</guid>
-      <pubDate>Wed, 18 Nov 2026 06:23:53 GMT</pubDate>
-      <category>unspecified</category>
-      <description>Nov. 17, 2026 (~8:17 a.m. CST onward) — Impact: Sign-in, online booking, Bonvoy app, and property check-in disruptions (AP News; Gulf News) | Vector: Unspecified technical disruption; root cause pending | Status: Monitoring Marriott post-mortem for shared cloud, CDN, identity, or payment-gateway overlap.</description>
+      <pubDate>Wed, 18 Nov 2026 17:16:21 GMT</pubDate>
+      <category>hybrid_transition_bug</category>
+      <description>Nov. 17, 2026 (~8:17 a.m. CST onward) — Impact: Sign-in, online booking, Bonvoy app, and property check-in disruptions (AP News; Gulf News) | Vector: Technical issue affecting sign-in capabilities; cyber ruled out by Marriott | Status: Resolved Tuesday evening alongside technology partners.</description>
     </item>
     <item>
       <title>[Tracked #8] National Security Agency — NSANet (Classified Intelligence Enclave)</title>
       <link>https://www.cbsnews.com/news/nsa-network-down-classified-fort-meade/</link>
       <guid isPermaLink="false">grayzone-incident-8</guid>
-      <pubDate>Wed, 18 Nov 2026 06:23:53 GMT</pubDate>
+      <pubDate>Wed, 18 Nov 2026 17:16:21 GMT</pubDate>
       <category>hybrid_transition_bug</category>
-      <description>Nov. 17, 2026 (Morning – Afternoon) — Impact: Internal classified network degraded/offline; Fort Meade ordered &quot;Code Gray&quot;/&quot;Code Yellow&quot; staggered arrivals to prevent login storms; Five Eyes unaffected (CBS News) | Vector: Scheduled routine maintenance/patching after weeks of instability; White House/NSA rule out cyberattack (Fox News) | Status: Active restoration; bipartisan Gang of Eight briefing demands &amp; Nov. 18 House Homeland Security hearing.</description>
+      <description>Nov. 17, 2026 (Morning – Afternoon) — Impact: Internal classified network degraded/offline; Fort Meade ordered &quot;Code Gray&quot;/&quot;Code Yellow&quot; staggered arrivals to prevent login storms; Five Eyes unaffected (CBS News) | Vector: Scheduled routine maintenance/patching after weeks of instability; White House/NSA rule out cyberattack (Fox News) | Status: Official NSA statement cites routine maintenance degradation; full internal restoration timing unconfirmed entering Nov. 18 House hearing.</description>
     </item>
     <item>
       <title>[Tracked #9] Charles Schwab &amp; Enterprise SaaS (Lever) (Brokerage &amp; Cloud SaaS)</title>
       <link>https://www.foxnews.com/live-news/tech-outages-microsoft-banks-faa-fbi-11-17-26</link>
       <guid isPermaLink="false">grayzone-incident-9</guid>
-      <pubDate>Wed, 18 Nov 2026 06:23:53 GMT</pubDate>
+      <pubDate>Wed, 18 Nov 2026 17:16:21 GMT</pubDate>
       <category>hybrid_transition_bug</category>
       <description>Nov. 17, 2026 (Morning – Midday) — Impact: Client web login failures at Schwab (trading &amp; mobile unaffected); ~3-hr backend 504 outage at Lever (Fox News; IsDown) | Vector: Schwab cited &quot;brief webpage loading issue&quot;; SaaS backend gateway timeouts | Status: Resolved Tuesday; tracking heightened Downdetector sensitivity vs. shared CDN strain.</description>
     </item>
@@ -83,9 +83,33 @@
       <title>[Tracked #10] Apple Ecosystem &amp; iOS/Gmail Cascade (Consumer, Payments &amp; Enterprise)</title>
       <link>https://www.tomsguide.com/news/live/apple-outage-november-17-2026</link>
       <guid isPermaLink="false">grayzone-incident-10</guid>
-      <pubDate>Wed, 18 Nov 2026 06:23:53 GMT</pubDate>
+      <pubDate>Wed, 18 Nov 2026 17:16:21 GMT</pubDate>
       <category>client_cascade</category>
-      <description>Nov. 17, 2026 (~11:33 a.m. CST onward) — Impact: Outages across App Store/Connect, iCloud Sign-In (&gt;1,800 reports), Apple Pay (&gt;2,300), Apple Music, AppleCare &amp; Business/School Manager; caused downstream iOS Gmail login errors (Tom&apos;s Guide; 9to5Mac) | Vector: Apple confirmed an &quot;internal update caused some outages this morning&quot;; Google confirmed Workspace/Gmail remained 100% healthy | Status: Recovering Tuesday afternoon; monitoring residual iCloud/App Store Connect auth tokens.</description>
+      <description>Nov. 17, 2026 (~11:33 a.m. CST onward) — Impact: Outages across App Store/Connect, iCloud Sign-In (&gt;1,800 reports), Apple Pay (&gt;2,300), Apple Music, AppleCare &amp; Business/School Manager; caused downstream iOS Gmail login errors (Tom&apos;s Guide; 9to5Mac) | Vector: Apple confirmed an &quot;internal update caused some outages this morning&quot;; Google confirmed Workspace/Gmail remained 100% healthy | Status: All Apple services (including iCloud Sign-In &amp; Apple Pay) confirmed fully restored by 5:59 p.m. ET Nov. 17.</description>
+    </item>
+    <item>
+      <title>[Live OSINT · CRITICAL] CVE-2026-115731: Perforce Puppet Enterprise — Perforce Puppet Enterprise Deserialization of Untrusted Data Vulnerability</title>
+      <link>https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search_api_fulltext=CVE-2026-115731</link>
+      <guid isPermaLink="false">grayzone-signal-kev-cve-2026-115731</guid>
+      <pubDate>Tue, 17 Nov 2026 12:00:00 GMT</pubDate>
+      <category>CISA KEV Catalog</category>
+      <description>Perforce Puppet Enterprise contains a deserialization of untrusted data vulnerability in Puppet’s report-processing code that allows a client with any CA-signed agent certificate to execute arbitrary code on the Puppet Server as the service user by submitting a report containing… (Source: CISA Known Exploited Vulnerabilities Catalog (2026.11.17))</description>
+    </item>
+    <item>
+      <title>[Live OSINT · CRITICAL] Critical Java Vulnerability Requires Immediate Patching</title>
+      <link>https://www.cisa.gov/news-events/alerts/2026/11/17/critical-java-vulnerability-requires-immediate-patching</link>
+      <guid isPermaLink="false">grayzone-signal-cisa-adv-critical-java-vulnerability-requires-immediate-patching</guid>
+      <pubDate>Tue, 17 Nov 2026 12:00:00 GMT</pubDate>
+      <category>CISA Advisories</category>
+      <description>Purpose CISA strongly urges organizations to immediately patch the recently disclosed Oracle Java vulnerability CVE-2026-114938 . This critical memory-corruption vulnerability, known as “Java4Shell,” affects the Base64 decoder of the x86-64 HotSpot Java Virtu… (Source: CISA Cybersecurity &amp; ICS Advisories (cisa.gov))</description>
+    </item>
+    <item>
+      <title>[Live OSINT · CRITICAL] CISA Adds One Known Exploited Vulnerability to Catalog</title>
+      <link>https://www.cisa.gov/news-events/alerts/2026/11/17/cisa-adds-one-known-exploited-vulnerability-catalog</link>
+      <guid isPermaLink="false">grayzone-signal-cisa-adv-cisa-adds-one-known-exploited-vulnerability-catalog</guid>
+      <pubDate>Tue, 17 Nov 2026 12:00:00 GMT</pubDate>
+      <category>CISA Advisories</category>
+      <description>CISA has added one new vulnerability to its&amp;nbsp; Known Exploited Vulnerabilities (KEV) Catalog , based on evidence of active exploitation. CVE-2026-115731 Perforce Puppet Enterprise Deserialization of Untrusted Data Vulnerability This type of vulnerability i… (Source: CISA Cybersecurity &amp; ICS Advisories (cisa.gov))</description>
     </item>
     <item>
       <title>[Live OSINT · CRITICAL] Siemens meta-iot2050</title>
@@ -94,14 +118,6 @@
       <pubDate>Tue, 17 Nov 2026 12:00:00 GMT</pubDate>
       <category>CISA Advisories</category>
       <description>View CSAF Summary meta-iot2050 (https://github.com/siemens/meta-iot2050) from V01.03.01 contains a Command Injection vulnerability in the firmware update tool that could allow an attacker which is able to manipulate a configuration file to have arbitrary comm… (Source: CISA Cybersecurity &amp; ICS Advisories (cisa.gov))</description>
-    </item>
-    <item>
-      <title>[Live OSINT · CRITICAL] GitHub: Incident with Git Operations and Pull Requests [RESOLVED]</title>
-      <link>https://stspg.io/16nsnk2th3rv</link>
-      <guid isPermaLink="false">grayzone-signal-github-status-hnf21m9jkl3c</guid>
-      <pubDate>Fri, 13 Nov 2026 15:23:49 GMT</pubDate>
-      <category>GitHub Status</category>
-      <description>On November 10, 2026, from approximately 15:00 UTC to 17:55 UTC, GitHub experienced degraded performance affecting repository pages, pull requests, and GitHub Actions. Customers may have seen slow or failed page loads and delays processing pull request update… (Source: GitHub System Status (www.githubstatus.com))</description>
     </item>
     <item>
       <title>[Live OSINT · CRITICAL] CVE-2026-123039: Check Point Multiple Products — Check Point Multiple Products Incorrect Permission Assignment for Critical Resource Vulnerability</title>
@@ -144,148 +160,132 @@
       <description>Google Chromium contains a use-after-free vulnerability in the XML component that could allow a remote attacker to execute arbitrary code inside the sandbox via a specially crafted webpage. This vulnerability could affect multiple web browsers that utilize Chromium, including, b… (Source: CISA Known Exploited Vulnerabilities Catalog (2026.11.17))</description>
     </item>
     <item>
-      <title>[Live OSINT · CRITICAL] CVE-2024-27834: Apple Multiple Products — Apple Multiple Products Improper Authentication Vulnerability</title>
-      <link>https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search_api_fulltext=CVE-2024-27834</link>
-      <guid isPermaLink="false">grayzone-signal-kev-cve-2024-27834</guid>
-      <pubDate>Wed, 04 Nov 2026 12:00:00 GMT</pubDate>
-      <category>CISA KEV Catalog</category>
-      <description>Apple iOS, iPadOS, macOS, Safari, tvOS and watchOS 10.5 contain an improper authentication vulnerability which could allow an attacker with arbitrary read and write capability to bypass pointer authentication. Federal BOD 22-01 remediation due 2026-11-18. (Source: CISA Known Exploited Vulnerabilities Catalog (2026.11.17))</description>
+      <title>[Live OSINT · ELEVATED] FAA Ground Delay Program: SFO (Avg 1 hour and 32 minutes)</title>
+      <link>https://nasstatus.faa.gov/</link>
+      <guid isPermaLink="false">grayzone-signal-faa-gdp-sfo-1</guid>
+      <pubDate>Wed, 18 Nov 2026 17:03:32 GMT</pubDate>
+      <category>FAA NAS Status</category>
+      <description>GDP at SFO — Reason: wind, Avg delay: 1 hour and 32 minutes, Max: 5 hours and 41 minutes. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Wed Nov 18 17:03:32 2026 GMT) (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Wed Nov 18 17:03:32 2026 GMT)</description>
+    </item>
+    <item>
+      <title>[Live OSINT · ELEVATED] FAA Arrival/Departure Delay: DJT</title>
+      <link>https://nasstatus.faa.gov/</link>
+      <guid isPermaLink="false">grayzone-signal-faa-delay-djt-2</guid>
+      <pubDate>Wed, 18 Nov 2026 17:03:32 GMT</pubDate>
+      <category>FAA NAS Status</category>
+      <description>General Arrival/Departure Delay Info at DJT — Reason: WX:Thunderstorms. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Wed Nov 18 17:03:32 2026 GMT) (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Wed Nov 18 17:03:32 2026 GMT)</description>
+    </item>
+    <item>
+      <title>[Live OSINT · ELEVATED] FAA Arrival/Departure Delay: MIA</title>
+      <link>https://nasstatus.faa.gov/</link>
+      <guid isPermaLink="false">grayzone-signal-faa-delay-mia-3</guid>
+      <pubDate>Wed, 18 Nov 2026 17:03:32 GMT</pubDate>
+      <category>FAA NAS Status</category>
+      <description>General Arrival/Departure Delay Info at MIA — Reason: WX:Thunderstorms. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Wed Nov 18 17:03:32 2026 GMT) (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Wed Nov 18 17:03:32 2026 GMT)</description>
     </item>
     <item>
       <title>[Live OSINT · ELEVATED] FAA Airport Closures: SNA</title>
       <link>https://nasstatus.faa.gov/</link>
-      <guid isPermaLink="false">grayzone-signal-faa-closure-sna-1</guid>
-      <pubDate>Tue, 17 Nov 2026 22:29:05 GMT</pubDate>
+      <guid isPermaLink="false">grayzone-signal-faa-closure-sna-4</guid>
+      <pubDate>Wed, 18 Nov 2026 17:03:32 GMT</pubDate>
       <category>FAA NAS Status</category>
-      <description>SNA: !SNA 11/020 SNA AD AP CLSD DLY 0730-1415 2611150730-2611211415 | Reopen: Nov 21 at 14:15 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Tue Nov 17 22:29:05 2026 GMT) (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Tue Nov 17 22:29:05 2026 GMT)</description>
+      <description>SNA: !SNA 11/020 SNA AD AP CLSD DLY 0730-1415 2611150730-2611211415 | Reopen: Nov 21 at 14:15 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Wed Nov 18 17:03:32 2026 GMT) (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Wed Nov 18 17:03:32 2026 GMT)</description>
     </item>
     <item>
-      <title>[Live OSINT · ELEVATED] Cloudflare: R2 elevated errors and timeouts for requests from South America [RESOLVED]</title>
-      <link>https://www.cloudflarestatus.com/incidents/gcn9xop0f7zm</link>
-      <guid isPermaLink="false">grayzone-signal-cloudflare-status-gcn9xop0f7zm</guid>
-      <pubDate>Tue, 17 Nov 2026 22:08:34 GMT</pubDate>
+      <title>[Live OSINT · ELEVATED] Cloudflare: R2 Downloads Stalling in Japan [RESOLVED]</title>
+      <link>https://www.cloudflarestatus.com/incidents/2wjvsj2kqt07</link>
+      <guid isPermaLink="false">grayzone-signal-cloudflare-status-2wjvsj2kqt07</guid>
+      <pubDate>Wed, 18 Nov 2026 15:03:07 GMT</pubDate>
       <category>Cloudflare Status</category>
       <description>This incident has been resolved. (Source: Cloudflare System Status (www.cloudflarestatus.com))</description>
     </item>
     <item>
-      <title>[Live OSINT · ELEVATED] Cloudflare: Issues with Durable Objects and Dependent Services [INVESTIGATING]</title>
-      <link>https://www.cloudflarestatus.com/incidents/ylj5po752g6h</link>
-      <guid isPermaLink="false">grayzone-signal-cloudflare-status-ylj5po752g6h</guid>
-      <pubDate>Tue, 17 Nov 2026 21:56:23 GMT</pubDate>
-      <category>Cloudflare Status</category>
-      <description>We are investigating reports of elevated timeout rates and performance degradation affecting Durable Objects. This may impact dependent services, including Stream and Containers. Our team is actively investigating, and further updates will be provided shortly. (Source: Cloudflare System Status (www.cloudflarestatus.com))</description>
-    </item>
-    <item>
-      <title>[Live OSINT · ELEVATED] Cloudflare: Errors and stalled predictions on some models [IDENTIFIED]</title>
-      <link>https://www.cloudflarestatus.com/incidents/sv9tnfpjiojf</link>
-      <guid isPermaLink="false">grayzone-signal-cloudflare-status-sv9tnfpjiojf</guid>
-      <pubDate>Tue, 17 Nov 2026 21:53:51 GMT</pubDate>
-      <category>Cloudflare Status</category>
-      <description>The issue has been identified and a fix is being implemented. Current impact: predictions on OpenAI models are back to normal. Predictions on other models may still return HTTP 500 errors or stay in a processing state while we continue to work on a fix. (Source: Cloudflare System Status (www.cloudflarestatus.com))</description>
-    </item>
-    <item>
-      <title>[Live OSINT · ELEVATED] Cloudflare: Network performance issues in Los Angeles (LAX) and Frankfurt (FRA) datacenters [RESOLVED]</title>
-      <link>https://www.cloudflarestatus.com/incidents/du63c25qjgjs</link>
-      <guid isPermaLink="false">grayzone-signal-cloudflare-status-du63c25qjgjs</guid>
-      <pubDate>Tue, 17 Nov 2026 18:00:07 GMT</pubDate>
-      <category>Cloudflare Status</category>
-      <description>This incident has been resolved. (Source: Cloudflare System Status (www.cloudflarestatus.com))</description>
-    </item>
-    <item>
-      <title>[Live OSINT · ELEVATED] Apple App Store: Outage [RESOLVED]</title>
-      <link>https://www.apple.com/support/systemstatus/</link>
-      <guid isPermaLink="false">grayzone-signal-apple-app-store-1000005988</guid>
-      <pubDate>Tue, 17 Nov 2026 16:45:00 GMT</pubDate>
-      <category>Apple System Status</category>
-      <description>Some users may have experienced an issue with this service. (Some users were affected; Window: 11/17/2026 08:45 PST – 11/17/2026 12:00 PST) [Monitor for downstream iOS third-party auth/mail cascade noise per Watchlist #9] (Source: Apple System Status (apple.com/support/systemstatus))</description>
-    </item>
-    <item>
-      <title>[Live OSINT · ELEVATED] Apple Volume Purchase Program: Outage [RESOLVED]</title>
-      <link>https://www.apple.com/support/systemstatus/</link>
-      <guid isPermaLink="false">grayzone-signal-apple-volume-purchase-program-1000005988</guid>
-      <pubDate>Tue, 17 Nov 2026 16:45:00 GMT</pubDate>
-      <category>Apple System Status</category>
-      <description>Users may have been unable to make purchases. (Some users were affected; Window: 11/17/2026 08:45 PST – 11/17/2026 12:00 PST) (Source: Apple System Status (apple.com/support/systemstatus))</description>
-    </item>
-    <item>
-      <title>[Live OSINT · ELEVATED] Cloudflare: Turnstile verification failures [RESOLVED]</title>
-      <link>https://www.cloudflarestatus.com/incidents/5831aw44ia7i</link>
-      <guid isPermaLink="false">grayzone-signal-cloudflare-status-5831aw44ia7i</guid>
-      <pubDate>Tue, 17 Nov 2026 16:37:10 GMT</pubDate>
-      <category>Cloudflare Status</category>
-      <description>This incident has been resolved. (Source: Cloudflare System Status (www.cloudflarestatus.com))</description>
-    </item>
-    <item>
-      <title>[Live OSINT · ELEVATED] Apple AppleCare on Device: Outage [RESOLVED]</title>
-      <link>https://www.apple.com/support/systemstatus/</link>
-      <guid isPermaLink="false">grayzone-signal-apple-applecare-on-device-2000005801</guid>
-      <pubDate>Tue, 17 Nov 2026 16:15:00 GMT</pubDate>
-      <category>Apple System Status</category>
-      <description>AppleCare purchase was temporarily unavailable. (All users were affected; Window: 11/17/2026 08:15 PST – 11/17/2026 12:39 PST) (Source: Apple System Status (apple.com/support/systemstatus))</description>
-    </item>
-    <item>
-      <title>[Live OSINT · ELEVATED] Cloudflare: Elevated number of 5xx and 499 errors [RESOLVED]</title>
-      <link>https://www.cloudflarestatus.com/incidents/1ip2m5rvk7vb</link>
-      <guid isPermaLink="false">grayzone-signal-cloudflare-status-1ip2m5rvk7vb</guid>
-      <pubDate>Tue, 17 Nov 2026 15:51:08 GMT</pubDate>
-      <category>Cloudflare Status</category>
-      <description>Between 13:55-14:35 UTC customers reaching Minneapolis, MN and Saint Louis, MO would have experienced an elevated number of 499 and 5xx errors. (Source: Cloudflare System Status (www.cloudflarestatus.com))</description>
-    </item>
-    <item>
-      <title>[Live OSINT · ELEVATED] Cloudflare: Cloudflare One Gateway traffic unable to connect to Cloudflare domains that are regionalized [RESOLVED]</title>
-      <link>https://www.cloudflarestatus.com/incidents/tawn3zx7wh0z</link>
-      <guid isPermaLink="false">grayzone-signal-cloudflare-status-tawn3zx7wh0z</guid>
-      <pubDate>Tue, 17 Nov 2026 14:56:52 GMT</pubDate>
-      <category>Cloudflare Status</category>
-      <description>This incident has been resolved. (Source: Cloudflare System Status (www.cloudflarestatus.com))</description>
-    </item>
-    <item>
-      <title>[Live OSINT · ELEVATED] Protecting Consumers From SIM-Swap and Port-Out Fraud (2026-23400)</title>
-      <link>https://www.federalregister.gov/documents/2026/11/17/2026-23400/protecting-consumers-from-sim-swap-and-port-out-fraud</link>
-      <guid isPermaLink="false">grayzone-signal-fedreg-2026-23400</guid>
-      <pubDate>Tue, 17 Nov 2026 13:00:00 GMT</pubDate>
+      <title>[Live OSINT · ELEVATED] Protecting Consumers From SIM-Swap and Port-Out Fraud (2026-23522)</title>
+      <link>https://www.federalregister.gov/documents/2026/11/18/2026-23522/protecting-consumers-from-sim-swap-and-port-out-fraud</link>
+      <guid isPermaLink="false">grayzone-signal-fedreg-2026-23522</guid>
+      <pubDate>Wed, 18 Nov 2026 13:00:00 GMT</pubDate>
       <category>U.S. Federal Register</category>
-      <description>In this document, the Wireline Competition Bureau (Bureau) announces that the Office of Management and Budget (OMB) has approved, for a period of three years, the information collection associated with the Commission&apos;s rules adopted in the SIM Swap and Port-O… (Source: U.S. Federal Register (2026-23400 — Federal Communications Commission))</description>
+      <description>In this document, the Wireline Competition Bureau (Bureau) announces that the Office of Management and Budget (OMB) has approved, for a period of three years, the information collection associated with Telephone Number Portability. This document is consistent… (Source: U.S. Federal Register (2026-23522 — Federal Communications Commission))</description>
     </item>
     <item>
-      <title>[Live OSINT · ELEVATED] Modernizing to Electronic Payments (2026-23397)</title>
-      <link>https://www.federalregister.gov/documents/2026/11/17/2026-23397/modernizing-to-electronic-payments</link>
-      <guid isPermaLink="false">grayzone-signal-fedreg-2026-23397</guid>
-      <pubDate>Tue, 17 Nov 2026 13:00:00 GMT</pubDate>
+      <title>[Live OSINT · ELEVATED] Information Collection Being Submitted for Review and Approval to Office of Management and Budget (2026-23481)</title>
+      <link>https://www.federalregister.gov/documents/2026/11/18/2026-23481/information-collection-being-submitted-for-review-and-approval-to-office-of-management-and-budget</link>
+      <guid isPermaLink="false">grayzone-signal-fedreg-2026-23481</guid>
+      <pubDate>Wed, 18 Nov 2026 13:00:00 GMT</pubDate>
       <category>U.S. Federal Register</category>
-      <description>FAA proposes to modernize its payment systems to require electronic payments and eliminate the option to pay by paper payment methods such as cash, money orders, and paper checks. This proposal complies with Executive Order 14247 titled &quot;Modernizing Payments… (Source: U.S. Federal Register (2026-23397 — Transportation Department, Federal Aviation Administration))</description>
+      <description>As part of its continuing effort to reduce paperwork burdens, as required by the Paperwork Reduction Act (PRA) of 1995, the Federal Communications Commission (FCC or the Commission) invites the general public and other Federal Agencies to take this opportunit… (Source: U.S. Federal Register (2026-23481 — Federal Communications Commission))</description>
     </item>
     <item>
-      <title>[Live OSINT · ELEVATED] Information Collection Being Reviewed by the Federal Communications Commission (2026-23388)</title>
-      <link>https://www.federalregister.gov/documents/2026/11/17/2026-23388/information-collection-being-reviewed-by-the-federal-communications-commission</link>
-      <guid isPermaLink="false">grayzone-signal-fedreg-2026-23388</guid>
-      <pubDate>Tue, 17 Nov 2026 13:00:00 GMT</pubDate>
+      <title>[Live OSINT · ELEVATED] Agency Information Collection Activities; Submission for OMB Review; Comment Request; Extension: Rule 19a-1 (2026-23470)</title>
+      <link>https://www.federalregister.gov/documents/2026/11/18/2026-23470/agency-information-collection-activities-submission-for-omb-review-comment-request-extension-rule</link>
+      <guid isPermaLink="false">grayzone-signal-fedreg-2026-23470</guid>
+      <pubDate>Wed, 18 Nov 2026 13:00:00 GMT</pubDate>
       <category>U.S. Federal Register</category>
-      <description>As part of its continuing effort to reduce paperwork burdens, and as required by the Paperwork Reduction Act (PRA) of 1995, the Federal Communications Commission (FCC or the Commission) invites the general public and other Federal agencies to take this opport… (Source: U.S. Federal Register (2026-23388 — Federal Communications Commission))</description>
+      <description>Notice published by Securities and Exchange Commission (2026-23470). (Source: U.S. Federal Register (2026-23470 — Securities and Exchange Commission))</description>
     </item>
     <item>
-      <title>[Live OSINT · ELEVATED] Modernizing the Commission&apos;s National Environmental Policy Act Rules (2026-23385)</title>
-      <link>https://www.federalregister.gov/documents/2026/11/17/2026-23385/modernizing-the-commissions-national-environmental-policy-act-rules</link>
-      <guid isPermaLink="false">grayzone-signal-fedreg-2026-23385</guid>
-      <pubDate>Tue, 17 Nov 2026 13:00:00 GMT</pubDate>
+      <title>[Live OSINT · ELEVATED] Sunshine Act; Open Commission Meeting Thursday, November 19, 2026 (2026-23467)</title>
+      <link>https://www.federalregister.gov/documents/2026/11/18/2026-23467/sunshine-act-open-commission-meeting-thursday-november-19-2026</link>
+      <guid isPermaLink="false">grayzone-signal-fedreg-2026-23467</guid>
+      <pubDate>Wed, 18 Nov 2026 13:00:00 GMT</pubDate>
       <category>U.S. Federal Register</category>
-      <description>In this document (Order), the Federal Communications Commission (&quot;Commission&quot; or &quot;FCC&quot;) takes action to cut through outdated and unnecessary burdens that have slowed deployment of critical communications networks. These reforms restore balance to the Commissi… (Source: U.S. Federal Register (2026-23385 — Federal Communications Commission))</description>
+      <description>The Commission will consider a Report and Order that would authorize non- federal operation of radio frequency jamming solutions in the limited context of correctional facilities, in compliance with applicable congressional statutes. It will also consider a F… (Source: U.S. Federal Register (2026-23467 — Federal Communications Commission))</description>
     </item>
     <item>
-      <title>[Live OSINT · ELEVATED] Self-Regulatory Organizations; Nasdaq Texas, LLC; Notice of Filing and Immediate Effectiveness of Proposed Rule Change To Amend Rule General 8 Regarding Fees for Interfirm Cabinet Connectivity (2026-23341)</title>
-      <link>https://www.federalregister.gov/documents/2026/11/17/2026-23341/self-regulatory-organizations-nasdaq-texas-llc-notice-of-filing-and-immediate-effectiveness-of</link>
-      <guid isPermaLink="false">grayzone-signal-fedreg-2026-23341</guid>
-      <pubDate>Tue, 17 Nov 2026 13:00:00 GMT</pubDate>
+      <title>[Live OSINT · ELEVATED] Self-Regulatory Organizations; NYSE Arca, Inc.; Notice of Filing and Immediate Effectiveness of Proposed Rule Change To Amend Its Rules its Rules To Permit the Listing of Binary Options Overlying Key Performance Indicators (2026-23427)</title>
+      <link>https://www.federalregister.gov/documents/2026/11/18/2026-23427/self-regulatory-organizations-nyse-arca-inc-notice-of-filing-and-immediate-effectiveness-of-proposed</link>
+      <guid isPermaLink="false">grayzone-signal-fedreg-2026-23427</guid>
+      <pubDate>Wed, 18 Nov 2026 13:00:00 GMT</pubDate>
       <category>U.S. Federal Register</category>
-      <description>Notice published by Securities and Exchange Commission (2026-23341). (Source: U.S. Federal Register (2026-23341 — Securities and Exchange Commission))</description>
+      <description>Notice published by Securities and Exchange Commission (2026-23427). (Source: U.S. Federal Register (2026-23427 — Securities and Exchange Commission))</description>
     </item>
     <item>
-      <title>[Live OSINT · ELEVATED] Self-Regulatory Organizations; The Nasdaq Stock Market LLC; Notice of Filing and Immediate Effectiveness of Proposed Rule Change To Amend Rule General 8 Regarding Fees for Interfirm Cabinet Connectivity (2026-23340)</title>
-      <link>https://www.federalregister.gov/documents/2026/11/17/2026-23340/self-regulatory-organizations-the-nasdaq-stock-market-llc-notice-of-filing-and-immediate</link>
-      <guid isPermaLink="false">grayzone-signal-fedreg-2026-23340</guid>
-      <pubDate>Tue, 17 Nov 2026 13:00:00 GMT</pubDate>
+      <title>[Live OSINT · ELEVATED] Self-Regulatory Organizations; CME Securities Clearing Inc.; Notice of Filing of Proposed Rule Change for Transaction Submission Amendments (2026-23426)</title>
+      <link>https://www.federalregister.gov/documents/2026/11/18/2026-23426/self-regulatory-organizations-cme-securities-clearing-inc-notice-of-filing-of-proposed-rule-change</link>
+      <guid isPermaLink="false">grayzone-signal-fedreg-2026-23426</guid>
+      <pubDate>Wed, 18 Nov 2026 13:00:00 GMT</pubDate>
       <category>U.S. Federal Register</category>
-      <description>Notice published by Securities and Exchange Commission (2026-23340). (Source: U.S. Federal Register (2026-23340 — Securities and Exchange Commission))</description>
+      <description>Notice published by Securities and Exchange Commission (2026-23426). (Source: U.S. Federal Register (2026-23426 — Securities and Exchange Commission))</description>
+    </item>
+    <item>
+      <title>[Live OSINT · ELEVATED] Self-Regulatory Organizations; NYSE American LLC; Notice of Filing and Immediate Effectiveness of Proposed Change To Amend Its Rules To Permit the Listing of Binary Options Overlying Key Performance Indicators (2026-23425)</title>
+      <link>https://www.federalregister.gov/documents/2026/11/18/2026-23425/self-regulatory-organizations-nyse-american-llc-notice-of-filing-and-immediate-effectiveness-of</link>
+      <guid isPermaLink="false">grayzone-signal-fedreg-2026-23425</guid>
+      <pubDate>Wed, 18 Nov 2026 13:00:00 GMT</pubDate>
+      <category>U.S. Federal Register</category>
+      <description>Notice published by Securities and Exchange Commission (2026-23425). (Source: U.S. Federal Register (2026-23425 — Securities and Exchange Commission))</description>
+    </item>
+    <item>
+      <title>[Live OSINT · ELEVATED] Self-Regulatory Organizations; Cboe Exchange, Inc.; Notice of Filing and Immediate Effectiveness of a Proposed Rule Change To Amend its Fees Schedule (2026-23424)</title>
+      <link>https://www.federalregister.gov/documents/2026/11/18/2026-23424/self-regulatory-organizations-cboe-exchange-inc-notice-of-filing-and-immediate-effectiveness-of-a</link>
+      <guid isPermaLink="false">grayzone-signal-fedreg-2026-23424</guid>
+      <pubDate>Wed, 18 Nov 2026 13:00:00 GMT</pubDate>
+      <category>U.S. Federal Register</category>
+      <description>Notice published by Securities and Exchange Commission (2026-23424). (Source: U.S. Federal Register (2026-23424 — Securities and Exchange Commission))</description>
+    </item>
+    <item>
+      <title>[Live OSINT · ELEVATED] Self-Regulatory Organizations; New York Stock Exchange LLC; Order Instituting Proceedings To Determine Whether To Approve or Disapprove a Proposed Rule Change To Amend Sections 303A.00 and 303A.07 of the NYSE Listed Company Manual (2026-23423)</title>
+      <link>https://www.federalregister.gov/documents/2026/11/18/2026-23423/self-regulatory-organizations-new-york-stock-exchange-llc-order-instituting-proceedings-to-determine</link>
+      <guid isPermaLink="false">grayzone-signal-fedreg-2026-23423</guid>
+      <pubDate>Wed, 18 Nov 2026 13:00:00 GMT</pubDate>
+      <category>U.S. Federal Register</category>
+      <description>Notice published by Securities and Exchange Commission (2026-23423). (Source: U.S. Federal Register (2026-23423 — Securities and Exchange Commission))</description>
+    </item>
+    <item>
+      <title>[Live OSINT · ELEVATED] Self-Regulatory Organizations; The Nasdaq Stock Market LLC; Notice of Filing and Immediate Effectiveness of Proposed Rule Change To Provide Transparency to the Process for Selection of an Initial Trading Date (2026-23422)</title>
+      <link>https://www.federalregister.gov/documents/2026/11/18/2026-23422/self-regulatory-organizations-the-nasdaq-stock-market-llc-notice-of-filing-and-immediate</link>
+      <guid isPermaLink="false">grayzone-signal-fedreg-2026-23422</guid>
+      <pubDate>Wed, 18 Nov 2026 13:00:00 GMT</pubDate>
+      <category>U.S. Federal Register</category>
+      <description>Notice published by Securities and Exchange Commission (2026-23422). (Source: U.S. Federal Register (2026-23422 — Securities and Exchange Commission))</description>
+    </item>
+    <item>
+      <title>[Live OSINT · ELEVATED] Self-Regulatory Organizations; NYSE American LLC; Notice of Filing and Immediate Effectiveness of a Proposed Rule Change To Amend the NYSE American Options Fee Schedule To Lower Certain Initiating Participant Rebates in Customer Best Execution Auctions (2026-23421)</title>
+      <link>https://www.federalregister.gov/documents/2026/11/18/2026-23421/self-regulatory-organizations-nyse-american-llc-notice-of-filing-and-immediate-effectiveness-of-a</link>
+      <guid isPermaLink="false">grayzone-signal-fedreg-2026-23421</guid>
+      <pubDate>Wed, 18 Nov 2026 13:00:00 GMT</pubDate>
+      <category>U.S. Federal Register</category>
+      <description>Notice published by Securities and Exchange Commission (2026-23421). (Source: U.S. Federal Register (2026-23421 — Securities and Exchange Commission))</description>
     </item>
   </channel>
 </rss>

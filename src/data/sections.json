@@ -1,6 +1,6 @@
 {
   "docTitle": "Geopolitical Strategy, Gray-Zone Warfare & Critical Infrastructure Risk: Executive Briefing",
-  "docDate": "November 17, 2026",
+  "docDate": "November 18, 2026",
   "docScope": "Synthesis of Historical Russian/Soviet Ideology, Ukraine Escalation Dynamics (2014–2026), the Russia–China Strategic Entente (2026–2030), National Security Cyber Attribution, Insurance War Exclusions, Forensic Analysis of the November 13, 2026 Nationwide FAA Ground Stop, active 2026 third-theater attrition (Operation Epic Fury / Iran), imminent Chinese critical mineral and pharmaceutical supply-chain cliffs, AI-accelerated agentic financial contagion, sub-IP physical/infrastructure resilience (GNSS spoofing, data-center thermal limits, subsea SLTE security, and 100-day TLS certificate lifespans), non-cyber regulatory/privilege exposures, and the ten-event November 12–17, 2026 critical infrastructure, enterprise, consumer ecosystem, hospitality, financial, intelligence, and supply-chain cluster: (1) the November 12–13 Microsoft 365 global cloud and hospital communications outage (~USD 7 billion estimated global economic impact across 70+ countries per IVN / Anderson Economic Group and DistilINFO), (2) the November 13 nationwide FAA ground stop, (3) the November 16 morning JPMorgan Chase on-premise hardware software bug and Zelle counterparty cascade (TIME), (4) the November 16 afternoon United Airlines widespread mainline departure system outage (CBS News; The Guardian), (5) the November 16 Optimizely / third-party JavaScript supply-chain attack impacting at least 178 organizations including Zoom, HSBC, Equifax, Salesforce, BBC, CNN, Peacock, and GitLab (BleepingComputer; Report URI), (6) the November 13–14 Workday disaster-recovery test data-corruption outage (FAU OIT Status; Logistics Viewpoints), (7) the November 17 National Security Agency (NSANet) classified internal communications network outage at Fort Meade (CBS News; Forbes), (8) the November 17 Apple multi-service ecosystem outage across iCloud, App Store, Apple Pay, Apple Music, AppleCare, and Apple Business/School Manager (AP News; Tom's Guide; 9to5Mac), (9) the November 17 Marriott International website, Bonvoy app, and hotel check-in outage (Fox News; Gulf News), and (10) the November 17 Charles Schwab login/webpage disruption and parallel SaaS gateway outages (Fox News).",
   "executiveSummary": {
     "intro": "This briefing synthesizes an end-to-end geopolitical, economic, and national security analysis connecting early 20th-century Russian revolutionary doctrine to 21st-century great-power rivalry and homeland critical infrastructure risk. Although separated by a century, these forces form a continuous strategic arc:",
@@ -72,7 +72,7 @@
       {
         "id": "pillar-5",
         "title": "Attribution, Financial Contagion & \"Poison Pill\" Forensics",
-        "body": "Even where officials report no live external cyberattack, technical debt in hybrid legacy-to-IP transitions now produces continental disruptions indistinguishable from gray-zone sabotage or pre-positioned state access such as PRC-linked *Volt Typhoon* ([CISA Advisory AA24-038A](https://www.cisa.gov/news-events/cybersecurity-advisories/aa24-038a)). Should forensic teardowns reveal a supply-chain or insider \"poison pill\" rather than contractor misconfiguration—or should a similar cascade hit financial clearing backbones (Fedwire, CHIPS, DTCC)—the fallout would span market volatility, commercial insurance war-exclusion disputes ([NJ Appellate Ruling in Merck](https://www.njcourts.gov/system/files/court-opinions/2023/a1879-21a1882-21.pdf)), and acute geopolitical escalation traps. This risk is exemplified by the ten-event November 12–17, 2026 disruption cluster spanning Microsoft 365, the FAA ground stop, Workday WD1, the 178-organization Optimizely OPTIMJACK supply-chain attack, JPMorgan Chase's on-premise hardware bug, United Airlines' mainline dispatch hold, the November 17 NSA NSANet classified network outage, Apple's internal-update outage, Marriott International's booking/check-in failure, and Charles Schwab's login disruption, alongside bipartisan congressional calls for a classified Gang of Eight briefing.",
+        "body": "Even where officials report no live external cyberattack, technical debt in hybrid legacy-to-IP transitions now produces continental disruptions indistinguishable from gray-zone sabotage or pre-positioned state access such as PRC-linked *Volt Typhoon* ([CISA Advisory AA24-038A](https://www.cisa.gov/news-events/cybersecurity-advisories/aa24-038a)). Should forensic teardowns reveal a supply-chain or insider \"poison pill\" rather than contractor misconfiguration—or should a similar cascade hit financial clearing backbones (Fedwire, CHIPS, DTCC)—the fallout would span market volatility, commercial insurance war-exclusion disputes ([NJ Appellate Ruling in Merck](https://www.njcourts.gov/system/files/court-opinions/2023/a1879-21a1882-21.pdf)), and acute geopolitical escalation traps. This risk is exemplified by the ten-event November 12–17, 2026 disruption cluster spanning Microsoft 365, the FAA ground stop, Workday WD1, the 178-organization Optimizely OPTIMJACK supply-chain attack, JPMorgan Chase's on-premise hardware bug, United Airlines' mainline dispatch hold, the November 17 NSA NSANet classified network outage, Apple's internal-update outage, Marriott International's booking/check-in failure, and Charles Schwab's login disruption, alongside bipartisan congressional calls for a classified Gang of Eight briefing. On November 18, U.S. Secretary of State Marco Rubio stated in Manila that federal agencies have found \"zero evidence\" linking the recent outages or tying them to foreign malign actors ([CBS News](https://www.cbsnews.com/news/marco-rubio-tech-outages-not-connected/)), even as bipartisan Senate and House lawmakers press for broader oversight at today's November 18 House Homeland Security \"Worldwide Threats\" hearing.",
         "sources": [
           {
             "label": "CISA Advisory AA24-038A",
@@ -81,6 +81,10 @@
           {
             "label": "NJ Appellate Ruling in Merck",
             "url": "https://www.njcourts.gov/system/files/court-opinions/2023/a1879-21a1882-21.pdf"
+          },
+          {
+            "label": "CBS News",
+            "url": "https://www.cbsnews.com/news/marco-rubio-tech-outages-not-connected/"
           }
         ]
       },
@@ -969,6 +973,15 @@
                       "url": "https://www.foxnews.com/live-news/tech-outages-microsoft-banks-faa-fbi-11-17-26"
                     }
                   ]
+                },
+                {
+                  "text": "**FAA On-Site Sign-Off 8 Minutes Prior & White House \"Tiger Team\":** Late November 17 reporting citing *The Washington Post* revealed that an on-site FAA official directly supervised the L3Harris contractor in El Dorado, Arkansas—testing the fiber switchover and formally signing off on the work **eight minutes before** the 4.5-hour nationwide ground stop began, complicating efforts to place sole blame on contractor incompetence ([Mashable](https://mashable.com/tech/faa-ground-stop-router-work)). Concurrently, the White House formed a multi-agency \"tiger team\" to prevent repeat ground stops during modernization.",
+                  "sources": [
+                    {
+                      "label": "Mashable",
+                      "url": "https://mashable.com/tech/faa-ground-stop-router-work"
+                    }
+                  ]
                 }
               ]
             }
@@ -1126,11 +1139,19 @@
             },
             {
               "type": "paragraph",
-              "text": "**Official NSA Response, DHS \"AI Ripple Effect\" Contradiction & Congressional Gang of Eight Demands:** Tuesday afternoon, a U.S. official told Fox News that NSA systems experienced *\"temporary degradation during scheduled routine maintenance\"* while mission-critical capabilities remained operational via redundancy ahead of Wednesday's (November 18, 10:00 a.m. ET) House Homeland Security Committee *\"Worldwide Threats\"* hearing ([Fox News](https://www.foxnews.com/live-news/tech-outages-microsoft-banks-faa-fbi-11-17-26)). Notably, DHS Secretary Markwayne Mullin floated a controversial theory on television suggesting AI or *\"super intelligence\"* self-fixing code could be creating a cascading *\"change order... ripple effect\"*—contradicting DOT, FAA, and Microsoft technical readouts—even while reiterating to CNBC Tuesday morning that no cyberattack is taking place. Meanwhile, House Minority Leader Hakeem Jeffries and GOP Reps. Nancy Mace and Mike Lawler demanded immediate classified Gang of Eight and bicameral briefings to clarify whether the six-day wave stems purely from infrastructure decay or *\"malignant activity.\"*",
+              "text": "**Official NSA Response, DHS \"AI Ripple Effect\" Contradiction & Congressional Gang of Eight Demands:** Tuesday afternoon, a U.S. official told Fox News that NSA systems experienced *\"temporary degradation during scheduled routine maintenance\"* while mission-critical capabilities remained operational via redundancy ahead of Wednesday's (November 18, 10:00 a.m. ET) House Homeland Security Committee *\"Worldwide Threats\"* hearing ([Fox News](https://www.foxnews.com/live-news/tech-outages-microsoft-banks-faa-fbi-11-17-26)). The NSA issued an official statement confirming that the agency experienced temporary network degradation during scheduled routine maintenance while mission-critical capabilities were maintained through redundancy ([NSA Official Statement](https://www.nsa.gov/Press-Room/Press-Releases-Statements/Press-Release-View/Article/4650245/nsa-statement-on-network-issues/)). On November 18, Secretary of State Marco Rubio stated in Manila that federal agencies have found zero evidence connecting the recent tech outages or linking them to foreign adversarial cyber operations ([CBS News](https://www.cbsnews.com/news/marco-rubio-tech-outages-not-connected/)). Meanwhile, Sen. Cynthia Lummis (R-WY) joined House Minority Leader Hakeem Jeffries and Reps. Nancy Mace and Mike Lawler in demanding comprehensive congressional reviews, ahead of the 10:00 a.m. ET House Homeland Security hearing featuring DHS Secretary Markwayne Mullin and FBI Deputy Director Christopher Raia ([Fox News](https://www.foxnews.com/live-news/tech-outages-microsoft-banks-faa-fbi-11-17-26)).",
               "sources": [
                 {
                   "label": "Fox News",
                   "url": "https://www.foxnews.com/live-news/tech-outages-microsoft-banks-faa-fbi-11-17-26"
+                },
+                {
+                  "label": "NSA Official Statement",
+                  "url": "https://www.nsa.gov/Press-Room/Press-Releases-Statements/Press-Release-View/Article/4650245/nsa-statement-on-network-issues/"
+                },
+                {
+                  "label": "CBS News",
+                  "url": "https://www.cbsnews.com/news/marco-rubio-tech-outages-not-connected/"
                 }
               ]
             }
@@ -1143,7 +1164,7 @@
           "blocks": [
             {
               "type": "paragraph",
-              "text": "**Apple Ecosystem Multi-Service Outage (\"Internal Update\"):** Around 9:33–9:45 a.m. PT (11:33–11:45 a.m. CST) on Tuesday, November 17, Apple suffered simultaneous disruptions across iCloud Account & Sign In, App Store, App Store Connect, Apple Music, AppleCare on Device, Apple Business Manager, Apple School Manager, and Schoolwork, alongside Downdetector spikes for Apple Pay, Apple Card, Apple Support (>1,500 reports), and device activation ([Tom's Guide](https://www.tomsguide.com/news/live/apple-outage-november-17-2026); [9to5Mac](https://9to5mac.com/2026/11/17/icloud-app-store-and-other-apple-services-hit-by-ongoing-outage/); [AP News](https://apnews.com/article/apple-marriott-technology-outages-ff097d2a0bec767baf38a1bd8eff5829)). Apple stated: *\"Many of our systems are back up and running after an internal update caused some outages this morning,\"* ruling out a cyberattack.",
+              "text": "**Apple Ecosystem Multi-Service Outage (\"Internal Update\") & Full Restoration:** Around 9:33–9:45 a.m. PT (11:33–11:45 a.m. CST) on Tuesday, November 17, Apple suffered simultaneous disruptions across iCloud Account & Sign In, App Store, App Store Connect, Apple Music, AppleCare on Device, Apple Business Manager, Apple School Manager, and Schoolwork, alongside Downdetector spikes for Apple Pay, Apple Card, Apple Support (>1,500 reports), and device activation ([Tom's Guide](https://www.tomsguide.com/news/live/apple-outage-november-17-2026); [9to5Mac](https://9to5mac.com/2026/11/17/icloud-app-store-and-other-apple-services-hit-by-ongoing-outage/); [AP News](https://apnews.com/article/apple-marriott-technology-outages-ff097d2a0bec767baf38a1bd8eff5829)). Apple stated that an internal system update caused the outages. By 5:59 p.m. ET on November 17, Apple confirmed that all affected services—including iCloud Account & Sign In, App Store, Apple Pay, Apple Music, AppleCare, and Business/School Manager—were fully restored ([CBS News](https://www.cbsnews.com/news/apple-outage-icloud-apple-pay-services/)).",
               "sources": [
                 {
                   "label": "Tom's Guide",
@@ -1156,6 +1177,10 @@
                 {
                   "label": "AP News",
                   "url": "https://apnews.com/article/apple-marriott-technology-outages-ff097d2a0bec767baf38a1bd8eff5829"
+                },
+                {
+                  "label": "CBS News",
+                  "url": "https://www.cbsnews.com/news/apple-outage-icloud-apple-pay-services/"
                 }
               ]
             },
@@ -1179,7 +1204,7 @@
             },
             {
               "type": "paragraph",
-              "text": "**Marriott International Booking & Property Check-In Outage:** Beginning around 9:17 a.m. ET Tuesday, Marriott International (10,200+ properties and >1.8M rooms) experienced login, reservation, and hotel front-desk check-in failures across Marriott.com and the Marriott Bonvoy app ([AP News](https://apnews.com/article/apple-marriott-technology-outages-ff097d2a0bec767baf38a1bd8eff5829); [Gulf News](https://gulfnews.com/world/americas/marriott-website-and-app-hit-by-reported-outage-disrupting-hotel-bookings-1.500751023)).",
+              "text": "**Marriott International Booking & Property Check-In Outage (Resolved & Cyber Cleared):** Beginning around 9:17 a.m. ET Tuesday, Marriott International (10,200+ properties and >1.8M rooms) experienced login, reservation, and hotel front-desk check-in failures across Marriott.com and the Marriott Bonvoy app ([AP News](https://apnews.com/article/apple-marriott-technology-outages-ff097d2a0bec767baf38a1bd8eff5829); [Gulf News](https://gulfnews.com/world/americas/marriott-website-and-app-hit-by-reported-outage-disrupting-hotel-bookings-1.500751023)). Marriott confirmed late Tuesday that it resolved the disruption across Marriott.com and the Bonvoy app alongside its technology partners, stating an internal review *\"found no indication that the disruption was cybersecurity-related\"* ([Fox News](https://www.foxnews.com/live-news/tech-outages-microsoft-banks-faa-fbi-11-17-26)).",
               "sources": [
                 {
                   "label": "AP News",
@@ -1188,12 +1213,16 @@
                 {
                   "label": "Gulf News",
                   "url": "https://gulfnews.com/world/americas/marriott-website-and-app-hit-by-reported-outage-disrupting-hotel-bookings-1.500751023"
+                },
+                {
+                  "label": "Fox News",
+                  "url": "https://www.foxnews.com/live-news/tech-outages-microsoft-banks-faa-fbi-11-17-26"
                 }
               ]
             },
             {
               "type": "paragraph",
-              "text": "**Charles Schwab, Enterprise SaaS Spikes & Deepfake Blackout Contagion:** Brokerage giant Charles Schwab resolved a Tuesday client login/*\"brief webpage loading issue\"* (trading and mobile app unaffected per [Fox News](https://www.foxnews.com/live-news/tech-outages-microsoft-banks-faa-fbi-11-17-26)), while enterprise recruiting SaaS Lever suffered a ~3-hour backend *504* outage ([IsDown](https://isdown.app/status/lever/incidents/688454-lever-backend-services-outage)). Concurrently, PolitiFact and PBS NewsHour debunked viral TikTok posts—including a manipulated November 9 video of President Trump—claiming today's 2:20 p.m. ET FEMA/FCC Nationwide EAS Test marked the start of a \"90-day blackout\" ([PBS NewsHour](https://www.pbs.org/newshour/nation/debunking-social-media-posts-that-claim-a-90-day-blackout-will-start-nov-17)). FEMA and the FCC successfully completed the scheduled 2:20 p.m. ET test as planned.",
+              "text": "**Charles Schwab, Enterprise SaaS Spikes, Record 6M Downdetector Volume & Deepfake Contagion:** Brokerage giant Charles Schwab resolved a Tuesday client login/*\"brief webpage loading issue\"* (trading and mobile app unaffected per [Fox News](https://www.foxnews.com/live-news/tech-outages-microsoft-banks-faa-fbi-11-17-26)), while enterprise recruiting SaaS Lever suffered a ~3-hour backend *504* outage ([IsDown](https://isdown.app/status/lever/incidents/688454-lever-backend-services-outage)). Notably, Downdetector logged nearly **6 million U.S. outage reports** over the seven days ending November 16—one of the highest weekly totals on record—highlighting acute public reporting sensitivity alongside genuine operational failures ([Mashable](https://mashable.com/tech/microsoft-outage-cause-revealed)). Concurrently, PolitiFact and PBS NewsHour debunked viral TikTok posts—including a manipulated November 9 video of President Trump—claiming today's 2:20 p.m. ET FEMA/FCC Nationwide EAS Test marked the start of a \"90-day blackout\" ([PBS NewsHour](https://www.pbs.org/newshour/nation/debunking-social-media-posts-that-claim-a-90-day-blackout-will-start-nov-17)). FEMA and the FCC successfully completed the scheduled 2:20 p.m. ET test as planned.",
               "sources": [
                 {
                   "label": "Fox News",
@@ -1202,6 +1231,10 @@
                 {
                   "label": "IsDown",
                   "url": "https://isdown.app/status/lever/incidents/688454-lever-backend-services-outage"
+                },
+                {
+                  "label": "Mashable",
+                  "url": "https://mashable.com/tech/microsoft-outage-cause-revealed"
                 },
                 {
                   "label": "PBS NewsHour",
@@ -1441,8 +1474,17 @@
             },
             {
               "type": "paragraph",
-              "text": "**Circular AI Debt & Insurer Concentration:** Barr disclosed that 87% of Federal Reserve survey respondents identified AI as a top financial system vulnerability. The seven largest tech firms are projected to exceed $800 billion in on-balance-sheet debt and over $3 trillion in off-balance-sheet GPU and special-purpose-entity (SPE) liabilities by year-end 2026. Furthermore, U.S. life insurers hold ~15% of private AI data-center debt—creating systemic exposure ahead of Anthropic's reported $1.5+ trillion target IPO valuation on November 18, 2026.",
-              "sources": []
+              "text": "**Circular AI Debt & Insurer Concentration:** Barr disclosed that 87% of Federal Reserve survey respondents identified AI as a top financial system vulnerability. The seven largest tech firms are projected to exceed $800 billion in on-balance-sheet debt and over $3 trillion in off-balance-sheet GPU and special-purpose-entity (SPE) liabilities by year-end 2026. Furthermore, U.S. life insurers hold ~15% of private AI data-center debt—creating systemic exposure ahead of Anthropic's S-1 pricing for tonight (Wednesday evening, November 18, 2026 ET; Nasdaq debut November 19 under ticker *ANT*), offering 825 million Class A shares at $70–$78/share (~6x oversubscribed), raising up to $64.4 billion publicly plus a $26.0 billion concurrent private placement (**up to $90.4 billion total** at a **$1.3T–$1.4T valuation**), against $33.24 billion in 9M 2026 revenue, a $104.04 billion accounting net loss, and >$430 million in crypto perpetual-futures open interest ([TMGM S-1 Summary](https://www.tmgm.com/en/academy/trading-academy/when-is-anthropic-ipo-everything-you-need-to-know); [Briefs.co](https://www.briefs.co/news/traders-ramp-up-anthropic-perps-as-ipo-nears-hunting-gaps-ac/)).",
+              "sources": [
+                {
+                  "label": "TMGM S-1 Summary",
+                  "url": "https://www.tmgm.com/en/academy/trading-academy/when-is-anthropic-ipo-everything-you-need-to-know"
+                },
+                {
+                  "label": "Briefs.co",
+                  "url": "https://www.briefs.co/news/traders-ramp-up-anthropic-perps-as-ipo-nears-hunting-gaps-ac/"
+                }
+              ]
             },
             {
               "type": "paragraph",
@@ -1596,7 +1638,7 @@
                   ],
                   [
                     "**2. Sudden KEV Catalog Addition**",
-                    "Mid-week addition of a Juniper Junos or Cisco routing/onboarding CVE to CISA's **Known Exploited Vulnerabilities (KEV)** catalog with a 72-hour remediation deadline.",
+                    "Mid-week addition of a Juniper Junos or Cisco routing/onboarding CVE to CISA's **Known Exploited Vulnerabilities (KEV)** catalog with a 72-hour remediation deadline. On November 17, CISA added **Perforce Puppet Enterprise CVE-2026-115731** (CVSS 9.4 untrusted data deserialization RCE on Puppet configuration servers; federal patch deadline **Dec. 1, 2026** per [CISA KEV Alert](https://www.cisa.gov/news-events/alerts/2026/11/17/cisa-adds-one-known-exploited-vulnerability-catalog)) and issued an urgent alert with Canada's Cyber Centre on **\"Java4Shell\" (CVE-2026-114938)**, an unauthenticated OpenJDK/Oracle HotSpot Base64 RCE affecting Java 17/21/25/27 with working exploits demonstrated against Jira, Confluence, Jenkins, and Keycloak ([CISA Java Alert](https://www.cisa.gov/news-events/alerts/2026/11/17/critical-java-vulnerability-requires-immediate-patching)).",
                     "Forensics confirmed an existing onboarding or routing-daemon flaw was weaponized prior to deployment."
                   ],
                   [
@@ -1626,7 +1668,7 @@
                   ],
                   [
                     "**8. Active Iranian OT/PLC, Perimeter Wiper & DPRK Contractor Telemetry**",
-                    "Auditing public PLC/modem ports (44818, 2222, 102, 502, 22) per CISA AA26-097A, hunting Check Point *CVE-2026-123039* -> SSH VMware ESXi *destroy_v6* wiper lateral movement, and screening remote IT contractors against FBI PSA261013 indicators.",
+                    "Auditing public PLC/modem ports (44818, 2222, 102, 502, 22) per CISA AA26-097A, hunting Check Point *CVE-2026-123039* -> SSH VMware ESXi *destroy_v6* wiper lateral movement, screening remote IT contractors against FBI PSA261013 indicators, and tracking the FBI's FLASH advisory warning that threat actors are weaponizing circulating open-source versions of the LLM-driven **ARTEX** framework to breach energy, manufacturing, and telecom networks in under three hours ([Industrial Cyber](https://industrialcyber.co/industrial-cyber-attacks/fbi-warns-hackers-weaponizing-artex-ai-framework-to-automate-attacks-on-energy-manufacturing-telecom/)).",
                     "Detects live destructive OT/hypervisor wipers and salaried DPRK insider access inside enterprise staging pipelines."
                   ],
                   [
@@ -1672,7 +1714,7 @@
                     "FAA / L3Harris FTI Backbone (National Aviation / ATC)",
                     "4.5-hr nationwide ground stop; ~12,462 flight disruptions; 17 of 22 ARTCCs destabilized; ~USD 345M Big-Four airline earnings hit",
                     "Two-router broadcast flood (El Dorado, AR Friday 3:30 p.m. ET cutover + 3-wk-old Amarillo, TX Juniper router on legacy TDM); HPE cites installer config ([WTTW / AP](https://news.wttw.com/2026/11/17/faa-halts-installation-routers-led-ground-stop))",
-                    "Nov. 17: FAA halted router rollout & powered off all ~400 installed Juniper routers; Florida FBI/lab probe active."
+                    "Nov. 17: FAA halted router rollout & powered off all ~400 installed Juniper routers; Florida FBI/lab probe active. WaPo reports on-site FAA official tested & signed off on El Dorado cutover 8 mins before ground stop; White House formed multi-agency \"tiger team.\""
                   ],
                   [
                     "#3 — Nov. 13–14, 2026",
@@ -1685,7 +1727,7 @@
                     "#4 — Nov. 13–17, 2026 (OPTIMJACK)",
                     "Optimizely, Kissmetrics, StorifyMe & minute-ly (Web Supply Chain — 178 Orgs)",
                     "Infected 188 JS snippets across Zoom, HSBC, Equifax, Salesforce, BBC, CNN, Fox News, Peacock, GitLab & Optimizely login; clippers, skimmers & .icu iOS exploit routing ([StepSecurity](https://www.stepsecurity.io/blog/optimjack-optimizely-hosted-scripts-crypto-clipper-card-skimmer))",
-                    "Confirmed Malicious Attack via Optimizely account signup flow; 26 payload mutations ([Report URI](https://blog.report-uri.com/worlds-largest-brands-infected-with-malware-via-optimizely/))",
+                    "Confirmed Malicious Attack via Optimizely account signup flow; 26 payload mutations ([Report URI](https://blog.report-uri.com/worlds-largest-brands-infected-with-malware-via-optimizely/)); active 16–19 hrs via *projectJS* (affecting custom CNAMEs too), seeded from *webshell[.]lol* (04:21 UTC Nov. 16); remediated by Optimizely ([Black Kite](https://blackkite.com/blog/optimizely-supply-chain-attack))",
                     "1688360[.]cc placed on hold Nov. 17; wallets swept toward HitBTC; manual audit of Project JS required for atob()/inline fallbacks."
                   ],
                   [
@@ -1706,15 +1748,15 @@
                     "#7 — Nov. 17, 2026 (~8:17 a.m. CST onward)",
                     "Marriott International (Global Hospitality — 10,200+ Properties)",
                     "Sign-in, online booking, Bonvoy app, and property check-in disruptions ([AP News](https://apnews.com/article/apple-marriott-technology-outages-ff097d2a0bec767baf38a1bd8eff5829); [Gulf News](https://gulfnews.com/world/americas/marriott-website-and-app-hit-by-reported-outage-disrupting-hotel-bookings-1.500751023))",
-                    "Unspecified technical disruption; root cause pending",
-                    "Monitoring Marriott post-mortem for shared cloud, CDN, identity, or payment-gateway overlap."
+                    "Technical issue affecting sign-in capabilities; cyber ruled out by Marriott",
+                    "Resolved Tuesday evening alongside technology partners."
                   ],
                   [
                     "#8 — Nov. 17, 2026 (Morning – Afternoon)",
                     "National Security Agency — NSANet (Classified Intelligence Enclave)",
                     "Internal classified network degraded/offline; Fort Meade ordered \"Code Gray\"/\"Code Yellow\" staggered arrivals to prevent login storms; Five Eyes unaffected ([CBS News](https://www.cbsnews.com/news/nsa-network-down-classified-fort-meade/))",
                     "Scheduled routine maintenance/patching after weeks of instability; White House/NSA rule out cyberattack ([Fox News](https://www.foxnews.com/live-news/tech-outages-microsoft-banks-faa-fbi-11-17-26))",
-                    "Active restoration; bipartisan Gang of Eight briefing demands & Nov. 18 House Homeland Security hearing."
+                    "Official NSA statement cites routine maintenance degradation; full internal restoration timing unconfirmed entering Nov. 18 House hearing."
                   ],
                   [
                     "#9 — Nov. 17, 2026 (Morning – Midday)",
@@ -1728,7 +1770,7 @@
                     "Apple Ecosystem & iOS/Gmail Cascade (Consumer, Payments & Enterprise)",
                     "Outages across App Store/Connect, iCloud Sign-In (>1,800 reports), Apple Pay (>2,300), Apple Music, AppleCare & Business/School Manager; caused downstream iOS Gmail login errors ([Tom's Guide](https://www.tomsguide.com/news/live/apple-outage-november-17-2026); [9to5Mac](https://9to5mac.com/2026/11/17/icloud-app-store-and-other-apple-services-hit-by-ongoing-outage/))",
                     "Apple confirmed an \"internal update caused some outages this morning\"; Google confirmed Workspace/Gmail remained 100% healthy",
-                    "Recovering Tuesday afternoon; monitoring residual iCloud/App Store Connect auth tokens."
+                    "All Apple services (including iCloud Sign-In & Apple Pay) confirmed fully restored by 5:59 p.m. ET Nov. 17."
                   ]
                 ]
               }
@@ -1752,7 +1794,7 @@
                   [
                     "**Nov. 18, 2026**",
                     "**House Homeland Security \"Worldwide Threats\" Hearing (10:00 a.m. ET) & Anthropic IPO Pricing**",
-                    "Track DHS Sec. Mullin's sworn testimony on the 10-event outage wave, Gang of Eight briefing outcomes, and AI credit/equity pricing."
+                    "Track testimony from DHS Sec. Mullin & FBI Deputy Director Raia at today's 10:00 a.m. ET House hearing, Gang of Eight briefing outcomes, and Anthropic (ANT) pricing this evening ($70–$78/sh, up to $90.4B total raise)."
                   ],
                   [
                     "**Nov. 20, 2026**",
@@ -1801,7 +1843,7 @@
           "blocks": [
             {
               "type": "paragraph",
-              "text": "A recurring daily tracking task (**\"Daily Update: FAA Router Forensics & FS-ISAC Telemetry\"**) is scheduled for **9:00 AM CST** as of November 17, 2026, monitoring readouts from the ten-event master ledger in Section 8.4, a general cross-sector scan for new qualifying events to append sequentially, and all nine watchlist indicators in Section 8.3 (including background awareness of CISA's Nov. 16 Dams Sector Cybersecurity Framework publication and active browser/perimeter KEV deadlines).",
+              "text": "A recurring daily tracking task (**\"Daily Update: FAA Router Forensics & FS-ISAC Telemetry\"**) is scheduled for **9:00 AM CST** as of November 18, 2026, monitoring readouts from the ten-event master ledger in Section 8.4, a general cross-sector scan for new qualifying events to append sequentially, and all nine watchlist indicators in Section 8.3 (including background awareness of CISA's Nov. 16 Dams Sector Cybersecurity Framework publication and active browser/perimeter KEV deadlines).",
               "sources": []
             }
           ]
@@ -2128,7 +2170,7 @@
     {
       "id": "src-46",
       "category": "Federal Reserve AI Financial Stability Speech & Autonomous Agent Risks",
-      "domainTag": "Outage Telemetry",
+      "domainTag": "Financial & Banking",
       "title": "Quartz Coverage",
       "url": "https://qz.com/fed-barr-ai-agents-bank-runs-deposits-111626"
     },
@@ -2323,94 +2365,178 @@
     },
     {
       "id": "src-74",
+      "category": "Nov. 17–18 Overnight Updates (Marco Rubio Manila Remarks, FAA 8-Minute Sign-Off, Official NSA Statement, CISA Puppet/Java4Shell Alerts, FBI ARTEX Advisory & Anthropic IPO)",
+      "domainTag": "Aviation & FAA",
+      "title": "NSA Official Network Statement",
+      "url": "https://www.nsa.gov/Press-Room/Press-Releases-Statements/Press-Release-View/Article/4650245/nsa-statement-on-network-issues/"
+    },
+    {
+      "id": "src-75",
+      "category": "Nov. 17–18 Overnight Updates (Marco Rubio Manila Remarks, FAA 8-Minute Sign-Off, Official NSA Statement, CISA Puppet/Java4Shell Alerts, FBI ARTEX Advisory & Anthropic IPO)",
+      "domainTag": "Aviation & FAA",
+      "title": "CBS News — Rubio Sees Zero Evidence Outages Are Related",
+      "url": "https://www.cbsnews.com/news/marco-rubio-tech-outages-not-connected/"
+    },
+    {
+      "id": "src-76",
+      "category": "Nov. 17–18 Overnight Updates (Marco Rubio Manila Remarks, FAA 8-Minute Sign-Off, Official NSA Statement, CISA Puppet/Java4Shell Alerts, FBI ARTEX Advisory & Anthropic IPO)",
+      "domainTag": "Aviation & FAA",
+      "title": "CBS News — Apple Restores All Services",
+      "url": "https://www.cbsnews.com/news/apple-outage-icloud-apple-pay-services/"
+    },
+    {
+      "id": "src-77",
+      "category": "Nov. 17–18 Overnight Updates (Marco Rubio Manila Remarks, FAA 8-Minute Sign-Off, Official NSA Statement, CISA Puppet/Java4Shell Alerts, FBI ARTEX Advisory & Anthropic IPO)",
+      "domainTag": "Aviation & FAA",
+      "title": "Mashable / WaPo — FAA Official Signed Off 8 Minutes Before Ground Stop",
+      "url": "https://mashable.com/tech/faa-ground-stop-router-work"
+    },
+    {
+      "id": "src-78",
+      "category": "Nov. 17–18 Overnight Updates (Marco Rubio Manila Remarks, FAA 8-Minute Sign-Off, Official NSA Statement, CISA Puppet/Java4Shell Alerts, FBI ARTEX Advisory & Anthropic IPO)",
+      "domainTag": "Aviation & FAA",
+      "title": "CISA KEV — Puppet Enterprise CVE-2026-115731",
+      "url": "https://www.cisa.gov/news-events/alerts/2026/11/17/cisa-adds-one-known-exploited-vulnerability-catalog"
+    },
+    {
+      "id": "src-79",
+      "category": "Nov. 17–18 Overnight Updates (Marco Rubio Manila Remarks, FAA 8-Minute Sign-Off, Official NSA Statement, CISA Puppet/Java4Shell Alerts, FBI ARTEX Advisory & Anthropic IPO)",
+      "domainTag": "Aviation & FAA",
+      "title": "CISA Alert — Critical Java4Shell CVE-2026-114938",
+      "url": "https://www.cisa.gov/news-events/alerts/2026/11/17/critical-java-vulnerability-requires-immediate-patching"
+    },
+    {
+      "id": "src-80",
+      "category": "Nov. 17–18 Overnight Updates (Marco Rubio Manila Remarks, FAA 8-Minute Sign-Off, Official NSA Statement, CISA Puppet/Java4Shell Alerts, FBI ARTEX Advisory & Anthropic IPO)",
+      "domainTag": "Aviation & FAA",
+      "title": "Black Kite — Optimizely ProjectJS Forensics",
+      "url": "https://blackkite.com/blog/optimizely-supply-chain-attack"
+    },
+    {
+      "id": "src-81",
+      "category": "Nov. 17–18 Overnight Updates (Marco Rubio Manila Remarks, FAA 8-Minute Sign-Off, Official NSA Statement, CISA Puppet/Java4Shell Alerts, FBI ARTEX Advisory & Anthropic IPO)",
+      "domainTag": "Aviation & FAA",
+      "title": "The Hacker News — Optimizely IOCs",
+      "url": "https://thehackernews.com/2026/11/hijacked-optimizely-scripts-served-card.html"
+    },
+    {
+      "id": "src-82",
+      "category": "Nov. 17–18 Overnight Updates (Marco Rubio Manila Remarks, FAA 8-Minute Sign-Off, Official NSA Statement, CISA Puppet/Java4Shell Alerts, FBI ARTEX Advisory & Anthropic IPO)",
+      "domainTag": "Aviation & FAA",
+      "title": "Industrial Cyber — FBI ARTEX LLM Hacking Advisory",
+      "url": "https://industrialcyber.co/industrial-cyber-attacks/fbi-warns-hackers-weaponizing-artex-ai-framework-to-automate-attacks-on-energy-manufacturing-telecom/"
+    },
+    {
+      "id": "src-83",
+      "category": "Nov. 17–18 Overnight Updates (Marco Rubio Manila Remarks, FAA 8-Minute Sign-Off, Official NSA Statement, CISA Puppet/Java4Shell Alerts, FBI ARTEX Advisory & Anthropic IPO)",
+      "domainTag": "Aviation & FAA",
+      "title": "TMGM — Anthropic IPO S-1 Terms",
+      "url": "https://www.tmgm.com/en/academy/trading-academy/when-is-anthropic-ipo-everything-you-need-to-know"
+    },
+    {
+      "id": "src-84",
       "category": "Inline Briefing Citation",
       "domainTag": "Outage Telemetry",
       "title": "Shattered / Ars Technica Analysis",
       "url": "https://shattered.io/ars-live-drone-attacks-data-centers-nov-17-aws-data-deleted-2026/"
     },
     {
-      "id": "src-75",
+      "id": "src-85",
       "category": "Inline Briefing Citation",
       "domainTag": "Supply Chain & Minerals",
       "title": "The Next Web",
       "url": "https://thenextweb.com/news/china-weighs-response-to-us-chip-curbs-before-trump-summit"
     },
     {
-      "id": "src-76",
+      "id": "src-86",
       "category": "Inline Briefing Citation",
       "domainTag": "Aviation & FAA",
       "title": "FAA Q&A",
       "url": "https://www.faa.gov/newsroom/nationwide-ground-stop-questions-and-answers"
     },
     {
-      "id": "src-77",
+      "id": "src-87",
       "category": "Inline Briefing Citation",
       "domainTag": "Aviation & FAA",
       "title": "Mashable",
       "url": "https://mashable.com/tech/united-airlines-widespread-system-outage-nov-16-2026"
     },
     {
-      "id": "src-78",
+      "id": "src-88",
       "category": "Inline Briefing Citation",
       "domainTag": "Aviation & FAA",
       "title": "OPSGROUP",
       "url": "https://ops.group/blog/tag/spoofing/"
     },
     {
-      "id": "src-79",
+      "id": "src-89",
       "category": "Inline Briefing Citation",
       "domainTag": "Aviation & FAA",
       "title": "GAO Report",
       "url": "https://www.gao.gov/blog/air-travel-communications-threatened-spoofing-and-jamming-concerns"
     },
     {
-      "id": "src-80",
+      "id": "src-90",
       "category": "Inline Briefing Citation",
       "domainTag": "Outage Telemetry",
       "title": "Interactive Brokers Analysis",
       "url": "https://www.interactivebrokers.com/campus/traders-insight/investmentor/what-the-cme-outage-teaches-us-about-modern-markets/"
     },
     {
-      "id": "src-81",
+      "id": "src-91",
       "category": "Inline Briefing Citation",
       "domainTag": "Outage Telemetry",
       "title": "GameChange Energy",
       "url": "https://www.gamechangeenergy.com/news/transformer-lead-times-in-2026-what-pad-mounted-and-substation-buyers-can-expect"
     },
     {
-      "id": "src-82",
+      "id": "src-92",
       "category": "Inline Briefing Citation",
       "domainTag": "Outage Telemetry",
       "title": "Utility Dive",
       "url": "https://www.utilitydive.com/news/trump-ban-on-foreign-grid-components-sparks-industry-concern-over-practical/873752/"
     },
     {
-      "id": "src-83",
-      "category": "Inline Briefing Citation",
-      "domainTag": "Outage Telemetry",
-      "title": "OFR Brief 24-05",
-      "url": "https://www.financialresearch.gov/briefs/files/OFRBrief-24-05-change-healthcare-cyberattack.pdf"
-    },
-    {
-      "id": "src-84",
-      "category": "Inline Briefing Citation",
-      "domainTag": "Outage Telemetry",
-      "title": "IsDown",
-      "url": "https://isdown.app/status/lever/incidents/688454-lever-backend-services-outage"
-    },
-    {
-      "id": "src-85",
+      "id": "src-93",
       "category": "Inline Briefing Citation",
       "domainTag": "Outage Telemetry",
       "title": "Anadolu Agency",
       "url": "https://aa.com.tr/en/americas/google-says-no-evidence-of-widespread-gmail-outage-despite-user-complaints/4128324"
     },
     {
-      "id": "src-86",
+      "id": "src-94",
       "category": "Inline Briefing Citation",
       "domainTag": "Outage Telemetry",
       "title": "Sportskeeda Tech",
       "url": "https://tech.sportskeeda.com/laptops/news-is-gmail-right-now-november-17-2026-outage-status-explored"
+    },
+    {
+      "id": "src-95",
+      "category": "Inline Briefing Citation",
+      "domainTag": "Outage Telemetry",
+      "title": "IsDown",
+      "url": "https://isdown.app/status/lever/incidents/688454-lever-backend-services-outage"
+    },
+    {
+      "id": "src-96",
+      "category": "Inline Briefing Citation",
+      "domainTag": "Outage Telemetry",
+      "title": "Mashable",
+      "url": "https://mashable.com/tech/microsoft-outage-cause-revealed"
+    },
+    {
+      "id": "src-97",
+      "category": "Inline Briefing Citation",
+      "domainTag": "Financial & Banking",
+      "title": "Briefs.co",
+      "url": "https://www.briefs.co/news/traders-ramp-up-anthropic-perps-as-ipo-nears-hunting-gaps-ac/"
+    },
+    {
+      "id": "src-98",
+      "category": "Inline Briefing Citation",
+      "domainTag": "Outage Telemetry",
+      "title": "OFR Brief 24-05",
+      "url": "https://www.financialresearch.gov/briefs/files/OFRBrief-24-05-change-healthcare-cyberattack.pdf"
     }
   ]
 }

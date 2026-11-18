@@ -18,6 +18,12 @@ const PRIORITY_KEV_VENDORS = [
   'citrix',
   'f5',
   'microsoft',
+  'puppet',
+  'perforce',
+  'openjdk',
+  'oracle',
+  'atlassian',
+  'keycloak',
 ];
 
 const xmlParser = new XMLParser({
@@ -96,7 +102,7 @@ export function buildSection84MarkdownRow(params: {
 }
 
 /**
- * 1. CISA KEV Catalog Parser (last 14 days; highlights routing/gateway/hypervisor/browser/MSP vendors -> Watchlist #2 & #8)
+ * 1. CISA KEV Catalog Parser (last 14 days; highlights routing/gateway/hypervisor/browser/MSP/config vendors -> Watchlist #2 & #8)
  */
 export function parseCisaKevJson(rawJson: string, now = new Date()): LiveSignal[] {
   const parsed = JSON.parse(rawJson) as {
@@ -125,15 +131,20 @@ export function parseCisaKevJson(rawJson: string, now = new Date()): LiveSignal[
   const selected = (recent.length > 0 ? recent : vulns.slice(0, 10)).slice(0, 20);
 
   return selected.map((v) => {
-    const vendorProd = `${v.vendorProject} ${v.product}`.toLowerCase();
+    const vendorProd = `${v.vendorProject} ${v.product} ${v.vulnerabilityName}`.toLowerCase();
     const isPriorityVendor = PRIORITY_KEV_VENDORS.some((kw) => vendorProd.includes(kw));
     const watchlistMatches = ['#2'];
     const riskMatrixMatches = ['#2'];
 
-    if (isPriorityVendor || /esxi|vmware|check point|juniper|cisco|ivanti|fortinet/i.test(vendorProd)) {
+    if (
+      isPriorityVendor ||
+      /esxi|vmware|check point|juniper|cisco|ivanti|fortinet|puppet|perforce|openjdk|java4shell/i.test(
+        vendorProd
+      )
+    ) {
       if (!watchlistMatches.includes('#8')) watchlistMatches.push('#8');
     }
-    if (/juniper|cisco|palo alto|fortinet|ivanti/i.test(vendorProd)) {
+    if (/juniper|cisco|palo alto|fortinet|ivanti|puppet|perforce/i.test(vendorProd)) {
       if (!watchlistMatches.includes('#1')) watchlistMatches.push('#1');
       if (!riskMatrixMatches.includes('#1')) riskMatrixMatches.push('#1');
     }
@@ -189,7 +200,7 @@ export function parseCisaKevJson(rawJson: string, now = new Date()): LiveSignal[
 }
 
 /**
- * 2. CISA Cybersecurity Advisories RSS XML Parser (ICS/OT/PLC, Emergency Directives, FBI/NSA LotL -> Watchlist #1, #3, #8)
+ * 2. CISA Cybersecurity Advisories RSS XML Parser (ICS/OT/PLC, Emergency Directives, FBI/NSA LotL/ARTEX/Java4Shell -> Watchlist #1, #2, #3, #8)
  */
 export function parseCisaAdvisoriesXml(rawXml: string): LiveSignal[] {
   const doc = xmlParser.parse(rawXml) as {
@@ -217,14 +228,15 @@ export function parseCisaAdvisoriesXml(rawXml: string): LiveSignal[] {
 
     const hay = `${title} ${link} ${desc}`.toLowerCase();
     const isIcsOt =
-      /icsa-|ics-advisories|plc\b|scada|operational technology|rockwell|siemens|schneider|dorsett|controls|modbus|water|energy|dams/.test(
+      /icsa-|ics-advisories|plc\b|scada|operational technology|rockwell|siemens|schneider|dorsett|controls|modbus|water|energy|dams|artex/.test(
         hay
       );
-    const isDirective = /emergency directive|binding operational|bootloader|firmware|juniper|cisco/.test(
-      hay
-    );
+    const isDirective =
+      /emergency directive|binding operational|bootloader|firmware|juniper|cisco|java4shell|openjdk|puppet/.test(
+        hay
+      );
     const isLotl =
-      /living-off-the-land|living off the land|volt typhoon|salt typhoon|nsa|fbi|tacacs|radius|staging/.test(
+      /living-off-the-land|living off the land|volt typhoon|salt typhoon|nsa|fbi|tacacs|radius|staging|artex/.test(
         hay
       );
 

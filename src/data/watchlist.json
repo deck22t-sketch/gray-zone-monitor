@@ -9,9 +9,18 @@
   {
     "id": "#2",
     "signal": "Sudden KEV Catalog Addition",
-    "mechanism": "Mid-week addition of a Juniper Junos or Cisco routing/onboarding CVE to CISA's Known Exploited Vulnerabilities (KEV) catalog with a 72-hour remediation deadline.",
+    "mechanism": "Mid-week addition of a Juniper Junos or Cisco routing/onboarding CVE to CISA's Known Exploited Vulnerabilities (KEV) catalog with a 72-hour remediation deadline. On November 17, CISA added Perforce Puppet Enterprise CVE-2026-115731 (CVSS 9.4 untrusted data deserialization RCE on Puppet configuration servers; federal patch deadline Dec. 1, 2026 per CISA KEV Alert) and issued an urgent alert with Canada's Cyber Centre on \"Java4Shell\" (CVE-2026-114938), an unauthenticated OpenJDK/Oracle HotSpot Base64 RCE affecting Java 17/21/25/27 with working exploits demonstrated against Jira, Confluence, Jenkins, and Keycloak (CISA Java Alert).",
     "forensicMeaning": "Forensics confirmed an existing onboarding or routing-daemon flaw was weaponized prior to deployment.",
-    "sources": []
+    "sources": [
+      {
+        "label": "CISA KEV Alert",
+        "url": "https://www.cisa.gov/news-events/alerts/2026/11/17/cisa-adds-one-known-exploited-vulnerability-catalog"
+      },
+      {
+        "label": "CISA Java Alert",
+        "url": "https://www.cisa.gov/news-events/alerts/2026/11/17/critical-java-vulnerability-requires-immediate-patching"
+      }
+    ]
   },
   {
     "id": "#3",
@@ -51,9 +60,14 @@
   {
     "id": "#8",
     "signal": "Active Iranian OT/PLC, Perimeter Wiper & DPRK Contractor Telemetry",
-    "mechanism": "Auditing public PLC/modem ports (44818, 2222, 102, 502, 22) per CISA AA26-097A, hunting Check Point CVE-2026-123039 -> SSH VMware ESXi destroy_v6 wiper lateral movement, and screening remote IT contractors against FBI PSA261013 indicators.",
+    "mechanism": "Auditing public PLC/modem ports (44818, 2222, 102, 502, 22) per CISA AA26-097A, hunting Check Point CVE-2026-123039 -> SSH VMware ESXi destroy_v6 wiper lateral movement, screening remote IT contractors against FBI PSA261013 indicators, and tracking the FBI's FLASH advisory warning that threat actors are weaponizing circulating open-source versions of the LLM-driven ARTEX framework to breach energy, manufacturing, and telecom networks in under three hours (Industrial Cyber).",
     "forensicMeaning": "Detects live destructive OT/hypervisor wipers and salaried DPRK insider access inside enterprise staging pipelines.",
-    "sources": []
+    "sources": [
+      {
+        "label": "Industrial Cyber",
+        "url": "https://industrialcyber.co/industrial-cyber-attacks/fbi-warns-hackers-weaponizing-artex-ai-framework-to-automate-attacks-on-energy-manufacturing-telecom/"
+      }
+    ]
   },
   {
     "id": "#9",

@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import {
@@ -26,7 +26,23 @@ const NAV_ITEMS = [
 export function TopNav() {
   const pathname = usePathname();
   const { bundle, setSearchOpen, setChangelogOpen } = usePortal();
+  const [scrollPct, setScrollPct] = useState(0);
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+
+  useEffect(() => {
+    const updateScroll = () => {
+      const docHeight =
+        document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      if (docHeight <= 0) {
+        setScrollPct(0);
+        return;
+      }
+      setScrollPct(Math.min(100, Math.max(0, (window.scrollY / docHeight) * 100)));
+    };
+    updateScroll();
+    window.addEventListener('scroll', updateScroll, { passive: true });
+    return () => window.removeEventListener('scroll', updateScroll);
+  }, [pathname]);
 
   const isRouteActive = (href: string) => {
     if (href === '/') {
@@ -35,17 +51,21 @@ export function TopNav() {
     return pathname === href || pathname === `${href}/` || pathname.startsWith(`${href}/`);
   };
 
-  const { feedHealth } = bundle;
+  const { feedHealth, changelog, sections } = bundle;
   const allLive = feedHealth.liveCount === feedHealth.totalFeeds && feedHealth.totalFeeds > 0;
+  const totalDiffs =
+    changelog.addedIncidents.length +
+    changelog.updatedStatuses.length +
+    changelog.riskShifts.length;
 
   return (
     <header className="sticky top-0 z-40 glass-panel border-b border-white/10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="flex flex-wrap items-center justify-between gap-3 py-3">
+      <div className="max-w-[1380px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-wrap items-center justify-between gap-3 py-2.5">
           {/* Brand */}
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="w-9 h-9 rounded-lg bg-[#111827] border border-white/15 flex items-center justify-center">
-              <span className="w-2.5 h-2.5 rounded-xs bg-[#EF4444] shadow-[0_0_10px_#EF4444]" />
+            <div className="w-9 h-9 rounded-lg bg-[#0E1524] border border-white/15 flex items-center justify-center shrink-0">
+              <span className="w-2.5 h-2.5 rounded-xs bg-[#EF4444]" />
             </div>
             <div>
               <div className="flex items-center gap-2">
@@ -53,11 +73,11 @@ export function TopNav() {
                   GRAY-ZONE &amp; INFRASTRUCTURE MONITOR
                 </span>
                 <span className="hidden sm:inline-block font-mono-tactical text-[10px] px-1.5 py-0.5 rounded bg-white/[0.06] border border-white/10 text-gray-300">
-                  NOV 2026
+                  {sections.docDate.toUpperCase()}
                 </span>
               </div>
               <p className="text-[11px] font-mono-tactical text-gray-400">
-                Canonical Executive Briefing + Zero-Key Federal/Backbone OSINT
+                Canonical Executive Briefing · Zero-Key Federal &amp; Backbone OSINT
               </p>
             </div>
           </Link>
@@ -91,6 +111,11 @@ export function TopNav() {
             >
               <History className="w-3.5 h-3.5 text-[#38BDF8]" />
               <span className="hidden md:inline">What Changed</span>
+              {totalDiffs > 0 && (
+                <span className="px-1.5 py-0.2 rounded bg-[#F59E0B]/20 border border-[#F59E0B]/40 text-[10px] font-semibold text-[#F59E0B]">
+                  {totalDiffs}
+                </span>
+              )}
             </button>
 
             <button
@@ -119,7 +144,10 @@ export function TopNav() {
         </div>
 
         {/* 5-View Modular Navigation Bar */}
-        <nav aria-label="Primary Intelligence Views" className="flex items-center gap-1 overflow-x-auto pb-2">
+        <nav
+          aria-label="Primary Intelligence Views"
+          className="flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-2"
+        >
           {NAV_ITEMS.map((item) => {
             const Icon = item.icon;
             const active = isRouteActive(item.href);
@@ -127,9 +155,9 @@ export function TopNav() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap transition ${
+                className={`relative inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap transition ${
                   active
-                    ? 'bg-white/[0.09] text-white border border-white/15'
+                    ? 'bg-white/[0.09] text-white border border-white/18 shadow-xs'
                     : 'text-gray-400 hover:text-gray-200 hover:bg-white/[0.04] border border-transparent'
                 }`}
               >
@@ -141,6 +169,14 @@ export function TopNav() {
             );
           })}
         </nav>
+      </div>
+
+      {/* Subtle 2px Reading Progress Indicator */}
+      <div className="h-[2px] w-full bg-transparent overflow-hidden">
+        <div
+          className="h-full bg-[#38BDF8]/80 transition-[width] duration-100 ease-out"
+          style={{ width: `${scrollPct}%` }}
+        />
       </div>
     </header>
   );

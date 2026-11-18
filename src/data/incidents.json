@@ -31,7 +31,7 @@
     "classification": "hybrid_transition_bug",
     "impact": "4.5-hr nationwide ground stop; ~12,462 flight disruptions; 17 of 22 ARTCCs destabilized; ~USD 345M Big-Four airline earnings hit",
     "vector": "Two-router broadcast flood (El Dorado, AR Friday 3:30 p.m. ET cutover + 3-wk-old Amarillo, TX Juniper router on legacy TDM); HPE cites installer config (WTTW / AP)",
-    "status": "Nov. 17: FAA halted router rollout & powered off all ~400 installed Juniper routers; Florida FBI/lab probe active.",
+    "status": "Nov. 17: FAA halted router rollout & powered off all ~400 installed Juniper routers; Florida FBI/lab probe active. WaPo reports on-site FAA official tested & signed off on El Dorado cutover 8 mins before ground stop; White House formed multi-agency \"tiger team.\"",
     "sources": [
       {
         "label": "WTTW / AP",
@@ -66,7 +66,7 @@
     "sector": "Web Supply Chain — 178 Orgs",
     "classification": "malicious_attack",
     "impact": "Infected 188 JS snippets across Zoom, HSBC, Equifax, Salesforce, BBC, CNN, Fox News, Peacock, GitLab & Optimizely login; clippers, skimmers & .icu iOS exploit routing (StepSecurity)",
-    "vector": "Confirmed Malicious Attack via Optimizely account signup flow; 26 payload mutations (Report URI)",
+    "vector": "Confirmed Malicious Attack via Optimizely account signup flow; 26 payload mutations (Report URI); active 16–19 hrs via projectJS (affecting custom CNAMEs too), seeded from webshell[.]lol (04:21 UTC Nov. 16); remediated by Optimizely (Black Kite)",
     "status": "1688360[.]cc placed on hold Nov. 17; wallets swept toward HitBTC; manual audit of Project JS required for atob()/inline fallbacks.",
     "sources": [
       {
@@ -76,6 +76,10 @@
       {
         "label": "Report URI",
         "url": "https://blog.report-uri.com/worlds-largest-brands-infected-with-malware-via-optimizely/"
+      },
+      {
+        "label": "Black Kite",
+        "url": "https://blackkite.com/blog/optimizely-supply-chain-attack"
       }
     ]
   },
@@ -124,10 +128,10 @@
     "window": "Nov. 17, 2026 (~8:17 a.m. CST onward)",
     "entity": "Marriott International",
     "sector": "Global Hospitality — 10,200+ Properties",
-    "classification": "unspecified",
+    "classification": "hybrid_transition_bug",
     "impact": "Sign-in, online booking, Bonvoy app, and property check-in disruptions (AP News; Gulf News)",
-    "vector": "Unspecified technical disruption; root cause pending",
-    "status": "Monitoring Marriott post-mortem for shared cloud, CDN, identity, or payment-gateway overlap.",
+    "vector": "Technical issue affecting sign-in capabilities; cyber ruled out by Marriott",
+    "status": "Resolved Tuesday evening alongside technology partners.",
     "sources": [
       {
         "label": "AP News",
@@ -147,7 +151,7 @@
     "classification": "hybrid_transition_bug",
     "impact": "Internal classified network degraded/offline; Fort Meade ordered \"Code Gray\"/\"Code Yellow\" staggered arrivals to prevent login storms; Five Eyes unaffected (CBS News)",
     "vector": "Scheduled routine maintenance/patching after weeks of instability; White House/NSA rule out cyberattack (Fox News)",
-    "status": "Active restoration; bipartisan Gang of Eight briefing demands & Nov. 18 House Homeland Security hearing.",
+    "status": "Official NSA statement cites routine maintenance degradation; full internal restoration timing unconfirmed entering Nov. 18 House hearing.",
     "sources": [
       {
         "label": "CBS News",
@@ -187,7 +191,7 @@
     "classification": "client_cascade",
     "impact": "Outages across App Store/Connect, iCloud Sign-In (>1,800 reports), Apple Pay (>2,300), Apple Music, AppleCare & Business/School Manager; caused downstream iOS Gmail login errors (Tom's Guide; 9to5Mac)",
     "vector": "Apple confirmed an \"internal update caused some outages this morning\"; Google confirmed Workspace/Gmail remained 100% healthy",
-    "status": "Recovering Tuesday afternoon; monitoring residual iCloud/App Store Connect auth tokens.",
+    "status": "All Apple services (including iCloud Sign-In & Apple Pay) confirmed fully restored by 5:59 p.m. ET Nov. 17.",
     "sources": [
       {
         "label": "Tom's Guide",
