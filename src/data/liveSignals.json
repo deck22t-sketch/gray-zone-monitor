@@ -1,7 +1,7 @@
 {
-  "ingestedAtISO": "2026-11-17T22:29:25.463Z",
+  "ingestedAtISO": "2026-11-18T06:25:32.026Z",
   "ingestionMode": "ZERO_KEY_PUBLIC_FEEDS",
-  "totalSignals": 75,
+  "totalSignals": 78,
   "signals": [
     {
       "id": "cisa-adv-icsa-26-321-11",
@@ -187,39 +187,61 @@
       "markdownRow": "| #11+ — 2026-11-10 | Google Chromium (Enterprise / Edge Security) | Google Chromium contains a use-after-free vulnerability in the XML component that could allow a remote attacker to execute arbitrary code i… ([CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search_api_fulltext=CVE-2026-125350)) | Active exploitation confirmed (CVE-2026-125350); due 2026-11-24 | Live Wire (CRITICAL) — Watchlist #2, #8 |"
     },
     {
-      "id": "kev-cve-2024-27834",
-      "sourceId": "cisa-kev",
-      "sourceName": "CISA KEV Catalog",
-      "attributionText": "Source: CISA Known Exploited Vulnerabilities Catalog (2026.11.17)",
-      "publishedAtISO": "2026-11-04T12:00:00.000Z",
-      "title": "CVE-2024-27834: Apple Multiple Products — Apple Multiple Products Improper Authentication Vulnerability",
-      "summary": "Apple iOS, iPadOS, macOS, Safari, tvOS and watchOS 10.5 contain an improper authentication vulnerability which could allow an attacker with arbitrary read and write capability to bypass pointer authentication. Federal BOD 22-01 remediation due 2026-11-18.",
-      "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search_api_fulltext=CVE-2024-27834",
-      "severity": "critical",
+      "id": "faa-delay-fll-1",
+      "sourceId": "faa-nas",
+      "sourceName": "FAA NAS Status",
+      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Wed Nov 18 06:25:00 2026 GMT",
+      "publishedAtISO": "2026-11-18T06:25:00.000Z",
+      "title": "FAA Arrival/Departure Delay: FLL",
+      "summary": "General Arrival/Departure Delay Info at FLL — Reason: TM Initiatives:MIT:WX. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Wed Nov 18 06:25:00 2026 GMT)",
+      "url": "https://nasstatus.faa.gov/",
+      "severity": "elevated",
       "watchlistMatches": [
-        "#2",
-        "#8"
+        "#7"
       ],
       "riskMatrixMatches": [
-        "#2"
+        "#1"
       ],
       "countdownMatches": [],
       "tags": [
-        "CISA-KEV",
-        "CVE-2024-27834",
-        "Apple",
-        "Priority-Edge-Vendor"
+        "FAA-NAS",
+        "Arrival-Departure-Delay",
+        "FLL"
       ],
-      "markdownRow": "| #11+ — 2026-11-04 | Apple Multiple Products (Enterprise / Edge Security) | Apple iOS, iPadOS, macOS, Safari, tvOS and watchOS 10.5 contain an improper authentication vulnerability which could allow an attacker with… ([CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search_api_fulltext=CVE-2024-27834)) | Active exploitation confirmed (CVE-2024-27834); due 2026-11-18 | Live Wire (CRITICAL) — Watchlist #2, #8 |"
+      "markdownRow": "| #11+ — Wed Nov 18 06:25:00 2026 GMT | FAA NAS — FLL (Commercial Aviation) | Arrival/Departure delays reported at FLL ([FAA NAS Status](https://nasstatus.faa.gov/)) | FAA NAS General Arrival/Departure Delay Info: TM Initiatives:MIT:WX | Live Wire (ELEVATED) — Watchlist #7 |"
     },
     {
-      "id": "faa-closure-sna-1",
+      "id": "faa-delay-mia-2",
       "sourceId": "faa-nas",
       "sourceName": "FAA NAS Status",
-      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Tue Nov 17 22:29:05 2026 GMT",
-      "publishedAtISO": "2026-11-17T22:29:05.000Z",
+      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Wed Nov 18 06:25:00 2026 GMT",
+      "publishedAtISO": "2026-11-18T06:25:00.000Z",
+      "title": "FAA Arrival/Departure Delay: MIA",
+      "summary": "General Arrival/Departure Delay Info at MIA — Reason: TM Initiatives:MIT:WX. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Wed Nov 18 06:25:00 2026 GMT)",
+      "url": "https://nasstatus.faa.gov/",
+      "severity": "elevated",
+      "watchlistMatches": [
+        "#7"
+      ],
+      "riskMatrixMatches": [
+        "#1"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "FAA-NAS",
+        "Arrival-Departure-Delay",
+        "MIA"
+      ],
+      "markdownRow": "| #11+ — Wed Nov 18 06:25:00 2026 GMT | FAA NAS — MIA (Commercial Aviation) | Arrival/Departure delays reported at MIA ([FAA NAS Status](https://nasstatus.faa.gov/)) | FAA NAS General Arrival/Departure Delay Info: TM Initiatives:MIT:WX | Live Wire (ELEVATED) — Watchlist #7 |"
+    },
+    {
+      "id": "faa-closure-sna-3",
+      "sourceId": "faa-nas",
+      "sourceName": "FAA NAS Status",
+      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Wed Nov 18 06:25:00 2026 GMT",
+      "publishedAtISO": "2026-11-18T06:25:00.000Z",
       "title": "FAA Airport Closures: SNA",
-      "summary": "SNA: !SNA 11/020 SNA AD AP CLSD DLY 0730-1415 2611150730-2611211415 | Reopen: Nov 21 at 14:15 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Tue Nov 17 22:29:05 2026 GMT)",
+      "summary": "SNA: !SNA 11/020 SNA AD AP CLSD DLY 0730-1415 2611150730-2611211415 | Reopen: Nov 21 at 14:15 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Wed Nov 18 06:25:00 2026 GMT)",
       "url": "https://nasstatus.faa.gov/",
       "severity": "elevated",
       "watchlistMatches": [
@@ -234,7 +256,161 @@
         "Airport-Closure",
         "SNA"
       ],
-      "markdownRow": "| #11+ — Tue Nov 17 22:29:05 2026 GMT | FAA NAS — SNA (National Aviation / Airport Ops) | Airport Closures active at SNA until Nov 21 at 14:15 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !SNA 11/020 SNA AD AP CLSD DLY 0730-1415 2611150730-2611211415 | Live Wire (ELEVATED) — Watchlist #7 |"
+      "markdownRow": "| #11+ — Wed Nov 18 06:25:00 2026 GMT | FAA NAS — SNA (National Aviation / Airport Ops) | Airport Closures active at SNA until Nov 21 at 14:15 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !SNA 11/020 SNA AD AP CLSD DLY 0730-1415 2611150730-2611211415 | Live Wire (ELEVATED) — Watchlist #7 |"
+    },
+    {
+      "id": "faa-closure-pns-4",
+      "sourceId": "faa-nas",
+      "sourceName": "FAA NAS Status",
+      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Wed Nov 18 06:25:00 2026 GMT",
+      "publishedAtISO": "2026-11-18T06:25:00.000Z",
+      "title": "FAA Airport Closures: PNS",
+      "summary": "PNS: !PNS 11/040 PNS AD AP CLSD EXC HEL OPS 2611180600-2611181100 | Reopen: Nov 18 at 11:00 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Wed Nov 18 06:25:00 2026 GMT)",
+      "url": "https://nasstatus.faa.gov/",
+      "severity": "elevated",
+      "watchlistMatches": [
+        "#7"
+      ],
+      "riskMatrixMatches": [
+        "#1"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "FAA-NAS",
+        "Airport-Closure",
+        "PNS"
+      ],
+      "markdownRow": "| #11+ — Wed Nov 18 06:25:00 2026 GMT | FAA NAS — PNS (National Aviation / Airport Ops) | Airport Closures active at PNS until Nov 18 at 11:00 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !PNS 11/040 PNS AD AP CLSD EXC HEL OPS 2611180600-2611181100 | Live Wire (ELEVATED) — Watchlist #7 |"
+    },
+    {
+      "id": "cloudflare-status-k3r9i5tbre4i",
+      "sourceId": "cloudflare-status",
+      "sourceName": "Cloudflare Status",
+      "attributionText": "Source: Cloudflare System Status (www.cloudflarestatus.com)",
+      "publishedAtISO": "2026-11-18T04:51:31.574Z",
+      "title": "Cloudflare: Network Performance Issues in Paris [RESOLVED]",
+      "summary": "This incident has been resolved.",
+      "url": "https://www.cloudflarestatus.com/incidents/k3r9i5tbre4i",
+      "severity": "elevated",
+      "watchlistMatches": [
+        "#6",
+        "#7"
+      ],
+      "riskMatrixMatches": [
+        "#1",
+        "#2"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "Cloudflare",
+        "impact:minor",
+        "status:resolved"
+      ],
+      "markdownRow": "| #11+ — Nov 18, 2026 | Cloudflare (Global CDN & Edge) | Network Performance Issues in Paris (minor impact; resolved) ([Cloudflare Status](https://www.cloudflarestatus.com/incidents/k3r9i5tbre4i)) | This incident has been resolved. | Live Wire (ELEVATED) — Watchlist #6, #7 |"
+    },
+    {
+      "id": "cloudflare-status-pi6wgeh78wsn",
+      "sourceId": "cloudflare-status",
+      "sourceName": "Cloudflare Status",
+      "attributionText": "Source: Cloudflare System Status (www.cloudflarestatus.com)",
+      "publishedAtISO": "2026-11-18T04:05:52.700Z",
+      "title": "Cloudflare: Elevated 5xx error rates and latency in Mumbai [RESOLVED]",
+      "summary": "Between 02:31-03:04 UTC on November 18, a subset of customers reaching Mumbai, IN, may have experienced an elevated number of 5xx errors and increased latency. This has been resolved.",
+      "url": "https://www.cloudflarestatus.com/incidents/pi6wgeh78wsn",
+      "severity": "elevated",
+      "watchlistMatches": [
+        "#6",
+        "#7"
+      ],
+      "riskMatrixMatches": [
+        "#1",
+        "#2"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "Cloudflare",
+        "impact:minor",
+        "status:resolved"
+      ],
+      "markdownRow": "| #11+ — Nov 18, 2026 | Cloudflare (Global CDN & Edge) | Elevated 5xx error rates and latency in Mumbai (minor impact; resolved) ([Cloudflare Status](https://www.cloudflarestatus.com/incidents/pi6wgeh78wsn)) | Between 02:31-03:04 UTC on November 18, a subset of customers reaching Mumbai, IN, may have experienced an elevated number of 5xx… | Live Wire (ELEVATED) — Watchlist #6, #7 |"
+    },
+    {
+      "id": "cloudflare-status-sv9tnfpjiojf",
+      "sourceId": "cloudflare-status",
+      "sourceName": "Cloudflare Status",
+      "attributionText": "Source: Cloudflare System Status (www.cloudflarestatus.com)",
+      "publishedAtISO": "2026-11-18T03:23:23.095Z",
+      "title": "Cloudflare: Errors and stalled predictions on some models [RESOLVED]",
+      "summary": "This incident has been resolved.",
+      "url": "https://www.cloudflarestatus.com/incidents/sv9tnfpjiojf",
+      "severity": "elevated",
+      "watchlistMatches": [
+        "#6",
+        "#7"
+      ],
+      "riskMatrixMatches": [
+        "#1",
+        "#2"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "Cloudflare",
+        "impact:minor",
+        "status:resolved"
+      ],
+      "markdownRow": "| #11+ — Nov 17, 2026 | Cloudflare (Global CDN & Edge) | Errors and stalled predictions on some models (minor impact; resolved) ([Cloudflare Status](https://www.cloudflarestatus.com/incidents/sv9tnfpjiojf)) | This incident has been resolved. | Live Wire (ELEVATED) — Watchlist #6, #7 |"
+    },
+    {
+      "id": "cloudflare-status-0jozucwnpzy0",
+      "sourceId": "cloudflare-status",
+      "sourceName": "Cloudflare Status",
+      "attributionText": "Source: Cloudflare System Status (www.cloudflarestatus.com)",
+      "publishedAtISO": "2026-11-18T02:39:55.324Z",
+      "title": "Cloudflare: Cloudflare Access Issue [RESOLVED]",
+      "summary": "This incident has been resolved.",
+      "url": "https://www.cloudflarestatus.com/incidents/0jozucwnpzy0",
+      "severity": "elevated",
+      "watchlistMatches": [
+        "#6",
+        "#7"
+      ],
+      "riskMatrixMatches": [
+        "#1",
+        "#2"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "Cloudflare",
+        "impact:minor",
+        "status:resolved"
+      ],
+      "markdownRow": "| #11+ — Nov 18, 2026 | Cloudflare (Global CDN & Edge) | Cloudflare Access Issue (minor impact; resolved) ([Cloudflare Status](https://www.cloudflarestatus.com/incidents/0jozucwnpzy0)) | This incident has been resolved. | Live Wire (ELEVATED) — Watchlist #6, #7 |"
+    },
+    {
+      "id": "cloudflare-status-ylj5po752g6h",
+      "sourceId": "cloudflare-status",
+      "sourceName": "Cloudflare Status",
+      "attributionText": "Source: Cloudflare System Status (www.cloudflarestatus.com)",
+      "publishedAtISO": "2026-11-18T00:17:28.046Z",
+      "title": "Cloudflare: Issues with Durable Objects and Dependent Services [RESOLVED]",
+      "summary": "This incident has been resolved.",
+      "url": "https://www.cloudflarestatus.com/incidents/ylj5po752g6h",
+      "severity": "elevated",
+      "watchlistMatches": [
+        "#6",
+        "#7"
+      ],
+      "riskMatrixMatches": [
+        "#1",
+        "#2"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "Cloudflare",
+        "impact:minor",
+        "status:resolved"
+      ],
+      "markdownRow": "| #11+ — Nov 17, 2026 | Cloudflare (Global CDN & Edge) | Issues with Durable Objects and Dependent Services (minor impact; resolved) ([Cloudflare Status](https://www.cloudflarestatus.com/incidents/ylj5po752g6h)) | This incident has been resolved. | Live Wire (ELEVATED) — Watchlist #6, #7 |"
     },
     {
       "id": "cloudflare-status-gcn9xop0f7zm",
@@ -261,58 +437,6 @@
         "status:resolved"
       ],
       "markdownRow": "| #11+ — Nov 17, 2026 | Cloudflare (Global CDN & Edge) | R2 elevated errors and timeouts for requests from South America (minor impact; resolved) ([Cloudflare Status](https://www.cloudflarestatus.com/incidents/gcn9xop0f7zm)) | This incident has been resolved. | Live Wire (ELEVATED) — Watchlist #6, #7 |"
-    },
-    {
-      "id": "cloudflare-status-ylj5po752g6h",
-      "sourceId": "cloudflare-status",
-      "sourceName": "Cloudflare Status",
-      "attributionText": "Source: Cloudflare System Status (www.cloudflarestatus.com)",
-      "publishedAtISO": "2026-11-17T21:56:23.609Z",
-      "title": "Cloudflare: Issues with Durable Objects and Dependent Services [INVESTIGATING]",
-      "summary": "We are investigating reports of elevated timeout rates and performance degradation affecting Durable Objects. This may impact dependent services, including Stream and Containers. Our team is actively investigating, and further updates will be provided shortly.",
-      "url": "https://www.cloudflarestatus.com/incidents/ylj5po752g6h",
-      "severity": "elevated",
-      "watchlistMatches": [
-        "#6",
-        "#7"
-      ],
-      "riskMatrixMatches": [
-        "#1",
-        "#2"
-      ],
-      "countdownMatches": [],
-      "tags": [
-        "Cloudflare",
-        "impact:minor",
-        "status:investigating"
-      ],
-      "markdownRow": "| #11+ — Nov 17, 2026 | Cloudflare (Global CDN & Edge) | Issues with Durable Objects and Dependent Services (minor impact; investigating) ([Cloudflare Status](https://www.cloudflarestatus.com/incidents/ylj5po752g6h)) | We are investigating reports of elevated timeout rates and performance degradation affecting Durable Objects. This may impact dep… | Live Wire (ELEVATED) — Watchlist #6, #7 |"
-    },
-    {
-      "id": "cloudflare-status-sv9tnfpjiojf",
-      "sourceId": "cloudflare-status",
-      "sourceName": "Cloudflare Status",
-      "attributionText": "Source: Cloudflare System Status (www.cloudflarestatus.com)",
-      "publishedAtISO": "2026-11-17T21:53:51.025Z",
-      "title": "Cloudflare: Errors and stalled predictions on some models [IDENTIFIED]",
-      "summary": "The issue has been identified and a fix is being implemented. Current impact: predictions on OpenAI models are back to normal. Predictions on other models may still return HTTP 500 errors or stay in a processing state while we continue to work on a fix.",
-      "url": "https://www.cloudflarestatus.com/incidents/sv9tnfpjiojf",
-      "severity": "elevated",
-      "watchlistMatches": [
-        "#6",
-        "#7"
-      ],
-      "riskMatrixMatches": [
-        "#1",
-        "#2"
-      ],
-      "countdownMatches": [],
-      "tags": [
-        "Cloudflare",
-        "impact:minor",
-        "status:identified"
-      ],
-      "markdownRow": "| #11+ — Nov 17, 2026 | Cloudflare (Global CDN & Edge) | Errors and stalled predictions on some models (minor impact; identified) ([Cloudflare Status](https://www.cloudflarestatus.com/incidents/sv9tnfpjiojf)) | The issue has been identified and a fix is being implemented. Current impact: predictions on OpenAI models are back to normal. Pr… | Live Wire (ELEVATED) — Watchlist #6, #7 |"
     },
     {
       "id": "cloudflare-status-du63c25qjgjs",
@@ -436,58 +560,6 @@
         "AppleCare on Device"
       ],
       "markdownRow": "| #11+ — 11/17/2026 08:15 PST | Apple — AppleCare on Device (Consumer, Payments & Enterprise) | Outage (All users were affected); status: resolved ([Apple System Status](https://www.apple.com/support/systemstatus/)) | AppleCare purchase was temporarily unavailable. | Live Wire (ELEVATED) — Watchlist #7 |"
-    },
-    {
-      "id": "cloudflare-status-1ip2m5rvk7vb",
-      "sourceId": "cloudflare-status",
-      "sourceName": "Cloudflare Status",
-      "attributionText": "Source: Cloudflare System Status (www.cloudflarestatus.com)",
-      "publishedAtISO": "2026-11-17T15:51:08.214Z",
-      "title": "Cloudflare: Elevated number of 5xx and 499 errors [RESOLVED]",
-      "summary": "Between 13:55-14:35 UTC customers reaching Minneapolis, MN and Saint Louis, MO would have experienced an elevated number of 499 and 5xx errors.",
-      "url": "https://www.cloudflarestatus.com/incidents/1ip2m5rvk7vb",
-      "severity": "elevated",
-      "watchlistMatches": [
-        "#6",
-        "#7"
-      ],
-      "riskMatrixMatches": [
-        "#1",
-        "#2"
-      ],
-      "countdownMatches": [],
-      "tags": [
-        "Cloudflare",
-        "impact:minor",
-        "status:resolved"
-      ],
-      "markdownRow": "| #11+ — Nov 17, 2026 | Cloudflare (Global CDN & Edge) | Elevated number of 5xx and 499 errors (minor impact; resolved) ([Cloudflare Status](https://www.cloudflarestatus.com/incidents/1ip2m5rvk7vb)) | Between 13:55-14:35 UTC customers reaching Minneapolis, MN and Saint Louis, MO would have experienced an elevated number of 499 a… | Live Wire (ELEVATED) — Watchlist #6, #7 |"
-    },
-    {
-      "id": "cloudflare-status-tawn3zx7wh0z",
-      "sourceId": "cloudflare-status",
-      "sourceName": "Cloudflare Status",
-      "attributionText": "Source: Cloudflare System Status (www.cloudflarestatus.com)",
-      "publishedAtISO": "2026-11-17T14:56:52.677Z",
-      "title": "Cloudflare: Cloudflare One Gateway traffic unable to connect to Cloudflare domains that are regionalized [RESOLVED]",
-      "summary": "This incident has been resolved.",
-      "url": "https://www.cloudflarestatus.com/incidents/tawn3zx7wh0z",
-      "severity": "elevated",
-      "watchlistMatches": [
-        "#6",
-        "#7"
-      ],
-      "riskMatrixMatches": [
-        "#1",
-        "#2"
-      ],
-      "countdownMatches": [],
-      "tags": [
-        "Cloudflare",
-        "impact:minor",
-        "status:resolved"
-      ],
-      "markdownRow": "| #11+ — Nov 17, 2026 | Cloudflare (Global CDN & Edge) | Cloudflare One Gateway traffic unable to connect to Cloudflare domains that are regionalized (minor impact; resolved) ([Cloudflare Status](https://www.cloudflarestatus.com/incidents/tawn3zx7wh0z)) | This incident has been resolved. | Live Wire (ELEVATED) — Watchlist #6, #7 |"
     },
     {
       "id": "fedreg-2026-23400",
@@ -891,6 +963,29 @@
       "markdownRow": "| #11+ — 2026-11-17 | Perforce Puppet Enterprise (Enterprise / Edge Security) | Perforce Puppet Enterprise contains a deserialization of untrusted data vulnerability in Puppet’s report-processing code that allows a clie… ([CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search_api_fulltext=CVE-2026-115731)) | Active exploitation confirmed (CVE-2026-115731); due 2026-12-01 | Live Wire (ELEVATED) — Watchlist #2 |"
     },
     {
+      "id": "cisa-adv-icsa-26-321-06",
+      "sourceId": "cisa-advisories",
+      "sourceName": "CISA Advisories",
+      "attributionText": "Source: CISA Cybersecurity & ICS Advisories (cisa.gov)",
+      "publishedAtISO": "2026-11-17T12:00:00.000Z",
+      "title": "Siemens ROS#",
+      "summary": "View CSAF Summary ROS# before version 2.3.1 contains a code injection vulnerability that could allow an attacker that is able to pass a crafted message definition file to the user to inject arbitrary code into the generated program. Siemens has released a new…",
+      "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-321-06",
+      "severity": "elevated",
+      "watchlistMatches": [
+        "#8"
+      ],
+      "riskMatrixMatches": [
+        "#3"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "CISA-Advisory",
+        "ICS-OT-PLC"
+      ],
+      "markdownRow": "| #11+ — Nov 17, 2026 | Siemens ROS# (ICS / Critical OT) | View CSAF Summary ROS# before version 2.3.1 contains a code injection vulnerability that could allow an attacker that is able to pass a crafted message definition file to the user to inject arbitrary code into the generated program. Siemens has released a new… ([CISA Advisory](https://www.cisa.gov/news-events/ics-advisories/icsa-26-321-06)) | ICS/OT vulnerability or PLC exposure advisory | Live Wire (ELEVATED) — Watchlist #8 |"
+    },
+    {
       "id": "cisa-adv-icsa-26-321-01",
       "sourceId": "cisa-advisories",
       "sourceName": "CISA Advisories",
@@ -937,52 +1032,6 @@
       "markdownRow": "| #11+ — Nov 17, 2026 | Siemens Mendix Studio Pro (ICS / Critical OT) | View CSAF Summary Mendix Studio Pro contains multiple vulnerabilities in the MCP Server, that could allow an attacker with network access to interact with the server remotely or trick a user&#039;s browser into sending unauthorized requests, potentially leadi… ([CISA Advisory](https://www.cisa.gov/news-events/ics-advisories/icsa-26-321-05)) | ICS/OT vulnerability or PLC exposure advisory | Live Wire (ELEVATED) — Watchlist #8 |"
     },
     {
-      "id": "cisa-adv-icsa-26-321-09",
-      "sourceId": "cisa-advisories",
-      "sourceName": "CISA Advisories",
-      "attributionText": "Source: CISA Cybersecurity & ICS Advisories (cisa.gov)",
-      "publishedAtISO": "2026-11-17T12:00:00.000Z",
-      "title": "Siemens SIMATIC WinCC",
-      "summary": "View CSAF Summary Graphics Designer of SIMATIC WinCC before V8.2 contains an implicit active content execution vulnerability upon opening files, which could allow an attacker to cause arbitrary code execution on the device. Siemens is preparing fixes and reco…",
-      "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-321-09",
-      "severity": "elevated",
-      "watchlistMatches": [
-        "#8"
-      ],
-      "riskMatrixMatches": [
-        "#3"
-      ],
-      "countdownMatches": [],
-      "tags": [
-        "CISA-Advisory",
-        "ICS-OT-PLC"
-      ],
-      "markdownRow": "| #11+ — Nov 17, 2026 | Siemens SIMATIC WinCC (ICS / Critical OT) | View CSAF Summary Graphics Designer of SIMATIC WinCC before V8.2 contains an implicit active content execution vulnerability upon opening files, which could allow an attacker to cause arbitrary code execution on the device. Siemens is preparing fixes and reco… ([CISA Advisory](https://www.cisa.gov/news-events/ics-advisories/icsa-26-321-09)) | ICS/OT vulnerability or PLC exposure advisory | Live Wire (ELEVATED) — Watchlist #8 |"
-    },
-    {
-      "id": "cisa-adv-icsa-26-321-07",
-      "sourceId": "cisa-advisories",
-      "sourceName": "CISA Advisories",
-      "attributionText": "Source: CISA Cybersecurity & ICS Advisories (cisa.gov)",
-      "publishedAtISO": "2026-11-17T12:00:00.000Z",
-      "title": "Siemens RUGGEDCOM APE1808",
-      "summary": "View CSAF Summary Fortinet has published information on a Double Free vulnerability in FortiOS. This advisory lists the related Siemens Industrial products. Siemens recommends to update Fortigate NGFW to V7.6.9 or later following the secure update recommendat…",
-      "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-321-07",
-      "severity": "elevated",
-      "watchlistMatches": [
-        "#8"
-      ],
-      "riskMatrixMatches": [
-        "#3"
-      ],
-      "countdownMatches": [],
-      "tags": [
-        "CISA-Advisory",
-        "ICS-OT-PLC"
-      ],
-      "markdownRow": "| #11+ — Nov 17, 2026 | Siemens RUGGEDCOM APE1808 (ICS / Critical OT) | View CSAF Summary Fortinet has published information on a Double Free vulnerability in FortiOS. This advisory lists the related Siemens Industrial products. Siemens recommends to update Fortigate NGFW to V7.6.9 or later following the secure update recommendat… ([CISA Advisory](https://www.cisa.gov/news-events/ics-advisories/icsa-26-321-07)) | ICS/OT vulnerability or PLC exposure advisory | Live Wire (ELEVATED) — Watchlist #8 |"
-    },
-    {
       "id": "cisa-adv-icsa-26-321-02",
       "sourceId": "cisa-advisories",
       "sourceName": "CISA Advisories",
@@ -1004,52 +1053,6 @@
         "ICS-OT-PLC"
       ],
       "markdownRow": "| #11+ — Nov 17, 2026 | Siemens .NET Client Library for SIMATIC S7 Webserver API (ICS / Critical OT) | View CSAF Summary .NET Client Library for SIMATIC S7 Webserver API contains multiple vulnerabilities that could allow an attacker to obtain sensitive information or write arbitrary files outside the intended download directory. Siemens has released a new vers… ([CISA Advisory](https://www.cisa.gov/news-events/ics-advisories/icsa-26-321-02)) | ICS/OT vulnerability or PLC exposure advisory | Live Wire (ELEVATED) — Watchlist #8 |"
-    },
-    {
-      "id": "cisa-adv-icsa-26-321-03",
-      "sourceId": "cisa-advisories",
-      "sourceName": "CISA Advisories",
-      "attributionText": "Source: CISA Cybersecurity & ICS Advisories (cisa.gov)",
-      "publishedAtISO": "2026-11-17T12:00:00.000Z",
-      "title": "Siemens Industrial Automation Software Products",
-      "summary": "View CSAF Summary On October 21, 2026, the Node.js project released security updates addressing a critical vulnerability in the Brotli decoder bundled with Node.js, commonly referred to as \"Node2Shell\" (tracked as CVE-2026-111497). The vulnerability is an out…",
-      "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-321-03",
-      "severity": "elevated",
-      "watchlistMatches": [
-        "#8"
-      ],
-      "riskMatrixMatches": [
-        "#3"
-      ],
-      "countdownMatches": [],
-      "tags": [
-        "CISA-Advisory",
-        "ICS-OT-PLC"
-      ],
-      "markdownRow": "| #11+ — Nov 17, 2026 | Siemens Industrial Automation Software Products (ICS / Critical OT) | View CSAF Summary On October 21, 2026, the Node.js project released security updates addressing a critical vulnerability in the Brotli decoder bundled with Node.js, commonly referred to as \"Node2Shell\" (tracked as CVE-2026-111497). The vulnerability is an out… ([CISA Advisory](https://www.cisa.gov/news-events/ics-advisories/icsa-26-321-03)) | ICS/OT vulnerability or PLC exposure advisory | Live Wire (ELEVATED) — Watchlist #8 |"
-    },
-    {
-      "id": "cisa-adv-icsa-26-321-08",
-      "sourceId": "cisa-advisories",
-      "sourceName": "CISA Advisories",
-      "attributionText": "Source: CISA Cybersecurity & ICS Advisories (cisa.gov)",
-      "publishedAtISO": "2026-11-17T12:00:00.000Z",
-      "title": "Siemens SIMATIC",
-      "summary": "View CSAF Summary The products listed below contain an authentication bypass vulnerability that could allow an on-path attacker to take over the session of a legitimate user and execute arbitrary code with the privileges of the victim user. Siemens is prepari…",
-      "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-321-08",
-      "severity": "elevated",
-      "watchlistMatches": [
-        "#8"
-      ],
-      "riskMatrixMatches": [
-        "#3"
-      ],
-      "countdownMatches": [],
-      "tags": [
-        "CISA-Advisory",
-        "ICS-OT-PLC"
-      ],
-      "markdownRow": "| #11+ — Nov 17, 2026 | Siemens SIMATIC (ICS / Critical OT) | View CSAF Summary The products listed below contain an authentication bypass vulnerability that could allow an on-path attacker to take over the session of a legitimate user and execute arbitrary code with the privileges of the victim user. Siemens is prepari… ([CISA Advisory](https://www.cisa.gov/news-events/ics-advisories/icsa-26-321-08)) | ICS/OT vulnerability or PLC exposure advisory | Live Wire (ELEVATED) — Watchlist #8 |"
     },
     {
       "id": "cisa-adv-icsa-26-321-04",
@@ -1075,29 +1078,6 @@
       "markdownRow": "| #11+ — Nov 17, 2026 | Siemens Industrial Software Products (ICS / Critical OT) | View CSAF Summary On October 21, 2026, the Node.js project released security updates addressing a critical vulnerability in the Brotli decoder bundled with Node.js, commonly referred to as \"Node2Shell\" (tracked as CVE-2026-111497). The vulnerability is an out… ([CISA Advisory](https://www.cisa.gov/news-events/ics-advisories/icsa-26-321-04)) | ICS/OT vulnerability or PLC exposure advisory | Live Wire (ELEVATED) — Watchlist #8 |"
     },
     {
-      "id": "cisa-adv-icsa-26-321-06",
-      "sourceId": "cisa-advisories",
-      "sourceName": "CISA Advisories",
-      "attributionText": "Source: CISA Cybersecurity & ICS Advisories (cisa.gov)",
-      "publishedAtISO": "2026-11-17T12:00:00.000Z",
-      "title": "Siemens ROS#",
-      "summary": "View CSAF Summary ROS# before version 2.3.1 contains a code injection vulnerability that could allow an attacker that is able to pass a crafted message definition file to the user to inject arbitrary code into the generated program. Siemens has released a new…",
-      "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-321-06",
-      "severity": "elevated",
-      "watchlistMatches": [
-        "#8"
-      ],
-      "riskMatrixMatches": [
-        "#3"
-      ],
-      "countdownMatches": [],
-      "tags": [
-        "CISA-Advisory",
-        "ICS-OT-PLC"
-      ],
-      "markdownRow": "| #11+ — Nov 17, 2026 | Siemens ROS# (ICS / Critical OT) | View CSAF Summary ROS# before version 2.3.1 contains a code injection vulnerability that could allow an attacker that is able to pass a crafted message definition file to the user to inject arbitrary code into the generated program. Siemens has released a new… ([CISA Advisory](https://www.cisa.gov/news-events/ics-advisories/icsa-26-321-06)) | ICS/OT vulnerability or PLC exposure advisory | Live Wire (ELEVATED) — Watchlist #8 |"
-    },
-    {
       "id": "cisa-adv-icsa-26-321-10",
       "sourceId": "cisa-advisories",
       "sourceName": "CISA Advisories",
@@ -1121,30 +1101,96 @@
       "markdownRow": "| #11+ — Nov 17, 2026 | Siemens Simcenter Femap (ICS / Critical OT) | View CSAF Summary Simcenter Femap is affected by an out of bounds read vulnerability that could be triggered when the application reads files in X_T format. This could allow an attacker to crash the application or execute arbitrary code. Siemens has released… ([CISA Advisory](https://www.cisa.gov/news-events/ics-advisories/icsa-26-321-10)) | ICS/OT vulnerability or PLC exposure advisory | Live Wire (ELEVATED) — Watchlist #8 |"
     },
     {
-      "id": "cloudflare-status-1nqok7v173qg",
-      "sourceId": "cloudflare-status",
-      "sourceName": "Cloudflare Status",
-      "attributionText": "Source: Cloudflare System Status (www.cloudflarestatus.com)",
-      "publishedAtISO": "2026-11-17T08:51:33.964Z",
-      "title": "Cloudflare: Elevated number of 52x origin connectivity errors in Seoul [RESOLVED]",
-      "summary": "Between 04:50 - 05:50 UTC 17th November, customers in Seoul may have experienced an elevated number of 52x origin connectivity errors. This is now resolved.",
-      "url": "https://www.cloudflarestatus.com/incidents/1nqok7v173qg",
+      "id": "cisa-adv-icsa-26-321-08",
+      "sourceId": "cisa-advisories",
+      "sourceName": "CISA Advisories",
+      "attributionText": "Source: CISA Cybersecurity & ICS Advisories (cisa.gov)",
+      "publishedAtISO": "2026-11-17T12:00:00.000Z",
+      "title": "Siemens SIMATIC",
+      "summary": "View CSAF Summary The products listed below contain an authentication bypass vulnerability that could allow an on-path attacker to take over the session of a legitimate user and execute arbitrary code with the privileges of the victim user. Siemens is prepari…",
+      "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-321-08",
       "severity": "elevated",
       "watchlistMatches": [
-        "#6",
-        "#7"
+        "#8"
       ],
       "riskMatrixMatches": [
-        "#1",
-        "#2"
+        "#3"
       ],
       "countdownMatches": [],
       "tags": [
-        "Cloudflare",
-        "impact:minor",
-        "status:resolved"
+        "CISA-Advisory",
+        "ICS-OT-PLC"
       ],
-      "markdownRow": "| #11+ — Nov 17, 2026 | Cloudflare (Global CDN & Edge) | Elevated number of 52x origin connectivity errors in Seoul (minor impact; resolved) ([Cloudflare Status](https://www.cloudflarestatus.com/incidents/1nqok7v173qg)) | Between 04:50 - 05:50 UTC 17th November, customers in Seoul may have experienced an elevated number of 52x origin connectivity er… | Live Wire (ELEVATED) — Watchlist #6, #7 |"
+      "markdownRow": "| #11+ — Nov 17, 2026 | Siemens SIMATIC (ICS / Critical OT) | View CSAF Summary The products listed below contain an authentication bypass vulnerability that could allow an on-path attacker to take over the session of a legitimate user and execute arbitrary code with the privileges of the victim user. Siemens is prepari… ([CISA Advisory](https://www.cisa.gov/news-events/ics-advisories/icsa-26-321-08)) | ICS/OT vulnerability or PLC exposure advisory | Live Wire (ELEVATED) — Watchlist #8 |"
+    },
+    {
+      "id": "cisa-adv-icsa-26-321-03",
+      "sourceId": "cisa-advisories",
+      "sourceName": "CISA Advisories",
+      "attributionText": "Source: CISA Cybersecurity & ICS Advisories (cisa.gov)",
+      "publishedAtISO": "2026-11-17T12:00:00.000Z",
+      "title": "Siemens Industrial Automation Software Products",
+      "summary": "View CSAF Summary On October 21, 2026, the Node.js project released security updates addressing a critical vulnerability in the Brotli decoder bundled with Node.js, commonly referred to as \"Node2Shell\" (tracked as CVE-2026-111497). The vulnerability is an out…",
+      "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-321-03",
+      "severity": "elevated",
+      "watchlistMatches": [
+        "#8"
+      ],
+      "riskMatrixMatches": [
+        "#3"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "CISA-Advisory",
+        "ICS-OT-PLC"
+      ],
+      "markdownRow": "| #11+ — Nov 17, 2026 | Siemens Industrial Automation Software Products (ICS / Critical OT) | View CSAF Summary On October 21, 2026, the Node.js project released security updates addressing a critical vulnerability in the Brotli decoder bundled with Node.js, commonly referred to as \"Node2Shell\" (tracked as CVE-2026-111497). The vulnerability is an out… ([CISA Advisory](https://www.cisa.gov/news-events/ics-advisories/icsa-26-321-03)) | ICS/OT vulnerability or PLC exposure advisory | Live Wire (ELEVATED) — Watchlist #8 |"
+    },
+    {
+      "id": "cisa-adv-icsa-26-321-07",
+      "sourceId": "cisa-advisories",
+      "sourceName": "CISA Advisories",
+      "attributionText": "Source: CISA Cybersecurity & ICS Advisories (cisa.gov)",
+      "publishedAtISO": "2026-11-17T12:00:00.000Z",
+      "title": "Siemens RUGGEDCOM APE1808",
+      "summary": "View CSAF Summary Fortinet has published information on a Double Free vulnerability in FortiOS. This advisory lists the related Siemens Industrial products. Siemens recommends to update Fortigate NGFW to V7.6.9 or later following the secure update recommendat…",
+      "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-321-07",
+      "severity": "elevated",
+      "watchlistMatches": [
+        "#8"
+      ],
+      "riskMatrixMatches": [
+        "#3"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "CISA-Advisory",
+        "ICS-OT-PLC"
+      ],
+      "markdownRow": "| #11+ — Nov 17, 2026 | Siemens RUGGEDCOM APE1808 (ICS / Critical OT) | View CSAF Summary Fortinet has published information on a Double Free vulnerability in FortiOS. This advisory lists the related Siemens Industrial products. Siemens recommends to update Fortigate NGFW to V7.6.9 or later following the secure update recommendat… ([CISA Advisory](https://www.cisa.gov/news-events/ics-advisories/icsa-26-321-07)) | ICS/OT vulnerability or PLC exposure advisory | Live Wire (ELEVATED) — Watchlist #8 |"
+    },
+    {
+      "id": "cisa-adv-icsa-26-321-09",
+      "sourceId": "cisa-advisories",
+      "sourceName": "CISA Advisories",
+      "attributionText": "Source: CISA Cybersecurity & ICS Advisories (cisa.gov)",
+      "publishedAtISO": "2026-11-17T12:00:00.000Z",
+      "title": "Siemens SIMATIC WinCC",
+      "summary": "View CSAF Summary Graphics Designer of SIMATIC WinCC before V8.2 contains an implicit active content execution vulnerability upon opening files, which could allow an attacker to cause arbitrary code execution on the device. Siemens is preparing fixes and reco…",
+      "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-321-09",
+      "severity": "elevated",
+      "watchlistMatches": [
+        "#8"
+      ],
+      "riskMatrixMatches": [
+        "#3"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "CISA-Advisory",
+        "ICS-OT-PLC"
+      ],
+      "markdownRow": "| #11+ — Nov 17, 2026 | Siemens SIMATIC WinCC (ICS / Critical OT) | View CSAF Summary Graphics Designer of SIMATIC WinCC before V8.2 contains an implicit active content execution vulnerability upon opening files, which could allow an attacker to cause arbitrary code execution on the device. Siemens is preparing fixes and reco… ([CISA Advisory](https://www.cisa.gov/news-events/ics-advisories/icsa-26-321-09)) | ICS/OT vulnerability or PLC exposure advisory | Live Wire (ELEVATED) — Watchlist #8 |"
     },
     {
       "id": "github-status-gl7yhd7jx00v",
@@ -1319,37 +1365,14 @@
       "markdownRow": "| #11+ — Nov 12, 2026 | GitHub (Developer & CI/CD Backbone) | Disruption with Email Delivery (minor impact; resolved) ([GitHub Status](https://stspg.io/lr8v4v8t7gs2)) | This incident has been resolved. Thank you for your patience and understanding as we addressed this issue. A detailed root cause… | Live Wire (ELEVATED) — Watchlist #2, #7 |"
     },
     {
-      "id": "cisa-adv-icsa-26-316-02",
-      "sourceId": "cisa-advisories",
-      "sourceName": "CISA Advisories",
-      "attributionText": "Source: CISA Cybersecurity & ICS Advisories (cisa.gov)",
-      "publishedAtISO": "2026-11-12T12:00:00.000Z",
-      "title": "Siemens Desigo, Gridscale",
-      "summary": "View CSAF Summary On October 21, 2026, the Node.js project released security updates addressing a critical vulnerability in the Brotli decoder bundled with Node.js, commonly referred to as \"Node2Shell\" (tracked as CVE-2026-111497). The vulnerability is an out…",
-      "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-316-02",
-      "severity": "elevated",
-      "watchlistMatches": [
-        "#8"
-      ],
-      "riskMatrixMatches": [
-        "#3"
-      ],
-      "countdownMatches": [],
-      "tags": [
-        "CISA-Advisory",
-        "ICS-OT-PLC"
-      ],
-      "markdownRow": "| #11+ — Nov 12, 2026 | Siemens Desigo, Gridscale (ICS / Critical OT) | View CSAF Summary On October 21, 2026, the Node.js project released security updates addressing a critical vulnerability in the Brotli decoder bundled with Node.js, commonly referred to as \"Node2Shell\" (tracked as CVE-2026-111497). The vulnerability is an out… ([CISA Advisory](https://www.cisa.gov/news-events/ics-advisories/icsa-26-316-02)) | ICS/OT vulnerability or PLC exposure advisory | Live Wire (ELEVATED) — Watchlist #8 |"
-    },
-    {
-      "id": "cisa-adv-icsa-26-316-04",
+      "id": "cisa-adv-icsa-26-316-05",
       "sourceId": "cisa-advisories",
       "sourceName": "CISA Advisories",
       "attributionText": "Source: CISA Cybersecurity & ICS Advisories (cisa.gov)",
       "publishedAtISO": "2026-11-12T12:00:00.000Z",
       "title": "Siemens RUGGEDCOM APE1808",
-      "summary": "View CSAF Summary Palo Alto Networks has published information on a vulnerability in PAN-OS related to the Node2Shell vulnerability. This advisory lists the related Siemens Industrial products affected by this vulnerability. Customers are advised to consult a…",
-      "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-316-04",
+      "summary": "View CSAF Summary Palo Alto Networks has published information on vulnerabilities in PAN-OS related to PHP2Shell vulnerabilities. This advisory lists the related Siemens Industrial products affected by these vulnerabilities. Customers are advised to consult a…",
+      "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-316-05",
       "severity": "elevated",
       "watchlistMatches": [
         "#8"
@@ -1362,7 +1385,7 @@
         "CISA-Advisory",
         "ICS-OT-PLC"
       ],
-      "markdownRow": "| #11+ — Nov 12, 2026 | Siemens RUGGEDCOM APE1808 (ICS / Critical OT) | View CSAF Summary Palo Alto Networks has published information on a vulnerability in PAN-OS related to the Node2Shell vulnerability. This advisory lists the related Siemens Industrial products affected by this vulnerability. Customers are advised to consult a… ([CISA Advisory](https://www.cisa.gov/news-events/ics-advisories/icsa-26-316-04)) | ICS/OT vulnerability or PLC exposure advisory | Live Wire (ELEVATED) — Watchlist #8 |"
+      "markdownRow": "| #11+ — Nov 12, 2026 | Siemens RUGGEDCOM APE1808 (ICS / Critical OT) | View CSAF Summary Palo Alto Networks has published information on vulnerabilities in PAN-OS related to PHP2Shell vulnerabilities. This advisory lists the related Siemens Industrial products affected by these vulnerabilities. Customers are advised to consult a… ([CISA Advisory](https://www.cisa.gov/news-events/ics-advisories/icsa-26-316-05)) | ICS/OT vulnerability or PLC exposure advisory | Live Wire (ELEVATED) — Watchlist #8 |"
     },
     {
       "id": "github-status-1h2wbly1y72t",
@@ -1582,13 +1605,13 @@
       "markdownRow": "| #11+ — 2026-11-06 | SonicWall SonicOS SSLVPN (Enterprise / Edge Security) | SonicWall SonicOS SSLVPN contains a use of single-factor authentication vulnerability that may allow a user with valid credentials for an a… ([CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search_api_fulltext=CVE-2026-19868)) | Active exploitation confirmed (CVE-2026-19868); due 2026-11-20 | Live Wire (ELEVATED) — Watchlist #2 |"
     },
     {
-      "id": "faa-closure-lax-2",
+      "id": "faa-closure-lax-5",
       "sourceId": "faa-nas",
       "sourceName": "FAA NAS Status",
-      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Tue Nov 17 22:29:05 2026 GMT",
-      "publishedAtISO": "2026-11-17T22:29:05.000Z",
+      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Wed Nov 18 06:25:00 2026 GMT",
+      "publishedAtISO": "2026-11-18T06:25:00.000Z",
       "title": "FAA Airport Closures: LAX (GA NOTAM Restriction)",
-      "summary": "LAX: !LAX 05/277 LAX AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR CTC ATLANTIC AVIATION 310-258-9884 OR SIGNATURE AVIATION 310-410-9605 2605271826-2705281600 | Reopen: May 28 at 16:00 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Tue Nov 17 22:29:05 2026 GMT)",
+      "summary": "LAX: !LAX 05/277 LAX AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR CTC ATLANTIC AVIATION 310-258-9884 OR SIGNATURE AVIATION 310-410-9605 2605271826-2705281600 | Reopen: May 28 at 16:00 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Wed Nov 18 06:25:00 2026 GMT)",
       "url": "https://nasstatus.faa.gov/",
       "severity": "info",
       "watchlistMatches": [
@@ -1603,16 +1626,16 @@
         "Airport-Closure",
         "LAX"
       ],
-      "markdownRow": "| #11+ — Tue Nov 17 22:29:05 2026 GMT | FAA NAS — LAX (National Aviation / Airport Ops) | Airport Closures active at LAX until May 28 at 16:00 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !LAX 05/277 LAX AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR CTC ATLANTIC AVIATION 310-258-9884 OR SIGNATURE A… | Live Wire (INFO) — Watchlist #7 |"
+      "markdownRow": "| #11+ — Wed Nov 18 06:25:00 2026 GMT | FAA NAS — LAX (National Aviation / Airport Ops) | Airport Closures active at LAX until May 28 at 16:00 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !LAX 05/277 LAX AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR CTC ATLANTIC AVIATION 310-258-9884 OR SIGNATURE A… | Live Wire (INFO) — Watchlist #7 |"
     },
     {
-      "id": "faa-closure-san-3",
+      "id": "faa-closure-san-6",
       "sourceId": "faa-nas",
       "sourceName": "FAA NAS Status",
-      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Tue Nov 17 22:29:05 2026 GMT",
-      "publishedAtISO": "2026-11-17T22:29:05.000Z",
+      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Wed Nov 18 06:25:00 2026 GMT",
+      "publishedAtISO": "2026-11-18T06:25:00.000Z",
       "title": "FAA Airport Closures: SAN (GA NOTAM Restriction)",
-      "summary": "SAN: !SAN 10/004 SAN AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC PPR 619-298-7704 2610011633-2701010800 | Reopen: Jan 01 at 08:00 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Tue Nov 17 22:29:05 2026 GMT)",
+      "summary": "SAN: !SAN 10/004 SAN AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC PPR 619-298-7704 2610011633-2701010800 | Reopen: Jan 01 at 08:00 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Wed Nov 18 06:25:00 2026 GMT)",
       "url": "https://nasstatus.faa.gov/",
       "severity": "info",
       "watchlistMatches": [
@@ -1627,16 +1650,16 @@
         "Airport-Closure",
         "SAN"
       ],
-      "markdownRow": "| #11+ — Tue Nov 17 22:29:05 2026 GMT | FAA NAS — SAN (National Aviation / Airport Ops) | Airport Closures active at SAN until Jan 01 at 08:00 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !SAN 10/004 SAN AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC PPR 619-298-7704 2610011633-2701010800 | Live Wire (INFO) — Watchlist #7 |"
+      "markdownRow": "| #11+ — Wed Nov 18 06:25:00 2026 GMT | FAA NAS — SAN (National Aviation / Airport Ops) | Airport Closures active at SAN until Jan 01 at 08:00 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !SAN 10/004 SAN AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC PPR 619-298-7704 2610011633-2701010800 | Live Wire (INFO) — Watchlist #7 |"
     },
     {
-      "id": "faa-closure-las-4",
+      "id": "faa-closure-las-7",
       "sourceId": "faa-nas",
       "sourceName": "FAA NAS Status",
-      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Tue Nov 17 22:29:05 2026 GMT",
-      "publishedAtISO": "2026-11-17T22:29:05.000Z",
+      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Wed Nov 18 06:25:00 2026 GMT",
+      "publishedAtISO": "2026-11-18T06:25:00.000Z",
       "title": "FAA Airport Closures: LAS (GA NOTAM Restriction)",
-      "summary": "LAS: !LAS 10/160 LAS AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR 702-261-7775 2610281926-2701272300 | Reopen: Jan 27 at 23:00 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Tue Nov 17 22:29:05 2026 GMT)",
+      "summary": "LAS: !LAS 10/160 LAS AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR 702-261-7775 2610281926-2701272300 | Reopen: Jan 27 at 23:00 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Wed Nov 18 06:25:00 2026 GMT)",
       "url": "https://nasstatus.faa.gov/",
       "severity": "info",
       "watchlistMatches": [
@@ -1651,7 +1674,7 @@
         "Airport-Closure",
         "LAS"
       ],
-      "markdownRow": "| #11+ — Tue Nov 17 22:29:05 2026 GMT | FAA NAS — LAS (National Aviation / Airport Ops) | Airport Closures active at LAS until Jan 27 at 23:00 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !LAS 10/160 LAS AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR 702-261-7775 2610281926-2701272300 | Live Wire (INFO) — Watchlist #7 |"
+      "markdownRow": "| #11+ — Wed Nov 18 06:25:00 2026 GMT | FAA NAS — LAS (National Aviation / Airport Ops) | Airport Closures active at LAS until Jan 27 at 23:00 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !LAS 10/160 LAS AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR 702-261-7775 2610281926-2701272300 | Live Wire (INFO) — Watchlist #7 |"
     },
     {
       "id": "apple-apple-business-2000005804",
@@ -1733,7 +1756,7 @@
       "attributionText": "Source: Apple System Status (apple.com/support/systemstatus)",
       "publishedAtISO": "2026-11-17T17:11:00.000Z",
       "title": "Apple Volume Purchase Program: Issue [RESOLVED]",
-      "summary": "Users may have experienced intermittent issues with this service. (Some users were affected; Window: 11/17/2026 09:11 PST – 11/17/2026 13:00 PST)",
+      "summary": "Users may have experienced intermittent issues with this service. (Some users were affected; Window: 11/17/2026 09:11 PST – 11/17/2026 14:00 PST)",
       "url": "https://www.apple.com/support/systemstatus/",
       "severity": "info",
       "watchlistMatches": [
@@ -1748,6 +1771,31 @@
         "Volume Purchase Program"
       ],
       "markdownRow": "| #11+ — 11/17/2026 09:11 PST | Apple — Volume Purchase Program (Consumer, Payments & Enterprise) | Issue (Some users were affected); status: resolved ([Apple System Status](https://www.apple.com/support/systemstatus/)) | Users may have experienced intermittent issues with this service. | Live Wire (INFO) — Watchlist #7 |"
+    },
+    {
+      "id": "apple-icloud-account-sign-in-2000005811",
+      "sourceId": "apple-status",
+      "sourceName": "Apple System Status",
+      "attributionText": "Source: Apple System Status (apple.com/support/systemstatus)",
+      "publishedAtISO": "2026-11-17T16:45:00.000Z",
+      "title": "Apple iCloud Account & Sign In: Issue [RESOLVED]",
+      "summary": "This service may have been slow or unavailable. (Some users were affected; Window: 11/17/2026 08:45 PST – 11/17/2026 13:15 PST) [Monitor for downstream iOS third-party auth/mail cascade noise per Watchlist #9]",
+      "url": "https://www.apple.com/support/systemstatus/",
+      "severity": "info",
+      "watchlistMatches": [
+        "#7",
+        "#9"
+      ],
+      "riskMatrixMatches": [
+        "#1"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "Apple-Ecosystem",
+        "iCloud Account & Sign In",
+        "Auth-Cascade-Watch"
+      ],
+      "markdownRow": "| #11+ — 11/17/2026 08:45 PST | Apple — iCloud Account & Sign In (Consumer, Payments & Enterprise) | Issue (Some users were affected); status: resolved ([Apple System Status](https://www.apple.com/support/systemstatus/)) | This service may have been slow or unavailable.; Watchlist #9 auth cascade check | Live Wire (INFO) — Watchlist #7, #9 |"
     },
     {
       "id": "apple-icloud-mail-2000005805",
@@ -1822,6 +1870,28 @@
         "FAA-Regulatory"
       ],
       "markdownRow": "| #11+ — 2026-11-17 | Transportation Department, Federal Aviation Administration (Federal Regulatory) | Airworthiness Directives; Daher Aircraft, SAS ([FR 2026-23372](https://www.federalregister.gov/documents/2026/11/17/2026-23372/airworthiness-directives-daher-aircraft-sas)) | Proposed Rule filing mapped to Risk #1 | Live Wire (INFO) — Watchlist #5 |"
+    },
+    {
+      "id": "cisa-adv-critical-java-vulnerability-requires-immediate-patching",
+      "sourceId": "cisa-advisories",
+      "sourceName": "CISA Advisories",
+      "attributionText": "Source: CISA Cybersecurity & ICS Advisories (cisa.gov)",
+      "publishedAtISO": "2026-11-17T12:00:00.000Z",
+      "title": "Critical Java Vulnerability Requires Immediate Patching",
+      "summary": "Purpose CISA strongly urges organizations to immediately patch the recently disclosed Oracle Java vulnerability CVE-2026-114938 . This critical memory-corruption vulnerability, known as “Java4Shell,” affects the Base64 decoder of the x86-64 HotSpot Java Virtu…",
+      "url": "https://www.cisa.gov/news-events/alerts/2026/11/17/critical-java-vulnerability-requires-immediate-patching",
+      "severity": "info",
+      "watchlistMatches": [
+        "#7"
+      ],
+      "riskMatrixMatches": [
+        "#2"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "CISA-Advisory"
+      ],
+      "markdownRow": "| #11+ — Nov 17, 2026 | Critical Java Vulnerability Requires Immediate Patching (Federal Cyber Advisory) | Purpose CISA strongly urges organizations to immediately patch the recently disclosed Oracle Java vulnerability CVE-2026-114938 . This critical memory-corruption vulnerability, known as “Java4Shell,” affects the Base64 decoder of the x86-64 HotSpot Java Virtu… ([CISA Advisory](https://www.cisa.gov/news-events/alerts/2026/11/17/critical-java-vulnerability-requires-immediate-patching)) | Federal cybersecurity advisory readout | Live Wire (INFO) — Watchlist #7 |"
     },
     {
       "id": "cisa-adv-cisa-adds-one-known-exploited-vulnerability-catalog",
