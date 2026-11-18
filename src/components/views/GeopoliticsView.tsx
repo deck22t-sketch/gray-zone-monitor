@@ -1,10 +1,11 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Globe, Flame, Cpu, AlertOctagon, Columns2 } from 'lucide-react';
+import { Globe, Flame, Cpu, AlertOctagon, Columns2, ShieldOff, Landmark } from 'lucide-react';
 import { usePortal } from '@/context/PortalContext';
 import { NarrativeAccordion } from '@/components/shell/NarrativeAccordion';
 import { RichTextWithCitations } from '@/components/shell/RichTextWithCitations';
+import { TacticalFigure } from '@/components/shell/TacticalFigure';
 
 const ESCALATION_WINDOWS = [
   {
@@ -96,11 +97,111 @@ const PUTIN_ESSAY_CLAIMS = [
   },
 ];
 
+const DETERRENCE_FAILURES = [
+  {
+    num: '01',
+    title: 'Deepened European Energy Reliance',
+    detail:
+      'Approval of the Nord Stream 2 gas pipeline in 2015 signaled that key European capitals prioritized cheap Russian hydrocarbons over strategic decoupling after Crimea.',
+  },
+  {
+    num: '02',
+    title: 'Incremental Sanctions & $630B "Fortress Russia"',
+    detail:
+      'Gradual post-2014 sanctions gave Moscow 8 years to amass >$630B in FX and gold reserves, build domestic payment rails, and pivot trade toward China.',
+  },
+  {
+    num: '03',
+    title: 'Fragmented Western Signaling',
+    detail:
+      'The 2014–2015 Minsk Accords treated Moscow as a mediator rather than a belligerent; fluctuating NATO rhetoric and the chaotic Aug. 2021 Kabul withdrawal reinforced Kremlin perceptions of fatigue.',
+  },
+  {
+    num: '04',
+    title: 'Absence of Military Ambiguity',
+    detail:
+      'Explicit U.S. and NATO assurances before Feb. 2022 that allied troops would not fight inside non-member Ukraine removed direct military deterrence from Putin’s pre-invasion calculus.',
+  },
+  {
+    num: '05',
+    title: 'Ideology Over Economic Rationality',
+    detail:
+      'Western capitals assumed GDP contraction and oligarch asset freezes would deter invasion, misjudging Putin’s willingness to trade economic growth for Petrine empire-building.',
+  },
+] as const;
+
+const LEGACY_CONDITIONS = [
+  {
+    cond: '1. Subjugation or Partition of Ukraine',
+    req: 'Legal recognition of Crimea + 4 annexed oblasts, permanent demilitarized neutrality, and political subordination in Kyiv.',
+    reality: 'Forged permanent Ukrainian national resistance and armed Western interoperability.',
+  },
+  {
+    cond: '2. Rollback of NATO to 1997 Borders',
+    req: 'Enforcing Dec. 2021 treaty ultimatums removing allied infrastructure from Poland and the Baltic states.',
+    reality: 'Finland and Sweden joined NATO, doubling Russia’s direct land border with the alliance.',
+  },
+  {
+    cond: '3. Post-Soviet Re-Integration',
+    req: 'Completing "Union State" absorption of Belarus and reasserting hegemony across Central Asia and the South Caucasus.',
+    reality: 'Chinese economic dominance in Central Asia and regional autonomy eroded Moscow’s monopoly.',
+  },
+  {
+    cond: '4. Collapse of Western Resolve & Asset Unfreeze',
+    req: 'Exhausting U.S./EU aid and unfreezing sovereign central bank reserves without Russian concessions.',
+    reality: 'Accelerated multi-year European rearmament and long-term decoupling from Russian pipeline gas.',
+  },
+  {
+    cond: '5. Domestic Endurance & Controlled Succession',
+    req: 'Weathering severe wartime inflation, labor deficits, and massive casualties as Putin (age 74) advances into his late 70s.',
+    reality: 'Turned Russia into an economic junior partner to China (GDP ~8–10x larger).',
+  },
+] as const;
+
+const CHOKEPOINT_GAUGES = [
+  {
+    label: 'Global Raw Gallium Production Controlled by China',
+    sub: 'Nov. 27, 2026 U.S. export-ban pause expiry · AESA radar / F-35 / AMDR exposure',
+    pct: 98,
+    display: '98%',
+    color: '#EF4444',
+  },
+  {
+    label: 'Active API Drug Master Files Held by China (45%) + India (43%)',
+    sub: 'U.S. holds only 3% · 48 of top 100 critical U.S. hospital drugs rely on single-country KSMs',
+    pct: 88,
+    display: '88% vs 3% U.S.',
+    color: '#EF4444',
+  },
+  {
+    label: 'U.S. Post-Busan REE Compound Import Contraction',
+    sub: 'Driven by unpaused April 2025 licensing on 7 heavy REEs · Jan. 10, 2027 0.1% waiver cliff',
+    pct: 75,
+    display: '-75% Drop',
+    color: '#F59E0B',
+  },
+  {
+    label: 'U.S. Drug Manufacturing Supply-Chain Visibility Gap (FDA)',
+    sub: 'Lack of full upstream KSM facility visibility across U.S.-marketed medicines',
+    pct: 63,
+    display: '63% Opaque',
+    color: '#F59E0B',
+  },
+  {
+    label: 'Global Germanium Supply Controlled by China',
+    sub: 'Essential for infrared night-vision optics, fiber optics, and space solar cells',
+    pct: 60,
+    display: '60%',
+    color: '#38BDF8',
+  },
+] as const;
+
 export function GeopoliticsView() {
   const { bundle } = usePortal();
   const [selectedWindow, setSelectedWindow] = useState<string>('win-1');
   const [selectedTheater, setSelectedTheater] =
     useState<keyof typeof THEATER_TRIPWIRES>('Indo-Pacific');
+  const [arcTab, setArcTab] = useState<'crimea' | 'deterrence' | 'legacy'>('crimea');
 
   const geoSections = bundle.sections.narrativeSections.filter((s) => s.number <= 5);
   const sec1 = geoSections.find((s) => s.number === 1);
@@ -130,11 +231,29 @@ export function GeopoliticsView() {
         </h1>
         <p className="text-sm text-gray-300 max-w-4xl leading-relaxed">
           Contrasting early 20th-century Bolshevik &ldquo;Monopoly/Finance Capitalism&rdquo; theory
-          with Vladimir Putin&rsquo;s anti-Bolshevik Petrine revanchism, the transactional
-          Russia–China entente, active U.S.–Iran attrition under <em>Operation Epic Fury</em>, and
-          imminent Chinese critical mineral &amp; API supply-chain cliffs.
+          with Vladimir Putin&rsquo;s anti-Bolshevik Petrine revanchism, the 2014 Crimea hybrid
+          playbook and Western deterrence gaps, active U.S.–Iran attrition under{' '}
+          <em>Operation Epic Fury</em>, and imminent Chinese critical mineral &amp; API supply-chain
+          cliffs.
         </p>
       </section>
+
+      {/* Editorial Plate 01: 1917 Vanguard Industrialism vs 2026 Maritime/Orbital Coercion */}
+      <TacticalFigure
+        src="/images/geopolitics-imperial-arc.jpg"
+        alt="Editorial diptych contrasting early 20th-century industrial steelworks and constructivist geometry with modern satellite maritime trajectories and energy chokepoint telemetry"
+        plateId="PLATE 01"
+        title="Doctrinal Inversion: 1917 Anti-Imperial Vanguard Theory vs. 2021–2026 Petrine Territorial Revanchism"
+        domainBadge="SECTIONS 1–4 · DOCTRINE & DETERRENCE"
+        priority
+        metrics={[
+          { label: '1903–1917 Doctrine', value: 'Monopoly / Finance Critique', tone: 'amber' },
+          { label: 'June 9, 2022 Shift', value: 'Petrine "Return & Reinforce"', tone: 'crimson' },
+          { label: 'Strategic Backfire', value: '2x NATO Land Border (FI/SE)', tone: 'cyan' },
+          { label: 'Bilateral Entente', value: '>90% RUB/CNY · 8–10x GDP Gap', tone: 'emerald' },
+        ]}
+        caption="Whereas Lenin’s 1916 Imperialism thesis attributed great-power war to financial-industrial cartels and codified nominal Soviet republic secession rights, Putin explicitly repudiates Lenin’s ethno-federal architecture in favor of 18th-century Petrine imperial restoration—forging permanent Ukrainian resistance and junior-partner dependency on Beijing."
+      />
 
       {/* Split-Pane Contrast Explorer: Bolshevik Theory vs. Putin's Anti-Bolshevik Petrine Revanchism */}
       <section aria-labelledby="split-pane-heading" className="space-y-3">
@@ -268,6 +387,188 @@ export function GeopoliticsView() {
         </div>
       </section>
 
+      {/* Interactive Section 3 & 4 Diagnostic: Crimea Hybrid Playbook, Deterrence Gaps & Legacy Limits */}
+      <section aria-labelledby="crimea-deterrence-heading" className="glass-panel rounded-2xl p-6 space-y-5">
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3 pb-4 border-b border-white/10">
+          <div className="space-y-1">
+            <div className="flex items-center gap-2">
+              <ShieldOff className="w-4 h-4 text-[#F59E0B]" />
+              <h2
+                id="crimea-deterrence-heading"
+                className="text-sm font-mono-tactical uppercase tracking-wider text-white"
+              >
+                Sections 3 &amp; 4 · 2014 Hybrid Annexation, Deterrence Gaps &amp; Legacy Feasibility
+              </h2>
+            </div>
+            <p className="text-xs text-gray-400">
+              Inspect how the 21-day 2014 Crimea hybrid operation exposed five Western deterrence
+              failures—and why Putin&rsquo;s five strategic end-state conditions remain structurally
+              unattainable.
+            </p>
+          </div>
+
+          <div className="flex flex-wrap gap-1.5">
+            {[
+              { id: 'crimea', label: 'Euromaidan & 21-Day Crimea Playbook' },
+              { id: 'deterrence', label: '5 Pre-2022 Deterrence Gaps' },
+              { id: 'legacy', label: '5 Unattainable Legacy Conditions' },
+            ].map((t) => (
+              <button
+                key={t.id}
+                type="button"
+                onClick={() => setArcTab(t.id as 'crimea' | 'deterrence' | 'legacy')}
+                className={`px-3 py-1.5 rounded-lg text-xs font-mono-tactical border cursor-pointer transition ${
+                  arcTab === t.id
+                    ? 'bg-[#38BDF8]/15 border-[#38BDF8]/50 text-[#38BDF8]'
+                    : 'bg-white/[0.04] border-white/10 text-gray-300 hover:bg-white/[0.08]'
+                }`}
+              >
+                {t.label}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {arcTab === 'crimea' && (
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 text-xs">
+            <div className="glass-card rounded-xl p-4 space-y-3">
+              <div className="flex items-center justify-between">
+                <span className="font-mono-tactical text-[11px] text-[#38BDF8]">
+                  SEC. 3.1 · REVOLUTION OF DIGNITY (NOV 2013 – FEB 2014)
+                </span>
+                <span className="font-mono-tactical text-[11px] text-[#10B981]">
+                  328–0 Rada Vote
+                </span>
+              </div>
+              <div className="space-y-2">
+                {[
+                  [
+                    'Nov 21 – Dec 1, 2013',
+                    'Yanukovych suspends EU Association Agreement under $15B Moscow pressure; Berkut beatings spark 500,000-citizen Maidan mobilization.',
+                  ],
+                  [
+                    'Jan 16 – 22, 2014',
+                    'Anti-protest "Dictatorship Laws" rammed through parliament; first fatal shootings on Hrushevsky Street.',
+                  ],
+                  [
+                    'Feb 18 – 20, 2014',
+                    'Live-ammunition sniper crackdown kills >100 demonstrators (the Heavenly Hundred).',
+                  ],
+                  [
+                    'Feb 21 – 22, 2014',
+                    'Yanukovych flees to Russia; Verkhovna Rada votes 328–0 to remove him, restores 2004 constitution, and sets May 2014 elections.',
+                  ],
+                ].map(([date, desc]) => (
+                  <div key={date} className="obsidian-surface rounded-lg p-3 space-y-1">
+                    <p className="font-mono-tactical text-[11px] text-white">{date}</p>
+                    <p className="text-gray-300 leading-relaxed">{desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="glass-card rounded-xl p-4 space-y-3">
+              <div className="flex items-center justify-between">
+                <span className="font-mono-tactical text-[11px] text-[#EF4444]">
+                  SEC. 3.2 · 21-DAY CRIMEA HYBRID SEIZURE (FEB 22 – MAR 21, 2014)
+                </span>
+                <span className="font-mono-tactical text-[11px] text-[#F59E0B]">
+                  Gray-Zone Prototype
+                </span>
+              </div>
+              <div className="space-y-2">
+                {[
+                  [
+                    '1. Leased Sevastopol Foothold',
+                    'Surged GRU Spetsnaz, VDV airborne, and naval infantry through the leased Black Sea Fleet base (15,000–25,000 personnel capacity).',
+                  ],
+                  [
+                    '2. Unmarked "Little Green Men"',
+                    'Stripped military insignia for plausible deniability ("local self-defense forces") to stall NATO consensus for critical weeks.',
+                  ],
+                  [
+                    '3. Bloodless Base Paralysis & EW',
+                    'Encircled Ukrainian garrisons, severed C2 cables, jammed radar, and placed civilians at gates while Kyiv ordered troops to hold fire.',
+                  ],
+                  [
+                    '4. Coerced Feb. 27 Parliament Seizure',
+                    'Armed special forces locked Simferopol lawmakers inside to install Sergey Aksyonov (4% 2010 vote share), followed by the rushed Mar. 16 ballot.',
+                  ],
+                ].map(([step, desc]) => (
+                  <div key={step} className="obsidian-surface rounded-lg p-3 space-y-1">
+                    <p className="font-semibold text-[#F59E0B]">{step}</p>
+                    <p className="text-gray-300 leading-relaxed">{desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {arcTab === 'deterrence' && (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-3 text-xs">
+            {DETERRENCE_FAILURES.map((df) => (
+              <div key={df.num} className="obsidian-surface rounded-xl p-4 space-y-2">
+                <span className="font-mono-tactical text-xs px-2 py-0.5 rounded bg-[#F59E0B]/15 border border-[#F59E0B]/35 text-[#F59E0B]">
+                  GAP {df.num}
+                </span>
+                <h3 className="text-sm font-semibold text-white leading-snug">{df.title}</h3>
+                <p className="text-gray-300 leading-relaxed">{df.detail}</p>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {arcTab === 'legacy' && (
+          <div className="space-y-3 text-xs">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+              {[
+                [
+                  'Phase I (1999–2006)',
+                  'Restoring Centralized State Order',
+                  '1999 Millennium Message rescuing Russia from 1990s oligarchic fragmentation while promising modernization.',
+                ],
+                [
+                  'Phase II (2007–2020)',
+                  'Ending U.S. Unipolarity',
+                  '2007 Munich Speech positioning Russia as an Orthodox civilizational counterweight to Western institutions.',
+                ],
+                [
+                  'Phase III (2021–Present)',
+                  'The Petrine Imperial Mission (Age 74)',
+                  'June 9, 2022 comparison to Peter the Great’s 21-year Great Northern War: "returning and reinforcing" lands.',
+                ],
+              ].map(([phase, title, desc]) => (
+                <div key={phase} className="glass-card rounded-xl p-3.5 space-y-1">
+                  <p className="font-mono-tactical text-[11px] text-[#38BDF8]">{phase}</p>
+                  <p className="font-semibold text-white">{title}</p>
+                  <p className="text-gray-300 leading-relaxed">{desc}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5">
+              {LEGACY_CONDITIONS.map((item) => (
+                <div key={item.cond} className="obsidian-surface rounded-xl p-3.5 space-y-1.5">
+                  <div className="flex items-center gap-2">
+                    <Landmark className="w-3.5 h-3.5 text-[#EF4444] shrink-0" />
+                    <p className="font-semibold text-white">{item.cond}</p>
+                  </div>
+                  <p className="text-gray-400">
+                    <span className="font-mono-tactical text-gray-300">Required: </span>
+                    {item.req}
+                  </p>
+                  <p className="text-gray-200">
+                    <span className="font-mono-tactical text-[#10B981]">2026 Reality: </span>
+                    {item.reality}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+      </section>
+
       {/* Russia-China 2026-2030 Escalation Timeline & Tripwires */}
       <section aria-labelledby="entente-heading" className="space-y-4">
         <h2
@@ -378,6 +679,22 @@ export function GeopoliticsView() {
         </div>
       </section>
 
+      {/* Editorial Plate 02: Strait of Hormuz & Critical Mineral / Semiconductor Wafer Chokepoints */}
+      <TacticalFigure
+        src="/images/hormuz-mineral-chokepoints.jpg"
+        alt="Orbital radar view of naval maritime chokepoint shipping wakes paired with macro crystalline gallium and a cyan-lit semiconductor radar wafer"
+        plateId="PLATE 02"
+        title="Dual Attrition Chokepoints: Strait of Hormuz Naval Blockade & Chinese Gallium / REE / API Leverage"
+        domainBadge="SECTIONS 5.4–5.5 · MARITIME & MINERAL CLIFFS"
+        metrics={[
+          { label: 'Hormuz Oil & LNG', value: '25% Oil · 20% LNG · 30% Fert.', tone: 'crimson' },
+          { label: 'Brent Crude Spike', value: '$60.85 → $118.35 / bbl Peak', tone: 'amber' },
+          { label: 'Nov. 27 Cliff', value: '98% China Raw Gallium Share', tone: 'crimson' },
+          { label: 'Jan. 10, 2027 Cliff', value: 'MOFCOM 0.1% REE Waiver Expiry', tone: 'cyan' },
+        ]}
+        caption="Simultaneous U.S. munitions expenditure in Operation Epic Fury (~$38B DoD cost; SM-3, SM-6, PAC-3 interceptors) and Beijing’s expiring export-ban suspensions on gallium/germanium (Nov. 27, 2026) and trace heavy REEs (Jan. 10, 2027) compress U.S. defense industrial reconstitution margins."
+      />
+
       {/* Operation Epic Fury & Active Third-Theater Attrition */}
       <section aria-labelledby="epic-fury-heading" className="glass-panel rounded-2xl p-6 space-y-4">
         <div className="flex flex-wrap items-center justify-between gap-2">
@@ -422,7 +739,7 @@ export function GeopoliticsView() {
       </section>
 
       {/* Imminent Chinese Critical Mineral & API Chokepoints */}
-      <section aria-labelledby="minerals-heading" className="space-y-3">
+      <section aria-labelledby="minerals-heading" className="space-y-4">
         <div className="flex items-center gap-2">
           <Cpu className="w-4 h-4 text-[#F59E0B]" />
           <h2
@@ -443,6 +760,35 @@ export function GeopoliticsView() {
           GPU clusters following the Nvidia scandal and Jensen Huang&rsquo;s resignation—heightening
           the risk that Beijing allows its <strong>November 27, 2026</strong> gallium, germanium,
           and antimony export-ban pause to expire ahead of the Shenzhen summit.
+        </div>
+
+        {/* Quantitative Supply-Share & Chokepoint Gauges */}
+        <div className="glass-card rounded-xl p-5 space-y-3.5">
+          <p className="font-mono-tactical text-[11px] uppercase tracking-wider text-gray-300">
+            Structural Single-Source Concentration &amp; Regulatory Visibility Telemetry
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+            {CHOKEPOINT_GAUGES.map((g) => (
+              <div key={g.label} className="obsidian-surface rounded-lg p-3.5 space-y-2">
+                <div className="flex items-center justify-between gap-2 text-xs">
+                  <span className="font-medium text-white">{g.label}</span>
+                  <span
+                    className="font-mono-tactical font-semibold shrink-0"
+                    style={{ color: g.color }}
+                  >
+                    {g.display}
+                  </span>
+                </div>
+                <div className="h-2 rounded-full bg-[#0A0E17] border border-white/10 overflow-hidden">
+                  <div
+                    className="h-full rounded-full"
+                    style={{ width: `${g.pct}%`, backgroundColor: g.color }}
+                  />
+                </div>
+                <p className="text-[11px] text-gray-400 leading-snug">{g.sub}</p>
+              </div>
+            ))}
+          </div>
         </div>
 
         {mineralTable && (

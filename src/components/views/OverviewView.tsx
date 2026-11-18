@@ -12,10 +12,13 @@ import {
   ChevronUp,
   AlertTriangle,
   ShieldCheck,
+  Maximize2,
+  X,
 } from 'lucide-react';
 import { usePortal } from '@/context/PortalContext';
 import { HorizonGroup } from '@/types/schemas';
 import { CitationChipList, RichTextWithCitations } from '@/components/shell/RichTextWithCitations';
+import { resolvePublicAssetPath } from '@/components/shell/TacticalFigure';
 
 const PILLAR_ROUTES = [
   { href: '/geopolitics', label: 'Explore Ideological Contrast' },
@@ -75,10 +78,13 @@ export function OverviewView() {
   const [selectedCliffIdx, setSelectedCliffIdx] = useState<number>(0);
   const [horizonFilter, setHorizonFilter] = useState<'ALL' | HorizonGroup>('ALL');
   const [riskQuery, setRiskQuery] = useState('');
+  const [heroPlateOpen, setHeroPlateOpen] = useState(false);
   const [expandedRisks, setExpandedRisks] = useState<Record<string, boolean>>({
     '#1': true,
     '#2': true,
   });
+
+  const heroMapSrc = resolvePublicAssetPath('/images/overview-backbone-map.jpg');
 
   useEffect(() => {
     setMounted(true);
@@ -86,6 +92,57 @@ export function OverviewView() {
     const timer = setInterval(() => setNowMs(Date.now()), 1000);
     return () => clearInterval(timer);
   }, []);
+
+  useEffect(() => {
+    if (!heroPlateOpen) return;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setHeroPlateOpen(false);
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, [heroPlateOpen]);
+
+  const incidentSpectrum = useMemo(() => {
+    const total = Math.max(1, incidents.length);
+    const malicious = incidents.filter((i) => i.classification === 'malicious_attack').length;
+    const hybrid = incidents.filter((i) => i.classification === 'hybrid_transition_bug').length;
+    const cascade = incidents.filter((i) => i.classification === 'client_cascade').length;
+    const unspecified = incidents.filter((i) => i.classification === 'unspecified').length;
+    return [
+      {
+        key: 'malicious_attack',
+        label: 'Confirmed Malicious Supply-Chain',
+        count: malicious,
+        pct: (malicious / total) * 100,
+        color: '#EF4444',
+        textClass: 'text-[#EF4444]',
+      },
+      {
+        key: 'hybrid_transition_bug',
+        label: 'Hybrid TDM/IP & Retry-Storm Bugs',
+        count: hybrid,
+        pct: (hybrid / total) * 100,
+        color: '#F59E0B',
+        textClass: 'text-[#F59E0B]',
+      },
+      {
+        key: 'client_cascade',
+        label: 'Cross-Client Auth Cascade',
+        count: cascade,
+        pct: (cascade / total) * 100,
+        color: '#38BDF8',
+        textClass: 'text-[#38BDF8]',
+      },
+      {
+        key: 'unspecified',
+        label: 'Root Cause Pending',
+        count: unspecified,
+        pct: (unspecified / total) * 100,
+        color: '#9CA3AF',
+        textClass: 'text-gray-400',
+      },
+    ];
+  }, [incidents]);
 
   const signalCountByRisk = useMemo(() => {
     const counts: Record<string, number> = {};
@@ -113,108 +170,245 @@ export function OverviewView() {
 
   const selectedCliff = countdownCliffs[selectedCliffIdx] ?? countdownCliffs[0];
 
+  // Proportional 120-day window positioning (Nov 17, 2026 -> Mar 17, 2027)
+  const windowStartMs = Date.parse('2026-11-17T00:00:00Z');
+  const windowSpanMs = Date.parse('2027-03-17T00:00:00Z') - windowStartMs;
+
   return (
     <div className="space-y-8">
-      {/* Hero Status & Telemetry Header */}
-      <section className="glass-panel rounded-2xl p-6 sm:p-7 space-y-5">
-        <div className="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-white/10">
-          <div className="flex flex-wrap items-center gap-2.5 text-xs font-mono-tactical">
-            <span className="px-2.5 py-1 rounded bg-[#10B981]/15 border border-[#10B981]/35 text-[#10B981] inline-flex items-center gap-1.5">
-              <ShieldCheck className="w-3.5 h-3.5" />
-              <span>
-                {feedHealth.liveCount}/{feedHealth.totalFeeds} PUBLIC FEEDS LIVE
-              </span>
-            </span>
-            <span className="px-2.5 py-1 rounded bg-[#38BDF8]/10 border border-[#38BDF8]/30 text-[#38BDF8]">
-              MODE: {liveSignals.ingestionMode}
-            </span>
-            <span className="px-2.5 py-1 rounded bg-white/[0.05] border border-white/10 text-gray-300">
-              DOC SYNC:{' '}
-              {new Date(changelog.syncedAtISO).toISOString().replace('T', ' ').slice(0, 16)} UTC
-            </span>
-          </div>
-
-          <div className="flex items-center gap-2">
-            <button
-              id="hero-what-changed-btn"
-              type="button"
-              onClick={() => setChangelogOpen(true)}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/[0.05] hover:bg-white/[0.1] border border-white/15 text-xs font-mono-tactical text-white transition cursor-pointer"
-            >
-              <History className="w-3.5 h-3.5 text-[#38BDF8]" />
-              <span>What Changed</span>
-            </button>
-            <Link
-              href="/watchlist?tab=live-wire"
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#38BDF8]/15 hover:bg-[#38BDF8]/25 border border-[#38BDF8]/40 text-xs font-mono-tactical text-[#38BDF8] transition"
-            >
-              <Radio className="w-3.5 h-3.5" />
-              <span>Live Wire ({liveSignals.totalSignals})</span>
-            </Link>
-          </div>
+      {/* Hero Status, Transatlantic Backbone Cartography & Telemetry Header */}
+      <section className="relative glass-panel rounded-2xl overflow-hidden">
+        {/* Background Cartography Artwork with High-Contrast Obsidian Gradient Mask */}
+        <div className="pointer-events-none absolute inset-0">
+          <img
+            src={heroMapSrc}
+            alt="Transatlantic submarine optical cable landings, continental telecom corridors, and maritime chokepoint fault pulses"
+            className="w-full h-full object-cover object-right opacity-50"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0A0E17] via-[#0A0E17]/92 to-[#0A0E17]/45" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0A0E17] via-transparent to-[#0A0E17]/55" />
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-          <div className="lg:col-span-8 space-y-2.5">
-            <h1 className="text-2xl sm:text-3xl font-semibold tracking-tight text-white leading-tight">
-              {sections.docTitle}
-            </h1>
-            <p className="text-sm text-gray-300 leading-relaxed">
-              {sections.executiveSummary.intro}
-            </p>
+        <div className="relative z-10 p-6 sm:p-7 space-y-5">
+          <div className="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-white/10">
+            <div className="flex flex-wrap items-center gap-2.5 text-xs font-mono-tactical">
+              <span className="px-2.5 py-1 rounded bg-[#10B981]/15 border border-[#10B981]/35 text-[#10B981] inline-flex items-center gap-1.5">
+                <ShieldCheck className="w-3.5 h-3.5" />
+                <span>
+                  {feedHealth.liveCount}/{feedHealth.totalFeeds} PUBLIC FEEDS LIVE
+                </span>
+              </span>
+              <span className="px-2.5 py-1 rounded bg-[#38BDF8]/10 border border-[#38BDF8]/30 text-[#38BDF8]">
+                MODE: {liveSignals.ingestionMode}
+              </span>
+              <span className="px-2.5 py-1 rounded bg-white/[0.05] border border-white/10 text-gray-300">
+                DOC SYNC:{' '}
+                {new Date(changelog.syncedAtISO).toISOString().replace('T', ' ').slice(0, 16)} UTC
+              </span>
+            </div>
+
+            <div className="flex flex-wrap items-center gap-2">
+              <button
+                type="button"
+                onClick={() => setHeroPlateOpen(true)}
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#0A0E17]/80 hover:bg-white/[0.1] border border-white/15 text-xs font-mono-tactical text-gray-200 hover:text-white transition cursor-pointer"
+              >
+                <Maximize2 className="w-3.5 h-3.5 text-[#38BDF8]" />
+                <span>Backbone Atlas</span>
+              </button>
+              <button
+                id="hero-what-changed-btn"
+                type="button"
+                onClick={() => setChangelogOpen(true)}
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/[0.05] hover:bg-white/[0.1] border border-white/15 text-xs font-mono-tactical text-white transition cursor-pointer"
+              >
+                <History className="w-3.5 h-3.5 text-[#38BDF8]" />
+                <span>What Changed</span>
+              </button>
+              <Link
+                href="/watchlist?tab=live-wire"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#38BDF8]/15 hover:bg-[#38BDF8]/25 border border-[#38BDF8]/40 text-xs font-mono-tactical text-[#38BDF8] transition"
+              >
+                <Radio className="w-3.5 h-3.5" />
+                <span>Live Wire ({liveSignals.totalSignals})</span>
+              </Link>
+            </div>
           </div>
 
-          <div className="lg:col-span-4 grid grid-cols-2 gap-2.5">
-            <div className="obsidian-surface rounded-xl p-3.5">
-              <p className="font-mono-tactical text-[10px] uppercase tracking-wider text-gray-400">
-                Nov 12–17 Cluster
-              </p>
-              <p className="font-mono-tactical text-2xl font-semibold text-white mt-1">
-                {incidents.length} Events
-              </p>
-              <p className="text-[11px] text-[#EF4444] mt-0.5 font-mono-tactical">
-                1 Malicious · 1 Cascade
-              </p>
-            </div>
-            <div className="obsidian-surface rounded-xl p-3.5">
-              <p className="font-mono-tactical text-[10px] uppercase tracking-wider text-gray-400">
-                Risk Domains
-              </p>
-              <p className="font-mono-tactical text-2xl font-semibold text-white mt-1">
-                {riskMatrix.length} Vectors
-              </p>
-              <p className="text-[11px] text-[#F59E0B] mt-0.5 font-mono-tactical">
-                4 Immediate Active
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+            <div className="lg:col-span-8 space-y-3">
+              <div className="inline-flex items-center gap-2 font-mono-tactical text-[11px] text-[#38BDF8] uppercase tracking-wider">
+                <span>EXECUTIVE INTELLIGENCE COMMAND PORTAL · CANONICAL BRIEFING EDITION</span>
+              </div>
+              <h1 className="text-2xl sm:text-3xl font-semibold tracking-tight text-white leading-tight">
+                {sections.docTitle}
+              </h1>
+              <p className="text-sm text-gray-200 leading-relaxed max-w-3xl">
+                {sections.executiveSummary.intro}
               </p>
             </div>
-            <div className="obsidian-surface rounded-xl p-3.5">
-              <p className="font-mono-tactical text-[10px] uppercase tracking-wider text-gray-400">
-                120-Day Calendar
-              </p>
-              <p className="font-mono-tactical text-2xl font-semibold text-white mt-1">
-                {countdownCliffs.length} Cliffs
-              </p>
-              <p className="text-[11px] text-[#38BDF8] mt-0.5 font-mono-tactical">
-                Nov 18 → Mar 15
-              </p>
+
+            <div className="lg:col-span-4 grid grid-cols-2 gap-2.5">
+              <Link
+                href="/incidents"
+                className="obsidian-surface/95 hover:border-[#EF4444]/40 rounded-xl p-3.5 transition"
+              >
+                <p className="font-mono-tactical text-[10px] uppercase tracking-wider text-gray-400">
+                  Nov 12–17 Cluster
+                </p>
+                <p className="font-mono-tactical text-2xl font-semibold text-white mt-1">
+                  {incidents.length} Events
+                </p>
+                <p className="text-[11px] text-[#EF4444] mt-0.5 font-mono-tactical">
+                  1 Malicious · 1 Cascade
+                </p>
+              </Link>
+              <a
+                href="#risk-matrix-heading"
+                className="obsidian-surface/95 hover:border-[#F59E0B]/40 rounded-xl p-3.5 transition"
+              >
+                <p className="font-mono-tactical text-[10px] uppercase tracking-wider text-gray-400">
+                  Risk Domains
+                </p>
+                <p className="font-mono-tactical text-2xl font-semibold text-white mt-1">
+                  {riskMatrix.length} Vectors
+                </p>
+                <p className="text-[11px] text-[#F59E0B] mt-0.5 font-mono-tactical">
+                  4 Immediate Active
+                </p>
+              </a>
+              <a
+                href="#cliff-strip-heading"
+                className="obsidian-surface/95 hover:border-[#38BDF8]/40 rounded-xl p-3.5 transition"
+              >
+                <p className="font-mono-tactical text-[10px] uppercase tracking-wider text-gray-400">
+                  120-Day Calendar
+                </p>
+                <p className="font-mono-tactical text-2xl font-semibold text-white mt-1">
+                  {countdownCliffs.length} Cliffs
+                </p>
+                <p className="text-[11px] text-[#38BDF8] mt-0.5 font-mono-tactical">
+                  Nov 18 → Mar 15
+                </p>
+              </a>
+              <Link
+                href="/watchlist?tab=vault"
+                className="obsidian-surface/95 hover:border-[#10B981]/40 rounded-xl p-3.5 transition"
+              >
+                <p className="font-mono-tactical text-[10px] uppercase tracking-wider text-gray-400">
+                  Verified Citations
+                </p>
+                <p className="font-mono-tactical text-2xl font-semibold text-white mt-1">
+                  {sections.primarySources.length} URLs
+                </p>
+                <p className="text-[11px] text-[#10B981] mt-0.5 font-mono-tactical">
+                  9-Point Watchlist
+                </p>
+              </Link>
             </div>
-            <div className="obsidian-surface rounded-xl p-3.5">
-              <p className="font-mono-tactical text-[10px] uppercase tracking-wider text-gray-400">
-                Verified Citations
-              </p>
-              <p className="font-mono-tactical text-2xl font-semibold text-white mt-1">
-                {sections.primarySources.length} URLs
-              </p>
-              <p className="text-[11px] text-[#10B981] mt-0.5 font-mono-tactical">
-                9-Point Watchlist
-              </p>
+          </div>
+
+          {/* Forensic Attribution Spectrum Bar across the 10-Event Cluster */}
+          <div className="pt-4 border-t border-white/10 space-y-2.5">
+            <div className="flex flex-wrap items-center justify-between gap-2 text-xs">
+              <span className="font-mono-tactical text-[11px] uppercase tracking-wider text-gray-300">
+                Nov. 12–17 Ten-Event Forensic Attribution Spectrum
+              </span>
+              <Link
+                href="/incidents"
+                className="font-mono-tactical text-[11px] text-[#38BDF8] hover:underline"
+              >
+                Inspect All {incidents.length} Incident Readouts →
+              </Link>
+            </div>
+
+            <div className="h-2.5 w-full rounded-full overflow-hidden bg-[#0A0E17] border border-white/10 flex">
+              {incidentSpectrum.map((seg) =>
+                seg.count > 0 ? (
+                  <div
+                    key={seg.key}
+                    style={{ width: `${seg.pct}%`, backgroundColor: seg.color }}
+                    title={`${seg.label}: ${seg.count} (${Math.round(seg.pct)}%)`}
+                    className="h-full first:rounded-l-full last:rounded-r-full transition-all"
+                  />
+                ) : null
+              )}
+            </div>
+
+            <div className="flex flex-wrap items-center gap-x-5 gap-y-1.5 text-[11px] font-mono-tactical">
+              {incidentSpectrum.map((seg) => (
+                <Link
+                  key={seg.key}
+                  href="/incidents"
+                  className="inline-flex items-center gap-1.5 text-gray-300 hover:text-white transition"
+                >
+                  <span
+                    className="w-2 h-2 rounded-full"
+                    style={{ backgroundColor: seg.color }}
+                  />
+                  <span>{seg.label}:</span>
+                  <span className={`font-semibold ${seg.textClass}`}>{seg.count}</span>
+                </Link>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
+      {/* Hero Backbone Atlas Lightbox */}
+      {heroPlateOpen && (
+        <div
+          className="fixed inset-0 z-50 bg-[#0A0E17]/92 backdrop-blur-md flex items-center justify-center p-4 sm:p-8"
+          onClick={() => setHeroPlateOpen(false)}
+          role="dialog"
+          aria-modal="true"
+          aria-label="PLATE 00 — Transatlantic Sub-IP & Continental Backbone Atlas"
+        >
+          <div
+            className="max-w-6xl w-full obsidian-surface rounded-2xl overflow-hidden shadow-2xl border border-white/20"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="px-5 py-3.5 border-b border-white/10 flex items-center justify-between gap-3">
+              <div className="flex items-center gap-2.5">
+                <span className="font-mono-tactical text-xs px-2 py-0.5 rounded bg-[#38BDF8]/15 border border-[#38BDF8]/35 text-[#38BDF8]">
+                  PLATE 00
+                </span>
+                <h3 className="text-sm sm:text-base font-semibold text-white">
+                  Transatlantic Submarine Optical Cable Landings &amp; Continental Grid Corridors
+                </h3>
+              </div>
+              <button
+                type="button"
+                onClick={() => setHeroPlateOpen(false)}
+                className="p-1.5 rounded-lg bg-white/[0.06] hover:bg-white/[0.14] border border-white/15 text-gray-300 hover:text-white transition cursor-pointer"
+                aria-label="Close Backbone Atlas"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+            <div className="bg-[#0A0E17] max-h-[75vh] flex items-center justify-center overflow-hidden">
+              <img
+                src={heroMapSrc}
+                alt="Transatlantic submarine optical cable landings, continental telecom corridors, and maritime chokepoint fault pulses"
+                className="w-full h-auto max-h-[75vh] object-contain"
+              />
+            </div>
+            <div className="px-5 py-3.5 border-t border-white/10 text-xs text-gray-300 leading-relaxed flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+              <p>
+                Subsea SLTE optical trunks (cyan), continental high-voltage/telecom corridors
+                (amber), and gray-zone maritime cable/GNSS fault zones (crimson) monitored across
+                Sections 5.3, 6.5, and 7.1.
+              </p>
+              <span className="font-mono-tactical text-[11px] text-gray-500 shrink-0">
+                ESC to close
+              </span>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Live Client-Side 120-Day Cliff Countdown Strip */}
-      <section aria-labelledby="cliff-strip-heading" className="space-y-3">
+      <section aria-labelledby="cliff-strip-heading" className="space-y-3 scroll-mt-nav">
         <div className="flex flex-wrap items-center justify-between gap-2">
           <div className="flex items-center gap-2">
             <Clock className="w-4 h-4 text-[#F59E0B]" />
@@ -228,6 +422,46 @@ export function OverviewView() {
           <span className="font-mono-tactical text-xs text-gray-400">
             {mounted ? 'Live Client UTC Ticker Active' : 'Synchronizing Client Clock…'}
           </span>
+        </div>
+
+        {/* Proportional 120-Day Horizon Rail */}
+        <div className="obsidian-surface rounded-xl px-4 py-3 space-y-2 hidden sm:block">
+          <div className="flex items-center justify-between font-mono-tactical text-[10px] text-gray-400 uppercase">
+            <span>Nov 18, 2026 (Immediate Cluster)</span>
+            <span>Dec 31 – Jan 10 (Clearing, DFARS &amp; REE Cliffs)</span>
+            <span>Mar 15, 2027 (100-Day TLS Cliff)</span>
+          </div>
+          <div className="relative h-5 flex items-center">
+            <div className="w-full h-1 rounded-full bg-white/10" />
+            {countdownCliffs.map((cliff, idx) => {
+              const targetMs = Date.parse(cliff.targetTimestampISO);
+              const rawPct = ((targetMs - windowStartMs) / windowSpanMs) * 100;
+              const clampedPct = Math.min(98.5, Math.max(1.5, rawPct));
+              const delta = formatCountdownDelta(cliff.targetTimestampISO, nowMs);
+              const active = idx === selectedCliffIdx;
+              const dotBg =
+                delta.days <= 12
+                  ? 'bg-[#EF4444]'
+                  : delta.days <= 55
+                  ? 'bg-[#F59E0B]'
+                  : 'bg-[#38BDF8]';
+              return (
+                <button
+                  key={cliff.targetDateISO}
+                  type="button"
+                  onClick={() => setSelectedCliffIdx(idx)}
+                  style={{ left: `${clampedPct}%` }}
+                  title={`${cliff.dateLabel}: ${cliff.milestone}`}
+                  className={`absolute -translate-x-1/2 rounded-full transition-transform cursor-pointer ${dotBg} ${
+                    active
+                      ? 'w-3.5 h-3.5 ring-4 ring-white/25 scale-110 z-10'
+                      : 'w-2.5 h-2.5 opacity-80 hover:opacity-100 hover:scale-125'
+                  }`}
+                  aria-label={`Select countdown cliff ${cliff.dateLabel}`}
+                />
+              );
+            })}
+          </div>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5">
@@ -346,7 +580,7 @@ export function OverviewView() {
       </section>
 
       {/* Interactive 8-Vector Executive Risk Matrix */}
-      <section aria-labelledby="risk-matrix-heading" className="space-y-4">
+      <section aria-labelledby="risk-matrix-heading" className="space-y-4 scroll-mt-nav">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-3">
           <div>
             <h2

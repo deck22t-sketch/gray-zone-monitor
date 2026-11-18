@@ -371,4 +371,43 @@ describe('Phase 3: Poisson Null-Hypothesis Math & Client-Side AES-256-GCM Vault'
 
     await expect(decryptBundleWithPasscode(meta, 'wrong-passcode')).rejects.toThrow();
   });
+
+  it('ships all 6 bespoke editorial JPEG plates in public/images/ and resolves GitHub Pages basePath cleanly', async () => {
+    const { resolvePublicAssetPath } = await import('../src/components/shell/TacticalFigure');
+    const expectedImages = [
+      'overview-backbone-map.jpg',
+      'geopolitics-imperial-arc.jpg',
+      'hormuz-mineral-chokepoints.jpg',
+      'incidents-hybrid-routing.jpg',
+      'sub-ip-blindspots.jpg',
+      'contagion-clearing-vault.jpg',
+    ];
+
+    for (const fileName of expectedImages) {
+      const fullPath = path.join(process.cwd(), 'public', 'images', fileName);
+      expect(fs.existsSync(fullPath)).toBe(true);
+      const buf = fs.readFileSync(fullPath);
+      expect(buf.length).toBeGreaterThan(100_000);
+      expect(buf.subarray(0, 3).toString('hex')).toBe('ffd8ff');
+    }
+
+    const prevBase = process.env.NEXT_PUBLIC_BASE_PATH;
+    try {
+      process.env.NEXT_PUBLIC_BASE_PATH = '/gray-zone-monitor';
+      expect(resolvePublicAssetPath('/images/overview-backbone-map.jpg')).toBe(
+        '/gray-zone-monitor/images/overview-backbone-map.jpg'
+      );
+      process.env.NEXT_PUBLIC_BASE_PATH = '';
+      expect(resolvePublicAssetPath('/images/overview-backbone-map.jpg')).toBe(
+        '/images/overview-backbone-map.jpg'
+      );
+    } finally {
+      if (prevBase === undefined) {
+        delete process.env.NEXT_PUBLIC_BASE_PATH;
+      } else {
+        process.env.NEXT_PUBLIC_BASE_PATH = prevBase;
+      }
+    }
+  });
 });
+

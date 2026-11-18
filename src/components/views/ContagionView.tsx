@@ -13,6 +13,79 @@ import {
 } from 'lucide-react';
 import { usePortal } from '@/context/PortalContext';
 import { NarrativeAccordion } from '@/components/shell/NarrativeAccordion';
+import { TacticalFigure } from '@/components/shell/TacticalFigure';
+
+const CONTAGION_SCENARIOS = [
+  {
+    id: 'chase-zelle',
+    badge: 'LIVE NOV. 16 CASE STUDY',
+    title: 'G-SIB Counterparty Cascade (JPMorgan Chase → Zelle / Rival Banks)',
+    coreStatus: 'Fedwire · CHIPS · DTCC Remained 100% Green',
+    stage1: {
+      tag: 'SINGLE-NODE ORIGIN (9:48 AM ET)',
+      heading: 'JPMorgan Chase On-Premise Hardware Bug',
+      body: 'Software bug in on-premise hardware systems + queued peak traffic secondary re-crashes (~4,800+ reports; branch teller & Irving, TX ATMs impacted; JPM closed -2.3%).',
+    },
+    stage2: {
+      tag: 'COUNTERPARTY SETTLEMENT RAIL',
+      heading: 'Zelle / Early Warning Services (EWS) Opposite Leg',
+      body: 'EWS core platform stayed 100% online, but because a G-SIB sits on the counterparty leg of massive U.S. P2P volume, transfers targeting or originating at Chase stalled.',
+    },
+    stage3: {
+      tag: 'MULTI-BANK ILLUSION',
+      heading: 'Simultaneous Rival Bank Downdetector Spikes',
+      body: 'Customers at Bank of America, Wells Fargo, U.S. Bank, Capital One, and Truist reported simultaneous outages despite completely healthy internal bank cores.',
+    },
+    circuitBreaker:
+      'Overnight ACH/Zelle batch reconciliation cleared cleanly into Tuesday morning; requires pre-staged counterparty queue status messaging to prevent retail run psychology.',
+  },
+  {
+    id: 'agentic-runs',
+    badge: 'NOV. 16 FED GOV. BARR WARNING',
+    title: 'Autonomous AI Cash-Management Runs Over $10M RTP / FedNow Rails',
+    coreStatus: '24/7/365 Instant Settlement · Zero Weekend Cooling-Off Window',
+    stage1: {
+      tag: 'TELEMETRY / DEEPFAKE TRIGGER',
+      heading: 'Outage Spike or Viral Rumor Ingestion',
+      body: 'Autonomous AI treasury and retail agents ingest real-time Downdetector spikes, BGP anomalies, or synthetic blackout videos during off-hours or federal EAS tests.',
+    },
+    stage2: {
+      tag: 'MACHINE-SPEED EXECUTION',
+      heading: '$10M RTP / FedNow & Uncapped Stablecoin Rails',
+      body: 'AI agents initiate synchronized programmatic sweeps up to $10M per transfer over 24/7 instant rails alongside uncapped stablecoin liquidity pools before human ALCOs convene.',
+    },
+    stage3: {
+      tag: 'LIQUIDITY & AI CREDIT SPIRAL',
+      heading: 'Mid-Tier Deposit Drain & SPE Debt Repricing',
+      body: 'Rapid intraday HQLA depletion collides with >$3.8T in Big-7 tech debt + off-balance-sheet GPU SPEs (~15% of private AI data-center debt held by U.S. life insurers).',
+    },
+    circuitBreaker:
+      'Implement programmatic velocity circuit-breakers on API-initiated RTP/FedNow outbound sweeps and pre-positioned Federal Reserve Standing Repo / Discount Window collateral.',
+  },
+  {
+    id: 'dtcc-ficc',
+    badge: 'DEC. 31, 2026 MANDATE CLIFF',
+    title: 'SEC Mandatory U.S. Treasury Central Clearing Concentration (DTCC / FICC)',
+    coreStatus: '~$550B / Day Eligible Cash Volume Concentrating Dec. 31',
+    stage1: {
+      tag: 'TELECOM / UTILITY NODE FAULT',
+      heading: 'Carrier Storm or Core Gateway Outage',
+      body: 'A hybrid routing flood (FAA-class) or non-bank core utility outage (FIS, Fiserv, ADP, or Change Healthcare-class gateway) hits a major FICC clearing member or carrier.',
+    },
+    stage2: {
+      tag: 'CENTRAL CLEARING BOTTLENECK',
+      heading: 'DTCC / FICC Intraday Margin & Cash Settlement',
+      body: 'With ~$550B/day in cash Treasury trades mandated onto FICC on Dec. 31, 2026 (and repo on June 30, 2027), single-node connectivity loss traps bilateral collateral and variation margin.',
+    },
+    stage3: {
+      tag: 'REPO & TREASURY FREEZE',
+      heading: 'Cross-Market Intraday Liquidity Dislocation',
+      body: 'Delayed Treasury settlement propagates into money-market funds, tri-party repo, and sovereign dealer balance sheets within minutes during U.S. market hours.',
+    },
+    circuitBreaker:
+      'Mandate diverse multi-carrier dark-fiber paths into FICC, out-of-band margin settlement playbooks, and active-active clearing member failover validation prior to Dec. 31.',
+  },
+] as const;
 
 const ATTRIBUTION_LADDER = [
   {
@@ -86,8 +159,11 @@ const LEGAL_CLOCKS = [
 
 export function ContagionView() {
   const { bundle } = usePortal();
+  const [selectedScenarioIdx, setSelectedScenarioIdx] = useState<number>(0);
   const [selectedRung, setSelectedRung] = useState<number>(1);
   const sec7 = bundle.sections.narrativeSections.filter((s) => s.number === 7);
+
+  const activeScenario = CONTAGION_SCENARIOS[selectedScenarioIdx];
 
   return (
     <div className="space-y-9">
@@ -108,20 +184,73 @@ export function ContagionView() {
         </p>
       </section>
 
-      {/* Visual Flow 1: G-SIB Counterparty Cascade (JPMorgan Chase / Zelle) */}
+      {/* Editorial Plate 05: Systemic Financial Clearing Core & Circuit-Breaker Architecture */}
+      <TacticalFigure
+        src="/images/contagion-clearing-vault.jpg"
+        alt="Isometric dark-glass architectural visualization of concentric financial counterparty nodes and cyan liquidity conduits converging into a central amber clearing core with crimson circuit-breaker gates"
+        plateId="PLATE 05"
+        title="Systemic Clearing Hub Concentration, Instant Liquidity Conduits & Counterparty Circuit-Breakers"
+        domainBadge="SECTIONS 7.1, 7.4 & 7.5 · FINANCIAL INFRASTRUCTURE"
+        priority
+        metrics={[
+          { label: 'Dec. 31 FICC Cliff', value: '~$550B / Day Cash Treasuries', tone: 'amber' },
+          { label: 'Instant Run Rails', value: '$10M RTP / FedNow Single Cap', tone: 'crimson' },
+          { label: 'AI Debt Leverage', value: '>$800B Debt + >$3T GPU SPEs', tone: 'cyan' },
+          { label: 'Mandatory Clocks', value: '4h DORA / 36h OCC Non-Cyber', tone: 'emerald' },
+        ]}
+        caption="Modern clearinghouses (Fedwire, CHIPS, DTCC/FICC) and P2P rails (Zelle/EWS, RTP, FedNow) concentrate counterparty settlement onto shared telecom and on-premise hardware layers—meaning a single G-SIB or utility node stall cascades across healthy peer institutions within minutes."
+      />
+
+      {/* Interactive 3-Scenario Contagion Topology Simulator */}
       <section aria-labelledby="gsib-flow-heading" className="glass-card rounded-2xl p-6 space-y-5">
-        <div className="flex flex-wrap items-center justify-between gap-2">
-          <div className="flex items-center gap-2">
-            <Network className="w-4 h-4 text-[#F59E0B]" />
-            <h2
-              id="gsib-flow-heading"
-              className="text-sm font-mono-tactical uppercase tracking-wider text-white"
-            >
-              Sec. 7.4 · G-SIB Counterparty Contagion Topology (Nov. 16 Chase → Zelle / Rival Banks)
-            </h2>
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3 border-b border-white/10 pb-4">
+          <div className="space-y-1">
+            <div className="flex items-center gap-2">
+              <Network className="w-4 h-4 text-[#F59E0B]" />
+              <h2
+                id="gsib-flow-heading"
+                className="text-sm font-mono-tactical uppercase tracking-wider text-white"
+              >
+                Sec. 7.4–7.5 · Interactive Systemic Contagion Topology Explorer (3 Pathways)
+              </h2>
+            </div>
+            <p className="text-xs text-gray-400">
+              Switch between Monday&rsquo;s live Chase/Zelle cascade, autonomous AI deposit flights,
+              and the Dec. 31 DTCC/FICC central clearing mandate.
+            </p>
           </div>
-          <span className="font-mono-tactical text-xs px-2.5 py-0.5 rounded bg-[#10B981]/10 border border-[#10B981]/30 text-[#10B981]">
-            Fedwire · CHIPS · DTCC Remained 100% Green
+
+          <div className="flex flex-wrap gap-1.5">
+            {[
+              '1. Chase → Zelle Cascade',
+              '2. AI $10M RTP/FedNow Run',
+              '3. Dec. 31 DTCC/FICC Cliff',
+            ].map((label, idx) => (
+              <button
+                key={label}
+                type="button"
+                onClick={() => setSelectedScenarioIdx(idx)}
+                className={`px-3 py-1.5 rounded-lg text-xs font-mono-tactical border cursor-pointer transition ${
+                  selectedScenarioIdx === idx
+                    ? 'bg-[#38BDF8]/15 border-[#38BDF8]/50 text-[#38BDF8]'
+                    : 'bg-white/[0.04] border-white/10 text-gray-300 hover:bg-white/[0.08]'
+                }`}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <div className="flex flex-wrap items-center justify-between gap-2">
+          <div>
+            <span className="font-mono-tactical text-[11px] text-[#F59E0B]">
+              {activeScenario.badge}
+            </span>
+            <h3 className="text-base font-semibold text-white mt-0.5">{activeScenario.title}</h3>
+          </div>
+          <span className="font-mono-tactical text-xs px-2.5 py-1 rounded bg-[#10B981]/10 border border-[#10B981]/30 text-[#10B981]">
+            {activeScenario.coreStatus}
           </span>
         </div>
 
@@ -129,15 +258,10 @@ export function ContagionView() {
           {/* Origin Node */}
           <div className="lg:col-span-3 rounded-xl bg-[#EF4444]/10 border border-[#EF4444]/40 p-4 space-y-2">
             <span className="font-mono-tactical text-[10px] text-[#EF4444] uppercase">
-              SINGLE-NODE ORIGIN (9:48 AM ET)
+              {activeScenario.stage1.tag}
             </span>
-            <h3 className="text-sm font-semibold text-white">
-              JPMorgan Chase On-Premise Hardware Bug
-            </h3>
-            <p className="text-gray-300 leading-relaxed">
-              Software bug in on-premise hardware systems + queued peak traffic secondary crashes
-              (~4,800+ reports; branch teller &amp; Irving, TX ATMs impacted; JPM -2.3%).
-            </p>
+            <h4 className="text-sm font-semibold text-white">{activeScenario.stage1.heading}</h4>
+            <p className="text-gray-300 leading-relaxed">{activeScenario.stage1.body}</p>
           </div>
 
           <div className="hidden lg:flex lg:col-span-1 items-center justify-center text-[#F59E0B]">
@@ -147,15 +271,10 @@ export function ContagionView() {
           {/* Rail Bottleneck */}
           <div className="lg:col-span-3 rounded-xl bg-[#F59E0B]/10 border border-[#F59E0B]/40 p-4 space-y-2">
             <span className="font-mono-tactical text-[10px] text-[#F59E0B] uppercase">
-              COUNTERPARTY SETTLEMENT RAIL
+              {activeScenario.stage2.tag}
             </span>
-            <h3 className="text-sm font-semibold text-white">
-              Zelle / Early Warning Services (EWS) Counterparty Leg
-            </h3>
-            <p className="text-gray-300 leading-relaxed">
-              EWS core platform stayed online, but because a G-SIB sits on the opposite leg of massive
-              retail/commercial P2P volume, transfers targeting or originating at Chase stalled.
-            </p>
+            <h4 className="text-sm font-semibold text-white">{activeScenario.stage2.heading}</h4>
+            <p className="text-gray-300 leading-relaxed">{activeScenario.stage2.body}</p>
           </div>
 
           <div className="hidden lg:flex lg:col-span-1 items-center justify-center text-[#38BDF8]">
@@ -165,16 +284,16 @@ export function ContagionView() {
           {/* Downstream Perception */}
           <div className="lg:col-span-3 rounded-xl bg-[#38BDF8]/10 border border-[#38BDF8]/35 p-4 space-y-2">
             <span className="font-mono-tactical text-[10px] text-[#38BDF8] uppercase">
-              MULTI-BANK ILLUSION
+              {activeScenario.stage3.tag}
             </span>
-            <h3 className="text-sm font-semibold text-white">
-              Rival Institution Downdetector Spikes
-            </h3>
-            <p className="text-gray-300 leading-relaxed">
-              Customers at <strong>Bank of America, Wells Fargo, U.S. Bank, Capital One, and Truist</strong>{' '}
-              reported simultaneous failures despite healthy internal bank cores.
-            </p>
+            <h4 className="text-sm font-semibold text-white">{activeScenario.stage3.heading}</h4>
+            <p className="text-gray-300 leading-relaxed">{activeScenario.stage3.body}</p>
           </div>
+        </div>
+
+        <div className="obsidian-surface rounded-xl px-4 py-3 text-xs text-gray-300">
+          <span className="font-mono-tactical text-[#10B981]">CIRCUIT-BREAKER &amp; CONTAINMENT: </span>
+          {activeScenario.circuitBreaker}
         </div>
       </section>
 

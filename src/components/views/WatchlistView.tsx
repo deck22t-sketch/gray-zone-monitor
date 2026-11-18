@@ -38,6 +38,7 @@ export function WatchlistView() {
   const [feedFilter, setFeedFilter] = useState<'ALL' | FeedId>('ALL');
   const [watchlistIdFilter, setWatchlistIdFilter] = useState<string>('ALL');
   const [copiedId, setCopiedId] = useState<string | null>(null);
+  const [bulkCopied, setBulkCopied] = useState(false);
 
   const [vaultQuery, setVaultQuery] = useState('');
   const [vaultDomain, setVaultDomain] =
@@ -52,6 +53,15 @@ export function WatchlistView() {
     }
   }, []);
 
+  function switchTab(nextTab: WatchlistTab) {
+    setActiveTab(nextTab);
+    if (typeof window !== 'undefined') {
+      const url = new URL(window.location.href);
+      url.searchParams.set('tab', nextTab);
+      window.history.replaceState({}, '', url.toString());
+    }
+  }
+
   const liveCountsByWatchlist = useMemo(() => {
     const map: Record<string, number> = {};
     for (const sig of liveSignals.signals) {
@@ -60,6 +70,21 @@ export function WatchlistView() {
       }
     }
     return map;
+  }, [liveSignals.signals]);
+
+  const severityBreakdown = useMemo(() => {
+    const total = Math.max(1, liveSignals.signals.length);
+    const critical = liveSignals.signals.filter((s) => s.severity === 'critical').length;
+    const elevated = liveSignals.signals.filter((s) => s.severity === 'elevated').length;
+    const info = liveSignals.signals.filter((s) => s.severity === 'info').length;
+    return {
+      critical,
+      elevated,
+      info,
+      criticalPct: (critical / total) * 100,
+      elevatedPct: (elevated / total) * 100,
+      infoPct: (info / total) * 100,
+    };
   }, [liveSignals.signals]);
 
   const filteredSignals = useMemo(() => {
@@ -95,6 +120,14 @@ export function WatchlistView() {
     setTimeout(() => setCopiedId(null), 2000);
   }
 
+  function copyAllFilteredRows() {
+    if (filteredSignals.length === 0) return;
+    const combined = filteredSignals.map((s) => s.markdownRow).join('\n');
+    navigator.clipboard.writeText(combined);
+    setBulkCopied(true);
+    setTimeout(() => setBulkCopied(false), 2200);
+  }
+
   return (
     <div className="space-y-8">
       {/* Header + 3-Tab Switcher */}
@@ -120,7 +153,7 @@ export function WatchlistView() {
           <button
             id="tab-btn-watchlist"
             type="button"
-            onClick={() => setActiveTab('watchlist')}
+            onClick={() => switchTab('watchlist')}
             className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-mono-tactical border transition cursor-pointer ${
               activeTab === 'watchlist'
                 ? 'bg-[#38BDF8]/15 border-[#38BDF8]/50 text-[#38BDF8]'
@@ -134,7 +167,7 @@ export function WatchlistView() {
           <button
             id="tab-btn-live-wire"
             type="button"
-            onClick={() => setActiveTab('live-wire')}
+            onClick={() => switchTab('live-wire')}
             className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-mono-tactical border transition cursor-pointer ${
               activeTab === 'live-wire'
                 ? 'bg-[#10B981]/15 border-[#10B981]/50 text-[#10B981]'
@@ -148,7 +181,7 @@ export function WatchlistView() {
           <button
             id="tab-btn-vault"
             type="button"
-            onClick={() => setActiveTab('vault')}
+            onClick={() => switchTab('vault')}
             className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-mono-tactical border transition cursor-pointer ${
               activeTab === 'vault'
                 ? 'bg-[#F59E0B]/15 border-[#F59E0B]/50 text-[#F59E0B]'
@@ -188,7 +221,7 @@ export function WatchlistView() {
                         type="button"
                         onClick={() => {
                           setWatchlistIdFilter(item.id);
-                          setActiveTab('live-wire');
+                          switchTab('live-wire');
                         }}
                         className="font-mono-tactical text-[11px] px-2 py-0.5 rounded bg-[#10B981]/10 hover:bg-[#10B981]/20 border border-[#10B981]/30 text-[#10B981] cursor-pointer transition"
                       >
@@ -228,8 +261,8 @@ export function WatchlistView() {
       {/* TAB 2: Live Wire (Keyless Federal & Backbone OSINT) */}
       {activeTab === 'live-wire' && (
         <section aria-label="Live Wire Keyless OSINT" className="space-y-6">
-          {/* 8-Feed Health Telemetry Grid */}
-          <div className="glass-card rounded-2xl p-5 space-y-3.5">
+          {/* 8-Feed Health Telemetry Grid + Severity Spectrum */}
+          <div className="glass-card rounded-2xl p-5 space-y-4">
             <div className="flex flex-wrap items-center justify-between gap-2">
               <div className="flex items-center gap-2">
                 <span className="px-2.5 py-0.5 rounded bg-[#10B981]/15 border border-[#10B981]/35 font-mono-tactical text-[11px] text-[#10B981]">
@@ -278,9 +311,43 @@ export function WatchlistView() {
                 );
               })}
             </div>
+
+            {/* Live Signal Severity Distribution Bar */}
+            <div className="pt-3 border-t border-white/10 space-y-2">
+              <div className="flex flex-wrap items-center justify-between gap-2 font-mono-tactical text-[11px]">
+                <span className="text-gray-400 uppercase">
+                  Normalized Signal Severity Distribution ({liveSignals.totalSignals} Items)
+                </span>
+                <div className="flex items-center gap-4">
+                  <span className="text-[#EF4444]">● Critical: {severityBreakdown.critical}</span>
+                  <span className="text-[#F59E0B]">● Elevated: {severityBreakdown.elevated}</span>
+                  <span className="text-[#38BDF8]">● Info: {severityBreakdown.info}</span>
+                </div>
+              </div>
+              <div className="h-2 w-full rounded-full bg-[#0A0E17] border border-white/10 overflow-hidden flex">
+                {severityBreakdown.critical > 0 && (
+                  <div
+                    style={{ width: `${severityBreakdown.criticalPct}%` }}
+                    className="h-full bg-[#EF4444]"
+                  />
+                )}
+                {severityBreakdown.elevated > 0 && (
+                  <div
+                    style={{ width: `${severityBreakdown.elevatedPct}%` }}
+                    className="h-full bg-[#F59E0B]"
+                  />
+                )}
+                {severityBreakdown.info > 0 && (
+                  <div
+                    style={{ width: `${severityBreakdown.infoPct}%` }}
+                    className="h-full bg-[#38BDF8]"
+                  />
+                )}
+              </div>
+            </div>
           </div>
 
-          {/* Filter Bar */}
+          {/* Filter Bar + Bulk Export */}
           <div className="flex flex-wrap items-center justify-between gap-3">
             <div className="flex flex-wrap items-center gap-1.5">
               {(['ALL', 'critical', 'elevated', 'info'] as const).map((sev) => (
@@ -319,9 +386,32 @@ export function WatchlistView() {
               )}
             </div>
 
-            <span className="font-mono-tactical text-xs text-gray-400">
-              Showing {filteredSignals.length} of {liveSignals.totalSignals} normalized signals
-            </span>
+            <div className="flex flex-wrap items-center gap-3">
+              <span className="font-mono-tactical text-xs text-gray-400">
+                Showing {filteredSignals.length} of {liveSignals.totalSignals} normalized signals
+              </span>
+              {filteredSignals.length > 0 && (
+                <button
+                  type="button"
+                  onClick={copyAllFilteredRows}
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#38BDF8]/10 hover:bg-[#38BDF8]/20 border border-[#38BDF8]/35 text-xs font-mono-tactical text-[#38BDF8] transition cursor-pointer"
+                >
+                  {bulkCopied ? (
+                    <>
+                      <Check className="w-3.5 h-3.5 text-[#10B981]" />
+                      <span className="text-[#10B981]">
+                        Copied {filteredSignals.length} Rows!
+                      </span>
+                    </>
+                  ) : (
+                    <>
+                      <Copy className="w-3.5 h-3.5" />
+                      <span>Copy All Filtered Rows (Markdown)</span>
+                    </>
+                  )}
+                </button>
+              )}
+            </div>
           </div>
 
           {/* Signal List */}

@@ -74,7 +74,7 @@ export function TopNav() {
               }`}
             >
               <span
-                className={`w-2 h-2 rounded-full ${
+                className={`w-2 h-2 rounded-full pulse-live ${
                   allLive ? 'bg-[#10B981]' : 'bg-[#F59E0B]'
                 }`}
               />
