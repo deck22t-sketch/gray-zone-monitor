@@ -1,5 +1,5 @@
 {
-  "updatedAtISO": "2026-11-19T03:19:40.833Z",
+  "updatedAtISO": "2026-11-19T04:58:43.565Z",
   "maxPointsPerFeed": 28,
   "series": {
     "cisa-kev": [
@@ -43,6 +43,13 @@
         "status": "live",
         "httpStatus": 200,
         "latencyMs": 228,
+        "itemCount": 18
+      },
+      {
+        "checkedAtISO": "2026-11-19T04:58:43.565Z",
+        "status": "live",
+        "httpStatus": 200,
+        "latencyMs": 209,
         "itemCount": 18
       }
     ],
@@ -88,6 +95,13 @@
         "httpStatus": 200,
         "latencyMs": 192,
         "itemCount": 15
+      },
+      {
+        "checkedAtISO": "2026-11-19T04:58:43.565Z",
+        "status": "live",
+        "httpStatus": 200,
+        "latencyMs": 148,
+        "itemCount": 15
       }
     ],
     "faa-nas": [
@@ -131,6 +145,13 @@
         "status": "live",
         "httpStatus": 200,
         "latencyMs": 210,
+        "itemCount": 5
+      },
+      {
+        "checkedAtISO": "2026-11-19T04:58:43.565Z",
+        "status": "live",
+        "httpStatus": 200,
+        "latencyMs": 197,
         "itemCount": 5
       }
     ],
@@ -176,6 +197,13 @@
         "httpStatus": 200,
         "latencyMs": 531,
         "itemCount": 15
+      },
+      {
+        "checkedAtISO": "2026-11-19T04:58:43.565Z",
+        "status": "live",
+        "httpStatus": 200,
+        "latencyMs": 437,
+        "itemCount": 15
       }
     ],
     "cloudflare-status": [
@@ -219,6 +247,13 @@
         "status": "live",
         "httpStatus": 200,
         "latencyMs": 587,
+        "itemCount": 8
+      },
+      {
+        "checkedAtISO": "2026-11-19T04:58:43.565Z",
+        "status": "live",
+        "httpStatus": 200,
+        "latencyMs": 232,
         "itemCount": 8
       }
     ],
@@ -264,6 +299,13 @@
         "httpStatus": 200,
         "latencyMs": 659,
         "itemCount": 8
+      },
+      {
+        "checkedAtISO": "2026-11-19T04:58:43.565Z",
+        "status": "live",
+        "httpStatus": 200,
+        "latencyMs": 418,
+        "itemCount": 8
       }
     ],
     "aws-status": [
@@ -308,6 +350,13 @@
         "httpStatus": 200,
         "latencyMs": 700,
         "itemCount": 0
+      },
+      {
+        "checkedAtISO": "2026-11-19T04:58:43.565Z",
+        "status": "live",
+        "httpStatus": 200,
+        "latencyMs": 276,
+        "itemCount": 0
       }
     ],
     "apple-status": [
@@ -351,6 +400,13 @@
         "status": "live",
         "httpStatus": 200,
         "latencyMs": 521,
+        "itemCount": 12
+      },
+      {
+        "checkedAtISO": "2026-11-19T04:58:43.565Z",
+        "status": "live",
+        "httpStatus": 200,
+        "latencyMs": 413,
         "itemCount": 12
       }
     ]
