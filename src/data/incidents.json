@@ -30,12 +30,12 @@
     "sector": "National Aviation / ATC",
     "classification": "hybrid_transition_bug",
     "impact": "4.5-hr nationwide ground stop; ~12,462 flight disruptions; 17 of 22 ARTCCs destabilized; ~USD 345M Big-Four airline earnings hit",
-    "vector": "Two-router broadcast flood (El Dorado, AR Friday 3:30 p.m. ET cutover + 3-wk-old Amarillo, TX Juniper router on legacy TDM); HPE cites installer config (WTTW / AP)",
+    "vector": "Two-router broadcast flood (El Dorado, AR Friday 3:30 p.m. ET cutover + 3-wk-old Amarillo, TX Juniper router on legacy TDM); HPE cites installer config; Admin. Bedford took full responsibility (mystery remains after 68 clean prior cutovers); Sec. Duffy cited L3Harris vendor lock with no timeline to resume Juniper installs (PBS NewsHour).",
     "status": "Nov. 17: FAA halted router rollout & powered off all ~400 installed Juniper routers; Florida FBI/lab probe active. WaPo reports on-site FAA official tested & signed off on El Dorado cutover 8 mins before ground stop; White House formed multi-agency \"tiger team.\"",
     "sources": [
       {
-        "label": "WTTW / AP",
-        "url": "https://news.wttw.com/2026/11/17/faa-halts-installation-routers-led-ground-stop"
+        "label": "PBS NewsHour",
+        "url": "https://www.pbs.org/newshour/politics/dot-secretary-sean-duffy-keeps-blaming-l3harris-after-faa-ground-stop-even-as-cause-remains-unknown"
       }
     ]
   },
@@ -150,16 +150,12 @@
     "sector": "Classified Intelligence Enclave",
     "classification": "hybrid_transition_bug",
     "impact": "Internal classified network degraded/offline; Fort Meade ordered \"Code Gray\"/\"Code Yellow\" staggered arrivals to prevent login storms; Five Eyes unaffected (CBS News)",
-    "vector": "Scheduled routine maintenance/patching after weeks of instability; White House/NSA rule out cyberattack (Fox News)",
-    "status": "Official NSA statement cites routine maintenance degradation; full internal restoration timing unconfirmed entering Nov. 18 House hearing.",
+    "vector": "Urgent patching of AI-discovered PHP vulnerabilities (\"PHP2Shell\") failed on restart/handoff; non-cyber (CBS News / DNI Clayton)",
+    "status": "Disrupted NSA Georgia Middle East hub & kept MD day shift home Wed; reported back up late Nov. 18 PM under ongoing \"Code Gray\" staggered sign-on limits.",
     "sources": [
       {
         "label": "CBS News",
         "url": "https://www.cbsnews.com/news/nsa-network-down-classified-fort-meade/"
-      },
-      {
-        "label": "Fox News",
-        "url": "https://www.foxnews.com/live-news/tech-outages-microsoft-banks-faa-fbi-11-17-26"
       }
     ]
   },

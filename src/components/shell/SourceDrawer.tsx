@@ -65,7 +65,7 @@ export function SourceDrawer() {
             closeCitation();
           }
         }}
-        className="relative z-10 w-full md:max-w-md bg-[#111827] border-t md:border-t-0 md:border-l border-white/15 rounded-t-2xl md:rounded-none max-h-[78vh] md:max-h-none md:h-full flex flex-col justify-between p-5 sm:p-6 overflow-y-auto shadow-2xl pb-[calc(1.25rem+env(safe-area-inset-bottom))]"
+        className="relative z-10 w-full md:max-w-md bg-[#0B0F17] border-t md:border-t-0 md:border-l border-white/15 rounded-t-lg md:rounded-none max-h-[78vh] md:max-h-none md:h-full flex flex-col justify-between p-5 sm:p-6 overflow-y-auto shadow-2xl pb-[calc(1.25rem+env(safe-area-inset-bottom))]"
       >
         <div className="space-y-4">
           {/* Mobile Bottom-Sheet Drag Handle */}

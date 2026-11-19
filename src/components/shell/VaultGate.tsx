@@ -19,9 +19,9 @@ export function VaultGate({ children }: { children: React.ReactNode }) {
 
   if (isRestoringVault) {
     return (
-      <div className="min-h-screen flex items-center justify-center px-4 bg-[#0A0E17]">
-        <div className="glass-panel max-w-sm w-full rounded-2xl p-6 text-center space-y-3">
-          <div className="w-9 h-9 rounded-lg bg-[#38BDF8]/10 border border-[#38BDF8]/30 flex items-center justify-center text-[#38BDF8] mx-auto">
+      <div className="min-h-screen flex items-center justify-center px-4 bg-[#06080C]">
+        <div className="glass-panel tac-frame max-w-sm w-full rounded-lg p-6 text-center space-y-3">
+          <div className="w-9 h-9 rounded-md bg-[#38BDF8]/10 border border-[#38BDF8]/30 flex items-center justify-center text-[#38BDF8] mx-auto">
             <ShieldCheck className="w-4 h-4 animate-pulse" />
           </div>
           <p className="font-mono-tactical text-xs text-gray-300">
@@ -47,17 +47,17 @@ export function VaultGate({ children }: { children: React.ReactNode }) {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 py-8 bg-[#0A0E17]">
-      <div className="glass-panel max-w-md w-full rounded-2xl p-6 sm:p-8 shadow-2xl space-y-6">
+    <div className="min-h-screen flex items-center justify-center px-4 py-8 bg-[#06080C]">
+      <div className="glass-panel tac-frame max-w-md w-full rounded-lg p-6 sm:p-8 shadow-2xl space-y-6">
         <div className="flex items-start gap-3.5">
-          <div className="w-11 h-11 rounded-xl bg-[#38BDF8]/10 border border-[#38BDF8]/30 flex items-center justify-center text-[#38BDF8] shrink-0">
-            <Lock className="w-5 h-5" />
+          <div className="w-10 h-10 rounded-md bg-[#0E131D] border border-white/15 flex items-center justify-center text-[#38BDF8] shrink-0">
+            <Lock className="w-4 h-4" />
           </div>
           <div className="space-y-1">
-            <p className="font-mono-tactical text-[11px] uppercase tracking-widest text-[#38BDF8]">
+            <p className="font-mono-tactical text-[10px] uppercase tracking-widest text-[#38BDF8]">
               Private Briefing Access
             </p>
-            <h1 className="text-lg sm:text-xl font-semibold text-white leading-snug">
+            <h1 className="text-lg sm:text-xl font-semibold text-white leading-snug tracking-tight">
               Gray-Zone &amp; Infrastructure Monitor
             </h1>
           </div>
@@ -76,7 +76,7 @@ export function VaultGate({ children }: { children: React.ReactNode }) {
           <div>
             <label
               htmlFor="vault-passcode-input"
-              className="block text-xs font-mono-tactical uppercase tracking-wider text-gray-400 mb-1.5"
+              className="block text-[11px] font-mono-tactical uppercase tracking-wider text-gray-400 mb-1.5"
             >
               Shared Access Passphrase
             </label>
@@ -92,13 +92,13 @@ export function VaultGate({ children }: { children: React.ReactNode }) {
                 autoComplete="current-password"
                 spellCheck={false}
                 autoFocus
-                className="w-full rounded-xl bg-[#0A0E17] border border-white/15 pl-3.5 pr-10 py-3 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-[#38BDF8]"
+                className="w-full rounded-md bg-[#06080C] border border-white/15 pl-3.5 pr-10 py-3 text-sm font-mono-tactical text-white placeholder-gray-500 focus:outline-none focus:border-[#38BDF8]"
               />
               <button
                 type="button"
                 onClick={() => setShowPasscode((prev) => !prev)}
                 aria-label={showPasscode ? 'Hide passphrase' : 'Show passphrase'}
-                className="absolute right-2.5 top-1/2 -translate-y-1/2 p-1.5 rounded-lg text-gray-400 hover:text-white cursor-pointer"
+                className="absolute right-2.5 top-1/2 -translate-y-1/2 p-1.5 rounded-sm text-gray-400 hover:text-white cursor-pointer"
               >
                 {showPasscode ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
               </button>
@@ -108,12 +108,12 @@ export function VaultGate({ children }: { children: React.ReactNode }) {
             </p>
           </div>
 
-          <label className="flex items-start gap-2.5 cursor-pointer select-none rounded-xl bg-white/[0.03] border border-white/[0.08] p-3">
+          <label className="flex items-start gap-2.5 cursor-pointer select-none rounded-md bg-[#0E131D] border border-white/[0.08] p-3">
             <input
               type="checkbox"
               checked={rememberDevice}
               onChange={(e) => setRememberDevice(e.target.checked)}
-              className="mt-0.5 rounded border-white/25 bg-[#0A0E17] text-[#38BDF8] focus:ring-[#38BDF8]"
+              className="mt-0.5 rounded-xs border-white/25 bg-[#06080C] text-[#38BDF8] focus:ring-[#38BDF8]"
             />
             <span className="text-xs text-gray-300 leading-snug">
               Remember this device for 30 days{' '}
@@ -124,7 +124,7 @@ export function VaultGate({ children }: { children: React.ReactNode }) {
           </label>
 
           {error && (
-            <div className="flex items-start gap-2 rounded-xl bg-red-500/10 border border-red-500/30 p-3 text-xs text-red-300">
+            <div className="flex items-start gap-2 rounded-md bg-red-500/10 border border-red-500/30 p-3 text-xs text-red-300">
               <AlertTriangle className="w-4 h-4 shrink-0 mt-0.5 text-[#EF4444]" />
               <span>{error}</span>
             </div>
@@ -134,7 +134,7 @@ export function VaultGate({ children }: { children: React.ReactNode }) {
             id="vault-unlock-button"
             type="submit"
             disabled={busy || !passcode.trim()}
-            className="w-full rounded-xl bg-[#38BDF8]/18 hover:bg-[#38BDF8]/28 border border-[#38BDF8]/45 text-[#38BDF8] font-medium py-3 text-sm transition disabled:opacity-50 cursor-pointer flex items-center justify-center gap-2"
+            className="w-full rounded-md bg-[#38BDF8]/16 hover:bg-[#38BDF8]/26 border border-[#38BDF8]/45 text-[#38BDF8] font-medium py-3 text-sm transition disabled:opacity-50 cursor-pointer flex items-center justify-center gap-2"
           >
             <ShieldCheck className="w-4 h-4" />
             <span>{busy ? 'Decrypting Briefing…' : 'Unlock Briefing'}</span>

@@ -23,13 +23,13 @@ export function PortalFooter() {
     .slice(0, 16);
 
   return (
-    <footer className="border-t border-white/10 bg-[#080B12] mt-14 pb-20 md:pb-0 print:bg-white print:text-black print:border-gray-300">
+    <footer className="border-t border-white/10 bg-[#05070B] mt-14 pb-20 md:pb-0 print:bg-white print:text-black print:border-gray-300">
       <div className="max-w-[1380px] mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-start print:hidden">
           {/* Brand & Edition Provenance */}
           <div className="md:col-span-5 space-y-2">
             <div className="flex items-center gap-2 font-mono-tactical text-xs text-white font-semibold">
-              <span className="w-2 h-2 rounded-xs bg-[#EF4444]" />
+              <span className="w-2 h-2 rounded-[1px] bg-[#EF4444]" />
               <span>GRAY-ZONE &amp; CRITICAL INFRASTRUCTURE RISK MONITOR</span>
             </div>
             <p className="text-xs text-gray-400 leading-relaxed max-w-md">
@@ -38,13 +38,13 @@ export function PortalFooter() {
               Briefing and automated zero-key public &amp; backbone telemetry endpoints.
             </p>
             <div className="flex flex-wrap items-center gap-2 pt-1 font-mono-tactical text-[11px] text-gray-400">
-              <span className="px-2 py-0.5 rounded bg-white/[0.04] border border-white/10 text-gray-300">
+              <span className="px-2 py-0.5 rounded-sm bg-white/[0.04] border border-white/10 text-gray-300">
                 SHA-256: {changelog.docHash.slice(0, 12)}…
               </span>
-              <span className="px-2 py-0.5 rounded bg-white/[0.04] border border-white/10 text-gray-300">
+              <span className="px-2 py-0.5 rounded-sm bg-white/[0.04] border border-white/10 text-gray-300">
                 SYNC: {syncedUtc} UTC
               </span>
-              <span className="px-2 py-0.5 rounded bg-[#10B981]/10 border border-[#10B981]/30 text-[#10B981] inline-flex items-center gap-1">
+              <span className="px-2 py-0.5 rounded-sm bg-[#10B981]/10 border border-[#10B981]/30 text-[#10B981] inline-flex items-center gap-1">
                 <ShieldCheck className="w-3 h-3" />
                 {feedHealth.liveCount}/{feedHealth.totalFeeds} Feeds · {liveSignals.totalSignals}{' '}
                 Signals
@@ -91,7 +91,7 @@ export function PortalFooter() {
               <button
                 type="button"
                 onClick={() => setChangelogOpen(true)}
-                className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 font-mono-tactical text-xs text-gray-300 hover:text-white transition cursor-pointer"
+                className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-md bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 font-mono-tactical text-xs text-gray-300 hover:text-white transition cursor-pointer"
               >
                 <History className="w-3.5 h-3.5 text-[#38BDF8]" />
                 <span>Sync Diffs</span>
@@ -99,7 +99,7 @@ export function PortalFooter() {
               <button
                 type="button"
                 onClick={() => setExportOpen(true)}
-                className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 font-mono-tactical text-xs text-gray-300 hover:text-white transition cursor-pointer"
+                className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-md bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 font-mono-tactical text-xs text-gray-300 hover:text-white transition cursor-pointer"
               >
                 <FileText className="w-3.5 h-3.5 text-[#38BDF8]" />
                 <span>Summary</span>
@@ -107,7 +107,7 @@ export function PortalFooter() {
               <button
                 type="button"
                 onClick={() => setSearchOpen(true)}
-                className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 font-mono-tactical text-xs text-gray-300 hover:text-white transition cursor-pointer"
+                className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-md bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 font-mono-tactical text-xs text-gray-300 hover:text-white transition cursor-pointer"
               >
                 <Search className="w-3.5 h-3.5 text-[#38BDF8]" />
                 <span>⌘K Search</span>
@@ -116,7 +116,7 @@ export function PortalFooter() {
                 <button
                   type="button"
                   onClick={() => lockVault()}
-                  className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-white/[0.04] hover:bg-[#EF4444]/15 border border-white/10 hover:border-[#EF4444]/40 font-mono-tactical text-xs text-gray-300 hover:text-[#EF4444] transition cursor-pointer"
+                  className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-md bg-white/[0.04] hover:bg-[#EF4444]/15 border border-white/10 hover:border-[#EF4444]/40 font-mono-tactical text-xs text-gray-300 hover:text-[#EF4444] transition cursor-pointer"
                 >
                   <Lock className="w-3.5 h-3.5" />
                   <span>Lock</span>

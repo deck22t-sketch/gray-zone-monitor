@@ -57,8 +57,13 @@ interface PortalContextValue {
   isExportOpen: boolean;
   setExportOpen: (open: boolean) => void;
   isOffline: boolean;
+  pinnedSignalIds: string[];
+  togglePinSignal: (signalId: string) => void;
+  clearPinnedSignals: () => void;
   lookupSourceByUrl: (url: string) => PrimarySourceEntry | undefined;
 }
+
+const PINNED_SIGNALS_KEY = 'gz_pinned_signals_v1';
 
 const staticBundle: FullBriefingDataBundle = {
   riskMatrix: riskMatrixJson as RiskVector[],
@@ -84,6 +89,21 @@ export function PortalProvider({ children }: { children: React.ReactNode }) {
   const [isChangelogOpen, setChangelogOpen] = useState(false);
   const [isExportOpen, setExportOpen] = useState(false);
   const [isOffline, setIsOffline] = useState(false);
+  const [pinnedSignalIds, setPinnedSignalIds] = useState<string[]>([]);
+
+  useEffect(() => {
+    try {
+      const raw = window.localStorage.getItem(PINNED_SIGNALS_KEY);
+      if (raw) {
+        const parsed = JSON.parse(raw);
+        if (Array.isArray(parsed)) {
+          setPinnedSignalIds(parsed.filter((item): item is string => typeof item === 'string'));
+        }
+      }
+    } catch {
+      // Ignore storage restrictions
+    }
+  }, []);
 
   // Restore active 30-day IndexedDB device key or current-tab grant in memory
   useEffect(() => {
@@ -185,6 +205,29 @@ export function PortalProvider({ children }: { children: React.ReactNode }) {
     });
   }
 
+  function togglePinSignal(signalId: string) {
+    setPinnedSignalIds((prev) => {
+      const next = prev.includes(signalId)
+        ? prev.filter((id) => id !== signalId)
+        : [signalId, ...prev].slice(0, 25);
+      try {
+        window.localStorage.setItem(PINNED_SIGNALS_KEY, JSON.stringify(next));
+      } catch {
+        // Ignore storage errors
+      }
+      return next;
+    });
+  }
+
+  function clearPinnedSignals() {
+    setPinnedSignalIds([]);
+    try {
+      window.localStorage.removeItem(PINNED_SIGNALS_KEY);
+    } catch {
+      // Ignore storage errors
+    }
+  }
+
   const value: PortalContextValue = {
     bundle,
     vaultMeta: staticVaultMeta,
@@ -202,6 +245,9 @@ export function PortalProvider({ children }: { children: React.ReactNode }) {
     isExportOpen,
     setExportOpen,
     isOffline,
+    pinnedSignalIds,
+    togglePinSignal,
+    clearPinnedSignals,
     lookupSourceByUrl: (url: string) => sourceMap.get(url),
   };
 

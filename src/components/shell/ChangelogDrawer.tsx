@@ -51,7 +51,7 @@ export function ChangelogDrawer() {
             setChangelogOpen(false);
           }
         }}
-        className="relative z-10 w-full md:max-w-lg bg-[#111827] border-t md:border-t-0 md:border-l border-white/15 rounded-t-2xl md:rounded-none max-h-[78vh] md:max-h-none md:h-full p-5 sm:p-6 overflow-y-auto space-y-5 shadow-2xl pb-[calc(1.25rem+env(safe-area-inset-bottom))]"
+        className="relative z-10 w-full md:max-w-lg bg-[#0B0F17] border-t md:border-t-0 md:border-l border-white/15 rounded-t-lg md:rounded-none max-h-[78vh] md:max-h-none md:h-full p-5 sm:p-6 overflow-y-auto space-y-5 shadow-2xl pb-[calc(1.25rem+env(safe-area-inset-bottom))]"
       >
         {/* Mobile Bottom-Sheet Drag Handle */}
         <div className="md:hidden flex justify-center -mt-1">

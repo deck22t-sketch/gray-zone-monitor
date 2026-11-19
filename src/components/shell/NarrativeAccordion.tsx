@@ -41,7 +41,7 @@ function RenderBlocks({ blocks, contextLabel }: { blocks: ContentBlock[]; contex
             <div key={bIdx} className="overflow-x-auto rounded-xl border border-white/10 my-3">
               <table className="w-full text-left border-collapse text-xs">
                 <thead>
-                  <tr className="bg-[#0F1624] border-b border-white/10">
+                  <tr className="bg-[#0E131D] border-b border-white/[0.08]">
                     {block.table.headers.map((h, hIdx) => (
                       <th
                         key={hIdx}
@@ -122,27 +122,27 @@ export function NarrativeAccordion({
             }
             setOpenIds(next);
           }}
-          className="px-3 py-1 rounded-lg bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 text-xs font-mono-tactical text-[#38BDF8] transition cursor-pointer"
+          className="px-3 py-1 rounded-sm bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 text-xs font-mono-tactical text-[#38BDF8] transition cursor-pointer"
         >
           {allExpanded ? 'Collapse All Verbatim Sections' : 'Expand All Verbatim Sections'}
         </button>
       </div>
 
-      <div className="space-y-3">
+      <div className="space-y-2.5">
         {sections.map((sec) => {
           const isOpen = Boolean(openIds[sec.id]);
           return (
-            <div key={sec.id} className="glass-card rounded-xl overflow-hidden">
+            <div key={sec.id} className="glass-card rounded-md overflow-hidden">
               <button
                 type="button"
                 onClick={() => toggle(sec.id)}
-                className="w-full flex items-center justify-between px-5 py-4 text-left cursor-pointer hover:bg-white/[0.02] transition"
+                className="w-full flex items-center justify-between px-4 sm:px-5 py-3.5 text-left cursor-pointer hover:bg-white/[0.02] transition"
               >
-                <div className="flex items-center gap-3">
-                  <span className="font-mono-tactical text-xs font-semibold px-2.5 py-0.5 rounded bg-[#0E1524] border border-white/15 text-[#38BDF8]">
+                <div className="flex items-center gap-3 min-w-0">
+                  <span className="font-mono-tactical text-[11px] font-semibold px-2 py-0.5 rounded-sm bg-[#06080C] border border-white/15 text-[#38BDF8] shrink-0">
                     SEC {sec.number}
                   </span>
-                  <span className="font-semibold text-sm sm:text-base text-white">
+                  <span className="font-semibold text-sm sm:text-base text-white truncate">
                     {sec.title}
                   </span>
                 </div>
@@ -159,7 +159,7 @@ export function NarrativeAccordion({
               </button>
 
               {isOpen && (
-                <div className="px-5 sm:px-6 pb-6 pt-3 border-t border-white/[0.08] space-y-6 bg-[#0A0E17]/40">
+                <div className="px-4 sm:px-6 pb-6 pt-3 border-t border-white/[0.08] space-y-6 bg-[#070A10]">
                   {sec.blocks.length > 0 && (
                     <RenderBlocks
                       blocks={sec.blocks}
@@ -169,10 +169,10 @@ export function NarrativeAccordion({
                   {sec.subsections.map((sub) => (
                     <div
                       key={sub.id}
-                      className="space-y-3 pt-4 border-t border-white/[0.06] pl-3 sm:pl-4 border-l-2 border-l-[#38BDF8]/35"
+                      className="space-y-3 pt-4 border-t border-white/[0.06] pl-3 sm:pl-4 border-l-2 border-l-[#38BDF8]/40"
                     >
                       <h3 className="text-sm sm:text-base font-semibold text-white flex flex-wrap items-center gap-2">
-                        <span className="font-mono-tactical text-xs px-2 py-0.5 rounded bg-[#F59E0B]/10 border border-[#F59E0B]/30 text-[#F59E0B]">
+                        <span className="font-mono-tactical text-xs px-2 py-0.5 rounded-sm bg-[#F59E0B]/10 border border-[#F59E0B]/30 text-[#F59E0B]">
                           {sub.code}
                         </span>
                         <span>{sub.title}</span>

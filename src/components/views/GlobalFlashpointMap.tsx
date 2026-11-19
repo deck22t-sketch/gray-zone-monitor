@@ -53,11 +53,11 @@ const FLASHPOINTS: FlashpointNode[] = [
     layer: 'BACKBONE',
     tone: 'amber',
     verification: 'Developing',
-    headlineMetric: '17/22 ARTCCs · ~400 Routers Halted',
+    headlineMetric: '17/22 ARTCCs · 68 Prior Cutovers Clean',
     summary:
-      'Friday Nov. 13 cutover signed off 8 minutes prior triggered a peer broadcast flood (>1,000 attempts per 4–5s) from a 3-week-old Amarillo router across legacy TDM trunks.',
+      'El Dorado Nov. 13 cutover triggered a peer broadcast flood (>1,000 attempts per 4–5s) from a 3-week-old Amarillo router. Admin. Bedford took full responsibility while mystery remains after 68 clean prior cutovers.',
     exposure:
-      'FAA halted Juniper rollout Nov. 17, reverted to legacy Cisco 6000 gear, and opened Florida FBI/L3Harris lab teardowns.',
+      'FAA halted Juniper rollout Nov. 17; Sec. Duffy cited two-decade L3Harris vendor lock since 2002 with no timeline to resume installs.',
     traceKey: 'inc:#2',
     detailHref: '/incidents#faa-teardown-section',
     detailLabel: 'Open Two-Router Teardown',
@@ -75,9 +75,9 @@ const FLASHPOINTS: FlashpointNode[] = [
     verification: 'Corroborated',
     headlineMetric: '~$550B/day Cash Clearing · Dec. 31',
     summary:
-      'Nov. 16 Chase hardware/software bug cascaded across Zelle counterparties (BofA, Wells Fargo, Truist) ahead of mandatory SEC U.S. Treasury cash clearing concentration at DTCC/FICC.',
+      'Nov. 16 Chase hardware/software bug cascaded across Zelle counterparties ahead of mandatory SEC U.S. Treasury cash clearing concentration at DTCC/FICC.',
     exposure:
-      '24/7 $10M RTP/FedNow instant rails create autonomous AI liquidity run risk when noisy outage telemetry spikes.',
+      '24/7 $10M RTP/FedNow instant rails create autonomous AI liquidity run risk when outage telemetry spikes.',
     traceKey: 'risk:#5',
     detailHref: '/contagion',
     detailLabel: 'Inspect Clearing & Contagion',
@@ -95,7 +95,7 @@ const FLASHPOINTS: FlashpointNode[] = [
     verification: 'Corroborated',
     headlineMetric: 'FCC 91 FR 73480 · Due Jan. 8, 2027',
     summary:
-      'Nov. 16 FCC final rule tightens Submarine Line Terminal Equipment (SLTE) security oversight and mandates Foreign Adversary Annual Reports across wet/dry landing stations.',
+      'Nov. 16 FCC final rule tightens Submarine Line Terminal Equipment (SLTE) oversight and mandates Foreign Adversary Annual Reports across landing stations.',
     exposure:
       'Out-of-band optical terminal management interfaces bridge physical seabed trunks to carrier IP cores.',
     traceKey: 'cliff:2027-01-08',
@@ -133,11 +133,11 @@ const FLASHPOINTS: FlashpointNode[] = [
     layer: 'KINETIC',
     tone: 'crimson',
     verification: 'Corroborated',
-    headlineMetric: '$38B Munitions Burn · CISA AA26-097A',
+    headlineMetric: '$38B Burn · ADNOC & Qeshm Escalation',
     summary:
-      'Operation Epic Fury kinetic attrition coincides with Iranian-nexus PLC intrusions (ports 44818, 2222, 102, 502) and Check Point-to-ESXi destroy_v6 hypervisor wipers.',
+      'Nov. 18 escalation hit an ADNOC UAE oil vessel in Hormuz (11 injured, 1 missing) alongside U.S. strikes on Qeshm Island and Iranian attacks on Kuwait/Bahrain/Riyadh.',
     exposure:
-      'Compounds U.S. precision-munitions industrial strain ahead of 2027 Indo-Pacific deterrence windows.',
+      'Pairs kinetic munitions drain with Iranian-nexus PLC intrusions (44818, 2222, 102, 502) and ESXi destroy_v6 wipers.',
     traceKey: 'risk:#3',
     detailHref: '/geopolitics#entente-section',
     detailLabel: 'View Attrition & Chokepoints',
@@ -145,7 +145,7 @@ const FLASHPOINTS: FlashpointNode[] = [
   {
     id: 'taiwan-mineral-chokepoint',
     code: 'FP-06',
-    name: 'Taiwan Strait & Critical Mineral Export Controls',
+    name: 'Shenzhen APEC / Taiwan Strait & Mineral Cliffs',
     region: 'East Asia Semiconductor & REE Hub',
     coordsLabel: '24.5°N 119.5°E',
     x: 818,
@@ -155,9 +155,9 @@ const FLASHPOINTS: FlashpointNode[] = [
     verification: 'Corroborated',
     headlineMetric: 'Nov. 27 Ga/Ge/Sb · Jan. 10 REE Cliffs',
     summary:
-      'Expiry of China’s gallium, germanium, and antimony export pause (Nov. 27) and 0.1% extraterritorial REE waiver (Jan. 10) following Nov. 16 U.S. BIS AI chip rules.',
+      'Trump & Xi met in Shenzhen on Nov. 18 ahead of a trilateral with Putin as Russia flew nuclear-capable bombers past Japan and Taiwan to Vietnam.',
     exposure:
-      'Directly impacts AESA defense radars, RF semiconductors, NdFeB magnets, and 2027 Ro-Ro mobilization readiness.',
+      'China’s Ga/Ge/Sb pause expires Nov. 27 and 0.1% extraterritorial REE waiver ends Jan. 10, straining defense radars and magnets.',
     traceKey: 'risk:#4',
     detailHref: '/geopolitics#entente-section',
     detailLabel: 'Inspect Mineral Chokepoints',
@@ -208,6 +208,7 @@ export function GlobalFlashpointMap({ onTraceNode }: GlobalFlashpointMapProps) {
   const [zoom, setZoom] = useState<number>(1);
   const [pan, setPan] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
   const [showRasterCompare, setShowRasterCompare] = useState(false);
+  const [cursorGeo, setCursorGeo] = useState<string | null>(null);
 
   const dragStart = useRef<{ x: number; y: number; panX: number; panY: number } | null>(null);
   const rasterPlateSrc = resolvePublicAssetPath('/images/overview-backbone-map.jpg');
@@ -238,11 +239,23 @@ export function GlobalFlashpointMap({ onTraceNode }: GlobalFlashpointMapProps) {
     setPan({ x: 0, y: 0 });
   }
 
+  function updateCursorGeo(e: React.PointerEvent<HTMLDivElement>) {
+    const rect = e.currentTarget.getBoundingClientRect();
+    if (rect.width <= 0 || rect.height <= 0) return;
+    const rx = (e.clientX - rect.left) / rect.width;
+    const ry = (e.clientY - rect.top) / rect.height;
+    const lon = Math.max(-180, Math.min(180, rx * 360 - 180));
+    const lat = Math.max(-75, Math.min(82, 82 - ry * 157));
+    const latStr = `${Math.abs(lat).toFixed(1)}°${lat >= 0 ? 'N' : 'S'}`;
+    const lonStr = `${Math.abs(lon).toFixed(1)}°${lon >= 0 ? 'E' : 'W'}`;
+    setCursorGeo(`${latStr} ${lonStr}`);
+  }
+
   return (
     <section
       id="flashpoint-map-section"
       aria-labelledby="flashpoint-map-heading"
-      className="glass-panel rounded-2xl p-5 sm:p-6 space-y-4 scroll-mt-nav"
+      className="glass-panel tac-frame rounded-lg p-4 sm:p-5 space-y-4 scroll-mt-nav"
     >
       {/* Header & Layer Controls */}
       <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3 pb-3 border-b border-white/10">
@@ -252,11 +265,10 @@ export function GlobalFlashpointMap({ onTraceNode }: GlobalFlashpointMapProps) {
             className="text-sm font-mono-tactical uppercase tracking-wider text-white flex items-center gap-2"
           >
             <Compass className="w-4 h-4 text-[#38BDF8]" />
-            <span>Global Flashpoint, Subsea &amp; Backbone Vector Map</span>
+            <span>Global Flashpoint &amp; Backbone Vector Map</span>
           </h2>
           <p className="text-xs text-gray-400 mt-0.5">
-            Tap or click any theater node to inspect verification status, physical/logical exposure,
-            and jump into the dependency crosswalk.
+            Select any theater node to inspect verification posture, exposure, and crosswalk blast radius.
           </p>
         </div>
 
@@ -268,10 +280,10 @@ export function GlobalFlashpointMap({ onTraceNode }: GlobalFlashpointMapProps) {
                 key={opt.id}
                 type="button"
                 onClick={() => setLayer(opt.id)}
-                className={`px-2.5 py-1 rounded-lg text-[11px] font-mono-tactical border transition cursor-pointer ${
+                className={`px-2.5 py-1 rounded-sm text-[11px] font-mono-tactical border transition cursor-pointer ${
                   active
                     ? 'bg-[#38BDF8]/15 border-[#38BDF8]/50 text-[#38BDF8]'
-                    : 'bg-white/[0.04] border-white/10 text-gray-300 hover:bg-white/[0.08]'
+                    : 'bg-[#070A10] border-white/10 text-gray-300 hover:bg-white/[0.06]'
                 }`}
               >
                 {opt.label}
@@ -282,21 +294,21 @@ export function GlobalFlashpointMap({ onTraceNode }: GlobalFlashpointMapProps) {
           <button
             type="button"
             onClick={() => setShowRasterCompare((prev) => !prev)}
-            className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-[11px] font-mono-tactical border transition cursor-pointer ${
+            className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-sm text-[11px] font-mono-tactical border transition cursor-pointer ${
               showRasterCompare
                 ? 'bg-[#F59E0B]/15 border-[#F59E0B]/45 text-[#F59E0B]'
-                : 'bg-white/[0.04] border-white/10 text-gray-300 hover:bg-white/[0.08]'
+                : 'bg-[#070A10] border-white/10 text-gray-300 hover:bg-white/[0.06]'
             }`}
           >
             <ImageIcon className="w-3 h-3" />
-            <span>{showRasterCompare ? 'Interactive Vector' : 'Plate 00 Artwork'}</span>
+            <span>{showRasterCompare ? 'Vector Mode' : 'Plate 00'}</span>
           </button>
         </div>
       </div>
 
       {/* Main Split Grid: Interactive Map Canvas (8 cols) + Selected Node Dossier (4 cols) */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 items-stretch">
-        <div className="lg:col-span-8 relative obsidian-surface rounded-xl overflow-hidden border border-white/12 min-h-[260px] sm:min-h-[340px] flex items-center justify-center">
+        <div className="lg:col-span-8 relative obsidian-surface rounded-md overflow-hidden border border-white/12 min-h-[260px] sm:min-h-[340px] flex items-center justify-center">
           {showRasterCompare ? (
             <img
               src={rasterPlateSrc}
@@ -316,6 +328,7 @@ export function GlobalFlashpointMap({ onTraceNode }: GlobalFlashpointMapProps) {
                   };
                 }}
                 onPointerMove={(e) => {
+                  updateCursorGeo(e);
                   if (!dragStart.current || zoom <= 1) return;
                   const dx = e.clientX - dragStart.current.x;
                   const dy = e.clientY - dragStart.current.y;
@@ -329,9 +342,10 @@ export function GlobalFlashpointMap({ onTraceNode }: GlobalFlashpointMapProps) {
                 }}
                 onPointerLeave={() => {
                   dragStart.current = null;
+                  setCursorGeo(null);
                 }}
                 className={`w-full h-full select-none ${
-                  zoom > 1 ? 'cursor-grab active:cursor-grabbing' : ''
+                  zoom > 1 ? 'cursor-grab active:cursor-grabbing' : 'cursor-crosshair'
                 }`}
               >
                 <svg
@@ -506,8 +520,16 @@ export function GlobalFlashpointMap({ onTraceNode }: GlobalFlashpointMapProps) {
                 </svg>
               </div>
 
+              {/* Live Coordinate Cursor Readout */}
+              <div className="hidden sm:flex items-center gap-2 absolute bottom-3 left-3 bg-[#06080C]/92 border border-white/12 rounded-sm px-2.5 py-1 text-[10px] font-mono-tactical text-gray-300">
+                <span className="text-gray-500">CURSOR</span>
+                <span className="text-[#38BDF8]">{cursorGeo ?? selectedNode.coordsLabel.split('·')[0].trim()}</span>
+                <span className="text-gray-600">|</span>
+                <span className="text-gray-400">ZOOM {zoom.toFixed(1)}x</span>
+              </div>
+
               {/* Floating Zoom / Reset Controls */}
-              <div className="absolute bottom-3 right-3 flex items-center gap-1 bg-[#0A0E17]/90 border border-white/15 rounded-lg p-1 backdrop-blur-md">
+              <div className="absolute bottom-3 right-3 flex items-center gap-1 bg-[#06080C]/92 border border-white/15 rounded-sm p-1">
                 <button
                   type="button"
                   onClick={() => adjustZoom(0.4)}

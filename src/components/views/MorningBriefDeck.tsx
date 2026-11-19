@@ -60,17 +60,17 @@ export function MorningBriefDeck({ nowMs, onOpenFullConsole }: MorningBriefDeckP
 
   return (
     <section
-      aria-label="60-Second Executive Morning Brief"
-      className="glass-panel rounded-2xl p-4 sm:p-6 space-y-4"
+      aria-label="60-Second Executive Brief"
+      className="glass-panel tac-frame rounded-lg p-4 sm:p-5 space-y-4"
     >
       {/* Top Bar */}
       <div className="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-white/10">
         <div className="flex items-center gap-2">
-          <span className="px-2 py-0.5 rounded bg-[#38BDF8]/15 border border-[#38BDF8]/35 font-mono-tactical text-[10px] font-semibold text-[#38BDF8]">
-            60-SECOND MORNING BRIEF
+          <span className="px-2 py-0.5 rounded-sm bg-[#38BDF8]/15 border border-[#38BDF8]/35 font-mono-tactical text-[10px] font-semibold text-[#38BDF8]">
+            60-SECOND BRIEF
           </span>
           <span className="font-mono-tactical text-[11px] text-gray-400">
-            Swipe 4 Cards · {sections.docDate}
+            4 Cards · {sections.docDate}
           </span>
         </div>
 
@@ -78,10 +78,10 @@ export function MorningBriefDeck({ nowMs, onOpenFullConsole }: MorningBriefDeckP
           <button
             type="button"
             onClick={() => setExportOpen(true)}
-            className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-white/[0.05] hover:bg-white/[0.1] border border-white/12 font-mono-tactical text-[11px] text-gray-200 cursor-pointer"
+            className="inline-flex items-center gap-1 px-2.5 py-1 rounded-sm bg-white/[0.04] hover:bg-white/[0.09] border border-white/12 font-mono-tactical text-[11px] text-gray-200 cursor-pointer"
           >
             <FileText className="w-3 h-3 text-[#38BDF8]" />
-            <span>Share Summary</span>
+            <span>Share Brief</span>
           </button>
           <div className="hidden sm:flex items-center gap-1">
             <button
@@ -89,7 +89,7 @@ export function MorningBriefDeck({ nowMs, onOpenFullConsole }: MorningBriefDeckP
               onClick={() => scrollToCard(activeSlide - 1)}
               disabled={activeSlide === 0}
               aria-label="Previous brief card"
-              className="p-1 rounded bg-white/[0.05] border border-white/10 text-gray-300 disabled:opacity-35 cursor-pointer"
+              className="p-1 rounded-sm bg-white/[0.04] border border-white/10 text-gray-300 disabled:opacity-35 cursor-pointer"
             >
               <ChevronLeft className="w-3.5 h-3.5" />
             </button>
@@ -98,7 +98,7 @@ export function MorningBriefDeck({ nowMs, onOpenFullConsole }: MorningBriefDeckP
               onClick={() => scrollToCard(activeSlide + 1)}
               disabled={activeSlide === 3}
               aria-label="Next brief card"
-              className="p-1 rounded bg-white/[0.05] border border-white/10 text-gray-300 disabled:opacity-35 cursor-pointer"
+              className="p-1 rounded-sm bg-white/[0.04] border border-white/10 text-gray-300 disabled:opacity-35 cursor-pointer"
             >
               <ChevronRight className="w-3.5 h-3.5" />
             </button>
@@ -110,20 +110,19 @@ export function MorningBriefDeck({ nowMs, onOpenFullConsole }: MorningBriefDeckP
       <div
         ref={scrollRef}
         onScroll={handleScroll}
-        className="flex gap-3.5 overflow-x-auto no-scrollbar snap-x snap-mandatory pb-1"
+        className="flex gap-3 overflow-x-auto no-scrollbar snap-x snap-mandatory pb-1"
       >
         {/* CARD 1: Executive Posture & Wave Attribution */}
-        <article className="snap-start shrink-0 w-[88%] sm:w-[46%] lg:w-[32%] obsidian-surface rounded-xl p-4 flex flex-col justify-between space-y-3.5 border border-white/12">
+        <article className="snap-start shrink-0 w-[88%] sm:w-[46%] lg:w-[32%] obsidian-surface rounded-md p-4 flex flex-col justify-between space-y-3.5 border border-white/12">
           <div className="space-y-2.5">
-            <div className="flex items-center justify-between text-[11px] font-mono-tactical">
-              <span className="text-[#38BDF8] font-semibold">01 / POSTURE &amp; WAVE SPLIT</span>
+            <div className="flex items-center justify-between text-[10px] font-mono-tactical">
+              <span className="text-[#38BDF8] font-semibold">01 / POSTURE &amp; SPLIT</span>
               <span className="text-[#10B981]">
-                {feedHealth.liveCount}/{feedHealth.totalFeeds} Feeds Live
+                {feedHealth.liveCount}/{feedHealth.totalFeeds} Live
               </span>
             </div>
-            <h2 className="text-base font-semibold text-white leading-snug">
-              Ten-Event Disruption Cluster: Unpoliced Hybrid Infrastructure Meets Opportunistic
-              Malware
+            <h2 className="text-[15px] font-semibold text-white leading-snug">
+              Ten-Event Cluster: Legacy Transition Fragility Meets Opportunistic Malware
             </h2>
             <p className="text-xs text-gray-300 leading-relaxed line-clamp-4">
               {sections.executiveSummary.intro}
@@ -132,15 +131,15 @@ export function MorningBriefDeck({ nowMs, onOpenFullConsole }: MorningBriefDeckP
 
           <div className="space-y-2 pt-2 border-t border-white/[0.08]">
             <div className="grid grid-cols-3 gap-1.5 text-center font-mono-tactical">
-              <div className="rounded-lg bg-[#EF4444]/10 border border-[#EF4444]/30 py-1.5 px-1">
+              <div className="rounded-sm bg-[#EF4444]/10 border border-[#EF4444]/30 py-1.5 px-1">
                 <p className="text-sm font-semibold text-[#EF4444]">{malicious}</p>
                 <p className="text-[9px] text-gray-300">Malicious</p>
               </div>
-              <div className="rounded-lg bg-[#F59E0B]/10 border border-[#F59E0B]/30 py-1.5 px-1">
+              <div className="rounded-sm bg-[#F59E0B]/10 border border-[#F59E0B]/30 py-1.5 px-1">
                 <p className="text-sm font-semibold text-[#F59E0B]">{hybrid}</p>
                 <p className="text-[9px] text-gray-300">Hybrid / Bug</p>
               </div>
-              <div className="rounded-lg bg-[#38BDF8]/10 border border-[#38BDF8]/30 py-1.5 px-1">
+              <div className="rounded-sm bg-[#38BDF8]/10 border border-[#38BDF8]/30 py-1.5 px-1">
                 <p className="text-sm font-semibold text-[#38BDF8]">{cascade}</p>
                 <p className="text-[9px] text-gray-300">Auth Cascade</p>
               </div>
@@ -149,35 +148,45 @@ export function MorningBriefDeck({ nowMs, onOpenFullConsole }: MorningBriefDeckP
               href="/incidents"
               className="inline-flex items-center gap-1 text-[11px] font-mono-tactical text-[#38BDF8] hover:underline"
             >
-              <span>Inspect All {incidents.length} Forensic Readouts</span>
+              <span>Inspect All {incidents.length} Readouts</span>
               <ArrowRight className="w-3 h-3" />
             </Link>
           </div>
         </article>
 
         {/* CARD 2: Latest Edition Status Shifts */}
-        <article className="snap-start shrink-0 w-[88%] sm:w-[46%] lg:w-[32%] obsidian-surface rounded-xl p-4 flex flex-col justify-between space-y-3.5 border border-white/12">
+        <article className="snap-start shrink-0 w-[88%] sm:w-[46%] lg:w-[32%] obsidian-surface rounded-md p-4 flex flex-col justify-between space-y-3.5 border border-white/12">
           <div className="space-y-2.5">
-            <div className="flex items-center justify-between text-[11px] font-mono-tactical">
+            <div className="flex items-center justify-between text-[10px] font-mono-tactical">
               <span className="text-[#F59E0B] font-semibold inline-flex items-center gap-1">
                 <Zap className="w-3 h-3" />
-                <span>02 / OVERNIGHT DIFFS</span>
+                <span>02 / SYNC DELTAS</span>
               </span>
               <span className="text-gray-400">
-                {changelog.updatedStatuses.length} Updated
+                {changelog.updatedStatuses.length + changelog.riskShifts.length} Shifts
               </span>
             </div>
-            <h2 className="text-base font-semibold text-white leading-snug">
-              Latest Status Shifts ({sections.docDate})
+            <h2 className="text-[15px] font-semibold text-white leading-snug">
+              Latest Canonical Changes ({sections.docDate})
             </h2>
             <ul className="space-y-2 text-xs text-gray-200">
-              {changelog.updatedStatuses.slice(0, 4).map((u) => (
-                <li key={u.eventId} className="rounded-lg bg-white/[0.03] border border-white/[0.07] p-2">
+              {changelog.updatedStatuses.slice(0, 3).map((u) => (
+                <li key={u.eventId} className="rounded-sm bg-white/[0.03] border border-white/[0.07] p-2">
                   <span className="font-mono-tactical text-[10px] text-[#F59E0B] font-semibold">
                     EVENT {u.eventId} · {u.entity}
                   </span>
                   <p className="text-[11px] text-gray-300 line-clamp-2 mt-0.5 leading-snug">
-                    {u.currentStatus}
+                    {u.currentStatus.replace(/^Vector:\s*/i, '')}
+                  </p>
+                </li>
+              ))}
+              {changelog.riskShifts.slice(0, 1).map((r) => (
+                <li key={r.id} className="rounded-sm bg-white/[0.03] border border-white/[0.07] p-2">
+                  <span className="font-mono-tactical text-[10px] text-[#38BDF8] font-semibold">
+                    RISK {r.id} · {r.field.toUpperCase()}
+                  </span>
+                  <p className="text-[11px] text-gray-300 line-clamp-2 mt-0.5 leading-snug">
+                    {r.current}
                   </p>
                 </li>
               ))}
@@ -187,10 +196,10 @@ export function MorningBriefDeck({ nowMs, onOpenFullConsole }: MorningBriefDeckP
           <button
             type="button"
             onClick={() => setChangelogOpen(true)}
-            className="w-full inline-flex items-center justify-center gap-1.5 rounded-lg bg-white/[0.05] hover:bg-white/[0.1] border border-white/12 py-2 text-[11px] font-mono-tactical text-[#38BDF8] cursor-pointer"
+            className="w-full inline-flex items-center justify-center gap-1.5 rounded-sm bg-white/[0.04] hover:bg-white/[0.09] border border-white/12 py-2 text-[11px] font-mono-tactical text-[#38BDF8] cursor-pointer"
           >
             <History className="w-3.5 h-3.5" />
-            <span>Open Full Sync &amp; Provenance Ledger</span>
+            <span>Open Sync &amp; Provenance Ledger</span>
           </button>
         </article>
 

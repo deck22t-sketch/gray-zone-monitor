@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "next dev",
     "sync:doc": "tsx scripts/sync-doc.ts",
+    "sync:drive": "gdrive readonly export 1lDZB7DdprC6tbgMtsT69WEmj-AesGcqvyv3RDE1vSXw content/executive_briefing.md --format md && npm run sync:doc && npm test",
     "ingest:signals": "tsx scripts/ingest-signals.ts",
     "encrypt:bundle": "tsx scripts/encrypt-bundle.ts",
     "rss:generate": "tsx scripts/generate-rss.ts",

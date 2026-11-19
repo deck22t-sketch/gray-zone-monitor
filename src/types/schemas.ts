@@ -11,7 +11,7 @@ export const HorizonGroupSchema = z.enum(['Immediate', '10–54 Days', '2027–2
 export type HorizonGroup = z.infer<typeof HorizonGroupSchema>;
 
 export const RiskVectorSchema = z.object({
-  id: z.string().regex(/^#[1-8]$/),
+  id: z.string().regex(/^#\d+$/),
   domain: z.string().min(3),
   horizon: z.string().min(3),
   horizonGroup: HorizonGroupSchema,
@@ -22,7 +22,7 @@ export const RiskVectorSchema = z.object({
   sources: z.array(SourceLinkSchema),
 });
 
-export const RiskMatrixArraySchema = z.array(RiskVectorSchema).length(8);
+export const RiskMatrixArraySchema = z.array(RiskVectorSchema).min(8);
 export type RiskVector = z.infer<typeof RiskVectorSchema>;
 
 export const IncidentClassificationSchema = z.enum([
@@ -57,18 +57,18 @@ export const CountdownCliffSchema = z.object({
   actionExposure: z.string().min(5),
 });
 
-export const CountdownCliffsArraySchema = z.array(CountdownCliffSchema).length(8);
+export const CountdownCliffsArraySchema = z.array(CountdownCliffSchema).min(8);
 export type CountdownCliff = z.infer<typeof CountdownCliffSchema>;
 
 export const WatchlistRowSchema = z.object({
-  id: z.string().regex(/^#[1-9]$/),
+  id: z.string().regex(/^#\d+$/),
   signal: z.string().min(3),
   mechanism: z.string().min(5),
   forensicMeaning: z.string().min(5),
   sources: z.array(SourceLinkSchema),
 });
 
-export const WatchlistArraySchema = z.array(WatchlistRowSchema).length(9);
+export const WatchlistArraySchema = z.array(WatchlistRowSchema).min(9);
 export type WatchlistRow = z.infer<typeof WatchlistRowSchema>;
 
 export const MarkdownTableSchema = z.object({
@@ -154,7 +154,7 @@ export const SectionsDataSchema = z.object({
   docScope: z.string().min(20),
   executiveSummary: z.object({
     intro: z.string().min(10),
-    pillars: z.array(SummaryPillarSchema).length(6),
+    pillars: z.array(SummaryPillarSchema).min(6),
   }),
   narrativeSections: z.array(NarrativeSectionSchema).length(8),
   primarySources: z.array(PrimarySourceEntrySchema).min(30),

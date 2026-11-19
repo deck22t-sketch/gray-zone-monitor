@@ -18,10 +18,11 @@ Live, continuously updating static Next.js 15 intelligence portal combining cano
 
 ## Quick Commands
 ```bash
+npm run sync:drive      # Pull canonical Google Doc via gdrive CLI, validate JSON, and run tests
 npm run sync:doc        # Parse & Zod-validate content/executive_briefing.md -> src/data/*.json
 npm run ingest:signals  # Sweep all 8 keyless federal & backbone OSINT feeds
 npm test                # Execute Vitest suite
 npm run build           # Export static site to out/
 ```
 
-In any connected Antigravity Remote Conversation, type **`sync briefing`** to re-export the attached Google Doc, validate, test, commit, and deploy.
+In any connected Antigravity Remote Conversation, type **`sync briefing`** to re-export the attached Google Doc, validate, test, commit, and deploy. To run automated hands-free Google Doc sync on the twice-daily GitHub Actions schedule, set `GOOGLE_SERVICE_ACCOUNT_JSON` (and optional `GOOGLE_DOC_ID`) in GitHub Actions Secrets.

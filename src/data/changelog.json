@@ -1,34 +1,30 @@
 {
-  "syncedAtISO": "2026-11-18T17:03:35.610Z",
-  "docHash": "9b082301827e8eeacf76e8ed264f7e3608377a10a799ed59ee4046bcb4f60012",
+  "syncedAtISO": "2026-11-19T00:29:29.404Z",
+  "docHash": "e6687323b08de089234452aeeedf1f699ec264460fe682ed2d23c2c3478d12be",
   "docDate": "November 18, 2026",
   "addedIncidents": [],
   "updatedStatuses": [
     {
       "eventId": "#2",
       "entity": "FAA / L3Harris FTI Backbone",
-      "previousStatus": "Nov. 17: FAA halted router rollout & powered off all ~400 installed Juniper routers; Florida FBI/lab probe active.",
-      "currentStatus": "Nov. 17: FAA halted router rollout & powered off all ~400 installed Juniper routers; Florida FBI/lab probe active. WaPo reports on-site FAA official tested & signed off on El Dorado cutover 8 mins before ground stop; White House formed multi-agency \"tiger team.\""
-    },
-    {
-      "eventId": "#7",
-      "entity": "Marriott International",
-      "previousStatus": "Monitoring Marriott post-mortem for shared cloud, CDN, identity, or payment-gateway overlap.",
-      "currentStatus": "Resolved Tuesday evening alongside technology partners."
+      "previousStatus": "Vector: Two-router broadcast flood (El Dorado, AR Friday 3:30 p.m. ET cutover + 3-wk-old Amarillo, TX Juniper router on legacy TDM); HPE cites installer config (WTTW / AP)",
+      "currentStatus": "Vector: Two-router broadcast flood (El Dorado, AR Friday 3:30 p.m. ET cutover + 3-wk-old Amarillo, TX Juniper router on legacy TDM); HPE cites installer config; Admin. Bedford took full responsibility (mystery remains after 68 clean prior cutovers); Sec. Duffy cited L3Harris vendor lock with no timeline to resume Juniper installs (PBS NewsHour)."
     },
     {
       "eventId": "#8",
       "entity": "National Security Agency — NSANet",
-      "previousStatus": "Active restoration; bipartisan Gang of Eight briefing demands & Nov. 18 House Homeland Security hearing.",
-      "currentStatus": "Official NSA statement cites routine maintenance degradation; full internal restoration timing unconfirmed entering Nov. 18 House hearing."
-    },
-    {
-      "eventId": "#10",
-      "entity": "Apple Ecosystem & iOS/Gmail Cascade",
-      "previousStatus": "Recovering Tuesday afternoon; monitoring residual iCloud/App Store Connect auth tokens.",
-      "currentStatus": "All Apple services (including iCloud Sign-In & Apple Pay) confirmed fully restored by 5:59 p.m. ET Nov. 17."
+      "previousStatus": "Official NSA statement cites routine maintenance degradation; full internal restoration timing unconfirmed entering Nov. 18 House hearing.",
+      "currentStatus": "Disrupted NSA Georgia Middle East hub & kept MD day shift home Wed; reported back up late Nov. 18 PM under ongoing \"Code Gray\" staggered sign-on limits."
     }
   ],
-  "riskShifts": [],
-  "summary": "Detected 0 new incident(s), 4 status update(s), and 0 risk matrix shift(s)."
+  "riskShifts": [
+    {
+      "id": "#1",
+      "domain": "Hybrid Legacy-to-IP \"Transition Trap\" & Retry Storms",
+      "field": "tripwire",
+      "previous": "Daytime edge cutovers on unsegmented TDM/IP networks (on Nov. 17 the FAA halted all new router installations and powered off installed Juniper routers, reverting to 25-year-old Cisco gear across ~400 installed sites out of 3,600+); unpoliced \"thundering herd\" recovery floods; routine software patching knocking NSANet offline (forcing Fort Meade staggered arrivals to prevent simultaneous login storms); Apple \"internal update\" knocking out iCloud sign-ins, App Store, and Apple Pay/Business services",
+      "current": "Daytime edge cutovers on unsegmented TDM/IP networks (on Nov. 17 the FAA halted all new router installations and powered off installed Juniper routers, reverting to 25-year-old Cisco gear across ~400 installed sites out of 3,600+); unpoliced \"thundering herd\" recovery floods; routine software patching knocking NSANet offline (forcing Fort Meade staggered arrivals to prevent simultaneous login storms); urgent PHP2Shell patching knocking NSANet and regional intel workflows offline; Apple \"internal update\" knocking out iCloud sign-ins, App Store, and Apple Pay/Business services"
+    }
+  ],
+  "summary": "Detected 0 new incident(s), 2 status update(s), and 1 risk matrix shift(s)."
 }

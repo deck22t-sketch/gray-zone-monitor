@@ -6,7 +6,7 @@
     "horizonGroup": "Immediate",
     "likelihood": "High",
     "blastRadius": "Severe (National ATC, IC/NSANet, Apple Ecosystem, G-SIBs, Cloud)",
-    "tripwire": "Daytime edge cutovers on unsegmented TDM/IP networks (on Nov. 17 the FAA halted all new router installations and powered off installed Juniper routers, reverting to 25-year-old Cisco gear across ~400 installed sites out of 3,600+); unpoliced \"thundering herd\" recovery floods; routine software patching knocking NSANet offline (forcing Fort Meade staggered arrivals to prevent simultaneous login storms); Apple \"internal update\" knocking out iCloud sign-ins, App Store, and Apple Pay/Business services",
+    "tripwire": "Daytime edge cutovers on unsegmented TDM/IP networks (on Nov. 17 the FAA halted all new router installations and powered off installed Juniper routers, reverting to 25-year-old Cisco gear across ~400 installed sites out of 3,600+); unpoliced \"thundering herd\" recovery floods; routine software patching knocking NSANet offline (forcing Fort Meade staggered arrivals to prevent simultaneous login storms); urgent PHP2Shell patching knocking NSANet and regional intel workflows offline; Apple \"internal update\" knocking out iCloud sign-ins, App Store, and Apple Pay/Business services",
     "mitigation": "Enforce control-plane policing, strict night maintenance windows, and cold-start client/agent retry throttling.",
     "sources": []
   },

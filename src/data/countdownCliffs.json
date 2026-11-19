@@ -1,10 +1,10 @@
 [
   {
     "targetDateISO": "2026-11-18",
-    "targetTimestampISO": "2026-11-18T15:00:00.000Z",
+    "targetTimestampISO": "2026-11-18T22:00:00.000Z",
     "dateLabel": "Nov. 18, 2026",
-    "milestone": "House Homeland Security \"Worldwide Threats\" Hearing (10:00 a.m. ET) & Anthropic IPO Pricing",
-    "actionExposure": "Track testimony from DHS Sec. Mullin & FBI Deputy Director Raia at today's 10:00 a.m. ET House hearing, Gang of Eight briefing outcomes, and Anthropic (ANT) pricing this evening ($70–$78/sh, up to $90.4B total raise)."
+    "milestone": "House Homeland Security \"Worldwide Threats\" Hearing (Completed Nov. 18)",
+    "actionExposure": "DNI Clayton, Sec. Mullin & FBI Dep. Dir. Raia testified no malicious coordination exists across recent outages while flagging AI-driven patching strain and CISA staffing pressures (CyberScoop)."
   },
   {
     "targetDateISO": "2026-11-20",

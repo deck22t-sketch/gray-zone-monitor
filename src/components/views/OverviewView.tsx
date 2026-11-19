@@ -31,21 +31,12 @@ import { CrossDomainCrosswalk } from '@/components/views/CrossDomainCrosswalk';
 import { assessRiskVerification, resolveTraceNodeKey } from '@/lib/evidence';
 
 const PILLAR_ROUTES = [
-  { href: '/geopolitics', label: 'Explore Ideological Contrast' },
-  { href: '/geopolitics#crimea-deterrence-section', label: 'Inspect Crimea & Deterrence Gaps' },
-  { href: '/geopolitics#entente-section', label: 'View 2026–2030 Escalation Timeline' },
-  { href: '/incidents#faa-teardown-section', label: 'Open FAA Ground Stop Case Study' },
-  { href: '/contagion', label: 'Inspect Contagion & War Clauses' },
-  { href: '/incidents#poisson-calc-section', label: 'Run Poisson Cluster Calculator' },
-];
-
-const OVERVIEW_NAV_ITEMS = [
-  { id: 'command-overview-hero', code: '01', label: 'Situation Deck' },
-  { id: 'flashpoint-map-section', code: '02', label: 'Flashpoint Map', badge: '7' },
-  { id: 'crosswalk-section', code: '03', label: 'Crosswalk' },
-  { id: 'cliff-strip-section', code: '04', label: '120-Day Cliffs', badge: '8' },
-  { id: 'bento-summary-section', code: '05', label: 'Synthesis Pillars', badge: '6' },
-  { id: 'risk-matrix-section', code: '06', label: 'Risk Matrix', badge: '8' },
+  { href: '/geopolitics', label: 'Ideological Contrast' },
+  { href: '/geopolitics#crimea-deterrence-section', label: 'Crimea & Deterrence' },
+  { href: '/geopolitics#entente-section', label: '2026–2030 Escalation' },
+  { href: '/incidents#faa-teardown-section', label: 'FAA Case Study' },
+  { href: '/contagion', label: 'Contagion & Legal' },
+  { href: '/incidents#poisson-calc-section', label: 'Poisson Calculator' },
 ];
 
 function formatCountdownDelta(targetIso: string, nowMs: number) {
@@ -104,6 +95,80 @@ export function OverviewView() {
     '#1': true,
     '#2': true,
   });
+  const [expandedPillars, setExpandedPillars] = useState<Record<string, boolean>>({});
+
+  const overviewNavItems = useMemo(
+    () => [
+      { id: 'command-overview-hero', code: '01', label: 'Situation Deck' },
+      { id: 'flashpoint-map-section', code: '02', label: 'Flashpoints', badge: '7' },
+      { id: 'crosswalk-section', code: '03', label: 'Crosswalk' },
+      {
+        id: 'cliff-strip-section',
+        code: '04',
+        label: '120d Cliffs',
+        badge: String(countdownCliffs.length),
+      },
+      {
+        id: 'bento-summary-section',
+        code: '05',
+        label: 'Pillars',
+        badge: String(sections.executiveSummary.pillars.length),
+      },
+      {
+        id: 'risk-matrix-section',
+        code: '06',
+        label: 'Risk Matrix',
+        badge: String(riskMatrix.length),
+      },
+    ],
+    [countdownCliffs.length, sections.executiveSummary.pillars.length, riskMatrix.length]
+  );
+
+  // Build data-driven Situation Flash items directly from canonical changelog diffs, cliffs, and top live OSINT
+  const situationFlashItems = useMemo(() => {
+    const items: Array<{ id: string; tone: 'cyan' | 'amber' | 'crimson'; title: string; body: string }> = [];
+
+    for (const u of changelog.updatedStatuses.slice(0, 2)) {
+      items.push({
+        id: `diff-${u.eventId}`,
+        tone: u.eventId === '#8' ? 'cyan' : 'amber',
+        title: `Event ${u.eventId} · ${u.entity}:`,
+        body: u.currentStatus.replace(/^Vector:\s*/i, ''),
+      });
+    }
+
+    if (items.length < 3 && changelog.riskShifts[0]) {
+      const shift = changelog.riskShifts[0];
+      items.push({
+        id: `risk-${shift.id}`,
+        tone: 'amber',
+        title: `Risk ${shift.id} Shift (${shift.field}):`,
+        body: shift.current,
+      });
+    }
+
+    const topCriticalSignal =
+      liveSignals.signals.find((s) => s.severity === 'critical') ?? liveSignals.signals[0];
+    if (topCriticalSignal) {
+      items.push({
+        id: `sig-${topCriticalSignal.id}`,
+        tone: topCriticalSignal.severity === 'critical' ? 'crimson' : 'cyan',
+        title: `${topCriticalSignal.sourceName}:`,
+        body: topCriticalSignal.title,
+      });
+    }
+
+    if (items.length < 3 && countdownCliffs[0]) {
+      items.push({
+        id: `cliff-${countdownCliffs[0].targetDateISO}`,
+        tone: 'crimson',
+        title: `${countdownCliffs[0].dateLabel} Cliff:`,
+        body: countdownCliffs[0].milestone,
+      });
+    }
+
+    return items.slice(0, 3);
+  }, [changelog, liveSignals.signals, countdownCliffs]);
 
   const heroMapSrc = resolvePublicAssetPath('/images/overview-backbone-map.jpg');
 
@@ -242,27 +307,27 @@ export function OverviewView() {
     <div className="space-y-6 sm:space-y-8">
       {/* Segmented Mode Bar: Mobile defaults to 60s Morning Brief; Desktop defaults to Full Console */}
       <div className="flex flex-wrap items-center justify-between gap-2 print:hidden">
-        <div className="inline-flex rounded-xl bg-[#0E1524] border border-white/15 p-1">
+        <div className="inline-flex rounded-md bg-[#0B0F17] border border-white/12 p-1">
           <button
             id="mode-btn-morning-brief"
             type="button"
             onClick={() => setOverviewMode('brief')}
-            className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono-tactical transition cursor-pointer ${
+            className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-sm text-xs font-mono-tactical transition cursor-pointer ${
               overviewMode === 'brief'
-                ? 'bg-[#38BDF8]/20 text-[#38BDF8] border border-[#38BDF8]/40'
+                ? 'bg-[#38BDF8]/16 text-[#38BDF8] border border-[#38BDF8]/40'
                 : 'text-gray-400 hover:text-gray-200 border border-transparent'
             }`}
           >
             <BookOpen className="w-3.5 h-3.5" />
-            <span>60s Morning Brief</span>
+            <span>60s Executive Brief</span>
           </button>
           <button
             id="mode-btn-full-console"
             type="button"
             onClick={() => setOverviewMode('console')}
-            className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono-tactical transition cursor-pointer ${
+            className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-sm text-xs font-mono-tactical transition cursor-pointer ${
               overviewMode === 'console'
-                ? 'bg-[#38BDF8]/20 text-[#38BDF8] border border-[#38BDF8]/40'
+                ? 'bg-[#38BDF8]/16 text-[#38BDF8] border border-[#38BDF8]/40'
                 : 'text-gray-400 hover:text-gray-200 border border-transparent'
             }`}
           >
@@ -271,10 +336,10 @@ export function OverviewView() {
           </button>
         </div>
 
-        <span className="font-mono-tactical text-[11px] text-gray-400 hidden sm:inline">
+        <span className="font-mono-tactical text-[11px] text-gray-500 hidden sm:inline">
           {overviewMode === 'brief'
             ? 'Swipeable 4-Card Executive Readout'
-            : 'Interactive Flashpoint Map · Dependency Crosswalk · 8-Vector Matrix'}
+            : 'Flashpoint Map · Dependency Crosswalk · 8-Vector Matrix'}
         </span>
       </div>
 
@@ -286,326 +351,317 @@ export function OverviewView() {
       ) : (
         <>
           {/* In-Page Sticky Section Navigation */}
-          <SectionNavStrip items={OVERVIEW_NAV_ITEMS} ariaLabel="Command Overview sections" />
+          <SectionNavStrip items={overviewNavItems} ariaLabel="Command Overview sections" />
 
           {/* Asymmetric 12-Column Executive Situation Deck */}
           <section
             id="command-overview-hero"
-        className="glass-panel rounded-2xl overflow-hidden scroll-mt-nav"
-      >
-        {/* Top Telemetry Status Bar */}
-        <div className="px-5 sm:px-7 py-3.5 bg-[#0A0E17]/75 border-b border-white/10 flex flex-wrap items-center justify-between gap-3">
-          <div className="flex flex-wrap items-center gap-2 text-xs font-mono-tactical">
-            <span className="px-2.5 py-1 rounded-md bg-[#10B981]/12 border border-[#10B981]/35 text-[#10B981] inline-flex items-center gap-1.5">
-              <ShieldCheck className="w-3.5 h-3.5" />
-              <span>
-                {feedHealth.liveCount}/{feedHealth.totalFeeds} PUBLIC FEEDS LIVE
-              </span>
-            </span>
-            <span className="px-2.5 py-1 rounded-md bg-[#38BDF8]/10 border border-[#38BDF8]/30 text-[#38BDF8]">
-              MODE: {liveSignals.ingestionMode}
-            </span>
-            <span className="px-2.5 py-1 rounded-md bg-white/[0.04] border border-white/10 text-gray-300">
-              EDITION: {sections.docDate.toUpperCase()} · SYNC{' '}
-              {new Date(changelog.syncedAtISO).toISOString().replace('T', ' ').slice(0, 16)} UTC
-            </span>
-          </div>
-
-          <div className="flex flex-wrap items-center gap-2">
-            <button
-              id="hero-what-changed-btn"
-              type="button"
-              onClick={() => setChangelogOpen(true)}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/[0.05] hover:bg-white/[0.1] border border-white/15 text-xs font-mono-tactical text-white transition cursor-pointer"
-            >
-              <History className="w-3.5 h-3.5 text-[#38BDF8]" />
-              <span>What Changed</span>
-              {totalDiffCount > 0 && (
-                <span className="px-1.5 py-0.2 rounded bg-[#F59E0B]/20 border border-[#F59E0B]/40 text-[10px] font-semibold text-[#F59E0B]">
-                  {totalDiffCount}
+            className="glass-panel tac-frame rounded-lg overflow-hidden scroll-mt-nav"
+          >
+            {/* Top Telemetry Status Bar */}
+            <div className="px-4 sm:px-6 py-3 bg-[#070A10] border-b border-white/10 flex flex-wrap items-center justify-between gap-2.5">
+              <div className="flex flex-wrap items-center gap-2 text-[11px] font-mono-tactical">
+                <span className="px-2 py-0.5 rounded-sm bg-[#10B981]/12 border border-[#10B981]/35 text-[#10B981] inline-flex items-center gap-1.5">
+                  <ShieldCheck className="w-3.5 h-3.5" />
+                  <span>
+                    {feedHealth.liveCount}/{feedHealth.totalFeeds} PUBLIC FEEDS LIVE
+                  </span>
                 </span>
-              )}
-            </button>
-            <Link
-              href="/watchlist?tab=live-wire"
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#38BDF8]/15 hover:bg-[#38BDF8]/25 border border-[#38BDF8]/40 text-xs font-mono-tactical text-[#38BDF8] transition"
-            >
-              <Radio className="w-3.5 h-3.5" />
-              <span>Live Wire ({liveSignals.totalSignals})</span>
-            </Link>
-          </div>
-        </div>
-
-        {/* Main 12-Column Asymmetric Body */}
-        <div className="p-5 sm:p-7 grid grid-cols-1 lg:grid-cols-12 gap-7 items-stretch">
-          {/* Left 7 Columns: Editorial Thesis, KPI Matrix & Forensic Attribution Bar */}
-          <div className="lg:col-span-7 flex flex-col justify-between space-y-6">
-            <div className="space-y-3.5">
-              <p className="font-mono-tactical text-[11px] uppercase tracking-widest text-[#38BDF8]">
-                EXECUTIVE INTELLIGENCE COMMAND PORTAL · {sections.docDate.toUpperCase()}
-              </p>
-              <h1 className="text-2xl sm:text-3xl lg:text-[32px] font-semibold tracking-tight text-white leading-[1.2]">
-                {sections.docTitle}
-              </h1>
-              <p className="text-sm sm:text-[15px] text-gray-200 leading-[1.68]">
-                {sections.executiveSummary.intro}
-              </p>
-            </div>
-
-            {/* 4 Interactive KPI Tiles */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-              <Link
-                href="/incidents"
-                className="obsidian-surface hover:border-[#EF4444]/45 rounded-xl p-3.5 transition group"
-              >
-                <p className="font-mono-tactical text-[10px] uppercase tracking-wider text-gray-400">
-                  Nov 12–17 Wave
-                </p>
-                <p className="font-mono-tactical text-2xl font-semibold text-white mt-1 group-hover:text-[#EF4444] transition">
-                  {incidents.length} Events
-                </p>
-                <p className="text-[11px] text-[#EF4444] mt-0.5 font-mono-tactical">
-                  ~6M US Reports/Wk
-                </p>
-              </Link>
-
-              <a
-                href="#risk-matrix-section"
-                className="obsidian-surface hover:border-[#F59E0B]/45 rounded-xl p-3.5 transition group"
-              >
-                <p className="font-mono-tactical text-[10px] uppercase tracking-wider text-gray-400">
-                  Risk Domains
-                </p>
-                <p className="font-mono-tactical text-2xl font-semibold text-white mt-1 group-hover:text-[#F59E0B] transition">
-                  {riskMatrix.length} Vectors
-                </p>
-                <p className="text-[11px] text-[#F59E0B] mt-0.5 font-mono-tactical">
-                  4 Immediate Active
-                </p>
-              </a>
-
-              <a
-                href="#cliff-strip-section"
-                className="obsidian-surface hover:border-[#38BDF8]/45 rounded-xl p-3.5 transition group"
-              >
-                <p className="font-mono-tactical text-[10px] uppercase tracking-wider text-gray-400">
-                  120-Day Calendar
-                </p>
-                <p className="font-mono-tactical text-2xl font-semibold text-white mt-1 group-hover:text-[#38BDF8] transition">
-                  {countdownCliffs.length} Cliffs
-                </p>
-                <p className="text-[11px] text-[#38BDF8] mt-0.5 font-mono-tactical">
-                  Nov 18 → Mar 15
-                </p>
-              </a>
-
-              <Link
-                href="/watchlist?tab=vault"
-                className="obsidian-surface hover:border-[#10B981]/45 rounded-xl p-3.5 transition group"
-              >
-                <p className="font-mono-tactical text-[10px] uppercase tracking-wider text-gray-400">
-                  Source Vault
-                </p>
-                <p className="font-mono-tactical text-2xl font-semibold text-white mt-1 group-hover:text-[#10B981] transition">
-                  {sections.primarySources.length} URLs
-                </p>
-                <p className="text-[11px] text-[#10B981] mt-0.5 font-mono-tactical">
-                  9-Point Watchlist
-                </p>
-              </Link>
-            </div>
-
-            {/* Forensic Attribution Spectrum Bar */}
-            <div className="obsidian-surface rounded-xl p-4 space-y-2.5">
-              <div className="flex flex-wrap items-center justify-between gap-2 text-xs">
-                <span className="font-mono-tactical text-[11px] uppercase tracking-wider text-gray-300">
-                  Nov. 12–17 Ten-Event Forensic Attribution Spectrum
+                <span className="px-2 py-0.5 rounded-sm bg-[#38BDF8]/10 border border-[#38BDF8]/30 text-[#38BDF8]">
+                  {liveSignals.ingestionMode}
                 </span>
-                <Link
-                  href="/incidents"
-                  className="font-mono-tactical text-[11px] text-[#38BDF8] hover:underline"
+                <span className="px-2 py-0.5 rounded-sm bg-white/[0.04] border border-white/10 text-gray-300">
+                  EDITION: {sections.docDate.toUpperCase()} · SYNC{' '}
+                  {new Date(changelog.syncedAtISO).toISOString().replace('T', ' ').slice(0, 16)} UTC
+                </span>
+              </div>
+
+              <div className="flex flex-wrap items-center gap-2">
+                <button
+                  id="hero-what-changed-btn"
+                  type="button"
+                  onClick={() => setChangelogOpen(true)}
+                  className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-sm bg-white/[0.04] hover:bg-white/[0.09] border border-white/14 text-xs font-mono-tactical text-white transition cursor-pointer"
                 >
-                  Inspect All {incidents.length} Readouts →
+                  <History className="w-3.5 h-3.5 text-[#38BDF8]" />
+                  <span>What Changed</span>
+                  {totalDiffCount > 0 && (
+                    <span className="px-1.5 py-0.2 rounded-sm bg-[#F59E0B]/20 border border-[#F59E0B]/40 text-[10px] font-semibold text-[#F59E0B]">
+                      {totalDiffCount}
+                    </span>
+                  )}
+                </button>
+                <Link
+                  href="/watchlist?tab=live-wire"
+                  className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-sm bg-[#38BDF8]/14 hover:bg-[#38BDF8]/24 border border-[#38BDF8]/40 text-xs font-mono-tactical text-[#38BDF8] transition"
+                >
+                  <Radio className="w-3.5 h-3.5" />
+                  <span>Live Wire ({liveSignals.totalSignals})</span>
                 </Link>
               </div>
-
-              <div className="h-2.5 w-full rounded-full overflow-hidden bg-[#0A0E17] border border-white/10 flex">
-                {incidentSpectrum.map((seg) =>
-                  seg.count > 0 ? (
-                    <div
-                      key={seg.key}
-                      style={{ width: `${seg.pct}%`, backgroundColor: seg.color }}
-                      title={`${seg.label}: ${seg.count} (${Math.round(seg.pct)}%)`}
-                      className="h-full first:rounded-l-full last:rounded-r-full transition-all"
-                    />
-                  ) : null
-                )}
-              </div>
-
-              <div className="flex flex-wrap items-center gap-x-5 gap-y-1.5 text-[11px] font-mono-tactical">
-                {incidentSpectrum.map((seg) => (
-                  <Link
-                    key={seg.key}
-                    href="/incidents"
-                    className="inline-flex items-center gap-1.5 text-gray-300 hover:text-white transition"
-                  >
-                    <span
-                      className="w-2 h-2 rounded-full"
-                      style={{ backgroundColor: seg.color }}
-                    />
-                    <span>{seg.label}:</span>
-                    <span className={`font-semibold ${seg.textClass}`}>{seg.count}</span>
-                  </Link>
-                ))}
-              </div>
             </div>
-          </div>
 
-          {/* Right 5 Columns: Framed PLATE 00 Atlas + Nov. 18 Overnight Situation Flash */}
-          <div className="lg:col-span-5 flex flex-col justify-between gap-4">
-            {/* Framed PLATE 00 Card */}
-            <div className="obsidian-surface rounded-xl overflow-hidden border border-white/12">
-              <div className="px-3.5 py-2 bg-[#0A0E17] border-b border-white/10 flex items-center justify-between gap-2">
-                <div className="flex items-center gap-2">
-                  <span className="font-mono-tactical text-[10px] font-semibold px-1.5 py-0.5 rounded bg-[#38BDF8]/15 border border-[#38BDF8]/35 text-[#38BDF8]">
-                    PLATE 00
-                  </span>
-                  <span className="text-xs font-medium text-gray-200 truncate">
-                    Transatlantic Subsea SLTE &amp; Grid Corridors
-                  </span>
+            {/* Main 12-Column Asymmetric Body */}
+            <div className="p-4 sm:p-6 grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+              {/* Left 7 Columns: Editorial Thesis, KPI Matrix & Forensic Attribution Bar */}
+              <div className="lg:col-span-7 flex flex-col justify-between space-y-5">
+                <div className="space-y-3">
+                  <p className="font-mono-tactical text-[10px] uppercase tracking-widest text-[#38BDF8]">
+                    EXECUTIVE SYNTHESIS · {sections.docDate.toUpperCase()}
+                  </p>
+                  <h1 className="text-xl sm:text-3xl font-semibold tracking-tight text-white leading-[1.18]">
+                    {sections.docTitle}
+                  </h1>
+                  <p className="text-xs sm:text-[14px] text-gray-300 leading-[1.65]">
+                    {sections.executiveSummary.intro}
+                  </p>
                 </div>
-                <button
-                  type="button"
-                  onClick={() => setHeroPlateOpen(true)}
-                  className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-white/[0.05] hover:bg-white/[0.12] border border-white/15 font-mono-tactical text-[10px] text-gray-200 hover:text-white transition cursor-pointer shrink-0"
-                >
-                  <Maximize2 className="w-3 h-3 text-[#38BDF8]" />
-                  <span>Expand</span>
-                </button>
+
+                {/* 4 Interactive KPI Tiles */}
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+                  <Link
+                    href="/incidents"
+                    className="obsidian-surface hover:border-[#EF4444]/45 rounded-md p-3 transition group"
+                  >
+                    <p className="font-mono-tactical text-[10px] uppercase tracking-wider text-gray-500">
+                      Tracked Wave
+                    </p>
+                    <p className="font-mono-tactical text-xl sm:text-2xl font-semibold text-white mt-1 group-hover:text-[#EF4444] transition">
+                      {incidents.length} Events
+                    </p>
+                    <p className="text-[10px] text-[#EF4444] mt-0.5 font-mono-tactical">
+                      ~6M US Reports/Wk
+                    </p>
+                  </Link>
+
+                  <a
+                    href="#risk-matrix-section"
+                    className="obsidian-surface hover:border-[#F59E0B]/45 rounded-md p-3 transition group"
+                  >
+                    <p className="font-mono-tactical text-[10px] uppercase tracking-wider text-gray-500">
+                      Risk Domains
+                    </p>
+                    <p className="font-mono-tactical text-xl sm:text-2xl font-semibold text-white mt-1 group-hover:text-[#F59E0B] transition">
+                      {riskMatrix.length} Vectors
+                    </p>
+                    <p className="text-[10px] text-[#F59E0B] mt-0.5 font-mono-tactical">
+                      {riskMatrix.filter((r) => r.horizonGroup === 'Immediate').length} Immediate Active
+                    </p>
+                  </a>
+
+                  <a
+                    href="#cliff-strip-section"
+                    className="obsidian-surface hover:border-[#38BDF8]/45 rounded-md p-3 transition group"
+                  >
+                    <p className="font-mono-tactical text-[10px] uppercase tracking-wider text-gray-500">
+                      120-Day Window
+                    </p>
+                    <p className="font-mono-tactical text-xl sm:text-2xl font-semibold text-white mt-1 group-hover:text-[#38BDF8] transition">
+                      {countdownCliffs.length} Cliffs
+                    </p>
+                    <p className="text-[10px] text-[#38BDF8] mt-0.5 font-mono-tactical">
+                      {countdownCliffs[0]?.dateLabel ?? 'Q4'} →{' '}
+                      {countdownCliffs[countdownCliffs.length - 1]?.dateLabel ?? 'Q1'}
+                    </p>
+                  </a>
+
+                  <Link
+                    href="/watchlist?tab=vault"
+                    className="obsidian-surface hover:border-[#10B981]/45 rounded-md p-3 transition group"
+                  >
+                    <p className="font-mono-tactical text-[10px] uppercase tracking-wider text-gray-500">
+                      Source Vault
+                    </p>
+                    <p className="font-mono-tactical text-xl sm:text-2xl font-semibold text-white mt-1 group-hover:text-[#10B981] transition">
+                      {sections.primarySources.length} URLs
+                    </p>
+                    <p className="text-[10px] text-[#10B981] mt-0.5 font-mono-tactical">
+                      {bundle.watchlist.length}-Point Watchlist
+                    </p>
+                  </Link>
+                </div>
+
+                {/* Forensic Attribution Spectrum Bar */}
+                <div className="obsidian-surface rounded-md p-3.5 space-y-2.5">
+                  <div className="flex flex-wrap items-center justify-between gap-2 text-xs">
+                    <span className="font-mono-tactical text-[10px] uppercase tracking-wider text-gray-400">
+                      Forensic Attribution Split ({incidents.length} Tracked Events)
+                    </span>
+                    <Link
+                      href="/incidents"
+                      className="font-mono-tactical text-[11px] text-[#38BDF8] hover:underline"
+                    >
+                      Inspect All Readouts →
+                    </Link>
+                  </div>
+
+                  <div className="h-2 w-full rounded-xs overflow-hidden bg-[#06080C] border border-white/10 flex">
+                    {incidentSpectrum.map((seg) =>
+                      seg.count > 0 ? (
+                        <div
+                          key={seg.key}
+                          style={{ width: `${seg.pct}%`, backgroundColor: seg.color }}
+                          title={`${seg.label}: ${seg.count} (${Math.round(seg.pct)}%)`}
+                          className="h-full transition-all"
+                        />
+                      ) : null
+                    )}
+                  </div>
+
+                  <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-[11px] font-mono-tactical">
+                    {incidentSpectrum.map((seg) => (
+                      <Link
+                        key={seg.key}
+                        href="/incidents"
+                        className="inline-flex items-center gap-1.5 text-gray-300 hover:text-white transition"
+                      >
+                        <span
+                          className="w-2 h-2 rounded-[1px]"
+                          style={{ backgroundColor: seg.color }}
+                        />
+                        <span>{seg.label}:</span>
+                        <span className={`font-semibold ${seg.textClass}`}>{seg.count}</span>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
               </div>
-              <div
-                onClick={() => setHeroPlateOpen(true)}
-                role="button"
-                tabIndex={0}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    setHeroPlateOpen(true);
-                  }
-                }}
-                className="relative aspect-[16/9] w-full bg-[#0A0E17] overflow-hidden group cursor-zoom-in"
-              >
-                <img
-                  src={heroMapSrc}
-                  alt="Transatlantic submarine optical cable landings, continental telecom corridors, and maritime chokepoint fault pulses"
-                  className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-[1.03]"
-                />
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0A0E17]/70 via-transparent to-transparent" />
+
+              {/* Right 5 Columns: Framed PLATE 00 Atlas + Dynamic Canonical Situation Flash */}
+              <div className="lg:col-span-5 flex flex-col justify-between gap-3.5">
+                {/* Framed PLATE 00 Card */}
+                <div className="obsidian-surface rounded-md overflow-hidden border border-white/12">
+                  <div className="px-3.5 py-2 bg-[#070A10] border-b border-white/10 flex items-center justify-between gap-2">
+                    <div className="flex items-center gap-2 min-w-0">
+                      <span className="font-mono-tactical text-[10px] font-semibold px-1.5 py-0.5 rounded-sm bg-[#38BDF8]/12 border border-[#38BDF8]/35 text-[#38BDF8] shrink-0">
+                        PLATE 00
+                      </span>
+                      <span className="text-xs font-medium text-gray-200 truncate">
+                        Transatlantic Subsea SLTE &amp; Grid Corridors
+                      </span>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => setHeroPlateOpen(true)}
+                      className="inline-flex items-center gap-1 px-2 py-0.5 rounded-sm bg-white/[0.04] hover:bg-white/[0.1] border border-white/14 font-mono-tactical text-[10px] text-gray-200 hover:text-white transition cursor-pointer shrink-0"
+                    >
+                      <Maximize2 className="w-3 h-3 text-[#38BDF8]" />
+                      <span>Expand</span>
+                    </button>
+                  </div>
+                  <div
+                    onClick={() => setHeroPlateOpen(true)}
+                    role="button"
+                    tabIndex={0}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        setHeroPlateOpen(true);
+                      }
+                    }}
+                    className="relative aspect-[16/9] w-full bg-[#06080C] overflow-hidden group cursor-zoom-in"
+                  >
+                    <img
+                      src={heroMapSrc}
+                      alt="Transatlantic submarine optical cable landings, continental telecom corridors, and maritime chokepoint fault pulses"
+                      className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-[1.03]"
+                    />
+                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#06080C]/75 via-transparent to-transparent" />
+                  </div>
+                </div>
+
+                {/* Data-Driven Latest Sync Situation Flash (updates automatically on every Google Doc sync) */}
+                <div className="obsidian-surface rounded-md p-3.5 space-y-2.5 flex-1 flex flex-col justify-between border border-white/12">
+                  <div className="space-y-2.5">
+                    <div className="flex items-center justify-between gap-2">
+                      <span className="font-mono-tactical text-[10px] uppercase tracking-wider text-[#F59E0B] inline-flex items-center gap-1.5 font-semibold">
+                        <Zap className="w-3.5 h-3.5" />
+                        <span>{sections.docDate} · Live Sync Delta</span>
+                      </span>
+                      <button
+                        type="button"
+                        onClick={() => setChangelogOpen(true)}
+                        className="font-mono-tactical text-[10px] text-[#38BDF8] hover:underline cursor-pointer"
+                      >
+                        {totalDiffCount > 0 ? `View ${totalDiffCount} Diffs →` : 'Sync Ledger →'}
+                      </button>
+                    </div>
+
+                    <ul className="space-y-2 text-xs text-gray-200 leading-snug">
+                      {situationFlashItems.map((item) => {
+                        const dot =
+                          item.tone === 'crimson'
+                            ? 'bg-[#EF4444]'
+                            : item.tone === 'amber'
+                            ? 'bg-[#F59E0B]'
+                            : 'bg-[#38BDF8]';
+                        return (
+                          <li key={item.id} className="flex items-start gap-2">
+                            <span className={`w-1.5 h-1.5 rounded-[1px] ${dot} mt-1.5 shrink-0`} />
+                            <span className="line-clamp-2">
+                              <strong className="text-white">{item.title}</strong> {item.body}
+                            </span>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
+                </div>
               </div>
             </div>
+          </section>
 
-            {/* Nov. 18 Situation Flash Ledger */}
-            <div className="surface-elevated rounded-xl p-4 space-y-2.5 flex-1 flex flex-col justify-between">
-              <div className="space-y-2.5">
-                <div className="flex items-center justify-between gap-2">
-                  <span className="font-mono-tactical text-[11px] uppercase tracking-wider text-[#F59E0B] inline-flex items-center gap-1.5 font-semibold">
-                    <Zap className="w-3.5 h-3.5" />
-                    <span>Nov. 18 Canonical Situation Flash</span>
-                  </span>
+          {/* Hero Backbone Atlas Lightbox */}
+          {heroPlateOpen && (
+            <div
+              className="fixed inset-0 z-50 bg-[#06080C]/94 backdrop-blur-md flex items-center justify-center p-4 sm:p-8"
+              onClick={() => setHeroPlateOpen(false)}
+              role="dialog"
+              aria-modal="true"
+              aria-label="PLATE 00 — Transatlantic Sub-IP & Continental Backbone Atlas"
+            >
+              <div
+                className="max-w-6xl w-full obsidian-surface rounded-lg overflow-hidden shadow-2xl border border-white/20"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <div className="px-5 py-3.5 border-b border-white/10 flex items-center justify-between gap-3">
+                  <div className="flex items-center gap-2.5">
+                    <span className="font-mono-tactical text-xs px-2 py-0.5 rounded-sm bg-[#38BDF8]/15 border border-[#38BDF8]/35 text-[#38BDF8]">
+                      PLATE 00
+                    </span>
+                    <h3 className="text-sm sm:text-base font-semibold text-white">
+                      Transatlantic Submarine Optical Cable Landings &amp; Continental Grid Corridors
+                    </h3>
+                  </div>
                   <button
                     type="button"
-                    onClick={() => setChangelogOpen(true)}
-                    className="font-mono-tactical text-[10px] text-[#38BDF8] hover:underline cursor-pointer"
+                    onClick={() => setHeroPlateOpen(false)}
+                    className="p-1.5 rounded-sm bg-white/[0.06] hover:bg-white/[0.14] border border-white/15 text-gray-300 hover:text-white transition cursor-pointer"
+                    aria-label="Close Backbone Atlas"
                   >
-                    View 4 Diffs →
+                    <X className="w-4 h-4" />
                   </button>
                 </div>
-
-                <ul className="space-y-2 text-xs text-gray-200 leading-snug">
-                  <li className="flex items-start gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#38BDF8] mt-1.5 shrink-0" />
-                    <span>
-                      <strong className="text-white">Manila Readout &amp; House Hearing:</strong>{' '}
-                      Sec. Rubio reports &ldquo;zero evidence&rdquo; tying outages to foreign
-                      actors; DHS Sec. Mullin &amp; FBI Dep. Dir. Raia testify 10:00 a.m. ET today.
-                    </span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#F59E0B] mt-1.5 shrink-0" />
-                    <span>
-                      <strong className="text-white">FAA 8-Min Sign-Off &amp; Restorations:</strong>{' '}
-                      On-site FAA official signed off on El Dorado cutover 8 min before ground stop;
-                      Apple (5:59 p.m. ET) &amp; Marriott fully restored.
-                    </span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#EF4444] mt-1.5 shrink-0" />
-                    <span>
-                      <strong className="text-white">
-                        Anthropic (ANT) IPO &amp; Active CVEs:
-                      </strong>{' '}
-                      Pricing tonight up to $90.4B raise ($1.3T–$1.4T val); CISA KEV Puppet RCE,
-                      Java4Shell &amp; FBI ARTEX (&lt;3h breach) active.
-                    </span>
-                  </li>
-                </ul>
+                <div className="bg-[#06080C] max-h-[75vh] flex items-center justify-center overflow-hidden">
+                  <img
+                    src={heroMapSrc}
+                    alt="Transatlantic submarine optical cable landings, continental telecom corridors, and maritime chokepoint fault pulses"
+                    className="w-full h-auto max-h-[75vh] object-contain"
+                  />
+                </div>
+                <div className="px-5 py-3.5 border-t border-white/10 text-xs text-gray-300 leading-relaxed flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                  <p>
+                    Subsea SLTE optical trunks (cyan), continental high-voltage/telecom corridors
+                    (amber), and gray-zone maritime cable/GNSS fault zones (crimson) monitored across
+                    Sections 5.3, 6.5, and 7.1.
+                  </p>
+                  <span className="font-mono-tactical text-[11px] text-gray-500 shrink-0">
+                    ESC to close
+                  </span>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Hero Backbone Atlas Lightbox */}
-      {heroPlateOpen && (
-        <div
-          className="fixed inset-0 z-50 bg-[#0A0E17]/92 backdrop-blur-md flex items-center justify-center p-4 sm:p-8"
-          onClick={() => setHeroPlateOpen(false)}
-          role="dialog"
-          aria-modal="true"
-          aria-label="PLATE 00 — Transatlantic Sub-IP & Continental Backbone Atlas"
-        >
-          <div
-            className="max-w-6xl w-full obsidian-surface rounded-2xl overflow-hidden shadow-2xl border border-white/20"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="px-5 py-3.5 border-b border-white/10 flex items-center justify-between gap-3">
-              <div className="flex items-center gap-2.5">
-                <span className="font-mono-tactical text-xs px-2 py-0.5 rounded bg-[#38BDF8]/15 border border-[#38BDF8]/35 text-[#38BDF8]">
-                  PLATE 00
-                </span>
-                <h3 className="text-sm sm:text-base font-semibold text-white">
-                  Transatlantic Submarine Optical Cable Landings &amp; Continental Grid Corridors
-                </h3>
-              </div>
-              <button
-                type="button"
-                onClick={() => setHeroPlateOpen(false)}
-                className="p-1.5 rounded-lg bg-white/[0.06] hover:bg-white/[0.14] border border-white/15 text-gray-300 hover:text-white transition cursor-pointer"
-                aria-label="Close Backbone Atlas"
-              >
-                <X className="w-4 h-4" />
-              </button>
-            </div>
-            <div className="bg-[#0A0E17] max-h-[75vh] flex items-center justify-center overflow-hidden">
-              <img
-                src={heroMapSrc}
-                alt="Transatlantic submarine optical cable landings, continental telecom corridors, and maritime chokepoint fault pulses"
-                className="w-full h-auto max-h-[75vh] object-contain"
-              />
-            </div>
-            <div className="px-5 py-3.5 border-t border-white/10 text-xs text-gray-300 leading-relaxed flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-              <p>
-                Subsea SLTE optical trunks (cyan), continental high-voltage/telecom corridors
-                (amber), and gray-zone maritime cable/GNSS fault zones (crimson) monitored across
-                Sections 5.3, 6.5, and 7.1.
-              </p>
-              <span className="font-mono-tactical text-[11px] text-gray-500 shrink-0">
-                ESC to close
-              </span>
-            </div>
-          </div>
-        </div>
-      )}
+          )}
 
       {/* Flagship Interactive Module 1: Global Flashpoint & Backbone Vector Map */}
       <GlobalFlashpointMap onTraceNode={jumpAndTraceInCrosswalk} />
@@ -766,44 +822,58 @@ export function OverviewView() {
           </span>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5">
           {sections.executiveSummary.pillars.map((pillar, idx) => {
             const routeInfo = PILLAR_ROUTES[idx] ?? {
               href: '/watchlist',
               label: 'Explore Watchlist',
             };
+            const isExpanded = Boolean(expandedPillars[pillar.id]);
             return (
               <article
                 key={pillar.id}
-                className="glass-card rounded-xl p-5 sm:p-6 flex flex-col justify-between space-y-4"
+                className="glass-card rounded-md p-4 sm:p-5 flex flex-col justify-between space-y-3.5"
               >
-                <div className="space-y-3">
+                <div className="space-y-2.5">
                   <div className="flex items-center justify-between gap-2">
-                    <span className="font-mono-tactical text-[11px] font-semibold px-2.5 py-0.5 rounded bg-[#0E1524] border border-white/12 text-[#38BDF8]">
+                    <span className="font-mono-tactical text-[10px] font-semibold px-2 py-0.5 rounded-sm bg-[#06080C] border border-white/12 text-[#38BDF8]">
                       PILLAR 0{idx + 1}
                     </span>
-                    <span className="font-mono-tactical text-[11px] text-gray-400">
-                      {pillar.sources.length} verified ref{pillar.sources.length === 1 ? '' : 's'}
+                    <span className="font-mono-tactical text-[10px] text-gray-500">
+                      {pillar.sources.length} ref{pillar.sources.length === 1 ? '' : 's'}
                     </span>
                   </div>
-                  <h3 className="text-base sm:text-[17px] font-semibold text-white leading-snug">
+                  <h3 className="text-[15px] font-semibold text-white leading-snug">
                     {pillar.title}
                   </h3>
-                  <p className="text-[13px] sm:text-[13.5px] text-gray-200 leading-[1.68]">
+                  <div
+                    className={`text-xs sm:text-[13px] text-gray-300 leading-[1.62] ${
+                      isExpanded ? '' : 'line-clamp-3'
+                    }`}
+                  >
                     <RichTextWithCitations
                       text={pillar.body}
                       contextLabel={`Executive Summary — ${pillar.title}`}
                     />
-                  </p>
+                  </div>
                 </div>
 
-                <div className="pt-3.5 border-t border-white/[0.08] flex items-center justify-between">
+                <div className="pt-3 border-t border-white/[0.08] flex items-center justify-between gap-2">
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setExpandedPillars((prev) => ({ ...prev, [pillar.id]: !prev[pillar.id] }))
+                    }
+                    className="font-mono-tactical text-[11px] text-gray-400 hover:text-white cursor-pointer"
+                  >
+                    {isExpanded ? '− Less' : '+ Full text'}
+                  </button>
                   <Link
                     href={routeInfo.href}
-                    className="inline-flex items-center gap-1.5 text-xs font-mono-tactical text-[#38BDF8] hover:underline"
+                    className="inline-flex items-center gap-1 text-[11px] font-mono-tactical text-[#38BDF8] hover:underline"
                   >
                     <span>{routeInfo.label}</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
+                    <ArrowRight className="w-3 h-3" />
                   </Link>
                 </div>
               </article>
@@ -825,15 +895,14 @@ export function OverviewView() {
               className="text-sm font-mono-tactical uppercase tracking-wider text-white flex items-center gap-2"
             >
               <AlertTriangle className="w-4 h-4 text-[#EF4444]" />
-              <span>8-Vector Executive Risk Matrix ({sections.docDate})</span>
+              <span>{riskMatrix.length}-Vector Executive Risk Matrix ({sections.docDate})</span>
             </h2>
             <p className="text-xs text-gray-400 mt-0.5">
-              Filter by operational horizon or keyword; expand vectors to inspect tripwires,
-              mitigations, and correlated live OSINT signals.
+              Filter by horizon or keyword; expand vectors for tripwires, mitigations, and live OSINT hits.
             </p>
           </div>
 
-          <div className="flex flex-wrap items-center gap-2">
+          <div className="flex flex-wrap items-center gap-1.5">
             {(['ALL', 'Immediate', '10–54 Days', '2027–2030'] as const).map((h) => {
               const active = horizonFilter === h;
               const count =
@@ -846,13 +915,13 @@ export function OverviewView() {
                   id={`risk-filter-${h.replace(/[^a-zA-Z0-9]/g, '-').toLowerCase()}`}
                   type="button"
                   onClick={() => setHorizonFilter(h)}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-mono-tactical border transition cursor-pointer ${
+                  className={`px-2.5 py-1.5 rounded-sm text-xs font-mono-tactical border transition cursor-pointer ${
                     active
                       ? 'bg-[#38BDF8]/15 border-[#38BDF8]/50 text-[#38BDF8]'
-                      : 'bg-white/[0.04] border-white/10 text-gray-300 hover:bg-white/[0.08]'
+                      : 'bg-[#0B0F17] border-white/10 text-gray-300 hover:bg-white/[0.06]'
                   }`}
                 >
-                  {h === 'ALL' ? 'All Horizons' : h} ({count})
+                  {h === 'ALL' ? 'All' : h} ({count})
                 </button>
               );
             })}
@@ -867,10 +936,10 @@ export function OverviewView() {
                 }
                 setExpandedRisks(next);
               }}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 text-xs font-mono-tactical text-gray-300 hover:text-white transition cursor-pointer"
+              className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-sm bg-[#0B0F17] hover:bg-white/[0.06] border border-white/10 text-xs font-mono-tactical text-gray-300 hover:text-white transition cursor-pointer"
             >
               <ChevronsUpDown className="w-3.5 h-3.5 text-[#38BDF8]" />
-              <span>{allFilteredRisksExpanded ? 'Collapse All' : 'Expand All'}</span>
+              <span>{allFilteredRisksExpanded ? 'Collapse' : 'Expand All'}</span>
             </button>
 
             <div className="relative">
@@ -881,13 +950,13 @@ export function OverviewView() {
                 value={riskQuery}
                 onChange={(e) => setRiskQuery(e.target.value)}
                 placeholder="Filter vectors…"
-                className="pl-8 pr-3 py-1.5 rounded-lg bg-[#0E1524] border border-white/15 text-xs text-white placeholder-gray-500 focus:outline-none focus:border-[#38BDF8]"
+                className="pl-8 pr-3 py-1.5 rounded-sm bg-[#070A10] border border-white/14 text-xs text-white placeholder-gray-500 focus:outline-none focus:border-[#38BDF8]"
               />
             </div>
           </div>
         </div>
 
-        <div className="space-y-3">
+        <div className="space-y-2.5">
           {filteredRisks.map((vec) => {
             const expanded = Boolean(expandedRisks[vec.id]);
             const liveMatches = signalCountByRisk[vec.id] ?? 0;
@@ -895,44 +964,49 @@ export function OverviewView() {
             const verif = assessRiskVerification(vec);
 
             return (
-              <div key={vec.id} className="glass-card rounded-xl overflow-hidden">
+              <div
+                key={vec.id}
+                className={`glass-card rounded-md overflow-hidden border-l-2 ${
+                  isCatastrophicOrSevere ? 'border-l-[#EF4444]' : 'border-l-[#F59E0B]'
+                }`}
+              >
                 <button
                   type="button"
                   onClick={() =>
                     setExpandedRisks((prev) => ({ ...prev, [vec.id]: !prev[vec.id] }))
                   }
-                  className="w-full text-left px-5 py-4 flex flex-col lg:flex-row lg:items-center justify-between gap-3 cursor-pointer"
+                  className="w-full text-left px-4 sm:px-5 py-3.5 flex flex-col lg:flex-row lg:items-center justify-between gap-2.5 cursor-pointer"
                 >
                   <div className="flex items-start sm:items-center gap-3">
-                    <span className="font-mono-tactical text-xs font-semibold px-2.5 py-1 rounded bg-[#0E1524] border border-white/15 text-white shrink-0">
+                    <span className="font-mono-tactical text-xs font-semibold px-2 py-0.5 rounded-sm bg-[#06080C] border border-white/15 text-white shrink-0">
                       {vec.id}
                     </span>
                     <div>
-                      <h3 className="text-sm sm:text-base font-semibold text-white">
+                      <h3 className="text-sm sm:text-[15px] font-semibold text-white">
                         {vec.domain}
                       </h3>
-                      <p className="text-xs text-gray-400 font-mono-tactical mt-0.5">
+                      <p className="text-[11px] text-gray-400 font-mono-tactical mt-0.5">
                         Horizon: {vec.horizon}
                       </p>
                     </div>
                   </div>
 
-                  <div className="flex flex-wrap items-center gap-2 shrink-0">
+                  <div className="flex flex-wrap items-center gap-1.5 shrink-0">
                     <span
                       title={verif.basis}
-                      className={`font-mono-tactical text-[11px] px-2 py-0.5 rounded border ${
+                      className={`font-mono-tactical text-[10px] px-2 py-0.5 rounded-sm border ${
                         verif.tone === 'emerald'
                           ? 'bg-[#10B981]/10 border-[#10B981]/30 text-[#10B981]'
-                          : 'bg-white/[0.05] border-white/15 text-gray-300'
+                          : 'bg-white/[0.04] border-white/14 text-gray-300'
                       }`}
                     >
                       {verif.level}
                     </span>
-                    <span className="font-mono-tactical text-[11px] px-2 py-0.5 rounded bg-[#F59E0B]/10 border border-[#F59E0B]/30 text-[#F59E0B]">
-                      Likelihood: {vec.likelihood.split('(')[0].trim()}
+                    <span className="font-mono-tactical text-[10px] px-2 py-0.5 rounded-sm bg-[#F59E0B]/10 border border-[#F59E0B]/30 text-[#F59E0B]">
+                      {vec.likelihood.split('(')[0].trim()}
                     </span>
                     <span
-                      className={`font-mono-tactical text-[11px] px-2 py-0.5 rounded border ${
+                      className={`font-mono-tactical text-[10px] px-2 py-0.5 rounded-sm border ${
                         isCatastrophicOrSevere
                           ? 'bg-[#EF4444]/10 border-[#EF4444]/35 text-[#EF4444]'
                           : 'bg-[#38BDF8]/10 border-[#38BDF8]/30 text-[#38BDF8]'
@@ -941,8 +1015,8 @@ export function OverviewView() {
                       Blast: {vec.blastRadius.split('(')[0].trim()}
                     </span>
                     {liveMatches > 0 && (
-                      <span className="font-mono-tactical text-[11px] px-2 py-0.5 rounded bg-[#10B981]/10 border border-[#10B981]/30 text-[#10B981]">
-                        {liveMatches} OSINT hits
+                      <span className="font-mono-tactical text-[10px] px-2 py-0.5 rounded-sm bg-[#10B981]/10 border border-[#10B981]/30 text-[#10B981]">
+                        {liveMatches} OSINT
                       </span>
                     )}
                     {expanded ? (
@@ -954,14 +1028,14 @@ export function OverviewView() {
                 </button>
 
                 {expanded && (
-                  <div className="px-5 pb-5 pt-3 border-t border-white/[0.08] grid grid-cols-1 lg:grid-cols-2 gap-4 text-[13px] bg-[#0A0E17]/35">
-                    <div className="obsidian-surface rounded-xl p-4 space-y-2">
-                      <p className="font-mono-tactical text-[11px] uppercase tracking-wider text-[#F59E0B]">
+                  <div className="px-4 sm:px-5 pb-4 pt-3 border-t border-white/[0.08] grid grid-cols-1 lg:grid-cols-2 gap-3.5 text-[13px] bg-[#070A10]">
+                    <div className="obsidian-surface rounded-md p-3.5 space-y-2">
+                      <p className="font-mono-tactical text-[10px] uppercase tracking-wider text-[#F59E0B]">
                         Primary Trigger / Tripwire
                       </p>
                       <p className="text-gray-200 leading-relaxed">{vec.tripwire}</p>
                       <p className="text-xs text-gray-400 pt-1">
-                        <span className="font-mono-tactical text-gray-300">Full Blast Scope:</span>{' '}
+                        <span className="font-mono-tactical text-gray-300">Blast Scope:</span>{' '}
                         {vec.blastRadius}
                       </p>
                       <CitationChipList
@@ -970,9 +1044,9 @@ export function OverviewView() {
                       />
                     </div>
 
-                    <div className="obsidian-surface rounded-xl p-4 space-y-2 flex flex-col justify-between">
+                    <div className="obsidian-surface rounded-md p-3.5 space-y-2 flex flex-col justify-between">
                       <div className="space-y-2">
-                        <p className="font-mono-tactical text-[11px] uppercase tracking-wider text-[#10B981]">
+                        <p className="font-mono-tactical text-[10px] uppercase tracking-wider text-[#10B981]">
                           Priority Mitigation Directive
                         </p>
                         <p className="text-gray-200 leading-relaxed">{vec.mitigation}</p>
@@ -990,7 +1064,7 @@ export function OverviewView() {
                           className="inline-flex items-center gap-1 text-[#38BDF8] hover:underline cursor-pointer"
                         >
                           <GitMerge className="w-3 h-3" />
-                          <span>Trace Blast Radius in Crosswalk</span>
+                          <span>Trace in Crosswalk</span>
                         </button>
                         <Link
                           href="/watchlist?tab=live-wire"

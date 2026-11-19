@@ -783,6 +783,13 @@ export function computeChangelogDiff(params: {
           previousStatus: prev.status,
           currentStatus: inc.status,
         });
+      } else if (prev.vector !== inc.vector) {
+        updatedStatuses.push({
+          eventId: inc.eventId,
+          entity: inc.entity,
+          previousStatus: `Vector: ${prev.vector}`,
+          currentStatus: `Vector: ${inc.vector}`,
+        });
       }
     }
   }

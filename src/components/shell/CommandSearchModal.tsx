@@ -183,16 +183,16 @@ export function CommandSearchModal() {
             activateHit(filtered[selectedIndex]);
           }
         }}
-        className="relative z-10 w-full max-w-2xl rounded-2xl bg-[#0F1624] border border-white/15 shadow-2xl overflow-hidden"
+        className="relative z-10 w-full max-w-2xl rounded-lg bg-[#0B0F17] tac-frame border border-white/[0.12] shadow-2xl overflow-hidden"
       >
-        <div className="flex items-center gap-3 px-4 py-3.5 border-b border-white/10">
+        <div className="flex items-center gap-3 px-4 py-3.5 border-b border-white/[0.08]">
           <Search className="w-4 h-4 text-[#38BDF8] shrink-0" />
           <input
             id="global-cmdk-input"
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder={`Search 8 risk vectors, 10 incidents, 9 watchlist signals, live OSINT, or ${bundle.sections.primarySources.length} primary sources…`}
+            placeholder={`Search ${bundle.riskMatrix.length} risk vectors, ${bundle.incidents.length} incidents, ${bundle.watchlist.length} watchlist signals, live OSINT, or ${bundle.sections.primarySources.length} sources…`}
             autoFocus
             className="flex-1 bg-transparent text-sm text-white placeholder-gray-500 focus:outline-none"
           />
@@ -200,7 +200,7 @@ export function CommandSearchModal() {
             <button
               type="button"
               onClick={() => setQuery('')}
-              className="font-mono-tactical text-[10px] px-2 py-0.5 rounded bg-white/[0.06] text-gray-300 hover:text-white cursor-pointer"
+              className="font-mono-tactical text-[10px] px-2 py-0.5 rounded-sm bg-white/[0.06] text-gray-300 hover:text-white cursor-pointer"
             >
               Clear
             </button>
@@ -208,7 +208,7 @@ export function CommandSearchModal() {
           <button
             type="button"
             onClick={() => setSearchOpen(false)}
-            className="p-1 rounded-lg bg-white/5 text-gray-400 hover:text-white cursor-pointer"
+            className="p-1 rounded-md bg-white/[0.04] text-gray-400 hover:text-white cursor-pointer"
             aria-label="Close search modal"
           >
             <X className="w-4 h-4" />
@@ -216,7 +216,7 @@ export function CommandSearchModal() {
         </div>
 
         {/* Scope Filter Pills */}
-        <div className="px-4 py-2 bg-[#0A0E17]/75 border-b border-white/[0.08] flex items-center gap-1.5 overflow-x-auto no-scrollbar">
+        <div className="px-4 py-2 bg-[#070A10] border-b border-white/[0.08] flex items-center gap-1.5 overflow-x-auto no-scrollbar">
           {(
             [
               ['ALL', 'All Intelligence'],

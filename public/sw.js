@@ -1,5 +1,5 @@
 /* Gray-Zone Monitor Offline Service Worker (Encrypted-Safe Shell Cache) */
-const CACHE_NAME = 'gz-monitor-shell-9b08230182';
+const CACHE_NAME = 'gz-monitor-shell-e6687323b0';
 const PRECACHE_URLS = [
   "/gray-zone-monitor/",
   "/gray-zone-monitor/geopolitics/",

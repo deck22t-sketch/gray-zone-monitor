@@ -136,16 +136,16 @@ export function assessIncidentVerification(inc: IncidentRow): VerificationAssess
     return {
       level: 'Developing',
       basis:
-        'Broadcast flood & 8-min sign-off confirmed; Florida FBI/L3Harris router lab teardown and White House review remain active.',
+        'Two-router broadcast flood confirmed; Admin. Bedford took full responsibility while mystery remains after 68 clean prior cutovers and Florida lab probe continues.',
       tone: 'amber',
     };
   }
   if (inc.eventId === '#8') {
     return {
-      level: 'Developing',
+      level: 'Corroborated',
       basis:
-        'Official statement cites scheduled maintenance degradation; full internal enclave restoration timeline remains unconfirmed.',
-      tone: 'amber',
+        'Root cause confirmed as urgent PHP2Shell AI-vuln patching failing on restart/handoff; enclave reported back up late Nov. 18 PM under "Code Gray" staggered sign-on limits.',
+      tone: 'emerald',
     };
   }
   if (inc.eventId === '#1') {
@@ -454,7 +454,8 @@ export async function computeBundleSha256Hex(bundle: FullBriefingDataBundle): Pr
 
 export function buildExecutiveSummaryText(
   bundle: FullBriefingDataBundle,
-  nowMs: number = Date.now()
+  nowMs: number = Date.now(),
+  pinnedSignalIds: string[] = []
 ): string {
   const { sections, changelog, feedHealth, liveSignals, riskMatrix, countdownCliffs, incidents } =
     bundle;
@@ -480,6 +481,19 @@ export function buildExecutiveSummaryText(
         )
       : ['  • No incident status changes since prior canonical sync.'];
 
+  const pinnedSet = new Set(pinnedSignalIds);
+  const pinnedSignals = liveSignals.signals.filter((s) => pinnedSet.has(s.id));
+  const pinnedLines =
+    pinnedSignals.length > 0
+      ? [
+          '',
+          `5. ANALYST-PINNED LIVE SIGNALS (${pinnedSignals.length})`,
+          ...pinnedSignals.map(
+            (s) => `  ★ [${s.severity.toUpperCase()} · ${s.sourceName}] ${s.title} (${s.url})`
+          ),
+        ]
+      : [];
+
   const topLive = liveSignals.signals.slice(0, 4).map(
     (s) => `  • [${s.severity.toUpperCase()} · ${s.sourceName}] ${s.title}`
   );
@@ -491,7 +505,7 @@ export function buildExecutiveSummaryText(
     `Public Feed Telemetry: ${feedHealth.liveCount}/${feedHealth.totalFeeds} Live | Active OSINT Signals: ${liveSignals.totalSignals}`,
     '====================================================================',
     '',
-    '1. EXECUTIVE POSTURE & 10-EVENT ATTRIBUTION SPLIT',
+    '1. EXECUTIVE POSTURE & ATTRIBUTION SPLIT',
     `  ${sections.executiveSummary.intro}`,
     `  • Tracked Wave (${incidents.length} Events): ${maliciousCount} Confirmed Malicious Supply-Chain | ${hybridCount} Hybrid/Technical Bugs | ${cascadeCount} Client Auth Cascade`,
     '',
@@ -503,8 +517,9 @@ export function buildExecutiveSummaryText(
     '',
     '4. NEAREST REGULATORY, SUPPLY-CHAIN & CLEARING CLIFFS',
     ...upcomingCliffs,
+    ...pinnedLines,
     '',
-    '5. LATEST PUBLIC BACKBONE & REGULATORY TELEMETRY',
+    `${pinnedSignals.length > 0 ? '6' : '5'}. LATEST PUBLIC BACKBONE & REGULATORY TELEMETRY`,
     ...(topLive.length > 0 ? topLive : ['  • All monitored feeds nominal.']),
     '',
     '--------------------------------------------------------------------',

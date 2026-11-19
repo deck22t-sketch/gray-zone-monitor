@@ -9,7 +9,7 @@
   {
     "id": "#2",
     "signal": "Sudden KEV Catalog Addition",
-    "mechanism": "Mid-week addition of a Juniper Junos or Cisco routing/onboarding CVE to CISA's Known Exploited Vulnerabilities (KEV) catalog with a 72-hour remediation deadline. On November 17, CISA added Perforce Puppet Enterprise CVE-2026-115731 (CVSS 9.4 untrusted data deserialization RCE on Puppet configuration servers; federal patch deadline Dec. 1, 2026 per CISA KEV Alert) and issued an urgent alert with Canada's Cyber Centre on \"Java4Shell\" (CVE-2026-114938), an unauthenticated OpenJDK/Oracle HotSpot Base64 RCE affecting Java 17/21/25/27 with working exploits demonstrated against Jira, Confluence, Jenkins, and Keycloak (CISA Java Alert).",
+    "mechanism": "Mid-week addition of a Juniper Junos or Cisco routing/onboarding CVE to CISA's Known Exploited Vulnerabilities (KEV) catalog with a 72-hour remediation deadline. On November 17, CISA added Perforce Puppet Enterprise CVE-2026-115731 (CVSS 9.4 untrusted data deserialization RCE on Puppet configuration servers; federal patch deadline Dec. 1, 2026 per CISA KEV Alert) and issued an urgent alert with Canada's Cyber Centre on \"Java4Shell\" (CVE-2026-114938), an unauthenticated OpenJDK/Oracle HotSpot Base64 RCE affecting Java 17/21/25/27 with working exploits demonstrated against Jira, Confluence, Jenkins, and Keycloak (CISA Java Alert). On November 18, 2026, CISA added four additional KEVs: BerriAI LiteLLM CVE-2026-40217 (AI proxy/gateway alternate channel flaw), Apache Axis CVE-2026-90436, Vanderbilt REDCap CVE-2026-90817 (clinical research code injection), and Synology DSM CVE-2024-10441 (CISA Nov. 18 KEV Alert).",
     "forensicMeaning": "Forensics confirmed an existing onboarding or routing-daemon flaw was weaponized prior to deployment.",
     "sources": [
       {
@@ -19,6 +19,10 @@
       {
         "label": "CISA Java Alert",
         "url": "https://www.cisa.gov/news-events/alerts/2026/11/17/critical-java-vulnerability-requires-immediate-patching"
+      },
+      {
+        "label": "CISA Nov. 18 KEV Alert",
+        "url": "https://www.cisa.gov/news-events/alerts/2026/11/18/cisa-adds-four-known-exploited-vulnerabilities-catalog"
       }
     ]
   },

@@ -1,30 +1,33 @@
 @import "tailwindcss";
 
 :root {
-  --bg-obsidian: #0a0e17;
-  --bg-surface: #0f1624;
-  --bg-elevated: #141d2f;
-  --glass-fill: rgba(255, 255, 255, 0.038);
-  --glass-fill-hover: rgba(255, 255, 255, 0.062);
-  --glass-border: rgba(255, 255, 255, 0.09);
-  --glass-border-strong: rgba(255, 255, 255, 0.16);
+  --bg-obsidian: #06080c;
+  --bg-panel: #0b0f17;
+  --bg-surface: #0e131d;
+  --bg-elevated: #141b29;
+  --border-subtle: rgba(255, 255, 255, 0.085);
+  --border-strong: rgba(255, 255, 255, 0.16);
   --status-crimson: #ef4444;
   --status-amber: #f59e0b;
   --status-cyan: #38bdf8;
   --status-emerald: #10b981;
+  --portal-header-h: 92px;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --portal-header-h: 122px;
+  }
 }
 
 html {
   scroll-behavior: smooth;
+  color-scheme: dark;
 }
 
 html,
 body {
-  background-color: #0a0e17;
-  background-image:
-    radial-gradient(ellipse 80% 42% at 50% -8%, rgba(56, 189, 248, 0.075), transparent 65%),
-    radial-gradient(ellipse 55% 35% at 88% 12%, rgba(16, 185, 129, 0.035), transparent 60%);
-  background-attachment: fixed;
+  background-color: #06080c;
   color: #e5e7eb;
   font-family: var(--font-inter), ui-sans-serif, system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -33,12 +36,12 @@ body {
 }
 
 :focus-visible {
-  outline: 2px solid rgba(56, 189, 248, 0.65);
+  outline: 2px solid rgba(56, 189, 248, 0.72);
   outline-offset: 2px;
 }
 
 .scroll-mt-nav {
-  scroll-margin-top: 9.25rem;
+  scroll-margin-top: calc(var(--portal-header-h, 92px) + 56px);
 }
 
 @keyframes tacticalPulse {
@@ -48,8 +51,8 @@ body {
     transform: scale(1);
   }
   50% {
-    opacity: 0.45;
-    transform: scale(0.92);
+    opacity: 0.42;
+    transform: scale(0.9);
   }
 }
 
@@ -66,43 +69,64 @@ body {
   font-variant-numeric: tabular-nums;
 }
 
+/* Primary machined command panel (matte obsidian with crisp 1px architectural bezel) */
 .glass-panel {
-  background: rgba(15, 22, 36, 0.84);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(255, 255, 255, 0.095);
+  background-color: #0b0f17;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow:
-    inset 0 1px 0 0 rgba(255, 255, 255, 0.055),
-    0 14px 34px -16px rgba(0, 0, 0, 0.65);
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.045),
+    0 16px 36px -22px rgba(0, 0, 0, 0.85);
 }
 
+/* Secondary matte data module */
 .glass-card {
-  background: rgba(255, 255, 255, 0.036);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(255, 255, 255, 0.09);
-  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.045);
+  background-color: #0e131d;
+  border: 1px solid rgba(255, 255, 255, 0.085);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.03);
   transition:
-    background-color 160ms ease,
-    border-color 160ms ease,
-    box-shadow 160ms ease;
+    background-color 140ms ease,
+    border-color 140ms ease,
+    box-shadow 140ms ease;
 }
 
 .glass-card:hover {
-  background: rgba(255, 255, 255, 0.055);
-  border-color: rgba(255, 255, 255, 0.15);
+  background-color: #121926;
+  border-color: rgba(255, 255, 255, 0.16);
 }
 
+/* Recessed telemetry well */
 .obsidian-surface {
-  background-color: #0e1524;
+  background-color: #070a10;
   border: 1px solid rgba(255, 255, 255, 0.085);
-  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.035);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.025);
 }
 
 .surface-elevated {
-  background-color: #141d2f;
-  border: 1px solid rgba(255, 255, 255, 0.11);
-  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+  background-color: #141b29;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.045);
+}
+
+/* Precision hardware corner brackets (subtle 8px L-reticles on hero/command frames) */
+.tac-frame {
+  position: relative;
+}
+
+.tac-frame::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  pointer-events: none;
+  border-radius: inherit;
+  background:
+    linear-gradient(to right, rgba(255, 255, 255, 0.34) 1px, transparent 1px) 0 0 / 8px 8px no-repeat,
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.34) 1px, transparent 1px) 0 0 / 8px 8px no-repeat,
+    linear-gradient(to left, rgba(255, 255, 255, 0.34) 1px, transparent 1px) 100% 0 / 8px 8px no-repeat,
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.34) 1px, transparent 1px) 100% 0 / 8px 8px no-repeat,
+    linear-gradient(to right, rgba(255, 255, 255, 0.34) 1px, transparent 1px) 0 100% / 8px 8px no-repeat,
+    linear-gradient(to top, rgba(255, 255, 255, 0.34) 1px, transparent 1px) 0 100% / 8px 8px no-repeat,
+    linear-gradient(to left, rgba(255, 255, 255, 0.34) 1px, transparent 1px) 100% 100% / 8px 8px no-repeat,
+    linear-gradient(to top, rgba(255, 255, 255, 0.34) 1px, transparent 1px) 100% 100% / 8px 8px no-repeat;
 }
 
 .no-scrollbar::-webkit-scrollbar {
@@ -116,17 +140,17 @@ body {
 
 /* Subtle tactical scrollbar */
 ::-webkit-scrollbar {
-  width: 7px;
-  height: 7px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #0a0e17;
+  background: #06080c;
 }
 
 ::-webkit-scrollbar-thumb {
   background: rgba(255, 255, 255, 0.16);
-  border-radius: 4px;
+  border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -153,6 +177,10 @@ body {
     box-shadow: none !important;
     color: #111827 !important;
     break-inside: avoid;
+  }
+
+  .tac-frame::before {
+    display: none !important;
   }
 
   h1,

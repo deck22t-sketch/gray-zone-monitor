@@ -14,7 +14,7 @@ import { PwaRegistrar } from '@/components/shell/PwaRegistrar';
 const basePath = (process.env.NEXT_PUBLIC_BASE_PATH || '').replace(/\/$/, '');
 
 export const viewport: Viewport = {
-  themeColor: '#0A0E17',
+  themeColor: '#06080C',
   width: 'device-width',
   initialScale: 1,
   viewportFit: 'cover',
@@ -68,13 +68,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           rel="stylesheet"
         />
       </head>
-      <body className="bg-[#0A0E17] text-gray-200 antialiased selection:bg-[#38BDF8]/25 selection:text-white">
+      <body className="bg-[#06080C] text-gray-200 antialiased selection:bg-[#38BDF8]/25 selection:text-white">
         <PwaRegistrar />
         <PortalProvider>
           <VaultGate>
             <div className="min-h-screen flex flex-col">
               <TopNav />
-              <main className="flex-1 max-w-[1380px] w-full mx-auto px-4 sm:px-6 lg:px-8 py-5 sm:py-8">
+              <main className="flex-1 max-w-[1380px] w-full mx-auto px-4 sm:px-6 lg:px-8 pt-4 sm:pt-6 pb-8 sm:pb-12">
                 {children}
               </main>
               <PortalFooter />

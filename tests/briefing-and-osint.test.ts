@@ -40,6 +40,16 @@ import {
   resolveTraceNodeKey,
 } from '../src/lib/evidence';
 import { buildPwaArtifacts, resolvePwaBasePath } from '../scripts/generate-pwa';
+import {
+  evaluateChokepointStress,
+  evaluateComplianceClocks,
+} from '../src/lib/simulators';
+import {
+  CountdownCliffsArraySchema,
+  IncidentsArraySchema,
+  RiskMatrixArraySchema,
+  WatchlistArraySchema,
+} from '../src/types/schemas';
 
 const CANONICAL_MD_PATH = path.join(process.cwd(), 'content', 'executive_briefing.md');
 
@@ -407,12 +417,12 @@ describe('Phase 3: Poisson Null-Hypothesis Math & Client-Side AES-256-GCM Vault'
     );
     expect(decrypted.incidents).toHaveLength(10);
     expect(decrypted.riskMatrix).toHaveLength(8);
-    expect(decrypted.feedHistory?.series['cisa-kev'].length).toBeGreaterThanOrEqual(1);
+    expect(decrypted.feedHistory?.series['cisa-kev']?.length).toBeGreaterThanOrEqual(1);
 
     await expect(decryptBundleWithPasscode(meta, 'wrong-passcode')).rejects.toThrow();
   });
 
-  it('ships all 6 bespoke editorial JPEG plates in public/images/ and resolves GitHub Pages basePath cleanly', async () => {
+  it('ships all 8 bespoke editorial JPEG plates in public/images/ and resolves GitHub Pages basePath cleanly', async () => {
     const { resolvePublicAssetPath } = await import('../src/components/shell/TacticalFigure');
     const expectedImages = [
       'overview-backbone-map.jpg',
@@ -421,6 +431,8 @@ describe('Phase 3: Poisson Null-Hypothesis Math & Client-Side AES-256-GCM Vault'
       'incidents-hybrid-routing.jpg',
       'sub-ip-blindspots.jpg',
       'contagion-clearing-vault.jpg',
+      'watchlist-telemetry-mesh.jpg',
+      'nsanet-patch-enclave.jpg',
     ];
 
     for (const fileName of expectedImages) {
@@ -613,3 +625,136 @@ describe('Phase 4: Cross-Domain Graph, Feed History, Provenance, PWA & Non-Spoof
     }
   });
 });
+
+describe('Phase 5: Extensible Doc Schemas, Decision Simulators & Analyst Pinning', () => {
+  const loadFullBundle = (): FullBriefingDataBundle => ({
+    riskMatrix: JSON.parse(
+      fs.readFileSync(path.join(process.cwd(), 'src/data/riskMatrix.json'), 'utf8')
+    ),
+    incidents: JSON.parse(
+      fs.readFileSync(path.join(process.cwd(), 'src/data/incidents.json'), 'utf8')
+    ),
+    countdownCliffs: JSON.parse(
+      fs.readFileSync(path.join(process.cwd(), 'src/data/countdownCliffs.json'), 'utf8')
+    ),
+    watchlist: JSON.parse(
+      fs.readFileSync(path.join(process.cwd(), 'src/data/watchlist.json'), 'utf8')
+    ),
+    sections: JSON.parse(
+      fs.readFileSync(path.join(process.cwd(), 'src/data/sections.json'), 'utf8')
+    ),
+    changelog: JSON.parse(
+      fs.readFileSync(path.join(process.cwd(), 'src/data/changelog.json'), 'utf8')
+    ),
+    liveSignals: JSON.parse(
+      fs.readFileSync(path.join(process.cwd(), 'src/data/liveSignals.json'), 'utf8')
+    ),
+    feedHealth: JSON.parse(
+      fs.readFileSync(path.join(process.cwd(), 'src/data/feedHealth.json'), 'utf8')
+    ),
+    feedHistory: JSON.parse(
+      fs.readFileSync(path.join(process.cwd(), 'src/data/feedHistory.json'), 'utf8')
+    ),
+  });
+
+  it('accepts future Google Doc row additions (>baseline) while rejecting truncated tables', () => {
+    const bundle = loadFullBundle();
+
+    const extraRisk = { ...bundle.riskMatrix[0], id: '#9' };
+    const extraIncident = { ...bundle.incidents[0], eventId: '#11' };
+    const extraCliff = { ...bundle.countdownCliffs[0], targetDateISO: '2027-06-01' };
+    const extraWatch = { ...bundle.watchlist[0], id: '#10' };
+
+    expect(RiskMatrixArraySchema.parse([...bundle.riskMatrix, extraRisk])).toHaveLength(9);
+    expect(IncidentsArraySchema.parse([...bundle.incidents, extraIncident])).toHaveLength(11);
+    expect(CountdownCliffsArraySchema.parse([...bundle.countdownCliffs, extraCliff])).toHaveLength(9);
+    expect(WatchlistArraySchema.parse([...bundle.watchlist, extraWatch])).toHaveLength(10);
+
+    // Still fail-closed if a mid-edit doc truncates below baseline minimums
+    expect(() => RiskMatrixArraySchema.parse(bundle.riskMatrix.slice(0, 7))).toThrow();
+    expect(() => IncidentsArraySchema.parse(bundle.incidents.slice(0, 9))).toThrow();
+    expect(() => CountdownCliffsArraySchema.parse(bundle.countdownCliffs.slice(0, 7))).toThrow();
+    expect(() => WatchlistArraySchema.parse(bundle.watchlist.slice(0, 8))).toThrow();
+  });
+
+  it('evaluates statutory regulatory clocks accurately including non-cyber outages and U.S. v. Heppner privilege risk', () => {
+    const bankVendor = evaluateComplianceClocks({
+      incidentType: 'vendor_outage',
+      sector: 'bank_fintech',
+      hoursElapsed: 18,
+      usesConsumerAi: true,
+    });
+
+    const vendor4h = bankVendor.clocks.find((c) => c.id === 'us-vendor-4h')!;
+    const bank36h = bankVendor.clocks.find((c) => c.id === 'us-bank-36h')!;
+    expect(vendor4h.applicable).toBe(true);
+    expect(vendor4h.status).toBe('BREACHED');
+    expect(bank36h.applicable).toBe(true);
+    expect(bank36h.status).toBe('ACTIVE');
+    expect(bank36h.remainingHours).toBe(18);
+    expect(bankVendor.breachedCount).toBe(1);
+    expect(bankVendor.privilegeAlert.active).toBe(true);
+    expect(bankVendor.privilegeAlert.headline).toContain('U.S. v. Heppner');
+    expect(bankVendor.privilegeAlert.detail).toContain('Jed Rakoff');
+
+    const euCyber = evaluateComplianceClocks({
+      incidentType: 'cyber_intrusion',
+      sector: 'eu_financial',
+      hoursElapsed: 18,
+      usesConsumerAi: false,
+    });
+    const dora4h = euCyber.clocks.find((c) => c.id === 'eu-dora-4h')!;
+    expect(dora4h.applicable).toBe(true);
+    expect(dora4h.status).toBe('BREACHED');
+    expect(euCyber.privilegeAlert.active).toBe(false);
+  });
+
+  it('models mineral & hardware chokepoint depletion across 4-week vs 52-week inventory buffers', () => {
+    const criticalRun = evaluateChokepointStress({
+      profile: 'defense_rf_optics',
+      bufferWeeks: 4,
+      referenceDateISO: '2026-11-18',
+    });
+    expect(criticalRun.riskRating).toBe('CRITICAL');
+    expect(criticalRun.stockoutDateISO).toBe('2026-12-16');
+    expect(criticalRun.cliffs.map((c) => c.dateISO)).toEqual([
+      '2026-11-27',
+      '2027-01-01',
+      '2027-01-10',
+    ]);
+    expect(criticalRun.cliffs.every((c) => c.exposed)).toBe(true);
+
+    const bufferedRun = evaluateChokepointStress({
+      profile: 'defense_rf_optics',
+      bufferWeeks: 52,
+      referenceDateISO: '2026-11-18',
+    });
+    expect(bufferedRun.riskRating).toBe('BUFFERED');
+    expect(bufferedRun.stockoutDateISO).toBe('2027-11-17');
+    expect(bufferedRun.cliffs.every((c) => !c.exposed)).toBe(true);
+  });
+
+  it('embeds analyst-pinned live OSINT signals into the executive text briefing export', () => {
+    const bundle = loadFullBundle();
+    const targetSig = bundle.liveSignals.signals[0];
+    expect(targetSig).toBeDefined();
+
+    const textWithPins = buildExecutiveSummaryText(
+      bundle,
+      Date.parse('2026-11-18T22:00:00Z'),
+      [targetSig.id]
+    );
+    expect(textWithPins).toContain('ANALYST-PINNED LIVE SIGNALS (1)');
+    expect(textWithPins).toContain(targetSig.title);
+    expect(textWithPins).toContain('6. LATEST PUBLIC BACKBONE & REGULATORY TELEMETRY');
+
+    const textWithoutPins = buildExecutiveSummaryText(
+      bundle,
+      Date.parse('2026-11-18T22:00:00Z'),
+      []
+    );
+    expect(textWithoutPins).not.toContain('ANALYST-PINNED LIVE SIGNALS');
+    expect(textWithoutPins).toContain('5. LATEST PUBLIC BACKBONE & REGULATORY TELEMETRY');
+  });
+});
+

@@ -147,7 +147,7 @@ export function CrossDomainCrosswalk({ focusedKey, onFocusKey }: CrossDomainCros
     <section
       id="crosswalk-section"
       aria-labelledby="crosswalk-heading"
-      className="glass-panel rounded-2xl p-5 sm:p-6 space-y-5 scroll-mt-nav"
+      className="glass-panel tac-frame rounded-lg p-4 sm:p-5 space-y-4 scroll-mt-nav"
     >
       {/* Header */}
       <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3 pb-3 border-b border-white/10">
@@ -160,15 +160,14 @@ export function CrossDomainCrosswalk({ focusedKey, onFocusKey }: CrossDomainCros
             <span>Cross-Domain Dependency &amp; Blast-Radius Crosswalk</span>
           </h2>
           <p className="text-xs text-gray-400 mt-0.5">
-            Select any Risk Vector, Outage Event, Watchlist Indicator, or Countdown Cliff to trace
-            correlated upstream triggers and downstream exposure.
+            Select any Risk Vector, Event, Watchlist Indicator, or Cliff to trace upstream triggers and downstream blast radius.
           </p>
         </div>
 
         <div className="flex flex-wrap items-center gap-2 text-xs font-mono-tactical">
           {activeNode && (
-            <span className="px-2.5 py-1 rounded-lg bg-[#38BDF8]/12 border border-[#38BDF8]/35 text-[#38BDF8]">
-              Focused: {activeNode.code} · {(graph.adjacency[activeKey] ?? []).length} Linked Nodes
+            <span className="px-2.5 py-1 rounded-sm bg-[#38BDF8]/12 border border-[#38BDF8]/35 text-[#38BDF8]">
+              Focused: {activeNode.code} · {(graph.adjacency[activeKey] ?? []).length} Links
             </span>
           )}
           <button
@@ -177,36 +176,36 @@ export function CrossDomainCrosswalk({ focusedKey, onFocusKey }: CrossDomainCros
               setHoveredKey(null);
               onFocusKey('inc:#2');
             }}
-            className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-white/[0.04] hover:bg-white/[0.1] border border-white/12 text-gray-300 cursor-pointer"
+            className="inline-flex items-center gap-1 px-2.5 py-1 rounded-sm bg-[#070A10] hover:bg-white/[0.08] border border-white/12 text-gray-300 cursor-pointer"
           >
             <RotateCcw className="w-3 h-3" />
-            <span>Reset to Event #2</span>
+            <span>Reset (#2)</span>
           </button>
         </div>
       </div>
 
       {/* Focused Node Inspector Banner (shared across Desktop & Mobile) */}
       {activeNode && (
-        <div className="surface-elevated rounded-xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div className="obsidian-surface rounded-md p-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 border border-white/12">
           <div className="space-y-1 min-w-0">
             <div className="flex flex-wrap items-center gap-2">
-              <span className="font-mono-tactical text-[11px] font-semibold px-2 py-0.5 rounded bg-[#0A0E17] border border-white/15 text-[#38BDF8]">
+              <span className="font-mono-tactical text-[10px] font-semibold px-2 py-0.5 rounded-sm bg-[#06080C] border border-white/15 text-[#38BDF8]">
                 {activeNode.code}
               </span>
-              <span className="font-mono-tactical text-[11px] text-gray-400 uppercase">
+              <span className="font-mono-tactical text-[10px] text-gray-400 uppercase">
                 {activeNode.subtitle}
               </span>
             </div>
-            <h3 className="text-sm sm:text-base font-semibold text-white truncate">
+            <h3 className="text-sm sm:text-[15px] font-semibold text-white truncate">
               {activeNode.title}
             </h3>
           </div>
 
           <Link
             href={activeNode.href}
-            className="shrink-0 inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-[#38BDF8]/15 hover:bg-[#38BDF8]/25 border border-[#38BDF8]/40 text-xs font-mono-tactical text-[#38BDF8] transition self-start sm:self-center"
+            className="shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-sm bg-[#38BDF8]/15 hover:bg-[#38BDF8]/25 border border-[#38BDF8]/40 text-xs font-mono-tactical text-[#38BDF8] transition self-start sm:self-center"
           >
-            <span>Open Section Dossier</span>
+            <span>Open Dossier</span>
             <ArrowUpRight className="w-3.5 h-3.5" />
           </Link>
         </div>
