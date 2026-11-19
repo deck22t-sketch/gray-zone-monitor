@@ -814,3 +814,195 @@ describe('Phase 5: Extensible Doc Schemas, Decision Simulators & Analyst Pinning
   });
 });
 
+describe('Phase 6: 15-Feed Federal & Hyperscaler Registry and Live Parsers', () => {
+  it('registers all 15 U.S. government and hyperscaler feeds with unique IDs and valid domain groups', async () => {
+    const { ALL_FEED_IDS, FEED_REGISTRY, buildNistNvdWindowUrl } = await import(
+      '../src/lib/feed-registry'
+    );
+    expect(FEED_REGISTRY).toHaveLength(15);
+    expect(new Set(ALL_FEED_IDS).size).toBe(15);
+    expect(ALL_FEED_IDS).toEqual(
+      expect.arrayContaining([
+        'nist-nvd',
+        'usgs-seismic',
+        'noaa-swpc',
+        'ofac-marad-doe',
+        'aws-status',
+        'gcp-status',
+        'azure-status',
+        'oci-status',
+      ])
+    );
+
+    const nvdUrl = buildNistNvdWindowUrl(new Date('2026-11-19T12:00:00Z'), 14);
+    expect(nvdUrl).toContain('pubStartDate=2026-11-05T12:00:00.000%2B00:00');
+    expect(nvdUrl).toContain('cvssV3Severity=CRITICAL');
+  });
+
+  it('parses NIST NVD 2.0, USGS Subsea Seismic, NOAA SWPC GNSS, and OFAC/MARAD/DOE government feeds accurately', async () => {
+    const {
+      parseNistNvdJson,
+      parseUsgsSeismicGeoJson,
+      parseNoaaSwpcAlertsJson,
+      parseOfacMaradDoeJson,
+    } = await import('../scripts/lib/signal-parsers');
+
+    const now = new Date('2026-11-19T06:00:00Z');
+
+    // 1. NIST NVD 2.0
+    const nvdRaw = JSON.stringify({
+      vulnerabilities: [
+        {
+          cve: {
+            id: 'CVE-2026-88001',
+            published: '2026-11-18T19:00:00.000',
+            vulnStatus: 'Analyzed',
+            descriptions: [
+              {
+                lang: 'en',
+                value:
+                  'Unauthenticated BGP routing daemon buffer overflow in Juniper Junos OS edge routers.',
+              },
+            ],
+            metrics: {
+              cvssMetricV31: [{ cvssData: { baseScore: 9.8, baseSeverity: 'CRITICAL' } }],
+            },
+          },
+        },
+        {
+          cve: {
+            id: 'CVE-2026-00001',
+            published: '2026-11-18T10:00:00.000',
+            vulnStatus: 'Rejected',
+            descriptions: [{ lang: 'en', value: 'Rejected duplicate CVE' }],
+          },
+        },
+      ],
+    });
+    const nvdSignals = parseNistNvdJson(nvdRaw, now);
+    expect(nvdSignals).toHaveLength(1);
+    expect(nvdSignals[0].severity).toBe('critical');
+    expect(nvdSignals[0].watchlistMatches).toEqual(expect.arrayContaining(['#1', '#2', '#8']));
+
+    // 2. USGS Subsea Chokepoint Seismic GeoJSON
+    const usgsRaw = JSON.stringify({
+      features: [
+        {
+          id: 'us6000luzon1',
+          properties: {
+            mag: 5.9,
+            place: '38 km SSW of Basco, Philippines (Luzon Strait)',
+            time: now.getTime() - 3600_000,
+            url: 'https://earthquake.usgs.gov/earthquakes/eventpage/us6000luzon1',
+            tsunami: 0,
+          },
+          geometry: { coordinates: [121.8, 20.1, 18] },
+        },
+        {
+          id: 'us6000inland',
+          properties: {
+            mag: 5.1,
+            place: 'Central South America inland',
+            time: now.getTime() - 7200_000,
+            url: 'https://earthquake.usgs.gov/earthquakes/eventpage/us6000inland',
+            tsunami: 0,
+          },
+          geometry: { coordinates: [-65.0, -22.0, 180] },
+        },
+      ],
+    });
+    const usgsSignals = parseUsgsSeismicGeoJson(usgsRaw);
+    expect(usgsSignals).toHaveLength(1);
+    expect(usgsSignals[0].severity).toBe('critical');
+    expect(usgsSignals[0].watchlistMatches).toContain('#4');
+    expect(usgsSignals[0].countdownMatches).toContain('2027-01-08');
+
+    // 3. NOAA SWPC GNSS & Space Weather Alerts
+    const noaaRaw = JSON.stringify([
+      {
+        product_id: 'K07W',
+        issue_datetime: '2026-11-19 04:15:00.000',
+        message:
+          'Space Weather Message Code: WARK07\r\nWARNING: Geomagnetic K-index of 7 expected\r\nNOAA Scale: G3 - Strong\r\nPotential Impacts: Intermittent satellite navigation (GPS) problems.',
+      },
+    ]);
+    const noaaSignals = parseNoaaSwpcAlertsJson(noaaRaw, now);
+    expect(noaaSignals).toHaveLength(1);
+    expect(noaaSignals[0].severity).toBe('elevated');
+    expect(noaaSignals[0].watchlistMatches).toContain('#5');
+
+    // 4. OFAC / MARAD / DOE Directives
+    const ofacRaw = JSON.stringify({
+      results: [
+        {
+          document_number: '2026-25901',
+          title: 'Publication of Iran & Shadow-Fleet Maritime Sanctions Designations',
+          type: 'Notice',
+          abstract: 'OFAC SDN designations targeting dark-fleet petroleum vessels near Hormuz.',
+          html_url: 'https://www.federalregister.gov/d/2026-25901',
+          publication_date: '2026-11-18',
+          agencies: [{ name: 'Foreign Assets Control Office', slug: 'foreign-assets-control-office' }],
+        },
+      ],
+    });
+    const ofacSignals = parseOfacMaradDoeJson(ofacRaw);
+    expect(ofacSignals).toHaveLength(1);
+    expect(ofacSignals[0].watchlistMatches).toEqual(expect.arrayContaining(['#4', '#6']));
+  });
+
+  it('parses Google Cloud, Microsoft Azure & Entra ID, and Oracle Cloud (OCI) hyperscaler feeds cleanly', async () => {
+    const {
+      parseGcpStatusJson,
+      parseAzureStatusRss,
+      parseOciStatusRss,
+      parseOciComponentsJson,
+    } = await import('../scripts/lib/signal-parsers');
+
+    const now = new Date('2026-11-19T06:00:00Z');
+
+    // Google Cloud Status JSON
+    const gcpRaw = JSON.stringify([
+      {
+        id: 'gcp-inc-42',
+        number: '42',
+        begin: '2026-11-19T03:00:00Z',
+        end: null,
+        modified: '2026-11-19T05:30:00Z',
+        external_desc: 'Cloud IAM & Cloud Interconnect elevated authentication latency in us-east4',
+        severity: 'high',
+        status_impact: 'SERVICE_OUTAGE',
+        uri: 'incidents/gcp-inc-42',
+        affected_products: [{ title: 'Cloud IAM' }, { title: 'Cloud Interconnect' }],
+        currently_affected_locations: [{ id: 'us-east4' }],
+        most_recent_update: { text: 'Engineers are mitigating regional IAM token latency.' },
+      },
+    ]);
+    const gcpSignals = parseGcpStatusJson(gcpRaw, now);
+    expect(gcpSignals).toHaveLength(1);
+    expect(gcpSignals[0].severity).toBe('critical');
+    expect(gcpSignals[0].watchlistMatches).toContain('#9');
+
+    // Microsoft Azure & Entra ID RSS
+    const azureRss = `<rss><channel><item><title>Microsoft Entra ID - Multi-Factor Authentication Degradation</title><link>https://azure.status.microsoft/en-us/status</link><description>Investigating elevated sign-in failures across North America.</description><pubDate>Thu, 19 Nov 2026 04:00:00 GMT</pubDate></item></channel></rss>`;
+    const azureSignals = parseAzureStatusRss(azureRss, now);
+    expect(azureSignals).toHaveLength(1);
+    expect(azureSignals[0].severity).toBe('critical');
+    expect(azureSignals[0].watchlistMatches).toEqual(expect.arrayContaining(['#6', '#7', '#9']));
+
+    // Oracle Cloud (OCI) RSS + Components JSON
+    const ociRss = `<rss><channel><item><title>US East (Ashburn) - Compute Service Outage</title><link>https://ocistatus.oraclecloud.com/incidents/ashburn1</link><description>Investigating instance launch errors.</description><pubDate>Thu, 19 Nov 2026 05:00:00 GMT</pubDate></item></channel></rss>`;
+    expect(parseOciStatusRss(ociRss, now)).toHaveLength(1);
+
+    const ociCompJson = JSON.stringify({
+      components: [
+        { id: 'c1', name: 'OCI FastConnect', status: 'Degraded Performance', updated_at: '2026-11-19T05:10:00Z' },
+        { id: 'c2', name: 'OCI Object Storage', status: 'Operational', updated_at: '2026-11-19T05:10:00Z' },
+      ],
+    });
+    const ociCompSignals = parseOciComponentsJson(ociCompJson, now);
+    expect(ociCompSignals).toHaveLength(1);
+    expect(ociCompSignals[0].title).toContain('OCI FastConnect');
+  });
+});
+
+

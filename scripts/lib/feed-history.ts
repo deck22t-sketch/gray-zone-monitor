@@ -6,18 +6,9 @@ import {
   FeedId,
 } from '../../src/types/schemas';
 
-export const MAX_FEED_HISTORY_POINTS = 28; // 14 days at 2 sweeps/day
+import { ALL_FEED_IDS } from '../../src/lib/feed-registry';
 
-const ALL_FEED_IDS: FeedId[] = [
-  'cisa-kev',
-  'cisa-advisories',
-  'faa-nas',
-  'federal-register',
-  'cloudflare-status',
-  'github-status',
-  'aws-status',
-  'apple-status',
-];
+export const MAX_FEED_HISTORY_POINTS = 28; // Rolling latency & status ring buffer
 
 export function createEmptyFeedHistory(nowISO: string): FeedHistoryData {
   const series = {} as Record<FeedId, FeedHistoryPoint[]>;

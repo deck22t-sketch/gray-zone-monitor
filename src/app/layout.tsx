@@ -67,24 +67,27 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           rel="stylesheet"
         />
       </head>
-      <body className="bg-[#06080C] text-gray-200 antialiased selection:bg-[#38BDF8]/25 selection:text-white">
-        <PwaRegistrar />
-        <PortalProvider>
-          <VaultGate>
-            <div className="min-h-screen flex flex-col">
-              <TopNav />
-              <main className="flex-1 max-w-[1380px] w-full mx-auto px-4 sm:px-6 lg:px-8 pt-4 sm:pt-6 pb-8 sm:pb-12">
-                {children}
-              </main>
-              <PortalFooter />
-              <MobileBottomNav />
-            </div>
-            <SourceDrawer />
-            <ChangelogDrawer />
-            <CommandSearchModal />
-            <BriefingExportModal />
-          </VaultGate>
-        </PortalProvider>
+      <body className="bg-[#05080D] text-gray-200 antialiased selection:bg-[#38BDF8]/25 selection:text-white relative">
+        <div aria-hidden="true" className="palantir-canvas print:hidden" />
+        <div className="relative z-10 min-h-screen flex flex-col">
+          <PwaRegistrar />
+          <PortalProvider>
+            <VaultGate>
+              <div className="min-h-screen flex flex-col">
+                <TopNav />
+                <main className="flex-1 max-w-[1380px] w-full mx-auto px-4 sm:px-6 lg:px-8 pt-4 sm:pt-6 pb-8 sm:pb-12">
+                  {children}
+                </main>
+                <PortalFooter />
+                <MobileBottomNav />
+              </div>
+              <SourceDrawer />
+              <ChangelogDrawer />
+              <CommandSearchModal />
+              <BriefingExportModal />
+            </VaultGate>
+          </PortalProvider>
+        </div>
       </body>
     </html>
   );

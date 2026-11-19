@@ -16,9 +16,11 @@ import {
   GitMerge,
   Pin,
   PinOff,
+  RefreshCw,
 } from 'lucide-react';
 import { usePortal } from '@/context/PortalContext';
 import { FeedId, PrimarySourceEntry, SignalSeverity } from '@/types/schemas';
+import { FEED_DOMAIN_GROUPS, FEED_META_BY_ID, FeedDomainGroup } from '@/lib/feed-registry';
 import { CitationChipList } from '@/components/shell/RichTextWithCitations';
 import { FeedSparkline } from '@/components/shell/FeedSparkline';
 import { TacticalFigure } from '@/components/shell/TacticalFigure';
@@ -26,15 +28,12 @@ import { scrollToSectionById } from '@/components/shell/SectionNavStrip';
 import { classifySourceTier } from '@/lib/evidence';
 
 type WatchlistTab = 'watchlist' | 'live-wire' | 'vault';
-type TriagePreset = 'all' | 'pinned' | 'cisa' | 'faa' | 'regulatory' | 'backbone';
+type TriagePreset = 'all' | 'pinned' | FeedDomainGroup;
 
 const TRIAGE_PRESETS: Array<{ id: TriagePreset; label: string }> = [
-  { id: 'all', label: 'All Feeds' },
+  { id: 'all', label: 'All 15 Feeds' },
   { id: 'pinned', label: 'Pinned' },
-  { id: 'cisa', label: 'CISA KEV & ICS' },
-  { id: 'faa', label: 'FAA Aviation' },
-  { id: 'regulatory', label: 'Fed. Register' },
-  { id: 'backbone', label: 'Cloud & Backbone' },
+  ...FEED_DOMAIN_GROUPS.map((g) => ({ id: g.id, label: g.shortLabel })),
 ];
 
 const DOMAIN_TAGS: Array<'ALL' | PrimarySourceEntry['domainTag']> = [
@@ -49,8 +48,16 @@ const DOMAIN_TAGS: Array<'ALL' | PrimarySourceEntry['domainTag']> = [
 ];
 
 export function WatchlistView() {
-  const { bundle, openCitation, pinnedSignalIds, togglePinSignal, clearPinnedSignals } =
-    usePortal();
+  const {
+    bundle,
+    openCitation,
+    pinnedSignalIds,
+    togglePinSignal,
+    clearPinnedSignals,
+    isScanningLive,
+    lastLiveScanSummary,
+    triggerLiveScan,
+  } = usePortal();
   const { watchlist, liveSignals, feedHealth, feedHistory, sections } = bundle;
 
   const [activeTab, setActiveTab] = useState<WatchlistTab>('watchlist');
@@ -115,7 +122,12 @@ export function WatchlistView() {
 
   const topSpotlightSignals = useMemo(() => {
     return liveSignals.signals
-      .filter((s) => s.sourceId === 'cisa-kev' || s.sourceId === 'cisa-advisories')
+      .filter(
+        (s) =>
+          s.sourceId === 'cisa-kev' ||
+          s.sourceId === 'cisa-advisories' ||
+          s.sourceId === 'nist-nvd'
+      )
       .slice(0, 2);
   }, [liveSignals.signals]);
 
@@ -138,22 +150,9 @@ export function WatchlistView() {
     const q = liveQuery.trim().toLowerCase();
     return liveSignals.signals.filter((sig) => {
       if (triagePreset === 'pinned' && !pinnedSignalIds.includes(sig.id)) return false;
-      if (
-        triagePreset === 'cisa' &&
-        sig.sourceId !== 'cisa-kev' &&
-        sig.sourceId !== 'cisa-advisories'
-      ) {
-        return false;
-      }
-      if (triagePreset === 'faa' && sig.sourceId !== 'faa-nas') return false;
-      if (triagePreset === 'regulatory' && sig.sourceId !== 'federal-register') return false;
-      if (
-        triagePreset === 'backbone' &&
-        !['cloudflare-status', 'github-status', 'aws-health', 'apple-status'].includes(
-          sig.sourceId
-        )
-      ) {
-        return false;
+      if (triagePreset !== 'all' && triagePreset !== 'pinned') {
+        const meta = FEED_META_BY_ID[sig.sourceId];
+        if (!meta || meta.domainGroup !== triagePreset) return false;
       }
       if (severityFilter !== 'ALL' && sig.severity !== severityFilter) return false;
       if (feedFilter !== 'ALL' && sig.sourceId !== feedFilter) return false;
@@ -214,7 +213,7 @@ export function WatchlistView() {
           <div className="space-y-1">
             <div className="flex items-center gap-2 font-mono-tactical text-[11px] text-[#38BDF8]">
               <Eye className="w-3.5 h-3.5" />
-              <span>SECTIONS 8.3 &amp; 10 + LIVE KEYLESS OSINT TELEMETRY</span>
+              <span>SECTIONS 8.3 &amp; 10 + 15-FEED FEDERAL &amp; HYPERSCALER TELEMETRY</span>
             </div>
             <h1 className="text-xl sm:text-2xl font-semibold text-white tracking-tight leading-snug">
               9-Point Operational Watchlist, Live Wire &amp; Source Vault
@@ -226,6 +225,19 @@ export function WatchlistView() {
               {feedHealth.liveCount}/{feedHealth.totalFeeds} Keyless Feeds ·{' '}
               {liveSignals.totalSignals} Signals
             </span>
+            <button
+              id="btn-header-scan-live"
+              type="button"
+              disabled={isScanningLive}
+              onClick={() => {
+                triggerLiveScan();
+              }}
+              className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-sm bg-[#38BDF8]/14 hover:bg-[#38BDF8]/24 border border-[#38BDF8]/45 text-[#38BDF8] cursor-pointer transition disabled:opacity-60"
+              title="Query CORS-enabled U.S. government (.gov) and hyperscaler JSON feeds directly from your browser"
+            >
+              <RefreshCw className={`w-3 h-3 ${isScanningLive ? 'animate-spin' : ''}`} />
+              <span>{isScanningLive ? 'Scanning Live…' : 'Scan Live Now'}</span>
+            </button>
             {pinnedSignalIds.length > 0 && (
               <button
                 type="button"
@@ -336,11 +348,11 @@ export function WatchlistView() {
                 type="button"
                 onClick={() => {
                   switchTab('live-wire');
-                  applyTriagePreset('cisa');
+                  applyTriagePreset('cyber');
                 }}
                 className="font-mono-tactical text-[11px] text-[#38BDF8] hover:underline cursor-pointer"
               >
-                Inspect All CISA Signals →
+                Inspect All Cyber &amp; NVD Signals →
               </button>
             </div>
 
@@ -459,26 +471,53 @@ export function WatchlistView() {
       {/* TAB 2: Live Wire (Keyless Federal & Backbone OSINT) */}
       {activeTab === 'live-wire' && (
         <section aria-label="Live Wire Keyless OSINT" className="space-y-5">
-          {/* 8-Feed Health Telemetry Grid + Severity Spectrum */}
+          {/* 15-Feed Health Telemetry Grid + On-Demand Live Scan + Severity Spectrum */}
           <div className="glass-card tac-frame rounded-lg p-4 sm:p-5 space-y-4">
-            <div className="flex flex-wrap items-center justify-between gap-2">
+            <div className="flex flex-wrap items-center justify-between gap-2.5">
               <div className="flex flex-wrap items-center gap-2">
                 <span className="px-2 py-0.5 rounded-sm bg-[#10B981]/12 border border-[#10B981]/35 font-mono-tactical text-[10px] text-[#10B981]">
-                  LIVE WIRE · KEYLESS PUBLIC OSINT
+                  LIVE WIRE · 15 KEYLESS GOV &amp; CLOUD FEEDS
                 </span>
                 <span className="font-mono-tactical text-[11px] text-gray-400">
-                  Swept {new Date(feedHealth.checkedAtISO).toISOString().replace('T', ' ').slice(0, 19)} UTC
+                  Swept {new Date(feedHealth.checkedAtISO).toISOString().replace('T', ' ').slice(0, 19)} UTC · 3h CI Cadence
                 </span>
+                {lastLiveScanSummary && (
+                  <span className="px-2 py-0.5 rounded-sm bg-[#38BDF8]/12 border border-[#38BDF8]/35 font-mono-tactical text-[10px] text-[#38BDF8]">
+                    Browser Sweep: {lastLiveScanSummary.refreshedFeedCount}/{lastLiveScanSummary.attemptedFeedCount} CORS Feeds ·{' '}
+                    {lastLiveScanSummary.newSignalCount > 0
+                      ? `+${lastLiveScanSummary.newSignalCount} New`
+                      : 'Up to Date'}
+                  </span>
+                )}
               </div>
-              <span className="font-mono-tactical text-[10px] text-gray-500">
-                14-Day Latency Sparklines · Canonical incidents.json protected
-              </span>
+
+              <div className="flex flex-wrap items-center gap-2">
+                <button
+                  id="btn-livewire-scan-now"
+                  type="button"
+                  disabled={isScanningLive}
+                  onClick={() => {
+                    triggerLiveScan();
+                  }}
+                  className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-sm bg-[#38BDF8]/14 hover:bg-[#38BDF8]/24 border border-[#38BDF8]/45 font-mono-tactical text-[10px] text-[#38BDF8] cursor-pointer transition disabled:opacity-60"
+                >
+                  <RefreshCw className={`w-3 h-3 ${isScanningLive ? 'animate-spin' : ''}`} />
+                  <span>{isScanningLive ? 'Sweeping .gov & Cloud JSON…' : 'Scan Live Now'}</span>
+                </button>
+              </div>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-2">
               {feedHealth.feeds.map((f) => {
                 const selected = feedFilter === f.id;
                 const historySeries = feedHistory?.series?.[f.id];
+                const regMeta = FEED_META_BY_ID[f.id];
+                const badgeClass =
+                  regMeta?.sectorBadge === 'U.S. Gov'
+                    ? 'text-[#38BDF8] bg-[#38BDF8]/10 border-[#38BDF8]/25'
+                    : regMeta?.sectorBadge === 'Hyperscaler'
+                    ? 'text-[#10B981] bg-[#10B981]/10 border-[#10B981]/25'
+                    : 'text-gray-300 bg-white/[0.05] border-white/15';
                 return (
                   <button
                     key={f.id}
@@ -490,32 +529,43 @@ export function WatchlistView() {
                     className={`text-left rounded-md p-3 border transition cursor-pointer ${
                       selected
                         ? 'surface-elevated border-[#38BDF8]/60'
-                        : 'obsidian-surface hover:border-white/20'
+                        : 'obsidian-surface hover:border-white/25'
                     }`}
                   >
-                    <div className="flex items-center justify-between gap-2">
-                      <span className="text-xs font-medium text-white truncate">{f.name}</span>
-                      {f.status === 'live' ? (
-                        <CheckCircle2 className="w-3.5 h-3.5 text-[#10B981] shrink-0" />
-                      ) : (
-                        <AlertCircle className="w-3.5 h-3.5 text-[#F59E0B] shrink-0" />
-                      )}
+                    <div className="flex items-center justify-between gap-1.5">
+                      <span className="text-xs font-medium text-white truncate">
+                        {regMeta?.shortLabel ?? f.name}
+                      </span>
+                      <div className="flex items-center gap-1 shrink-0">
+                        {regMeta && (
+                          <span
+                            className={`font-mono-tactical text-[9px] px-1 py-0.2 rounded-xs border ${badgeClass}`}
+                          >
+                            {regMeta.sectorBadge}
+                          </span>
+                        )}
+                        {f.status === 'live' ? (
+                          <CheckCircle2 className="w-3.5 h-3.5 text-[#10B981] shrink-0" />
+                        ) : (
+                          <AlertCircle className="w-3.5 h-3.5 text-[#F59E0B] shrink-0" />
+                        )}
+                      </div>
                     </div>
                     <div className="flex items-center justify-between gap-2 mt-1.5">
-                      <p className="font-mono-tactical text-[10px] text-gray-400">
-                        HTTP {f.httpStatus ?? 'ERR'} · {f.latencyMs}ms · {f.itemCount} items
+                      <p className="font-mono-tactical text-[10px] text-gray-400 truncate">
+                        HTTP {f.httpStatus ?? 'SYNC'} · {f.latencyMs}ms · {f.itemCount}
                       </p>
                       <FeedSparkline
                         points={historySeries}
                         metric="latencyMs"
-                        width={64}
-                        height={16}
+                        width={56}
+                        height={15}
                         strokeColor={f.status === 'live' ? '#10B981' : '#F59E0B'}
                       />
                     </div>
                     {f.id === 'faa-nas' && f.updateTimeText && (
                       <p className="font-mono-tactical text-[9px] text-gray-500 mt-1 truncate">
-                        Source: FAA NAS Status (nasstatus.faa.gov) · {f.updateTimeText}
+                        FAA NAS · {f.updateTimeText}
                       </p>
                     )}
                   </button>

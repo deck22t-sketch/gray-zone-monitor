@@ -1,30 +1,29 @@
 import { XMLParser } from 'fast-xml-parser';
 import { LiveSignal, SignalSeverity } from '../../src/types/schemas';
+import {
+  buildSection84MarkdownRow,
+  formatShortWindow,
+  shortHashHex,
+  stripHtml,
+  truncateText,
+} from '../../src/lib/live-parsers';
 
-const PRIORITY_KEV_VENDORS = [
-  'juniper',
-  'cisco',
-  'check point',
-  'checkpoint',
-  'ivanti',
-  'fortinet',
-  'palo alto',
-  'vmware',
-  'broadcom',
-  'chrome',
-  'google',
-  'apple',
-  'connectwise',
-  'citrix',
-  'f5',
-  'microsoft',
-  'puppet',
-  'perforce',
-  'openjdk',
-  'oracle',
-  'atlassian',
-  'keycloak',
-];
+export {
+  buildSection84MarkdownRow,
+  formatShortWindow,
+  parseCisaKevJson,
+  parseFederalRegisterJson,
+  parseGcpStatusJson,
+  parseNistNvdJson,
+  parseNoaaSwpcAlertsJson,
+  parseOciComponentsJson,
+  parseOfacMaradDoeJson,
+  parseStatuspageIncidentsJson,
+  parseUsgsSeismicGeoJson,
+  shortHashHex,
+  stripHtml,
+  truncateText,
+} from '../../src/lib/live-parsers';
 
 const xmlParser = new XMLParser({
   ignoreAttributes: false,
@@ -34,6 +33,7 @@ const xmlParser = new XMLParser({
   isArray: (tagName) =>
     [
       'item',
+      'entry',
       'Delay_type',
       'Ground_Stop',
       'Program',
@@ -49,158 +49,8 @@ const xmlParser = new XMLParser({
     ].includes(tagName),
 });
 
-export function stripHtml(raw: string): string {
-  return raw
-    .replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, '$1')
-    .replace(/&lt;/g, '<')
-    .replace(/&gt;/g, '>')
-    .replace(/&quot;/g, '"')
-    .replace(/&#39;|&apos;/g, "'")
-    .replace(/&amp;/g, '&')
-    .replace(/<[^>]+>/g, ' ')
-    .replace(/\s+/g, ' ')
-    .trim();
-}
-
-export function truncateText(text: string, maxLen = 240): string {
-  const clean = text.replace(/\s+/g, ' ').trim();
-  if (clean.length <= maxLen) return clean;
-  return `${clean.slice(0, maxLen - 1).trimEnd()}…`;
-}
-
-export function formatShortWindow(iso: string): string {
-  const d = new Date(iso);
-  if (Number.isNaN(d.getTime())) return iso;
-  return d.toLocaleDateString('en-US', {
-    month: 'short',
-    day: 'numeric',
-    year: 'numeric',
-    timeZone: 'UTC',
-  });
-}
-
-export function buildSection84MarkdownRow(params: {
-  windowText: string;
-  entitySector: string;
-  impact: string;
-  sourceLabel: string;
-  url: string;
-  vector: string;
-  severity: SignalSeverity;
-  watchlistMatches: string[];
-}): string {
-  const safe = (s: string) => s.replace(/\|/g, '\\|').replace(/\r?\n/g, ' ').trim();
-  const wl =
-    params.watchlistMatches.length > 0
-      ? `Watchlist ${params.watchlistMatches.join(', ')}`
-      : 'Baseline OSINT';
-  return `| #11+ — ${safe(params.windowText)} | ${safe(params.entitySector)} | ${safe(
-    params.impact
-  )} ([${safe(params.sourceLabel)}](${params.url})) | ${safe(
-    params.vector
-  )} | Live Wire (${params.severity.toUpperCase()}) — ${wl} |`;
-}
-
 /**
- * 1. CISA KEV Catalog Parser (last 14 days; highlights routing/gateway/hypervisor/browser/MSP/config vendors -> Watchlist #2 & #8)
- */
-export function parseCisaKevJson(rawJson: string, now = new Date()): LiveSignal[] {
-  const parsed = JSON.parse(rawJson) as {
-    catalogVersion?: string;
-    dateReleased?: string;
-    vulnerabilities?: Array<{
-      cveID: string;
-      vendorProject: string;
-      product: string;
-      vulnerabilityName: string;
-      dateAdded: string;
-      shortDescription: string;
-      dueDate?: string;
-      knownRansomwareCampaignUse?: string;
-    }>;
-  };
-
-  const vulns = parsed.vulnerabilities ?? [];
-  const cutoffMs = now.getTime() - 14 * 24 * 60 * 60 * 1000;
-
-  const recent = vulns.filter((v) => {
-    const t = Date.parse(`${v.dateAdded}T00:00:00Z`);
-    return !Number.isNaN(t) && t >= cutoffMs;
-  });
-
-  const selected = (recent.length > 0 ? recent : vulns.slice(0, 10)).slice(0, 20);
-
-  return selected.map((v) => {
-    const vendorProd = `${v.vendorProject} ${v.product} ${v.vulnerabilityName}`.toLowerCase();
-    const isPriorityVendor = PRIORITY_KEV_VENDORS.some((kw) => vendorProd.includes(kw));
-    const watchlistMatches = ['#2'];
-    const riskMatrixMatches = ['#2'];
-
-    if (
-      isPriorityVendor ||
-      /esxi|vmware|check point|juniper|cisco|ivanti|fortinet|puppet|perforce|openjdk|java4shell/i.test(
-        vendorProd
-      )
-    ) {
-      if (!watchlistMatches.includes('#8')) watchlistMatches.push('#8');
-    }
-    if (/juniper|cisco|palo alto|fortinet|ivanti|puppet|perforce/i.test(vendorProd)) {
-      if (!watchlistMatches.includes('#1')) watchlistMatches.push('#1');
-      if (!riskMatrixMatches.includes('#1')) riskMatrixMatches.push('#1');
-    }
-    if (/connectwise|screenconnect/i.test(vendorProd)) {
-      if (!watchlistMatches.includes('#6')) watchlistMatches.push('#6');
-    }
-    if (/check point|vmware|esxi/i.test(vendorProd)) {
-      if (!riskMatrixMatches.includes('#3')) riskMatrixMatches.push('#3');
-    }
-
-    const severity: SignalSeverity = isPriorityVendor ? 'critical' : 'elevated';
-    const publishedAtISO = `${v.dateAdded}T12:00:00.000Z`;
-    const url = `https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search_api_fulltext=${encodeURIComponent(
-      v.cveID
-    )}`;
-    const summary = truncateText(
-      `${v.shortDescription}${v.dueDate ? ` Federal BOD 22-01 remediation due ${v.dueDate}.` : ''}`,
-      280
-    );
-    const tags = [
-      'CISA-KEV',
-      v.cveID,
-      v.vendorProject,
-      ...(isPriorityVendor ? ['Priority-Edge-Vendor'] : []),
-    ];
-
-    return {
-      id: `kev-${v.cveID.toLowerCase()}`,
-      sourceId: 'cisa-kev',
-      sourceName: 'CISA KEV Catalog',
-      attributionText: `Source: CISA Known Exploited Vulnerabilities Catalog (${parsed.catalogVersion ?? 'live'})`,
-      publishedAtISO,
-      title: `${v.cveID}: ${v.vendorProject} ${v.product} — ${v.vulnerabilityName}`,
-      summary,
-      url,
-      severity,
-      watchlistMatches,
-      riskMatrixMatches,
-      countdownMatches: [],
-      tags,
-      markdownRow: buildSection84MarkdownRow({
-        windowText: v.dateAdded,
-        entitySector: `${v.vendorProject} ${v.product} (Enterprise / Edge Security)`,
-        impact: truncateText(v.shortDescription, 140),
-        sourceLabel: 'CISA KEV',
-        url,
-        vector: `Active exploitation confirmed (${v.cveID}); due ${v.dueDate ?? 'per BOD 22-01'}`,
-        severity,
-        watchlistMatches,
-      }),
-    };
-  });
-}
-
-/**
- * 2. CISA Cybersecurity Advisories RSS XML Parser (ICS/OT/PLC, Emergency Directives, FBI/NSA LotL/ARTEX/Java4Shell -> Watchlist #1, #2, #3, #8)
+ * CISA Cybersecurity Advisories RSS XML Parser (ICS/OT/PLC, Emergency Directives, FBI/NSA LotL/ARTEX/Java4Shell -> Watchlist #1, #2, #3, #8)
  */
 export function parseCisaAdvisoriesXml(rawXml: string): LiveSignal[] {
   const doc = xmlParser.parse(rawXml) as {
@@ -303,7 +153,7 @@ export function parseCisaAdvisoriesXml(rawXml: string): LiveSignal[] {
 }
 
 /**
- * 3. FAA NAS Status XML + JSON Parser
+ * FAA NAS Status XML + JSON Parser
  * CRITICAL RULE: Iterates ALL <Delay_type> blocks in XML rather than taking only the first match.
  * Plain-text attribution strictly: "Source: FAA NAS Status (nasstatus.faa.gov)" + Update_Time.
  */
@@ -336,12 +186,11 @@ export function parseFaaNasStatus(
   const signals: LiveSignal[] = [];
   const seenKeys = new Set<string>();
 
-  // Iterate EVERY <Delay_type> block in the XML document
   for (let dtIdx = 0; dtIdx < delayTypes.length; dtIdx += 1) {
     const dt = delayTypes[dtIdx];
     const typeName = String(dt.Name ?? `NAS Event Group ${dtIdx + 1}`).trim();
 
-    // 3a. Ground Stops (<Ground_Stop_List><Program>...)
+    // Ground Stops (<Ground_Stop_List><Program>...)
     const gsLists = (dt.Ground_Stop_List as Array<Record<string, unknown>> | undefined) ?? [];
     for (const gsList of gsLists) {
       const programs = (gsList.Program as Array<Record<string, unknown>> | undefined) ?? [];
@@ -380,7 +229,7 @@ export function parseFaaNasStatus(
       }
     }
 
-    // 3b. Ground Delay Programs (<Ground_Delay_List><Ground_Delay>...)
+    // Ground Delay Programs (<Ground_Delay_List><Ground_Delay>...)
     const gdLists = (dt.Ground_Delay_List as Array<Record<string, unknown>> | undefined) ?? [];
     for (const gdList of gdLists) {
       const gds = (gdList.Ground_Delay as Array<Record<string, unknown>> | undefined) ?? [];
@@ -420,7 +269,7 @@ export function parseFaaNasStatus(
       }
     }
 
-    // 3c. Arrival / Departure Delays (<Arrival_Departure_Delay_List><Delay>...)
+    // Arrival / Departure Delays (<Arrival_Departure_Delay_List><Delay>...)
     const adLists =
       (dt.Arrival_Departure_Delay_List as Array<Record<string, unknown>> | undefined) ?? [];
     for (const adList of adLists) {
@@ -459,7 +308,7 @@ export function parseFaaNasStatus(
       }
     }
 
-    // 3d. Airport Closures (<Airport_Closure_List><Airport>...) across ALL <Delay_type> blocks
+    // Airport Closures (<Airport_Closure_List><Airport>...) across ALL <Delay_type> blocks
     const clLists = (dt.Airport_Closure_List as Array<Record<string, unknown>> | undefined) ?? [];
     for (const clList of clLists) {
       const airports = (clList.Airport as Array<Record<string, unknown>> | undefined) ?? [];
@@ -501,7 +350,7 @@ export function parseFaaNasStatus(
     }
   }
 
-  // Enrich/fallback from JSON /api/airport-events if any groundStop / groundDelay wasn't in XML
+  // Enrich/fallback from JSON /api/airport-events if any groundStop wasn't in XML
   if (rawEventsJson) {
     try {
       const events = JSON.parse(rawEventsJson) as Array<{
@@ -554,189 +403,7 @@ export function parseFaaNasStatus(
 }
 
 /**
- * 4. U.S. Federal Register REST API v1 Parser -> Maps to Countdown Cliffs & Risk Matrix
- */
-export function parseFederalRegisterJson(rawJson: string): LiveSignal[] {
-  const parsed = JSON.parse(rawJson) as {
-    results?: Array<{
-      document_number: string;
-      title: string;
-      type: string;
-      abstract?: string | null;
-      html_url: string;
-      publication_date: string;
-      agencies?: Array<{ name?: string; slug?: string }>;
-    }>;
-  };
-
-  const docs = parsed.results ?? [];
-  return docs.slice(0, 15).map((d) => {
-    const agencyNames = (d.agencies ?? [])
-      .map((a) => a.name)
-      .filter(Boolean)
-      .join(', ');
-    const hay = `${d.title} ${d.abstract ?? ''} ${agencyNames}`.toLowerCase();
-
-    const watchlistMatches: string[] = [];
-    const riskMatrixMatches: string[] = [];
-    const countdownMatches: string[] = [];
-    const tags: string[] = ['Federal-Register', d.type];
-
-    if (/industry and security|export|semiconductor|gallium|germanium|rare earth|entity list|gpu|chip/.test(hay)) {
-      riskMatrixMatches.push('#4');
-      countdownMatches.push('2026-11-27', '2027-01-10');
-      tags.push('BIS-Export-Controls');
-    }
-    if (/submarine cable|slte|communications commission|fcc|bgp|eas|emergency alert/.test(hay)) {
-      riskMatrixMatches.push('#6');
-      countdownMatches.push('2027-01-08');
-      watchlistMatches.push('#9');
-      tags.push('FCC-Telecom-Subsea');
-    }
-    if (/securities and exchange|treasury|clearing|ficc|dtcc|form 8-k/.test(hay)) {
-      riskMatrixMatches.push('#5', '#7');
-      countdownMatches.push('2026-12-31');
-      watchlistMatches.push('#6');
-      tags.push('SEC-Clearing');
-    }
-    if (/comptroller of the currency|banking|occ|cybersecurity|cisa|circia|critical infrastructure/.test(hay)) {
-      if (!riskMatrixMatches.includes('#7')) riskMatrixMatches.push('#7');
-      if (!watchlistMatches.includes('#6')) watchlistMatches.push('#6');
-      tags.push('Regulatory-Resilience');
-    }
-    if (/aviation administration|faa|airspace|airworthiness|gnss|navigation|router/.test(hay)) {
-      if (!riskMatrixMatches.includes('#1')) riskMatrixMatches.push('#1');
-      if (!watchlistMatches.includes('#5')) watchlistMatches.push('#5');
-      tags.push('FAA-Regulatory');
-    }
-    if (riskMatrixMatches.length === 0) {
-      riskMatrixMatches.push('#7');
-    }
-
-    const isHighSignal =
-      countdownMatches.length > 0 ||
-      /submarine cable|export administration|treasury|cybersecurity|emergency/.test(hay);
-    const severity: SignalSeverity = isHighSignal ? 'elevated' : 'info';
-    const publishedAtISO = `${d.publication_date}T13:00:00.000Z`;
-    const summary = truncateText(
-      d.abstract || `${d.type} published by ${agencyNames || 'U.S. Federal Agency'} (${d.document_number}).`,
-      260
-    );
-
-    return {
-      id: `fedreg-${d.document_number}`,
-      sourceId: 'federal-register',
-      sourceName: 'U.S. Federal Register',
-      attributionText: `Source: U.S. Federal Register (${d.document_number} — ${agencyNames || 'Federal Agency'})`,
-      publishedAtISO,
-      title: `${d.title} (${d.document_number})`,
-      summary,
-      url: d.html_url,
-      severity,
-      watchlistMatches,
-      riskMatrixMatches,
-      countdownMatches,
-      tags,
-      markdownRow: buildSection84MarkdownRow({
-        windowText: d.publication_date,
-        entitySector: `${agencyNames || 'Federal Register'} (Federal Regulatory)`,
-        impact: truncateText(d.title, 140),
-        sourceLabel: `FR ${d.document_number}`,
-        url: d.html_url,
-        vector: `${d.type} filing mapped to Risk ${riskMatrixMatches.join(', ')}`,
-        severity,
-        watchlistMatches,
-      }),
-    };
-  });
-}
-
-/**
- * 5 & 6. Statuspage v2 Incidents Parser (Cloudflare & GitHub Status)
- */
-export function parseStatuspageIncidentsJson(
-  rawJson: string,
-  provider: 'cloudflare-status' | 'github-status',
-  now = new Date()
-): LiveSignal[] {
-  const parsed = JSON.parse(rawJson) as {
-    page?: { name?: string; url?: string };
-    incidents?: Array<{
-      id: string;
-      name: string;
-      status: string;
-      impact: string;
-      shortlink?: string;
-      created_at: string;
-      updated_at?: string;
-      incident_updates?: Array<{ body?: string; status?: string }>;
-    }>;
-  };
-
-  const providerLabel = provider === 'cloudflare-status' ? 'Cloudflare' : 'GitHub';
-  const defaultUrl =
-    provider === 'cloudflare-status'
-      ? 'https://www.cloudflarestatus.com'
-      : 'https://www.githubstatus.com';
-
-  const cutoffMs = now.getTime() - 10 * 24 * 60 * 60 * 1000;
-  const incidents = (parsed.incidents ?? []).filter((inc) => {
-    const isActive = inc.status !== 'resolved' && inc.status !== 'postmortem';
-    const createdMs = Date.parse(inc.created_at);
-    return isActive || (!Number.isNaN(createdMs) && createdMs >= cutoffMs);
-  });
-
-  return incidents.slice(0, 8).map((inc) => {
-    const isActive = inc.status !== 'resolved' && inc.status !== 'postmortem';
-    const latestUpdate = inc.incident_updates?.[0]?.body ?? '';
-    const severity: SignalSeverity =
-      inc.impact === 'critical' || (isActive && inc.impact === 'major')
-        ? 'critical'
-        : isActive || inc.impact === 'major' || inc.impact === 'minor'
-        ? 'elevated'
-        : 'info';
-
-    const watchlistMatches =
-      provider === 'cloudflare-status' ? ['#6', '#7'] : ['#2', '#7'];
-    const riskMatrixMatches =
-      provider === 'cloudflare-status' ? ['#1', '#2'] : ['#2'];
-    const url = inc.shortlink || parsed.page?.url || defaultUrl;
-
-    return {
-      id: `${provider}-${inc.id}`,
-      sourceId: provider,
-      sourceName: `${providerLabel} Status`,
-      attributionText: `Source: ${providerLabel} System Status (${new URL(defaultUrl).hostname})`,
-      publishedAtISO: new Date(inc.updated_at ?? inc.created_at).toISOString(),
-      title: `${providerLabel}: ${inc.name} [${inc.status.toUpperCase()}]`,
-      summary: truncateText(
-        latestUpdate || `${providerLabel} ${inc.impact} impact incident (${inc.status}).`,
-        260
-      ),
-      url,
-      severity,
-      watchlistMatches,
-      riskMatrixMatches,
-      countdownMatches: [],
-      tags: [providerLabel, `impact:${inc.impact}`, `status:${inc.status}`],
-      markdownRow: buildSection84MarkdownRow({
-        windowText: formatShortWindow(inc.created_at),
-        entitySector: `${providerLabel} (${
-          provider === 'cloudflare-status' ? 'Global CDN & Edge' : 'Developer & CI/CD Backbone'
-        })`,
-        impact: truncateText(`${inc.name} (${inc.impact} impact; ${inc.status})`, 140),
-        sourceLabel: `${providerLabel} Status`,
-        url,
-        vector: truncateText(latestUpdate || 'Backbone service degradation', 130),
-        severity,
-        watchlistMatches,
-      }),
-    };
-  });
-}
-
-/**
- * 7. AWS Service Health RSS XML Parser (recent 7-day items)
+ * AWS Service Health RSS XML Parser (recent 7-day items)
  */
 export function parseAwsStatusRss(rawXml: string, now = new Date()): LiveSignal[] {
   const doc = xmlParser.parse(rawXml) as {
@@ -775,7 +442,7 @@ export function parseAwsStatusRss(rawXml: string, now = new Date()): LiveSignal[
       const severity: SignalSeverity = isResolved ? 'info' : 'elevated';
 
       return {
-        id: `aws-${idx}-${Buffer.from(url).toString('hex').slice(0, 12)}`,
+        id: `aws-${idx}-${shortHashHex(url).slice(0, 12)}`,
         sourceId: 'aws-status',
         sourceName: 'AWS Service Health',
         attributionText: 'Source: AWS Service Health Dashboard (status.aws.amazon.com)',
@@ -803,7 +470,172 @@ export function parseAwsStatusRss(rawXml: string, now = new Date()): LiveSignal[
 }
 
 /**
- * 8. Apple System Status Parser (JSONP or pure JSON)
+ * Microsoft Azure & Entra ID RSS XML Parser (rssfeed.azure.status.microsoft)
+ */
+export function parseAzureStatusRss(rawXml: string, now = new Date()): LiveSignal[] {
+  const doc = xmlParser.parse(rawXml) as {
+    rss?: {
+      channel?: {
+        item?: Array<{
+          title?: string;
+          link?: string;
+          pubDate?: string;
+          guid?: string | { '#text'?: string };
+          description?: string;
+        }>;
+      };
+    };
+  };
+
+  const cutoffMs = now.getTime() - 10 * 24 * 60 * 60 * 1000;
+  const items = doc.rss?.channel?.item ?? [];
+
+  return items
+    .filter((item) => {
+      const pubMs = item.pubDate ? Date.parse(item.pubDate) : NaN;
+      return Number.isNaN(pubMs) || pubMs >= cutoffMs;
+    })
+    .slice(0, 10)
+    .map((item, idx) => {
+      const title = stripHtml(String(item.title ?? `Microsoft Azure Event #${idx + 1}`));
+      const rawGuid =
+        typeof item.guid === 'object' ? item.guid?.['#text'] : item.guid;
+      const rawLink = String(item.link || rawGuid || 'https://azure.status.microsoft/en-us/status').trim();
+      const url = rawLink.startsWith('http')
+        ? rawLink
+        : 'https://azure.status.microsoft/en-us/status';
+      const desc = truncateText(stripHtml(String(item.description ?? '')), 265);
+      const pubMs = item.pubDate ? Date.parse(item.pubDate) : NaN;
+      const publishedAtISO = !Number.isNaN(pubMs)
+        ? new Date(pubMs).toISOString()
+        : now.toISOString();
+
+      const hay = `${title} ${desc}`.toLowerCase();
+      const isEntraSso =
+        /entra|active directory|azure ad|conditional access|multi-factor|mfa|sign-in|identity|authentication/.test(
+          hay
+        );
+      const isResolved = /resolved|mitigated|recovery complete/i.test(hay);
+      const isMajor = /outage|critical|global|front door|expressroute|entra/i.test(hay);
+
+      const severity: SignalSeverity =
+        !isResolved && isMajor ? 'critical' : !isResolved ? 'elevated' : 'info';
+      const watchlistMatches = isEntraSso ? ['#6', '#7', '#9'] : ['#6', '#7'];
+      const riskMatrixMatches = ['#1', '#2'];
+
+      return {
+        id: `azure-${idx}-${shortHashHex(`${title}-${publishedAtISO}`).slice(0, 10)}`,
+        sourceId: 'azure-status',
+        sourceName: 'Microsoft Azure & Entra ID',
+        attributionText: 'Source: Microsoft Azure Service Health (azure.status.microsoft)',
+        publishedAtISO,
+        title: `Azure: ${title}`,
+        summary:
+          desc ||
+          `${title}${
+            isEntraSso
+              ? ' [Monitor for downstream enterprise Entra ID / SSO authentication cascade per Watchlist #9]'
+              : ''
+          }`,
+        url,
+        severity,
+        watchlistMatches,
+        riskMatrixMatches,
+        countdownMatches: [],
+        tags: [
+          'Microsoft-Azure',
+          'Hyperscale-Cloud',
+          ...(isEntraSso ? ['Entra-SSO-Watch'] : []),
+        ],
+        markdownRow: buildSection84MarkdownRow({
+          windowText: formatShortWindow(publishedAtISO),
+          entitySector: `Microsoft Azure${isEntraSso ? ' / Entra ID' : ''} (Hyperscale Cloud & Identity)`,
+          impact: truncateText(title, 135),
+          sourceLabel: 'Azure Status',
+          url,
+          vector: truncateText(desc || 'Azure regional or identity service event', 125),
+          severity,
+          watchlistMatches,
+        }),
+      };
+    });
+}
+
+/**
+ * Oracle Cloud Infrastructure (OCI) Incident Summary RSS XML Parser
+ */
+export function parseOciStatusRss(rawXml: string, now = new Date()): LiveSignal[] {
+  const doc = xmlParser.parse(rawXml) as {
+    rss?: {
+      channel?: {
+        item?: Array<{
+          title?: string;
+          link?: string;
+          pubDate?: string;
+          guid?: string | { '#text'?: string };
+          description?: string;
+        }>;
+      };
+    };
+  };
+
+  const cutoffMs = now.getTime() - 10 * 24 * 60 * 60 * 1000;
+  const items = doc.rss?.channel?.item ?? [];
+
+  return items
+    .filter((item) => {
+      const pubMs = item.pubDate ? Date.parse(item.pubDate) : NaN;
+      return Number.isNaN(pubMs) || pubMs >= cutoffMs;
+    })
+    .slice(0, 8)
+    .map((item, idx) => {
+      const title = stripHtml(String(item.title ?? `Oracle Cloud Event #${idx + 1}`));
+      const rawGuid =
+        typeof item.guid === 'object' ? item.guid?.['#text'] : item.guid;
+      const rawLink = String(item.link || rawGuid || 'https://ocistatus.oraclecloud.com/').trim();
+      const url = rawLink.startsWith('http') ? rawLink : 'https://ocistatus.oraclecloud.com/';
+      const desc = truncateText(stripHtml(String(item.description ?? '')), 260);
+      const pubMs = item.pubDate ? Date.parse(item.pubDate) : NaN;
+      const publishedAtISO = !Number.isNaN(pubMs)
+        ? new Date(pubMs).toISOString()
+        : now.toISOString();
+
+      const hay = `${title} ${desc}`.toLowerCase();
+      const isResolved = /resolved|completed|operating normally/i.test(hay);
+      const isOutage = /outage|severe|major|critical/i.test(hay);
+      const severity: SignalSeverity =
+        !isResolved && isOutage ? 'critical' : !isResolved ? 'elevated' : 'info';
+
+      return {
+        id: `oci-rss-${idx}-${shortHashHex(`${title}-${url}`).slice(0, 10)}`,
+        sourceId: 'oci-status',
+        sourceName: 'Oracle Cloud (OCI) Status',
+        attributionText: 'Source: Oracle Cloud Infrastructure Status (ocistatus.oraclecloud.com)',
+        publishedAtISO,
+        title: `Oracle Cloud (OCI): ${title}`,
+        summary: desc || title,
+        url,
+        severity,
+        watchlistMatches: ['#6', '#7'],
+        riskMatrixMatches: ['#1', '#2'],
+        countdownMatches: [],
+        tags: ['Oracle-Cloud', 'OCI', 'Hyperscale-Cloud'],
+        markdownRow: buildSection84MarkdownRow({
+          windowText: formatShortWindow(publishedAtISO),
+          entitySector: 'Oracle Cloud Infrastructure (Hyperscale Cloud)',
+          impact: truncateText(title, 135),
+          sourceLabel: 'OCI Status',
+          url,
+          vector: truncateText(desc || 'OCI service incident', 125),
+          severity,
+          watchlistMatches: ['#6', '#7'],
+        }),
+      };
+    });
+}
+
+/**
+ * Apple System Status Parser (JSONP or pure JSON)
  * Strips any outer `jsonCallback(...)` wrapper if present before calling JSON.parse().
  * Flags iCloud / App Store / Apple Pay / Business events for potential iOS third-party auth cascade noise (Watchlist #9).
  */

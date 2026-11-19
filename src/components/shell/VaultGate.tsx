@@ -19,7 +19,7 @@ export function VaultGate({ children }: { children: React.ReactNode }) {
 
   if (isRestoringVault) {
     return (
-      <div className="min-h-screen flex items-center justify-center px-4 bg-[#06080C]">
+      <div className="min-h-screen flex items-center justify-center px-4">
         <div className="glass-panel tac-frame max-w-sm w-full rounded-lg p-6 text-center space-y-3">
           <div className="w-9 h-9 rounded-md bg-[#38BDF8]/10 border border-[#38BDF8]/30 flex items-center justify-center text-[#38BDF8] mx-auto">
             <ShieldCheck className="w-4 h-4 animate-pulse" />
@@ -47,7 +47,7 @@ export function VaultGate({ children }: { children: React.ReactNode }) {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 py-8 bg-[#06080C]">
+    <div className="min-h-screen flex items-center justify-center px-4 py-8">
       <div className="glass-panel tac-frame max-w-md w-full rounded-lg p-6 sm:p-8 shadow-2xl space-y-6">
         <div className="flex items-start gap-3.5">
           <div className="w-10 h-10 rounded-md bg-[#0E131D] border border-white/15 flex items-center justify-center text-[#38BDF8] shrink-0">

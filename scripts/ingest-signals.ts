@@ -11,14 +11,23 @@ import {
   LiveSignalsData,
   LiveSignalsDataSchema,
 } from '../src/types/schemas';
+import { buildNistNvdWindowUrl, FEED_META_BY_ID, FEED_REGISTRY } from '../src/lib/feed-registry';
 import {
   parseAppleSystemStatus,
   parseAwsStatusRss,
+  parseAzureStatusRss,
   parseCisaAdvisoriesXml,
   parseCisaKevJson,
   parseFaaNasStatus,
   parseFederalRegisterJson,
+  parseGcpStatusJson,
+  parseNistNvdJson,
+  parseNoaaSwpcAlertsJson,
+  parseOciComponentsJson,
+  parseOciStatusRss,
+  parseOfacMaradDoeJson,
   parseStatuspageIncidentsJson,
+  parseUsgsSeismicGeoJson,
 } from './lib/signal-parsers';
 import { maybeEnrichWithGemini } from './lib/gemini-enricher';
 import { appendFeedHistorySnapshot } from './lib/feed-history';
@@ -53,34 +62,60 @@ async function fetchWithHeaderAndTimeout(url: string): Promise<{ status: number;
 }
 
 async function collectCisaKev(): Promise<FeedFetchOutcome> {
-  const endpoint =
-    'https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json';
+  const meta = FEED_META_BY_ID['cisa-kev'];
   const t0 = Date.now();
-  const { status, body } = await fetchWithHeaderAndTimeout(endpoint);
-  const signals = parseCisaKevJson(body);
+  const { status, body } = await fetchWithHeaderAndTimeout(meta.endpoint);
   return {
-    id: 'cisa-kev',
-    name: 'CISA KEV Catalog',
-    endpoint,
+    id: meta.id,
+    name: meta.name,
+    endpoint: meta.endpoint,
     httpStatus: status,
     latencyMs: Date.now() - t0,
-    signals,
+    signals: parseCisaKevJson(body),
   };
 }
 
 async function collectCisaAdvisories(): Promise<FeedFetchOutcome> {
-  const endpoint = 'https://www.cisa.gov/cybersecurity-advisories/all.xml';
+  const meta = FEED_META_BY_ID['cisa-advisories'];
   const t0 = Date.now();
-  const { status, body } = await fetchWithHeaderAndTimeout(endpoint);
-  const signals = parseCisaAdvisoriesXml(body);
+  const { status, body } = await fetchWithHeaderAndTimeout(meta.endpoint);
   return {
-    id: 'cisa-advisories',
-    name: 'CISA Cybersecurity Advisories',
-    endpoint,
+    id: meta.id,
+    name: meta.name,
+    endpoint: meta.endpoint,
     httpStatus: status,
     latencyMs: Date.now() - t0,
-    signals,
+    signals: parseCisaAdvisoriesXml(body),
   };
+}
+
+async function collectNistNvd(): Promise<FeedFetchOutcome> {
+  const meta = FEED_META_BY_ID['nist-nvd'];
+  const windowUrl14 = buildNistNvdWindowUrl(new Date(), 14);
+  const windowUrl7 = buildNistNvdWindowUrl(new Date(), 7);
+  const t0 = Date.now();
+  try {
+    const { status, body } = await fetchWithHeaderAndTimeout(windowUrl14);
+    return {
+      id: meta.id,
+      name: meta.name,
+      endpoint: meta.endpoint,
+      httpStatus: status,
+      latencyMs: Date.now() - t0,
+      signals: parseNistNvdJson(body),
+    };
+  } catch {
+    await new Promise((r) => setTimeout(r, 1200));
+    const { status, body } = await fetchWithHeaderAndTimeout(windowUrl7);
+    return {
+      id: meta.id,
+      name: meta.name,
+      endpoint: meta.endpoint,
+      httpStatus: status,
+      latencyMs: Date.now() - t0,
+      signals: parseNistNvdJson(body),
+    };
+  }
 }
 
 async function collectFaaNas(): Promise<FeedFetchOutcome> {
@@ -123,8 +158,35 @@ async function collectFaaNas(): Promise<FeedFetchOutcome> {
   };
 }
 
+async function collectUsgsSeismic(): Promise<FeedFetchOutcome> {
+  const meta = FEED_META_BY_ID['usgs-seismic'];
+  const t0 = Date.now();
+  const { status, body } = await fetchWithHeaderAndTimeout(meta.endpoint);
+  return {
+    id: meta.id,
+    name: meta.name,
+    endpoint: meta.endpoint,
+    httpStatus: status,
+    latencyMs: Date.now() - t0,
+    signals: parseUsgsSeismicGeoJson(body),
+  };
+}
+
+async function collectNoaaSwpc(): Promise<FeedFetchOutcome> {
+  const meta = FEED_META_BY_ID['noaa-swpc'];
+  const t0 = Date.now();
+  const { status, body } = await fetchWithHeaderAndTimeout(meta.endpoint);
+  return {
+    id: meta.id,
+    name: meta.name,
+    endpoint: meta.endpoint,
+    httpStatus: status,
+    latencyMs: Date.now() - t0,
+    signals: parseNoaaSwpcAlertsJson(body),
+  };
+}
+
 async function collectFederalRegister(): Promise<FeedFetchOutcome> {
-  // Primary 5 sub-agency slugs + CISA via DHS cybersecurity term filter
   const primaryEndpoint =
     'https://www.federalregister.gov/api/v1/documents.json?per_page=25&order=newest' +
     '&conditions%5Bagencies%5D%5B%5D=industry-and-security-bureau' +
@@ -175,7 +237,7 @@ async function collectFederalRegister(): Promise<FeedFetchOutcome> {
   return {
     id: 'federal-register',
     name: 'U.S. Federal Register',
-    endpoint: 'https://www.federalregister.gov/api/v1/documents.json?per_page=25&order=newest',
+    endpoint: FEED_META_BY_ID['federal-register'].endpoint,
     httpStatus:
       primaryRes.status === 'fulfilled'
         ? primaryRes.value.status
@@ -187,14 +249,123 @@ async function collectFederalRegister(): Promise<FeedFetchOutcome> {
   };
 }
 
-async function collectCloudflareStatus(): Promise<FeedFetchOutcome> {
-  const endpoint = 'https://www.cloudflarestatus.com/api/v2/incidents.json';
+async function collectOfacMaradDoe(): Promise<FeedFetchOutcome> {
+  const meta = FEED_META_BY_ID['ofac-marad-doe'];
   const t0 = Date.now();
-  const { status, body } = await fetchWithHeaderAndTimeout(endpoint);
+  const { status, body } = await fetchWithHeaderAndTimeout(meta.endpoint);
   return {
-    id: 'cloudflare-status',
-    name: 'Cloudflare Status',
-    endpoint,
+    id: meta.id,
+    name: meta.name,
+    endpoint: meta.endpoint,
+    httpStatus: status,
+    latencyMs: Date.now() - t0,
+    signals: parseOfacMaradDoeJson(body),
+  };
+}
+
+async function collectAwsStatus(): Promise<FeedFetchOutcome> {
+  const meta = FEED_META_BY_ID['aws-status'];
+  const t0 = Date.now();
+  const { status, body } = await fetchWithHeaderAndTimeout(meta.endpoint);
+  return {
+    id: meta.id,
+    name: meta.name,
+    endpoint: meta.endpoint,
+    httpStatus: status,
+    latencyMs: Date.now() - t0,
+    signals: parseAwsStatusRss(body),
+  };
+}
+
+async function collectGcpStatus(): Promise<FeedFetchOutcome> {
+  const meta = FEED_META_BY_ID['gcp-status'];
+  const t0 = Date.now();
+  const { status, body } = await fetchWithHeaderAndTimeout(meta.endpoint);
+  return {
+    id: meta.id,
+    name: meta.name,
+    endpoint: meta.endpoint,
+    httpStatus: status,
+    latencyMs: Date.now() - t0,
+    signals: parseGcpStatusJson(body),
+  };
+}
+
+async function collectAzureStatus(): Promise<FeedFetchOutcome> {
+  const meta = FEED_META_BY_ID['azure-status'];
+  const fallbackUrl = 'https://azure.microsoft.com/en-us/status/feed/';
+  const t0 = Date.now();
+  try {
+    const { status, body } = await fetchWithHeaderAndTimeout(meta.endpoint);
+    return {
+      id: meta.id,
+      name: meta.name,
+      endpoint: meta.endpoint,
+      httpStatus: status,
+      latencyMs: Date.now() - t0,
+      signals: parseAzureStatusRss(body),
+    };
+  } catch {
+    const { status, body } = await fetchWithHeaderAndTimeout(fallbackUrl);
+    return {
+      id: meta.id,
+      name: meta.name,
+      endpoint: meta.endpoint,
+      httpStatus: status,
+      latencyMs: Date.now() - t0,
+      signals: parseAzureStatusRss(body),
+    };
+  }
+}
+
+async function collectOciStatus(): Promise<FeedFetchOutcome> {
+  const meta = FEED_META_BY_ID['oci-status'];
+  const rssEndpoint = 'https://ocistatus.oraclecloud.com/api/v2/incident-summary.rss';
+  const componentsEndpoint = 'https://ocistatus.oraclecloud.com/api/v2/components.json';
+  const t0 = Date.now();
+
+  const [rssRes, compRes] = await Promise.allSettled([
+    fetchWithHeaderAndTimeout(rssEndpoint),
+    fetchWithHeaderAndTimeout(componentsEndpoint),
+  ]);
+
+  if (rssRes.status === 'rejected' && compRes.status === 'rejected') {
+    throw new Error(`OCI Status endpoints failed: ${String(rssRes.reason)}`);
+  }
+
+  const merged: LiveSignal[] = [];
+  if (rssRes.status === 'fulfilled') {
+    merged.push(...parseOciStatusRss(rssRes.value.body));
+  }
+  if (compRes.status === 'fulfilled') {
+    merged.push(...parseOciComponentsJson(compRes.value.body));
+  }
+
+  const httpStatus =
+    rssRes.status === 'fulfilled'
+      ? rssRes.value.status
+      : compRes.status === 'fulfilled'
+      ? compRes.value.status
+      : 200;
+
+  return {
+    id: meta.id,
+    name: meta.name,
+    endpoint: meta.endpoint,
+    httpStatus,
+    latencyMs: Date.now() - t0,
+    signals: merged.slice(0, 10),
+  };
+}
+
+async function collectCloudflareStatus(): Promise<FeedFetchOutcome> {
+  const meta = FEED_META_BY_ID['cloudflare-status'];
+  const t0 = Date.now();
+  const { status, body } = await fetchWithHeaderAndTimeout(meta.endpoint);
+  return {
+    id: meta.id,
+    name: meta.name,
+    endpoint: meta.endpoint,
     httpStatus: status,
     latencyMs: Date.now() - t0,
     signals: parseStatuspageIncidentsJson(body, 'cloudflare-status'),
@@ -202,102 +373,57 @@ async function collectCloudflareStatus(): Promise<FeedFetchOutcome> {
 }
 
 async function collectGithubStatus(): Promise<FeedFetchOutcome> {
-  const endpoint = 'https://www.githubstatus.com/api/v2/incidents.json';
+  const meta = FEED_META_BY_ID['github-status'];
   const t0 = Date.now();
-  const { status, body } = await fetchWithHeaderAndTimeout(endpoint);
+  const { status, body } = await fetchWithHeaderAndTimeout(meta.endpoint);
   return {
-    id: 'github-status',
-    name: 'GitHub Status',
-    endpoint,
+    id: meta.id,
+    name: meta.name,
+    endpoint: meta.endpoint,
     httpStatus: status,
     latencyMs: Date.now() - t0,
     signals: parseStatuspageIncidentsJson(body, 'github-status'),
   };
 }
 
-async function collectAwsStatus(): Promise<FeedFetchOutcome> {
-  const endpoint = 'https://status.aws.amazon.com/rss/all.rss';
-  const t0 = Date.now();
-  const { status, body } = await fetchWithHeaderAndTimeout(endpoint);
-  return {
-    id: 'aws-status',
-    name: 'AWS Service Health',
-    endpoint,
-    httpStatus: status,
-    latencyMs: Date.now() - t0,
-    signals: parseAwsStatusRss(body),
-  };
-}
-
 async function collectAppleStatus(): Promise<FeedFetchOutcome> {
-  const endpoint = 'https://www.apple.com/support/systemstatus/data/system_status_en_US.js';
+  const meta = FEED_META_BY_ID['apple-status'];
   const t0 = Date.now();
-  const { status, body } = await fetchWithHeaderAndTimeout(endpoint);
+  const { status, body } = await fetchWithHeaderAndTimeout(meta.endpoint);
   return {
-    id: 'apple-status',
-    name: 'Apple System Status',
-    endpoint,
+    id: meta.id,
+    name: meta.name,
+    endpoint: meta.endpoint,
     httpStatus: status,
     latencyMs: Date.now() - t0,
     signals: parseAppleSystemStatus(body),
   };
 }
 
-const FEED_MANIFEST: Array<{
-  id: FeedId;
-  name: string;
-  endpoint: string;
-  runner: () => Promise<FeedFetchOutcome>;
-}> = [
-  {
-    id: 'cisa-kev',
-    name: 'CISA KEV Catalog',
-    endpoint: 'https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json',
-    runner: collectCisaKev,
-  },
-  {
-    id: 'cisa-advisories',
-    name: 'CISA Cybersecurity Advisories',
-    endpoint: 'https://www.cisa.gov/cybersecurity-advisories/all.xml',
-    runner: collectCisaAdvisories,
-  },
-  {
-    id: 'faa-nas',
-    name: 'FAA NAS Status',
-    endpoint: 'https://nasstatus.faa.gov/api/airport-status-information',
-    runner: collectFaaNas,
-  },
-  {
-    id: 'federal-register',
-    name: 'U.S. Federal Register',
-    endpoint: 'https://www.federalregister.gov/api/v1/documents.json?per_page=25&order=newest',
-    runner: collectFederalRegister,
-  },
-  {
-    id: 'cloudflare-status',
-    name: 'Cloudflare Status',
-    endpoint: 'https://www.cloudflarestatus.com/api/v2/incidents.json',
-    runner: collectCloudflareStatus,
-  },
-  {
-    id: 'github-status',
-    name: 'GitHub Status',
-    endpoint: 'https://www.githubstatus.com/api/v2/incidents.json',
-    runner: collectGithubStatus,
-  },
-  {
-    id: 'aws-status',
-    name: 'AWS Service Health',
-    endpoint: 'https://status.aws.amazon.com/rss/all.rss',
-    runner: collectAwsStatus,
-  },
-  {
-    id: 'apple-status',
-    name: 'Apple System Status',
-    endpoint: 'https://www.apple.com/support/systemstatus/data/system_status_en_US.js',
-    runner: collectAppleStatus,
-  },
-];
+const RUNNER_BY_ID: Record<FeedId, () => Promise<FeedFetchOutcome>> = {
+  'cisa-kev': collectCisaKev,
+  'cisa-advisories': collectCisaAdvisories,
+  'nist-nvd': collectNistNvd,
+  'faa-nas': collectFaaNas,
+  'usgs-seismic': collectUsgsSeismic,
+  'noaa-swpc': collectNoaaSwpc,
+  'federal-register': collectFederalRegister,
+  'ofac-marad-doe': collectOfacMaradDoe,
+  'aws-status': collectAwsStatus,
+  'gcp-status': collectGcpStatus,
+  'azure-status': collectAzureStatus,
+  'oci-status': collectOciStatus,
+  'cloudflare-status': collectCloudflareStatus,
+  'github-status': collectGithubStatus,
+  'apple-status': collectAppleStatus,
+};
+
+const FEED_MANIFEST = FEED_REGISTRY.map((entry) => ({
+  id: entry.id,
+  name: entry.name,
+  endpoint: entry.endpoint,
+  runner: RUNNER_BY_ID[entry.id],
+}));
 
 const SEVERITY_RANK: Record<LiveSignal['severity'], number> = {
   critical: 3,
@@ -462,7 +588,7 @@ async function main() {
   }
 
   if (liveCount === 0) {
-    console.error('[ingest-signals] ERROR: 0/8 public feeds succeeded.');
+    console.error(`[ingest-signals] ERROR: 0/${FEED_MANIFEST.length} public feeds succeeded.`);
     process.exit(1);
   }
 }

@@ -31,6 +31,7 @@ import {
   persistVaultGrant,
   restorePersistedPassphrase,
 } from '@/lib/vault-crypto';
+import { LiveScanSummary, runBrowserLiveScan } from '@/lib/browser-live-scan';
 
 export interface ActiveCitation {
   title: string;
@@ -61,6 +62,9 @@ interface PortalContextValue {
   togglePinSignal: (signalId: string) => void;
   clearPinnedSignals: () => void;
   lookupSourceByUrl: (url: string) => PrimarySourceEntry | undefined;
+  isScanningLive: boolean;
+  lastLiveScanSummary: LiveScanSummary | null;
+  triggerLiveScan: () => Promise<LiveScanSummary | null>;
 }
 
 const PINNED_SIGNALS_KEY = 'gz_pinned_signals_v1';
@@ -90,6 +94,8 @@ export function PortalProvider({ children }: { children: React.ReactNode }) {
   const [isExportOpen, setExportOpen] = useState(false);
   const [isOffline, setIsOffline] = useState(false);
   const [pinnedSignalIds, setPinnedSignalIds] = useState<string[]>([]);
+  const [isScanningLive, setIsScanningLive] = useState(false);
+  const [lastLiveScanSummary, setLastLiveScanSummary] = useState<LiveScanSummary | null>(null);
 
   useEffect(() => {
     try {
@@ -187,11 +193,27 @@ export function PortalProvider({ children }: { children: React.ReactNode }) {
 
   async function lockVault() {
     setUnlockedBundle(null);
+    setLastLiveScanSummary(null);
     setActiveCitation(null);
     setSearchOpen(false);
     setChangelogOpen(false);
     setExportOpen(false);
     await clearVaultGrants();
+  }
+
+  async function triggerLiveScan(): Promise<LiveScanSummary | null> {
+    if (isLocked || isScanningLive) return null;
+    setIsScanningLive(true);
+    try {
+      const { updatedBundle, summary } = await runBrowserLiveScan(bundle);
+      setUnlockedBundle(updatedBundle);
+      setLastLiveScanSummary(summary);
+      return summary;
+    } catch {
+      return null;
+    } finally {
+      setIsScanningLive(false);
+    }
   }
 
   function openCitation(citation: ActiveCitation) {
@@ -249,6 +271,9 @@ export function PortalProvider({ children }: { children: React.ReactNode }) {
     togglePinSignal,
     clearPinnedSignals,
     lookupSourceByUrl: (url: string) => sourceMap.get(url),
+    isScanningLive,
+    lastLiveScanSummary,
+    triggerLiveScan,
   };
 
   return <PortalContext.Provider value={value}>{children}</PortalContext.Provider>;

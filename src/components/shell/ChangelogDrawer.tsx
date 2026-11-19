@@ -1,13 +1,19 @@
 'use client';
 
 import React, { useEffect, useRef, useState } from 'react';
-import { X, GitCompare, CheckCircle2, Radio, ShieldCheck } from 'lucide-react';
+import { X, GitCompare, CheckCircle2, Radio, ShieldCheck, RefreshCw } from 'lucide-react';
 import { usePortal } from '@/context/PortalContext';
 import { computeBundleSha256Hex } from '@/lib/evidence';
 import { FeedSparkline } from '@/components/shell/FeedSparkline';
 
 export function ChangelogDrawer() {
-  const { isChangelogOpen, setChangelogOpen, bundle } = usePortal();
+  const {
+    isChangelogOpen,
+    setChangelogOpen,
+    bundle,
+    isScanningLive,
+    triggerLiveScan,
+  } = usePortal();
   const [runtimeHash, setRuntimeHash] = useState<string | null>(null);
   const touchStartY = useRef<number | null>(null);
 
@@ -170,14 +176,27 @@ export function ChangelogDrawer() {
         </div>
 
         <div className="space-y-3 pt-2 border-t border-white/10">
-          <div className="flex items-center justify-between">
+          <div className="flex flex-wrap items-center justify-between gap-2">
             <h3 className="font-mono-tactical text-xs uppercase tracking-wider text-gray-400 flex items-center gap-2">
               <Radio className="w-3.5 h-3.5 text-[#10B981]" />
-              <span>14-Day Rolling Feed Latency &amp; Status</span>
+              <span>15-Feed Rolling Latency (3h CI + Live)</span>
             </h3>
-            <span className="font-mono-tactical text-xs text-[#10B981]">
-              {feedHealth.liveCount}/{feedHealth.totalFeeds} Live · {liveSignals.totalSignals} Signals
-            </span>
+            <div className="flex items-center gap-2">
+              <span className="font-mono-tactical text-xs text-[#10B981]">
+                {feedHealth.liveCount}/{feedHealth.totalFeeds} Live
+              </span>
+              <button
+                type="button"
+                disabled={isScanningLive}
+                onClick={() => {
+                  triggerLiveScan();
+                }}
+                className="inline-flex items-center gap-1 px-2 py-0.5 rounded-sm bg-[#38BDF8]/14 hover:bg-[#38BDF8]/24 border border-[#38BDF8]/40 font-mono-tactical text-[10px] text-[#38BDF8] cursor-pointer disabled:opacity-60"
+              >
+                <RefreshCw className={`w-2.5 h-2.5 ${isScanningLive ? 'animate-spin' : ''}`} />
+                <span>{isScanningLive ? 'Scanning…' : 'Scan Live'}</span>
+              </button>
+            </div>
           </div>
 
           <div className="space-y-1.5">

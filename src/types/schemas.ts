@@ -198,11 +198,18 @@ export type ChangelogData = z.infer<typeof ChangelogDataSchema>;
 export const FeedIdSchema = z.enum([
   'cisa-kev',
   'cisa-advisories',
+  'nist-nvd',
   'faa-nas',
+  'usgs-seismic',
+  'noaa-swpc',
   'federal-register',
+  'ofac-marad-doe',
+  'aws-status',
+  'gcp-status',
+  'azure-status',
+  'oci-status',
   'cloudflare-status',
   'github-status',
-  'aws-status',
   'apple-status',
 ]);
 
@@ -280,7 +287,7 @@ export const FeedHealthDataSchema = z.object({
   checkedAtISO: z.string().datetime(),
   liveCount: z.number().int().nonnegative(),
   totalFeeds: z.number().int().positive(),
-  feeds: z.array(FeedHealthEntrySchema).length(8),
+  feeds: z.array(FeedHealthEntrySchema).min(8).max(32),
 });
 
 export type FeedHealthData = z.infer<typeof FeedHealthDataSchema>;
