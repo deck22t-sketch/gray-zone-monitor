@@ -1,5 +1,5 @@
 {
-  "updatedAtISO": "2026-11-19T18:45:20.320Z",
+  "updatedAtISO": "2026-11-19T21:38:57.738Z",
   "maxPointsPerFeed": 28,
   "series": {
     "cisa-kev": [
@@ -71,6 +71,13 @@
         "status": "live",
         "httpStatus": 200,
         "latencyMs": 268,
+        "itemCount": 18
+      },
+      {
+        "checkedAtISO": "2026-11-19T21:38:57.738Z",
+        "status": "live",
+        "httpStatus": 200,
+        "latencyMs": 299,
         "itemCount": 18
       }
     ],
@@ -144,6 +151,13 @@
         "httpStatus": 200,
         "latencyMs": 97,
         "itemCount": 15
+      },
+      {
+        "checkedAtISO": "2026-11-19T21:38:57.738Z",
+        "status": "live",
+        "httpStatus": 200,
+        "latencyMs": 91,
+        "itemCount": 15
       }
     ],
     "nist-nvd": [
@@ -159,6 +173,13 @@
         "status": "live",
         "httpStatus": 200,
         "latencyMs": 7277,
+        "itemCount": 12
+      },
+      {
+        "checkedAtISO": "2026-11-19T21:38:57.738Z",
+        "status": "live",
+        "httpStatus": 200,
+        "latencyMs": 643,
         "itemCount": 12
       }
     ],
@@ -232,6 +253,13 @@
         "httpStatus": 200,
         "latencyMs": 252,
         "itemCount": 13
+      },
+      {
+        "checkedAtISO": "2026-11-19T21:38:57.738Z",
+        "status": "live",
+        "httpStatus": 200,
+        "latencyMs": 252,
+        "itemCount": 8
       }
     ],
     "usgs-seismic": [
@@ -248,6 +276,13 @@
         "httpStatus": 200,
         "latencyMs": 566,
         "itemCount": 6
+      },
+      {
+        "checkedAtISO": "2026-11-19T21:38:57.738Z",
+        "status": "live",
+        "httpStatus": 200,
+        "latencyMs": 631,
+        "itemCount": 6
       }
     ],
     "noaa-swpc": [
@@ -263,6 +298,13 @@
         "status": "live",
         "httpStatus": 200,
         "latencyMs": 244,
+        "itemCount": 7
+      },
+      {
+        "checkedAtISO": "2026-11-19T21:38:57.738Z",
+        "status": "live",
+        "httpStatus": 200,
+        "latencyMs": 278,
         "itemCount": 7
       }
     ],
@@ -336,6 +378,13 @@
         "httpStatus": 200,
         "latencyMs": 479,
         "itemCount": 15
+      },
+      {
+        "checkedAtISO": "2026-11-19T21:38:57.738Z",
+        "status": "live",
+        "httpStatus": 200,
+        "latencyMs": 553,
+        "itemCount": 15
       }
     ],
     "ofac-marad-doe": [
@@ -351,6 +400,13 @@
         "status": "live",
         "httpStatus": 200,
         "latencyMs": 261,
+        "itemCount": 12
+      },
+      {
+        "checkedAtISO": "2026-11-19T21:38:57.738Z",
+        "status": "live",
+        "httpStatus": 200,
+        "latencyMs": 659,
         "itemCount": 12
       }
     ],
@@ -424,6 +480,13 @@
         "httpStatus": 200,
         "latencyMs": 360,
         "itemCount": 0
+      },
+      {
+        "checkedAtISO": "2026-11-19T21:38:57.738Z",
+        "status": "live",
+        "httpStatus": 200,
+        "latencyMs": 381,
+        "itemCount": 0
       }
     ],
     "gcp-status": [
@@ -439,6 +502,13 @@
         "status": "live",
         "httpStatus": 200,
         "latencyMs": 269,
+        "itemCount": 0
+      },
+      {
+        "checkedAtISO": "2026-11-19T21:38:57.738Z",
+        "status": "live",
+        "httpStatus": 200,
+        "latencyMs": 288,
         "itemCount": 0
       }
     ],
@@ -456,6 +526,13 @@
         "httpStatus": 200,
         "latencyMs": 348,
         "itemCount": 0
+      },
+      {
+        "checkedAtISO": "2026-11-19T21:38:57.738Z",
+        "status": "live",
+        "httpStatus": 200,
+        "latencyMs": 251,
+        "itemCount": 0
       }
     ],
     "oci-status": [
@@ -471,6 +548,13 @@
         "status": "live",
         "httpStatus": 200,
         "latencyMs": 491,
+        "itemCount": 0
+      },
+      {
+        "checkedAtISO": "2026-11-19T21:38:57.738Z",
+        "status": "live",
+        "httpStatus": 200,
+        "latencyMs": 444,
         "itemCount": 0
       }
     ],
@@ -544,6 +628,13 @@
         "httpStatus": 200,
         "latencyMs": 446,
         "itemCount": 8
+      },
+      {
+        "checkedAtISO": "2026-11-19T21:38:57.738Z",
+        "status": "live",
+        "httpStatus": 200,
+        "latencyMs": 509,
+        "itemCount": 8
       }
     ],
     "github-status": [
@@ -616,6 +707,13 @@
         "httpStatus": 200,
         "latencyMs": 758,
         "itemCount": 8
+      },
+      {
+        "checkedAtISO": "2026-11-19T21:38:57.738Z",
+        "status": "live",
+        "httpStatus": 200,
+        "latencyMs": 627,
+        "itemCount": 8
       }
     ],
     "apple-status": [
@@ -687,6 +785,13 @@
         "status": "live",
         "httpStatus": 200,
         "latencyMs": 433,
+        "itemCount": 11
+      },
+      {
+        "checkedAtISO": "2026-11-19T21:38:57.738Z",
+        "status": "live",
+        "httpStatus": 200,
+        "latencyMs": 505,
         "itemCount": 11
       }
     ]

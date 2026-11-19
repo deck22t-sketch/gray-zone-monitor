@@ -1,5 +1,5 @@
 {
-  "checkedAtISO": "2026-11-19T18:45:20.320Z",
+  "checkedAtISO": "2026-11-19T21:38:57.738Z",
   "liveCount": 15,
   "totalFeeds": 15,
   "feeds": [
@@ -9,9 +9,9 @@
       "endpoint": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json",
       "status": "live",
       "httpStatus": 200,
-      "latencyMs": 268,
+      "latencyMs": 299,
       "itemCount": 18,
-      "lastSuccessAtISO": "2026-11-19T18:45:20.320Z"
+      "lastSuccessAtISO": "2026-11-19T21:38:57.738Z"
     },
     {
       "id": "cisa-advisories",
@@ -19,9 +19,9 @@
       "endpoint": "https://www.cisa.gov/cybersecurity-advisories/all.xml",
       "status": "live",
       "httpStatus": 200,
-      "latencyMs": 97,
+      "latencyMs": 91,
       "itemCount": 15,
-      "lastSuccessAtISO": "2026-11-19T18:45:20.320Z"
+      "lastSuccessAtISO": "2026-11-19T21:38:57.738Z"
     },
     {
       "id": "nist-nvd",
@@ -29,9 +29,9 @@
       "endpoint": "https://services.nvd.nist.gov/rest/json/cves/2.0?cvssV3Severity=CRITICAL&resultsPerPage=25",
       "status": "live",
       "httpStatus": 200,
-      "latencyMs": 7277,
+      "latencyMs": 643,
       "itemCount": 12,
-      "lastSuccessAtISO": "2026-11-19T18:45:20.320Z"
+      "lastSuccessAtISO": "2026-11-19T21:38:57.738Z"
     },
     {
       "id": "faa-nas",
@@ -40,9 +40,9 @@
       "status": "live",
       "httpStatus": 200,
       "latencyMs": 252,
-      "itemCount": 13,
-      "updateTimeText": "Thu Nov 19 18:44:56 2026 GMT",
-      "lastSuccessAtISO": "2026-11-19T18:45:20.320Z"
+      "itemCount": 8,
+      "updateTimeText": "Thu Nov 19 21:38:39 2026 GMT",
+      "lastSuccessAtISO": "2026-11-19T21:38:57.738Z"
     },
     {
       "id": "usgs-seismic",
@@ -50,9 +50,9 @@
       "endpoint": "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&minmagnitude=5.0&orderby=time&limit=40",
       "status": "live",
       "httpStatus": 200,
-      "latencyMs": 566,
+      "latencyMs": 631,
       "itemCount": 6,
-      "lastSuccessAtISO": "2026-11-19T18:45:20.320Z"
+      "lastSuccessAtISO": "2026-11-19T21:38:57.738Z"
     },
     {
       "id": "noaa-swpc",
@@ -60,9 +60,9 @@
       "endpoint": "https://services.swpc.noaa.gov/products/alerts.json",
       "status": "live",
       "httpStatus": 200,
-      "latencyMs": 244,
+      "latencyMs": 278,
       "itemCount": 7,
-      "lastSuccessAtISO": "2026-11-19T18:45:20.320Z"
+      "lastSuccessAtISO": "2026-11-19T21:38:57.738Z"
     },
     {
       "id": "federal-register",
@@ -70,9 +70,9 @@
       "endpoint": "https://www.federalregister.gov/api/v1/documents.json?per_page=25&order=newest",
       "status": "live",
       "httpStatus": 200,
-      "latencyMs": 479,
+      "latencyMs": 553,
       "itemCount": 15,
-      "lastSuccessAtISO": "2026-11-19T18:45:20.320Z"
+      "lastSuccessAtISO": "2026-11-19T21:38:57.738Z"
     },
     {
       "id": "ofac-marad-doe",
@@ -80,9 +80,9 @@
       "endpoint": "https://www.federalregister.gov/api/v1/documents.json?per_page=20&order=newest&conditions%5Bagencies%5D%5B%5D=foreign-assets-control-office&conditions%5Bagencies%5D%5B%5D=maritime-administration&conditions%5Bagencies%5D%5B%5D=energy-department&conditions%5Bagencies%5D%5B%5D=federal-energy-regulatory-commission",
       "status": "live",
       "httpStatus": 200,
-      "latencyMs": 261,
+      "latencyMs": 659,
       "itemCount": 12,
-      "lastSuccessAtISO": "2026-11-19T18:45:20.320Z"
+      "lastSuccessAtISO": "2026-11-19T21:38:57.738Z"
     },
     {
       "id": "aws-status",
@@ -90,9 +90,9 @@
       "endpoint": "https://status.aws.amazon.com/rss/all.rss",
       "status": "live",
       "httpStatus": 200,
-      "latencyMs": 360,
+      "latencyMs": 381,
       "itemCount": 0,
-      "lastSuccessAtISO": "2026-11-19T18:45:20.320Z"
+      "lastSuccessAtISO": "2026-11-19T21:38:57.738Z"
     },
     {
       "id": "gcp-status",
@@ -100,9 +100,9 @@
       "endpoint": "https://status.cloud.google.com/incidents.json",
       "status": "live",
       "httpStatus": 200,
-      "latencyMs": 269,
+      "latencyMs": 288,
       "itemCount": 0,
-      "lastSuccessAtISO": "2026-11-19T18:45:20.320Z"
+      "lastSuccessAtISO": "2026-11-19T21:38:57.738Z"
     },
     {
       "id": "azure-status",
@@ -110,9 +110,9 @@
       "endpoint": "https://rssfeed.azure.status.microsoft/en-us/status/feed/",
       "status": "live",
       "httpStatus": 200,
-      "latencyMs": 348,
+      "latencyMs": 251,
       "itemCount": 0,
-      "lastSuccessAtISO": "2026-11-19T18:45:20.320Z"
+      "lastSuccessAtISO": "2026-11-19T21:38:57.738Z"
     },
     {
       "id": "oci-status",
@@ -120,9 +120,9 @@
       "endpoint": "https://ocistatus.oraclecloud.com/api/v2/incident-summary.rss",
       "status": "live",
       "httpStatus": 200,
-      "latencyMs": 491,
+      "latencyMs": 444,
       "itemCount": 0,
-      "lastSuccessAtISO": "2026-11-19T18:45:20.320Z"
+      "lastSuccessAtISO": "2026-11-19T21:38:57.738Z"
     },
     {
       "id": "cloudflare-status",
@@ -130,9 +130,9 @@
       "endpoint": "https://www.cloudflarestatus.com/api/v2/incidents.json",
       "status": "live",
       "httpStatus": 200,
-      "latencyMs": 446,
+      "latencyMs": 509,
       "itemCount": 8,
-      "lastSuccessAtISO": "2026-11-19T18:45:20.320Z"
+      "lastSuccessAtISO": "2026-11-19T21:38:57.738Z"
     },
     {
       "id": "github-status",
@@ -140,9 +140,9 @@
       "endpoint": "https://www.githubstatus.com/api/v2/incidents.json",
       "status": "live",
       "httpStatus": 200,
-      "latencyMs": 758,
+      "latencyMs": 627,
       "itemCount": 8,
-      "lastSuccessAtISO": "2026-11-19T18:45:20.320Z"
+      "lastSuccessAtISO": "2026-11-19T21:38:57.738Z"
     },
     {
       "id": "apple-status",
@@ -150,9 +150,9 @@
       "endpoint": "https://www.apple.com/support/systemstatus/data/system_status_en_US.js",
       "status": "live",
       "httpStatus": 200,
-      "latencyMs": 433,
+      "latencyMs": 505,
       "itemCount": 11,
-      "lastSuccessAtISO": "2026-11-19T18:45:20.320Z"
+      "lastSuccessAtISO": "2026-11-19T21:38:57.738Z"
     }
   ]
 }
