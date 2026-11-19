@@ -16,12 +16,19 @@ import {
   X,
   ChevronsUpDown,
   Zap,
+  Layers,
+  BookOpen,
+  GitMerge,
 } from 'lucide-react';
 import { usePortal } from '@/context/PortalContext';
 import { HorizonGroup } from '@/types/schemas';
 import { CitationChipList, RichTextWithCitations } from '@/components/shell/RichTextWithCitations';
 import { resolvePublicAssetPath } from '@/components/shell/TacticalFigure';
 import { SectionNavStrip } from '@/components/shell/SectionNavStrip';
+import { MorningBriefDeck } from '@/components/views/MorningBriefDeck';
+import { GlobalFlashpointMap } from '@/components/views/GlobalFlashpointMap';
+import { CrossDomainCrosswalk } from '@/components/views/CrossDomainCrosswalk';
+import { assessRiskVerification, resolveTraceNodeKey } from '@/lib/evidence';
 
 const PILLAR_ROUTES = [
   { href: '/geopolitics', label: 'Explore Ideological Contrast' },
@@ -34,9 +41,11 @@ const PILLAR_ROUTES = [
 
 const OVERVIEW_NAV_ITEMS = [
   { id: 'command-overview-hero', code: '01', label: 'Situation Deck' },
-  { id: 'cliff-strip-section', code: '02', label: '120-Day Cliffs', badge: '8' },
-  { id: 'bento-summary-section', code: '03', label: 'Synthesis Pillars', badge: '6' },
-  { id: 'risk-matrix-section', code: '04', label: 'Risk Matrix', badge: '8' },
+  { id: 'flashpoint-map-section', code: '02', label: 'Flashpoint Map', badge: '7' },
+  { id: 'crosswalk-section', code: '03', label: 'Crosswalk' },
+  { id: 'cliff-strip-section', code: '04', label: '120-Day Cliffs', badge: '8' },
+  { id: 'bento-summary-section', code: '05', label: 'Synthesis Pillars', badge: '6' },
+  { id: 'risk-matrix-section', code: '06', label: 'Risk Matrix', badge: '8' },
 ];
 
 function formatCountdownDelta(targetIso: string, nowMs: number) {
@@ -85,6 +94,8 @@ export function OverviewView() {
 
   const [nowMs, setNowMs] = useState<number>(() => Date.parse('2026-11-18T14:00:00Z'));
   const [mounted, setMounted] = useState(false);
+  const [overviewMode, setOverviewMode] = useState<'console' | 'brief'>('console');
+  const [focusedCrosswalkKey, setFocusedCrosswalkKey] = useState<string>('inc:#2');
   const [selectedCliffIdx, setSelectedCliffIdx] = useState<number>(0);
   const [horizonFilter, setHorizonFilter] = useState<'ALL' | HorizonGroup>('ALL');
   const [riskQuery, setRiskQuery] = useState('');
@@ -99,9 +110,37 @@ export function OverviewView() {
   useEffect(() => {
     setMounted(true);
     setNowMs(Date.now());
+
+    // Check ?trace=... deep link first; otherwise default <768px mobile visitors to 60s Morning Brief
+    const params = new URLSearchParams(window.location.search);
+    const traceParam = resolveTraceNodeKey(params.get('trace'));
+    if (traceParam) {
+      setOverviewMode('console');
+      setFocusedCrosswalkKey(traceParam);
+      setTimeout(() => {
+        document.getElementById('crosswalk-section')?.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+        });
+      }, 80);
+    } else if (window.innerWidth < 768) {
+      setOverviewMode('brief');
+    }
+
     const timer = setInterval(() => setNowMs(Date.now()), 1000);
     return () => clearInterval(timer);
   }, []);
+
+  function jumpAndTraceInCrosswalk(traceKey: string) {
+    setOverviewMode('console');
+    setFocusedCrosswalkKey(traceKey);
+    setTimeout(() => {
+      document.getElementById('crosswalk-section')?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+    }, 50);
+  }
 
   useEffect(() => {
     if (!heroPlateOpen) return;
@@ -200,13 +239,58 @@ export function OverviewView() {
     changelog.riskShifts.length;
 
   return (
-    <div className="space-y-8">
-      {/* In-Page Sticky Section Navigation */}
-      <SectionNavStrip items={OVERVIEW_NAV_ITEMS} ariaLabel="Command Overview sections" />
+    <div className="space-y-6 sm:space-y-8">
+      {/* Segmented Mode Bar: Mobile defaults to 60s Morning Brief; Desktop defaults to Full Console */}
+      <div className="flex flex-wrap items-center justify-between gap-2 print:hidden">
+        <div className="inline-flex rounded-xl bg-[#0E1524] border border-white/15 p-1">
+          <button
+            id="mode-btn-morning-brief"
+            type="button"
+            onClick={() => setOverviewMode('brief')}
+            className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono-tactical transition cursor-pointer ${
+              overviewMode === 'brief'
+                ? 'bg-[#38BDF8]/20 text-[#38BDF8] border border-[#38BDF8]/40'
+                : 'text-gray-400 hover:text-gray-200 border border-transparent'
+            }`}
+          >
+            <BookOpen className="w-3.5 h-3.5" />
+            <span>60s Morning Brief</span>
+          </button>
+          <button
+            id="mode-btn-full-console"
+            type="button"
+            onClick={() => setOverviewMode('console')}
+            className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono-tactical transition cursor-pointer ${
+              overviewMode === 'console'
+                ? 'bg-[#38BDF8]/20 text-[#38BDF8] border border-[#38BDF8]/40'
+                : 'text-gray-400 hover:text-gray-200 border border-transparent'
+            }`}
+          >
+            <Layers className="w-3.5 h-3.5" />
+            <span>Full Console</span>
+          </button>
+        </div>
 
-      {/* Asymmetric 12-Column Executive Situation Deck */}
-      <section
-        id="command-overview-hero"
+        <span className="font-mono-tactical text-[11px] text-gray-400 hidden sm:inline">
+          {overviewMode === 'brief'
+            ? 'Swipeable 4-Card Executive Readout'
+            : 'Interactive Flashpoint Map · Dependency Crosswalk · 8-Vector Matrix'}
+        </span>
+      </div>
+
+      {overviewMode === 'brief' ? (
+        <MorningBriefDeck
+          nowMs={nowMs}
+          onOpenFullConsole={() => setOverviewMode('console')}
+        />
+      ) : (
+        <>
+          {/* In-Page Sticky Section Navigation */}
+          <SectionNavStrip items={OVERVIEW_NAV_ITEMS} ariaLabel="Command Overview sections" />
+
+          {/* Asymmetric 12-Column Executive Situation Deck */}
+          <section
+            id="command-overview-hero"
         className="glass-panel rounded-2xl overflow-hidden scroll-mt-nav"
       >
         {/* Top Telemetry Status Bar */}
@@ -523,6 +607,15 @@ export function OverviewView() {
         </div>
       )}
 
+      {/* Flagship Interactive Module 1: Global Flashpoint & Backbone Vector Map */}
+      <GlobalFlashpointMap onTraceNode={jumpAndTraceInCrosswalk} />
+
+      {/* Flagship Interactive Module 2: Dual-Mode Cross-Domain Dependency Crosswalk */}
+      <CrossDomainCrosswalk
+        focusedKey={focusedCrosswalkKey}
+        onFocusKey={setFocusedCrosswalkKey}
+      />
+
       {/* Live Client-Side 120-Day Cliff Countdown Strip */}
       <section
         id="cliff-strip-section"
@@ -799,6 +892,7 @@ export function OverviewView() {
             const expanded = Boolean(expandedRisks[vec.id]);
             const liveMatches = signalCountByRisk[vec.id] ?? 0;
             const isCatastrophicOrSevere = /catastrophic|severe/i.test(vec.blastRadius);
+            const verif = assessRiskVerification(vec);
 
             return (
               <div key={vec.id} className="glass-card rounded-xl overflow-hidden">
@@ -824,6 +918,16 @@ export function OverviewView() {
                   </div>
 
                   <div className="flex flex-wrap items-center gap-2 shrink-0">
+                    <span
+                      title={verif.basis}
+                      className={`font-mono-tactical text-[11px] px-2 py-0.5 rounded border ${
+                        verif.tone === 'emerald'
+                          ? 'bg-[#10B981]/10 border-[#10B981]/30 text-[#10B981]'
+                          : 'bg-white/[0.05] border-white/15 text-gray-300'
+                      }`}
+                    >
+                      {verif.level}
+                    </span>
                     <span className="font-mono-tactical text-[11px] px-2 py-0.5 rounded bg-[#F59E0B]/10 border border-[#F59E0B]/30 text-[#F59E0B]">
                       Likelihood: {vec.likelihood.split('(')[0].trim()}
                     </span>
@@ -872,9 +976,22 @@ export function OverviewView() {
                           Priority Mitigation Directive
                         </p>
                         <p className="text-gray-200 leading-relaxed">{vec.mitigation}</p>
+                        <p className="text-xs text-gray-400 pt-1">
+                          <span className="font-mono-tactical text-gray-300">
+                            Verification Basis:
+                          </span>{' '}
+                          {verif.basis}
+                        </p>
                       </div>
-                      <div className="pt-2.5 border-t border-white/[0.07] flex items-center justify-between text-[11px] font-mono-tactical text-gray-400">
-                        <span>Likelihood Assessment: {vec.likelihood}</span>
+                      <div className="pt-2.5 border-t border-white/[0.07] flex flex-wrap items-center justify-between gap-2 text-[11px] font-mono-tactical text-gray-400">
+                        <button
+                          type="button"
+                          onClick={() => jumpAndTraceInCrosswalk(`risk:${vec.id}`)}
+                          className="inline-flex items-center gap-1 text-[#38BDF8] hover:underline cursor-pointer"
+                        >
+                          <GitMerge className="w-3 h-3" />
+                          <span>Trace Blast Radius in Crosswalk</span>
+                        </button>
                         <Link
                           href="/watchlist?tab=live-wire"
                           className="text-[#38BDF8] hover:underline"
@@ -890,6 +1007,8 @@ export function OverviewView() {
           })}
         </div>
       </section>
+        </>
+      )}
     </div>
   );
 }

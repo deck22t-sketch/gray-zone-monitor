@@ -117,7 +117,7 @@ const ATTRIBUTION_LADDER = [
     title: 'DOJ Criminal Indictments & OFAC Financial Sanctions',
     actors: 'U.S. Dept. of Justice · Treasury OFAC',
     purpose:
-      'Unseal federal indictments, seize operational domains (e.g., Operation Lonestar Roundup), and sanction front companies once attribution satisfies ICD 203 high-confidence evidentiary standards.',
+      'Unseal federal indictments, seize operational domains (e.g., Operation Lonestar Roundup), and sanction front companies once attribution satisfies formal multi-agency evidentiary standards.',
   },
   {
     rung: 'STEP 04',
@@ -439,7 +439,7 @@ export function ContagionView() {
             </h2>
           </div>
           <span className="font-mono-tactical text-xs text-gray-400">
-            Technical Attribution (ICD 203) ≠ Strategic White House Disclosure
+            Technical Forensics ≠ Strategic White House Disclosure
           </span>
         </div>
 
@@ -476,8 +476,8 @@ export function ContagionView() {
           <p className="text-xs sm:text-[13px] text-gray-400 pt-2.5 border-t border-white/[0.07] leading-relaxed">
             <strong className="text-gray-200">Why Washington Delays Public Attribution:</strong> (1)
             Protect counterintelligence/SIGINT implants; (2) Prevent public panic &amp; copycat
-            exploitation of unpatched single points of failure; (3) Control escalation until ICD 203
-            high-confidence standards are met; (4) Frame ambiguous hybrid failures around
+            exploitation of unpatched single points of failure; (3) Control escalation until formal
+            evidentiary thresholds are met; (4) Frame ambiguous hybrid failures around
             modernization appropriations.
           </p>
         </div>

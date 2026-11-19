@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useMemo, useState } from 'react';
+import Link from 'next/link';
 import {
   Eye,
   Radio,
@@ -12,10 +13,13 @@ import {
   CheckCircle2,
   AlertCircle,
   ShieldAlert,
+  GitMerge,
 } from 'lucide-react';
 import { usePortal } from '@/context/PortalContext';
 import { FeedId, PrimarySourceEntry, SignalSeverity } from '@/types/schemas';
 import { CitationChipList } from '@/components/shell/RichTextWithCitations';
+import { FeedSparkline } from '@/components/shell/FeedSparkline';
+import { classifySourceTier } from '@/lib/evidence';
 
 type WatchlistTab = 'watchlist' | 'live-wire' | 'vault';
 
@@ -32,7 +36,7 @@ const DOMAIN_TAGS: Array<'ALL' | PrimarySourceEntry['domainTag']> = [
 
 export function WatchlistView() {
   const { bundle, openCitation } = usePortal();
-  const { watchlist, liveSignals, feedHealth, sections } = bundle;
+  const { watchlist, liveSignals, feedHealth, feedHistory, sections } = bundle;
 
   const [activeTab, setActiveTab] = useState<WatchlistTab>('watchlist');
   const [severityFilter, setSeverityFilter] = useState<'ALL' | SignalSeverity>('ALL');
@@ -313,6 +317,15 @@ export function WatchlistView() {
                       sources={item.sources}
                       contextLabel={`Watchlist ${item.id}: ${item.signal}`}
                     />
+                    <div className="pt-2 flex items-center justify-end">
+                      <Link
+                        href={`/?trace=watch-${item.id.replace('#', '')}`}
+                        className="inline-flex items-center gap-1 font-mono-tactical text-[11px] text-[#38BDF8] hover:underline"
+                      >
+                        <GitMerge className="w-3 h-3" />
+                        <span>Trace Blast Radius in Crosswalk</span>
+                      </Link>
+                    </div>
                   </div>
                 </article>
               );
@@ -329,20 +342,21 @@ export function WatchlistView() {
             <div className="flex flex-wrap items-center justify-between gap-2">
               <div className="flex items-center gap-2">
                 <span className="px-2.5 py-0.5 rounded bg-[#10B981]/15 border border-[#10B981]/35 font-mono-tactical text-[11px] text-[#10B981]">
-                  LIVE WIRE · KEYLESS FEDERAL &amp; BACKBONE OSINT
+                  LIVE WIRE · KEYLESS PUBLIC &amp; BACKBONE OSINT
                 </span>
                 <span className="font-mono-tactical text-xs text-gray-400">
-                  Swept {new Date(feedHealth.checkedAtISO).toISOString().replace('T', ' ').slice(0, 19)}Z
+                  Swept {new Date(feedHealth.checkedAtISO).toISOString().replace('T', ' ').slice(0, 19)} UTC
                 </span>
               </div>
               <span className="font-mono-tactical text-[11px] text-gray-400">
-                Canonical incidents.json protected (read-only) · Dormant Gemini adapter ready
+                14-Day Rolling Latency Sparklines · Canonical incidents.json protected
               </span>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5">
               {feedHealth.feeds.map((f) => {
                 const selected = feedFilter === f.id;
+                const historySeries = feedHistory?.series?.[f.id];
                 return (
                   <button
                     key={f.id}
@@ -362,9 +376,18 @@ export function WatchlistView() {
                         <AlertCircle className="w-3.5 h-3.5 text-[#F59E0B] shrink-0" />
                       )}
                     </div>
-                    <p className="font-mono-tactical text-[11px] text-gray-400 mt-1">
-                      HTTP {f.httpStatus ?? 'ERR'} · {f.latencyMs}ms · {f.itemCount} items
-                    </p>
+                    <div className="flex items-center justify-between gap-2 mt-1.5">
+                      <p className="font-mono-tactical text-[11px] text-gray-400">
+                        HTTP {f.httpStatus ?? 'ERR'} · {f.latencyMs}ms · {f.itemCount} items
+                      </p>
+                      <FeedSparkline
+                        points={historySeries}
+                        metric="latencyMs"
+                        width={68}
+                        height={18}
+                        strokeColor={f.status === 'live' ? '#10B981' : '#F59E0B'}
+                      />
+                    </div>
                     {f.id === 'faa-nas' && f.updateTimeText && (
                       <p className="font-mono-tactical text-[10px] text-gray-400 mt-1 truncate">
                         Source: FAA NAS Status (nasstatus.faa.gov) · {f.updateTimeText}
@@ -642,48 +665,63 @@ export function WatchlistView() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-            {filteredSources.map((src) => (
-              <div
-                key={src.id}
-                className="glass-card rounded-xl p-4 flex items-start justify-between gap-3"
-              >
-                <div className="min-w-0 space-y-1">
-                  <div className="flex items-center gap-2">
-                    <span className="font-mono-tactical text-[10px] px-2 py-0.5 rounded bg-[#38BDF8]/10 border border-[#38BDF8]/25 text-[#38BDF8]">
-                      {src.domainTag}
-                    </span>
-                    <span className="text-[11px] text-gray-400 truncate">{src.category}</span>
-                  </div>
-                  <button
-                    type="button"
-                    onClick={() =>
-                      openCitation({
-                        title: src.title,
-                        url: src.url,
-                        category: src.category,
-                        domainTag: src.domainTag,
-                      })
-                    }
-                    className="text-left text-sm font-medium text-white hover:text-[#38BDF8] transition cursor-pointer"
-                  >
-                    {src.title}
-                  </button>
-                  <p className="font-mono-tactical text-[11px] text-gray-500 truncate">
-                    {src.url}
-                  </p>
-                </div>
-
-                <a
-                  href={src.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-2 rounded-lg bg-white/[0.04] hover:bg-white/[0.1] border border-white/10 text-gray-300 hover:text-white shrink-0"
-                  title="Open external source"
+            {filteredSources.map((src) => {
+              const tier = classifySourceTier(src.url, src.title);
+              const tierClass =
+                tier.tone === 'emerald'
+                  ? 'bg-[#10B981]/12 border-[#10B981]/30 text-[#10B981]'
+                  : tier.tone === 'cyan'
+                  ? 'bg-[#38BDF8]/12 border-[#38BDF8]/30 text-[#38BDF8]'
+                  : 'bg-[#F59E0B]/12 border-[#F59E0B]/30 text-[#F59E0B]';
+              return (
+                <div
+                  key={src.id}
+                  className="glass-card rounded-xl p-4 flex items-start justify-between gap-3"
                 >
-                  <ExternalLink className="w-4 h-4" />
-                </a>
-              </div>
-            ))}
+                  <div className="min-w-0 space-y-1">
+                    <div className="flex flex-wrap items-center gap-1.5">
+                      <span
+                        title={tier.rationale}
+                        className={`font-mono-tactical text-[10px] px-2 py-0.5 rounded border ${tierClass}`}
+                      >
+                        {tier.shortBadge}
+                      </span>
+                      <span className="font-mono-tactical text-[10px] px-2 py-0.5 rounded bg-white/[0.05] border border-white/10 text-gray-300">
+                        {src.domainTag}
+                      </span>
+                      <span className="text-[11px] text-gray-400 truncate">{src.category}</span>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() =>
+                        openCitation({
+                          title: src.title,
+                          url: src.url,
+                          category: src.category,
+                          domainTag: src.domainTag,
+                        })
+                      }
+                      className="text-left text-sm font-medium text-white hover:text-[#38BDF8] transition cursor-pointer"
+                    >
+                      {src.title}
+                    </button>
+                    <p className="font-mono-tactical text-[11px] text-gray-500 truncate">
+                      {src.url}
+                    </p>
+                  </div>
+
+                  <a
+                    href={src.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-2 rounded-lg bg-white/[0.04] hover:bg-white/[0.1] border border-white/10 text-gray-300 hover:text-white shrink-0"
+                    title="Open external source"
+                  >
+                    <ExternalLink className="w-4 h-4" />
+                  </a>
+                </div>
+              );
+            })}
           </div>
         </section>
       )}

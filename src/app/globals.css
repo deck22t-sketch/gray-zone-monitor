@@ -132,3 +132,37 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.28);
 }
+
+@media print {
+  html,
+  body {
+    background: #ffffff !important;
+    background-image: none !important;
+    color: #111827 !important;
+    font-size: 11pt;
+  }
+
+  .glass-panel,
+  .glass-card,
+  .obsidian-surface,
+  .surface-elevated {
+    background: #ffffff !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border: 1px solid #d1d5db !important;
+    box-shadow: none !important;
+    color: #111827 !important;
+    break-inside: avoid;
+  }
+
+  h1,
+  h2,
+  h3,
+  p,
+  span,
+  li,
+  td,
+  th {
+    color: #111827 !important;
+  }
+}

@@ -4,6 +4,7 @@ import {
   FeedHealthData,
   FeedHealthDataSchema,
   FeedHealthEntry,
+  FeedHistoryData,
   FeedId,
   IncidentRow,
   LiveSignal,
@@ -20,6 +21,7 @@ import {
   parseStatuspageIncidentsJson,
 } from './lib/signal-parsers';
 import { maybeEnrichWithGemini } from './lib/gemini-enricher';
+import { appendFeedHistorySnapshot } from './lib/feed-history';
 
 const USER_AGENT = 'GrayZoneRiskMonitor/1.0 (+github-actions)';
 const PER_SOURCE_TIMEOUT_MS = 15_000;
@@ -308,19 +310,33 @@ async function main() {
   const dataDir = path.join(rootDir, 'src', 'data');
   const liveSignalsPath = path.join(dataDir, 'liveSignals.json');
   const feedHealthPath = path.join(dataDir, 'feedHealth.json');
+  const feedHistoryPath = path.join(dataDir, 'feedHistory.json');
   const incidentsPath = path.join(dataDir, 'incidents.json');
 
   const nowISO = new Date().toISOString();
 
   // Load prior feedHealth & signals so transient upstream failures preserve prior cached telemetry
+  let priorHealthData: FeedHealthData | null = null;
   let priorHealthMap = new Map<FeedId, FeedHealthEntry>();
   if (fs.existsSync(feedHealthPath)) {
     try {
       const prior = JSON.parse(fs.readFileSync(feedHealthPath, 'utf8')) as FeedHealthData;
+      priorHealthData = prior;
       priorHealthMap = new Map(prior.feeds.map((f) => [f.id, f]));
     } catch {
       // Ignore malformed prior telemetry
     }
+  }
+
+  let priorFeedHistory: FeedHistoryData | null = null;
+  if (fs.existsSync(feedHistoryPath)) {
+    try {
+      priorFeedHistory = JSON.parse(fs.readFileSync(feedHistoryPath, 'utf8')) as FeedHistoryData;
+    } catch {
+      priorFeedHistory = null;
+    }
+  } else if (priorHealthData) {
+    priorFeedHistory = appendFeedHistorySnapshot(null, priorHealthData);
   }
 
   let priorSignalsBySource = new Map<FeedId, LiveSignal[]>();
@@ -416,6 +432,11 @@ async function main() {
     feeds: healthEntries,
   });
 
+  const feedHistoryPayload: FeedHistoryData = appendFeedHistorySnapshot(
+    priorFeedHistory,
+    feedHealthPayload
+  );
+
   const liveSignalsPayload: LiveSignalsData = LiveSignalsDataSchema.parse({
     ingestedAtISO: nowISO,
     ingestionMode: enrichment.activated ? 'GEMINI_ENRICHED' : 'ZERO_KEY_PUBLIC_FEEDS',
@@ -426,6 +447,7 @@ async function main() {
 
   fs.mkdirSync(dataDir, { recursive: true });
   fs.writeFileSync(feedHealthPath, `${JSON.stringify(feedHealthPayload, null, 2)}\n`, 'utf8');
+  fs.writeFileSync(feedHistoryPath, `${JSON.stringify(feedHistoryPayload, null, 2)}\n`, 'utf8');
   fs.writeFileSync(liveSignalsPath, `${JSON.stringify(liveSignalsPayload, null, 2)}\n`, 'utf8');
 
   console.log(

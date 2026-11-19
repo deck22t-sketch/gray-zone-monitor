@@ -5,6 +5,7 @@ import {
   FullBriefingDataBundle,
   PBKDF2_ITERATIONS,
 } from '../src/lib/vault-crypto';
+import { createEmptyFeedHistory } from './lib/feed-history';
 import { VaultMeta } from '../src/types/schemas';
 
 const DATA_FILES = [
@@ -16,6 +17,7 @@ const DATA_FILES = [
   'changelog.json',
   'liveSignals.json',
   'feedHealth.json',
+  'feedHistory.json',
 ] as const;
 
 function buildRedactedStubs(nowISO: string): FullBriefingDataBundle {
@@ -25,11 +27,11 @@ function buildRedactedStubs(nowISO: string): FullBriefingDataBundle {
     countdownCliffs: [],
     watchlist: [],
     sections: {
-      docTitle: 'Encrypted Intelligence Briefing Vault',
+      docTitle: 'Private Executive Risk Briefing',
       docDate: 'Restricted',
-      docScope: 'Unlock with SITE_PASSCODE to decrypt AES-256-GCM payload in browser.',
+      docScope: 'Enter shared access passphrase to unlock briefing locally in browser.',
       executiveSummary: {
-        intro: 'Restricted payload encrypted via PBKDF2-SHA256 + AES-256-GCM.',
+        intro: 'Payload encrypted via PBKDF2-SHA256 + AES-256-GCM.',
         pillars: [],
       },
       narrativeSections: [],
@@ -56,6 +58,7 @@ function buildRedactedStubs(nowISO: string): FullBriefingDataBundle {
       totalFeeds: 8,
       feeds: [],
     },
+    feedHistory: createEmptyFeedHistory(nowISO),
   };
 }
 
@@ -89,7 +92,7 @@ async function main() {
   }
 
   const rawPasscode = process.env.SITE_PASSCODE?.trim() || 'PUBLIC';
-  if (rawPasscode === 'PUBLIC') {
+  if (rawPasscode.toUpperCase() === 'PUBLIC') {
     const publicMeta: VaultMeta = {
       encrypted: false,
       algorithm: 'AES-256-GCM',
@@ -99,13 +102,16 @@ async function main() {
     };
     fs.mkdirSync(dataDir, { recursive: true });
     fs.writeFileSync(vaultMetaPath, `${JSON.stringify(publicMeta, null, 2)}\n`, 'utf8');
-    console.log('[encrypt-bundle] SITE_PASSCODE=PUBLIC — rendering directly in zero-friction public mode.');
+    console.log('[encrypt-bundle] SITE_PASSCODE=PUBLIC — rendering directly in public mode.');
     return;
   }
 
   // SITE_PASSCODE is set to a secret passphrase -> encrypt all src/data/*.json via PBKDF2 + AES-GCM
   const readJson = <T>(filename: string): T =>
     JSON.parse(fs.readFileSync(path.join(dataDir, filename), 'utf8')) as T;
+
+  const nowISO = new Date().toISOString();
+  const feedHistoryExists = fs.existsSync(path.join(dataDir, 'feedHistory.json'));
 
   const fullBundle: FullBriefingDataBundle = {
     riskMatrix: readJson('riskMatrix.json'),
@@ -116,18 +122,23 @@ async function main() {
     changelog: readJson('changelog.json'),
     liveSignals: readJson('liveSignals.json'),
     feedHealth: readJson('feedHealth.json'),
+    feedHistory: feedHistoryExists
+      ? readJson('feedHistory.json')
+      : createEmptyFeedHistory(nowISO),
   };
 
   fs.mkdirSync(backupDir, { recursive: true });
   for (const file of DATA_FILES) {
-    fs.copyFileSync(path.join(dataDir, file), path.join(backupDir, file));
+    const targetPath = path.join(dataDir, file);
+    if (fs.existsSync(targetPath)) {
+      fs.copyFileSync(targetPath, path.join(backupDir, file));
+    }
   }
 
   const encryptedVaultMeta = await encryptBundleWithPasscode(fullBundle, rawPasscode);
   fs.writeFileSync(vaultMetaPath, `${JSON.stringify(encryptedVaultMeta, null, 2)}\n`, 'utf8');
 
   // Redact plaintext src/data/*.json during build so static Next.js chunks contain zero plaintext
-  const nowISO = new Date().toISOString();
   const stubs = buildRedactedStubs(nowISO);
   fs.writeFileSync(path.join(dataDir, 'riskMatrix.json'), `${JSON.stringify(stubs.riskMatrix, null, 2)}\n`);
   fs.writeFileSync(path.join(dataDir, 'incidents.json'), `${JSON.stringify(stubs.incidents, null, 2)}\n`);
@@ -140,9 +151,10 @@ async function main() {
   fs.writeFileSync(path.join(dataDir, 'changelog.json'), `${JSON.stringify(stubs.changelog, null, 2)}\n`);
   fs.writeFileSync(path.join(dataDir, 'liveSignals.json'), `${JSON.stringify(stubs.liveSignals, null, 2)}\n`);
   fs.writeFileSync(path.join(dataDir, 'feedHealth.json'), `${JSON.stringify(stubs.feedHealth, null, 2)}\n`);
+  fs.writeFileSync(path.join(dataDir, 'feedHistory.json'), `${JSON.stringify(stubs.feedHistory, null, 2)}\n`);
 
   console.log(
-    `[encrypt-bundle] Encrypted src/data/*.json with PBKDF2-SHA256 (${PBKDF2_ITERATIONS} iter) + AES-256-GCM.`
+    `[encrypt-bundle] Encrypted src/data/*.json (9 modules) with PBKDF2-SHA256 (${PBKDF2_ITERATIONS} iter) + AES-256-GCM.`
   );
 }
 

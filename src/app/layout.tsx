@@ -1,20 +1,52 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import { PortalProvider } from '@/context/PortalContext';
 import { VaultGate } from '@/components/shell/VaultGate';
 import { TopNav } from '@/components/shell/TopNav';
+import { MobileBottomNav } from '@/components/shell/MobileBottomNav';
 import { PortalFooter } from '@/components/shell/PortalFooter';
 import { SourceDrawer } from '@/components/shell/SourceDrawer';
 import { ChangelogDrawer } from '@/components/shell/ChangelogDrawer';
 import { CommandSearchModal } from '@/components/shell/CommandSearchModal';
+import { BriefingExportModal } from '@/components/shell/BriefingExportModal';
+import { PwaRegistrar } from '@/components/shell/PwaRegistrar';
+
+const basePath = (process.env.NEXT_PUBLIC_BASE_PATH || '').replace(/\/$/, '');
+
+export const viewport: Viewport = {
+  themeColor: '#0A0E17',
+  width: 'device-width',
+  initialScale: 1,
+  viewportFit: 'cover',
+};
 
 export const metadata: Metadata = {
   title: {
-    default: 'Gray-Zone & Critical Infrastructure Risk Monitor | Executive Briefing Portal',
-    template: '%s | Gray-Zone Risk Monitor',
+    default: 'Gray-Zone & Infrastructure Monitor — Private Briefing',
+    template: '%s | Gray-Zone Monitor',
   },
   description:
-    'Live geopolitical strategy, gray-zone warfare, 10-event critical infrastructure outage forensics, financial contagion, and zero-key federal/backbone OSINT monitor.',
+    'Private executive risk synthesis & public infrastructure telemetry briefing. Shared access passphrase required.',
+  robots: {
+    index: false,
+    follow: false,
+    nocache: true,
+    googleBot: {
+      index: false,
+      follow: false,
+      noimageindex: true,
+    },
+  },
+  manifest: `${basePath}/manifest.webmanifest`,
+  icons: {
+    icon: `${basePath}/icon.svg`,
+    apple: `${basePath}/icon.svg`,
+  },
+  openGraph: {
+    title: 'Gray-Zone & Infrastructure Monitor',
+    description: 'Private executive risk briefing. Enter shared passphrase to unlock.',
+    type: 'website',
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -37,18 +69,21 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body className="bg-[#0A0E17] text-gray-200 antialiased selection:bg-[#38BDF8]/25 selection:text-white">
+        <PwaRegistrar />
         <PortalProvider>
           <VaultGate>
             <div className="min-h-screen flex flex-col">
               <TopNav />
-              <main className="flex-1 max-w-[1380px] w-full mx-auto px-4 sm:px-6 lg:px-8 py-7 sm:py-8">
+              <main className="flex-1 max-w-[1380px] w-full mx-auto px-4 sm:px-6 lg:px-8 py-5 sm:py-8">
                 {children}
               </main>
               <PortalFooter />
+              <MobileBottomNav />
             </div>
             <SourceDrawer />
             <ChangelogDrawer />
             <CommandSearchModal />
+            <BriefingExportModal />
           </VaultGate>
         </PortalProvider>
       </body>

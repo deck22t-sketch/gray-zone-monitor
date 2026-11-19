@@ -285,6 +285,24 @@ export const FeedHealthDataSchema = z.object({
 
 export type FeedHealthData = z.infer<typeof FeedHealthDataSchema>;
 
+export const FeedHistoryPointSchema = z.object({
+  checkedAtISO: z.string().datetime(),
+  status: z.enum(['live', 'degraded', 'offline']),
+  httpStatus: z.number().int().nullable(),
+  latencyMs: z.number().nonnegative(),
+  itemCount: z.number().int().nonnegative(),
+});
+
+export type FeedHistoryPoint = z.infer<typeof FeedHistoryPointSchema>;
+
+export const FeedHistoryDataSchema = z.object({
+  updatedAtISO: z.string().datetime(),
+  maxPointsPerFeed: z.number().int().positive(),
+  series: z.record(FeedIdSchema, z.array(FeedHistoryPointSchema)),
+});
+
+export type FeedHistoryData = z.infer<typeof FeedHistoryDataSchema>;
+
 export const VaultMetaSchema = z.object({
   encrypted: z.boolean(),
   algorithm: z.literal('AES-256-GCM'),

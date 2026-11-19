@@ -1,0 +1,19 @@
+{
+  "name": "Gray-Zone & Infrastructure Monitor",
+  "short_name": "Risk Monitor",
+  "description": "Private executive risk synthesis & public backbone telemetry monitor. Shared passphrase required.",
+  "start_url": "/gray-zone-monitor/",
+  "scope": "/gray-zone-monitor/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0A0E17",
+  "theme_color": "#0A0E17",
+  "icons": [
+    {
+      "src": "/gray-zone-monitor/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

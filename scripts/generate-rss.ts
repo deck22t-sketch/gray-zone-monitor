@@ -34,13 +34,13 @@ function main() {
   const nowRfc = new Date().toUTCString();
 
   const passcode = process.env.SITE_PASSCODE?.trim() || 'PUBLIC';
-  if (passcode !== 'PUBLIC') {
+  if (passcode.toUpperCase() !== 'PUBLIC') {
     const lockedRss = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0">
   <channel>
-    <title>Gray-Zone &amp; Critical Infrastructure Risk Monitor (Encrypted Vault)</title>
+    <title>Gray-Zone &amp; Critical Infrastructure Risk Monitor (Restricted Briefing)</title>
     <link>${escapeXml(siteUrl)}/</link>
-    <description>Client-side AES-256-GCM vault active. Authenticate in portal to view intelligence feed.</description>
+    <description>Client-side AES-256-GCM passphrase gate active. Independent open-source analysis; not affiliated with U.S. Gov or DoD.</description>
     <lastBuildDate>${escapeXml(nowRfc)}</lastBuildDate>
   </channel>
 </rss>

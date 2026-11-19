@@ -1,12 +1,14 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { X, ExternalLink, Copy, Check, Shield, Link2 } from 'lucide-react';
 import { usePortal } from '@/context/PortalContext';
+import { classifySourceTier } from '@/lib/evidence';
 
 export function SourceDrawer() {
   const { activeCitation, closeCitation, bundle, openCitation } = usePortal();
   const [copied, setCopied] = useState(false);
+  const touchStartY = useRef<number | null>(null);
 
   if (!activeCitation) return null;
 
@@ -19,6 +21,14 @@ export function SourceDrawer() {
   } catch {
     hostname = activeCitation.url;
   }
+
+  const tier = classifySourceTier(activeCitation.url, activeCitation.title);
+  const tierBadgeClass =
+    tier.tone === 'emerald'
+      ? 'bg-[#10B981]/15 border-[#10B981]/35 text-[#10B981]'
+      : tier.tone === 'cyan'
+      ? 'bg-[#38BDF8]/15 border-[#38BDF8]/35 text-[#38BDF8]'
+      : 'bg-[#F59E0B]/15 border-[#F59E0B]/35 text-[#F59E0B]';
 
   const relatedSources = bundle.sections.primarySources
     .filter(
@@ -35,7 +45,7 @@ export function SourceDrawer() {
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex justify-end bg-black/60 backdrop-blur-xs">
+    <div className="fixed inset-0 z-50 flex items-end md:items-stretch justify-end bg-black/60 backdrop-blur-xs print:hidden">
       <div
         className="fixed inset-0"
         onClick={closeCitation}
@@ -44,13 +54,29 @@ export function SourceDrawer() {
       <aside
         role="dialog"
         aria-label="Primary Source Inspector"
-        className="relative z-10 w-full max-w-md bg-[#111827] border-l border-white/15 h-full flex flex-col justify-between p-6 overflow-y-auto shadow-2xl"
+        onTouchStart={(e) => {
+          touchStartY.current = e.touches[0]?.clientY ?? null;
+        }}
+        onTouchEnd={(e) => {
+          if (touchStartY.current === null) return;
+          const deltaY = (e.changedTouches[0]?.clientY ?? touchStartY.current) - touchStartY.current;
+          touchStartY.current = null;
+          if (deltaY > 75) {
+            closeCitation();
+          }
+        }}
+        className="relative z-10 w-full md:max-w-md bg-[#111827] border-t md:border-t-0 md:border-l border-white/15 rounded-t-2xl md:rounded-none max-h-[78vh] md:max-h-none md:h-full flex flex-col justify-between p-5 sm:p-6 overflow-y-auto shadow-2xl pb-[calc(1.25rem+env(safe-area-inset-bottom))]"
       >
-        <div className="space-y-5">
+        <div className="space-y-4">
+          {/* Mobile Bottom-Sheet Drag Handle */}
+          <div className="md:hidden flex justify-center -mt-1 pb-1">
+            <span className="w-10 h-1 rounded-full bg-white/20" />
+          </div>
+
           <div className="flex items-start justify-between gap-3 pb-4 border-b border-white/10">
             <div>
               <p className="font-mono-tactical text-[11px] uppercase tracking-widest text-[#38BDF8]">
-                Verified Citation Drawer
+                Verified Citation Inspector
               </p>
               <h2 className="text-base font-semibold text-white mt-1 leading-snug">
                 {activeCitation.title}
@@ -67,8 +93,18 @@ export function SourceDrawer() {
           </div>
 
           <div className="space-y-3 text-xs">
-            <div className="glass-card rounded-lg p-3.5 space-y-2">
-              <div className="flex items-center justify-between">
+            <div className="glass-card rounded-xl p-3.5 space-y-2.5">
+              <div className="flex items-center justify-between gap-2">
+                <span className="text-gray-400 font-mono-tactical">SOURCE TIER</span>
+                <span
+                  className={`px-2 py-0.5 rounded border font-mono-tactical text-[11px] font-medium ${tierBadgeClass}`}
+                >
+                  {tier.shortBadge}
+                </span>
+              </div>
+              <p className="text-[11px] text-gray-400 leading-relaxed">{tier.rationale}</p>
+
+              <div className="flex items-center justify-between pt-2 border-t border-white/[0.07]">
                 <span className="text-gray-400 font-mono-tactical">DOMAIN TAG</span>
                 <span className="px-2 py-0.5 rounded bg-[#38BDF8]/15 border border-[#38BDF8]/30 text-[#38BDF8] font-mono-tactical">
                   {activeCitation.domainTag || 'Primary Source'}
@@ -176,7 +212,7 @@ export function SourceDrawer() {
           )}
         </div>
 
-        <p className="text-[11px] font-mono-tactical text-gray-500 pt-4 border-t border-white/10">
+        <p className="text-[11px] font-mono-tactical text-gray-500 pt-4 border-t border-white/10 mt-4">
           Canonical Source Vault · {bundle.sections.primarySources.length} verified URLs indexed
         </p>
       </aside>

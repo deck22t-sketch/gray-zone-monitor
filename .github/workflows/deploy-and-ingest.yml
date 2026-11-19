@@ -65,19 +65,20 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: npm run ingest:signals
 
-      - name: Commit updated liveSignals.json & feedHealth.json if new signals arrived
+      - name: Commit updated liveSignals.json, feedHealth.json & feedHistory.json
         env:
           PRE_FP: ${{ steps.pre_sig.outputs.fingerprint }}
+          EVENT_NAME: ${{ github.event_name }}
         run: |
           POST_FP=$(node -e "const d=require('./src/data/liveSignals.json'); console.log(JSON.stringify((d.signals||[]).map(s=>s.id+':'+s.title+':'+s.severity)));" | sha256sum | awk '{print $1}')
-          if [ "$PRE_FP" != "$POST_FP" ]; then
-            echo "New or updated OSINT signals detected ($PRE_FP -> $POST_FP). Committing back to main..."
+          if [ "$PRE_FP" != "$POST_FP" ] || [ "$EVENT_NAME" = "schedule" ] || [ "$EVENT_NAME" = "workflow_dispatch" ]; then
+            echo "Persisting OSINT telemetry & rolling 14-day feedHistory ($EVENT_NAME, $PRE_FP -> $POST_FP)..."
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add src/data/liveSignals.json src/data/feedHealth.json
-            git diff --cached --quiet || (git commit -m "chore(osint): update zero-key liveSignals & feedHealth [skip ci]" && git pull --rebase --autostash origin main && git push origin HEAD:main)
+            git add src/data/liveSignals.json src/data/feedHealth.json src/data/feedHistory.json
+            git diff --cached --quiet || (git commit -m "chore(osint): update zero-key liveSignals, feedHealth & feedHistory [skip ci]" && git pull --rebase --autostash origin main && git push origin HEAD:main)
           else
-            echo "Signal set unchanged since prior snapshot; skipping repository commit."
+            echo "Signal set unchanged on push event; skipping repository commit."
           fi
 
       - name: Run Vitest verification suite

@@ -2,13 +2,20 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { History, Rss, Search, ShieldCheck } from 'lucide-react';
+import { History, FileText, Search, ShieldCheck, Lock } from 'lucide-react';
 import { usePortal } from '@/context/PortalContext';
+import { NON_AFFILIATION_NOTICE } from '@/lib/evidence';
 
 export function PortalFooter() {
-  const { bundle, setChangelogOpen, setSearchOpen } = usePortal();
+  const {
+    bundle,
+    vaultMeta,
+    lockVault,
+    setChangelogOpen,
+    setSearchOpen,
+    setExportOpen,
+  } = usePortal();
   const { sections, changelog, feedHealth, liveSignals } = bundle;
-  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
 
   const syncedUtc = new Date(changelog.syncedAtISO)
     .toISOString()
@@ -16,9 +23,9 @@ export function PortalFooter() {
     .slice(0, 16);
 
   return (
-    <footer className="border-t border-white/10 bg-[#080B12] mt-16">
+    <footer className="border-t border-white/10 bg-[#080B12] mt-14 pb-20 md:pb-0 print:bg-white print:text-black print:border-gray-300">
       <div className="max-w-[1380px] mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-start print:hidden">
           {/* Brand & Edition Provenance */}
           <div className="md:col-span-5 space-y-2">
             <div className="flex items-center gap-2 font-mono-tactical text-xs text-white font-semibold">
@@ -26,9 +33,9 @@ export function PortalFooter() {
               <span>GRAY-ZONE &amp; CRITICAL INFRASTRUCTURE RISK MONITOR</span>
             </div>
             <p className="text-xs text-gray-400 leading-relaxed max-w-md">
-              Deterministic static intelligence portal synchronized against the canonical{' '}
+              Deterministic static risk portal synchronized against the canonical{' '}
               <span className="text-gray-200 font-medium">{sections.docDate}</span> Executive
-              Briefing and automated zero-key federal &amp; backbone telemetry endpoints.
+              Briefing and automated zero-key public &amp; backbone telemetry endpoints.
             </p>
             <div className="flex flex-wrap items-center gap-2 pt-1 font-mono-tactical text-[11px] text-gray-400">
               <span className="px-2 py-0.5 rounded bg-white/[0.04] border border-white/10 text-gray-300">
@@ -48,7 +55,7 @@ export function PortalFooter() {
           {/* 5 Intelligence Views */}
           <div className="md:col-span-4 space-y-2">
             <p className="font-mono-tactical text-[11px] uppercase tracking-wider text-gray-400">
-              Intelligence Modules
+              Portal Views
             </p>
             <div className="grid grid-cols-2 gap-1.5 text-xs">
               <Link href="/" className="text-gray-300 hover:text-[#38BDF8] transition">
@@ -75,10 +82,10 @@ export function PortalFooter() {
             </div>
           </div>
 
-          {/* Quick Tools & Compliance */}
+          {/* Quick Tools */}
           <div className="md:col-span-3 space-y-2.5">
             <p className="font-mono-tactical text-[11px] uppercase tracking-wider text-gray-400">
-              Audit &amp; Syndication
+              Audit &amp; Export
             </p>
             <div className="flex flex-wrap gap-2">
               <button
@@ -91,34 +98,48 @@ export function PortalFooter() {
               </button>
               <button
                 type="button"
+                onClick={() => setExportOpen(true)}
+                className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 font-mono-tactical text-xs text-gray-300 hover:text-white transition cursor-pointer"
+              >
+                <FileText className="w-3.5 h-3.5 text-[#38BDF8]" />
+                <span>Summary</span>
+              </button>
+              <button
+                type="button"
                 onClick={() => setSearchOpen(true)}
                 className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 font-mono-tactical text-xs text-gray-300 hover:text-white transition cursor-pointer"
               >
                 <Search className="w-3.5 h-3.5 text-[#38BDF8]" />
                 <span>⌘K Search</span>
               </button>
-              <a
-                href={`${basePath}/feed.xml`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 font-mono-tactical text-xs text-gray-300 hover:text-[#F59E0B] transition"
-              >
-                <Rss className="w-3.5 h-3.5" />
-                <span>RSS 2.0</span>
-              </a>
+              {vaultMeta.encrypted && (
+                <button
+                  type="button"
+                  onClick={() => lockVault()}
+                  className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-white/[0.04] hover:bg-[#EF4444]/15 border border-white/10 hover:border-[#EF4444]/40 font-mono-tactical text-xs text-gray-300 hover:text-[#EF4444] transition cursor-pointer"
+                >
+                  <Lock className="w-3.5 h-3.5" />
+                  <span>Lock</span>
+                </button>
+              )}
             </div>
           </div>
         </div>
 
-        <div className="pt-4 border-t border-white/[0.07] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-[11px] font-mono-tactical text-gray-500">
-          <span>
-            EDITION: {sections.docDate.toUpperCase()} · {sections.primarySources.length} VERIFIED
-            PRIMARY CITATIONS · SECTION 9 INTERNAL SPEC OMITTED
-          </span>
-          <span>
-            PLAIN-TEXT FEDERAL ATTRIBUTION: CISA · FEDERAL REGISTER · FAA NAS STATUS
-            (nasstatus.faa.gov)
-          </span>
+        <div className="pt-4 border-t border-white/[0.07] space-y-2 text-[11px] font-mono-tactical text-gray-500 print:text-gray-700 print:border-gray-300">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
+            <span>
+              EDITION: {sections.docDate.toUpperCase()} · {sections.primarySources.length} VERIFIED
+              PRIMARY CITATIONS · SECTION 9 INTERNAL SPEC OMITTED
+            </span>
+            <span>
+              PLAIN-TEXT FEED ATTRIBUTION: CISA · FEDERAL REGISTER · FAA NAS STATUS
+              (nasstatus.faa.gov)
+            </span>
+          </div>
+          <p className="text-[11px] text-gray-400 print:text-gray-800 font-sans">
+            {NON_AFFILIATION_NOTICE}
+          </p>
         </div>
       </div>
     </footer>

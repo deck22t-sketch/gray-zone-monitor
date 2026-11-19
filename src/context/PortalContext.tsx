@@ -9,11 +9,13 @@ import sectionsJson from '@/data/sections.json';
 import changelogJson from '@/data/changelog.json';
 import liveSignalsJson from '@/data/liveSignals.json';
 import feedHealthJson from '@/data/feedHealth.json';
+import feedHistoryJson from '@/data/feedHistory.json';
 import vaultMetaJson from '@/data/vaultMeta.json';
 import {
   ChangelogData,
   CountdownCliff,
   FeedHealthData,
+  FeedHistoryData,
   IncidentRow,
   LiveSignalsData,
   PrimarySourceEntry,
@@ -22,7 +24,13 @@ import {
   VaultMeta,
   WatchlistRow,
 } from '@/types/schemas';
-import { decryptBundleWithPasscode, FullBriefingDataBundle } from '@/lib/vault-crypto';
+import {
+  clearVaultGrants,
+  decryptBundleWithPasscode,
+  FullBriefingDataBundle,
+  persistVaultGrant,
+  restorePersistedPassphrase,
+} from '@/lib/vault-crypto';
 
 export interface ActiveCitation {
   title: string;
@@ -36,7 +44,9 @@ interface PortalContextValue {
   bundle: FullBriefingDataBundle;
   vaultMeta: VaultMeta;
   isLocked: boolean;
-  unlockWithPasscode: (passcode: string) => Promise<void>;
+  isRestoringVault: boolean;
+  unlockWithPasscode: (passcode: string, rememberDeviceFor30Days?: boolean) => Promise<void>;
+  lockVault: () => Promise<void>;
   activeCitation: ActiveCitation | null;
   openCitation: (citation: ActiveCitation) => void;
   closeCitation: () => void;
@@ -44,10 +54,11 @@ interface PortalContextValue {
   setSearchOpen: (open: boolean) => void;
   isChangelogOpen: boolean;
   setChangelogOpen: (open: boolean) => void;
+  isExportOpen: boolean;
+  setExportOpen: (open: boolean) => void;
+  isOffline: boolean;
   lookupSourceByUrl: (url: string) => PrimarySourceEntry | undefined;
 }
-
-const SESSION_CACHE_KEY = 'gz_decrypted_bundle_v1';
 
 const staticBundle: FullBriefingDataBundle = {
   riskMatrix: riskMatrixJson as RiskVector[],
@@ -58,6 +69,7 @@ const staticBundle: FullBriefingDataBundle = {
   changelog: changelogJson as ChangelogData,
   liveSignals: liveSignalsJson as LiveSignalsData,
   feedHealth: feedHealthJson as FeedHealthData,
+  feedHistory: feedHistoryJson as FeedHistoryData,
 };
 
 const staticVaultMeta = vaultMetaJson as VaultMeta;
@@ -66,21 +78,57 @@ const PortalContext = createContext<PortalContextValue | null>(null);
 
 export function PortalProvider({ children }: { children: React.ReactNode }) {
   const [unlockedBundle, setUnlockedBundle] = useState<FullBriefingDataBundle | null>(null);
+  const [isRestoringVault, setIsRestoringVault] = useState<boolean>(staticVaultMeta.encrypted);
   const [activeCitation, setActiveCitation] = useState<ActiveCitation | null>(null);
   const [isSearchOpen, setSearchOpen] = useState(false);
   const [isChangelogOpen, setChangelogOpen] = useState(false);
+  const [isExportOpen, setExportOpen] = useState(false);
+  const [isOffline, setIsOffline] = useState(false);
 
-  // Restore decrypted session if SITE_PASSCODE mode was unlocked during this tab session
+  // Restore active 30-day IndexedDB device key or current-tab grant in memory
   useEffect(() => {
-    if (!staticVaultMeta.encrypted) return;
-    try {
-      const cached = sessionStorage.getItem(SESSION_CACHE_KEY);
-      if (cached) {
-        setUnlockedBundle(JSON.parse(cached) as FullBriefingDataBundle);
+    let cancelled = false;
+    async function attemptRestore() {
+      if (!staticVaultMeta.encrypted) {
+        setIsRestoringVault(false);
+        return;
       }
-    } catch {
-      // Ignore storage access errors
+      try {
+        const storedPassphrase = await restorePersistedPassphrase();
+        if (storedPassphrase && !cancelled) {
+          const decrypted = await decryptBundleWithPasscode(staticVaultMeta, storedPassphrase);
+          if (!cancelled) {
+            setUnlockedBundle(decrypted);
+          }
+        }
+      } catch {
+        // Stored passphrase expired or rotated; clear stale grant cleanly
+        await clearVaultGrants();
+      } finally {
+        if (!cancelled) {
+          setIsRestoringVault(false);
+        }
+      }
     }
+    attemptRestore();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  // Track online/offline state for Flight / Dead-Zone PWA indicator
+  useEffect(() => {
+    if (typeof navigator !== 'undefined') {
+      setIsOffline(!navigator.onLine);
+    }
+    const onOnline = () => setIsOffline(false);
+    const onOffline = () => setIsOffline(true);
+    window.addEventListener('online', onOnline);
+    window.addEventListener('offline', onOffline);
+    return () => {
+      window.removeEventListener('online', onOnline);
+      window.removeEventListener('offline', onOffline);
+    };
   }, []);
 
   // Global Cmd+K / Ctrl+K keyboard shortcut & Escape handler
@@ -93,6 +141,7 @@ export function PortalProvider({ children }: { children: React.ReactNode }) {
         setSearchOpen(false);
         setActiveCitation(null);
         setChangelogOpen(false);
+        setExportOpen(false);
       }
     }
     window.addEventListener('keydown', onKeyDown);
@@ -110,14 +159,19 @@ export function PortalProvider({ children }: { children: React.ReactNode }) {
     return map;
   }, [bundle.sections.primarySources]);
 
-  async function unlockWithPasscode(passcode: string) {
+  async function unlockWithPasscode(passcode: string, rememberDeviceFor30Days: boolean = true) {
     const decrypted = await decryptBundleWithPasscode(staticVaultMeta, passcode);
     setUnlockedBundle(decrypted);
-    try {
-      sessionStorage.setItem(SESSION_CACHE_KEY, JSON.stringify(decrypted));
-    } catch {
-      // Ignore quota errors
-    }
+    await persistVaultGrant(passcode, rememberDeviceFor30Days);
+  }
+
+  async function lockVault() {
+    setUnlockedBundle(null);
+    setActiveCitation(null);
+    setSearchOpen(false);
+    setChangelogOpen(false);
+    setExportOpen(false);
+    await clearVaultGrants();
   }
 
   function openCitation(citation: ActiveCitation) {
@@ -135,7 +189,9 @@ export function PortalProvider({ children }: { children: React.ReactNode }) {
     bundle,
     vaultMeta: staticVaultMeta,
     isLocked,
+    isRestoringVault,
     unlockWithPasscode,
+    lockVault,
     activeCitation,
     openCitation,
     closeCitation: () => setActiveCitation(null),
@@ -143,6 +199,9 @@ export function PortalProvider({ children }: { children: React.ReactNode }) {
     setSearchOpen,
     isChangelogOpen,
     setChangelogOpen,
+    isExportOpen,
+    setExportOpen,
+    isOffline,
     lookupSourceByUrl: (url: string) => sourceMap.get(url),
   };
 

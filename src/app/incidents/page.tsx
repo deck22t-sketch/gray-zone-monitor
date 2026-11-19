@@ -2,9 +2,9 @@ import type { Metadata } from 'next';
 import { IncidentsView } from '@/components/views/IncidentsView';
 
 export const metadata: Metadata = {
-  title: 'Outage Wave & Forensics Explorer — Nov 12–17 Cluster & Poisson Math',
+  title: 'Outage Wave & Forensics',
   description:
-    'Forensic explorer for Events #1–#10 (OPTIMJACK malicious supply-chain attack, FAA two-router TDM flood, NSANet, Apple cascade), Poisson base-rate calculator, and Sub-IP blind spots.',
+    'Private executive risk synthesis & public infrastructure telemetry briefing. Shared access passphrase required.',
 };
 
 export default function IncidentsPage() {

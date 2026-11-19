@@ -23,7 +23,23 @@ import {
   decryptBundleWithPasscode,
   encryptBundleWithPasscode,
   FullBriefingDataBundle,
+  normalizePassphrase,
 } from '../src/lib/vault-crypto';
+import {
+  appendFeedHistorySnapshot,
+  createEmptyFeedHistory,
+} from '../scripts/lib/feed-history';
+import {
+  assessIncidentVerification,
+  assessRiskVerification,
+  buildCrossDomainGraph,
+  buildExecutiveSummaryText,
+  classifySourceTier,
+  computeBundleSha256Hex,
+  NON_AFFILIATION_NOTICE,
+  resolveTraceNodeKey,
+} from '../src/lib/evidence';
+import { buildPwaArtifacts, resolvePwaBasePath } from '../scripts/generate-pwa';
 
 const CANONICAL_MD_PATH = path.join(process.cwd(), 'content', 'executive_briefing.md');
 
@@ -372,15 +388,26 @@ describe('Phase 3: Poisson Null-Hypothesis Math & Client-Side AES-256-GCM Vault'
       feedHealth: JSON.parse(
         fs.readFileSync(path.join(process.cwd(), 'src/data/feedHealth.json'), 'utf8')
       ),
+      feedHistory: JSON.parse(
+        fs.readFileSync(path.join(process.cwd(), 'src/data/feedHistory.json'), 'utf8')
+      ),
     } as FullBriefingDataBundle;
+
+    expect(normalizePassphrase('  Alpha Bravo 99  ')).toBe('alpha-bravo-99');
+    expect(normalizePassphrase('ALPHA-BRAVO-99')).toBe('alpha-bravo-99');
 
     const meta = await encryptBundleWithPasscode(sampleBundle, 'correct-horse-battery-staple');
     expect(meta.encrypted).toBe(true);
     expect(meta.ciphertextBase64).not.toContain('Optimizely');
 
-    const decrypted = await decryptBundleWithPasscode(meta, 'correct-horse-battery-staple');
+    // Verify mobile-friendly case/whitespace normalization unlocks identically
+    const decrypted = await decryptBundleWithPasscode(
+      meta,
+      '  Correct Horse Battery Staple  '
+    );
     expect(decrypted.incidents).toHaveLength(10);
     expect(decrypted.riskMatrix).toHaveLength(8);
+    expect(decrypted.feedHistory?.series['cisa-kev'].length).toBeGreaterThanOrEqual(1);
 
     await expect(decryptBundleWithPasscode(meta, 'wrong-passcode')).rejects.toThrow();
   });
@@ -424,3 +451,165 @@ describe('Phase 3: Poisson Null-Hypothesis Math & Client-Side AES-256-GCM Vault'
   });
 });
 
+describe('Phase 4: Cross-Domain Graph, Feed History, Provenance, PWA & Non-Spoofing Guardrails', () => {
+  const loadFullBundle = (): FullBriefingDataBundle => ({
+    riskMatrix: JSON.parse(
+      fs.readFileSync(path.join(process.cwd(), 'src/data/riskMatrix.json'), 'utf8')
+    ),
+    incidents: JSON.parse(
+      fs.readFileSync(path.join(process.cwd(), 'src/data/incidents.json'), 'utf8')
+    ),
+    countdownCliffs: JSON.parse(
+      fs.readFileSync(path.join(process.cwd(), 'src/data/countdownCliffs.json'), 'utf8')
+    ),
+    watchlist: JSON.parse(
+      fs.readFileSync(path.join(process.cwd(), 'src/data/watchlist.json'), 'utf8')
+    ),
+    sections: JSON.parse(
+      fs.readFileSync(path.join(process.cwd(), 'src/data/sections.json'), 'utf8')
+    ),
+    changelog: JSON.parse(
+      fs.readFileSync(path.join(process.cwd(), 'src/data/changelog.json'), 'utf8')
+    ),
+    liveSignals: JSON.parse(
+      fs.readFileSync(path.join(process.cwd(), 'src/data/liveSignals.json'), 'utf8')
+    ),
+    feedHealth: JSON.parse(
+      fs.readFileSync(path.join(process.cwd(), 'src/data/feedHealth.json'), 'utf8')
+    ),
+    feedHistory: JSON.parse(
+      fs.readFileSync(path.join(process.cwd(), 'src/data/feedHistory.json'), 'utf8')
+    ),
+  });
+
+  it('caps feedHistory ring buffer at 28 points per feed and deduplicates identical timestamps', () => {
+    const bundle = loadFullBundle();
+    let history = createEmptyFeedHistory('2026-11-01T00:00:00Z');
+
+    // Same timestamp twice should replace rather than duplicate
+    history = appendFeedHistorySnapshot(history, {
+      ...bundle.feedHealth,
+      checkedAtISO: '2026-11-01T15:00:00Z',
+    });
+    history = appendFeedHistorySnapshot(history, {
+      ...bundle.feedHealth,
+      checkedAtISO: '2026-11-01T15:00:00Z',
+    });
+    expect(history.series['cisa-kev']).toHaveLength(1);
+
+    // Push 32 distinct sweeps and verify ring-buffer cap at 28
+    for (let i = 0; i < 32; i += 1) {
+      const ts = new Date(Date.UTC(2026, 10, 2, 0, i, 0)).toISOString();
+      history = appendFeedHistorySnapshot(history, {
+        ...bundle.feedHealth,
+        checkedAtISO: ts,
+      });
+    }
+    expect(history.series['cisa-kev']).toHaveLength(28);
+    expect(history.series['faa-nas']).toHaveLength(28);
+  });
+
+  it('classifies Source Tiers, Verification Statuses, Cross-Domain Graph edges, and ?trace= keys accurately', async () => {
+    const bundle = loadFullBundle();
+
+    expect(classifySourceTier('https://www.federalregister.gov/d/2026-23255').code).toBe('TIER_1');
+    expect(classifySourceTier('https://www.stepsecurity.io/blog/trivy').code).toBe('TIER_2');
+    expect(classifySourceTier('https://example-news-outlet.com/story').code).toBe('TIER_3');
+
+    const ev4 = bundle.incidents.find((i) => i.eventId === '#4')!;
+    const ev2 = bundle.incidents.find((i) => i.eventId === '#2')!;
+    expect(assessIncidentVerification(ev4).level).toBe('Corroborated');
+    expect(assessIncidentVerification(ev2).level).toBe('Developing');
+
+    const r2 = bundle.riskMatrix.find((r) => r.id === '#2')!;
+    const r1 = bundle.riskMatrix.find((r) => r.id === '#1')!;
+    expect(assessRiskVerification(r2).level).toBe('Corroborated');
+    expect(assessRiskVerification(r1).level).toBe('Developing');
+
+    const graph = buildCrossDomainGraph(bundle);
+    expect(graph.nodes.filter((n) => n.column === 'risk')).toHaveLength(8);
+    expect(graph.nodes.filter((n) => n.column === 'incident')).toHaveLength(10);
+    expect(graph.nodes.filter((n) => n.column === 'watchlist')).toHaveLength(9);
+    expect(graph.nodes.filter((n) => n.column === 'cliff')).toHaveLength(8);
+    expect(graph.edges.length).toBeGreaterThan(40);
+
+    // Every risk vector and incident must have at least one connected neighbor
+    for (const r of bundle.riskMatrix) {
+      expect(graph.adjacency[`risk:${r.id}`].length).toBeGreaterThan(0);
+    }
+    for (const inc of bundle.incidents) {
+      expect(graph.adjacency[`inc:${inc.eventId}`].length).toBeGreaterThan(0);
+    }
+
+    expect(resolveTraceNodeKey('inc-2')).toBe('inc:#2');
+    expect(resolveTraceNodeKey('risk-5')).toBe('risk:#5');
+    expect(resolveTraceNodeKey('watch-8')).toBe('watch:#8');
+    expect(resolveTraceNodeKey('cliff-2026-12-31')).toBe('cliff:2026-12-31');
+
+    const sha = await computeBundleSha256Hex(bundle);
+    expect(sha).toMatch(/^[a-f0-9]{64}$/);
+
+    const summary = buildExecutiveSummaryText(bundle, Date.parse('2026-11-18T18:00:00Z'));
+    expect(summary).toContain(NON_AFFILIATION_NOTICE);
+    expect(summary).toContain('GRAY-ZONE & CRITICAL INFRASTRUCTURE RISK MONITOR');
+  });
+
+  it('generates GitHub Pages-scoped PWA manifest, offline service worker, and Disallow robots.txt', () => {
+    expect(
+      resolvePwaBasePath({
+        NODE_ENV: 'production',
+        GITHUB_ACTIONS: 'true',
+        GITHUB_REPOSITORY: 'deck22t-sketch/gray-zone-monitor',
+      })
+    ).toBe('/gray-zone-monitor');
+
+    const { manifestJson, swJs, robotsTxt } = buildPwaArtifacts('/gray-zone-monitor', 'abc1234567');
+    const manifest = JSON.parse(manifestJson);
+    expect(manifest.start_url).toBe('/gray-zone-monitor/');
+    expect(manifest.scope).toBe('/gray-zone-monitor/');
+    expect(swJs).toContain('gz-monitor-shell-abc1234567');
+    expect(swJs).toContain('/gray-zone-monitor/incidents/');
+    expect(robotsTxt).toContain('Disallow: /');
+  });
+
+  it('enforces zero DoD/government protocol spoofing and prohibited UI labels across src/ and scripts/', () => {
+    const dirsToScan = [
+      path.join(process.cwd(), 'src'),
+      path.join(process.cwd(), 'scripts'),
+    ];
+    const forbiddenPatterns = [
+      /\bTLP:(CLEAR|GREEN|AMBER|RED)\b/i,
+      /\bICD\s*203\b/i,
+      /\bAdmiralty\b/i,
+      /\bSITREP\b/i,
+      /\bZULU\b/,
+      /President['’]s Daily Brief/i,
+      /Thumb\s*Dock/i,
+    ];
+
+    function collectFiles(dir: string): string[] {
+      const entries = fs.readdirSync(dir, { withFileTypes: true });
+      const files: string[] = [];
+      for (const entry of entries) {
+        const full = path.join(dir, entry.name);
+        if (entry.isDirectory()) {
+          if (entry.name === 'data') continue; // skip canonical Google Doc narrative JSON
+          files.push(...collectFiles(full));
+        } else if (/\.(ts|tsx|css)$/.test(entry.name)) {
+          files.push(full);
+        }
+      }
+      return files;
+    }
+
+    const codeFiles = dirsToScan.flatMap(collectFiles);
+    expect(codeFiles.length).toBeGreaterThan(20);
+
+    for (const file of codeFiles) {
+      const content = fs.readFileSync(file, 'utf8');
+      for (const pattern of forbiddenPatterns) {
+        expect(content, `Forbidden term ${pattern} found in ${file}`).not.toMatch(pattern);
+      }
+    }
+  });
+});

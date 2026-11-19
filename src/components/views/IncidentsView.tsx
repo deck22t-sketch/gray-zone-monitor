@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useMemo, useState } from 'react';
+import Link from 'next/link';
 import {
   Activity,
   Calculator,
@@ -11,6 +12,7 @@ import {
   Anchor,
   KeyRound,
   GitBranch,
+  GitMerge,
   AlertCircle,
   LayoutList,
   Table2,
@@ -18,6 +20,7 @@ import {
 import { usePortal } from '@/context/PortalContext';
 import { IncidentClassification } from '@/types/schemas';
 import { computePoissonClusterProbability, simulateRetryStormCurve } from '@/lib/poisson';
+import { assessIncidentVerification } from '@/lib/evidence';
 import { CitationChipList } from '@/components/shell/RichTextWithCitations';
 import { NarrativeAccordion } from '@/components/shell/NarrativeAccordion';
 import { TacticalFigure } from '@/components/shell/TacticalFigure';
@@ -542,6 +545,7 @@ export function IncidentsView() {
           <div className="space-y-3.5">
             {filteredIncidents.map((inc) => {
               const meta = CLASSIFICATION_META[inc.classification];
+              const verif = assessIncidentVerification(inc);
               const isHighlighted = highlightedEventId === inc.eventId;
               const wasUpdated = updatedEventIds.has(inc.eventId);
               return (
@@ -565,6 +569,16 @@ export function IncidentsView() {
                         <span className="font-mono-tactical text-[11px] px-2 py-0.5 rounded bg-white/[0.05] text-gray-300">
                           {inc.sector}
                         </span>
+                        <span
+                          title={verif.basis}
+                          className={`font-mono-tactical text-[10px] px-2 py-0.5 rounded border ${
+                            verif.tone === 'emerald'
+                              ? 'bg-[#10B981]/12 border-[#10B981]/35 text-[#10B981]'
+                              : 'bg-[#F59E0B]/12 border-[#F59E0B]/35 text-[#F59E0B]'
+                          }`}
+                        >
+                          {verif.level}
+                        </span>
                         {wasUpdated && (
                           <span className="font-mono-tactical text-[10px] font-semibold px-2 py-0.5 rounded bg-[#38BDF8]/15 border border-[#38BDF8]/35 text-[#38BDF8]">
                             NOV 18 STATUS UPDATE
@@ -576,11 +590,21 @@ export function IncidentsView() {
                       </h3>
                     </div>
 
-                    <span
-                      className={`font-mono-tactical text-[11px] font-medium px-2.5 py-1 rounded border ${meta.badgeStyle}`}
-                    >
-                      {meta.shortLabel}
-                    </span>
+                    <div className="flex flex-wrap items-center gap-2">
+                      <Link
+                        href={`/?trace=inc-${inc.eventId.replace('#', '')}`}
+                        onClick={(e) => e.stopPropagation()}
+                        className="inline-flex items-center gap-1 px-2.5 py-1 rounded border border-[#38BDF8]/35 bg-[#38BDF8]/10 hover:bg-[#38BDF8]/20 font-mono-tactical text-[11px] text-[#38BDF8] transition"
+                      >
+                        <GitMerge className="w-3 h-3" />
+                        <span>Trace Blast Radius</span>
+                      </Link>
+                      <span
+                        className={`font-mono-tactical text-[11px] font-medium px-2.5 py-1 rounded border ${meta.badgeStyle}`}
+                      >
+                        {meta.shortLabel}
+                      </span>
+                    </div>
                   </div>
 
                   <div className="grid grid-cols-1 lg:grid-cols-3 gap-3.5 text-[13px]">

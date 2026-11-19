@@ -1,0 +1,134 @@
+{
+  "updatedAtISO": "2026-11-18T23:45:15.392Z",
+  "maxPointsPerFeed": 28,
+  "series": {
+    "cisa-kev": [
+      {
+        "checkedAtISO": "2026-11-18T17:17:42.030Z",
+        "status": "live",
+        "httpStatus": 200,
+        "latencyMs": 167,
+        "itemCount": 14
+      },
+      {
+        "checkedAtISO": "2026-11-18T23:45:15.392Z",
+        "status": "live",
+        "httpStatus": 200,
+        "latencyMs": 2169,
+        "itemCount": 18
+      }
+    ],
+    "cisa-advisories": [
+      {
+        "checkedAtISO": "2026-11-18T17:17:42.030Z",
+        "status": "live",
+        "httpStatus": 200,
+        "latencyMs": 131,
+        "itemCount": 15
+      },
+      {
+        "checkedAtISO": "2026-11-18T23:45:15.392Z",
+        "status": "live",
+        "httpStatus": 200,
+        "latencyMs": 2115,
+        "itemCount": 15
+      }
+    ],
+    "faa-nas": [
+      {
+        "checkedAtISO": "2026-11-18T17:17:42.030Z",
+        "status": "live",
+        "httpStatus": 200,
+        "latencyMs": 152,
+        "itemCount": 8
+      },
+      {
+        "checkedAtISO": "2026-11-18T23:45:15.392Z",
+        "status": "live",
+        "httpStatus": 200,
+        "latencyMs": 1696,
+        "itemCount": 5
+      }
+    ],
+    "federal-register": [
+      {
+        "checkedAtISO": "2026-11-18T17:17:42.030Z",
+        "status": "live",
+        "httpStatus": 200,
+        "latencyMs": 442,
+        "itemCount": 15
+      },
+      {
+        "checkedAtISO": "2026-11-18T23:45:15.392Z",
+        "status": "live",
+        "httpStatus": 200,
+        "latencyMs": 2119,
+        "itemCount": 15
+      }
+    ],
+    "cloudflare-status": [
+      {
+        "checkedAtISO": "2026-11-18T17:17:42.030Z",
+        "status": "live",
+        "httpStatus": 200,
+        "latencyMs": 281,
+        "itemCount": 8
+      },
+      {
+        "checkedAtISO": "2026-11-18T23:45:15.392Z",
+        "status": "live",
+        "httpStatus": 200,
+        "latencyMs": 2684,
+        "itemCount": 8
+      }
+    ],
+    "github-status": [
+      {
+        "checkedAtISO": "2026-11-18T17:17:42.030Z",
+        "status": "live",
+        "httpStatus": 200,
+        "latencyMs": 362,
+        "itemCount": 8
+      },
+      {
+        "checkedAtISO": "2026-11-18T23:45:15.392Z",
+        "status": "live",
+        "httpStatus": 200,
+        "latencyMs": 5013,
+        "itemCount": 8
+      }
+    ],
+    "aws-status": [
+      {
+        "checkedAtISO": "2026-11-18T17:17:42.030Z",
+        "status": "live",
+        "httpStatus": 200,
+        "latencyMs": 252,
+        "itemCount": 0
+      },
+      {
+        "checkedAtISO": "2026-11-18T23:45:15.392Z",
+        "status": "live",
+        "httpStatus": 200,
+        "latencyMs": 3342,
+        "itemCount": 0
+      }
+    ],
+    "apple-status": [
+      {
+        "checkedAtISO": "2026-11-18T17:17:42.030Z",
+        "status": "live",
+        "httpStatus": 200,
+        "latencyMs": 294,
+        "itemCount": 11
+      },
+      {
+        "checkedAtISO": "2026-11-18T23:45:15.392Z",
+        "status": "live",
+        "httpStatus": 200,
+        "latencyMs": 247,
+        "itemCount": 12
+      }
+    ]
+  }
+}
