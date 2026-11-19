@@ -1,8 +1,274 @@
 {
-  "ingestedAtISO": "2026-11-19T15:45:03.802Z",
+  "ingestedAtISO": "2026-11-19T15:47:54.293Z",
   "ingestionMode": "ZERO_KEY_PUBLIC_FEEDS",
-  "totalSignals": 82,
+  "totalSignals": 120,
   "signals": [
+    {
+      "id": "nvd-cve-2026-14492",
+      "sourceId": "nist-nvd",
+      "sourceName": "NIST NVD Critical CVEs",
+      "attributionText": "Source: NIST National Vulnerability Database API 2.0 (nvd.nist.gov — CVSS 9.8)",
+      "publishedAtISO": "2026-11-19T10:17:28.927Z",
+      "title": "CVE-2026-14492 (CVSS 9.8): The WP Duplicate – WordPress Migration Plugin plugin for WordPress is vulnerable to Remote Code Executio…",
+      "summary": "[CVSS 9.8 CRITICAL] The WP Duplicate – WordPress Migration Plugin plugin for WordPress is vulnerable to Remote Code Execution in all versions up to, and including, 1.1.11 via the save_single_batch_file function. This is due to a PHP type-juggling authentication bypass via l…",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-14492",
+      "severity": "critical",
+      "watchlistMatches": [
+        "#2"
+      ],
+      "riskMatrixMatches": [
+        "#2"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "NIST-NVD",
+        "CVE-2026-14492",
+        "CVSS-9.8"
+      ],
+      "markdownRow": "| #11+ — Nov 19, 2026 | CVE-2026-14492 (Enterprise Software) | The WP Duplicate – WordPress Migration Plugin plugin for WordPress is vulnerable to Remote Code Execution in all versions up to, and i… ([NIST NVD (9.8)](https://nvd.nist.gov/vuln/detail/CVE-2026-14492)) | Pre-KEV critical disclosure (CVSS 9.8) | Live Wire (CRITICAL) — Watchlist #2 |"
+    },
+    {
+      "id": "nvd-cve-2026-132143",
+      "sourceId": "nist-nvd",
+      "sourceName": "NIST NVD Critical CVEs",
+      "attributionText": "Source: NIST National Vulnerability Database API 2.0 (nvd.nist.gov — CVSS 9.9)",
+      "publishedAtISO": "2026-11-18T22:17:20.360Z",
+      "title": "CVE-2026-132143 (CVSS 9.9): A vulnerability has been found in DrayTek Vigor2960 up to 1.5.1.6. This vulnerability affects the functi…",
+      "summary": "[CVSS 9.9 CRITICAL] A vulnerability has been found in DrayTek Vigor2960 up to 1.5.1.6. This vulnerability affects the function doWebBackup of the file /cgi-bin/mainfunction.cgi of the component Backup Handler. Such manipulation of the argument path/value leads to stack-base…",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-132143",
+      "severity": "critical",
+      "watchlistMatches": [
+        "#2"
+      ],
+      "riskMatrixMatches": [
+        "#2"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "NIST-NVD",
+        "CVE-2026-132143",
+        "CVSS-9.9"
+      ],
+      "markdownRow": "| #11+ — Nov 18, 2026 | CVE-2026-132143 (Enterprise Software) | A vulnerability has been found in DrayTek Vigor2960 up to 1.5.1.6. This vulnerability affects the function doWebBackup of the file /cg… ([NIST NVD (9.9)](https://nvd.nist.gov/vuln/detail/CVE-2026-132143)) | Pre-KEV critical disclosure (CVSS 9.9) | Live Wire (CRITICAL) — Watchlist #2 |"
+    },
+    {
+      "id": "nvd-cve-2026-132141",
+      "sourceId": "nist-nvd",
+      "sourceName": "NIST NVD Critical CVEs",
+      "attributionText": "Source: NIST National Vulnerability Database API 2.0 (nvd.nist.gov — CVSS 9.9)",
+      "publishedAtISO": "2026-11-18T22:17:19.960Z",
+      "title": "CVE-2026-132141 (CVSS 9.9): A vulnerability was detected in DrayTek Vigor2960 up to 1.5.1.6. Affected by this issue is the function…",
+      "summary": "[CVSS 9.9 CRITICAL] A vulnerability was detected in DrayTek Vigor2960 up to 1.5.1.6. Affected by this issue is the function json_load_lock of the file /cgi-bin/mainfunction.cgi of the component Jsonstatus. The manipulation of the argument usefile results in stack-based buff…",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-132141",
+      "severity": "critical",
+      "watchlistMatches": [
+        "#2"
+      ],
+      "riskMatrixMatches": [
+        "#2"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "NIST-NVD",
+        "CVE-2026-132141",
+        "CVSS-9.9"
+      ],
+      "markdownRow": "| #11+ — Nov 18, 2026 | CVE-2026-132141 (Enterprise Software) | A vulnerability was detected in DrayTek Vigor2960 up to 1.5.1.6. Affected by this issue is the function json_load_lock of the file /cg… ([NIST NVD (9.9)](https://nvd.nist.gov/vuln/detail/CVE-2026-132141)) | Pre-KEV critical disclosure (CVSS 9.9) | Live Wire (CRITICAL) — Watchlist #2 |"
+    },
+    {
+      "id": "nvd-cve-2026-130786",
+      "sourceId": "nist-nvd",
+      "sourceName": "NIST NVD Critical CVEs",
+      "attributionText": "Source: NIST National Vulnerability Database API 2.0 (nvd.nist.gov — CVSS 9.9)",
+      "publishedAtISO": "2026-11-18T19:17:55.157Z",
+      "title": "CVE-2026-130786 (CVSS 9.9): Incus before 7.6.0 contains a configuration injection vulnerability that allows users who can launch ins…",
+      "summary": "[CVSS 9.9 CRITICAL] Incus before 7.6.0 contains a configuration injection vulnerability that allows users who can launch instances from controlled images to inject LXC directives by embedding line breaks in OCI config.json values or oci.entrypoint and oci.cwd keys. Attacker…",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-130786",
+      "severity": "critical",
+      "watchlistMatches": [
+        "#2"
+      ],
+      "riskMatrixMatches": [
+        "#2"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "NIST-NVD",
+        "CVE-2026-130786",
+        "CVSS-9.9"
+      ],
+      "markdownRow": "| #11+ — Nov 18, 2026 | CVE-2026-130786 (Enterprise Software) | Incus before 7.6.0 contains a configuration injection vulnerability that allows users who can launch instances from controlled images… ([NIST NVD (9.9)](https://nvd.nist.gov/vuln/detail/CVE-2026-130786)) | Pre-KEV critical disclosure (CVSS 9.9) | Live Wire (CRITICAL) — Watchlist #2 |"
+    },
+    {
+      "id": "nvd-cve-2026-130784",
+      "sourceId": "nist-nvd",
+      "sourceName": "NIST NVD Critical CVEs",
+      "attributionText": "Source: NIST National Vulnerability Database API 2.0 (nvd.nist.gov — CVSS 9.9)",
+      "publishedAtISO": "2026-11-18T19:17:54.837Z",
+      "title": "CVE-2026-130784 (CVSS 9.9): Incus before 7.6.0 contains an authorization bypass vulnerability that allows restricted clients to crea…",
+      "summary": "[CVSS 9.9 CRITICAL] Incus before 7.6.0 contains an authorization bypass vulnerability that allows restricted clients to create and access default project resources by exploiting entitlement checks against the requested project. Attackers can create bridge networks with raw.…",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-130784",
+      "severity": "critical",
+      "watchlistMatches": [
+        "#2"
+      ],
+      "riskMatrixMatches": [
+        "#2"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "NIST-NVD",
+        "CVE-2026-130784",
+        "CVSS-9.9"
+      ],
+      "markdownRow": "| #11+ — Nov 18, 2026 | CVE-2026-130784 (Enterprise Software) | Incus before 7.6.0 contains an authorization bypass vulnerability that allows restricted clients to create and access default project… ([NIST NVD (9.9)](https://nvd.nist.gov/vuln/detail/CVE-2026-130784)) | Pre-KEV critical disclosure (CVSS 9.9) | Live Wire (CRITICAL) — Watchlist #2 |"
+    },
+    {
+      "id": "nvd-cve-2026-130780",
+      "sourceId": "nist-nvd",
+      "sourceName": "NIST NVD Critical CVEs",
+      "attributionText": "Source: NIST National Vulnerability Database API 2.0 (nvd.nist.gov — CVSS 9.9)",
+      "publishedAtISO": "2026-11-18T19:17:54.067Z",
+      "title": "CVE-2026-130780 (CVSS 9.9): Incus before 7.6.0 contains a path traversal vulnerability that allows malicious migration peers to writ…",
+      "summary": "[CVSS 9.9 CRITICAL] Incus before 7.6.0 contains a path traversal vulnerability that allows malicious migration peers to write outside intended directories by supplying unvalidated dependent volume and snapshot names in the migration offer header. Attackers controlling a mig…",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-130780",
+      "severity": "critical",
+      "watchlistMatches": [
+        "#2"
+      ],
+      "riskMatrixMatches": [
+        "#2"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "NIST-NVD",
+        "CVE-2026-130780",
+        "CVSS-9.9"
+      ],
+      "markdownRow": "| #11+ — Nov 18, 2026 | CVE-2026-130780 (Enterprise Software) | Incus before 7.6.0 contains a path traversal vulnerability that allows malicious migration peers to write outside intended directories… ([NIST NVD (9.9)](https://nvd.nist.gov/vuln/detail/CVE-2026-130780)) | Pre-KEV critical disclosure (CVSS 9.9) | Live Wire (CRITICAL) — Watchlist #2 |"
+    },
+    {
+      "id": "nvd-cve-2026-130778",
+      "sourceId": "nist-nvd",
+      "sourceName": "NIST NVD Critical CVEs",
+      "attributionText": "Source: NIST National Vulnerability Database API 2.0 (nvd.nist.gov — CVSS 10.0)",
+      "publishedAtISO": "2026-11-18T19:17:53.607Z",
+      "title": "CVE-2026-130778 (CVSS 10.0): Incus before 7.6.0 contains an authentication bypass vulnerability that allows remote attackers to authe…",
+      "summary": "[CVSS 10.0 CRITICAL] Incus before 7.6.0 contains an authentication bypass vulnerability that allows remote attackers to authenticate as any trusted certificate by appending its public certificate to their presented TLS client chain. Attackers can append the server's or a cl…",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-130778",
+      "severity": "critical",
+      "watchlistMatches": [
+        "#2"
+      ],
+      "riskMatrixMatches": [
+        "#2"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "NIST-NVD",
+        "CVE-2026-130778",
+        "CVSS-10.0"
+      ],
+      "markdownRow": "| #11+ — Nov 18, 2026 | CVE-2026-130778 (Enterprise Software) | Incus before 7.6.0 contains an authentication bypass vulnerability that allows remote attackers to authenticate as any trusted certifi… ([NIST NVD (10.0)](https://nvd.nist.gov/vuln/detail/CVE-2026-130778)) | Pre-KEV critical disclosure (CVSS 10.0) | Live Wire (CRITICAL) — Watchlist #2 |"
+    },
+    {
+      "id": "nvd-cve-2026-130756",
+      "sourceId": "nist-nvd",
+      "sourceName": "NIST NVD Critical CVEs",
+      "attributionText": "Source: NIST National Vulnerability Database API 2.0 (nvd.nist.gov — CVSS 9.8)",
+      "publishedAtISO": "2026-11-18T19:17:46.287Z",
+      "title": "CVE-2026-130756 (CVSS 9.8): pnpm exe before 10.34.8 embeds an outdated Node.js runtime that still trusts compromised eMudhra interme…",
+      "summary": "[CVSS 9.8 CRITICAL] pnpm exe before 10.34.8 embeds an outdated Node.js runtime that still trusts compromised eMudhra intermediate CA certificates during registry TLS connections. Network attackers holding a recovered intermediate key can intercept standalone pnpm registry f…",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-130756",
+      "severity": "critical",
+      "watchlistMatches": [
+        "#2"
+      ],
+      "riskMatrixMatches": [
+        "#2"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "NIST-NVD",
+        "CVE-2026-130756",
+        "CVSS-9.8"
+      ],
+      "markdownRow": "| #11+ — Nov 18, 2026 | CVE-2026-130756 (Enterprise Software) | pnpm exe before 10.34.8 embeds an outdated Node.js runtime that still trusts compromised eMudhra intermediate CA certificates during r… ([NIST NVD (9.8)](https://nvd.nist.gov/vuln/detail/CVE-2026-130756)) | Pre-KEV critical disclosure (CVSS 9.8) | Live Wire (CRITICAL) — Watchlist #2 |"
+    },
+    {
+      "id": "nvd-cve-2026-130754",
+      "sourceId": "nist-nvd",
+      "sourceName": "NIST NVD Critical CVEs",
+      "attributionText": "Source: NIST National Vulnerability Database API 2.0 (nvd.nist.gov — CVSS 9.8)",
+      "publishedAtISO": "2026-11-18T19:17:45.940Z",
+      "title": "CVE-2026-130754 (CVSS 9.8): All versions of LaraDashboard contain an authentication bypass in SocialAuthService::findOrCreateUser(),…",
+      "summary": "[CVSS 9.8 CRITICAL] All versions of LaraDashboard contain an authentication bypass in SocialAuthService::findOrCreateUser(), which links a social login to an existing account by email without checking that the OAuth provider verified that email. Unauthenticated attackers us…",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-130754",
+      "severity": "critical",
+      "watchlistMatches": [
+        "#2"
+      ],
+      "riskMatrixMatches": [
+        "#2"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "NIST-NVD",
+        "CVE-2026-130754",
+        "CVSS-9.8"
+      ],
+      "markdownRow": "| #11+ — Nov 18, 2026 | CVE-2026-130754 (Enterprise Software) | All versions of LaraDashboard contain an authentication bypass in SocialAuthService::findOrCreateUser(), which links a social login to… ([NIST NVD (9.8)](https://nvd.nist.gov/vuln/detail/CVE-2026-130754)) | Pre-KEV critical disclosure (CVSS 9.8) | Live Wire (CRITICAL) — Watchlist #2 |"
+    },
+    {
+      "id": "nvd-cve-2018-25443",
+      "sourceId": "nist-nvd",
+      "sourceName": "NIST NVD Critical CVEs",
+      "attributionText": "Source: NIST National Vulnerability Database API 2.0 (nvd.nist.gov — CVSS 9.8)",
+      "publishedAtISO": "2026-11-18T16:17:48.500Z",
+      "title": "CVE-2018-25443 (CVSS 9.8): Baidu UEditor 1.4.0 through 1.4.3.3 contains an unrestricted file upload vulnerability in the catchimage…",
+      "summary": "[CVSS 9.8 CRITICAL] Baidu UEditor 1.4.0 through 1.4.3.3 contains an unrestricted file upload vulnerability in the catchimage action of /ueditor/net/controller.ashx that only validates the Content-Type header. Unauthenticated attackers can supply a source[] URL like x.jpg?.a…",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2018-25443",
+      "severity": "critical",
+      "watchlistMatches": [
+        "#2"
+      ],
+      "riskMatrixMatches": [
+        "#2"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "NIST-NVD",
+        "CVE-2018-25443",
+        "CVSS-9.8"
+      ],
+      "markdownRow": "| #11+ — Nov 18, 2026 | CVE-2018-25443 (Enterprise Software) | Baidu UEditor 1.4.0 through 1.4.3.3 contains an unrestricted file upload vulnerability in the catchimage action of /ueditor/net/contro… ([NIST NVD (9.8)](https://nvd.nist.gov/vuln/detail/CVE-2018-25443)) | Pre-KEV critical disclosure (CVSS 9.8) | Live Wire (CRITICAL) — Watchlist #2 |"
+    },
+    {
+      "id": "kev-cve-2026-40217",
+      "sourceId": "cisa-kev",
+      "sourceName": "CISA KEV Catalog",
+      "attributionText": "Source: CISA Known Exploited Vulnerabilities Catalog (2026.11.18)",
+      "publishedAtISO": "2026-11-18T12:00:00.000Z",
+      "title": "CVE-2026-40217: BerriAI LiteLLM — BerriAI LiteLLM Unprotected Alternate Channel Vulnerability",
+      "summary": "BerriAI LiteLLM contains an unprotected alternate channel vulnerability that could allow remote attackers to execute arbitrary code via bytecode rewriting at the /guardrails/test_custom_code URI. Federal BOD 22-01 remediation due 2026-12-02.",
+      "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search_api_fulltext=CVE-2026-40217",
+      "severity": "critical",
+      "watchlistMatches": [
+        "#2",
+        "#8"
+      ],
+      "riskMatrixMatches": [
+        "#2"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "CISA-KEV",
+        "CVE-2026-40217",
+        "BerriAI",
+        "Priority-Edge-Vendor"
+      ],
+      "markdownRow": "| #11+ — 2026-11-18 | BerriAI LiteLLM (Enterprise / Edge Security) | BerriAI LiteLLM contains an unprotected alternate channel vulnerability that could allow remote attackers to execute arbitrary code via byt… ([CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search_api_fulltext=CVE-2026-40217)) | Active exploitation confirmed (CVE-2026-40217); due 2026-12-02 | Live Wire (CRITICAL) — Watchlist #2, #8 |"
+    },
     {
       "id": "kev-cve-2026-115731",
       "sourceId": "cisa-kev",
@@ -239,10 +505,10 @@
       "id": "faa-gdp-sfo-1",
       "sourceId": "faa-nas",
       "sourceName": "FAA NAS Status",
-      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Thu Nov 19 15:44:49 2026 GMT",
-      "publishedAtISO": "2026-11-19T15:44:49.000Z",
+      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Thu Nov 19 15:47:20 2026 GMT",
+      "publishedAtISO": "2026-11-19T15:47:20.000Z",
       "title": "FAA Ground Delay Program: SFO (Avg 55 minutes)",
-      "summary": "GDP at SFO — Reason: LOW, Avg delay: 55 minutes, Max: 2 hours and 15 minutes. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Thu Nov 19 15:44:49 2026 GMT)",
+      "summary": "GDP at SFO — Reason: LOW, Avg delay: 55 minutes, Max: 2 hours and 15 minutes. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Thu Nov 19 15:47:20 2026 GMT)",
       "url": "https://nasstatus.faa.gov/",
       "severity": "elevated",
       "watchlistMatches": [
@@ -258,16 +524,16 @@
         "Ground-Delay",
         "SFO"
       ],
-      "markdownRow": "| #11+ — Thu Nov 19 15:44:49 2026 GMT | FAA NAS — SFO (National Aviation / ATC) | Ground Delay Program at SFO (55 minutes) ([FAA NAS Status](https://nasstatus.faa.gov/)) | FAA NAS Ground Delay Programs: LOW | Live Wire (ELEVATED) — Watchlist #5, #7 |"
+      "markdownRow": "| #11+ — Thu Nov 19 15:47:20 2026 GMT | FAA NAS — SFO (National Aviation / ATC) | Ground Delay Program at SFO (55 minutes) ([FAA NAS Status](https://nasstatus.faa.gov/)) | FAA NAS Ground Delay Programs: LOW | Live Wire (ELEVATED) — Watchlist #5, #7 |"
     },
     {
       "id": "faa-delay-fll-2",
       "sourceId": "faa-nas",
       "sourceName": "FAA NAS Status",
-      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Thu Nov 19 15:44:49 2026 GMT",
-      "publishedAtISO": "2026-11-19T15:44:49.000Z",
+      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Thu Nov 19 15:47:20 2026 GMT",
+      "publishedAtISO": "2026-11-19T15:47:20.000Z",
       "title": "FAA Arrival/Departure Delay: FLL",
-      "summary": "General Arrival/Departure Delay Info at FLL — Reason: RWY:Maintenance. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Thu Nov 19 15:44:49 2026 GMT)",
+      "summary": "General Arrival/Departure Delay Info at FLL — Reason: RWY:Maintenance. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Thu Nov 19 15:47:20 2026 GMT)",
       "url": "https://nasstatus.faa.gov/",
       "severity": "elevated",
       "watchlistMatches": [
@@ -282,16 +548,16 @@
         "Arrival-Departure-Delay",
         "FLL"
       ],
-      "markdownRow": "| #11+ — Thu Nov 19 15:44:49 2026 GMT | FAA NAS — FLL (Commercial Aviation) | Arrival/Departure delays reported at FLL ([FAA NAS Status](https://nasstatus.faa.gov/)) | FAA NAS General Arrival/Departure Delay Info: RWY:Maintenance | Live Wire (ELEVATED) — Watchlist #7 |"
+      "markdownRow": "| #11+ — Thu Nov 19 15:47:20 2026 GMT | FAA NAS — FLL (Commercial Aviation) | Arrival/Departure delays reported at FLL ([FAA NAS Status](https://nasstatus.faa.gov/)) | FAA NAS General Arrival/Departure Delay Info: RWY:Maintenance | Live Wire (ELEVATED) — Watchlist #7 |"
     },
     {
       "id": "faa-delay-mia-3",
       "sourceId": "faa-nas",
       "sourceName": "FAA NAS Status",
-      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Thu Nov 19 15:44:49 2026 GMT",
-      "publishedAtISO": "2026-11-19T15:44:49.000Z",
+      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Thu Nov 19 15:47:20 2026 GMT",
+      "publishedAtISO": "2026-11-19T15:47:20.000Z",
       "title": "FAA Arrival/Departure Delay: MIA",
-      "summary": "General Arrival/Departure Delay Info at MIA — Reason: TM Initiatives:MIT:WX. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Thu Nov 19 15:44:49 2026 GMT)",
+      "summary": "General Arrival/Departure Delay Info at MIA — Reason: TM Initiatives:MIT:WX. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Thu Nov 19 15:47:20 2026 GMT)",
       "url": "https://nasstatus.faa.gov/",
       "severity": "elevated",
       "watchlistMatches": [
@@ -306,16 +572,16 @@
         "Arrival-Departure-Delay",
         "MIA"
       ],
-      "markdownRow": "| #11+ — Thu Nov 19 15:44:49 2026 GMT | FAA NAS — MIA (Commercial Aviation) | Arrival/Departure delays reported at MIA ([FAA NAS Status](https://nasstatus.faa.gov/)) | FAA NAS General Arrival/Departure Delay Info: TM Initiatives:MIT:WX | Live Wire (ELEVATED) — Watchlist #7 |"
+      "markdownRow": "| #11+ — Thu Nov 19 15:47:20 2026 GMT | FAA NAS — MIA (Commercial Aviation) | Arrival/Departure delays reported at MIA ([FAA NAS Status](https://nasstatus.faa.gov/)) | FAA NAS General Arrival/Departure Delay Info: TM Initiatives:MIT:WX | Live Wire (ELEVATED) — Watchlist #7 |"
     },
     {
       "id": "faa-closure-sna-4",
       "sourceId": "faa-nas",
       "sourceName": "FAA NAS Status",
-      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Thu Nov 19 15:44:49 2026 GMT",
-      "publishedAtISO": "2026-11-19T15:44:49.000Z",
+      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Thu Nov 19 15:47:20 2026 GMT",
+      "publishedAtISO": "2026-11-19T15:47:20.000Z",
       "title": "FAA Airport Closures: SNA",
-      "summary": "SNA: !SNA 11/020 SNA AD AP CLSD DLY 0730-1415 2611150730-2611211415 | Reopen: Nov 21 at 14:15 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Thu Nov 19 15:44:49 2026 GMT)",
+      "summary": "SNA: !SNA 11/020 SNA AD AP CLSD DLY 0730-1415 2611150730-2611211415 | Reopen: Nov 21 at 14:15 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Thu Nov 19 15:47:20 2026 GMT)",
       "url": "https://nasstatus.faa.gov/",
       "severity": "elevated",
       "watchlistMatches": [
@@ -330,7 +596,7 @@
         "Airport-Closure",
         "SNA"
       ],
-      "markdownRow": "| #11+ — Thu Nov 19 15:44:49 2026 GMT | FAA NAS — SNA (National Aviation / Airport Ops) | Airport Closures active at SNA until Nov 21 at 14:15 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !SNA 11/020 SNA AD AP CLSD DLY 0730-1415 2611150730-2611211415 | Live Wire (ELEVATED) — Watchlist #7 |"
+      "markdownRow": "| #11+ — Thu Nov 19 15:47:20 2026 GMT | FAA NAS — SNA (National Aviation / Airport Ops) | Airport Closures active at SNA until Nov 21 at 14:15 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !SNA 11/020 SNA AD AP CLSD DLY 0730-1415 2611150730-2611211415 | Live Wire (ELEVATED) — Watchlist #7 |"
     },
     {
       "id": "cloudflare-status-5pe5mb9fefi8",
@@ -633,6 +899,30 @@
       "markdownRow": "| #11+ — Nov 19, 2026 | Cloudflare (Global CDN & Edge) | Cloudflare Access Issue (minor impact; resolved) ([Cloudflare Status](https://www.cloudflarestatus.com/incidents/sd2sya0mc6df)) | This incident has been resolved. | Live Wire (ELEVATED) — Watchlist #6, #7 |"
     },
     {
+      "id": "nvd-cve-2026-132622",
+      "sourceId": "nist-nvd",
+      "sourceName": "NIST NVD Critical CVEs",
+      "attributionText": "Source: NIST National Vulnerability Database API 2.0 (nvd.nist.gov — CVSS 9.1)",
+      "publishedAtISO": "2026-11-19T04:17:27.700Z",
+      "title": "CVE-2026-132622 (CVSS 9.1): A vulnerability was found in GearUP Hyperev up to 20261020. This impacts the function get_wlan_sitesurve…",
+      "summary": "[CVSS 9.1 CRITICAL] A vulnerability was found in GearUP Hyperev up to 20261020. This impacts the function get_wlan_sitesurvey of the file ld/utils.lua of the component WLAN Site Survey. Performing a manipulation of the argument line results in os command injection. The atta…",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-132622",
+      "severity": "elevated",
+      "watchlistMatches": [
+        "#2"
+      ],
+      "riskMatrixMatches": [
+        "#2"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "NIST-NVD",
+        "CVE-2026-132622",
+        "CVSS-9.1"
+      ],
+      "markdownRow": "| #11+ — Nov 19, 2026 | CVE-2026-132622 (Enterprise Software) | A vulnerability was found in GearUP Hyperev up to 20261020. This impacts the function get_wlan_sitesurvey of the file ld/utils.lua of… ([NIST NVD (9.1)](https://nvd.nist.gov/vuln/detail/CVE-2026-132622)) | Pre-KEV critical disclosure (CVSS 9.1) | Live Wire (ELEVATED) — Watchlist #2 |"
+    },
+    {
       "id": "cloudflare-status-f33c51cw0ojd",
       "sourceId": "cloudflare-status",
       "sourceName": "Cloudflare Status",
@@ -685,6 +975,83 @@
       "markdownRow": "| #11+ — Nov 18, 2026 | Cloudflare (Global CDN & Edge) | Increased latency on Analytics API (GraphQL) queries (minor impact; resolved) ([Cloudflare Status](https://www.cloudflarestatus.com/incidents/9zpa7own49hb)) | This incident has been resolved. | Live Wire (ELEVATED) — Watchlist #6, #7 |"
     },
     {
+      "id": "nvd-cve-2026-132142",
+      "sourceId": "nist-nvd",
+      "sourceName": "NIST NVD Critical CVEs",
+      "attributionText": "Source: NIST National Vulnerability Database API 2.0 (nvd.nist.gov — CVSS 9.1)",
+      "publishedAtISO": "2026-11-18T22:17:20.160Z",
+      "title": "CVE-2026-132142 (CVSS 9.1): A flaw has been found in DrayTek Vigor2960 up to 1.5.1.6. This affects the function dataflowstatus of th…",
+      "summary": "[CVSS 9.1 CRITICAL] A flaw has been found in DrayTek Vigor2960 up to 1.5.1.6. This affects the function dataflowstatus of the file /cgi-bin/mainfunction.cgi of the component CGI Process. This manipulation of the argument option causes stack-based buffer overflow. The attack…",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-132142",
+      "severity": "elevated",
+      "watchlistMatches": [
+        "#2"
+      ],
+      "riskMatrixMatches": [
+        "#2"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "NIST-NVD",
+        "CVE-2026-132142",
+        "CVSS-9.1"
+      ],
+      "markdownRow": "| #11+ — Nov 18, 2026 | CVE-2026-132142 (Enterprise Software) | A flaw has been found in DrayTek Vigor2960 up to 1.5.1.6. This affects the function dataflowstatus of the file /cgi-bin/mainfunction.c… ([NIST NVD (9.1)](https://nvd.nist.gov/vuln/detail/CVE-2026-132142)) | Pre-KEV critical disclosure (CVSS 9.1) | Live Wire (ELEVATED) — Watchlist #2 |"
+    },
+    {
+      "id": "usgs-us6000ubw3",
+      "sourceId": "usgs-seismic",
+      "sourceName": "USGS Subsea Chokepoint Seismic",
+      "attributionText": "Source: USGS Earthquake Hazards Program GeoJSON (earthquake.usgs.gov — M5.2, 10km depth)",
+      "publishedAtISO": "2026-11-18T21:28:47.088Z",
+      "title": "USGS M5.2 (10km depth) — 169 km S of Attu Station, Alaska [GIUK, North Sea & North Pacific Great-Circle Cable Arc]",
+      "summary": "GIUK, North Sea & North Pacific Great-Circle Cable Arc: M5.2 at 51.34°, 172.86° (10km depth). Adjacent to Dunant, Amitie, Havfrue, NOPAC Subsea. Cross-check optical SLTE attenuation & BGP reroutes to separate natural seabed turbidity currents from gray-zone anchor/sabotage activ…",
+      "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000ubw3",
+      "severity": "elevated",
+      "watchlistMatches": [
+        "#4"
+      ],
+      "riskMatrixMatches": [
+        "#6"
+      ],
+      "countdownMatches": [
+        "2027-01-08"
+      ],
+      "tags": [
+        "USGS-Seismic",
+        "M5.2",
+        "Subsea-Cable-Corridor"
+      ],
+      "markdownRow": "| #11+ — Nov 18, 2026 | GIUK, North Sea & North Pacific Great-Circle Cable Arc (Subsea Fiber & Seabed Infrastructure) | M5.2 seismic event near 169 km S of Attu Station, Alaska (10km depth) ([USGS GeoJSON](https://earthquake.usgs.gov/earthquakes/eventpage/us6000ubw3)) | Turbidity-current / cable-fault baseline check (Dunant, Amitie, Havfrue, NOPAC Subsea) | Live Wire (ELEVATED) — Watchlist #4 |"
+    },
+    {
+      "id": "usgs-us7000tz1n",
+      "sourceId": "usgs-seismic",
+      "sourceName": "USGS Subsea Chokepoint Seismic",
+      "attributionText": "Source: USGS Earthquake Hazards Program GeoJSON (earthquake.usgs.gov — M5.3, 10km depth)",
+      "publishedAtISO": "2026-11-18T17:22:23.454Z",
+      "title": "USGS M5.3 (10km depth) — 4 km NNW of Tsunagi, Japan [Ryukyu, Japan Trench & Trans-Pacific Landing Zone]",
+      "summary": "Ryukyu, Japan Trench & Trans-Pacific Landing Zone: M5.3 at 32.28°, 130.46° (10km depth). Adjacent to FASTER, Unity, Jupiter, PC-1, Topaz. Cross-check optical SLTE attenuation & BGP reroutes to separate natural seabed turbidity currents from gray-zone anchor/sabotage activity.",
+      "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000tz1n",
+      "severity": "elevated",
+      "watchlistMatches": [
+        "#4"
+      ],
+      "riskMatrixMatches": [
+        "#6",
+        "#8"
+      ],
+      "countdownMatches": [
+        "2027-01-08"
+      ],
+      "tags": [
+        "USGS-Seismic",
+        "M5.3",
+        "Subsea-Cable-Corridor"
+      ],
+      "markdownRow": "| #11+ — Nov 18, 2026 | Ryukyu, Japan Trench & Trans-Pacific Landing Zone (Subsea Fiber & Seabed Infrastructure) | M5.3 seismic event near 4 km NNW of Tsunagi, Japan (10km depth) ([USGS GeoJSON](https://earthquake.usgs.gov/earthquakes/eventpage/us7000tz1n)) | Turbidity-current / cable-fault baseline check (FASTER, Unity, Jupiter, PC-1, Topaz) | Live Wire (ELEVATED) — Watchlist #4 |"
+    },
+    {
       "id": "apple-stocks-2000005812",
       "sourceId": "apple-status",
       "sourceName": "Apple System Status",
@@ -734,6 +1101,31 @@
       "markdownRow": "| #11+ — Nov 18, 2026 | Cloudflare (Global CDN & Edge) | R2 Downloads Stalling in Japan (minor impact; resolved) ([Cloudflare Status](https://www.cloudflarestatus.com/incidents/2wjvsj2kqt07)) | This incident has been resolved. | Live Wire (ELEVATED) — Watchlist #6, #7 |"
     },
     {
+      "id": "ofac-doe-2026-23456",
+      "sourceId": "ofac-marad-doe",
+      "sourceName": "OFAC, MARAD & DOE Directives",
+      "attributionText": "Source: U.S. Federal Register — Treasury Department, Foreign Assets Control Office (2026-23456)",
+      "publishedAtISO": "2026-11-18T13:30:00.000Z",
+      "title": "Notice of OFAC Sanctions Action (2026-23456)",
+      "summary": "The U.S. Department of the Treasury's Office of Foreign Assets Control (OFAC) is publishing the names of one or more persons that have been placed on OFAC's Specially Designated Nationals and Blocked Persons List (SDN List) based on OFAC's determination that one o…",
+      "url": "https://www.federalregister.gov/documents/2026/11/18/2026-23456/notice-of-ofac-sanctions-action",
+      "severity": "elevated",
+      "watchlistMatches": [
+        "#4",
+        "#6"
+      ],
+      "riskMatrixMatches": [
+        "#3",
+        "#4"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "OFAC-MARAD-DOE",
+        "OFAC-Sanctions"
+      ],
+      "markdownRow": "| #11+ — 2026-11-18 | Treasury Department, Foreign Assets Control Office (Sanctions, Maritime & Grid) | Notice of OFAC Sanctions Action ([FR 2026-23456](https://www.federalregister.gov/documents/2026/11/18/2026-23456/notice-of-ofac-sanctions-action)) | Notice directive mapped to Watchlist #4, #6 | Live Wire (ELEVATED) — Watchlist #4, #6 |"
+    },
+    {
       "id": "kev-cve-2024-10441",
       "sourceId": "cisa-kev",
       "sourceName": "CISA KEV Catalog",
@@ -756,30 +1148,6 @@
         "Synology"
       ],
       "markdownRow": "| #11+ — 2026-11-18 | Synology DiskStation Manager (DSM) (Enterprise / Edge Security) | Synology DSM contains an improper encoding or escaping of output vulnerability in the system plugin daemon in Synology BeeStation OS (BSM)… ([CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search_api_fulltext=CVE-2024-10441)) | Active exploitation confirmed (CVE-2024-10441); due 2026-11-21 | Live Wire (ELEVATED) — Watchlist #2 |"
-    },
-    {
-      "id": "kev-cve-2026-40217",
-      "sourceId": "cisa-kev",
-      "sourceName": "CISA KEV Catalog",
-      "attributionText": "Source: CISA Known Exploited Vulnerabilities Catalog (2026.11.18)",
-      "publishedAtISO": "2026-11-18T12:00:00.000Z",
-      "title": "CVE-2026-40217: BerriAI LiteLLM — BerriAI LiteLLM Unprotected Alternate Channel Vulnerability",
-      "summary": "BerriAI LiteLLM contains an unprotected alternate channel vulnerability that could allow remote attackers to execute arbitrary code via bytecode rewriting at the /guardrails/test_custom_code URI. Federal BOD 22-01 remediation due 2026-12-02.",
-      "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search_api_fulltext=CVE-2026-40217",
-      "severity": "elevated",
-      "watchlistMatches": [
-        "#2"
-      ],
-      "riskMatrixMatches": [
-        "#2"
-      ],
-      "countdownMatches": [],
-      "tags": [
-        "CISA-KEV",
-        "CVE-2026-40217",
-        "BerriAI"
-      ],
-      "markdownRow": "| #11+ — 2026-11-18 | BerriAI LiteLLM (Enterprise / Edge Security) | BerriAI LiteLLM contains an unprotected alternate channel vulnerability that could allow remote attackers to execute arbitrary code via byt… ([CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search_api_fulltext=CVE-2026-40217)) | Active exploitation confirmed (CVE-2026-40217); due 2026-12-02 | Live Wire (ELEVATED) — Watchlist #2 |"
     },
     {
       "id": "kev-cve-2026-90817",
@@ -854,6 +1222,33 @@
         "status:resolved"
       ],
       "markdownRow": "| #11+ — Nov 18, 2026 | Cloudflare (Global CDN & Edge) | Network Performance Issues in North America (minor impact; resolved) ([Cloudflare Status](https://www.cloudflarestatus.com/incidents/76lqmua6x3tk)) | Between approximately 07:00 UTC and 10:00 UTC Cloudflare investigated issues with network performance in North America. This has… | Live Wire (ELEVATED) — Watchlist #6, #7 |"
+    },
+    {
+      "id": "usgs-us7000tyyw",
+      "sourceId": "usgs-seismic",
+      "sourceName": "USGS Subsea Chokepoint Seismic",
+      "attributionText": "Source: USGS Earthquake Hazards Program GeoJSON (earthquake.usgs.gov — M5.2, 10km depth)",
+      "publishedAtISO": "2026-11-18T09:37:00.617Z",
+      "title": "USGS M5.2 (10km depth) — 86 km NW of Ryōtsu-minato, Japan [Ryukyu, Japan Trench & Trans-Pacific Landing Zone]",
+      "summary": "Ryukyu, Japan Trench & Trans-Pacific Landing Zone: M5.2 at 38.72°, 137.87° (10km depth). Adjacent to FASTER, Unity, Jupiter, PC-1, Topaz. Cross-check optical SLTE attenuation & BGP reroutes to separate natural seabed turbidity currents from gray-zone anchor/sabotage activity.",
+      "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000tyyw",
+      "severity": "elevated",
+      "watchlistMatches": [
+        "#4"
+      ],
+      "riskMatrixMatches": [
+        "#6",
+        "#8"
+      ],
+      "countdownMatches": [
+        "2027-01-08"
+      ],
+      "tags": [
+        "USGS-Seismic",
+        "M5.2",
+        "Subsea-Cable-Corridor"
+      ],
+      "markdownRow": "| #11+ — Nov 18, 2026 | Ryukyu, Japan Trench & Trans-Pacific Landing Zone (Subsea Fiber & Seabed Infrastructure) | M5.2 seismic event near 86 km NW of Ryōtsu-minato, Japan (10km depth) ([USGS GeoJSON](https://earthquake.usgs.gov/earthquakes/eventpage/us7000tyyw)) | Turbidity-current / cable-fault baseline check (FASTER, Unity, Jupiter, PC-1, Topaz) | Live Wire (ELEVATED) — Watchlist #4 |"
     },
     {
       "id": "github-status-891rm8181xdf",
@@ -1284,6 +1679,33 @@
       "markdownRow": "| #11+ — Nov 16, 2026 | GitHub (Developer & CI/CD Backbone) | Incident with Pull Requests (minor impact; resolved) ([GitHub Status](https://stspg.io/ljtn69jlt087)) | This incident has been resolved. Thank you for your patience and understanding as we addressed this issue. A detailed root cause… | Live Wire (ELEVATED) — Watchlist #2, #7 |"
     },
     {
+      "id": "usgs-us7000tyhr",
+      "sourceId": "usgs-seismic",
+      "sourceName": "USGS Subsea Chokepoint Seismic",
+      "attributionText": "Source: USGS Earthquake Hazards Program GeoJSON (earthquake.usgs.gov — M5.4, 274km depth)",
+      "publishedAtISO": "2026-11-16T04:24:11.718Z",
+      "title": "USGS M5.4 (274km depth) — 20 km NW of Anamizu, Japan [Ryukyu, Japan Trench & Trans-Pacific Landing Zone]",
+      "summary": "Ryukyu, Japan Trench & Trans-Pacific Landing Zone: M5.4 at 37.37°, 136.74° (274km depth). Adjacent to FASTER, Unity, Jupiter, PC-1, Topaz. Cross-check optical SLTE attenuation & BGP reroutes to separate natural seabed turbidity currents from gray-zone anchor/sabotage activity.",
+      "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000tyhr",
+      "severity": "elevated",
+      "watchlistMatches": [
+        "#4"
+      ],
+      "riskMatrixMatches": [
+        "#6",
+        "#8"
+      ],
+      "countdownMatches": [
+        "2027-01-08"
+      ],
+      "tags": [
+        "USGS-Seismic",
+        "M5.4",
+        "Subsea-Cable-Corridor"
+      ],
+      "markdownRow": "| #11+ — Nov 16, 2026 | Ryukyu, Japan Trench & Trans-Pacific Landing Zone (Subsea Fiber & Seabed Infrastructure) | M5.4 seismic event near 20 km NW of Anamizu, Japan (274km depth) ([USGS GeoJSON](https://earthquake.usgs.gov/earthquakes/eventpage/us7000tyhr)) | Turbidity-current / cable-fault baseline check (FASTER, Unity, Jupiter, PC-1, Topaz) | Live Wire (ELEVATED) — Watchlist #4 |"
+    },
+    {
       "id": "github-status-51drrqvsv66g",
       "sourceId": "github-status",
       "sourceName": "GitHub Status",
@@ -1356,6 +1778,32 @@
         "UnrealIRCd"
       ],
       "markdownRow": "| #11+ — 2026-11-13 | UnrealIRCd UnrealIRCd (Enterprise / Edge Security) | UnrealIRCd UnrealIRCd contains an improper neutralization of delimiters vulnerability that allows any user on a network with two or more li… ([CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search_api_fulltext=CVE-2026-114713)) | Active exploitation confirmed (CVE-2026-114713); due 2026-11-16 | Live Wire (ELEVATED) — Watchlist #2 |"
+    },
+    {
+      "id": "usgs-us7000txx9",
+      "sourceId": "usgs-seismic",
+      "sourceName": "USGS Subsea Chokepoint Seismic",
+      "attributionText": "Source: USGS Earthquake Hazards Program GeoJSON (earthquake.usgs.gov — M5.1, 43km depth)",
+      "publishedAtISO": "2026-11-13T00:05:04.104Z",
+      "title": "USGS M5.1 (43km depth) — 39 km S of Moíres, Greece [Mediterranean, Sicily & Suez Landbridge Approaches]",
+      "summary": "Mediterranean, Sicily & Suez Landbridge Approaches: M5.1 at 34.70°, 24.88° (43km depth). Adjacent to SEA-ME-WE 5, BlueMed, TE North, IEX. Cross-check optical SLTE attenuation & BGP reroutes to separate natural seabed turbidity currents from gray-zone anchor/sabotage activity.",
+      "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000txx9",
+      "severity": "elevated",
+      "watchlistMatches": [
+        "#4"
+      ],
+      "riskMatrixMatches": [
+        "#6"
+      ],
+      "countdownMatches": [
+        "2027-01-08"
+      ],
+      "tags": [
+        "USGS-Seismic",
+        "M5.1",
+        "Subsea-Cable-Corridor"
+      ],
+      "markdownRow": "| #11+ — Nov 13, 2026 | Mediterranean, Sicily & Suez Landbridge Approaches (Subsea Fiber & Seabed Infrastructure) | M5.1 seismic event near 39 km S of Moíres, Greece (43km depth) ([USGS GeoJSON](https://earthquake.usgs.gov/earthquakes/eventpage/us7000txx9)) | Turbidity-current / cable-fault baseline check (SEA-ME-WE 5, BlueMed, TE North, IEX) | Live Wire (ELEVATED) — Watchlist #4 |"
     },
     {
       "id": "github-status-nwbjzl7nfrc2",
@@ -1603,10 +2051,10 @@
       "id": "faa-closure-lax-5",
       "sourceId": "faa-nas",
       "sourceName": "FAA NAS Status",
-      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Thu Nov 19 15:44:49 2026 GMT",
-      "publishedAtISO": "2026-11-19T15:44:49.000Z",
+      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Thu Nov 19 15:47:20 2026 GMT",
+      "publishedAtISO": "2026-11-19T15:47:20.000Z",
       "title": "FAA Airport Closures: LAX (GA NOTAM Restriction)",
-      "summary": "LAX: !LAX 05/277 LAX AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR CTC ATLANTIC AVIATION 310-258-9884 OR SIGNATURE AVIATION 310-410-9605 2605271826-2705281600 | Reopen: May 28 at 16:00 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Thu Nov 19 15:44:49 2026 GMT)",
+      "summary": "LAX: !LAX 05/277 LAX AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR CTC ATLANTIC AVIATION 310-258-9884 OR SIGNATURE AVIATION 310-410-9605 2605271826-2705281600 | Reopen: May 28 at 16:00 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Thu Nov 19 15:47:20 2026 GMT)",
       "url": "https://nasstatus.faa.gov/",
       "severity": "info",
       "watchlistMatches": [
@@ -1621,16 +2069,16 @@
         "Airport-Closure",
         "LAX"
       ],
-      "markdownRow": "| #11+ — Thu Nov 19 15:44:49 2026 GMT | FAA NAS — LAX (National Aviation / Airport Ops) | Airport Closures active at LAX until May 28 at 16:00 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !LAX 05/277 LAX AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR CTC ATLANTIC AVIATION 310-258-9884 OR SIGNATURE A… | Live Wire (INFO) — Watchlist #7 |"
+      "markdownRow": "| #11+ — Thu Nov 19 15:47:20 2026 GMT | FAA NAS — LAX (National Aviation / Airport Ops) | Airport Closures active at LAX until May 28 at 16:00 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !LAX 05/277 LAX AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR CTC ATLANTIC AVIATION 310-258-9884 OR SIGNATURE A… | Live Wire (INFO) — Watchlist #7 |"
     },
     {
       "id": "faa-closure-san-6",
       "sourceId": "faa-nas",
       "sourceName": "FAA NAS Status",
-      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Thu Nov 19 15:44:49 2026 GMT",
-      "publishedAtISO": "2026-11-19T15:44:49.000Z",
+      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Thu Nov 19 15:47:20 2026 GMT",
+      "publishedAtISO": "2026-11-19T15:47:20.000Z",
       "title": "FAA Airport Closures: SAN (GA NOTAM Restriction)",
-      "summary": "SAN: !SAN 10/004 SAN AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC PPR 619-298-7704 2610011633-2701010800 | Reopen: Jan 01 at 08:00 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Thu Nov 19 15:44:49 2026 GMT)",
+      "summary": "SAN: !SAN 10/004 SAN AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC PPR 619-298-7704 2610011633-2701010800 | Reopen: Jan 01 at 08:00 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Thu Nov 19 15:47:20 2026 GMT)",
       "url": "https://nasstatus.faa.gov/",
       "severity": "info",
       "watchlistMatches": [
@@ -1645,16 +2093,16 @@
         "Airport-Closure",
         "SAN"
       ],
-      "markdownRow": "| #11+ — Thu Nov 19 15:44:49 2026 GMT | FAA NAS — SAN (National Aviation / Airport Ops) | Airport Closures active at SAN until Jan 01 at 08:00 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !SAN 10/004 SAN AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC PPR 619-298-7704 2610011633-2701010800 | Live Wire (INFO) — Watchlist #7 |"
+      "markdownRow": "| #11+ — Thu Nov 19 15:47:20 2026 GMT | FAA NAS — SAN (National Aviation / Airport Ops) | Airport Closures active at SAN until Jan 01 at 08:00 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !SAN 10/004 SAN AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC PPR 619-298-7704 2610011633-2701010800 | Live Wire (INFO) — Watchlist #7 |"
     },
     {
       "id": "faa-closure-las-7",
       "sourceId": "faa-nas",
       "sourceName": "FAA NAS Status",
-      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Thu Nov 19 15:44:49 2026 GMT",
-      "publishedAtISO": "2026-11-19T15:44:49.000Z",
+      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Thu Nov 19 15:47:20 2026 GMT",
+      "publishedAtISO": "2026-11-19T15:47:20.000Z",
       "title": "FAA Airport Closures: LAS (GA NOTAM Restriction)",
-      "summary": "LAS: !LAS 10/160 LAS AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR 702-261-7775 2610281926-2701272300 | Reopen: Jan 27 at 23:00 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Thu Nov 19 15:44:49 2026 GMT)",
+      "summary": "LAS: !LAS 10/160 LAS AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR 702-261-7775 2610281926-2701272300 | Reopen: Jan 27 at 23:00 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Thu Nov 19 15:47:20 2026 GMT)",
       "url": "https://nasstatus.faa.gov/",
       "severity": "info",
       "watchlistMatches": [
@@ -1669,7 +2117,107 @@
         "Airport-Closure",
         "LAS"
       ],
-      "markdownRow": "| #11+ — Thu Nov 19 15:44:49 2026 GMT | FAA NAS — LAS (National Aviation / Airport Ops) | Airport Closures active at LAS until Jan 27 at 23:00 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !LAS 10/160 LAS AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR 702-261-7775 2610281926-2701272300 | Live Wire (INFO) — Watchlist #7 |"
+      "markdownRow": "| #11+ — Thu Nov 19 15:47:20 2026 GMT | FAA NAS — LAS (National Aviation / Airport Ops) | Airport Closures active at LAS until Jan 27 at 23:00 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !LAS 10/160 LAS AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR 702-261-7775 2610281926-2701272300 | Live Wire (INFO) — Watchlist #7 |"
+    },
+    {
+      "id": "ofac-doe-2026-23611",
+      "sourceId": "ofac-marad-doe",
+      "sourceName": "OFAC, MARAD & DOE Directives",
+      "attributionText": "Source: U.S. Federal Register — Energy Department, Federal Energy Regulatory Commission (2026-23611)",
+      "publishedAtISO": "2026-11-19T13:30:00.000Z",
+      "title": "Exelon Corporation v. PJM Interconnection, L.L.C.; Notice Establishing Comment Period (2026-23611)",
+      "summary": "Notice issued by Energy Department, Federal Energy Regulatory Commission (2026-23611).",
+      "url": "https://www.federalregister.gov/documents/2026/11/19/2026-23611/exelon-corporation-v-pjm-interconnection-llc-notice-establishing-comment-period",
+      "severity": "info",
+      "watchlistMatches": [
+        "#8"
+      ],
+      "riskMatrixMatches": [
+        "#3",
+        "#7"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "OFAC-MARAD-DOE",
+        "DOE-FERC-Grid"
+      ],
+      "markdownRow": "| #11+ — 2026-11-19 | Energy Department, Federal Energy Regulatory Commission (Sanctions, Maritime & Grid) | Exelon Corporation v. PJM Interconnection, L.L.C.; Notice Establishing Comment Period ([FR 2026-23611](https://www.federalregister.gov/documents/2026/11/19/2026-23611/exelon-corporation-v-pjm-interconnection-llc-notice-establishing-comment-period)) | Notice directive mapped to Watchlist #8 | Live Wire (INFO) — Watchlist #8 |"
+    },
+    {
+      "id": "ofac-doe-2026-23609",
+      "sourceId": "ofac-marad-doe",
+      "sourceName": "OFAC, MARAD & DOE Directives",
+      "attributionText": "Source: U.S. Federal Register — Energy Department, Federal Energy Regulatory Commission (2026-23609)",
+      "publishedAtISO": "2026-11-19T13:30:00.000Z",
+      "title": "Freeport LNG Development, L.P., FLNG Liquefaction, LLC, FLNG Liquefaction 2, LLC, FLNG Liquefaction 3, LLC, FLNG Liquefaction 4, LLC; Notice of Application and Establishing Intervention Deadline (2026-23609)",
+      "summary": "Notice issued by Energy Department, Federal Energy Regulatory Commission (2026-23609).",
+      "url": "https://www.federalregister.gov/documents/2026/11/19/2026-23609/freeport-lng-development-lp-flng-liquefaction-llc-flng-liquefaction-2-llc-flng-liquefaction-3-llc",
+      "severity": "info",
+      "watchlistMatches": [
+        "#4",
+        "#5",
+        "#8"
+      ],
+      "riskMatrixMatches": [
+        "#3",
+        "#6",
+        "#7"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "OFAC-MARAD-DOE",
+        "MARAD-Maritime",
+        "DOE-FERC-Grid"
+      ],
+      "markdownRow": "| #11+ — 2026-11-19 | Energy Department, Federal Energy Regulatory Commission (Sanctions, Maritime & Grid) | Freeport LNG Development, L.P., FLNG Liquefaction, LLC, FLNG Liquefaction 2, LLC, FLNG Liquefaction 3, LLC, FLNG Liquefaction 4, LLC;… ([FR 2026-23609](https://www.federalregister.gov/documents/2026/11/19/2026-23609/freeport-lng-development-lp-flng-liquefaction-llc-flng-liquefaction-2-llc-flng-liquefaction-3-llc)) | Notice directive mapped to Watchlist #4, #5, #8 | Live Wire (INFO) — Watchlist #4, #5, #8 |"
+    },
+    {
+      "id": "ofac-doe-2026-23608",
+      "sourceId": "ofac-marad-doe",
+      "sourceName": "OFAC, MARAD & DOE Directives",
+      "attributionText": "Source: U.S. Federal Register — Energy Department, Federal Energy Regulatory Commission (2026-23608)",
+      "publishedAtISO": "2026-11-19T13:30:00.000Z",
+      "title": "Combined Notice of Filings (2026-23608)",
+      "summary": "Notice issued by Energy Department, Federal Energy Regulatory Commission (2026-23608).",
+      "url": "https://www.federalregister.gov/documents/2026/11/19/2026-23608/combined-notice-of-filings",
+      "severity": "info",
+      "watchlistMatches": [
+        "#8"
+      ],
+      "riskMatrixMatches": [
+        "#3",
+        "#7"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "OFAC-MARAD-DOE",
+        "DOE-FERC-Grid"
+      ],
+      "markdownRow": "| #11+ — 2026-11-19 | Energy Department, Federal Energy Regulatory Commission (Sanctions, Maritime & Grid) | Combined Notice of Filings ([FR 2026-23608](https://www.federalregister.gov/documents/2026/11/19/2026-23608/combined-notice-of-filings)) | Notice directive mapped to Watchlist #8 | Live Wire (INFO) — Watchlist #8 |"
+    },
+    {
+      "id": "ofac-doe-2026-23607",
+      "sourceId": "ofac-marad-doe",
+      "sourceName": "OFAC, MARAD & DOE Directives",
+      "attributionText": "Source: U.S. Federal Register — Energy Department, Federal Energy Regulatory Commission (2026-23607)",
+      "publishedAtISO": "2026-11-19T13:30:00.000Z",
+      "title": "Combined Notice of Filings #1 (2026-23607)",
+      "summary": "Notice issued by Energy Department, Federal Energy Regulatory Commission (2026-23607).",
+      "url": "https://www.federalregister.gov/documents/2026/11/19/2026-23607/combined-notice-of-filings-1",
+      "severity": "info",
+      "watchlistMatches": [
+        "#8"
+      ],
+      "riskMatrixMatches": [
+        "#3",
+        "#7"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "OFAC-MARAD-DOE",
+        "DOE-FERC-Grid"
+      ],
+      "markdownRow": "| #11+ — 2026-11-19 | Energy Department, Federal Energy Regulatory Commission (Sanctions, Maritime & Grid) | Combined Notice of Filings #1 ([FR 2026-23607](https://www.federalregister.gov/documents/2026/11/19/2026-23607/combined-notice-of-filings-1)) | Notice directive mapped to Watchlist #8 | Live Wire (INFO) — Watchlist #8 |"
     },
     {
       "id": "fedreg-2026-23633",
@@ -1814,6 +2362,317 @@
         "FAA-Regulatory"
       ],
       "markdownRow": "| #11+ — 2026-11-19 | Transportation Department, Federal Aviation Administration (Federal Regulatory) | Airworthiness Directives; Airbus Helicopters ([FR 2026-23569](https://www.federalregister.gov/documents/2026/11/19/2026-23569/airworthiness-directives-airbus-helicopters)) | Proposed Rule filing mapped to Risk #1 | Live Wire (INFO) — Watchlist #5 |"
+    },
+    {
+      "id": "noaa-k04w-9eb2efcb",
+      "sourceId": "noaa-swpc",
+      "sourceName": "NOAA SWPC Space Weather & GNSS",
+      "attributionText": "Source: NOAA Space Weather Prediction Center (services.swpc.noaa.gov — K04W)",
+      "publishedAtISO": "2026-11-19T01:18:16.670Z",
+      "title": "NOAA SWPC: EXTENDED WARNING: Geomagnetic K-index of 4 expected",
+      "summary": "EXTENDED WARNING: Geomagnetic K-index of 4 expected. Baseline check for Watchlist #5: rule out solar ionospheric scintillation before attributing NOPAC/Baltic GPS or Stratum-1 PTP clock drift to adversarial spoofing.",
+      "url": "https://www.swpc.noaa.gov/",
+      "severity": "info",
+      "watchlistMatches": [
+        "#5"
+      ],
+      "riskMatrixMatches": [
+        "#1",
+        "#6"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "NOAA-SWPC",
+        "GNSS-Timing-Baseline",
+        "K04W"
+      ],
+      "markdownRow": "| #11+ — Nov 19, 2026 | NOAA SWPC (GNSS / Aviation HF / Stratum-1 Timing Baseline) | EXTENDED WARNING: Geomagnetic K-index of 4 expected ([NOAA SWPC](https://www.swpc.noaa.gov/)) | K04W ionospheric / geomagnetic telemetry | Live Wire (INFO) — Watchlist #5 |"
+    },
+    {
+      "id": "noaa-k05a-45007f01",
+      "sourceId": "noaa-swpc",
+      "sourceName": "NOAA SWPC Space Weather & GNSS",
+      "attributionText": "Source: NOAA Space Weather Prediction Center (services.swpc.noaa.gov — K05A)",
+      "publishedAtISO": "2026-11-19T01:08:54.450Z",
+      "title": "NOAA SWPC [G1]: Geomagnetic K-index of 5",
+      "summary": "ALERT: Geomagnetic K-index of 5 · NOAA Scale: G1 - Minor. Baseline check for Watchlist #5: rule out solar ionospheric scintillation before attributing NOPAC/Baltic GPS or Stratum-1 PTP clock drift to adversarial spoofing.",
+      "url": "https://www.swpc.noaa.gov/",
+      "severity": "info",
+      "watchlistMatches": [
+        "#5"
+      ],
+      "riskMatrixMatches": [
+        "#1",
+        "#6"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "NOAA-SWPC",
+        "GNSS-Timing-Baseline",
+        "K05A",
+        "G1"
+      ],
+      "markdownRow": "| #11+ — Nov 19, 2026 | NOAA SWPC (GNSS / Aviation HF / Stratum-1 Timing Baseline) | Geomagnetic K-index of 5 ([NOAA SWPC](https://www.swpc.noaa.gov/)) | G1 - Minor ionospheric / geomagnetic telemetry | Live Wire (INFO) — Watchlist #5 |"
+    },
+    {
+      "id": "noaa-k05w-d5fd0881",
+      "sourceId": "noaa-swpc",
+      "sourceName": "NOAA SWPC Space Weather & GNSS",
+      "attributionText": "Source: NOAA Space Weather Prediction Center (services.swpc.noaa.gov — K05W)",
+      "publishedAtISO": "2026-11-19T01:00:25.897Z",
+      "title": "NOAA SWPC [G1]: Geomagnetic K-index of 5 expected",
+      "summary": "WARNING: Geomagnetic K-index of 5 expected · NOAA Scale: G1 - Minor. Baseline check for Watchlist #5: rule out solar ionospheric scintillation before attributing NOPAC/Baltic GPS or Stratum-1 PTP clock drift to adversarial spoofing.",
+      "url": "https://www.swpc.noaa.gov/",
+      "severity": "info",
+      "watchlistMatches": [
+        "#5"
+      ],
+      "riskMatrixMatches": [
+        "#1",
+        "#6"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "NOAA-SWPC",
+        "GNSS-Timing-Baseline",
+        "K05W",
+        "G1"
+      ],
+      "markdownRow": "| #11+ — Nov 19, 2026 | NOAA SWPC (GNSS / Aviation HF / Stratum-1 Timing Baseline) | Geomagnetic K-index of 5 expected ([NOAA SWPC](https://www.swpc.noaa.gov/)) | G1 - Minor ionospheric / geomagnetic telemetry | Live Wire (INFO) — Watchlist #5 |"
+    },
+    {
+      "id": "noaa-k04a-33c02c23",
+      "sourceId": "noaa-swpc",
+      "sourceName": "NOAA SWPC Space Weather & GNSS",
+      "attributionText": "Source: NOAA Space Weather Prediction Center (services.swpc.noaa.gov — K04A)",
+      "publishedAtISO": "2026-11-19T00:46:31.780Z",
+      "title": "NOAA SWPC: Geomagnetic K-index of 4",
+      "summary": "ALERT: Geomagnetic K-index of 4. Baseline check for Watchlist #5: rule out solar ionospheric scintillation before attributing NOPAC/Baltic GPS or Stratum-1 PTP clock drift to adversarial spoofing.",
+      "url": "https://www.swpc.noaa.gov/",
+      "severity": "info",
+      "watchlistMatches": [
+        "#5"
+      ],
+      "riskMatrixMatches": [
+        "#1",
+        "#6"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "NOAA-SWPC",
+        "GNSS-Timing-Baseline",
+        "K04A"
+      ],
+      "markdownRow": "| #11+ — Nov 19, 2026 | NOAA SWPC (GNSS / Aviation HF / Stratum-1 Timing Baseline) | Geomagnetic K-index of 4 ([NOAA SWPC](https://www.swpc.noaa.gov/)) | K04A ionospheric / geomagnetic telemetry | Live Wire (INFO) — Watchlist #5 |"
+    },
+    {
+      "id": "noaa-k04w-70ff967f",
+      "sourceId": "noaa-swpc",
+      "sourceName": "NOAA SWPC Space Weather & GNSS",
+      "attributionText": "Source: NOAA Space Weather Prediction Center (services.swpc.noaa.gov — K04W)",
+      "publishedAtISO": "2026-11-18T14:32:13.287Z",
+      "title": "NOAA SWPC: EXTENDED WARNING: Geomagnetic K-index of 4 expected",
+      "summary": "EXTENDED WARNING: Geomagnetic K-index of 4 expected. Baseline check for Watchlist #5: rule out solar ionospheric scintillation before attributing NOPAC/Baltic GPS or Stratum-1 PTP clock drift to adversarial spoofing.",
+      "url": "https://www.swpc.noaa.gov/",
+      "severity": "info",
+      "watchlistMatches": [
+        "#5"
+      ],
+      "riskMatrixMatches": [
+        "#1",
+        "#6"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "NOAA-SWPC",
+        "GNSS-Timing-Baseline",
+        "K04W"
+      ],
+      "markdownRow": "| #11+ — Nov 18, 2026 | NOAA SWPC (GNSS / Aviation HF / Stratum-1 Timing Baseline) | EXTENDED WARNING: Geomagnetic K-index of 4 expected ([NOAA SWPC](https://www.swpc.noaa.gov/)) | K04W ionospheric / geomagnetic telemetry | Live Wire (INFO) — Watchlist #5 |"
+    },
+    {
+      "id": "ofac-doe-2026-23511",
+      "sourceId": "ofac-marad-doe",
+      "sourceName": "OFAC, MARAD & DOE Directives",
+      "attributionText": "Source: U.S. Federal Register — Transportation Department, Maritime Administration (2026-23511)",
+      "publishedAtISO": "2026-11-18T13:30:00.000Z",
+      "title": "Request Notice: Use of Foreign-Built Small Passenger Vessel in United States Coastwise Trade, M/V ANNIE LAURIE (2026-23511)",
+      "summary": "The Secretary of Transportation, as represented by MARAD, is authorized to make determinations regarding the coastwise use of foreign built; certain U.S. built; and U.S. and foreign rebuilt vessels that solely carry no more than twelve passengers for hire. MARAD h…",
+      "url": "https://www.federalregister.gov/documents/2026/11/18/2026-23511/request-notice-use-of-foreign-built-small-passenger-vessel-in-united-states-coastwise-trade-mv-annie",
+      "severity": "info",
+      "watchlistMatches": [
+        "#4",
+        "#6",
+        "#5"
+      ],
+      "riskMatrixMatches": [
+        "#3",
+        "#4",
+        "#6"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "OFAC-MARAD-DOE",
+        "OFAC-Sanctions",
+        "MARAD-Maritime"
+      ],
+      "markdownRow": "| #11+ — 2026-11-18 | Transportation Department, Maritime Administration (Sanctions, Maritime & Grid) | Request Notice: Use of Foreign-Built Small Passenger Vessel in United States Coastwise Trade, M/V ANNIE LAURIE ([FR 2026-23511](https://www.federalregister.gov/documents/2026/11/18/2026-23511/request-notice-use-of-foreign-built-small-passenger-vessel-in-united-states-coastwise-trade-mv-annie)) | Notice directive mapped to Watchlist #4, #6, #5 | Live Wire (INFO) — Watchlist #4, #6, #5 |"
+    },
+    {
+      "id": "ofac-doe-2026-23510",
+      "sourceId": "ofac-marad-doe",
+      "sourceName": "OFAC, MARAD & DOE Directives",
+      "attributionText": "Source: U.S. Federal Register — Transportation Department, Maritime Administration (2026-23510)",
+      "publishedAtISO": "2026-11-18T13:30:00.000Z",
+      "title": "Request Notice: Use of Foreign-Built Small Passenger Vessel in United States Coastwise Trade, M/V OSIRIS (2026-23510)",
+      "summary": "The Secretary of Transportation, as represented by MARAD, is authorized to make determinations regarding the coastwise use of foreign built; certain U.S. built; and U.S. and foreign rebuilt vessels that solely carry no more than twelve passengers for hire. MARAD h…",
+      "url": "https://www.federalregister.gov/documents/2026/11/18/2026-23510/request-notice-use-of-foreign-built-small-passenger-vessel-in-united-states-coastwise-trade-mv",
+      "severity": "info",
+      "watchlistMatches": [
+        "#4",
+        "#6",
+        "#5"
+      ],
+      "riskMatrixMatches": [
+        "#3",
+        "#4",
+        "#6"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "OFAC-MARAD-DOE",
+        "OFAC-Sanctions",
+        "MARAD-Maritime"
+      ],
+      "markdownRow": "| #11+ — 2026-11-18 | Transportation Department, Maritime Administration (Sanctions, Maritime & Grid) | Request Notice: Use of Foreign-Built Small Passenger Vessel in United States Coastwise Trade, M/V OSIRIS ([FR 2026-23510](https://www.federalregister.gov/documents/2026/11/18/2026-23510/request-notice-use-of-foreign-built-small-passenger-vessel-in-united-states-coastwise-trade-mv)) | Notice directive mapped to Watchlist #4, #6, #5 | Live Wire (INFO) — Watchlist #4, #6, #5 |"
+    },
+    {
+      "id": "ofac-doe-2026-23509",
+      "sourceId": "ofac-marad-doe",
+      "sourceName": "OFAC, MARAD & DOE Directives",
+      "attributionText": "Source: U.S. Federal Register — Transportation Department, Maritime Administration (2026-23509)",
+      "publishedAtISO": "2026-11-18T13:30:00.000Z",
+      "title": "Request Notice: Use of Foreign-Built Small Passenger Vessel in United States Coastwise Trade, M/V NEXUS (2026-23509)",
+      "summary": "The Secretary of Transportation, as represented by MARAD, is authorized to make determinations regarding the coastwise use of foreign built; certain U.S. built; and U.S. and foreign rebuilt vessels that solely carry no more than twelve passengers for hire. MARAD h…",
+      "url": "https://www.federalregister.gov/documents/2026/11/18/2026-23509/request-notice-use-of-foreign-built-small-passenger-vessel-in-united-states-coastwise-trade-mv-nexus",
+      "severity": "info",
+      "watchlistMatches": [
+        "#4",
+        "#6",
+        "#5"
+      ],
+      "riskMatrixMatches": [
+        "#3",
+        "#4",
+        "#6"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "OFAC-MARAD-DOE",
+        "OFAC-Sanctions",
+        "MARAD-Maritime"
+      ],
+      "markdownRow": "| #11+ — 2026-11-18 | Transportation Department, Maritime Administration (Sanctions, Maritime & Grid) | Request Notice: Use of Foreign-Built Small Passenger Vessel in United States Coastwise Trade, M/V NEXUS ([FR 2026-23509](https://www.federalregister.gov/documents/2026/11/18/2026-23509/request-notice-use-of-foreign-built-small-passenger-vessel-in-united-states-coastwise-trade-mv-nexus)) | Notice directive mapped to Watchlist #4, #6, #5 | Live Wire (INFO) — Watchlist #4, #6, #5 |"
+    },
+    {
+      "id": "ofac-doe-2026-23447",
+      "sourceId": "ofac-marad-doe",
+      "sourceName": "OFAC, MARAD & DOE Directives",
+      "attributionText": "Source: U.S. Federal Register — Energy Department, Federal Energy Regulatory Commission (2026-23447)",
+      "publishedAtISO": "2026-11-18T13:30:00.000Z",
+      "title": "Village of Swanton, Vermont; Notice of Availability of Environmental Assessment (2026-23447)",
+      "summary": "Notice issued by Energy Department, Federal Energy Regulatory Commission (2026-23447).",
+      "url": "https://www.federalregister.gov/documents/2026/11/18/2026-23447/village-of-swanton-vermont-notice-of-availability-of-environmental-assessment",
+      "severity": "info",
+      "watchlistMatches": [
+        "#8"
+      ],
+      "riskMatrixMatches": [
+        "#3",
+        "#7"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "OFAC-MARAD-DOE",
+        "DOE-FERC-Grid"
+      ],
+      "markdownRow": "| #11+ — 2026-11-18 | Energy Department, Federal Energy Regulatory Commission (Sanctions, Maritime & Grid) | Village of Swanton, Vermont; Notice of Availability of Environmental Assessment ([FR 2026-23447](https://www.federalregister.gov/documents/2026/11/18/2026-23447/village-of-swanton-vermont-notice-of-availability-of-environmental-assessment)) | Notice directive mapped to Watchlist #8 | Live Wire (INFO) — Watchlist #8 |"
+    },
+    {
+      "id": "ofac-doe-2026-23446",
+      "sourceId": "ofac-marad-doe",
+      "sourceName": "OFAC, MARAD & DOE Directives",
+      "attributionText": "Source: U.S. Federal Register — Energy Department, Federal Energy Regulatory Commission (2026-23446)",
+      "publishedAtISO": "2026-11-18T13:30:00.000Z",
+      "title": "Algonquin Gas Transmission, LLC; Notice of Application and Establishing Intervention Deadline (2026-23446)",
+      "summary": "Notice issued by Energy Department, Federal Energy Regulatory Commission (2026-23446).",
+      "url": "https://www.federalregister.gov/documents/2026/11/18/2026-23446/algonquin-gas-transmission-llc-notice-of-application-and-establishing-intervention-deadline",
+      "severity": "info",
+      "watchlistMatches": [
+        "#8"
+      ],
+      "riskMatrixMatches": [
+        "#3",
+        "#7"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "OFAC-MARAD-DOE",
+        "DOE-FERC-Grid"
+      ],
+      "markdownRow": "| #11+ — 2026-11-18 | Energy Department, Federal Energy Regulatory Commission (Sanctions, Maritime & Grid) | Algonquin Gas Transmission, LLC; Notice of Application and Establishing Intervention Deadline ([FR 2026-23446](https://www.federalregister.gov/documents/2026/11/18/2026-23446/algonquin-gas-transmission-llc-notice-of-application-and-establishing-intervention-deadline)) | Notice directive mapped to Watchlist #8 | Live Wire (INFO) — Watchlist #8 |"
+    },
+    {
+      "id": "ofac-doe-2026-23443",
+      "sourceId": "ofac-marad-doe",
+      "sourceName": "OFAC, MARAD & DOE Directives",
+      "attributionText": "Source: U.S. Federal Register — Energy Department, Federal Energy Regulatory Commission (2026-23443)",
+      "publishedAtISO": "2026-11-18T13:30:00.000Z",
+      "title": "Commission Information Collection Activities (FERC-510); Comment Request; Extension (2026-23443)",
+      "summary": "In compliance with the requirements of the Paperwork Reduction Act of 1995, the Federal Energy Regulatory Commission (Commission or FERC) is submitting its information collection, FERC-510 Application for Surrender of Hydropower License (OMB No 1902-0068), to the…",
+      "url": "https://www.federalregister.gov/documents/2026/11/18/2026-23443/commission-information-collection-activities-ferc-510-comment-request-extension",
+      "severity": "info",
+      "watchlistMatches": [
+        "#4",
+        "#5",
+        "#8"
+      ],
+      "riskMatrixMatches": [
+        "#3",
+        "#6",
+        "#7"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "OFAC-MARAD-DOE",
+        "MARAD-Maritime",
+        "DOE-FERC-Grid"
+      ],
+      "markdownRow": "| #11+ — 2026-11-18 | Energy Department, Federal Energy Regulatory Commission (Sanctions, Maritime & Grid) | Commission Information Collection Activities (FERC-510); Comment Request; Extension ([FR 2026-23443](https://www.federalregister.gov/documents/2026/11/18/2026-23443/commission-information-collection-activities-ferc-510-comment-request-extension)) | Notice directive mapped to Watchlist #4, #5, #8 | Live Wire (INFO) — Watchlist #4, #5, #8 |"
+    },
+    {
+      "id": "ofac-doe-2026-23442",
+      "sourceId": "ofac-marad-doe",
+      "sourceName": "OFAC, MARAD & DOE Directives",
+      "attributionText": "Source: U.S. Federal Register — Energy Department, Federal Energy Regulatory Commission (2026-23442)",
+      "publishedAtISO": "2026-11-18T13:30:00.000Z",
+      "title": "Natural Gas Pipeline of America, LLC; Horizon Pipeline Company, LLC; Notice of Schedule for the Preparation of an Environmental Assessment for the North Extension Project (2026-23442)",
+      "summary": "Notice issued by Energy Department, Federal Energy Regulatory Commission (2026-23442).",
+      "url": "https://www.federalregister.gov/documents/2026/11/18/2026-23442/natural-gas-pipeline-of-america-llc-horizon-pipeline-company-llc-notice-of-schedule-for-the",
+      "severity": "info",
+      "watchlistMatches": [
+        "#8"
+      ],
+      "riskMatrixMatches": [
+        "#3",
+        "#7"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "OFAC-MARAD-DOE",
+        "DOE-FERC-Grid"
+      ],
+      "markdownRow": "| #11+ — 2026-11-18 | Energy Department, Federal Energy Regulatory Commission (Sanctions, Maritime & Grid) | Natural Gas Pipeline of America, LLC; Horizon Pipeline Company, LLC; Notice of Schedule for the Preparation of an Environmental Assess… ([FR 2026-23442](https://www.federalregister.gov/documents/2026/11/18/2026-23442/natural-gas-pipeline-of-america-llc-horizon-pipeline-company-llc-notice-of-schedule-for-the)) | Notice directive mapped to Watchlist #8 | Live Wire (INFO) — Watchlist #8 |"
     },
     {
       "id": "cisa-adv-cisa-adds-four-known-exploited-vulnerabilities-catalog",
@@ -2009,6 +2868,55 @@
       "markdownRow": "| #11+ — 11/17/2026 08:45 PST | Apple — iCloud Web Apps (iCloud.com) (Consumer, Payments & Enterprise) | Performance (Some users were affected); status: resolved ([Apple System Status](https://www.apple.com/support/systemstatus/)) | This service may have been slow or unavailable.; Watchlist #9 auth cascade check | Live Wire (INFO) — Watchlist #7, #9 |"
     },
     {
+      "id": "usgs-us7000tymu",
+      "sourceId": "usgs-seismic",
+      "sourceName": "USGS Subsea Chokepoint Seismic",
+      "attributionText": "Source: USGS Earthquake Hazards Program GeoJSON (earthquake.usgs.gov — M6.6, 68km depth)",
+      "publishedAtISO": "2026-11-16T21:11:20.376Z",
+      "title": "USGS M6.6 (68km depth) — 148 km WSW of Tual, Indonesia [Global Baseline]",
+      "summary": "Global Tectonic Baseline (Outside Primary Cable Chokepoints): M6.6 at -6.06°, 131.49° (68km depth). Major M6.6 seismic event outside primary cable chokepoint boxes; logged as geophysical baseline.",
+      "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000tymu",
+      "severity": "info",
+      "watchlistMatches": [
+        "#7"
+      ],
+      "riskMatrixMatches": [
+        "#6"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "USGS-Seismic",
+        "M6.6",
+        "Global-Baseline"
+      ],
+      "markdownRow": "| #11+ — Nov 16, 2026 | Global Tectonic Baseline (Outside Primary Cable Chokepoints) (Subsea Fiber & Seabed Infrastructure) | M6.6 seismic event near 148 km WSW of Tual, Indonesia (68km depth) ([USGS GeoJSON](https://earthquake.usgs.gov/earthquakes/eventpage/us7000tymu)) | Global seismic baseline | Live Wire (INFO) — Watchlist #7 |"
+    },
+    {
+      "id": "noaa-a20f-b39019e7",
+      "sourceId": "noaa-swpc",
+      "sourceName": "NOAA SWPC Space Weather & GNSS",
+      "attributionText": "Source: NOAA Space Weather Prediction Center (services.swpc.noaa.gov — A20F)",
+      "publishedAtISO": "2026-11-15T13:34:32.160Z",
+      "title": "NOAA SWPC: Geomagnetic Storm Category G1 Predicted",
+      "summary": "WATCH: Geomagnetic Storm Category G1 Predicted. Baseline check for Watchlist #5: rule out solar ionospheric scintillation before attributing NOPAC/Baltic GPS or Stratum-1 PTP clock drift to adversarial spoofing.",
+      "url": "https://www.swpc.noaa.gov/",
+      "severity": "info",
+      "watchlistMatches": [
+        "#5"
+      ],
+      "riskMatrixMatches": [
+        "#1",
+        "#6"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "NOAA-SWPC",
+        "GNSS-Timing-Baseline",
+        "A20F"
+      ],
+      "markdownRow": "| #11+ — Nov 15, 2026 | NOAA SWPC (GNSS / Aviation HF / Stratum-1 Timing Baseline) | Geomagnetic Storm Category G1 Predicted ([NOAA SWPC](https://www.swpc.noaa.gov/)) | A20F ionospheric / geomagnetic telemetry | Live Wire (INFO) — Watchlist #5 |"
+    },
+    {
       "id": "cisa-adv-cisa-adds-two-known-exploited-vulnerabilities-catalog",
       "sourceId": "cisa-advisories",
       "sourceName": "CISA Advisories",
@@ -2029,6 +2937,56 @@
         "CISA-Advisory"
       ],
       "markdownRow": "| #11+ — Nov 13, 2026 | CISA Adds Two Known Exploited Vulnerabilities to Catalog (Federal Cyber Advisory) | CISA has added two new vulnerabilities to its Known Exploited Vulnerabilities (KEV) Catalog , based on evidence of active exploitation. CVE-2026-114713 UnrealIRCd Improper Neutralization of Delimiters Vulnerability CVE-2026-123039 Check Point Multiple Product… ([CISA Advisory](https://www.cisa.gov/news-events/alerts/2026/11/13/cisa-adds-two-known-exploited-vulnerabilities-catalog)) | Federal cybersecurity advisory readout | Live Wire (INFO) — Watchlist #7 |"
+    },
+    {
+      "id": "noaa-k04w-1ac8950e",
+      "sourceId": "noaa-swpc",
+      "sourceName": "NOAA SWPC Space Weather & GNSS",
+      "attributionText": "Source: NOAA Space Weather Prediction Center (services.swpc.noaa.gov — K04W)",
+      "publishedAtISO": "2026-11-10T03:02:27.917Z",
+      "title": "NOAA SWPC: EXTENDED WARNING: Geomagnetic K-index of 4 expected",
+      "summary": "EXTENDED WARNING: Geomagnetic K-index of 4 expected. Baseline check for Watchlist #5: rule out solar ionospheric scintillation before attributing NOPAC/Baltic GPS or Stratum-1 PTP clock drift to adversarial spoofing.",
+      "url": "https://www.swpc.noaa.gov/",
+      "severity": "info",
+      "watchlistMatches": [
+        "#5"
+      ],
+      "riskMatrixMatches": [
+        "#1",
+        "#6"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "NOAA-SWPC",
+        "GNSS-Timing-Baseline",
+        "K04W"
+      ],
+      "markdownRow": "| #11+ — Nov 10, 2026 | NOAA SWPC (GNSS / Aviation HF / Stratum-1 Timing Baseline) | EXTENDED WARNING: Geomagnetic K-index of 4 expected ([NOAA SWPC](https://www.swpc.noaa.gov/)) | K04W ionospheric / geomagnetic telemetry | Live Wire (INFO) — Watchlist #5 |"
+    },
+    {
+      "id": "noaa-k04w-43c2b399",
+      "sourceId": "noaa-swpc",
+      "sourceName": "NOAA SWPC Space Weather & GNSS",
+      "attributionText": "Source: NOAA Space Weather Prediction Center (services.swpc.noaa.gov — K04W)",
+      "publishedAtISO": "2026-11-09T17:55:46.807Z",
+      "title": "NOAA SWPC: EXTENDED WARNING: Geomagnetic K-index of 4 expected",
+      "summary": "EXTENDED WARNING: Geomagnetic K-index of 4 expected. Baseline check for Watchlist #5: rule out solar ionospheric scintillation before attributing NOPAC/Baltic GPS or Stratum-1 PTP clock drift to adversarial spoofing.",
+      "url": "https://www.swpc.noaa.gov/",
+      "severity": "info",
+      "watchlistMatches": [
+        "#5"
+      ],
+      "riskMatrixMatches": [
+        "#1",
+        "#6"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "NOAA-SWPC",
+        "GNSS-Timing-Baseline",
+        "K04W"
+      ],
+      "markdownRow": "| #11+ — Nov 9, 2026 | NOAA SWPC (GNSS / Aviation HF / Stratum-1 Timing Baseline) | EXTENDED WARNING: Geomagnetic K-index of 4 expected ([NOAA SWPC](https://www.swpc.noaa.gov/)) | K04W ionospheric / geomagnetic telemetry | Live Wire (INFO) — Watchlist #5 |"
     }
   ]
 }

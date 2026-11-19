@@ -1,6 +1,6 @@
 {
-  "checkedAtISO": "2026-11-19T15:45:03.802Z",
-  "liveCount": 8,
+  "checkedAtISO": "2026-11-19T15:47:54.293Z",
+  "liveCount": 15,
   "totalFeeds": 15,
   "feeds": [
     {
@@ -9,9 +9,9 @@
       "endpoint": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json",
       "status": "live",
       "httpStatus": 200,
-      "latencyMs": 188,
+      "latencyMs": 210,
       "itemCount": 18,
-      "lastSuccessAtISO": "2026-11-19T15:45:03.802Z"
+      "lastSuccessAtISO": "2026-11-19T15:47:54.293Z"
     },
     {
       "id": "cisa-advisories",
@@ -19,19 +19,19 @@
       "endpoint": "https://www.cisa.gov/cybersecurity-advisories/all.xml",
       "status": "live",
       "httpStatus": 200,
-      "latencyMs": 119,
+      "latencyMs": 111,
       "itemCount": 15,
-      "lastSuccessAtISO": "2026-11-19T15:45:03.802Z"
+      "lastSuccessAtISO": "2026-11-19T15:47:54.293Z"
     },
     {
       "id": "nist-nvd",
       "name": "NIST NVD Critical CVEs",
       "endpoint": "https://services.nvd.nist.gov/rest/json/cves/2.0?cvssV3Severity=CRITICAL&resultsPerPage=25",
-      "status": "degraded",
-      "httpStatus": null,
-      "latencyMs": 0,
-      "itemCount": 0,
-      "lastSuccessAtISO": null
+      "status": "live",
+      "httpStatus": 200,
+      "latencyMs": 8654,
+      "itemCount": 12,
+      "lastSuccessAtISO": "2026-11-19T15:47:54.293Z"
     },
     {
       "id": "faa-nas",
@@ -39,30 +39,30 @@
       "endpoint": "https://nasstatus.faa.gov/api/airport-status-information",
       "status": "live",
       "httpStatus": 200,
-      "latencyMs": 244,
+      "latencyMs": 222,
       "itemCount": 7,
-      "updateTimeText": "Thu Nov 19 15:44:49 2026 GMT",
-      "lastSuccessAtISO": "2026-11-19T15:45:03.802Z"
+      "updateTimeText": "Thu Nov 19 15:47:20 2026 GMT",
+      "lastSuccessAtISO": "2026-11-19T15:47:54.293Z"
     },
     {
       "id": "usgs-seismic",
       "name": "USGS Subsea Chokepoint Seismic",
       "endpoint": "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&minmagnitude=5.0&orderby=time&limit=40",
-      "status": "degraded",
-      "httpStatus": null,
-      "latencyMs": 0,
-      "itemCount": 0,
-      "lastSuccessAtISO": null
+      "status": "live",
+      "httpStatus": 200,
+      "latencyMs": 231,
+      "itemCount": 6,
+      "lastSuccessAtISO": "2026-11-19T15:47:54.293Z"
     },
     {
       "id": "noaa-swpc",
       "name": "NOAA SWPC Space Weather & GNSS",
       "endpoint": "https://services.swpc.noaa.gov/products/alerts.json",
-      "status": "degraded",
-      "httpStatus": null,
-      "latencyMs": 0,
-      "itemCount": 0,
-      "lastSuccessAtISO": null
+      "status": "live",
+      "httpStatus": 200,
+      "latencyMs": 235,
+      "itemCount": 8,
+      "lastSuccessAtISO": "2026-11-19T15:47:54.293Z"
     },
     {
       "id": "federal-register",
@@ -70,19 +70,19 @@
       "endpoint": "https://www.federalregister.gov/api/v1/documents.json?per_page=25&order=newest",
       "status": "live",
       "httpStatus": 200,
-      "latencyMs": 513,
+      "latencyMs": 423,
       "itemCount": 15,
-      "lastSuccessAtISO": "2026-11-19T15:45:03.802Z"
+      "lastSuccessAtISO": "2026-11-19T15:47:54.293Z"
     },
     {
       "id": "ofac-marad-doe",
       "name": "OFAC, MARAD & DOE Directives",
       "endpoint": "https://www.federalregister.gov/api/v1/documents.json?per_page=20&order=newest&conditions%5Bagencies%5D%5B%5D=foreign-assets-control-office&conditions%5Bagencies%5D%5B%5D=maritime-administration&conditions%5Bagencies%5D%5B%5D=energy-department&conditions%5Bagencies%5D%5B%5D=federal-energy-regulatory-commission",
-      "status": "degraded",
-      "httpStatus": null,
-      "latencyMs": 0,
-      "itemCount": 0,
-      "lastSuccessAtISO": null
+      "status": "live",
+      "httpStatus": 200,
+      "latencyMs": 591,
+      "itemCount": 12,
+      "lastSuccessAtISO": "2026-11-19T15:47:54.293Z"
     },
     {
       "id": "aws-status",
@@ -90,39 +90,39 @@
       "endpoint": "https://status.aws.amazon.com/rss/all.rss",
       "status": "live",
       "httpStatus": 200,
-      "latencyMs": 260,
+      "latencyMs": 194,
       "itemCount": 0,
-      "lastSuccessAtISO": "2026-11-19T15:45:03.802Z"
+      "lastSuccessAtISO": "2026-11-19T15:47:54.293Z"
     },
     {
       "id": "gcp-status",
       "name": "Google Cloud Service Health",
       "endpoint": "https://status.cloud.google.com/incidents.json",
-      "status": "degraded",
-      "httpStatus": null,
-      "latencyMs": 0,
+      "status": "live",
+      "httpStatus": 200,
+      "latencyMs": 238,
       "itemCount": 0,
-      "lastSuccessAtISO": null
+      "lastSuccessAtISO": "2026-11-19T15:47:54.293Z"
     },
     {
       "id": "azure-status",
       "name": "Microsoft Azure & Entra ID",
       "endpoint": "https://rssfeed.azure.status.microsoft/en-us/status/feed/",
-      "status": "degraded",
-      "httpStatus": null,
-      "latencyMs": 0,
+      "status": "live",
+      "httpStatus": 200,
+      "latencyMs": 252,
       "itemCount": 0,
-      "lastSuccessAtISO": null
+      "lastSuccessAtISO": "2026-11-19T15:47:54.293Z"
     },
     {
       "id": "oci-status",
       "name": "Oracle Cloud (OCI) Status",
       "endpoint": "https://ocistatus.oraclecloud.com/api/v2/incident-summary.rss",
-      "status": "degraded",
-      "httpStatus": null,
-      "latencyMs": 0,
+      "status": "live",
+      "httpStatus": 200,
+      "latencyMs": 409,
       "itemCount": 0,
-      "lastSuccessAtISO": null
+      "lastSuccessAtISO": "2026-11-19T15:47:54.293Z"
     },
     {
       "id": "cloudflare-status",
@@ -130,9 +130,9 @@
       "endpoint": "https://www.cloudflarestatus.com/api/v2/incidents.json",
       "status": "live",
       "httpStatus": 200,
-      "latencyMs": 433,
+      "latencyMs": 442,
       "itemCount": 8,
-      "lastSuccessAtISO": "2026-11-19T15:45:03.802Z"
+      "lastSuccessAtISO": "2026-11-19T15:47:54.293Z"
     },
     {
       "id": "github-status",
@@ -140,9 +140,9 @@
       "endpoint": "https://www.githubstatus.com/api/v2/incidents.json",
       "status": "live",
       "httpStatus": 200,
-      "latencyMs": 584,
+      "latencyMs": 541,
       "itemCount": 8,
-      "lastSuccessAtISO": "2026-11-19T15:45:03.802Z"
+      "lastSuccessAtISO": "2026-11-19T15:47:54.293Z"
     },
     {
       "id": "apple-status",
@@ -150,9 +150,9 @@
       "endpoint": "https://www.apple.com/support/systemstatus/data/system_status_en_US.js",
       "status": "live",
       "httpStatus": 200,
-      "latencyMs": 130,
+      "latencyMs": 395,
       "itemCount": 11,
-      "lastSuccessAtISO": "2026-11-19T15:45:03.802Z"
+      "lastSuccessAtISO": "2026-11-19T15:47:54.293Z"
     }
   ]
 }
