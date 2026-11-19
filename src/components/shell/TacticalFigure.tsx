@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { Maximize2, X } from 'lucide-react';
 
 export interface TacticalMetricPill {
@@ -141,52 +142,55 @@ export function TacticalFigure({
       </figure>
 
       {/* Full-Resolution Lightbox Modal */}
-      {lightboxOpen && (
-        <div
-          className="fixed inset-0 z-50 bg-[#06080C]/94 backdrop-blur-md flex items-center justify-center p-4 sm:p-8"
-          onClick={() => setLightboxOpen(false)}
-          role="dialog"
-          aria-modal="true"
-          aria-label={`${plateId} — ${title}`}
-        >
+      {lightboxOpen &&
+        typeof document !== 'undefined' &&
+        createPortal(
           <div
-            className="max-w-6xl w-full obsidian-surface rounded-lg overflow-hidden shadow-2xl border border-white/20"
-            onClick={(e) => e.stopPropagation()}
+            className="fixed inset-0 z-[100] bg-[#06080C]/95 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 overflow-y-auto"
+            onClick={() => setLightboxOpen(false)}
+            role="dialog"
+            aria-modal="true"
+            aria-label={`${plateId} — ${title}`}
           >
-            <div className="px-5 py-3.5 border-b border-white/10 flex items-center justify-between gap-3">
-              <div className="flex items-center gap-2.5">
-                <span className="font-mono-tactical text-xs px-2 py-0.5 rounded bg-[#38BDF8]/15 border border-[#38BDF8]/35 text-[#38BDF8]">
-                  {plateId}
-                </span>
-                <h3 className="text-sm sm:text-base font-semibold text-white">{title}</h3>
+            <div
+              className="max-w-5xl w-full obsidian-surface rounded-lg overflow-hidden shadow-2xl border border-white/20 my-auto"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="px-4 sm:px-5 py-3 border-b border-white/10 flex items-center justify-between gap-3 bg-[#070A10]">
+                <div className="flex items-center gap-2.5 min-w-0">
+                  <span className="font-mono-tactical text-xs px-2 py-0.5 rounded bg-[#38BDF8]/15 border border-[#38BDF8]/35 text-[#38BDF8] shrink-0">
+                    {plateId}
+                  </span>
+                  <h3 className="text-sm sm:text-base font-semibold text-white truncate">{title}</h3>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setLightboxOpen(false)}
+                  className="p-1.5 rounded-lg bg-white/[0.06] hover:bg-white/[0.14] border border-white/15 text-gray-300 hover:text-white transition cursor-pointer shrink-0"
+                  aria-label="Close plate preview"
+                >
+                  <X className="w-4 h-4" />
+                </button>
               </div>
-              <button
-                type="button"
-                onClick={() => setLightboxOpen(false)}
-                className="p-1.5 rounded-lg bg-white/[0.06] hover:bg-white/[0.14] border border-white/15 text-gray-300 hover:text-white transition cursor-pointer"
-                aria-label="Close plate preview"
-              >
-                <X className="w-4 h-4" />
-              </button>
-            </div>
 
-            <div className="bg-[#0A0E17] max-h-[75vh] flex items-center justify-center overflow-hidden">
-              <img
-                src={resolvedSrc}
-                alt={alt}
-                className="w-full h-auto max-h-[75vh] object-contain"
-              />
-            </div>
+              <div className="bg-[#0A0E17] max-h-[70dvh] flex items-center justify-center overflow-hidden">
+                <img
+                  src={resolvedSrc}
+                  alt={alt}
+                  className="w-full h-auto max-h-[70dvh] object-contain"
+                />
+              </div>
 
-            <div className="px-5 py-3.5 border-t border-white/10 text-xs text-gray-300 leading-relaxed flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-              <p>{caption}</p>
-              <span className="font-mono-tactical text-[11px] text-gray-500 shrink-0">
-                ESC to close
-              </span>
+              <div className="px-4 sm:px-5 py-3 border-t border-white/10 text-xs text-gray-300 leading-relaxed flex flex-col sm:flex-row sm:items-center justify-between gap-2 bg-[#070A10]">
+                <p>{caption}</p>
+                <span className="font-mono-tactical text-[11px] text-gray-500 shrink-0">
+                  ESC to close
+                </span>
+              </div>
             </div>
-          </div>
-        </div>
-      )}
+          </div>,
+          document.body
+        )}
     </>
   );
 }

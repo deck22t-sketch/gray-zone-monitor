@@ -25,6 +25,7 @@ import { CitationChipList } from '@/components/shell/RichTextWithCitations';
 import { NarrativeAccordion } from '@/components/shell/NarrativeAccordion';
 import { TacticalFigure } from '@/components/shell/TacticalFigure';
 import { SectionNavStrip, scrollToSectionById } from '@/components/shell/SectionNavStrip';
+import { SubseaChokepointAtlas, SubseaTheaterId } from '@/components/views/SubseaChokepointAtlas';
 
 const CLASSIFICATION_META: Record<
   IncidentClassification,
@@ -143,6 +144,7 @@ export function IncidentsView() {
   const [ledgerDisplayMode, setLedgerDisplayMode] = useState<'cards' | 'table'>('cards');
   const [highlightedEventId, setHighlightedEventId] = useState<string | null>('#2');
   const [selectedActorIdx, setSelectedActorIdx] = useState<number>(0);
+  const [subseaTheater, setSubseaTheater] = useState<SubseaTheaterId>('taiwan-luzon');
 
   // Poisson Calculator State (defaults to 1.4 events/wk -> 75.3% per Section 8.2)
   const [weeklyRate, setWeeklyRate] = useState<number>(1.4);
@@ -1018,6 +1020,12 @@ export function IncidentsView() {
             { label: 'CA/B SC-081v3', value: 'Mar. 15, 2027 → 100d TLS', tone: 'amber' },
           ]}
           caption="Firewall and EDR telemetry cannot observe sub-IP physical dependencies: unauthenticated GNSS rooftop timing receivers (IEEE 1588 PTP), 13 GW projected data-center power deficits with 3-year GSU transformer queues, foreign-serviceable undersea SLTE repeaters, and 100-day TLS certificate cliffs."
+        />
+
+        <SubseaChokepointAtlas
+          theaterId={subseaTheater}
+          onTheaterChange={setSubseaTheater}
+          defaultShowCallouts={true}
         />
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">

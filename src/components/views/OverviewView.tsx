@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useMemo, useState } from 'react';
+import { createPortal } from 'react-dom';
 import Link from 'next/link';
 import {
   Clock,
@@ -23,11 +24,14 @@ import {
 import { usePortal } from '@/context/PortalContext';
 import { HorizonGroup } from '@/types/schemas';
 import { CitationChipList, RichTextWithCitations } from '@/components/shell/RichTextWithCitations';
-import { resolvePublicAssetPath } from '@/components/shell/TacticalFigure';
 import { SectionNavStrip, scrollToSectionById } from '@/components/shell/SectionNavStrip';
 import { MorningBriefDeck } from '@/components/views/MorningBriefDeck';
 import { GlobalFlashpointMap } from '@/components/views/GlobalFlashpointMap';
 import { CrossDomainCrosswalk } from '@/components/views/CrossDomainCrosswalk';
+import {
+  SubseaChokepointAtlas,
+  SubseaTheaterId,
+} from '@/components/views/SubseaChokepointAtlas';
 import { assessRiskVerification, resolveTraceNodeKey } from '@/lib/evidence';
 
 const PILLAR_ROUTES = [
@@ -103,6 +107,7 @@ export function OverviewView() {
   const [horizonFilter, setHorizonFilter] = useState<'ALL' | HorizonGroup>('ALL');
   const [riskQuery, setRiskQuery] = useState('');
   const [heroPlateOpen, setHeroPlateOpen] = useState(false);
+  const [subseaTheater, setSubseaTheater] = useState<SubseaTheaterId>('euro-atlantic-baltic');
   const [expandedRisks, setExpandedRisks] = useState<Record<string, boolean>>({
     '#1': true,
     '#2': true,
@@ -181,8 +186,6 @@ export function OverviewView() {
 
     return items.slice(0, 3);
   }, [changelog, liveSignals.signals, countdownCliffs]);
-
-  const heroMapSrc = resolvePublicAssetPath('/images/overview-backbone-map.jpg');
 
   useEffect(() => {
     const now = Date.now();
@@ -571,48 +574,15 @@ export function OverviewView() {
                 </div>
               </div>
 
-              {/* Right 5 Columns: Framed PLATE 00 Atlas + Dynamic Canonical Situation Flash */}
+              {/* Right 5 Columns: Framed PLATE 00 Subsea Chokepoint Atlas + Dynamic Canonical Situation Flash */}
               <div className="lg:col-span-5 flex flex-col justify-between gap-3.5">
-                {/* Framed PLATE 00 Card */}
-                <div className="obsidian-surface rounded-md overflow-hidden border border-white/12">
-                  <div className="px-3.5 py-2 bg-[#070A10] border-b border-white/10 flex items-center justify-between gap-2">
-                    <div className="flex items-center gap-2 min-w-0">
-                      <span className="font-mono-tactical text-[10px] font-semibold px-1.5 py-0.5 rounded-sm bg-[#38BDF8]/12 border border-[#38BDF8]/35 text-[#38BDF8] shrink-0">
-                        PLATE 00
-                      </span>
-                      <span className="text-xs font-medium text-gray-200 truncate">
-                        Transatlantic Subsea SLTE &amp; Grid Corridors
-                      </span>
-                    </div>
-                    <button
-                      type="button"
-                      onClick={() => setHeroPlateOpen(true)}
-                      className="inline-flex items-center gap-1 px-2 py-0.5 rounded-sm bg-white/[0.04] hover:bg-white/[0.1] border border-white/14 font-mono-tactical text-[10px] text-gray-200 hover:text-white transition cursor-pointer shrink-0"
-                    >
-                      <Maximize2 className="w-3 h-3 text-[#38BDF8]" />
-                      <span>Expand</span>
-                    </button>
-                  </div>
-                  <div
-                    onClick={() => setHeroPlateOpen(true)}
-                    role="button"
-                    tabIndex={0}
-                    onKeyDown={(e) => {
-                      if (e.key === 'Enter' || e.key === ' ') {
-                        e.preventDefault();
-                        setHeroPlateOpen(true);
-                      }
-                    }}
-                    className="relative aspect-[16/9] w-full bg-[#06080C] overflow-hidden group cursor-zoom-in"
-                  >
-                    <img
-                      src={heroMapSrc}
-                      alt="North Atlantic cartographic map linking Texas and Arkansas terrestrial corridors through New York and New Jersey via three cyan transatlantic submarine cables to Cornwall UK and Brittany France alongside crimson Baltic Sea fault highlights"
-                      className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-[1.03]"
-                    />
-                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#06080C]/75 via-transparent to-transparent" />
-                  </div>
-                </div>
+                <SubseaChokepointAtlas
+                  theaterId={subseaTheater}
+                  onTheaterChange={setSubseaTheater}
+                  defaultShowCallouts={false}
+                  compact={true}
+                  onRequestExpand={() => setHeroPlateOpen(true)}
+                />
 
                 {/* Data-Driven Latest Sync Situation Flash (updates automatically on every Google Doc sync) */}
                 <div className="obsidian-surface rounded-md p-3.5 space-y-2.5 flex-1 flex flex-col justify-between border border-white/12">
@@ -655,57 +625,56 @@ export function OverviewView() {
             </div>
           </section>
 
-          {/* Hero Backbone Atlas Lightbox */}
-          {heroPlateOpen && (
-            <div
-              className="fixed inset-0 z-50 bg-[#06080C]/94 backdrop-blur-md flex items-center justify-center p-4 sm:p-8"
-              onClick={() => setHeroPlateOpen(false)}
-              role="dialog"
-              aria-modal="true"
-              aria-label="PLATE 00 — Transatlantic Sub-IP & Continental Backbone Atlas"
-            >
+          {/* Hero Subsea Chokepoint & SLTE Conflict-Zone Atlas Lightbox */}
+          {heroPlateOpen &&
+            typeof document !== 'undefined' &&
+            createPortal(
               <div
-                className="max-w-6xl w-full obsidian-surface rounded-lg overflow-hidden shadow-2xl border border-white/20"
-                onClick={(e) => e.stopPropagation()}
+                className="fixed inset-0 z-[100] bg-[#06080C]/95 backdrop-blur-md flex items-center justify-center p-2.5 sm:p-5 overflow-y-auto"
+                onClick={() => setHeroPlateOpen(false)}
+                role="dialog"
+                aria-modal="true"
+                aria-label="PLATE 00 — Subsea Optical Cable & Chokepoint Conflict-Zone Atlas"
               >
-                <div className="px-5 py-3.5 border-b border-white/10 flex items-center justify-between gap-3">
-                  <div className="flex items-center gap-2.5">
-                    <span className="font-mono-tactical text-xs px-2 py-0.5 rounded-sm bg-[#38BDF8]/15 border border-[#38BDF8]/35 text-[#38BDF8]">
-                      PLATE 00
-                    </span>
-                    <h3 className="text-sm sm:text-base font-semibold text-white">
-                      Transatlantic Submarine Optical Cable Landings &amp; Continental Grid Corridors
-                    </h3>
+                <div
+                  className="max-w-[980px] w-full obsidian-surface rounded-lg overflow-hidden shadow-2xl border border-white/20 my-auto"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <div className="px-4 sm:px-5 py-2.5 border-b border-white/10 flex items-center justify-between gap-3 bg-[#070A10]">
+                    <div className="flex items-center gap-2.5 min-w-0">
+                      <span className="font-mono-tactical text-xs px-2 py-0.5 rounded-sm bg-[#38BDF8]/15 border border-[#38BDF8]/35 text-[#38BDF8] shrink-0">
+                        PLATE 00
+                      </span>
+                      <h3 className="text-sm sm:text-base font-semibold text-white truncate">
+                        Subsea Optical Cable Landings &amp; Conflict-Zone Chokepoint Atlas
+                      </h3>
+                    </div>
+                    <div className="flex items-center gap-2 shrink-0">
+                      <span className="hidden sm:inline font-mono-tactical text-[11px] text-gray-500">
+                        ESC to close
+                      </span>
+                      <button
+                        type="button"
+                        onClick={() => setHeroPlateOpen(false)}
+                        className="p-1.5 rounded-sm bg-white/[0.06] hover:bg-white/[0.14] border border-white/15 text-gray-300 hover:text-white transition cursor-pointer"
+                        aria-label="Close Subsea Chokepoint Atlas"
+                      >
+                        <X className="w-4 h-4" />
+                      </button>
+                    </div>
                   </div>
-                  <button
-                    type="button"
-                    onClick={() => setHeroPlateOpen(false)}
-                    className="p-1.5 rounded-sm bg-white/[0.06] hover:bg-white/[0.14] border border-white/15 text-gray-300 hover:text-white transition cursor-pointer"
-                    aria-label="Close Backbone Atlas"
-                  >
-                    <X className="w-4 h-4" />
-                  </button>
+                  <div className="p-2.5 sm:p-3.5 bg-[#05080E]">
+                    <SubseaChokepointAtlas
+                      theaterId={subseaTheater}
+                      onTheaterChange={setSubseaTheater}
+                      defaultShowCallouts={true}
+                      compact={false}
+                    />
+                  </div>
                 </div>
-                <div className="bg-[#06080C] max-h-[75vh] flex items-center justify-center overflow-hidden">
-                  <img
-                    src={heroMapSrc}
-                    alt="North Atlantic cartographic map linking Texas and Arkansas terrestrial corridors through New York and New Jersey via three cyan transatlantic submarine cables to Cornwall UK and Brittany France alongside crimson Baltic Sea fault highlights"
-                    className="w-full h-auto max-h-[75vh] object-contain"
-                  />
-                </div>
-                <div className="px-5 py-3.5 border-t border-white/10 text-xs text-gray-300 leading-relaxed flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-                  <p>
-                    Subsea SLTE optical trunks (cyan), continental high-voltage/telecom corridors
-                    (amber), and gray-zone maritime cable/GNSS fault zones (crimson) monitored across
-                    Sections 5.3, 6.5, and 7.1.
-                  </p>
-                  <span className="font-mono-tactical text-[11px] text-gray-500 shrink-0">
-                    ESC to close
-                  </span>
-                </div>
-              </div>
-            </div>
-          )}
+              </div>,
+              document.body
+            )}
 
       {/* Flagship Interactive Module 1: Global Flashpoint & Backbone Vector Map */}
       <GlobalFlashpointMap onTraceNode={jumpAndTraceInCrosswalk} />

@@ -13,6 +13,10 @@ import {
   Crosshair,
 } from 'lucide-react';
 import { resolvePublicAssetPath } from '@/components/shell/TacticalFigure';
+import {
+  SubseaChokepointAtlas,
+  SubseaTheaterId,
+} from '@/components/views/SubseaChokepointAtlas';
 
 export type FlashpointLayer =
   | 'ALL'
@@ -44,6 +48,7 @@ interface FlashpointNode {
   pillAnchor: 'start' | 'end';
   secondaryPoints?: SecondaryMarker[];
   layer: Exclude<FlashpointLayer, 'ALL'>;
+  secondaryLayers?: Array<Exclude<FlashpointLayer, 'ALL'>>;
   tone: 'crimson' | 'amber' | 'cyan';
   verification: 'Corroborated' | 'Developing';
   headlineMetric: string;
@@ -141,37 +146,38 @@ const FLASHPOINTS: FlashpointNode[] = [
   {
     id: 'baltic-shadow-fleet',
     code: 'FP-04',
-    shortTag: 'BALTIC / CRIMEA',
-    name: 'Baltic Sea, Kaliningrad & Black Sea Gray-Zone Flank',
+    shortTag: 'BALTIC / FINLAND',
+    name: 'Baltic Sea, Gulf of Finland & Kaliningrad Subsea Flank',
     region: 'Northern & Eastern European Maritime Theater',
-    coordsLabel: '55.70°N 19.80°E · 44.62°N 33.52°E',
-    x: 860,
-    y: 236,
-    pillDx: 15,
-    pillDy: -12,
+    coordsLabel: '59.80°N 25.50°E · 54.71°N 20.51°E',
+    x: 864,
+    y: 240,
+    pillDx: 16,
+    pillDy: -14,
     pillAnchor: 'start',
     secondaryPoints: [
+      { x: 904, y: 214, label: 'GULF OF FINLAND', labelDx: 10, labelDy: -6, anchor: 'start' },
       { x: 928, y: 304, label: 'CRIMEA', labelDx: 10, labelDy: 4, anchor: 'start' },
     ],
     layer: 'SUB_IP',
     tone: 'crimson',
     verification: 'Developing',
-    headlineMetric: 'Seabed Interconnectors & Regional GNSS Jamming',
+    headlineMetric: '40–100m Shelf · Estlink / C-Lion1 / BCS',
     summary:
-      'Persistent gray-zone anchor-drag exposure across Baltic telecom/power interconnectors paired with Kaliningrad and Black Sea AIS/GNSS navigation interference.',
+      'Shadow-fleet tanker transit from Ust-Luga/Primorsk through the shallow Gulf of Finland, past Gotland and Kaliningrad, and out the Danish Straits pairs anchor-drag cable exposure with regional GNSS jamming.',
     exposure:
-      'Tests NATO/EU sub-threshold attribution boundaries below formal cyber war-exclusion triggers.',
+      'Tests NATO/EU sub-threshold attribution across Estlink 1/2, Balticconnector, C-Lion1, and BCS East-West below formal war-exclusion triggers.',
     traceKey: 'risk:#8',
     detailHref: '/geopolitics#crimea-deterrence-section',
-    detailLabel: 'Explore Crimea & Deterrence',
+    detailLabel: 'Explore Deterrence & Flank',
   },
   {
     id: 'hormuz-epic-fury',
     code: 'FP-05',
     shortTag: 'HORMUZ / QESHM',
-    name: 'Strait of Hormuz, Qeshm & Persian Gulf OT Wiper Theater',
-    region: 'Persian Gulf Energy & Air-Defense Corridor',
-    coordsLabel: '26.56°N 56.25°E',
+    name: 'Strait of Hormuz, Fujairah SLTE & Persian Gulf Theater',
+    region: 'Persian Gulf & Bab el-Mandeb Maritime Corridor',
+    coordsLabel: '26.56°N 56.25°E · 25.12°N 56.36°E',
     x: 1032,
     y: 404,
     pillDx: 15,
@@ -180,15 +186,17 @@ const FLASHPOINTS: FlashpointNode[] = [
     secondaryPoints: [
       { x: 995, y: 390, label: 'KUWAIT / BAHRAIN', labelDx: -10, labelDy: -8, anchor: 'end' },
       { x: 986, y: 412, label: 'RIYADH', labelDx: -10, labelDy: 10, anchor: 'end' },
+      { x: 968, y: 462, label: 'BAB EL-MANDEB', labelDx: -10, labelDy: 12, anchor: 'end' },
     ],
     layer: 'KINETIC',
+    secondaryLayers: ['SUB_IP'],
     tone: 'crimson',
     verification: 'Corroborated',
-    headlineMetric: '$38B Burn · ADNOC & Qeshm Escalation',
+    headlineMetric: '$38B Burn · ADNOC, Qeshm & FALCON/GBI Spurs',
     summary:
       'Nov. 18 escalation hit an ADNOC UAE oil vessel in Hormuz (11 injured, 1 missing) alongside U.S. strikes on Qeshm Island and Iranian attacks on Kuwait, Bahrain, and Riyadh.',
     exposure:
-      'Pairs kinetic munitions drain with Iranian-nexus PLC intrusions (44818, 2222, 102, 502) and ESXi destroy_v6 wipers.',
+      'Pairs kinetic munitions drain and shallow 50–90m Hormuz/Fujairah SLTE exposure with Iranian-nexus PLC intrusions and ESXi destroy_v6 wipers.',
     traceKey: 'risk:#3',
     detailHref: '/geopolitics#epic-fury-section',
     detailLabel: 'View Operation Epic Fury',
@@ -196,31 +204,33 @@ const FLASHPOINTS: FlashpointNode[] = [
   {
     id: 'taiwan-mineral-chokepoint',
     code: 'FP-06',
-    shortTag: 'TAIWAN / GA-REE',
-    name: 'Shenzhen APEC, Taiwan Strait & Mineral Cliffs',
-    region: 'East Asia Semiconductor, Mineral & Bomber Corridor',
-    coordsLabel: '24.50°N 119.50°E · 22.54°N 114.06°E',
+    shortTag: 'TAIWAN / LUZON',
+    name: 'Shenzhen APEC, Taiwan Strait & Luzon Subsea Chokepoint',
+    region: 'First Island Chain Subsea, Mineral & Bomber Corridor',
+    coordsLabel: '24.50°N 119.50°E · 20.20°N 121.20°E',
     x: 1308,
     y: 414,
     pillDx: 16,
-    pillDy: 6,
+    pillDy: 4,
     pillAnchor: 'start',
     secondaryPoints: [
+      { x: 1314, y: 432, label: 'LUZON STRAIT', labelDx: 12, labelDy: 14, anchor: 'start' },
       { x: 1282, y: 420, label: 'SHENZHEN', labelDx: -10, labelDy: -8, anchor: 'end' },
       { x: 1354, y: 304, label: 'VLADIVOSTOK', labelDx: -10, labelDy: -6, anchor: 'end' },
-      { x: 1264, y: 462, label: 'VIETNAM TRACK', labelDx: 10, labelDy: 12, anchor: 'start' },
+      { x: 1264, y: 462, label: 'VIETNAM TRACK', labelDx: -10, labelDy: 12, anchor: 'end' },
     ],
     layer: 'KINETIC',
+    secondaryLayers: ['SUB_IP'],
     tone: 'crimson',
     verification: 'Corroborated',
-    headlineMetric: 'Nov. 27 Ga/Ge/Sb · Jan. 10 REE Cliffs',
+    headlineMetric: '14+ Luzon Cables · Nov. 27 Ga/Ge · Jan. 10 REE',
     summary:
       'Trump & Xi met in Shenzhen on Nov. 18 ahead of a trilateral with Putin as Russia flew nuclear-capable bombers past Japan and Taiwan to Vietnam.',
     exposure:
-      'China’s Ga/Ge/Sb pause expires Nov. 27 and 0.1% extraterritorial REE waiver ends Jan. 10, straining defense radars and magnets.',
+      'Combines Nov. 27 Ga/Ge/Sb and Jan. 10 REE cliffs with 60m Taiwan Strait (Matsu/Kinmen) and Luzon Strait (Bashi Channel) subsea fiber bottlenecks.',
     traceKey: 'risk:#4',
     detailHref: '/geopolitics#minerals-section',
-    detailLabel: 'Inspect Mineral Chokepoints',
+    detailLabel: 'Inspect Mineral & Strait Risk',
   },
   {
     id: 'nopac-gnss-airways',
@@ -341,6 +351,7 @@ export function GlobalFlashpointMap({ onTraceNode }: GlobalFlashpointMapProps) {
   const [zoom, setZoom] = useState<number>(1);
   const [pan, setPan] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
   const [showRasterCompare, setShowRasterCompare] = useState(false);
+  const [atlasTheater, setAtlasTheater] = useState<SubseaTheaterId>('euro-atlantic-baltic');
   const [cursorGeo, setCursorGeo] = useState<string | null>(null);
 
   const svgRef = useRef<SVGSVGElement | null>(null);
@@ -348,11 +359,22 @@ export function GlobalFlashpointMap({ onTraceNode }: GlobalFlashpointMapProps) {
   const dragStart = useRef<{ x: number; y: number; panX: number; panY: number } | null>(null);
 
   const theaterMapSrc = resolvePublicAssetPath('/images/global-theater-map.jpg');
-  const rasterPlateSrc = resolvePublicAssetPath('/images/overview-backbone-map.jpg');
+
+  function syncAtlasForNodeId(nodeId: string) {
+    if (nodeId === 'taiwan-mineral-chokepoint' || nodeId === 'nopac-gnss-airways') {
+      setAtlasTheater('taiwan-luzon');
+    } else if (nodeId === 'hormuz-epic-fury') {
+      setAtlasTheater('hormuz-redsea');
+    } else {
+      setAtlasTheater('euro-atlantic-baltic');
+    }
+  }
 
   const visibleNodes = useMemo(() => {
     if (layer === 'ALL') return FLASHPOINTS;
-    return FLASHPOINTS.filter((n) => n.layer === layer);
+    return FLASHPOINTS.filter(
+      (n) => n.layer === layer || Boolean(n.secondaryLayers?.includes(layer))
+    );
   }, [layer]);
 
   const selectedNode = useMemo(() => {
@@ -439,18 +461,21 @@ export function GlobalFlashpointMap({ onTraceNode }: GlobalFlashpointMapProps) {
             <span>Global Flashpoint &amp; Backbone Vector Map</span>
           </h2>
           <p className="text-xs text-gray-400 mt-0.5">
-            Calibrated satellite theater basemap with subsea SLTE trunks, RF spoofing airways, and kinetic chokepoints.
+            Calibrated satellite theater basemap with hydrographically routed subsea SLTE trunks, RF spoofing airways, and kinetic chokepoints.
           </p>
         </div>
 
         <div className="flex flex-wrap items-center gap-1.5">
           {LAYER_OPTIONS.map((opt) => {
-            const active = layer === opt.id;
+            const active = !showRasterCompare && layer === opt.id;
             return (
               <button
                 key={opt.id}
                 type="button"
-                onClick={() => setLayer(opt.id)}
+                onClick={() => {
+                  setShowRasterCompare(false);
+                  setLayer(opt.id);
+                }}
                 className={`px-2.5 py-1 rounded-sm text-[11px] font-mono-tactical border transition cursor-pointer ${
                   active
                     ? 'bg-[#38BDF8]/15 border-[#38BDF8]/50 text-[#38BDF8]'
@@ -464,7 +489,12 @@ export function GlobalFlashpointMap({ onTraceNode }: GlobalFlashpointMapProps) {
 
           <button
             type="button"
-            onClick={() => setShowRasterCompare((prev) => !prev)}
+            onClick={() => {
+              if (!showRasterCompare) {
+                syncAtlasForNodeId(selectedNode.id);
+              }
+              setShowRasterCompare((prev) => !prev);
+            }}
             className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-sm text-[11px] font-mono-tactical border transition cursor-pointer ${
               showRasterCompare
                 ? 'bg-[#F59E0B]/15 border-[#F59E0B]/45 text-[#F59E0B]'
@@ -472,23 +502,24 @@ export function GlobalFlashpointMap({ onTraceNode }: GlobalFlashpointMapProps) {
             }`}
           >
             <ImageIcon className="w-3 h-3" />
-            <span>{showRasterCompare ? 'Global Theater' : 'Plate 00'}</span>
+            <span>{showRasterCompare ? 'Global Theater' : 'Subsea Atlas'}</span>
           </button>
         </div>
       </div>
 
-      {/* Main Split Grid: 16:9 Interactive Theater Map (8 cols) + Active Node Dossier (4 cols) */}
+      {/* Main Split Grid: 16:9 Interactive Theater Map or Subsea Chokepoint Atlas (8 cols) + Active Node Dossier (4 cols) */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 items-stretch">
         <div className="lg:col-span-8 flex flex-col gap-2">
-          <div className="relative obsidian-surface rounded-md overflow-hidden border border-white/14 aspect-[16/9] w-full bg-[#05080E]">
           {showRasterCompare ? (
-            <img
-              src={rasterPlateSrc}
-              alt="North Atlantic submarine optical cable landings linking New York and New Jersey to Cornwall UK and Brittany France alongside Baltic fault highlights"
-              className="w-full h-full object-cover"
+            <SubseaChokepointAtlas
+              theaterId={atlasTheater}
+              onTheaterChange={setAtlasTheater}
+              defaultShowCallouts={true}
+              compact={false}
             />
           ) : (
             <>
+              <div className="relative obsidian-surface rounded-md overflow-hidden border border-white/14 aspect-[16/9] w-full bg-[#05080E]">
               <div
                 onPointerDown={(e) => {
                   if (zoom <= 1) return;
@@ -621,7 +652,7 @@ export function GlobalFlashpointMap({ onTraceNode }: GlobalFlashpointMapProps) {
                       ))}
                     </g>
 
-                    {/* 3. Multi-Domain Strategic Corridors, Subsea Cables & Airway Tracks */}
+                    {/* 3. Multi-Domain Strategic Corridors, Water-Routed Subsea Cables & Airway Tracks */}
                     <g fill="none" strokeLinecap="round" pointerEvents="none">
                       {/* BACKBONE: Amarillo <-> El Dorado peer flood + terrestrial feed to Ft Meade & NYC */}
                       <g opacity={corridorOpacity('BACKBONE')}>
@@ -657,21 +688,40 @@ export function GlobalFlashpointMap({ onTraceNode }: GlobalFlashpointMapProps) {
                         />
                       </g>
 
-                      {/* SUB_IP: Dual Transatlantic Submarine Optical SLTE Trunks + Baltic/Crimea + NOPAC R220/R580 */}
+                      {/* SUB_IP: Water-Routed Global Submarine Cable Corridors & Contested Chokepoints */}
                       <g opacity={corridorOpacity('SUB_IP')}>
-                        {/* North Trunk: Long Island NY -> Bude, Cornwall UK */}
+                        {/* Euro-Atlantic Trunks: Lynn/NY -> Bude UK, NJ -> Brittany FR, VA Beach -> Bilbao ES */}
                         <path
-                          d="M445,311 Q602,262 758,274"
+                          d="M448,308 Q602,262 758,274"
                           stroke="#38BDF8"
-                          strokeWidth="2.6"
+                          strokeWidth="2.4"
                           strokeOpacity="0.9"
                         />
-                        {/* South Trunk: Tuckerton NJ -> Brittany, France */}
                         <path
-                          d="M442,316 Q606,294 762,287"
+                          d="M442,315 Q606,292 762,287"
                           stroke="#38BDF8"
-                          strokeWidth="1.9"
+                          strokeWidth="1.8"
+                          strokeOpacity="0.7"
+                        />
+                        <path
+                          d="M436,324 Q605,318 764,313"
+                          stroke="#38BDF8"
+                          strokeWidth="1.5"
+                          strokeOpacity="0.58"
+                        />
+                        {/* Havfrue / AEC-2 North Sea Trunk (strictly north of Scotland into Skagerrak) + GIUK Gap */}
+                        <path
+                          d="M446,310 Q610,218 756,232 Q792,230 820,232"
+                          stroke="#38BDF8"
+                          strokeWidth="1.6"
                           strokeOpacity="0.68"
+                        />
+                        <path
+                          d="M700,192 L744,212 L766,228"
+                          stroke="#38BDF8"
+                          strokeWidth="1.3"
+                          strokeOpacity="0.55"
+                          strokeDasharray="3 4"
                         />
                         <text
                           x="582"
@@ -684,20 +734,85 @@ export function GlobalFlashpointMap({ onTraceNode }: GlobalFlashpointMapProps) {
                           TAT-SLTE OPTIC TRUNKS
                         </text>
 
-                        {/* North Sea -> Baltic Sea / Kaliningrad -> Gulf of Finland + Crimea Gray-Zone Flank */}
+                        {/* Baltic Sea Contested Subsea Corridor (100% water-routed: Skagerrak -> Kattegat -> Danish Straits -> Kaliningrad/Gotland -> Gulf of Finland) */}
                         <path
-                          d="M758,274 Q808,236 860,236 L892,212"
+                          d="M820,232 L830,238 L832,248 Q848,252 864,240 Q874,226 882,216 L908,214"
                           stroke="#EF4444"
-                          strokeWidth="2"
+                          strokeWidth="2.2"
+                          strokeOpacity="0.88"
+                        />
+                        {/* Black Sea Maritime Corridor off Crimea */}
+                        <path
+                          d="M915,314 Q928,308 948,312"
+                          stroke="#EF4444"
+                          strokeWidth="1.6"
+                          strokeOpacity="0.65"
+                          strokeDasharray="4 3"
+                        />
+
+                        {/* Red Sea -> Bab el-Mandeb -> Gulf of Aden -> Fujairah UAE -> Strait of Hormuz Subsea Corridor */}
+                        <path
+                          d="M923,372 L944,415 L968,462 Q996,466 1048,434 Q1042,418 1033,412"
+                          stroke="#38BDF8"
+                          strokeWidth="1.8"
                           strokeOpacity="0.72"
-                          strokeDasharray="5 4"
+                        />
+                        <circle
+                          cx="968"
+                          cy="462"
+                          r="9"
+                          stroke="#EF4444"
+                          strokeWidth="1.3"
+                          strokeOpacity="0.65"
+                          strokeDasharray="3 3"
                         />
                         <path
-                          d="M860,236 Q896,268 928,304"
+                          d="M1033,412 L1032,404 Q1016,398 996,392"
                           stroke="#EF4444"
                           strokeWidth="1.8"
-                          strokeOpacity="0.62"
-                          strokeDasharray="4 4"
+                          strokeOpacity="0.82"
+                        />
+
+                        {/* Indo-Pacific: South China Sea -> Luzon Strait (Bashi Channel) -> Taiwan -> Ryukyu -> Japan -> Trans-Pacific */}
+                        <path
+                          d="M1252,476 Q1282,448 1314,432"
+                          stroke="#38BDF8"
+                          strokeWidth="1.8"
+                          strokeOpacity="0.72"
+                        />
+                        <path
+                          d="M1282,424 Q1298,430 1314,432"
+                          stroke="#38BDF8"
+                          strokeWidth="1.6"
+                          strokeOpacity="0.68"
+                        />
+                        <path
+                          d="M1314,432 Q1320,418 1316,410 Q1344,392 1398,344 Q1495,336 1598,332"
+                          stroke="#38BDF8"
+                          strokeWidth="2.1"
+                          strokeOpacity="0.82"
+                        />
+                        <path
+                          d="M1314,432 Q1368,444 1422,458"
+                          stroke="#38BDF8"
+                          strokeWidth="1.4"
+                          strokeOpacity="0.6"
+                        />
+                        {/* Luzon Strait Subsea Chokepoint Ring & Taiwan-Matsu Shallow Cable */}
+                        <circle
+                          cx="1314"
+                          cy="432"
+                          r="11"
+                          stroke="#EF4444"
+                          strokeWidth="1.4"
+                          strokeOpacity="0.75"
+                          strokeDasharray="3 3"
+                        />
+                        <path
+                          d="M1304,411 L1313,410"
+                          stroke="#EF4444"
+                          strokeWidth="2"
+                          strokeOpacity="0.9"
                         />
 
                         {/* NOPAC Airways R220 / R580: Tokyo FIR -> Kurils/FP-07 -> 180° IDL + Wrapped West -> Anchorage */}
@@ -964,9 +1079,9 @@ export function GlobalFlashpointMap({ onTraceNode }: GlobalFlashpointMapProps) {
                   <RotateCcw className="w-3.5 h-3.5" />
                 </button>
               </div>
+              </div>
             </>
           )}
-          </div>
 
           {/* Unobstructed Mobile Legend & Geodetic Readout Bar (<640px) */}
           {!showRasterCompare && (
@@ -1062,11 +1177,12 @@ export function GlobalFlashpointMap({ onTraceNode }: GlobalFlashpointMapProps) {
               key={n.id}
               type="button"
               onClick={() => {
-                if (active && zoom === 1) {
+                syncAtlasForNodeId(n.id);
+                if (active && zoom === 1 && !showRasterCompare) {
                   focusOnNode(n);
                 } else {
                   setSelectedId(n.id);
-                  if (zoom > 1) focusOnNode(n);
+                  if (zoom > 1 && !showRasterCompare) focusOnNode(n);
                 }
               }}
               className={`shrink-0 inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-md text-xs font-mono-tactical border transition cursor-pointer ${

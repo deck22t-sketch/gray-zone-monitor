@@ -422,11 +422,14 @@ describe('Phase 3: Poisson Null-Hypothesis Math & Client-Side AES-256-GCM Vault'
     await expect(decryptBundleWithPasscode(meta, 'wrong-passcode')).rejects.toThrow();
   });
 
-  it('ships all 9 bespoke editorial & cartographic JPEG assets in public/images/ and resolves GitHub Pages basePath cleanly', async () => {
+  it('ships all 11 bespoke editorial & cartographic JPEG assets in public/images/ and validates Subsea Chokepoint Atlas geodetic calibration', async () => {
     const { resolvePublicAssetPath } = await import('../src/components/shell/TacticalFigure');
+    const { SUBSEA_THEATERS } = await import('../src/components/views/SubseaChokepointAtlas');
     const expectedImages = [
       'global-theater-map.jpg',
       'overview-backbone-map.jpg',
+      'subsea-taiwan-luzon-map.jpg',
+      'subsea-hormuz-redsea-map.jpg',
       'geopolitics-imperial-arc.jpg',
       'hormuz-mineral-chokepoints.jpg',
       'incidents-hybrid-routing.jpg',
@@ -442,6 +445,25 @@ describe('Phase 3: Poisson Null-Hypothesis Math & Client-Side AES-256-GCM Vault'
       const buf = fs.readFileSync(fullPath);
       expect(buf.length).toBeGreaterThan(100_000);
       expect(buf.subarray(0, 3).toString('hex')).toBe('ffd8ff');
+    }
+
+    expect(SUBSEA_THEATERS).toHaveLength(3);
+    for (const theater of SUBSEA_THEATERS) {
+      expect(theater.pins.length).toBeGreaterThanOrEqual(7);
+      for (const pin of theater.pins) {
+        expect(pin.x).toBeGreaterThan(20);
+        expect(pin.x).toBeLessThan(1580);
+        expect(pin.y).toBeGreaterThan(20);
+        expect(pin.y).toBeLessThan(880);
+        const pillW = pin.label.length * 6.5 + 16;
+        const endX = pin.x + pin.dx;
+        const endY = pin.y + pin.dy;
+        const pillX = pin.anchor === 'end' ? endX - pillW : endX;
+        expect(pillX).toBeGreaterThanOrEqual(4);
+        expect(pillX + pillW).toBeLessThanOrEqual(1596);
+        expect(endY - 10).toBeGreaterThanOrEqual(4);
+        expect(endY + 10).toBeLessThanOrEqual(896);
+      }
     }
 
     const prevBase = process.env.NEXT_PUBLIC_BASE_PATH;
