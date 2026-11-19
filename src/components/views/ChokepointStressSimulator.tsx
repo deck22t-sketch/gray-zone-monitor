@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Factory, AlertTriangle, ShieldCheck, CalendarClock } from 'lucide-react';
 import { evaluateChokepointStress, SupplyChainProfile } from '@/lib/simulators';
 
@@ -14,15 +14,23 @@ const PROFILES: Array<{ id: SupplyChainProfile; label: string; tag: string }> = 
 export function ChokepointStressSimulator() {
   const [profile, setProfile] = useState<SupplyChainProfile>('defense_rf_optics');
   const [bufferWeeks, setBufferWeeks] = useState<number>(10);
+  const [referenceDateISO, setReferenceDateISO] = useState<string>('2026-11-18');
+
+  useEffect(() => {
+    const todayIso = new Date().toISOString().slice(0, 10);
+    if (todayIso >= '2026-11-18') {
+      setReferenceDateISO(todayIso);
+    }
+  }, []);
 
   const stress = useMemo(
     () =>
       evaluateChokepointStress({
         profile,
         bufferWeeks,
-        referenceDateISO: '2026-11-18',
+        referenceDateISO,
       }),
-    [profile, bufferWeeks]
+    [profile, bufferWeeks, referenceDateISO]
   );
 
   const ratingClasses =

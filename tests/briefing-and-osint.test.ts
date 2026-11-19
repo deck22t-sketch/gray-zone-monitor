@@ -422,9 +422,10 @@ describe('Phase 3: Poisson Null-Hypothesis Math & Client-Side AES-256-GCM Vault'
     await expect(decryptBundleWithPasscode(meta, 'wrong-passcode')).rejects.toThrow();
   });
 
-  it('ships all 8 bespoke editorial JPEG plates in public/images/ and resolves GitHub Pages basePath cleanly', async () => {
+  it('ships all 9 bespoke editorial & cartographic JPEG assets in public/images/ and resolves GitHub Pages basePath cleanly', async () => {
     const { resolvePublicAssetPath } = await import('../src/components/shell/TacticalFigure');
     const expectedImages = [
+      'global-theater-map.jpg',
       'overview-backbone-map.jpg',
       'geopolitics-imperial-arc.jpg',
       'hormuz-mineral-chokepoints.jpg',
@@ -446,12 +447,12 @@ describe('Phase 3: Poisson Null-Hypothesis Math & Client-Side AES-256-GCM Vault'
     const prevBase = process.env.NEXT_PUBLIC_BASE_PATH;
     try {
       process.env.NEXT_PUBLIC_BASE_PATH = '/gray-zone-monitor';
-      expect(resolvePublicAssetPath('/images/overview-backbone-map.jpg')).toBe(
-        '/gray-zone-monitor/images/overview-backbone-map.jpg'
+      expect(resolvePublicAssetPath('/images/global-theater-map.jpg')).toBe(
+        '/gray-zone-monitor/images/global-theater-map.jpg'
       );
       process.env.NEXT_PUBLIC_BASE_PATH = '';
-      expect(resolvePublicAssetPath('/images/overview-backbone-map.jpg')).toBe(
-        '/images/overview-backbone-map.jpg'
+      expect(resolvePublicAssetPath('/images/global-theater-map.jpg')).toBe(
+        '/images/global-theater-map.jpg'
       );
     } finally {
       if (prevBase === undefined) {

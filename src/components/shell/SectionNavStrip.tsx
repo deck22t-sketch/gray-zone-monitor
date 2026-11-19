@@ -10,6 +10,45 @@ export interface SectionAnchorItem {
   badge?: string;
 }
 
+/**
+ * Scrolls to a target section ID while accounting for both the sticky TopNav
+ * (including mobile compact-header transitions at scrollY > 68) and the sticky
+ * SectionNavStrip so zero pixels of any section bezel or heading are clipped.
+ */
+export function scrollToSectionById(
+  targetId: string,
+  behavior: ScrollBehavior = 'smooth'
+): boolean {
+  if (typeof window === 'undefined') return false;
+  const cleanId = targetId.replace(/^#/, '');
+  const targetEl = document.getElementById(cleanId);
+  if (!targetEl) return false;
+
+  const headerEl = document.getElementById('portal-top-header');
+  const stripEl = document.getElementById('portal-section-strip');
+
+  // Because #portal-top-header is position:sticky in document flow, any mobile
+  // compact-mode height change shifts both targetDocTop and sticky header height
+  // by the exact same delta—making (rawTargetTop - currentHeaderH - stripH - 18) invariant.
+  const rawTargetTop = window.scrollY + targetEl.getBoundingClientRect().top;
+  const currentHeaderH = headerEl
+    ? headerEl.getBoundingClientRect().height
+    : window.innerWidth < 768
+      ? 90
+      : 134;
+  const stripH = stripEl ? stripEl.getBoundingClientRect().height : 42;
+
+  const destinationTop = Math.max(0, Math.round(rawTargetTop - currentHeaderH - stripH - 18));
+
+  window.scrollTo({ top: destinationTop, behavior });
+  try {
+    window.history.replaceState(null, '', `#${cleanId}`);
+  } catch {
+    // Ignore history state SecurityError in sandboxed contexts
+  }
+  return true;
+}
+
 export function SectionNavStrip({
   items,
   ariaLabel = 'In-page section navigation',
@@ -41,7 +80,7 @@ export function SectionNavStrip({
         }
       },
       {
-        rootMargin: '-120px 0px -60% 0px',
+        rootMargin: '-185px 0px -55% 0px',
         threshold: [0, 0.15, 0.4],
       }
     );
@@ -75,6 +114,7 @@ export function SectionNavStrip({
 
   return (
     <nav
+      id="portal-section-strip"
       aria-label={ariaLabel}
       style={{ top: 'var(--portal-header-h, 34px)' }}
       className="sticky z-30 -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 bg-[#080B11]/[0.98] backdrop-blur-md border-y border-white/[0.11] shadow-[0_12px_28px_-14px_rgba(0,0,0,0.95)] print:hidden"
@@ -95,7 +135,11 @@ export function SectionNavStrip({
                     itemRefs.current[item.id] = el;
                   }}
                   href={`#${item.id}`}
-                  onClick={() => setActiveId(item.id)}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setActiveId(item.id);
+                    scrollToSectionById(item.id, 'smooth');
+                  }}
                   className={`inline-flex items-center gap-1.5 px-2.5 h-full text-xs whitespace-nowrap transition border-b-2 shrink-0 ${
                     isActive
                       ? 'border-[#38BDF8] text-white font-medium bg-white/[0.03]'

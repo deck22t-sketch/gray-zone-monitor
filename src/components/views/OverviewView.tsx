@@ -24,7 +24,7 @@ import { usePortal } from '@/context/PortalContext';
 import { HorizonGroup } from '@/types/schemas';
 import { CitationChipList, RichTextWithCitations } from '@/components/shell/RichTextWithCitations';
 import { resolvePublicAssetPath } from '@/components/shell/TacticalFigure';
-import { SectionNavStrip } from '@/components/shell/SectionNavStrip';
+import { SectionNavStrip, scrollToSectionById } from '@/components/shell/SectionNavStrip';
 import { MorningBriefDeck } from '@/components/views/MorningBriefDeck';
 import { GlobalFlashpointMap } from '@/components/views/GlobalFlashpointMap';
 import { CrossDomainCrosswalk } from '@/components/views/CrossDomainCrosswalk';
@@ -39,18 +39,30 @@ const PILLAR_ROUTES = [
   { href: '/incidents#poisson-calc-section', label: 'Poisson Calculator' },
 ];
 
+const CONSOLE_SECTION_IDS = new Set([
+  'command-overview-hero',
+  'flashpoint-map-section',
+  'crosswalk-section',
+  'cliff-strip-section',
+  'bento-summary-section',
+  'risk-matrix-section',
+]);
+
 function formatCountdownDelta(targetIso: string, nowMs: number) {
   const targetMs = Date.parse(targetIso);
   const diffMs = targetMs - nowMs;
   if (diffMs <= 0) {
     const elapsedDays = Math.floor(Math.abs(diffMs) / 86_400_000);
+    const sameUtcDay =
+      new Date(targetMs).toISOString().slice(0, 10) ===
+      new Date(nowMs).toISOString().slice(0, 10);
     return {
       expired: true,
       days: elapsedDays,
       hours: 0,
       minutes: 0,
       seconds: 0,
-      badgeText: elapsedDays === 0 ? 'ACTIVE TODAY' : `T+${elapsedDays}d ELAPSED`,
+      badgeText: sameUtcDay ? 'COMPLETED TODAY' : `COMPLETED · T+${Math.max(1, elapsedDays)}d`,
     };
   }
   const totalSec = Math.floor(diffMs / 1000);
@@ -173,37 +185,61 @@ export function OverviewView() {
   const heroMapSrc = resolvePublicAssetPath('/images/overview-backbone-map.jpg');
 
   useEffect(() => {
+    const now = Date.now();
     setMounted(true);
-    setNowMs(Date.now());
+    setNowMs(now);
 
-    // Check ?trace=... deep link first; otherwise default <768px mobile visitors to 60s Morning Brief
+    // Auto-select the nearest live upcoming cliff once prior deadlines have completed
+    const nextLiveIdx = countdownCliffs.findIndex(
+      (c) => Date.parse(c.targetTimestampISO) > now
+    );
+    if (nextLiveIdx >= 0) {
+      setSelectedCliffIdx(nextLiveIdx);
+    }
+
+    // Check ?trace=... or #section hash deep links first; otherwise default <768px mobile visitors to 60s Brief
     const params = new URLSearchParams(window.location.search);
     const traceParam = resolveTraceNodeKey(params.get('trace'));
+    const hashId = window.location.hash.replace(/^#/, '');
+
     if (traceParam) {
       setOverviewMode('console');
       setFocusedCrosswalkKey(traceParam);
       setTimeout(() => {
-        document.getElementById('crosswalk-section')?.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start',
-        });
+        scrollToSectionById('crosswalk-section', 'smooth');
+      }, 80);
+    } else if (hashId && CONSOLE_SECTION_IDS.has(hashId)) {
+      setOverviewMode('console');
+      setTimeout(() => {
+        scrollToSectionById(hashId, 'smooth');
       }, 80);
     } else if (window.innerWidth < 768) {
       setOverviewMode('brief');
     }
 
+    const onHashChange = () => {
+      const nextHash = window.location.hash.replace(/^#/, '');
+      if (nextHash && CONSOLE_SECTION_IDS.has(nextHash)) {
+        setOverviewMode('console');
+        setTimeout(() => {
+          scrollToSectionById(nextHash, 'smooth');
+        }, 40);
+      }
+    };
+
+    window.addEventListener('hashchange', onHashChange);
     const timer = setInterval(() => setNowMs(Date.now()), 1000);
-    return () => clearInterval(timer);
-  }, []);
+    return () => {
+      window.removeEventListener('hashchange', onHashChange);
+      clearInterval(timer);
+    };
+  }, [countdownCliffs]);
 
   function jumpAndTraceInCrosswalk(traceKey: string) {
     setOverviewMode('console');
     setFocusedCrosswalkKey(traceKey);
     setTimeout(() => {
-      document.getElementById('crosswalk-section')?.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
-      });
+      scrollToSectionById('crosswalk-section', 'smooth');
     }, 50);
   }
 
@@ -436,6 +472,10 @@ export function OverviewView() {
 
                   <a
                     href="#risk-matrix-section"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      scrollToSectionById('risk-matrix-section', 'smooth');
+                    }}
                     className="obsidian-surface hover:border-[#F59E0B]/45 rounded-md p-3 transition group"
                   >
                     <p className="font-mono-tactical text-[10px] uppercase tracking-wider text-gray-500">
@@ -451,6 +491,10 @@ export function OverviewView() {
 
                   <a
                     href="#cliff-strip-section"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      scrollToSectionById('cliff-strip-section', 'smooth');
+                    }}
                     className="obsidian-surface hover:border-[#38BDF8]/45 rounded-md p-3 transition group"
                   >
                     <p className="font-mono-tactical text-[10px] uppercase tracking-wider text-gray-500">
@@ -563,7 +607,7 @@ export function OverviewView() {
                   >
                     <img
                       src={heroMapSrc}
-                      alt="Transatlantic submarine optical cable landings, continental telecom corridors, and maritime chokepoint fault pulses"
+                      alt="North Atlantic cartographic map linking Texas and Arkansas terrestrial corridors through New York and New Jersey via three cyan transatlantic submarine cables to Cornwall UK and Brittany France alongside crimson Baltic Sea fault highlights"
                       className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-[1.03]"
                     />
                     <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#06080C]/75 via-transparent to-transparent" />
@@ -645,7 +689,7 @@ export function OverviewView() {
                 <div className="bg-[#06080C] max-h-[75vh] flex items-center justify-center overflow-hidden">
                   <img
                     src={heroMapSrc}
-                    alt="Transatlantic submarine optical cable landings, continental telecom corridors, and maritime chokepoint fault pulses"
+                    alt="North Atlantic cartographic map linking Texas and Arkansas terrestrial corridors through New York and New Jersey via three cyan transatlantic submarine cables to Cornwall UK and Brittany France alongside crimson Baltic Sea fault highlights"
                     className="w-full h-auto max-h-[75vh] object-contain"
                   />
                 </div>
@@ -694,26 +738,27 @@ export function OverviewView() {
         </div>
 
         {/* Proportional 120-Day Horizon Rail */}
-        <div className="obsidian-surface rounded-xl px-4 py-3 space-y-2 hidden sm:block">
+        <div className="obsidian-surface rounded-md px-4 py-3 space-y-2 hidden sm:block">
           <div className="flex items-center justify-between font-mono-tactical text-[10px] text-gray-400 uppercase">
             <span>Nov 18, 2026 (House Hearing &amp; ANT IPO)</span>
             <span>Dec 31 – Jan 10 (Clearing, DFARS &amp; REE Cliffs)</span>
             <span>Mar 15, 2027 (100-Day TLS Cliff)</span>
           </div>
           <div className="relative h-5 flex items-center">
-            <div className="w-full h-1 rounded-full bg-white/10" />
+            <div className="w-full h-1 rounded-xs bg-white/10" />
             {countdownCliffs.map((cliff, idx) => {
               const targetMs = Date.parse(cliff.targetTimestampISO);
               const rawPct = ((targetMs - windowStartMs) / windowSpanMs) * 100;
               const clampedPct = Math.min(98.5, Math.max(1.5, rawPct));
               const delta = formatCountdownDelta(cliff.targetTimestampISO, nowMs);
               const active = idx === selectedCliffIdx;
-              const dotBg =
-                delta.days <= 12
-                  ? 'bg-[#EF4444]'
-                  : delta.days <= 55
-                  ? 'bg-[#F59E0B]'
-                  : 'bg-[#38BDF8]';
+              const dotBg = delta.expired
+                ? 'bg-[#10B981]'
+                : delta.days <= 12
+                ? 'bg-[#EF4444]'
+                : delta.days <= 55
+                ? 'bg-[#F59E0B]'
+                : 'bg-[#38BDF8]';
               return (
                 <button
                   key={cliff.targetDateISO}
@@ -737,19 +782,20 @@ export function OverviewView() {
           {countdownCliffs.map((cliff, idx) => {
             const delta = formatCountdownDelta(cliff.targetTimestampISO, nowMs);
             const isSelected = idx === selectedCliffIdx;
-            const urgencyColor =
-              delta.days <= 12
-                ? 'text-[#EF4444] border-[#EF4444]/35 bg-[#EF4444]/10'
-                : delta.days <= 55
-                ? 'text-[#F59E0B] border-[#F59E0B]/35 bg-[#F59E0B]/10'
-                : 'text-[#38BDF8] border-[#38BDF8]/30 bg-[#38BDF8]/10';
+            const urgencyColor = delta.expired
+              ? 'text-[#10B981] border-[#10B981]/30 bg-[#10B981]/10'
+              : delta.days <= 12
+              ? 'text-[#EF4444] border-[#EF4444]/35 bg-[#EF4444]/10'
+              : delta.days <= 55
+              ? 'text-[#F59E0B] border-[#F59E0B]/35 bg-[#F59E0B]/10'
+              : 'text-[#38BDF8] border-[#38BDF8]/30 bg-[#38BDF8]/10';
 
             return (
               <button
                 key={cliff.targetDateISO}
                 type="button"
                 onClick={() => setSelectedCliffIdx(idx)}
-                className={`text-left rounded-xl p-4 transition cursor-pointer border ${
+                className={`text-left rounded-md p-4 transition cursor-pointer border ${
                   isSelected
                     ? 'surface-elevated border-[#38BDF8]/60 shadow-lg'
                     : 'glass-card border-white/10'
@@ -760,7 +806,7 @@ export function OverviewView() {
                     {cliff.dateLabel}
                   </span>
                   <span
-                    className={`font-mono-tactical text-[11px] px-2 py-0.5 rounded border ${urgencyColor}`}
+                    className={`font-mono-tactical text-[10px] px-2 py-0.5 rounded-sm border ${urgencyColor}`}
                   >
                     {delta.badgeText}
                   </span>
@@ -774,7 +820,7 @@ export function OverviewView() {
         </div>
 
         {selectedCliff && selectedCliffDelta && (
-          <div className="surface-elevated rounded-xl px-5 py-4 flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+          <div className="surface-elevated rounded-md px-5 py-4 flex flex-col lg:flex-row lg:items-center justify-between gap-4">
             <div className="space-y-1.5 max-w-4xl">
               <div className="flex flex-wrap items-center gap-2">
                 <span className="font-mono-tactical text-xs font-semibold text-[#F59E0B]">
@@ -792,9 +838,9 @@ export function OverviewView() {
               </p>
             </div>
 
-            <div className="obsidian-surface rounded-lg px-3.5 py-2.5 shrink-0 flex items-center gap-3 self-start lg:self-center">
+            <div className="obsidian-surface rounded-sm px-3.5 py-2.5 shrink-0 flex items-center gap-3 self-start lg:self-center">
               <span className="font-mono-tactical text-[10px] uppercase text-gray-400">
-                T-Minus
+                {selectedCliffDelta.expired ? 'Status' : 'T-Minus'}
               </span>
               <span className="font-mono-tactical text-sm font-semibold text-white">
                 {selectedCliffDelta.badgeText}

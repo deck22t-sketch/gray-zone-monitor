@@ -11,12 +11,12 @@
   --status-amber: #f59e0b;
   --status-cyan: #38bdf8;
   --status-emerald: #10b981;
-  --portal-header-h: 92px;
+  --portal-header-h: 108px;
 }
 
 @media (min-width: 768px) {
   :root {
-    --portal-header-h: 122px;
+    --portal-header-h: 134px;
   }
 }
 
@@ -41,7 +41,7 @@ body {
 }
 
 .scroll-mt-nav {
-  scroll-margin-top: calc(var(--portal-header-h, 92px) + 56px);
+  scroll-margin-top: calc(var(--portal-header-h, 134px) + 62px);
 }
 
 @keyframes tacticalPulse {

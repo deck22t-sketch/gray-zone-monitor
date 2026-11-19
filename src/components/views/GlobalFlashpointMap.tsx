@@ -10,6 +10,7 @@ import {
   GitMerge,
   ArrowRight,
   Image as ImageIcon,
+  Crosshair,
 } from 'lucide-react';
 import { resolvePublicAssetPath } from '@/components/shell/TacticalFigure';
 
@@ -20,15 +21,28 @@ export type FlashpointLayer =
   | 'SUB_IP'
   | 'CLEARING';
 
+interface SecondaryMarker {
+  x: number;
+  y: number;
+  label: string;
+  labelDx?: number;
+  labelDy?: number;
+  anchor?: 'start' | 'middle' | 'end';
+}
+
 interface FlashpointNode {
   id: string;
   code: string;
+  shortTag: string;
   name: string;
   region: string;
   coordsLabel: string;
   x: number;
   y: number;
-  secondaryPoint?: { x: number; y: number; label: string };
+  pillDx: number;
+  pillDy: number;
+  pillAnchor: 'start' | 'end';
+  secondaryPoints?: SecondaryMarker[];
   layer: Exclude<FlashpointLayer, 'ALL'>;
   tone: 'crimson' | 'amber' | 'cyan';
   verification: 'Corroborated' | 'Developing';
@@ -44,12 +58,18 @@ const FLASHPOINTS: FlashpointNode[] = [
   {
     id: 'fti-eldorado-amarillo',
     code: 'FP-01',
+    shortTag: 'FTI CORE',
     name: 'El Dorado, AR ↔ Amarillo, TX (FAA FTI Backbone)',
     region: 'Continental U.S. Telecom Core',
     coordsLabel: '33.21°N 92.66°W · 35.22°N 101.83°W',
-    x: 242,
-    y: 170,
-    secondaryPoint: { x: 212, y: 164, label: 'Amarillo Peer' },
+    x: 376,
+    y: 352,
+    pillDx: 14,
+    pillDy: 24,
+    pillAnchor: 'start',
+    secondaryPoints: [
+      { x: 336, y: 342, label: 'AMARILLO', labelDx: -10, labelDy: -6, anchor: 'end' },
+    ],
     layer: 'BACKBONE',
     tone: 'amber',
     verification: 'Developing',
@@ -65,11 +85,19 @@ const FLASHPOINTS: FlashpointNode[] = [
   {
     id: 'us-east-clearing',
     code: 'FP-02',
-    name: 'US East Clearing Corridor (NYC / NJ — DTCC & Instant Rails)',
-    region: 'North American G-SIB & Repo Core',
-    coordsLabel: '40.71°N 74.01°W',
-    x: 294,
-    y: 148,
+    shortTag: 'NYC / NJ',
+    name: 'US East Clearing & Enclave Corridor (NYC / NJ · Ft. Meade)',
+    region: 'North American G-SIB, DTCC & Enclave Core',
+    coordsLabel: '40.71°N 74.01°W · 39.11°N 76.77°W',
+    x: 442,
+    y: 312,
+    pillDx: -14,
+    pillDy: -16,
+    pillAnchor: 'end',
+    secondaryPoints: [
+      { x: 431, y: 322, label: 'FT MEADE', labelDx: 10, labelDy: 12, anchor: 'start' },
+      { x: 396, y: 306, label: 'CME CHI', labelDx: -8, labelDy: -8, anchor: 'end' },
+    ],
     layer: 'CLEARING',
     tone: 'cyan',
     verification: 'Corroborated',
@@ -85,19 +113,27 @@ const FLASHPOINTS: FlashpointNode[] = [
   {
     id: 'transatlantic-slte',
     code: 'FP-03',
-    name: 'Transatlantic Subsea SLTE Landings (NY/NJ ↔ UK/EU)',
-    region: 'North Atlantic Optical Trunk',
-    coordsLabel: '40.6°N 73.9°W ↔ 50.1°N 5.5°W',
-    x: 392,
-    y: 134,
+    shortTag: 'SLTE LANDINGS',
+    name: 'Transatlantic Subsea SLTE Landings (Bude UK / Brittany ↔ NY/NJ)',
+    region: 'North Atlantic Submarine Optical Trunk',
+    coordsLabel: '50.83°N 4.55°W ↔ 40.60°N 73.90°W',
+    x: 758,
+    y: 274,
+    pillDx: -14,
+    pillDy: -22,
+    pillAnchor: 'end',
+    secondaryPoints: [
+      { x: 762, y: 287, label: 'BRITTANY', labelDx: -10, labelDy: 15, anchor: 'end' },
+      { x: 445, y: 311, label: 'NY SLTE', labelDx: 10, labelDy: -6, anchor: 'start' },
+    ],
     layer: 'SUB_IP',
     tone: 'cyan',
     verification: 'Corroborated',
     headlineMetric: 'FCC 91 FR 73480 · Due Jan. 8, 2027',
     summary:
-      'Nov. 16 FCC final rule tightens Submarine Line Terminal Equipment (SLTE) oversight and mandates Foreign Adversary Annual Reports across landing stations.',
+      'Nov. 16 FCC final rule tightens Submarine Line Terminal Equipment (SLTE) oversight and mandates Foreign Adversary Annual Reports across U.S.–European cable landing stations.',
     exposure:
-      'Out-of-band optical terminal management interfaces bridge physical seabed trunks to carrier IP cores.',
+      'Out-of-band optical terminal management interfaces bridge physical seabed repeaters to carrier IP cores.',
     traceKey: 'cliff:2027-01-08',
     detailHref: '/incidents#sub-ip-section',
     detailLabel: 'Open Sub-IP Blind Spots',
@@ -105,51 +141,75 @@ const FLASHPOINTS: FlashpointNode[] = [
   {
     id: 'baltic-shadow-fleet',
     code: 'FP-04',
-    name: 'Baltic Sea & Kaliningrad Subsea / GNSS Theater',
-    region: 'Northern European Maritime Chokepoint',
-    coordsLabel: '55.7°N 19.8°E',
-    x: 548,
-    y: 106,
+    shortTag: 'BALTIC / CRIMEA',
+    name: 'Baltic Sea, Kaliningrad & Black Sea Gray-Zone Flank',
+    region: 'Northern & Eastern European Maritime Theater',
+    coordsLabel: '55.70°N 19.80°E · 44.62°N 33.52°E',
+    x: 860,
+    y: 236,
+    pillDx: 15,
+    pillDy: -12,
+    pillAnchor: 'start',
+    secondaryPoints: [
+      { x: 928, y: 304, label: 'CRIMEA', labelDx: 10, labelDy: 4, anchor: 'start' },
+    ],
     layer: 'SUB_IP',
     tone: 'crimson',
     verification: 'Developing',
-    headlineMetric: 'Seabed Cable & Regional GNSS Jamming',
+    headlineMetric: 'Seabed Interconnectors & Regional GNSS Jamming',
     summary:
-      'Persistent gray-zone anchor-drag exposure across Baltic telecom/power interconnectors paired with regional AIS/GNSS navigation interference.',
+      'Persistent gray-zone anchor-drag exposure across Baltic telecom/power interconnectors paired with Kaliningrad and Black Sea AIS/GNSS navigation interference.',
     exposure:
-      'Tests NATO/EU sub-threshold attribution thresholds below formal cyber war-exclusion triggers.',
+      'Tests NATO/EU sub-threshold attribution boundaries below formal cyber war-exclusion triggers.',
     traceKey: 'risk:#8',
-    detailHref: '/geopolitics',
-    detailLabel: 'Explore Geopolitical Arc',
+    detailHref: '/geopolitics#crimea-deterrence-section',
+    detailLabel: 'Explore Crimea & Deterrence',
   },
   {
     id: 'hormuz-epic-fury',
     code: 'FP-05',
-    name: 'Strait of Hormuz & Regional OT Wiper Theater',
-    region: 'Persian Gulf Energy & Defense Corridor',
+    shortTag: 'HORMUZ / QESHM',
+    name: 'Strait of Hormuz, Qeshm & Persian Gulf OT Wiper Theater',
+    region: 'Persian Gulf Energy & Air-Defense Corridor',
     coordsLabel: '26.56°N 56.25°E',
-    x: 656,
-    y: 206,
+    x: 1032,
+    y: 404,
+    pillDx: 15,
+    pillDy: 20,
+    pillAnchor: 'start',
+    secondaryPoints: [
+      { x: 995, y: 390, label: 'KUWAIT / BAHRAIN', labelDx: -10, labelDy: -8, anchor: 'end' },
+      { x: 986, y: 412, label: 'RIYADH', labelDx: -10, labelDy: 10, anchor: 'end' },
+    ],
     layer: 'KINETIC',
     tone: 'crimson',
     verification: 'Corroborated',
     headlineMetric: '$38B Burn · ADNOC & Qeshm Escalation',
     summary:
-      'Nov. 18 escalation hit an ADNOC UAE oil vessel in Hormuz (11 injured, 1 missing) alongside U.S. strikes on Qeshm Island and Iranian attacks on Kuwait/Bahrain/Riyadh.',
+      'Nov. 18 escalation hit an ADNOC UAE oil vessel in Hormuz (11 injured, 1 missing) alongside U.S. strikes on Qeshm Island and Iranian attacks on Kuwait, Bahrain, and Riyadh.',
     exposure:
       'Pairs kinetic munitions drain with Iranian-nexus PLC intrusions (44818, 2222, 102, 502) and ESXi destroy_v6 wipers.',
     traceKey: 'risk:#3',
-    detailHref: '/geopolitics#entente-section',
-    detailLabel: 'View Attrition & Chokepoints',
+    detailHref: '/geopolitics#epic-fury-section',
+    detailLabel: 'View Operation Epic Fury',
   },
   {
     id: 'taiwan-mineral-chokepoint',
     code: 'FP-06',
-    name: 'Shenzhen APEC / Taiwan Strait & Mineral Cliffs',
-    region: 'East Asia Semiconductor & REE Hub',
-    coordsLabel: '24.5°N 119.5°E',
-    x: 818,
-    y: 204,
+    shortTag: 'TAIWAN / GA-REE',
+    name: 'Shenzhen APEC, Taiwan Strait & Mineral Cliffs',
+    region: 'East Asia Semiconductor, Mineral & Bomber Corridor',
+    coordsLabel: '24.50°N 119.50°E · 22.54°N 114.06°E',
+    x: 1308,
+    y: 414,
+    pillDx: 16,
+    pillDy: 6,
+    pillAnchor: 'start',
+    secondaryPoints: [
+      { x: 1282, y: 420, label: 'SHENZHEN', labelDx: -10, labelDy: -8, anchor: 'end' },
+      { x: 1354, y: 304, label: 'VLADIVOSTOK', labelDx: -10, labelDy: -6, anchor: 'end' },
+      { x: 1264, y: 462, label: 'VIETNAM TRACK', labelDx: 10, labelDy: 12, anchor: 'start' },
+    ],
     layer: 'KINETIC',
     tone: 'crimson',
     verification: 'Corroborated',
@@ -159,17 +219,24 @@ const FLASHPOINTS: FlashpointNode[] = [
     exposure:
       'China’s Ga/Ge/Sb pause expires Nov. 27 and 0.1% extraterritorial REE waiver ends Jan. 10, straining defense radars and magnets.',
     traceKey: 'risk:#4',
-    detailHref: '/geopolitics#entente-section',
+    detailHref: '/geopolitics#minerals-section',
     detailLabel: 'Inspect Mineral Chokepoints',
   },
   {
     id: 'nopac-gnss-airways',
     code: 'FP-07',
+    shortTag: 'NOPAC R220',
     name: 'NOPAC Airways R220 / R580 GNSS Spoofing Corridor',
     region: 'North Pacific U.S.–Asia Flight Routes',
-    coordsLabel: '48.0°N 165.0°E',
-    x: 896,
-    y: 134,
+    coordsLabel: '48.00°N 165.00°E ↔ 61.17°N 149.99°W',
+    x: 1488,
+    y: 272,
+    pillDx: -15,
+    pillDy: -14,
+    pillAnchor: 'end',
+    secondaryPoints: [
+      { x: 124, y: 202, label: 'ANC R220', labelDx: 10, labelDy: -6, anchor: 'start' },
+    ],
     layer: 'SUB_IP',
     tone: 'amber',
     verification: 'Corroborated',
@@ -192,6 +259,72 @@ const LAYER_OPTIONS: Array<{ id: FlashpointLayer; label: string }> = [
   { id: 'CLEARING', label: 'Clearing Rails' },
 ];
 
+const LAT_PARALLELS = [
+  { y: 210, label: '60°N', eq: false },
+  { y: 376, label: '30°N', eq: false },
+  { y: 524, label: '0° EQ', eq: true },
+  { y: 656, label: '30°S', eq: false },
+] as const;
+
+const LON_MERIDIANS = [
+  { x: 244, label: '120°W', prime: false },
+  { x: 511, label: '60°W', prime: false },
+  { x: 778, label: '0° UTC', prime: true },
+  { x: 1045, label: '60°E', prime: false },
+  { x: 1312, label: '120°E', prime: false },
+] as const;
+
+// Piecewise latitude calibration anchored to measured coastline control points on global-theater-map.jpg (1600x900)
+const LAT_CONTROL_POINTS: Array<[number, number]> = [
+  [0, 83.0],
+  [105, 74.0],
+  [210, 60.0],
+  [274, 50.8],
+  [312, 40.7],
+  [352, 33.2],
+  [376, 30.0],
+  [404, 26.6],
+  [420, 22.5],
+  [524, 0.0],
+  [656, -30.0],
+  [765, -48.0],
+  [818, -56.0],
+  [900, -70.0],
+];
+
+function svgPointToLatLon(svgX: number, svgY: number): { lat: number; lon: number } {
+  let lon = (svgX - 778) / 4.45;
+  if (lon > 180) lon -= 360;
+  if (lon < -180) lon += 360;
+  lon = Math.max(-180, Math.min(180, lon));
+
+  const cy = Math.max(0, Math.min(900, svgY));
+  let lat = 0;
+  for (let i = 0; i < LAT_CONTROL_POINTS.length - 1; i += 1) {
+    const [y0, lat0] = LAT_CONTROL_POINTS[i];
+    const [y1, lat1] = LAT_CONTROL_POINTS[i + 1];
+    if (cy >= y0 && cy <= y1) {
+      const t = (cy - y0) / Math.max(1, y1 - y0);
+      lat = lat0 + t * (lat1 - lat0);
+      break;
+    }
+  }
+  return { lat, lon };
+}
+
+function clampPanForZoom(
+  panX: number,
+  panY: number,
+  zoomVal: number
+): { x: number; y: number } {
+  const maxX = 800 * Math.max(0, zoomVal - 1);
+  const maxY = 450 * Math.max(0, zoomVal - 1);
+  return {
+    x: Math.max(-maxX, Math.min(maxX, panX)),
+    y: Math.max(-maxY, Math.min(maxY, panY)),
+  };
+}
+
 function toneHex(tone: FlashpointNode['tone']): string {
   if (tone === 'crimson') return '#EF4444';
   if (tone === 'amber') return '#F59E0B';
@@ -210,7 +343,11 @@ export function GlobalFlashpointMap({ onTraceNode }: GlobalFlashpointMapProps) {
   const [showRasterCompare, setShowRasterCompare] = useState(false);
   const [cursorGeo, setCursorGeo] = useState<string | null>(null);
 
+  const svgRef = useRef<SVGSVGElement | null>(null);
+  const worldGroupRef = useRef<SVGGElement | null>(null);
   const dragStart = useRef<{ x: number; y: number; panX: number; panY: number } | null>(null);
+
+  const theaterMapSrc = resolvePublicAssetPath('/images/global-theater-map.jpg');
   const rasterPlateSrc = resolvePublicAssetPath('/images/overview-backbone-map.jpg');
 
   const visibleNodes = useMemo(() => {
@@ -228,10 +365,22 @@ export function GlobalFlashpointMap({ onTraceNode }: GlobalFlashpointMapProps) {
 
   function adjustZoom(delta: number) {
     setZoom((prev) => {
-      const next = Math.min(2.4, Math.max(1, Number((prev + delta).toFixed(2))));
-      if (next === 1) setPan({ x: 0, y: 0 });
+      const next = Math.min(2.6, Math.max(1, Number((prev + delta).toFixed(2))));
+      if (next === 1) {
+        setPan({ x: 0, y: 0 });
+      } else {
+        setPan((cur) => clampPanForZoom(cur.x, cur.y, next));
+      }
       return next;
     });
+  }
+
+  function focusOnNode(node: FlashpointNode) {
+    const targetZoom = 1.85;
+    const rawPanX = targetZoom * (800 - node.x);
+    const rawPanY = targetZoom * (450 - node.y);
+    setZoom(targetZoom);
+    setPan(clampPanForZoom(rawPanX, rawPanY, targetZoom));
   }
 
   function resetViewport() {
@@ -240,16 +389,38 @@ export function GlobalFlashpointMap({ onTraceNode }: GlobalFlashpointMapProps) {
   }
 
   function updateCursorGeo(e: React.PointerEvent<HTMLDivElement>) {
+    const gEl = worldGroupRef.current;
+    const svgEl = svgRef.current;
+    if (gEl && svgEl && typeof svgEl.createSVGPoint === 'function') {
+      const ctm = gEl.getScreenCTM();
+      if (ctm) {
+        const pt = svgEl.createSVGPoint();
+        pt.x = e.clientX;
+        pt.y = e.clientY;
+        const local = pt.matrixTransform(ctm.inverse());
+        const { lat, lon } = svgPointToLatLon(local.x, local.y);
+        const latStr = `${Math.abs(lat).toFixed(2)}°${lat >= 0 ? 'N' : 'S'}`;
+        const lonStr = `${Math.abs(lon).toFixed(2)}°${lon >= 0 ? 'E' : 'W'}`;
+        setCursorGeo(`${latStr} ${lonStr}`);
+        return;
+      }
+    }
     const rect = e.currentTarget.getBoundingClientRect();
     if (rect.width <= 0 || rect.height <= 0) return;
-    const rx = (e.clientX - rect.left) / rect.width;
-    const ry = (e.clientY - rect.top) / rect.height;
-    const lon = Math.max(-180, Math.min(180, rx * 360 - 180));
-    const lat = Math.max(-75, Math.min(82, 82 - ry * 157));
-    const latStr = `${Math.abs(lat).toFixed(1)}°${lat >= 0 ? 'N' : 'S'}`;
-    const lonStr = `${Math.abs(lon).toFixed(1)}°${lon >= 0 ? 'E' : 'W'}`;
-    setCursorGeo(`${latStr} ${lonStr}`);
+    const svgX = ((e.clientX - rect.left) / rect.width) * 1600;
+    const svgY = ((e.clientY - rect.top) / rect.height) * 900;
+    const { lat, lon } = svgPointToLatLon(svgX, svgY);
+    setCursorGeo(
+      `${Math.abs(lat).toFixed(2)}°${lat >= 0 ? 'N' : 'S'} ${Math.abs(lon).toFixed(2)}°${
+        lon >= 0 ? 'E' : 'W'
+      }`
+    );
   }
+
+  const corridorOpacity = (corridorLayer: Exclude<FlashpointLayer, 'ALL'>) => {
+    if (layer === 'ALL') return 1;
+    return layer === corridorLayer ? 1 : 0.16;
+  };
 
   return (
     <section
@@ -264,11 +435,11 @@ export function GlobalFlashpointMap({ onTraceNode }: GlobalFlashpointMapProps) {
             id="flashpoint-map-heading"
             className="text-sm font-mono-tactical uppercase tracking-wider text-white flex items-center gap-2"
           >
-            <Compass className="w-4 h-4 text-[#38BDF8]" />
+            <Compass className="w-4 h-4 text-[#38BDF8] shrink-0" />
             <span>Global Flashpoint &amp; Backbone Vector Map</span>
           </h2>
           <p className="text-xs text-gray-400 mt-0.5">
-            Select any theater node to inspect verification posture, exposure, and crosswalk blast radius.
+            Calibrated satellite theater basemap with subsea SLTE trunks, RF spoofing airways, and kinetic chokepoints.
           </p>
         </div>
 
@@ -301,18 +472,19 @@ export function GlobalFlashpointMap({ onTraceNode }: GlobalFlashpointMapProps) {
             }`}
           >
             <ImageIcon className="w-3 h-3" />
-            <span>{showRasterCompare ? 'Vector Mode' : 'Plate 00'}</span>
+            <span>{showRasterCompare ? 'Global Theater' : 'Plate 00'}</span>
           </button>
         </div>
       </div>
 
-      {/* Main Split Grid: Interactive Map Canvas (8 cols) + Selected Node Dossier (4 cols) */}
+      {/* Main Split Grid: 16:9 Interactive Theater Map (8 cols) + Active Node Dossier (4 cols) */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 items-stretch">
-        <div className="lg:col-span-8 relative obsidian-surface rounded-md overflow-hidden border border-white/12 min-h-[260px] sm:min-h-[340px] flex items-center justify-center">
+        <div className="lg:col-span-8 flex flex-col gap-2">
+          <div className="relative obsidian-surface rounded-md overflow-hidden border border-white/14 aspect-[16/9] w-full bg-[#05080E]">
           {showRasterCompare ? (
             <img
               src={rasterPlateSrc}
-              alt="Transatlantic submarine optical cable landings and continental corridors illustration"
+              alt="North Atlantic submarine optical cable landings linking New York and New Jersey to Cornwall UK and Brittany France alongside Baltic fault highlights"
               className="w-full h-full object-cover"
             />
           ) : (
@@ -330,12 +502,18 @@ export function GlobalFlashpointMap({ onTraceNode }: GlobalFlashpointMapProps) {
                 onPointerMove={(e) => {
                   updateCursorGeo(e);
                   if (!dragStart.current || zoom <= 1) return;
-                  const dx = e.clientX - dragStart.current.x;
-                  const dy = e.clientY - dragStart.current.y;
-                  setPan({
-                    x: Math.max(-240, Math.min(240, dragStart.current.panX + dx)),
-                    y: Math.max(-140, Math.min(140, dragStart.current.panY + dy)),
-                  });
+                  const rect = e.currentTarget.getBoundingClientRect();
+                  const scaleX = rect.width > 0 ? 1600 / rect.width : 1.8;
+                  const scaleY = rect.height > 0 ? 900 / rect.height : 1.8;
+                  const dx = (e.clientX - dragStart.current.x) * scaleX;
+                  const dy = (e.clientY - dragStart.current.y) * scaleY;
+                  setPan(
+                    clampPanForZoom(
+                      dragStart.current.panX + dx,
+                      dragStart.current.panY + dy,
+                      zoom
+                    )
+                  );
                 }}
                 onPointerUp={() => {
                   dragStart.current = null;
@@ -349,108 +527,295 @@ export function GlobalFlashpointMap({ onTraceNode }: GlobalFlashpointMapProps) {
                 }`}
               >
                 <svg
-                  viewBox="0 0 1000 460"
-                  className="w-full h-full"
+                  ref={svgRef}
+                  viewBox="0 0 1600 900"
+                  className="w-full h-full block"
                   role="img"
-                  aria-label="Interactive global infrastructure flashpoint vector map"
+                  aria-label="High-fidelity global theater basemap with calibrated critical infrastructure flashpoint overlays"
                 >
+                  <defs>
+                    {/* Crisp terrain & coastline contrast boost for dark OLED/LCD readability */}
+                    <filter id="basemap-enhance" colorInterpolationFilters="sRGB">
+                      <feComponentTransfer>
+                        <feFuncR type="linear" slope="1.26" intercept="0.012" />
+                        <feFuncG type="linear" slope="1.28" intercept="0.015" />
+                        <feFuncB type="linear" slope="1.32" intercept="0.02" />
+                      </feComponentTransfer>
+                    </filter>
+                    <filter id="active-pin-glow" x="-40%" y="-40%" width="180%" height="180%">
+                      <feGaussianBlur stdDeviation="3" result="blur" />
+                      <feMerge>
+                        <feMergeNode in="blur" />
+                        <feMergeNode in="SourceGraphic" />
+                      </feMerge>
+                    </filter>
+                  </defs>
+
                   <g
-                    transform={`translate(${500 + pan.x}, ${230 + pan.y}) scale(${zoom}) translate(-500, -230)`}
+                    ref={worldGroupRef}
+                    transform={`translate(${800 + pan.x}, ${450 + pan.y}) scale(${zoom}) translate(-800, -450)`}
                   >
-                    {/* Subtle Equator & Tropic Reference Arcs */}
-                    <line
-                      x1="20"
-                      y1="245"
-                      x2="980"
-                      y2="245"
-                      stroke="rgba(255,255,255,0.06)"
-                      strokeDasharray="4 6"
-                    />
-                    <line
-                      x1="20"
-                      y1="145"
-                      x2="980"
-                      y2="145"
-                      stroke="rgba(56,189,248,0.07)"
-                      strokeDasharray="2 6"
+                    {/* 1. High-Fidelity Satellite Bathymetric & Topographic World Basemap */}
+                    <image
+                      href={theaterMapSrc}
+                      x="0"
+                      y="0"
+                      width="1600"
+                      height="900"
+                      preserveAspectRatio="none"
+                      filter="url(#basemap-enhance)"
                     />
 
-                    {/* Simplified Continental Landmass Silhouettes */}
-                    <g
-                      fill="#121B2D"
-                      stroke="rgba(255,255,255,0.13)"
-                      strokeWidth="1"
-                      strokeLinejoin="round"
-                    >
-                      {/* North America */}
-                      <path d="M75,78 L185,68 L282,92 L322,135 L292,182 L255,204 L218,225 L178,205 L145,168 L112,132 Z" />
-                      {/* South America */}
-                      <path d="M262,242 L328,258 L358,312 L324,398 L286,420 L268,352 L252,284 Z" />
-                      {/* Europe & UK */}
-                      <path d="M462,88 L538,72 L595,85 L598,142 L542,158 L484,152 L458,124 Z" />
-                      {/* Africa */}
-                      <path d="M468,176 L568,172 L624,228 L596,338 L544,386 L504,335 L485,254 L458,214 Z" />
-                      {/* Eurasia & Middle East */}
-                      <path d="M598,76 L795,68 L918,92 L894,168 L835,224 L758,246 L698,222 L642,226 L598,178 Z" />
-                      {/* Japan, Taiwan & Maritime SE Asia */}
-                      <path d="M852,148 L874,162 L862,186 L844,174 Z" />
-                      <path d="M812,200 L824,206 L818,216 L808,210 Z" />
-                      <path d="M775,258 L848,266 L868,298 L792,296 Z" />
-                      {/* Australia */}
-                      <path d="M808,326 L898,322 L918,378 L842,396 L802,366 Z" />
+                    {/* 2. Calibrated Geodetic Graticule Grid (60°N..30°S, 120°W..120°E) */}
+                    <g pointerEvents="none">
+                      {LAT_PARALLELS.map((p) => (
+                        <g key={p.label}>
+                          <line
+                            x1="0"
+                            y1={p.y}
+                            x2="1600"
+                            y2={p.y}
+                            stroke={
+                              p.eq ? 'rgba(56, 189, 248, 0.20)' : 'rgba(148, 163, 184, 0.11)'
+                            }
+                            strokeWidth={p.eq ? '1.2' : '1'}
+                            strokeDasharray={p.eq ? '6 6' : '3 7'}
+                          />
+                          <text
+                            x="18"
+                            y={p.y - 6}
+                            fill={p.eq ? 'rgba(56, 189, 248, 0.72)' : 'rgba(148, 163, 184, 0.52)'}
+                            fontSize="11"
+                            fontFamily="monospace"
+                          >
+                            {p.label}
+                          </text>
+                        </g>
+                      ))}
+
+                      {LON_MERIDIANS.map((m) => (
+                        <g key={m.label}>
+                          <line
+                            x1={m.x}
+                            y1="0"
+                            x2={m.x}
+                            y2="900"
+                            stroke={
+                              m.prime ? 'rgba(56, 189, 248, 0.16)' : 'rgba(148, 163, 184, 0.09)'
+                            }
+                            strokeWidth="1"
+                            strokeDasharray="3 8"
+                          />
+                          <text
+                            x={m.x + 6}
+                            y="517"
+                            fill={
+                              m.prime ? 'rgba(56, 189, 248, 0.65)' : 'rgba(148, 163, 184, 0.46)'
+                            }
+                            fontSize="10"
+                            fontFamily="monospace"
+                          >
+                            {m.label}
+                          </text>
+                        </g>
+                      ))}
                     </g>
 
-                    {/* Strategic Backbone & Subsea Cable Corridors */}
-                    <g fill="none" strokeLinecap="round">
-                      {/* Amarillo <-> El Dorado <-> NYC */}
-                      <path
-                        d="M212,164 Q228,172 242,170 T294,148"
-                        stroke="#F59E0B"
-                        strokeOpacity="0.65"
-                        strokeWidth="1.8"
-                        strokeDasharray="4 3"
-                      />
-                      {/* Transatlantic SLTE NYC <-> UK/EU */}
-                      <path
-                        d="M294,148 Q392,112 484,122"
-                        stroke="#38BDF8"
-                        strokeOpacity="0.65"
-                        strokeWidth="2"
-                      />
-                      {/* UK <-> Baltic */}
-                      <path
-                        d="M484,122 Q516,104 548,106"
-                        stroke="#EF4444"
-                        strokeOpacity="0.55"
-                        strokeWidth="1.6"
-                        strokeDasharray="3 3"
-                      />
-                      {/* Med <-> Hormuz <-> Taiwan Strait */}
-                      <path
-                        d="M565,168 Q615,192 656,206 Q742,238 818,204"
-                        stroke="#EF4444"
-                        strokeOpacity="0.45"
-                        strokeWidth="1.6"
-                        strokeDasharray="5 4"
-                      />
-                      {/* Taiwan <-> NOPAC R220/R580 Airway */}
-                      <path
-                        d="M818,204 Q862,164 896,134 Q942,116 982,122"
-                        stroke="#F59E0B"
-                        strokeOpacity="0.6"
-                        strokeWidth="1.7"
-                        strokeDasharray="4 4"
-                      />
+                    {/* 3. Multi-Domain Strategic Corridors, Subsea Cables & Airway Tracks */}
+                    <g fill="none" strokeLinecap="round" pointerEvents="none">
+                      {/* BACKBONE: Amarillo <-> El Dorado peer flood + terrestrial feed to Ft Meade & NYC */}
+                      <g opacity={corridorOpacity('BACKBONE')}>
+                        <path
+                          d="M336,342 L376,352"
+                          stroke="#F59E0B"
+                          strokeWidth="3"
+                          strokeOpacity="0.95"
+                        />
+                        <path
+                          d="M376,352 Q406,338 431,322 L442,312"
+                          stroke="#F59E0B"
+                          strokeWidth="2"
+                          strokeOpacity="0.78"
+                          strokeDasharray="6 4"
+                        />
+                      </g>
+
+                      {/* CLEARING: Chicago CME <-> NYC/NJ DTCC/FICC <-> London Clearing */}
+                      <g opacity={corridorOpacity('CLEARING')}>
+                        <path
+                          d="M396,306 L442,312"
+                          stroke="#38BDF8"
+                          strokeWidth="2.2"
+                          strokeOpacity="0.85"
+                        />
+                        <path
+                          d="M442,312 Q608,246 776,270"
+                          stroke="#38BDF8"
+                          strokeWidth="1.5"
+                          strokeOpacity="0.45"
+                          strokeDasharray="3 5"
+                        />
+                      </g>
+
+                      {/* SUB_IP: Dual Transatlantic Submarine Optical SLTE Trunks + Baltic/Crimea + NOPAC R220/R580 */}
+                      <g opacity={corridorOpacity('SUB_IP')}>
+                        {/* North Trunk: Long Island NY -> Bude, Cornwall UK */}
+                        <path
+                          d="M445,311 Q602,262 758,274"
+                          stroke="#38BDF8"
+                          strokeWidth="2.6"
+                          strokeOpacity="0.9"
+                        />
+                        {/* South Trunk: Tuckerton NJ -> Brittany, France */}
+                        <path
+                          d="M442,316 Q606,294 762,287"
+                          stroke="#38BDF8"
+                          strokeWidth="1.9"
+                          strokeOpacity="0.68"
+                        />
+                        <text
+                          x="582"
+                          y="306"
+                          textAnchor="middle"
+                          fill="rgba(56,189,248,0.82)"
+                          fontSize="10"
+                          fontFamily="monospace"
+                        >
+                          TAT-SLTE OPTIC TRUNKS
+                        </text>
+
+                        {/* North Sea -> Baltic Sea / Kaliningrad -> Gulf of Finland + Crimea Gray-Zone Flank */}
+                        <path
+                          d="M758,274 Q808,236 860,236 L892,212"
+                          stroke="#EF4444"
+                          strokeWidth="2"
+                          strokeOpacity="0.72"
+                          strokeDasharray="5 4"
+                        />
+                        <path
+                          d="M860,236 Q896,268 928,304"
+                          stroke="#EF4444"
+                          strokeWidth="1.8"
+                          strokeOpacity="0.62"
+                          strokeDasharray="4 4"
+                        />
+
+                        {/* NOPAC Airways R220 / R580: Tokyo FIR -> Kurils/FP-07 -> 180° IDL + Wrapped West -> Anchorage */}
+                        <path
+                          d="M1398,340 Q1444,302 1488,272 Q1542,250 1598,238"
+                          stroke="#F59E0B"
+                          strokeWidth="2.4"
+                          strokeOpacity="0.88"
+                          strokeDasharray="7 5"
+                        />
+                        <path
+                          d="M2,238 Q66,226 124,202"
+                          stroke="#F59E0B"
+                          strokeWidth="2.4"
+                          strokeOpacity="0.82"
+                          strokeDasharray="7 5"
+                        />
+                        <text
+                          x="64"
+                          y="246"
+                          fill="rgba(245,158,11,0.78)"
+                          fontSize="10"
+                          fontFamily="monospace"
+                        >
+                          NOPAC R220 → ANC
+                        </text>
+                      </g>
+
+                      {/* KINETIC: Persian Gulf / Hormuz Interdiction Zone + Russian Bomber Route Vladivostok -> Taiwan -> Vietnam */}
+                      <g opacity={corridorOpacity('KINETIC')}>
+                        {/* Hormuz Chokepoint Ring & Kuwait/Bahrain/Riyadh Strike Arc */}
+                        <circle
+                          cx="1032"
+                          cy="404"
+                          r="26"
+                          stroke="#EF4444"
+                          strokeWidth="1.4"
+                          strokeOpacity="0.5"
+                          strokeDasharray="4 3"
+                        />
+                        <path
+                          d="M986,412 L995,390 Q1014,396 1032,404 L1066,422"
+                          stroke="#EF4444"
+                          strokeWidth="2.2"
+                          strokeOpacity="0.85"
+                        />
+
+                        {/* Nov. 17 Russian Nuclear-Capable Bomber Maritime Track: Vladivostok -> Sea of Japan -> East of Taiwan -> Cam Ranh Vietnam */}
+                        <path
+                          d="M1354,304 Q1416,342 1340,414 Q1306,442 1264,462"
+                          stroke="#EF4444"
+                          strokeWidth="2.1"
+                          strokeOpacity="0.8"
+                          strokeDasharray="6 4"
+                        />
+                        {/* Shenzhen <-> Taiwan Strait Chokepoint */}
+                        <path
+                          d="M1282,420 L1308,414"
+                          stroke="#EF4444"
+                          strokeWidth="2.4"
+                          strokeOpacity="0.9"
+                        />
+                      </g>
                     </g>
 
-                    {/* Plotted Interactive Flashpoint Nodes */}
+                    {/* 4. Secondary Geographic Endpoint Nodes */}
+                    {visibleNodes.map((node) => {
+                      const isNodeSelected = selectedNode.id === node.id;
+                      const color = toneHex(node.tone);
+                      return (
+                        <g
+                          key={`sec-${node.id}`}
+                          opacity={isNodeSelected || layer !== 'ALL' ? 0.95 : 0.72}
+                          pointerEvents="none"
+                        >
+                          {node.secondaryPoints?.map((sp) => (
+                            <g key={`${node.id}-${sp.label}`}>
+                              <circle
+                                cx={sp.x}
+                                cy={sp.y}
+                                r={isNodeSelected ? 4.5 : 3.5}
+                                fill="#070A10"
+                                stroke={color}
+                                strokeWidth="1.8"
+                              />
+                              <text
+                                x={sp.x + (sp.labelDx ?? 8)}
+                                y={sp.y + (sp.labelDy ?? 4)}
+                                textAnchor={sp.anchor ?? 'start'}
+                                fill="rgba(226, 232, 240, 0.8)"
+                                fontSize="9.5"
+                                fontFamily="monospace"
+                              >
+                                {sp.label}
+                              </text>
+                            </g>
+                          ))}
+                        </g>
+                      );
+                    })}
+
+                    {/* 5. Primary Interactive Theater Nodes & Calibrated Leader Callout Pills */}
                     {visibleNodes.map((node) => {
                       const active = selectedNode.id === node.id;
                       const color = toneHex(node.tone);
+                      const pillLabel = `${node.code} · ${node.shortTag}`;
+                      const pillWidth = pillLabel.length * 6.8 + 14;
+                      const leaderEndX = node.x + node.pillDx;
+                      const leaderEndY = node.y + node.pillDy;
+                      const pillX =
+                        node.pillAnchor === 'end' ? leaderEndX - pillWidth : leaderEndX;
+                      const pillY = leaderEndY - 10;
+
                       return (
                         <g
                           key={node.id}
                           onClick={() => setSelectedId(node.id)}
+                          onDoubleClick={() => focusOnNode(node)}
                           className="cursor-pointer"
                           role="button"
                           tabIndex={0}
@@ -462,56 +827,75 @@ export function GlobalFlashpointMap({ onTraceNode }: GlobalFlashpointMapProps) {
                             }
                           }}
                         >
-                          {node.secondaryPoint && (
-                            <>
-                              <line
-                                x1={node.secondaryPoint.x}
-                                y1={node.secondaryPoint.y}
-                                x2={node.x}
-                                y2={node.y}
-                                stroke={color}
-                                strokeWidth="2"
-                              />
-                              <circle
-                                cx={node.secondaryPoint.x}
-                                cy={node.secondaryPoint.y}
-                                r={active ? 5 : 3.5}
-                                fill={color}
-                                fillOpacity="0.85"
-                              />
-                            </>
+                          {/* Leader Line */}
+                          <line
+                            x1={node.x}
+                            y1={node.y}
+                            x2={leaderEndX}
+                            y2={leaderEndY}
+                            stroke={color}
+                            strokeOpacity={active ? 0.9 : 0.5}
+                            strokeWidth={active ? 1.5 : 1.1}
+                          />
+
+                          {/* Outer Radar Reticle Ring */}
+                          {active && (
+                            <circle
+                              cx={node.x}
+                              cy={node.y}
+                              r={23}
+                              fill="none"
+                              stroke={color}
+                              strokeOpacity="0.5"
+                              strokeWidth="1.2"
+                              strokeDasharray="4 3"
+                            />
                           )}
 
-                          {/* Outer Selection Halo */}
+                          {/* Selection Halo */}
                           <circle
                             cx={node.x}
                             cy={node.y}
-                            r={active ? 16 : 10}
+                            r={active ? 14 : 9.5}
                             fill={color}
-                            fillOpacity={active ? 0.22 : 0.1}
+                            fillOpacity={active ? 0.25 : 0.13}
                             stroke={color}
-                            strokeOpacity={active ? 0.85 : 0.35}
-                            strokeWidth={active ? 1.6 : 1}
+                            strokeOpacity={active ? 0.95 : 0.55}
+                            strokeWidth={active ? 1.8 : 1.2}
+                            filter={active ? 'url(#active-pin-glow)' : undefined}
                           />
-                          {/* Core Node Pin */}
+
+                          {/* Core Pin */}
                           <circle
                             cx={node.x}
                             cy={node.y}
-                            r={active ? 6 : 4.5}
+                            r={active ? 5.5 : 4.2}
                             fill={color}
-                            stroke="#0A0E17"
-                            strokeWidth="1.5"
+                            stroke="#06080C"
+                            strokeWidth="1.8"
                           />
-                          {/* Code Tag */}
+
+                          {/* High-Contrast Callout Pill */}
+                          <rect
+                            x={pillX}
+                            y={pillY}
+                            width={pillWidth}
+                            height={20}
+                            rx={3}
+                            fill={active ? 'rgba(11, 17, 28, 0.96)' : 'rgba(6, 9, 15, 0.88)'}
+                            stroke={active ? color : 'rgba(255, 255, 255, 0.18)'}
+                            strokeWidth={active ? 1.4 : 1}
+                          />
                           <text
-                            x={node.x + 10}
-                            y={node.y - 8}
-                            fill={active ? '#FFFFFF' : '#CBD5E1'}
-                            fontSize="10"
+                            x={pillX + pillWidth / 2}
+                            y={pillY + 13.5}
+                            textAnchor="middle"
+                            fill={active ? '#FFFFFF' : '#E2E8F0'}
+                            fontSize="10.5"
                             fontFamily="monospace"
-                            fontWeight={active ? '700' : '500'}
+                            fontWeight={active ? '700' : '600'}
                           >
-                            {node.code}
+                            {pillLabel}
                           </text>
                         </g>
                       );
@@ -520,21 +904,46 @@ export function GlobalFlashpointMap({ onTraceNode }: GlobalFlashpointMapProps) {
                 </svg>
               </div>
 
-              {/* Live Coordinate Cursor Readout */}
-              <div className="hidden sm:flex items-center gap-2 absolute bottom-3 left-3 bg-[#06080C]/92 border border-white/12 rounded-sm px-2.5 py-1 text-[10px] font-mono-tactical text-gray-300">
-                <span className="text-gray-500">CURSOR</span>
-                <span className="text-[#38BDF8]">{cursorGeo ?? selectedNode.coordsLabel.split('·')[0].trim()}</span>
-                <span className="text-gray-600">|</span>
-                <span className="text-gray-400">ZOOM {zoom.toFixed(1)}x</span>
+              {/* Top-Left Legend Overlay (>=640px) */}
+              <div className="hidden sm:flex flex-wrap items-center gap-2.5 absolute top-2.5 left-2.5 bg-[#06080C]/90 border border-white/14 rounded-sm px-2.5 py-1 text-[10px] font-mono-tactical text-gray-200 pointer-events-none">
+                <span className="inline-flex items-center gap-1.5">
+                  <span className="w-2 h-2 rounded-[1px] bg-[#EF4444]" /> Chokepoint / Wiper
+                </span>
+                <span className="inline-flex items-center gap-1.5">
+                  <span className="w-2 h-2 rounded-[1px] bg-[#F59E0B]" /> Hybrid / RF Timing
+                </span>
+                <span className="inline-flex items-center gap-1.5">
+                  <span className="w-2 h-2 rounded-[1px] bg-[#38BDF8]" /> Subsea / Clearing
+                </span>
               </div>
 
-              {/* Floating Zoom / Reset Controls */}
-              <div className="absolute bottom-3 right-3 flex items-center gap-1 bg-[#06080C]/92 border border-white/15 rounded-sm p-1">
+              {/* Bottom-Left Calibrated Geodetic Cursor Readout */}
+              <div className="hidden sm:flex items-center gap-2 absolute bottom-2.5 left-2.5 bg-[#06080C]/92 border border-white/14 rounded-sm px-2.5 py-1 text-[10px] font-mono-tactical text-gray-300 pointer-events-none">
+                <span className="text-gray-500">GEODETIC</span>
+                <span className="text-[#38BDF8] tabular-nums">
+                  {cursorGeo ?? selectedNode.coordsLabel.split('·')[0].split('↔')[0].trim()}
+                </span>
+                <span className="text-gray-600">|</span>
+                <span className="text-gray-400">ZOOM {zoom.toFixed(2)}x</span>
+              </div>
+
+              {/* Bottom-Right Theater Focus & Zoom Controls */}
+              <div className="absolute bottom-2 right-2 sm:bottom-2.5 sm:right-2.5 flex items-center gap-0.5 sm:gap-1 bg-[#06080C]/92 border border-white/15 rounded-sm p-0.5 sm:p-1">
+                <button
+                  type="button"
+                  onClick={() => focusOnNode(selectedNode)}
+                  aria-label="Focus zoom on selected flashpoint"
+                  title="Center & zoom on selected flashpoint"
+                  className="inline-flex items-center gap-1 px-1.5 sm:px-2 py-1 rounded-xs hover:bg-white/10 text-[10px] font-mono-tactical text-[#38BDF8] cursor-pointer"
+                >
+                  <Crosshair className="w-3 h-3" />
+                  <span className="hidden sm:inline">Focus</span>
+                </button>
                 <button
                   type="button"
                   onClick={() => adjustZoom(0.4)}
                   aria-label="Zoom in map"
-                  className="p-1.5 rounded hover:bg-white/10 text-gray-300 hover:text-white cursor-pointer"
+                  className="p-1 sm:p-1.5 rounded-xs hover:bg-white/10 text-gray-300 hover:text-white cursor-pointer"
                 >
                   <ZoomIn className="w-3.5 h-3.5" />
                 </button>
@@ -542,7 +951,7 @@ export function GlobalFlashpointMap({ onTraceNode }: GlobalFlashpointMapProps) {
                   type="button"
                   onClick={() => adjustZoom(-0.4)}
                   aria-label="Zoom out map"
-                  className="p-1.5 rounded hover:bg-white/10 text-gray-300 hover:text-white cursor-pointer"
+                  className="p-1 sm:p-1.5 rounded-xs hover:bg-white/10 text-gray-300 hover:text-white cursor-pointer"
                 >
                   <ZoomOut className="w-3.5 h-3.5" />
                 </button>
@@ -550,37 +959,45 @@ export function GlobalFlashpointMap({ onTraceNode }: GlobalFlashpointMapProps) {
                   type="button"
                   onClick={resetViewport}
                   aria-label="Reset map view"
-                  className="p-1.5 rounded hover:bg-white/10 text-gray-300 hover:text-white cursor-pointer"
+                  className="p-1 sm:p-1.5 rounded-xs hover:bg-white/10 text-gray-300 hover:text-white cursor-pointer"
                 >
                   <RotateCcw className="w-3.5 h-3.5" />
                 </button>
               </div>
+            </>
+          )}
+          </div>
 
-              {/* Legend Overlay */}
-              <div className="absolute top-3 left-3 flex flex-wrap items-center gap-2.5 bg-[#0A0E17]/85 border border-white/10 rounded-lg px-2.5 py-1.5 text-[10px] font-mono-tactical text-gray-300">
+          {/* Unobstructed Mobile Legend & Geodetic Readout Bar (<640px) */}
+          {!showRasterCompare && (
+            <div className="sm:hidden flex flex-wrap items-center justify-between gap-x-3 gap-y-1 bg-[#070A10] border border-white/12 rounded-sm px-2.5 py-1.5 text-[10px] font-mono-tactical text-gray-300">
+              <div className="flex flex-wrap items-center gap-2.5">
                 <span className="inline-flex items-center gap-1">
-                  <span className="w-2 h-2 rounded-full bg-[#EF4444]" /> Chokepoint / Wiper
+                  <span className="w-2 h-2 rounded-[1px] bg-[#EF4444]" /> Chokepoint
                 </span>
                 <span className="inline-flex items-center gap-1">
-                  <span className="w-2 h-2 rounded-full bg-[#F59E0B]" /> Hybrid / RF Timing
+                  <span className="w-2 h-2 rounded-[1px] bg-[#F59E0B]" /> Hybrid/RF
                 </span>
                 <span className="inline-flex items-center gap-1">
-                  <span className="w-2 h-2 rounded-full bg-[#38BDF8]" /> Subsea / Clearing
+                  <span className="w-2 h-2 rounded-[1px] bg-[#38BDF8]" /> Subsea/Rail
                 </span>
               </div>
-            </>
+              <span className="text-[#38BDF8] tabular-nums">
+                {selectedNode.coordsLabel.split('·')[0].split('↔')[0].trim()} · {zoom.toFixed(1)}x
+              </span>
+            </div>
           )}
         </div>
 
         {/* Right 4 Columns: Active Flashpoint Dossier */}
-        <div className="lg:col-span-4 surface-elevated rounded-xl p-4 sm:p-5 flex flex-col justify-between space-y-4">
+        <div className="lg:col-span-4 surface-elevated rounded-md p-4 sm:p-5 flex flex-col justify-between space-y-4">
           <div className="space-y-3">
             <div className="flex flex-wrap items-center justify-between gap-2">
-              <span className="font-mono-tactical text-xs font-semibold px-2 py-0.5 rounded bg-[#0A0E17] border border-white/15 text-[#38BDF8]">
+              <span className="font-mono-tactical text-xs font-semibold px-2 py-0.5 rounded-sm bg-[#070A10] border border-white/15 text-[#38BDF8]">
                 {selectedNode.code} · {selectedNode.layer}
               </span>
               <span
-                className={`font-mono-tactical text-[10px] px-2 py-0.5 rounded border ${
+                className={`font-mono-tactical text-[10px] px-2 py-0.5 rounded-sm border ${
                   selectedNode.verification === 'Corroborated'
                     ? 'bg-[#10B981]/12 border-[#10B981]/35 text-[#10B981]'
                     : 'bg-[#F59E0B]/12 border-[#F59E0B]/35 text-[#F59E0B]'
@@ -599,7 +1016,7 @@ export function GlobalFlashpointMap({ onTraceNode }: GlobalFlashpointMapProps) {
               </p>
             </div>
 
-            <div className="rounded-lg bg-[#0A0E17] border border-white/10 px-3 py-2 font-mono-tactical text-xs text-[#F59E0B]">
+            <div className="rounded-sm bg-[#070A10] border border-white/10 px-3 py-2 font-mono-tactical text-xs text-[#F59E0B]">
               {selectedNode.headlineMetric}
             </div>
 
@@ -619,7 +1036,7 @@ export function GlobalFlashpointMap({ onTraceNode }: GlobalFlashpointMapProps) {
             <button
               type="button"
               onClick={() => onTraceNode(selectedNode.traceKey)}
-              className="w-full inline-flex items-center justify-center gap-2 rounded-lg bg-[#38BDF8]/15 hover:bg-[#38BDF8]/25 border border-[#38BDF8]/40 px-3 py-2 text-xs font-mono-tactical text-[#38BDF8] transition cursor-pointer"
+              className="w-full inline-flex items-center justify-center gap-2 rounded-md bg-[#38BDF8]/15 hover:bg-[#38BDF8]/25 border border-[#38BDF8]/40 px-3 py-2 text-xs font-mono-tactical text-[#38BDF8] transition cursor-pointer"
             >
               <GitMerge className="w-3.5 h-3.5" />
               <span>Trace Blast Radius in Crosswalk</span>
@@ -627,7 +1044,7 @@ export function GlobalFlashpointMap({ onTraceNode }: GlobalFlashpointMapProps) {
 
             <Link
               href={selectedNode.detailHref}
-              className="w-full inline-flex items-center justify-center gap-1.5 rounded-lg bg-white/[0.04] hover:bg-white/[0.09] border border-white/10 px-3 py-2 text-xs font-mono-tactical text-gray-200 hover:text-white transition"
+              className="w-full inline-flex items-center justify-center gap-1.5 rounded-md bg-white/[0.04] hover:bg-white/[0.09] border border-white/10 px-3 py-2 text-xs font-mono-tactical text-gray-200 hover:text-white transition"
             >
               <span>{selectedNode.detailLabel}</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -644,15 +1061,22 @@ export function GlobalFlashpointMap({ onTraceNode }: GlobalFlashpointMapProps) {
             <button
               key={n.id}
               type="button"
-              onClick={() => setSelectedId(n.id)}
-              className={`shrink-0 inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-mono-tactical border transition cursor-pointer ${
+              onClick={() => {
+                if (active && zoom === 1) {
+                  focusOnNode(n);
+                } else {
+                  setSelectedId(n.id);
+                  if (zoom > 1) focusOnNode(n);
+                }
+              }}
+              className={`shrink-0 inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-md text-xs font-mono-tactical border transition cursor-pointer ${
                 active
                   ? 'bg-white/[0.11] border-[#38BDF8]/55 text-white'
-                  : 'bg-[#0A0E17] border-white/10 text-gray-400 hover:text-gray-200'
+                  : 'bg-[#070A10] border-white/10 text-gray-400 hover:text-gray-200'
               }`}
             >
               <span
-                className="w-2 h-2 rounded-full"
+                className="w-2 h-2 rounded-[1px]"
                 style={{ backgroundColor: toneHex(n.tone) }}
               />
               <span>

@@ -22,6 +22,7 @@ import { FeedId, PrimarySourceEntry, SignalSeverity } from '@/types/schemas';
 import { CitationChipList } from '@/components/shell/RichTextWithCitations';
 import { FeedSparkline } from '@/components/shell/FeedSparkline';
 import { TacticalFigure } from '@/components/shell/TacticalFigure';
+import { scrollToSectionById } from '@/components/shell/SectionNavStrip';
 import { classifySourceTier } from '@/lib/evidence';
 
 type WatchlistTab = 'watchlist' | 'live-wire' | 'vault';
@@ -53,6 +54,7 @@ export function WatchlistView() {
   const { watchlist, liveSignals, feedHealth, feedHistory, sections } = bundle;
 
   const [activeTab, setActiveTab] = useState<WatchlistTab>('watchlist');
+  const [highlightedWatchId, setHighlightedWatchId] = useState<string | null>(null);
   const [triagePreset, setTriagePreset] = useState<TriagePreset>('all');
   const [severityFilter, setSeverityFilter] = useState<'ALL' | SignalSeverity>('ALL');
   const [feedFilter, setFeedFilter] = useState<'ALL' | FeedId>('ALL');
@@ -65,11 +67,20 @@ export function WatchlistView() {
   const [vaultDomain, setVaultDomain] =
     useState<'ALL' | PrimarySourceEntry['domainTag']>('ALL');
 
-  // Support ?tab=live-wire deep-linking on client without needing Suspense wrapper in static export
+  // Support ?tab=live-wire and #watchlist-card-N deep-linking on client without needing Suspense wrapper
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const tab = params.get('tab');
-    if (tab === 'live-wire' || tab === 'vault' || tab === 'watchlist') {
+    const hashId = window.location.hash.replace(/^#/, '');
+    const cardMatch = hashId.match(/^watchlist-card-(\d+)$/);
+
+    if (cardMatch) {
+      setActiveTab('watchlist');
+      setHighlightedWatchId(`#${cardMatch[1]}`);
+      setTimeout(() => {
+        scrollToSectionById(hashId, 'smooth');
+      }, 80);
+    } else if (tab === 'live-wire' || tab === 'vault' || tab === 'watchlist') {
       setActiveTab(tab);
     }
   }, []);
@@ -282,7 +293,7 @@ export function WatchlistView() {
           {/* Editorial Plate 06 */}
           <TacticalFigure
             src="/images/watchlist-telemetry-mesh.jpg"
-            alt="Matte dark telemetry mesh depicting eight federal and backbone OSINT ingestion feeds converging into deterministic watchlist triage counters"
+            alt="Matte-black optical packet-broker and OSINT telemetry correlation blade routing armored fiber-optic feeds into cyan, amber, and crimson priority status lanes"
             plateId="PLATE 06"
             title="Keyless Federal & Backbone Telemetry Mesh: Deterministic Watchlist Correlation"
             domainBadge="SECTION 8.3 · AUTOMATED SIGNAL TRIAGE"
@@ -379,10 +390,15 @@ export function WatchlistView() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5">
             {watchlist.map((item) => {
               const hitCount = liveCountsByWatchlist[item.id] ?? 0;
+              const isHighlighted = highlightedWatchId === item.id;
               return (
                 <article
                   key={item.id}
-                  className="glass-card rounded-lg p-4 sm:p-5 flex flex-col justify-between space-y-3.5"
+                  id={`watchlist-card-${item.id.replace('#', '')}`}
+                  onClick={() => setHighlightedWatchId(item.id)}
+                  className={`glass-card rounded-lg p-4 sm:p-5 flex flex-col justify-between space-y-3.5 scroll-mt-nav transition ${
+                    isHighlighted ? 'ring-1 ring-[#38BDF8]/55 border-[#38BDF8]/40' : ''
+                  }`}
                 >
                   <div className="space-y-2.5">
                     <div className="flex items-center justify-between gap-2">

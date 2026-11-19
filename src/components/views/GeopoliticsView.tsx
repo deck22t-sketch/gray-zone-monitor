@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Globe,
   Flame,
@@ -16,7 +16,7 @@ import { usePortal } from '@/context/PortalContext';
 import { NarrativeAccordion } from '@/components/shell/NarrativeAccordion';
 import { RichTextWithCitations } from '@/components/shell/RichTextWithCitations';
 import { TacticalFigure } from '@/components/shell/TacticalFigure';
-import { SectionNavStrip } from '@/components/shell/SectionNavStrip';
+import { SectionNavStrip, scrollToSectionById } from '@/components/shell/SectionNavStrip';
 import { ChokepointStressSimulator } from '@/components/views/ChokepointStressSimulator';
 
 const GEO_NAV_ITEMS = [
@@ -227,6 +227,15 @@ export function GeopoliticsView() {
   const [mobileDoctrine, setMobileDoctrine] = useState<'bolshevik' | 'petrine'>('bolshevik');
   const [openClaims, setOpenClaims] = useState<Record<number, boolean>>({ 0: true, 3: true });
 
+  useEffect(() => {
+    const hashId = window.location.hash.replace(/^#/, '');
+    if (!hashId) return;
+    const t = setTimeout(() => {
+      scrollToSectionById(hashId, 'smooth');
+    }, 80);
+    return () => clearTimeout(t);
+  }, []);
+
   const geoSections = bundle.sections.narrativeSections.filter((s) => s.number <= 5);
   const sec1 = geoSections.find((s) => s.number === 1);
   const sec5 = geoSections.find((s) => s.number === 5);
@@ -273,7 +282,7 @@ export function GeopoliticsView() {
       {/* Editorial Plate 01 */}
       <TacticalFigure
         src="/images/geopolitics-imperial-arc.jpg"
-        alt="Editorial diptych contrasting early 20th-century industrial steelworks and constructivist geometry with modern satellite maritime trajectories and energy chokepoint telemetry"
+        alt="Editorial diptych contrasting early 20th-century constructivist steelworks on the left with an accurate Eurasian satellite map showing Scandinavia, Baltic and Ukraine-Crimea crimson borders, and Russia-to-China overland energy corridors on the right"
         plateId="PLATE 01"
         title="Doctrinal Inversion: 1917 Anti-Imperial Vanguard Theory vs. 2021–2026 Petrine Territorial Revanchism"
         domainBadge="SECTIONS 1–4 · DOCTRINE & DETERRENCE"
@@ -819,7 +828,7 @@ export function GeopoliticsView() {
       {/* Editorial Plate 02 */}
       <TacticalFigure
         src="/images/hormuz-mineral-chokepoints.jpg"
-        alt="Orbital radar view of naval maritime chokepoint shipping wakes paired with macro crystalline gallium and a cyan-lit semiconductor radar wafer"
+        alt="Split-screen composition pairing a synthetic aperture radar nadir view of the Strait of Hormuz, Musandam Peninsula, and Qeshm Island tanker wakes with raw crystalline gallium and a cyan compound semiconductor radar wafer"
         plateId="PLATE 02"
         title="Dual Attrition Chokepoints: Strait of Hormuz Naval Blockade & Chinese Gallium / REE / API Leverage"
         domainBadge="SECTIONS 5.4–5.5 · MARITIME & MINERAL CLIFFS"

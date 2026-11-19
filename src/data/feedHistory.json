@@ -1,5 +1,5 @@
 {
-  "updatedAtISO": "2026-11-19T01:03:21.370Z",
+  "updatedAtISO": "2026-11-19T03:07:56.051Z",
   "maxPointsPerFeed": 28,
   "series": {
     "cisa-kev": [
@@ -32,10 +32,10 @@
         "itemCount": 18
       },
       {
-        "checkedAtISO": "2026-11-19T01:03:21.370Z",
+        "checkedAtISO": "2026-11-19T03:07:56.051Z",
         "status": "live",
         "httpStatus": 200,
-        "latencyMs": 327,
+        "latencyMs": 385,
         "itemCount": 18
       }
     ],
@@ -69,10 +69,10 @@
         "itemCount": 15
       },
       {
-        "checkedAtISO": "2026-11-19T01:03:21.370Z",
+        "checkedAtISO": "2026-11-19T03:07:56.051Z",
         "status": "live",
         "httpStatus": 200,
-        "latencyMs": 206,
+        "latencyMs": 353,
         "itemCount": 15
       }
     ],
@@ -106,10 +106,10 @@
         "itemCount": 6
       },
       {
-        "checkedAtISO": "2026-11-19T01:03:21.370Z",
+        "checkedAtISO": "2026-11-19T03:07:56.051Z",
         "status": "live",
         "httpStatus": 200,
-        "latencyMs": 295,
+        "latencyMs": 447,
         "itemCount": 6
       }
     ],
@@ -143,10 +143,10 @@
         "itemCount": 15
       },
       {
-        "checkedAtISO": "2026-11-19T01:03:21.370Z",
+        "checkedAtISO": "2026-11-19T03:07:56.051Z",
         "status": "live",
         "httpStatus": 200,
-        "latencyMs": 351,
+        "latencyMs": 1208,
         "itemCount": 15
       }
     ],
@@ -180,10 +180,10 @@
         "itemCount": 8
       },
       {
-        "checkedAtISO": "2026-11-19T01:03:21.370Z",
+        "checkedAtISO": "2026-11-19T03:07:56.051Z",
         "status": "live",
         "httpStatus": 200,
-        "latencyMs": 318,
+        "latencyMs": 1952,
         "itemCount": 8
       }
     ],
@@ -217,10 +217,10 @@
         "itemCount": 8
       },
       {
-        "checkedAtISO": "2026-11-19T01:03:21.370Z",
+        "checkedAtISO": "2026-11-19T03:07:56.051Z",
         "status": "live",
         "httpStatus": 200,
-        "latencyMs": 464,
+        "latencyMs": 2398,
         "itemCount": 8
       }
     ],
@@ -254,10 +254,10 @@
         "itemCount": 0
       },
       {
-        "checkedAtISO": "2026-11-19T01:03:21.370Z",
+        "checkedAtISO": "2026-11-19T03:07:56.051Z",
         "status": "live",
         "httpStatus": 200,
-        "latencyMs": 534,
+        "latencyMs": 351,
         "itemCount": 0
       }
     ],
@@ -291,10 +291,10 @@
         "itemCount": 12
       },
       {
-        "checkedAtISO": "2026-11-19T01:03:21.370Z",
+        "checkedAtISO": "2026-11-19T03:07:56.051Z",
         "status": "live",
         "httpStatus": 200,
-        "latencyMs": 447,
+        "latencyMs": 205,
         "itemCount": 12
       }
     ]

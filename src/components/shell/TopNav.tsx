@@ -136,11 +136,12 @@ export function TopNav() {
 
   return (
     <header
+      id="portal-top-header"
       ref={headerRef}
       className="sticky top-0 z-40 bg-[#070A10]/[0.98] backdrop-blur-md border-b border-white/[0.11] print:hidden"
     >
       {/* Slim Telemetry & Clock Micro-Bar */}
-      <div className="border-b border-white/[0.07] bg-[#05070B]">
+      <div id="portal-top-utility-bar" className="border-b border-white/[0.07] bg-[#05070B]">
         <div className="max-w-[1380px] mx-auto px-3 sm:px-6 lg:px-8 h-9 sm:h-7 flex items-center justify-between gap-2 text-[11px] font-mono-tactical">
           <div className="flex items-center gap-1.5 sm:gap-2 min-w-0 flex-1 overflow-hidden">
             {compactMobile && (

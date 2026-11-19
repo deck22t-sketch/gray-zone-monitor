@@ -21,10 +21,24 @@ interface MorningBriefDeckProps {
   onOpenFullConsole: () => void;
 }
 
-function shortDelta(targetIso: string, nowMs: number): string {
-  const diffDays = Math.ceil((Date.parse(targetIso) - nowMs) / 86_400_000);
-  if (diffDays <= 0) return 'ACTIVE TODAY';
-  return `T-${diffDays}d`;
+function shortDelta(targetIso: string, nowMs: number): {
+  label: string;
+  urgent: boolean;
+  completed: boolean;
+} {
+  const diffMs = Date.parse(targetIso) - nowMs;
+  if (diffMs <= 0) {
+    return { label: 'COMPLETED', urgent: false, completed: true };
+  }
+  const diffDays = Math.ceil(diffMs / 86_400_000);
+  if (diffDays <= 1) {
+    return { label: 'DUE <24H', urgent: true, completed: false };
+  }
+  return {
+    label: `T-${diffDays}d`,
+    urgent: diffDays <= 12,
+    completed: false,
+  };
 }
 
 export function MorningBriefDeck({ nowMs, onOpenFullConsole }: MorningBriefDeckProps) {
@@ -39,6 +53,13 @@ export function MorningBriefDeck({ nowMs, onOpenFullConsole }: MorningBriefDeckP
   const hybrid = incidents.filter((i) => i.classification === 'hybrid_transition_bug').length;
   const cascade = incidents.filter((i) => i.classification === 'client_cascade').length;
   const immediateRisks = riskMatrix.filter((r) => r.horizonGroup === 'Immediate');
+
+  const upcomingCliffs = countdownCliffs.filter(
+    (c) => Date.parse(c.targetTimestampISO) > nowMs
+  );
+  const displayedCliffs = (
+    upcomingCliffs.length >= 4 ? upcomingCliffs : countdownCliffs
+  ).slice(0, 4);
 
   function scrollToCard(index: number) {
     const clamped = Math.max(0, Math.min(3, index));
@@ -204,39 +225,40 @@ export function MorningBriefDeck({ nowMs, onOpenFullConsole }: MorningBriefDeckP
         </article>
 
         {/* CARD 3: Nearest Countdown Cliffs */}
-        <article className="snap-start shrink-0 w-[88%] sm:w-[46%] lg:w-[32%] obsidian-surface rounded-xl p-4 flex flex-col justify-between space-y-3.5 border border-white/12">
+        <article className="snap-start shrink-0 w-[88%] sm:w-[46%] lg:w-[32%] obsidian-surface rounded-md p-4 flex flex-col justify-between space-y-3.5 border border-white/12">
           <div className="space-y-2.5">
-            <div className="flex items-center justify-between text-[11px] font-mono-tactical">
+            <div className="flex items-center justify-between text-[10px] font-mono-tactical">
               <span className="text-[#38BDF8] font-semibold inline-flex items-center gap-1">
                 <Clock className="w-3 h-3" />
                 <span>03 / ACTIVE CLIFFS</span>
               </span>
               <span className="text-gray-400">120-Day Window</span>
             </div>
-            <h2 className="text-base font-semibold text-white leading-snug">
+            <h2 className="text-[15px] font-semibold text-white leading-snug">
               Nearest Regulatory, Mineral &amp; Clearing Deadlines
             </h2>
             <div className="space-y-2">
-              {countdownCliffs.slice(0, 4).map((c) => {
-                const tag = shortDelta(c.targetTimestampISO, nowMs);
-                const urgent = tag === 'ACTIVE TODAY' || tag === 'T-2d' || tag === 'T-9d';
+              {displayedCliffs.map((c) => {
+                const delta = shortDelta(c.targetTimestampISO, nowMs);
                 return (
                   <div
                     key={c.targetDateISO}
-                    className="rounded-lg bg-white/[0.03] border border-white/[0.07] p-2 flex items-start justify-between gap-2"
+                    className="rounded-sm bg-white/[0.03] border border-white/[0.07] p-2 flex items-start justify-between gap-2"
                   >
                     <div className="min-w-0">
                       <p className="text-xs font-medium text-white line-clamp-1">{c.milestone}</p>
                       <p className="font-mono-tactical text-[10px] text-gray-400">{c.dateLabel}</p>
                     </div>
                     <span
-                      className={`font-mono-tactical text-[10px] px-1.5 py-0.5 rounded border shrink-0 ${
-                        urgent
+                      className={`font-mono-tactical text-[10px] px-1.5 py-0.5 rounded-sm border shrink-0 ${
+                        delta.completed
+                          ? 'bg-[#10B981]/12 border-[#10B981]/30 text-[#10B981]'
+                          : delta.urgent
                           ? 'bg-[#EF4444]/15 border-[#EF4444]/35 text-[#EF4444]'
                           : 'bg-[#F59E0B]/15 border-[#F59E0B]/35 text-[#F59E0B]'
                       }`}
                     >
-                      {tag}
+                      {delta.label}
                     </span>
                   </div>
                 );
@@ -249,29 +271,29 @@ export function MorningBriefDeck({ nowMs, onOpenFullConsole }: MorningBriefDeckP
             onClick={onOpenFullConsole}
             className="inline-flex items-center gap-1 text-[11px] font-mono-tactical text-[#38BDF8] hover:underline cursor-pointer"
           >
-            <span>Inspect All 8 Countdown Cliffs in Console</span>
+            <span>Inspect All {countdownCliffs.length} Countdown Cliffs in Console</span>
             <ArrowRight className="w-3 h-3" />
           </button>
         </article>
 
         {/* CARD 4: Immediate Risk Tripwires & Live OSINT */}
-        <article className="snap-start shrink-0 w-[88%] sm:w-[46%] lg:w-[32%] obsidian-surface rounded-xl p-4 flex flex-col justify-between space-y-3.5 border border-white/12">
+        <article className="snap-start shrink-0 w-[88%] sm:w-[46%] lg:w-[32%] obsidian-surface rounded-md p-4 flex flex-col justify-between space-y-3.5 border border-white/12">
           <div className="space-y-2.5">
-            <div className="flex items-center justify-between text-[11px] font-mono-tactical">
+            <div className="flex items-center justify-between text-[10px] font-mono-tactical">
               <span className="text-[#EF4444] font-semibold inline-flex items-center gap-1">
                 <AlertTriangle className="w-3 h-3" />
                 <span>04 / LIVE TRIPWIRES</span>
               </span>
               <span className="text-[#10B981]">{liveSignals.totalSignals} OSINT Signals</span>
             </div>
-            <h2 className="text-base font-semibold text-white leading-snug">
+            <h2 className="text-[15px] font-semibold text-white leading-snug">
               Immediate Risk Vectors &amp; Public Feed Detections
             </h2>
             <div className="space-y-1.5">
               {immediateRisks.slice(0, 2).map((r) => (
                 <div
                   key={r.id}
-                  className="rounded-lg bg-[#EF4444]/8 border border-[#EF4444]/25 p-2"
+                  className="rounded-sm bg-[#EF4444]/8 border border-[#EF4444]/25 p-2"
                 >
                   <p className="font-mono-tactical text-[10px] text-[#EF4444] font-semibold">
                     RISK {r.id} · IMMEDIATE
@@ -282,7 +304,7 @@ export function MorningBriefDeck({ nowMs, onOpenFullConsole }: MorningBriefDeckP
               {liveSignals.signals.slice(0, 2).map((sig) => (
                 <div
                   key={sig.id}
-                  className="rounded-lg bg-white/[0.03] border border-white/[0.08] p-2"
+                  className="rounded-sm bg-white/[0.03] border border-white/[0.08] p-2"
                 >
                   <p className="font-mono-tactical text-[10px] text-[#38BDF8]">
                     {sig.severity.toUpperCase()} · {sig.sourceName}
@@ -295,7 +317,7 @@ export function MorningBriefDeck({ nowMs, onOpenFullConsole }: MorningBriefDeckP
 
           <Link
             href="/watchlist?tab=live-wire"
-            className="w-full inline-flex items-center justify-center gap-1.5 rounded-lg bg-[#10B981]/12 hover:bg-[#10B981]/22 border border-[#10B981]/35 py-2 text-[11px] font-mono-tactical text-[#10B981]"
+            className="w-full inline-flex items-center justify-center gap-1.5 rounded-sm bg-[#10B981]/12 hover:bg-[#10B981]/22 border border-[#10B981]/35 py-2 text-[11px] font-mono-tactical text-[#10B981]"
           >
             <Radio className="w-3.5 h-3.5" />
             <span>Open Live Wire ({liveSignals.totalSignals})</span>
@@ -323,7 +345,7 @@ export function MorningBriefDeck({ nowMs, onOpenFullConsole }: MorningBriefDeckP
           id="btn-open-full-console"
           type="button"
           onClick={onOpenFullConsole}
-          className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl bg-[#38BDF8]/15 hover:bg-[#38BDF8]/25 border border-[#38BDF8]/45 px-4 py-2.5 text-xs font-mono-tactical font-medium text-[#38BDF8] transition cursor-pointer"
+          className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-md bg-[#38BDF8]/15 hover:bg-[#38BDF8]/25 border border-[#38BDF8]/45 px-4 py-2.5 text-xs font-mono-tactical font-medium text-[#38BDF8] transition cursor-pointer"
         >
           <Layers className="w-3.5 h-3.5" />
           <span>Open Full Console (Flashpoint Map, Crosswalk &amp; 8-Vector Matrix)</span>

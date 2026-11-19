@@ -315,7 +315,7 @@ export function buildCrossDomainGraph(bundle: FullBriefingDataBundle): CrossDoma
       title: w.signal,
       subtitle: w.forensicMeaning.slice(0, 68) + (w.forensicMeaning.length > 68 ? '…' : ''),
       tone: ['#1', '#2', '#8'].includes(w.id) ? 'crimson' : 'cyan',
-      href: '/watchlist/',
+      href: `/watchlist/#watchlist-card-${w.id.replace('#', '')}`,
     });
   }
 

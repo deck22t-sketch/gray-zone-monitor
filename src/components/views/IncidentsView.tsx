@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
 import {
   Activity,
@@ -24,17 +24,7 @@ import { assessIncidentVerification } from '@/lib/evidence';
 import { CitationChipList } from '@/components/shell/RichTextWithCitations';
 import { NarrativeAccordion } from '@/components/shell/NarrativeAccordion';
 import { TacticalFigure } from '@/components/shell/TacticalFigure';
-import { SectionNavStrip } from '@/components/shell/SectionNavStrip';
-
-const INCIDENTS_NAV_ITEMS = [
-  { id: 'swimlane-section', code: '01', label: 'Swimlane', badge: '10' },
-  { id: 'faa-teardown-section', code: '02', label: 'FAA Teardown' },
-  { id: 'nsanet-enclave-section', code: '03', label: 'NSANet Patch' },
-  { id: 'incident-ledger-section', code: '04', label: 'Ledger' },
-  { id: 'poisson-calc-section', code: '05', label: 'Poisson Math' },
-  { id: 'sub-ip-section', code: '06', label: 'Sub-IP Stack' },
-  { id: 'incidents-verbatim-section', code: '07', label: 'Verbatim' },
-];
+import { SectionNavStrip, scrollToSectionById } from '@/components/shell/SectionNavStrip';
 
 const CLASSIFICATION_META: Record<
   IncidentClassification,
@@ -160,6 +150,32 @@ export function IncidentsView() {
   const [minEvents, setMinEvents] = useState<number>(4);
   const [endpointMillions, setEndpointMillions] = useState<number>(2.5);
 
+  const incidentsNavItems = useMemo(
+    () => [
+      { id: 'swimlane-section', code: '01', label: 'Swimlane', badge: String(incidents.length) },
+      { id: 'faa-teardown-section', code: '02', label: 'FAA Teardown' },
+      { id: 'nsanet-enclave-section', code: '03', label: 'NSANet Patch' },
+      { id: 'incident-ledger-section', code: '04', label: 'Ledger' },
+      { id: 'poisson-calc-section', code: '05', label: 'Poisson Math' },
+      { id: 'sub-ip-section', code: '06', label: 'Sub-IP Stack' },
+      { id: 'incidents-verbatim-section', code: '07', label: 'Verbatim' },
+    ],
+    [incidents.length]
+  );
+
+  useEffect(() => {
+    const hashId = window.location.hash.replace(/^#/, '');
+    if (!hashId) return;
+    const cardMatch = hashId.match(/^incident-card-(\d+)$/);
+    if (cardMatch) {
+      setHighlightedEventId(`#${cardMatch[1]}`);
+    }
+    const t = setTimeout(() => {
+      scrollToSectionById(hashId, 'smooth');
+    }, 80);
+    return () => clearTimeout(t);
+  }, []);
+
   const updatedEventIds = useMemo(
     () => new Set(changelog.updatedStatuses.map((u) => u.eventId)),
     [changelog.updatedStatuses]
@@ -205,14 +221,14 @@ export function IncidentsView() {
     setHighlightedEventId(eventId);
     setTimeout(() => {
       const domId = `incident-card-${eventId.replace('#', '')}`;
-      document.getElementById(domId)?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      scrollToSectionById(domId, 'smooth');
     }, 30);
   }
 
   return (
     <div className="space-y-7">
       {/* Edge-to-Edge Docked In-Page Section Rail */}
-      <SectionNavStrip items={INCIDENTS_NAV_ITEMS} ariaLabel="Outage Wave & Forensics sections" />
+      <SectionNavStrip items={incidentsNavItems} ariaLabel="Outage Wave & Forensics sections" />
 
       {/* Header */}
       <section className="glass-panel tac-frame rounded-lg p-5 sm:p-6 space-y-2">
@@ -991,7 +1007,7 @@ export function IncidentsView() {
 
         <TacticalFigure
           src="/images/sub-ip-blindspots.jpg"
-          alt="Technical editorial cutaway triptych showing a deep-sea armored submarine fiber cable and repeater, a high-voltage substation large power transformer with copper coil windings, and orbital GNSS timing beams over coastal antennas"
+          alt="Three-panel photorealistic industrial triptych showing an abyssal seabed armored submarine optical cable, a terrestrial switchyard high-voltage power transformer with amber thermal glow, and a rooftop white choke-ring GNSS timing antenna under crimson RF spoofing arcs"
           plateId="PLATE 04"
           title="Sub-IP Physical & Timing Layer Exposures: Seabed SLTE Repeaters, 144-Week Transformers & GNSS/PTP Spoofing"
           domainBadge="SECTION 6.5 · PHYSICAL & CRYPTOGRAPHIC STACK"
