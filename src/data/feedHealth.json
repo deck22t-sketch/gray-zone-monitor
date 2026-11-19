@@ -1,5 +1,5 @@
 {
-  "checkedAtISO": "2026-11-18T21:40:28.268Z",
+  "checkedAtISO": "2026-11-19T00:04:39.730Z",
   "liveCount": 8,
   "totalFeeds": 8,
   "feeds": [
@@ -9,9 +9,9 @@
       "endpoint": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json",
       "status": "live",
       "httpStatus": 200,
-      "latencyMs": 202,
+      "latencyMs": 180,
       "itemCount": 18,
-      "lastSuccessAtISO": "2026-11-18T21:40:28.268Z"
+      "lastSuccessAtISO": "2026-11-19T00:04:39.730Z"
     },
     {
       "id": "cisa-advisories",
@@ -19,9 +19,9 @@
       "endpoint": "https://www.cisa.gov/cybersecurity-advisories/all.xml",
       "status": "live",
       "httpStatus": 200,
-      "latencyMs": 125,
+      "latencyMs": 135,
       "itemCount": 15,
-      "lastSuccessAtISO": "2026-11-18T21:40:28.268Z"
+      "lastSuccessAtISO": "2026-11-19T00:04:39.730Z"
     },
     {
       "id": "faa-nas",
@@ -29,10 +29,10 @@
       "endpoint": "https://nasstatus.faa.gov/api/airport-status-information",
       "status": "live",
       "httpStatus": 200,
-      "latencyMs": 155,
-      "itemCount": 8,
-      "updateTimeText": "Wed Nov 18 21:39:35 2026 GMT",
-      "lastSuccessAtISO": "2026-11-18T21:40:28.268Z"
+      "latencyMs": 309,
+      "itemCount": 6,
+      "updateTimeText": "Thu Nov 19 00:04:30 2026 GMT",
+      "lastSuccessAtISO": "2026-11-19T00:04:39.730Z"
     },
     {
       "id": "federal-register",
@@ -40,9 +40,9 @@
       "endpoint": "https://www.federalregister.gov/api/v1/documents.json?per_page=25&order=newest",
       "status": "live",
       "httpStatus": 200,
-      "latencyMs": 363,
+      "latencyMs": 372,
       "itemCount": 15,
-      "lastSuccessAtISO": "2026-11-18T21:40:28.268Z"
+      "lastSuccessAtISO": "2026-11-19T00:04:39.730Z"
     },
     {
       "id": "cloudflare-status",
@@ -50,9 +50,9 @@
       "endpoint": "https://www.cloudflarestatus.com/api/v2/incidents.json",
       "status": "live",
       "httpStatus": 200,
-      "latencyMs": 508,
+      "latencyMs": 394,
       "itemCount": 8,
-      "lastSuccessAtISO": "2026-11-18T21:40:28.268Z"
+      "lastSuccessAtISO": "2026-11-19T00:04:39.730Z"
     },
     {
       "id": "github-status",
@@ -60,9 +60,9 @@
       "endpoint": "https://www.githubstatus.com/api/v2/incidents.json",
       "status": "live",
       "httpStatus": 200,
-      "latencyMs": 503,
+      "latencyMs": 615,
       "itemCount": 8,
-      "lastSuccessAtISO": "2026-11-18T21:40:28.268Z"
+      "lastSuccessAtISO": "2026-11-19T00:04:39.730Z"
     },
     {
       "id": "aws-status",
@@ -70,9 +70,9 @@
       "endpoint": "https://status.aws.amazon.com/rss/all.rss",
       "status": "live",
       "httpStatus": 200,
-      "latencyMs": 307,
+      "latencyMs": 526,
       "itemCount": 0,
-      "lastSuccessAtISO": "2026-11-18T21:40:28.268Z"
+      "lastSuccessAtISO": "2026-11-19T00:04:39.730Z"
     },
     {
       "id": "apple-status",
@@ -80,9 +80,9 @@
       "endpoint": "https://www.apple.com/support/systemstatus/data/system_status_en_US.js",
       "status": "live",
       "httpStatus": 200,
-      "latencyMs": 208,
+      "latencyMs": 437,
       "itemCount": 12,
-      "lastSuccessAtISO": "2026-11-18T21:40:28.268Z"
+      "lastSuccessAtISO": "2026-11-19T00:04:39.730Z"
     }
   ]
 }
