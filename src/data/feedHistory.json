@@ -1,5 +1,5 @@
 {
-  "updatedAtISO": "2026-11-19T03:07:56.051Z",
+  "updatedAtISO": "2026-11-19T03:19:40.833Z",
   "maxPointsPerFeed": 28,
   "series": {
     "cisa-kev": [
@@ -36,6 +36,13 @@
         "status": "live",
         "httpStatus": 200,
         "latencyMs": 385,
+        "itemCount": 18
+      },
+      {
+        "checkedAtISO": "2026-11-19T03:19:40.833Z",
+        "status": "live",
+        "httpStatus": 200,
+        "latencyMs": 228,
         "itemCount": 18
       }
     ],
@@ -74,6 +81,13 @@
         "httpStatus": 200,
         "latencyMs": 353,
         "itemCount": 15
+      },
+      {
+        "checkedAtISO": "2026-11-19T03:19:40.833Z",
+        "status": "live",
+        "httpStatus": 200,
+        "latencyMs": 192,
+        "itemCount": 15
       }
     ],
     "faa-nas": [
@@ -111,6 +125,13 @@
         "httpStatus": 200,
         "latencyMs": 447,
         "itemCount": 6
+      },
+      {
+        "checkedAtISO": "2026-11-19T03:19:40.833Z",
+        "status": "live",
+        "httpStatus": 200,
+        "latencyMs": 210,
+        "itemCount": 5
       }
     ],
     "federal-register": [
@@ -147,6 +168,13 @@
         "status": "live",
         "httpStatus": 200,
         "latencyMs": 1208,
+        "itemCount": 15
+      },
+      {
+        "checkedAtISO": "2026-11-19T03:19:40.833Z",
+        "status": "live",
+        "httpStatus": 200,
+        "latencyMs": 531,
         "itemCount": 15
       }
     ],
@@ -185,6 +213,13 @@
         "httpStatus": 200,
         "latencyMs": 1952,
         "itemCount": 8
+      },
+      {
+        "checkedAtISO": "2026-11-19T03:19:40.833Z",
+        "status": "live",
+        "httpStatus": 200,
+        "latencyMs": 587,
+        "itemCount": 8
       }
     ],
     "github-status": [
@@ -221,6 +256,13 @@
         "status": "live",
         "httpStatus": 200,
         "latencyMs": 2398,
+        "itemCount": 8
+      },
+      {
+        "checkedAtISO": "2026-11-19T03:19:40.833Z",
+        "status": "live",
+        "httpStatus": 200,
+        "latencyMs": 659,
         "itemCount": 8
       }
     ],
@@ -259,6 +301,13 @@
         "httpStatus": 200,
         "latencyMs": 351,
         "itemCount": 0
+      },
+      {
+        "checkedAtISO": "2026-11-19T03:19:40.833Z",
+        "status": "live",
+        "httpStatus": 200,
+        "latencyMs": 700,
+        "itemCount": 0
       }
     ],
     "apple-status": [
@@ -295,6 +344,13 @@
         "status": "live",
         "httpStatus": 200,
         "latencyMs": 205,
+        "itemCount": 12
+      },
+      {
+        "checkedAtISO": "2026-11-19T03:19:40.833Z",
+        "status": "live",
+        "httpStatus": 200,
+        "latencyMs": 521,
         "itemCount": 12
       }
     ]
