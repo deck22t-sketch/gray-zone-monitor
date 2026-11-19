@@ -23,7 +23,7 @@ export function PortalFooter() {
     .slice(0, 16);
 
   return (
-    <footer className="border-t border-white/10 bg-[#05070B] mt-14 pb-20 md:pb-0 print:bg-white print:text-black print:border-gray-300">
+    <footer className="border-t border-white/10 bg-[#05070B] mt-14 pb-24 md:pb-0 print:bg-white print:text-black print:border-gray-300">
       <div className="max-w-[1380px] mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-start print:hidden">
           {/* Brand & Edition Provenance */}

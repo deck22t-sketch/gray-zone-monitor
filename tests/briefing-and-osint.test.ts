@@ -425,6 +425,11 @@ describe('Phase 3: Poisson Null-Hypothesis Math & Client-Side AES-256-GCM Vault'
   it('ships all 11 bespoke editorial & cartographic JPEG assets in public/images/ and validates Subsea Chokepoint Atlas geodetic calibration', async () => {
     const { resolvePublicAssetPath } = await import('../src/components/shell/TacticalFigure');
     const { SUBSEA_THEATERS } = await import('../src/components/views/SubseaChokepointAtlas');
+    const {
+      FLASHPOINTS,
+      THEATER_PRESETS,
+      svgPointToLatLon,
+    } = await import('../src/components/views/GlobalFlashpointMap');
     const expectedImages = [
       'global-theater-map.jpg',
       'overview-backbone-map.jpg',
@@ -446,6 +451,34 @@ describe('Phase 3: Poisson Null-Hypothesis Math & Client-Side AES-256-GCM Vault'
       expect(buf.length).toBeGreaterThan(100_000);
       expect(buf.subarray(0, 3).toString('hex')).toBe('ffd8ff');
     }
+
+    expect(FLASHPOINTS).toHaveLength(7);
+    expect(THEATER_PRESETS).toHaveLength(5);
+    for (const node of FLASHPOINTS) {
+      expect(node.x).toBeGreaterThan(20);
+      expect(node.x).toBeLessThan(1580);
+      expect(node.y).toBeGreaterThan(20);
+      expect(node.y).toBeLessThan(880);
+      for (const sp of node.secondaryPoints ?? []) {
+        expect(sp.x).toBeGreaterThan(10);
+        expect(sp.x).toBeLessThan(1590);
+        expect(sp.y).toBeGreaterThan(10);
+        expect(sp.y).toBeLessThan(890);
+      }
+    }
+
+    // Verify piecewise geodetic calibration across conflict chokepoints (±1.5° tolerance)
+    const hormuz = svgPointToLatLon(1025, 422);
+    expect(Math.abs(hormuz.lat - 26.5)).toBeLessThan(1.5);
+    expect(Math.abs(hormuz.lon - 56.6)).toBeLessThan(1.5);
+
+    const babElMandeb = svgPointToLatLon(969, 486);
+    expect(Math.abs(babElMandeb.lat - 12.6)).toBeLessThan(1.5);
+    expect(Math.abs(babElMandeb.lon - 43.3)).toBeLessThan(1.5);
+
+    const luzonStrait = svgPointToLatLon(1315, 453);
+    expect(Math.abs(luzonStrait.lat - 20.2)).toBeLessThan(1.5);
+    expect(Math.abs(luzonStrait.lon - 121.5)).toBeLessThan(1.5);
 
     expect(SUBSEA_THEATERS).toHaveLength(3);
     for (const theater of SUBSEA_THEATERS) {
