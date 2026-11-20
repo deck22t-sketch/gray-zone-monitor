@@ -1,57 +1,8 @@
 {
-  "ingestedAtISO": "2026-11-20T03:40:51.793Z",
+  "ingestedAtISO": "2026-11-20T06:52:57.381Z",
   "ingestionMode": "ZERO_KEY_PUBLIC_FEEDS",
-  "totalSignals": 117,
+  "totalSignals": 115,
   "signals": [
-    {
-      "id": "faa-gs-las-1",
-      "sourceId": "faa-nas",
-      "sourceName": "FAA NAS Status",
-      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 03:40:21 2026 GMT",
-      "publishedAtISO": "2026-11-20T03:40:21.000Z",
-      "title": "FAA Ground Stop Active: LAS (Ground Stop Programs)",
-      "summary": "Ground Stop at LAS — Reason: low ceilings | Est. End: 8:30 pm PST. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 03:40:21 2026 GMT)",
-      "url": "https://nasstatus.faa.gov/",
-      "severity": "critical",
-      "watchlistMatches": [
-        "#5",
-        "#7"
-      ],
-      "riskMatrixMatches": [
-        "#1"
-      ],
-      "countdownMatches": [],
-      "tags": [
-        "FAA-NAS",
-        "Ground-Stop",
-        "LAS"
-      ],
-      "markdownRow": "| #11+ — Fri Nov 20 03:40:21 2026 GMT | FAA NAS — LAS (National Aviation / ATC) | Active Ground Stop at LAS through 8:30 pm PST ([FAA NAS Status](https://nasstatus.faa.gov/)) | FAA NAS Ground Stop Programs: low ceilings | Live Wire (CRITICAL) — Watchlist #5, #7 |"
-    },
-    {
-      "id": "nvd-cve-2026-84236",
-      "sourceId": "nist-nvd",
-      "sourceName": "NIST NVD Critical CVEs",
-      "attributionText": "Source: NIST National Vulnerability Database API 2.0 (nvd.nist.gov — CVSS 9.8)",
-      "publishedAtISO": "2026-11-19T21:18:06.053Z",
-      "title": "CVE-2026-84236 (CVSS 9.8): IBM Guardium Data Protection 12.2 is vulnerable to insecure deserialization in the SharePoint Tap Multic…",
-      "summary": "[CVSS 9.8 CRITICAL] IBM Guardium Data Protection 12.2 is vulnerable to insecure deserialization in the SharePoint Tap MulticastTransceiver component. An unauthenticated remote attacker could exploit this vulnerability to execute arbitrary code on the affected system.",
-      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-84236",
-      "severity": "critical",
-      "watchlistMatches": [
-        "#2"
-      ],
-      "riskMatrixMatches": [
-        "#2"
-      ],
-      "countdownMatches": [],
-      "tags": [
-        "NIST-NVD",
-        "CVE-2026-84236",
-        "CVSS-9.8"
-      ],
-      "markdownRow": "| #11+ — Nov 19, 2026 | CVE-2026-84236 (Enterprise Software) | IBM Guardium Data Protection 12.2 is vulnerable to insecure deserialization in the SharePoint Tap MulticastTransceiver component. An u… ([NIST NVD (9.8)](https://nvd.nist.gov/vuln/detail/CVE-2026-84236)) | Pre-KEV critical disclosure (CVSS 9.8) | Live Wire (CRITICAL) — Watchlist #2 |"
-    },
     {
       "id": "cisa-adv-icsa-26-323-02",
       "sourceId": "cisa-advisories",
@@ -221,6 +172,30 @@
         "CVSS-9.8"
       ],
       "markdownRow": "| #11+ — Nov 18, 2026 | CVE-2026-130733 (Enterprise Software) | Grav from 2.0.0 before 2.2.18 contains an authorization bypass vulnerability that allows publishers to overwrite pages their per-page… ([NIST NVD (9.8)](https://nvd.nist.gov/vuln/detail/CVE-2026-130733)) | Pre-KEV critical disclosure (CVSS 9.8) | Live Wire (CRITICAL) — Watchlist #2 |"
+    },
+    {
+      "id": "nvd-cve-2026-130675",
+      "sourceId": "nist-nvd",
+      "sourceName": "NIST NVD Critical CVEs",
+      "attributionText": "Source: NIST National Vulnerability Database API 2.0 (nvd.nist.gov — CVSS 9.8)",
+      "publishedAtISO": "2026-11-18T12:17:10.783Z",
+      "title": "CVE-2026-130675 (CVSS 9.8): Craft CMS from 5.0.0 before 5.11.4 contains a remote code execution vulnerability in ImageTransforms::no…",
+      "summary": "[CVSS 9.8 CRITICAL] Craft CMS from 5.0.0 before 5.11.4 contains a remote code execution vulnerability in ImageTransforms::normalizeTransform() that allows attackers to instantiate arbitrary classes by supplying class:null with a __class key. Attackers can reach the method t…",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-130675",
+      "severity": "critical",
+      "watchlistMatches": [
+        "#2"
+      ],
+      "riskMatrixMatches": [
+        "#2"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "NIST-NVD",
+        "CVE-2026-130675",
+        "CVSS-9.8"
+      ],
+      "markdownRow": "| #11+ — Nov 18, 2026 | CVE-2026-130675 (Enterprise Software) | Craft CMS from 5.0.0 before 5.11.4 contains a remote code execution vulnerability in ImageTransforms::normalizeTransform() that allows… ([NIST NVD (9.8)](https://nvd.nist.gov/vuln/detail/CVE-2026-130675)) | Pre-KEV critical disclosure (CVSS 9.8) | Live Wire (CRITICAL) — Watchlist #2 |"
     },
     {
       "id": "kev-cve-2026-40217",
@@ -456,88 +431,312 @@
       "markdownRow": "| #11+ — 2026-11-10 | Google Chromium (Enterprise / Edge Security) | Google Chromium contains a use-after-free vulnerability in the XML component that could allow a remote attacker to execute arbitrary code i… ([CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search_api_fulltext=CVE-2026-125350)) | Active exploitation confirmed (CVE-2026-125350); due 2026-11-24 | Live Wire (CRITICAL) — Watchlist #2, #8 |"
     },
     {
-      "id": "faa-gdp-sfo-2",
-      "sourceId": "faa-nas",
-      "sourceName": "FAA NAS Status",
-      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 03:40:21 2026 GMT",
-      "publishedAtISO": "2026-11-20T03:40:21.000Z",
-      "title": "FAA Ground Delay Program: SFO (Avg 2 hours and 19 minutes)",
-      "summary": "GDP at SFO — Reason: low ceilings, Avg delay: 2 hours and 19 minutes, Max: 4 hours and 46 minutes. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 03:40:21 2026 GMT)",
-      "url": "https://nasstatus.faa.gov/",
+      "id": "fedreg-2026-23688",
+      "sourceId": "federal-register",
+      "sourceName": "U.S. Federal Register",
+      "attributionText": "Source: U.S. Federal Register (2026-23688 — Transportation Department, Federal Aviation Administration)",
+      "publishedAtISO": "2026-11-20T13:00:00.000Z",
+      "title": "Airworthiness Directives; The Boeing Company Airplanes (2026-23688)",
+      "summary": "The FAA is adopting a new airworthiness directive (AD) for all The Boeing Company Model 757 airplanes. This AD was prompted by reports of crack damage at existing reinforcing repairs in the fuselage frame lower lobe areas in certain sections. This AD requires…",
+      "url": "https://www.federalregister.gov/documents/2026/11/20/2026-23688/airworthiness-directives-the-boeing-company-airplanes",
       "severity": "elevated",
       "watchlistMatches": [
+        "#9",
+        "#5"
+      ],
+      "riskMatrixMatches": [
+        "#6",
+        "#1"
+      ],
+      "countdownMatches": [
+        "2027-01-08"
+      ],
+      "tags": [
+        "Federal-Register",
+        "Rule",
+        "FCC-Telecom-Subsea",
+        "FAA-Regulatory"
+      ],
+      "markdownRow": "| #11+ — 2026-11-20 | Transportation Department, Federal Aviation Administration (Federal Regulatory) | Airworthiness Directives; The Boeing Company Airplanes ([FR 2026-23688](https://www.federalregister.gov/documents/2026/11/20/2026-23688/airworthiness-directives-the-boeing-company-airplanes)) | Rule filing mapped to Risk #6, #1 | Live Wire (ELEVATED) — Watchlist #9, #5 |"
+    },
+    {
+      "id": "fedreg-2026-23664",
+      "sourceId": "federal-register",
+      "sourceName": "U.S. Federal Register",
+      "attributionText": "Source: U.S. Federal Register (2026-23664 — Securities and Exchange Commission)",
+      "publishedAtISO": "2026-11-20T13:00:00.000Z",
+      "title": "Agency Information Collection Activities; Submission for OMB Review; Comment Request; Extension: Form N-6F (2026-23664)",
+      "summary": "Notice published by Securities and Exchange Commission (2026-23664).",
+      "url": "https://www.federalregister.gov/documents/2026/11/20/2026-23664/agency-information-collection-activities-submission-for-omb-review-comment-request-extension-form",
+      "severity": "elevated",
+      "watchlistMatches": [
+        "#6"
+      ],
+      "riskMatrixMatches": [
         "#5",
         "#7"
       ],
-      "riskMatrixMatches": [
-        "#1"
+      "countdownMatches": [
+        "2026-12-31"
       ],
-      "countdownMatches": [],
       "tags": [
-        "FAA-NAS",
-        "Ground-Delay",
-        "SFO"
+        "Federal-Register",
+        "Notice",
+        "SEC-Clearing"
       ],
-      "markdownRow": "| #11+ — Fri Nov 20 03:40:21 2026 GMT | FAA NAS — SFO (National Aviation / ATC) | Ground Delay Program at SFO (2 hours and 19 minutes) ([FAA NAS Status](https://nasstatus.faa.gov/)) | FAA NAS Ground Delay Programs: low ceilings | Live Wire (ELEVATED) — Watchlist #5, #7 |"
+      "markdownRow": "| #11+ — 2026-11-20 | Securities and Exchange Commission (Federal Regulatory) | Agency Information Collection Activities; Submission for OMB Review; Comment Request; Extension: Form N-6F ([FR 2026-23664](https://www.federalregister.gov/documents/2026/11/20/2026-23664/agency-information-collection-activities-submission-for-omb-review-comment-request-extension-form)) | Notice filing mapped to Risk #5, #7 | Live Wire (ELEVATED) — Watchlist #6 |"
     },
     {
-      "id": "faa-gdp-san-3",
-      "sourceId": "faa-nas",
-      "sourceName": "FAA NAS Status",
-      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 03:40:21 2026 GMT",
-      "publishedAtISO": "2026-11-20T03:40:21.000Z",
-      "title": "FAA Ground Delay Program: SAN (Avg 1 hour and 6 minutes)",
-      "summary": "GDP at SAN — Reason: low visibility, Avg delay: 1 hour and 6 minutes, Max: 2 hours and 39 minutes. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 03:40:21 2026 GMT)",
-      "url": "https://nasstatus.faa.gov/",
+      "id": "fedreg-2026-23663",
+      "sourceId": "federal-register",
+      "sourceName": "U.S. Federal Register",
+      "attributionText": "Source: U.S. Federal Register (2026-23663 — Securities and Exchange Commission)",
+      "publishedAtISO": "2026-11-20T13:00:00.000Z",
+      "title": "Agency Information Collection Activities; Submission for OMB Review; Comment Request; Extension: Rule 12d1-4 (2026-23663)",
+      "summary": "Notice published by Securities and Exchange Commission (2026-23663).",
+      "url": "https://www.federalregister.gov/documents/2026/11/20/2026-23663/agency-information-collection-activities-submission-for-omb-review-comment-request-extension-rule",
       "severity": "elevated",
       "watchlistMatches": [
+        "#6"
+      ],
+      "riskMatrixMatches": [
         "#5",
         "#7"
       ],
-      "riskMatrixMatches": [
-        "#1"
+      "countdownMatches": [
+        "2026-12-31"
       ],
-      "countdownMatches": [],
       "tags": [
-        "FAA-NAS",
-        "Ground-Delay",
-        "SAN"
+        "Federal-Register",
+        "Notice",
+        "SEC-Clearing"
       ],
-      "markdownRow": "| #11+ — Fri Nov 20 03:40:21 2026 GMT | FAA NAS — SAN (National Aviation / ATC) | Ground Delay Program at SAN (1 hour and 6 minutes) ([FAA NAS Status](https://nasstatus.faa.gov/)) | FAA NAS Ground Delay Programs: low visibility | Live Wire (ELEVATED) — Watchlist #5, #7 |"
+      "markdownRow": "| #11+ — 2026-11-20 | Securities and Exchange Commission (Federal Regulatory) | Agency Information Collection Activities; Submission for OMB Review; Comment Request; Extension: Rule 12d1-4 ([FR 2026-23663](https://www.federalregister.gov/documents/2026/11/20/2026-23663/agency-information-collection-activities-submission-for-omb-review-comment-request-extension-rule)) | Notice filing mapped to Risk #5, #7 | Live Wire (ELEVATED) — Watchlist #6 |"
     },
     {
-      "id": "faa-gdp-las-4",
-      "sourceId": "faa-nas",
-      "sourceName": "FAA NAS Status",
-      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 03:40:21 2026 GMT",
-      "publishedAtISO": "2026-11-20T03:40:21.000Z",
-      "title": "FAA Ground Delay Program: LAS (Avg 47 minutes)",
-      "summary": "GDP at LAS — Reason: low ceilings, Avg delay: 47 minutes, Max: 1 hour and 29 minutes. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 03:40:21 2026 GMT)",
-      "url": "https://nasstatus.faa.gov/",
+      "id": "fedreg-2026-23662",
+      "sourceId": "federal-register",
+      "sourceName": "U.S. Federal Register",
+      "attributionText": "Source: U.S. Federal Register (2026-23662 — Securities and Exchange Commission)",
+      "publishedAtISO": "2026-11-20T13:00:00.000Z",
+      "title": "Agency Information Collection Activities; Submission for OMB Review; Comment Request; Extension: Securities Act Rule 192 (2026-23662)",
+      "summary": "Notice published by Securities and Exchange Commission (2026-23662).",
+      "url": "https://www.federalregister.gov/documents/2026/11/20/2026-23662/agency-information-collection-activities-submission-for-omb-review-comment-request-extension",
       "severity": "elevated",
       "watchlistMatches": [
+        "#6"
+      ],
+      "riskMatrixMatches": [
         "#5",
         "#7"
       ],
-      "riskMatrixMatches": [
-        "#1"
+      "countdownMatches": [
+        "2026-12-31"
       ],
-      "countdownMatches": [],
       "tags": [
-        "FAA-NAS",
-        "Ground-Delay",
-        "LAS"
+        "Federal-Register",
+        "Notice",
+        "SEC-Clearing"
       ],
-      "markdownRow": "| #11+ — Fri Nov 20 03:40:21 2026 GMT | FAA NAS — LAS (National Aviation / ATC) | Ground Delay Program at LAS (47 minutes) ([FAA NAS Status](https://nasstatus.faa.gov/)) | FAA NAS Ground Delay Programs: low ceilings | Live Wire (ELEVATED) — Watchlist #5, #7 |"
+      "markdownRow": "| #11+ — 2026-11-20 | Securities and Exchange Commission (Federal Regulatory) | Agency Information Collection Activities; Submission for OMB Review; Comment Request; Extension: Securities Act Rule 192 ([FR 2026-23662](https://www.federalregister.gov/documents/2026/11/20/2026-23662/agency-information-collection-activities-submission-for-omb-review-comment-request-extension)) | Notice filing mapped to Risk #5, #7 | Live Wire (ELEVATED) — Watchlist #6 |"
     },
     {
-      "id": "faa-closure-sna-5",
+      "id": "fedreg-2026-23660",
+      "sourceId": "federal-register",
+      "sourceName": "U.S. Federal Register",
+      "attributionText": "Source: U.S. Federal Register (2026-23660 — Securities and Exchange Commission)",
+      "publishedAtISO": "2026-11-20T13:00:00.000Z",
+      "title": "Advisers Investment Trust and River Canyon Fund Management LLC (2026-23660)",
+      "summary": "Notice published by Securities and Exchange Commission (2026-23660).",
+      "url": "https://www.federalregister.gov/documents/2026/11/20/2026-23660/advisers-investment-trust-and-river-canyon-fund-management-llc",
+      "severity": "elevated",
+      "watchlistMatches": [
+        "#6"
+      ],
+      "riskMatrixMatches": [
+        "#5",
+        "#7"
+      ],
+      "countdownMatches": [
+        "2026-12-31"
+      ],
+      "tags": [
+        "Federal-Register",
+        "Notice",
+        "SEC-Clearing"
+      ],
+      "markdownRow": "| #11+ — 2026-11-20 | Securities and Exchange Commission (Federal Regulatory) | Advisers Investment Trust and River Canyon Fund Management LLC ([FR 2026-23660](https://www.federalregister.gov/documents/2026/11/20/2026-23660/advisers-investment-trust-and-river-canyon-fund-management-llc)) | Notice filing mapped to Risk #5, #7 | Live Wire (ELEVATED) — Watchlist #6 |"
+    },
+    {
+      "id": "fedreg-2026-23659",
+      "sourceId": "federal-register",
+      "sourceName": "U.S. Federal Register",
+      "attributionText": "Source: U.S. Federal Register (2026-23659 — Securities and Exchange Commission)",
+      "publishedAtISO": "2026-11-20T13:00:00.000Z",
+      "title": "BC Partners Lending Corp., et al. (2026-23659)",
+      "summary": "Notice published by Securities and Exchange Commission (2026-23659).",
+      "url": "https://www.federalregister.gov/documents/2026/11/20/2026-23659/bc-partners-lending-corp-et-al",
+      "severity": "elevated",
+      "watchlistMatches": [
+        "#6"
+      ],
+      "riskMatrixMatches": [
+        "#5",
+        "#7"
+      ],
+      "countdownMatches": [
+        "2026-12-31"
+      ],
+      "tags": [
+        "Federal-Register",
+        "Notice",
+        "SEC-Clearing"
+      ],
+      "markdownRow": "| #11+ — 2026-11-20 | Securities and Exchange Commission (Federal Regulatory) | BC Partners Lending Corp., et al. ([FR 2026-23659](https://www.federalregister.gov/documents/2026/11/20/2026-23659/bc-partners-lending-corp-et-al)) | Notice filing mapped to Risk #5, #7 | Live Wire (ELEVATED) — Watchlist #6 |"
+    },
+    {
+      "id": "fedreg-2026-23658",
+      "sourceId": "federal-register",
+      "sourceName": "U.S. Federal Register",
+      "attributionText": "Source: U.S. Federal Register (2026-23658 — Securities and Exchange Commission)",
+      "publishedAtISO": "2026-11-20T13:00:00.000Z",
+      "title": "Advisers Investment Trust and State Farm Investment Management Corp. (2026-23658)",
+      "summary": "Notice published by Securities and Exchange Commission (2026-23658).",
+      "url": "https://www.federalregister.gov/documents/2026/11/20/2026-23658/advisers-investment-trust-and-state-farm-investment-management-corp",
+      "severity": "elevated",
+      "watchlistMatches": [
+        "#6"
+      ],
+      "riskMatrixMatches": [
+        "#5",
+        "#7"
+      ],
+      "countdownMatches": [
+        "2026-12-31"
+      ],
+      "tags": [
+        "Federal-Register",
+        "Notice",
+        "SEC-Clearing"
+      ],
+      "markdownRow": "| #11+ — 2026-11-20 | Securities and Exchange Commission (Federal Regulatory) | Advisers Investment Trust and State Farm Investment Management Corp. ([FR 2026-23658](https://www.federalregister.gov/documents/2026/11/20/2026-23658/advisers-investment-trust-and-state-farm-investment-management-corp)) | Notice filing mapped to Risk #5, #7 | Live Wire (ELEVATED) — Watchlist #6 |"
+    },
+    {
+      "id": "fedreg-2026-23653",
+      "sourceId": "federal-register",
+      "sourceName": "U.S. Federal Register",
+      "attributionText": "Source: U.S. Federal Register (2026-23653 — Securities and Exchange Commission)",
+      "publishedAtISO": "2026-11-20T13:00:00.000Z",
+      "title": "Self-Regulatory Organizations; Coinbase Derivatives, LLC; Notice of Filing and Immediate Effectiveness of a Proposed Rule Change Relating to Customer Margin Requirements for Security Futures Products (2026-23653)",
+      "summary": "Notice published by Securities and Exchange Commission (2026-23653).",
+      "url": "https://www.federalregister.gov/documents/2026/11/20/2026-23653/self-regulatory-organizations-coinbase-derivatives-llc-notice-of-filing-and-immediate-effectiveness",
+      "severity": "elevated",
+      "watchlistMatches": [
+        "#6"
+      ],
+      "riskMatrixMatches": [
+        "#5",
+        "#7"
+      ],
+      "countdownMatches": [
+        "2026-12-31"
+      ],
+      "tags": [
+        "Federal-Register",
+        "Notice",
+        "SEC-Clearing"
+      ],
+      "markdownRow": "| #11+ — 2026-11-20 | Securities and Exchange Commission (Federal Regulatory) | Self-Regulatory Organizations; Coinbase Derivatives, LLC; Notice of Filing and Immediate Effectiveness of a Proposed Rule Change Relating t… ([FR 2026-23653](https://www.federalregister.gov/documents/2026/11/20/2026-23653/self-regulatory-organizations-coinbase-derivatives-llc-notice-of-filing-and-immediate-effectiveness)) | Notice filing mapped to Risk #5, #7 | Live Wire (ELEVATED) — Watchlist #6 |"
+    },
+    {
+      "id": "fedreg-2026-23652",
+      "sourceId": "federal-register",
+      "sourceName": "U.S. Federal Register",
+      "attributionText": "Source: U.S. Federal Register (2026-23652 — Securities and Exchange Commission)",
+      "publishedAtISO": "2026-11-20T13:00:00.000Z",
+      "title": "Self-Regulatory Organizations; ICE Clear Credit LLC; Notice of Filing of Proposed Rule Change Relating to the CDS Clearing Rules, End-of-Day Price Discovery Policies and Procedures, Default Auction Procedures-Initial Default Auctions, and Secondary Auction Procedures (2026-23652)",
+      "summary": "Notice published by Securities and Exchange Commission (2026-23652).",
+      "url": "https://www.federalregister.gov/documents/2026/11/20/2026-23652/self-regulatory-organizations-ice-clear-credit-llc-notice-of-filing-of-proposed-rule-change-relating",
+      "severity": "elevated",
+      "watchlistMatches": [
+        "#6"
+      ],
+      "riskMatrixMatches": [
+        "#5",
+        "#7"
+      ],
+      "countdownMatches": [
+        "2026-12-31"
+      ],
+      "tags": [
+        "Federal-Register",
+        "Notice",
+        "SEC-Clearing"
+      ],
+      "markdownRow": "| #11+ — 2026-11-20 | Securities and Exchange Commission (Federal Regulatory) | Self-Regulatory Organizations; ICE Clear Credit LLC; Notice of Filing of Proposed Rule Change Relating to the CDS Clearing Rules, End-of-Da… ([FR 2026-23652](https://www.federalregister.gov/documents/2026/11/20/2026-23652/self-regulatory-organizations-ice-clear-credit-llc-notice-of-filing-of-proposed-rule-change-relating)) | Notice filing mapped to Risk #5, #7 | Live Wire (ELEVATED) — Watchlist #6 |"
+    },
+    {
+      "id": "fedreg-2026-23651",
+      "sourceId": "federal-register",
+      "sourceName": "U.S. Federal Register",
+      "attributionText": "Source: U.S. Federal Register (2026-23651 — Securities and Exchange Commission)",
+      "publishedAtISO": "2026-11-20T13:00:00.000Z",
+      "title": "Self-Regulatory Organizations; Investors Exchange LLC; Notice of Filing and Immediate Effectiveness of Proposed Rule Change To Amend Rule 11.270 Clearly Erroneous Executions (2026-23651)",
+      "summary": "Notice published by Securities and Exchange Commission (2026-23651).",
+      "url": "https://www.federalregister.gov/documents/2026/11/20/2026-23651/self-regulatory-organizations-investors-exchange-llc-notice-of-filing-and-immediate-effectiveness-of",
+      "severity": "elevated",
+      "watchlistMatches": [
+        "#6"
+      ],
+      "riskMatrixMatches": [
+        "#5",
+        "#7"
+      ],
+      "countdownMatches": [
+        "2026-12-31"
+      ],
+      "tags": [
+        "Federal-Register",
+        "Notice",
+        "SEC-Clearing"
+      ],
+      "markdownRow": "| #11+ — 2026-11-20 | Securities and Exchange Commission (Federal Regulatory) | Self-Regulatory Organizations; Investors Exchange LLC; Notice of Filing and Immediate Effectiveness of Proposed Rule Change To Amend Rule 1… ([FR 2026-23651](https://www.federalregister.gov/documents/2026/11/20/2026-23651/self-regulatory-organizations-investors-exchange-llc-notice-of-filing-and-immediate-effectiveness-of)) | Notice filing mapped to Risk #5, #7 | Live Wire (ELEVATED) — Watchlist #6 |"
+    },
+    {
+      "id": "fedreg-2026-23650",
+      "sourceId": "federal-register",
+      "sourceName": "U.S. Federal Register",
+      "attributionText": "Source: U.S. Federal Register (2026-23650 — Securities and Exchange Commission)",
+      "publishedAtISO": "2026-11-20T13:00:00.000Z",
+      "title": "Self-Regulatory Organizations; MEMX LLC; Notice of Filing and Immediate Effectiveness of a Proposed Rule Change To Amend Its Rules To Permit the Listing of Binary Options Overlying Key Performance Indicators (2026-23650)",
+      "summary": "Notice published by Securities and Exchange Commission (2026-23650).",
+      "url": "https://www.federalregister.gov/documents/2026/11/20/2026-23650/self-regulatory-organizations-memx-llc-notice-of-filing-and-immediate-effectiveness-of-a-proposed",
+      "severity": "elevated",
+      "watchlistMatches": [
+        "#6"
+      ],
+      "riskMatrixMatches": [
+        "#5",
+        "#7"
+      ],
+      "countdownMatches": [
+        "2026-12-31"
+      ],
+      "tags": [
+        "Federal-Register",
+        "Notice",
+        "SEC-Clearing"
+      ],
+      "markdownRow": "| #11+ — 2026-11-20 | Securities and Exchange Commission (Federal Regulatory) | Self-Regulatory Organizations; MEMX LLC; Notice of Filing and Immediate Effectiveness of a Proposed Rule Change To Amend Its Rules To Permi… ([FR 2026-23650](https://www.federalregister.gov/documents/2026/11/20/2026-23650/self-regulatory-organizations-memx-llc-notice-of-filing-and-immediate-effectiveness-of-a-proposed)) | Notice filing mapped to Risk #5, #7 | Live Wire (ELEVATED) — Watchlist #6 |"
+    },
+    {
+      "id": "faa-closure-sna-1",
       "sourceId": "faa-nas",
       "sourceName": "FAA NAS Status",
-      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 03:40:21 2026 GMT",
-      "publishedAtISO": "2026-11-20T03:40:21.000Z",
+      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 06:52:55 2026 GMT",
+      "publishedAtISO": "2026-11-20T06:52:55.000Z",
       "title": "FAA Airport Closures: SNA",
-      "summary": "SNA: !SNA 11/020 SNA AD AP CLSD DLY 0730-1415 2611150730-2611211415 | Reopen: Nov 21 at 14:15 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 03:40:21 2026 GMT)",
+      "summary": "SNA: !SNA 11/020 SNA AD AP CLSD DLY 0730-1415 2611150730-2611211415 | Reopen: Nov 21 at 14:15 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 06:52:55 2026 GMT)",
       "url": "https://nasstatus.faa.gov/",
       "severity": "elevated",
       "watchlistMatches": [
@@ -552,16 +751,90 @@
         "Airport-Closure",
         "SNA"
       ],
-      "markdownRow": "| #11+ — Fri Nov 20 03:40:21 2026 GMT | FAA NAS — SNA (National Aviation / Airport Ops) | Airport Closures active at SNA until Nov 21 at 14:15 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !SNA 11/020 SNA AD AP CLSD DLY 0730-1415 2611150730-2611211415 | Live Wire (ELEVATED) — Watchlist #7 |"
+      "markdownRow": "| #11+ — Fri Nov 20 06:52:55 2026 GMT | FAA NAS — SNA (National Aviation / Airport Ops) | Airport Closures active at SNA until Nov 21 at 14:15 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !SNA 11/020 SNA AD AP CLSD DLY 0730-1415 2611150730-2611211415 | Live Wire (ELEVATED) — Watchlist #7 |"
+    },
+    {
+      "id": "faa-closure-pns-2",
+      "sourceId": "faa-nas",
+      "sourceName": "FAA NAS Status",
+      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 06:52:55 2026 GMT",
+      "publishedAtISO": "2026-11-20T06:52:55.000Z",
+      "title": "FAA Airport Closures: PNS",
+      "summary": "PNS: !PNS 11/050 PNS AD AP CLSD EXC HEL OPS 2611200600-2611201100 | Reopen: Nov 20 at 11:00 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 06:52:55 2026 GMT)",
+      "url": "https://nasstatus.faa.gov/",
+      "severity": "elevated",
+      "watchlistMatches": [
+        "#7"
+      ],
+      "riskMatrixMatches": [
+        "#1"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "FAA-NAS",
+        "Airport-Closure",
+        "PNS"
+      ],
+      "markdownRow": "| #11+ — Fri Nov 20 06:52:55 2026 GMT | FAA NAS — PNS (National Aviation / Airport Ops) | Airport Closures active at PNS until Nov 20 at 11:00 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !PNS 11/050 PNS AD AP CLSD EXC HEL OPS 2611200600-2611201100 | Live Wire (ELEVATED) — Watchlist #7 |"
+    },
+    {
+      "id": "faa-closure-ase-5",
+      "sourceId": "faa-nas",
+      "sourceName": "FAA NAS Status",
+      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 06:52:55 2026 GMT",
+      "publishedAtISO": "2026-11-20T06:52:55.000Z",
+      "title": "FAA Airport Closures: ASE",
+      "summary": "ASE: !ASE 11/192 ASE AD AP CLSD EXC LIFE FLT HEL AND SAR HEL 30MIN PPR 970-379-8406 2611200617-2611201400 | Reopen: Nov 20 at 14:00 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 06:52:55 2026 GMT)",
+      "url": "https://nasstatus.faa.gov/",
+      "severity": "elevated",
+      "watchlistMatches": [
+        "#7"
+      ],
+      "riskMatrixMatches": [
+        "#1"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "FAA-NAS",
+        "Airport-Closure",
+        "ASE"
+      ],
+      "markdownRow": "| #11+ — Fri Nov 20 06:52:55 2026 GMT | FAA NAS — ASE (National Aviation / Airport Ops) | Airport Closures active at ASE until Nov 20 at 14:00 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !ASE 11/192 ASE AD AP CLSD EXC LIFE FLT HEL AND SAR HEL 30MIN PPR 970-379-8406 2611200617-2611201400 | Live Wire (ELEVATED) — Watchlist #7 |"
+    },
+    {
+      "id": "cloudflare-status-4lv21sf5fzhm",
+      "sourceId": "cloudflare-status",
+      "sourceName": "Cloudflare Status",
+      "attributionText": "Source: Cloudflare System Status (www.cloudflarestatus.com)",
+      "publishedAtISO": "2026-11-20T05:10:34.028Z",
+      "title": "Cloudflare: Network Performance Issues in Miami [IDENTIFIED]",
+      "summary": "The issue has been identified and a fix is being implemented.",
+      "url": "https://www.cloudflarestatus.com/incidents/4lv21sf5fzhm",
+      "severity": "elevated",
+      "watchlistMatches": [
+        "#6",
+        "#7"
+      ],
+      "riskMatrixMatches": [
+        "#1",
+        "#2"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "Cloudflare",
+        "impact:minor",
+        "status:identified"
+      ],
+      "markdownRow": "| #11+ — Nov 20, 2026 | Cloudflare (Global CDN & Edge) | Network Performance Issues in Miami (minor impact; identified) ([Cloudflare Status](https://www.cloudflarestatus.com/incidents/4lv21sf5fzhm)) | The issue has been identified and a fix is being implemented. | Live Wire (ELEVATED) — Watchlist #6, #7 |"
     },
     {
       "id": "cloudflare-status-pfwuex7qix27",
       "sourceId": "cloudflare-status",
       "sourceName": "Cloudflare Status",
       "attributionText": "Source: Cloudflare System Status (www.cloudflarestatus.com)",
-      "publishedAtISO": "2026-11-20T02:53:32.481Z",
-      "title": "Cloudflare:  R2 and Durable Objects availability issues [INVESTIGATING]",
-      "summary": "Customers using R2 and Durable Objects in Eastern North America may be experiencing intermittent errors and failed requests. We are investigating the cause and working to confirm that service availability has stabilized. We will provide updates as more inform…",
+      "publishedAtISO": "2026-11-20T04:35:18.149Z",
+      "title": "Cloudflare:  R2 and Durable Objects availability issues [RESOLVED]",
+      "summary": "This incident has been resolved.",
       "url": "https://www.cloudflarestatus.com/incidents/pfwuex7qix27",
       "severity": "elevated",
       "watchlistMatches": [
@@ -576,9 +849,9 @@
       "tags": [
         "Cloudflare",
         "impact:minor",
-        "status:investigating"
+        "status:resolved"
       ],
-      "markdownRow": "| #11+ — Nov 20, 2026 | Cloudflare (Global CDN & Edge) | R2 and Durable Objects availability issues (minor impact; investigating) ([Cloudflare Status](https://www.cloudflarestatus.com/incidents/pfwuex7qix27)) | Customers using R2 and Durable Objects in Eastern North America may be experiencing intermittent errors and failed requests. We a… | Live Wire (ELEVATED) — Watchlist #6, #7 |"
+      "markdownRow": "| #11+ — Nov 20, 2026 | Cloudflare (Global CDN & Edge) | R2 and Durable Objects availability issues (minor impact; resolved) ([Cloudflare Status](https://www.cloudflarestatus.com/incidents/pfwuex7qix27)) | This incident has been resolved. | Live Wire (ELEVATED) — Watchlist #6, #7 |"
     },
     {
       "id": "cloudflare-status-ljrvdciu7syf",
@@ -607,30 +880,6 @@
       "markdownRow": "| #11+ — Nov 19, 2026 | Cloudflare (Global CDN & Edge) | Observability ingestion delay and query failures (minor impact; resolved) ([Cloudflare Status](https://www.cloudflarestatus.com/incidents/ljrvdciu7syf)) | This incident has been resolved. | Live Wire (ELEVATED) — Watchlist #6, #7 |"
     },
     {
-      "id": "nvd-cve-2026-82339",
-      "sourceId": "nist-nvd",
-      "sourceName": "NIST NVD Critical CVEs",
-      "attributionText": "Source: NIST National Vulnerability Database API 2.0 (nvd.nist.gov — CVSS 9.1)",
-      "publishedAtISO": "2026-11-19T21:18:05.050Z",
-      "title": "CVE-2026-82339 (CVSS 9.1): IBM Guardium Data Protection 12.2 is vulnerable to missing authentication in the SharePoint S-TAP RelayS…",
-      "summary": "[CVSS 9.1 CRITICAL] IBM Guardium Data Protection 12.2 is vulnerable to missing authentication in the SharePoint S-TAP RelayService, allowing an unauthenticated network attacker to inject forged audit events and access the active monitoring policy.",
-      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82339",
-      "severity": "elevated",
-      "watchlistMatches": [
-        "#2"
-      ],
-      "riskMatrixMatches": [
-        "#2"
-      ],
-      "countdownMatches": [],
-      "tags": [
-        "NIST-NVD",
-        "CVE-2026-82339",
-        "CVSS-9.1"
-      ],
-      "markdownRow": "| #11+ — Nov 19, 2026 | CVE-2026-82339 (Enterprise Software) | IBM Guardium Data Protection 12.2 is vulnerable to missing authentication in the SharePoint S-TAP RelayService, allowing an unauthenti… ([NIST NVD (9.1)](https://nvd.nist.gov/vuln/detail/CVE-2026-82339)) | Pre-KEV critical disclosure (CVSS 9.1) | Live Wire (ELEVATED) — Watchlist #2 |"
-    },
-    {
       "id": "nvd-cve-2026-76536",
       "sourceId": "nist-nvd",
       "sourceName": "NIST NVD Critical CVEs",
@@ -653,30 +902,6 @@
         "CVSS-9.4"
       ],
       "markdownRow": "| #11+ — Nov 19, 2026 | CVE-2026-76536 (Enterprise Software) | In Splunk Enterprise versions below 10.4.5, 10.2.9, 10.0.12, and 9.4.17, an unauthenticated user could use an empty clustering shared… ([NIST NVD (9.4)](https://nvd.nist.gov/vuln/detail/CVE-2026-76536)) | Pre-KEV critical disclosure (CVSS 9.4) | Live Wire (ELEVATED) — Watchlist #2 |"
-    },
-    {
-      "id": "nvd-cve-2026-76535",
-      "sourceId": "nist-nvd",
-      "sourceName": "NIST NVD Critical CVEs",
-      "attributionText": "Source: NIST National Vulnerability Database API 2.0 (nvd.nist.gov — CVSS 9.1)",
-      "publishedAtISO": "2026-11-19T20:17:52.730Z",
-      "title": "CVE-2026-76535 (CVSS 9.1): In Splunk Enterprise versions below 10.6.1, 10.4.5, 10.2.9, 10.0.12, and 9.4.17, an unauthenticated user…",
-      "summary": "[CVSS 9.1 CRITICAL] In Splunk Enterprise versions below 10.6.1, 10.4.5, 10.2.9, 10.0.12, and 9.4.17, an unauthenticated user could run arbitrary Search Processing Language (SPL) searches through RapidDiag task collection as an authenticated user. With this access, the user…",
-      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76535",
-      "severity": "elevated",
-      "watchlistMatches": [
-        "#2"
-      ],
-      "riskMatrixMatches": [
-        "#2"
-      ],
-      "countdownMatches": [],
-      "tags": [
-        "NIST-NVD",
-        "CVE-2026-76535",
-        "CVSS-9.1"
-      ],
-      "markdownRow": "| #11+ — Nov 19, 2026 | CVE-2026-76535 (Enterprise Software) | In Splunk Enterprise versions below 10.6.1, 10.4.5, 10.2.9, 10.0.12, and 9.4.17, an unauthenticated user could run arbitrary Search Pr… ([NIST NVD (9.1)](https://nvd.nist.gov/vuln/detail/CVE-2026-76535)) | Pre-KEV critical disclosure (CVSS 9.1) | Live Wire (ELEVATED) — Watchlist #2 |"
     },
     {
       "id": "github-status-m310qbkfm3ww",
@@ -753,254 +978,6 @@
         "status:resolved"
       ],
       "markdownRow": "| #11+ — Nov 19, 2026 | Cloudflare (Global CDN & Edge) | Durable Objects and D1 – Increased Errors (minor impact; resolved) ([Cloudflare Status](https://www.cloudflarestatus.com/incidents/5pe5mb9fefi8)) | This incident has been resolved. | Live Wire (ELEVATED) — Watchlist #6, #7 |"
-    },
-    {
-      "id": "fedreg-2026-23590",
-      "sourceId": "federal-register",
-      "sourceName": "U.S. Federal Register",
-      "attributionText": "Source: U.S. Federal Register (2026-23590 — Securities and Exchange Commission)",
-      "publishedAtISO": "2026-11-19T13:00:00.000Z",
-      "title": "Self-Regulatory Organizations; Cboe C2 Exchange, Inc.; Notice of Filing and Immediate Effectiveness of a Proposed Rule Change To Amend Rules 5.7 and 5.31(b)(1) and (c) for the Queuing Period, Order and Quote Entry, and Opening Auction Times Regarding the Global Trading Hours (“GTH”) Sessions (2026-23590)",
-      "summary": "Notice published by Securities and Exchange Commission (2026-23590).",
-      "url": "https://www.federalregister.gov/documents/2026/11/19/2026-23590/self-regulatory-organizations-cboe-c2-exchange-inc-notice-of-filing-and-immediate-effectiveness-of-a",
-      "severity": "elevated",
-      "watchlistMatches": [
-        "#6"
-      ],
-      "riskMatrixMatches": [
-        "#5",
-        "#7"
-      ],
-      "countdownMatches": [
-        "2026-12-31"
-      ],
-      "tags": [
-        "Federal-Register",
-        "Notice",
-        "SEC-Clearing"
-      ],
-      "markdownRow": "| #11+ — 2026-11-19 | Securities and Exchange Commission (Federal Regulatory) | Self-Regulatory Organizations; Cboe C2 Exchange, Inc.; Notice of Filing and Immediate Effectiveness of a Proposed Rule Change To Amend Rule… ([FR 2026-23590](https://www.federalregister.gov/documents/2026/11/19/2026-23590/self-regulatory-organizations-cboe-c2-exchange-inc-notice-of-filing-and-immediate-effectiveness-of-a)) | Notice filing mapped to Risk #5, #7 | Live Wire (ELEVATED) — Watchlist #6 |"
-    },
-    {
-      "id": "fedreg-2026-23579",
-      "sourceId": "federal-register",
-      "sourceName": "U.S. Federal Register",
-      "attributionText": "Source: U.S. Federal Register (2026-23579 — Transportation Department, Federal Aviation Administration)",
-      "publishedAtISO": "2026-11-19T13:00:00.000Z",
-      "title": "Airworthiness Directives; Dassault Aviation Airplanes (2026-23579)",
-      "summary": "The FAA proposes to supersede Airworthiness Directive (AD) 2024-14-09, which applies to certain Dassault Aviation Model FALCON 7X, FALCON 900EX, and FALCON 2000EX airplanes. AD 2024-14-09 requires replacement of certain titanium screws, adds other locations f…",
-      "url": "https://www.federalregister.gov/documents/2026/11/19/2026-23579/airworthiness-directives-dassault-aviation-airplanes",
-      "severity": "elevated",
-      "watchlistMatches": [
-        "#9",
-        "#5"
-      ],
-      "riskMatrixMatches": [
-        "#6",
-        "#1"
-      ],
-      "countdownMatches": [
-        "2027-01-08"
-      ],
-      "tags": [
-        "Federal-Register",
-        "Proposed Rule",
-        "FCC-Telecom-Subsea",
-        "FAA-Regulatory"
-      ],
-      "markdownRow": "| #11+ — 2026-11-19 | Transportation Department, Federal Aviation Administration (Federal Regulatory) | Airworthiness Directives; Dassault Aviation Airplanes ([FR 2026-23579](https://www.federalregister.gov/documents/2026/11/19/2026-23579/airworthiness-directives-dassault-aviation-airplanes)) | Proposed Rule filing mapped to Risk #6, #1 | Live Wire (ELEVATED) — Watchlist #9, #5 |"
-    },
-    {
-      "id": "fedreg-2026-23562",
-      "sourceId": "federal-register",
-      "sourceName": "U.S. Federal Register",
-      "attributionText": "Source: U.S. Federal Register (2026-23562 — Federal Communications Commission)",
-      "publishedAtISO": "2026-11-19T13:00:00.000Z",
-      "title": "Information Collection Being Reviewed by the Federal Communications Commission Delegated Authority (2026-23562)",
-      "summary": "As part of its continuing effort to reduce paperwork burdens, and as required by the Paperwork Reduction Act (PRA) of 1995, the Federal Communications Commission (Commission) invites the general public and other Federal agencies to take this opportunity to co…",
-      "url": "https://www.federalregister.gov/documents/2026/11/19/2026-23562/information-collection-being-reviewed-by-the-federal-communications-commission-delegated-authority",
-      "severity": "elevated",
-      "watchlistMatches": [
-        "#9"
-      ],
-      "riskMatrixMatches": [
-        "#6"
-      ],
-      "countdownMatches": [
-        "2027-01-08"
-      ],
-      "tags": [
-        "Federal-Register",
-        "Notice",
-        "FCC-Telecom-Subsea"
-      ],
-      "markdownRow": "| #11+ — 2026-11-19 | Federal Communications Commission (Federal Regulatory) | Information Collection Being Reviewed by the Federal Communications Commission Delegated Authority ([FR 2026-23562](https://www.federalregister.gov/documents/2026/11/19/2026-23562/information-collection-being-reviewed-by-the-federal-communications-commission-delegated-authority)) | Notice filing mapped to Risk #6 | Live Wire (ELEVATED) — Watchlist #9 |"
-    },
-    {
-      "id": "fedreg-2026-23555",
-      "sourceId": "federal-register",
-      "sourceName": "U.S. Federal Register",
-      "attributionText": "Source: U.S. Federal Register (2026-23555 — Securities and Exchange Commission)",
-      "publishedAtISO": "2026-11-19T13:00:00.000Z",
-      "title": "Executive Compensation Disclosure Reform (2026-23555)",
-      "summary": "The Securities and Exchange Commission (\"Commission\") is proposing amendments to its executive and director compensation disclosure rules to make the requirements more principles-based and to reduce compliance burdens for registrants, while maintaining the di…",
-      "url": "https://www.federalregister.gov/documents/2026/11/19/2026-23555/executive-compensation-disclosure-reform",
-      "severity": "elevated",
-      "watchlistMatches": [
-        "#6"
-      ],
-      "riskMatrixMatches": [
-        "#5",
-        "#7"
-      ],
-      "countdownMatches": [
-        "2026-12-31"
-      ],
-      "tags": [
-        "Federal-Register",
-        "Proposed Rule",
-        "SEC-Clearing"
-      ],
-      "markdownRow": "| #11+ — 2026-11-19 | Securities and Exchange Commission (Federal Regulatory) | Executive Compensation Disclosure Reform ([FR 2026-23555](https://www.federalregister.gov/documents/2026/11/19/2026-23555/executive-compensation-disclosure-reform)) | Proposed Rule filing mapped to Risk #5, #7 | Live Wire (ELEVATED) — Watchlist #6 |"
-    },
-    {
-      "id": "fedreg-2026-23554",
-      "sourceId": "federal-register",
-      "sourceName": "U.S. Federal Register",
-      "attributionText": "Source: U.S. Federal Register (2026-23554 — Securities and Exchange Commission)",
-      "publishedAtISO": "2026-11-19T13:00:00.000Z",
-      "title": "Self-Regulatory Organizations; The Depository Trust Company; Notice of Designation of Longer Period for Commission Action on Proposed Rule Change To Amend the DTC Operational Arrangements (Necessary for Securities To Become and Remain Eligible for DTC Services) (2026-23554)",
-      "summary": "Notice published by Securities and Exchange Commission (2026-23554).",
-      "url": "https://www.federalregister.gov/documents/2026/11/19/2026-23554/self-regulatory-organizations-the-depository-trust-company-notice-of-designation-of-longer-period",
-      "severity": "elevated",
-      "watchlistMatches": [
-        "#6"
-      ],
-      "riskMatrixMatches": [
-        "#5",
-        "#7"
-      ],
-      "countdownMatches": [
-        "2026-12-31"
-      ],
-      "tags": [
-        "Federal-Register",
-        "Notice",
-        "SEC-Clearing"
-      ],
-      "markdownRow": "| #11+ — 2026-11-19 | Securities and Exchange Commission (Federal Regulatory) | Self-Regulatory Organizations; The Depository Trust Company; Notice of Designation of Longer Period for Commission Action on Proposed Rule… ([FR 2026-23554](https://www.federalregister.gov/documents/2026/11/19/2026-23554/self-regulatory-organizations-the-depository-trust-company-notice-of-designation-of-longer-period)) | Notice filing mapped to Risk #5, #7 | Live Wire (ELEVATED) — Watchlist #6 |"
-    },
-    {
-      "id": "fedreg-2026-23553",
-      "sourceId": "federal-register",
-      "sourceName": "U.S. Federal Register",
-      "attributionText": "Source: U.S. Federal Register (2026-23553 — Securities and Exchange Commission)",
-      "publishedAtISO": "2026-11-19T13:00:00.000Z",
-      "title": "Self-Regulatory Organizations; Texas Stock Exchange LLC; Notice of Filing and Immediate Effectiveness of a Proposed Rule Change To Amend TXSE Rule 14.001 Regarding Information Circular Requirements (2026-23553)",
-      "summary": "Notice published by Securities and Exchange Commission (2026-23553).",
-      "url": "https://www.federalregister.gov/documents/2026/11/19/2026-23553/self-regulatory-organizations-texas-stock-exchange-llc-notice-of-filing-and-immediate-effectiveness",
-      "severity": "elevated",
-      "watchlistMatches": [
-        "#6"
-      ],
-      "riskMatrixMatches": [
-        "#5",
-        "#7"
-      ],
-      "countdownMatches": [
-        "2026-12-31"
-      ],
-      "tags": [
-        "Federal-Register",
-        "Notice",
-        "SEC-Clearing"
-      ],
-      "markdownRow": "| #11+ — 2026-11-19 | Securities and Exchange Commission (Federal Regulatory) | Self-Regulatory Organizations; Texas Stock Exchange LLC; Notice of Filing and Immediate Effectiveness of a Proposed Rule Change To Amend TX… ([FR 2026-23553](https://www.federalregister.gov/documents/2026/11/19/2026-23553/self-regulatory-organizations-texas-stock-exchange-llc-notice-of-filing-and-immediate-effectiveness)) | Notice filing mapped to Risk #5, #7 | Live Wire (ELEVATED) — Watchlist #6 |"
-    },
-    {
-      "id": "fedreg-2026-23552",
-      "sourceId": "federal-register",
-      "sourceName": "U.S. Federal Register",
-      "attributionText": "Source: U.S. Federal Register (2026-23552 — Securities and Exchange Commission)",
-      "publishedAtISO": "2026-11-19T13:00:00.000Z",
-      "title": "Self-Regulatory Organizations; ICE Clear Credit LLC; Notice of Filing of Proposed Rule Change Relating to the Treasury Rules, Treasury Clearing Service Initial Margin Approach Model Description Document, Treasury Clearing Service Guaranty Fund and Stress Test Approach Model Description Document, and Treasury Clearing Service Risk Parameter Setting and Review Policy (2026-23552)",
-      "summary": "Notice published by Securities and Exchange Commission (2026-23552).",
-      "url": "https://www.federalregister.gov/documents/2026/11/19/2026-23552/self-regulatory-organizations-ice-clear-credit-llc-notice-of-filing-of-proposed-rule-change-relating",
-      "severity": "elevated",
-      "watchlistMatches": [
-        "#9",
-        "#6"
-      ],
-      "riskMatrixMatches": [
-        "#6",
-        "#5",
-        "#7"
-      ],
-      "countdownMatches": [
-        "2027-01-08",
-        "2026-12-31"
-      ],
-      "tags": [
-        "Federal-Register",
-        "Notice",
-        "FCC-Telecom-Subsea",
-        "SEC-Clearing"
-      ],
-      "markdownRow": "| #11+ — 2026-11-19 | Securities and Exchange Commission (Federal Regulatory) | Self-Regulatory Organizations; ICE Clear Credit LLC; Notice of Filing of Proposed Rule Change Relating to the Treasury Rules, Treasury Clea… ([FR 2026-23552](https://www.federalregister.gov/documents/2026/11/19/2026-23552/self-regulatory-organizations-ice-clear-credit-llc-notice-of-filing-of-proposed-rule-change-relating)) | Notice filing mapped to Risk #6, #5, #7 | Live Wire (ELEVATED) — Watchlist #9, #6 |"
-    },
-    {
-      "id": "fedreg-2026-23551",
-      "sourceId": "federal-register",
-      "sourceName": "U.S. Federal Register",
-      "attributionText": "Source: U.S. Federal Register (2026-23551 — Securities and Exchange Commission)",
-      "publishedAtISO": "2026-11-19T13:00:00.000Z",
-      "title": "Self-Regulatory Organizations; Texas Stock Exchange LLC; Notice of Filing and Immediate Effectiveness of a Proposed Rule Change Amending its Fee Schedule, Amending Certain Definitions, and Adding Notes to the Lead Market Maker Program (2026-23551)",
-      "summary": "Notice published by Securities and Exchange Commission (2026-23551).",
-      "url": "https://www.federalregister.gov/documents/2026/11/19/2026-23551/self-regulatory-organizations-texas-stock-exchange-llc-notice-of-filing-and-immediate-effectiveness",
-      "severity": "elevated",
-      "watchlistMatches": [
-        "#6"
-      ],
-      "riskMatrixMatches": [
-        "#5",
-        "#7"
-      ],
-      "countdownMatches": [
-        "2026-12-31"
-      ],
-      "tags": [
-        "Federal-Register",
-        "Notice",
-        "SEC-Clearing"
-      ],
-      "markdownRow": "| #11+ — 2026-11-19 | Securities and Exchange Commission (Federal Regulatory) | Self-Regulatory Organizations; Texas Stock Exchange LLC; Notice of Filing and Immediate Effectiveness of a Proposed Rule Change Amending it… ([FR 2026-23551](https://www.federalregister.gov/documents/2026/11/19/2026-23551/self-regulatory-organizations-texas-stock-exchange-llc-notice-of-filing-and-immediate-effectiveness)) | Notice filing mapped to Risk #5, #7 | Live Wire (ELEVATED) — Watchlist #6 |"
-    },
-    {
-      "id": "fedreg-2026-23550",
-      "sourceId": "federal-register",
-      "sourceName": "U.S. Federal Register",
-      "attributionText": "Source: U.S. Federal Register (2026-23550 — Securities and Exchange Commission)",
-      "publishedAtISO": "2026-11-19T13:00:00.000Z",
-      "title": "Self-Regulatory Organizations; The Nasdaq Stock Market LLC; Notice of Filing and Immediate Effectiveness of a Proposed Rule Change To Amend General 4, Rule 1240 To Adopt a New Senior Leader Regulatory Element Interim Program (2026-23550)",
-      "summary": "Notice published by Securities and Exchange Commission (2026-23550).",
-      "url": "https://www.federalregister.gov/documents/2026/11/19/2026-23550/self-regulatory-organizations-the-nasdaq-stock-market-llc-notice-of-filing-and-immediate",
-      "severity": "elevated",
-      "watchlistMatches": [
-        "#6"
-      ],
-      "riskMatrixMatches": [
-        "#5",
-        "#7"
-      ],
-      "countdownMatches": [
-        "2026-12-31"
-      ],
-      "tags": [
-        "Federal-Register",
-        "Notice",
-        "SEC-Clearing"
-      ],
-      "markdownRow": "| #11+ — 2026-11-19 | Securities and Exchange Commission (Federal Regulatory) | Self-Regulatory Organizations; The Nasdaq Stock Market LLC; Notice of Filing and Immediate Effectiveness of a Proposed Rule Change To Amend… ([FR 2026-23550](https://www.federalregister.gov/documents/2026/11/19/2026-23550/self-regulatory-organizations-the-nasdaq-stock-market-llc-notice-of-filing-and-immediate)) | Notice filing mapped to Risk #5, #7 | Live Wire (ELEVATED) — Watchlist #6 |"
     },
     {
       "id": "cisa-adv-icsa-26-323-03",
@@ -1253,31 +1230,6 @@
       "markdownRow": "| #11+ — Nov 18, 2026 | Cloudflare (Global CDN & Edge) | R2 Downloads Stalling in Japan (minor impact; resolved) ([Cloudflare Status](https://www.cloudflarestatus.com/incidents/2wjvsj2kqt07)) | This incident has been resolved. | Live Wire (ELEVATED) — Watchlist #6, #7 |"
     },
     {
-      "id": "ofac-doe-2026-23456",
-      "sourceId": "ofac-marad-doe",
-      "sourceName": "OFAC, MARAD & DOE Directives",
-      "attributionText": "Source: U.S. Federal Register — Treasury Department, Foreign Assets Control Office (2026-23456)",
-      "publishedAtISO": "2026-11-18T13:30:00.000Z",
-      "title": "Notice of OFAC Sanctions Action (2026-23456)",
-      "summary": "The U.S. Department of the Treasury's Office of Foreign Assets Control (OFAC) is publishing the names of one or more persons that have been placed on OFAC's Specially Designated Nationals and Blocked Persons List (SDN List) based on OFAC's determination that one o…",
-      "url": "https://www.federalregister.gov/documents/2026/11/18/2026-23456/notice-of-ofac-sanctions-action",
-      "severity": "elevated",
-      "watchlistMatches": [
-        "#4",
-        "#6"
-      ],
-      "riskMatrixMatches": [
-        "#3",
-        "#4"
-      ],
-      "countdownMatches": [],
-      "tags": [
-        "OFAC-MARAD-DOE",
-        "OFAC-Sanctions"
-      ],
-      "markdownRow": "| #11+ — 2026-11-18 | Treasury Department, Foreign Assets Control Office (Sanctions, Maritime & Grid) | Notice of OFAC Sanctions Action ([FR 2026-23456](https://www.federalregister.gov/documents/2026/11/18/2026-23456/notice-of-ofac-sanctions-action)) | Notice directive mapped to Watchlist #4, #6 | Live Wire (ELEVATED) — Watchlist #4, #6 |"
-    },
-    {
       "id": "nvd-cve-2026-130679",
       "sourceId": "nist-nvd",
       "sourceName": "NIST NVD Critical CVEs",
@@ -1374,32 +1326,6 @@
       "markdownRow": "| #11+ — 2026-11-18 | Apache Axis (Enterprise / Edge Security) | Apache Axis contains an unsafe reflection vulnerability that could allow an unauthenticated remote attacker to execute arbitrary code via a… ([CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search_api_fulltext=CVE-2026-90436)) | Active exploitation confirmed (CVE-2026-90436); due 2026-11-21 | Live Wire (ELEVATED) — Watchlist #2 |"
     },
     {
-      "id": "cloudflare-status-76lqmua6x3tk",
-      "sourceId": "cloudflare-status",
-      "sourceName": "Cloudflare Status",
-      "attributionText": "Source: Cloudflare System Status (www.cloudflarestatus.com)",
-      "publishedAtISO": "2026-11-18T10:56:57.188Z",
-      "title": "Cloudflare: Network Performance Issues in North America [RESOLVED]",
-      "summary": "Between approximately 07:00 UTC and 10:00 UTC Cloudflare investigated issues with network performance in North America. This has since been resolved.",
-      "url": "https://www.cloudflarestatus.com/incidents/76lqmua6x3tk",
-      "severity": "elevated",
-      "watchlistMatches": [
-        "#6",
-        "#7"
-      ],
-      "riskMatrixMatches": [
-        "#1",
-        "#2"
-      ],
-      "countdownMatches": [],
-      "tags": [
-        "Cloudflare",
-        "impact:minor",
-        "status:resolved"
-      ],
-      "markdownRow": "| #11+ — Nov 18, 2026 | Cloudflare (Global CDN & Edge) | Network Performance Issues in North America (minor impact; resolved) ([Cloudflare Status](https://www.cloudflarestatus.com/incidents/76lqmua6x3tk)) | Between approximately 07:00 UTC and 10:00 UTC Cloudflare investigated issues with network performance in North America. This has… | Live Wire (ELEVATED) — Watchlist #6, #7 |"
-    },
-    {
       "id": "usgs-us7000tyyw",
       "sourceId": "usgs-seismic",
       "sourceName": "USGS Subsea Chokepoint Seismic",
@@ -1450,6 +1376,30 @@
         "status:resolved"
       ],
       "markdownRow": "| #11+ — Nov 18, 2026 | GitHub (Developer & CI/CD Backbone) | Degraded Availability for MAI Code 2 Flash in Copilot (minor impact; resolved) ([GitHub Status](https://stspg.io/3sbmvyy2ctyx)) | This incident has been resolved. Thank you for your patience and understanding as we addressed this issue. A detailed root cause… | Live Wire (ELEVATED) — Watchlist #2, #7 |"
+    },
+    {
+      "id": "nvd-cve-2026-115139",
+      "sourceId": "nist-nvd",
+      "sourceName": "NIST NVD Critical CVEs",
+      "attributionText": "Source: NIST National Vulnerability Database API 2.0 (nvd.nist.gov — CVSS 9.3)",
+      "publishedAtISO": "2026-11-17T22:18:47.437Z",
+      "title": "CVE-2026-115139 (CVSS 9.3): Vulnerability in the Oracle Hyperion Infrastructure Technology product of Oracle Hyperion (component: In…",
+      "summary": "[CVSS 9.3 CRITICAL] Vulnerability in the Oracle Hyperion Infrastructure Technology product of Oracle Hyperion (component: Installation and Configuration). The supported version that is affected is 11.2.26.0.000. Easily exploitable vulnerability allows unauthenticated attack…",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-115139",
+      "severity": "elevated",
+      "watchlistMatches": [
+        "#2"
+      ],
+      "riskMatrixMatches": [
+        "#2"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "NIST-NVD",
+        "CVE-2026-115139",
+        "CVSS-9.3"
+      ],
+      "markdownRow": "| #11+ — Nov 17, 2026 | CVE-2026-115139 (Enterprise Software) | Vulnerability in the Oracle Hyperion Infrastructure Technology product of Oracle Hyperion (component: Installation and Configuration).… ([NIST NVD (9.3)](https://nvd.nist.gov/vuln/detail/CVE-2026-115139)) | Pre-KEV critical disclosure (CVSS 9.3) | Live Wire (ELEVATED) — Watchlist #2 |"
     },
     {
       "id": "apple-app-store-1000005988",
@@ -1883,6 +1833,30 @@
       "markdownRow": "| #11+ — Nov 12, 2026 | GitHub (Developer & CI/CD Backbone) | Disruption with Email Delivery (minor impact; resolved) ([GitHub Status](https://stspg.io/lr8v4v8t7gs2)) | This incident has been resolved. Thank you for your patience and understanding as we addressed this issue. A detailed root cause… | Live Wire (ELEVATED) — Watchlist #2, #7 |"
     },
     {
+      "id": "nvd-cve-2026-118383",
+      "sourceId": "nist-nvd",
+      "sourceName": "NIST NVD Critical CVEs",
+      "attributionText": "Source: NIST National Vulnerability Database API 2.0 (nvd.nist.gov — CVSS 9.0)",
+      "publishedAtISO": "2026-11-10T21:18:58.980Z",
+      "title": "CVE-2026-118383 (CVSS 9.0): A use-after-free in the replication component of MongoDB Server can occur when a newly elected replica s…",
+      "summary": "[CVSS 9.0 CRITICAL] A use-after-free in the replication component of MongoDB Server can occur when a newly elected replica set primary completes catch-up. The condition can be caused by requests that do not require authentication, and may result in the server terminating un…",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-118383",
+      "severity": "elevated",
+      "watchlistMatches": [
+        "#2"
+      ],
+      "riskMatrixMatches": [
+        "#2"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "NIST-NVD",
+        "CVE-2026-118383",
+        "CVSS-9.0"
+      ],
+      "markdownRow": "| #11+ — Nov 10, 2026 | CVE-2026-118383 (Enterprise Software) | A use-after-free in the replication component of MongoDB Server can occur when a newly elected replica set primary completes catch-up.… ([NIST NVD (9.0)](https://nvd.nist.gov/vuln/detail/CVE-2026-118383)) | Pre-KEV critical disclosure (CVSS 9.0) | Live Wire (ELEVATED) — Watchlist #2 |"
+    },
+    {
       "id": "kev-cve-2026-111793",
       "sourceId": "cisa-kev",
       "sourceName": "CISA KEV Catalog",
@@ -2051,13 +2025,253 @@
       "markdownRow": "| #11+ — 2026-11-09 | IBM Aspera Faspex (Enterprise / Edge Security) | IBM Aspera Faspex contains an incorrect authorization vulnerability that could allow an authenticated user to craft a specific message to b… ([CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search_api_fulltext=CVE-2026-123218)) | Active exploitation confirmed (CVE-2026-123218); due 2026-11-12 | Live Wire (ELEVATED) — Watchlist #2 |"
     },
     {
-      "id": "faa-closure-lax-6",
+      "id": "ofac-doe-2026-23675",
+      "sourceId": "ofac-marad-doe",
+      "sourceName": "OFAC, MARAD & DOE Directives",
+      "attributionText": "Source: U.S. Federal Register — Energy Department, Federal Energy Regulatory Commission (2026-23675)",
+      "publishedAtISO": "2026-11-20T13:30:00.000Z",
+      "title": "Combined Notice of Filings (2026-23675)",
+      "summary": "Notice issued by Energy Department, Federal Energy Regulatory Commission (2026-23675).",
+      "url": "https://www.federalregister.gov/documents/2026/11/20/2026-23675/combined-notice-of-filings",
+      "severity": "info",
+      "watchlistMatches": [
+        "#8"
+      ],
+      "riskMatrixMatches": [
+        "#3",
+        "#7"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "OFAC-MARAD-DOE",
+        "DOE-FERC-Grid"
+      ],
+      "markdownRow": "| #11+ — 2026-11-20 | Energy Department, Federal Energy Regulatory Commission (Sanctions, Maritime & Grid) | Combined Notice of Filings ([FR 2026-23675](https://www.federalregister.gov/documents/2026/11/20/2026-23675/combined-notice-of-filings)) | Notice directive mapped to Watchlist #8 | Live Wire (INFO) — Watchlist #8 |"
+    },
+    {
+      "id": "ofac-doe-2026-23674",
+      "sourceId": "ofac-marad-doe",
+      "sourceName": "OFAC, MARAD & DOE Directives",
+      "attributionText": "Source: U.S. Federal Register — Energy Department, Federal Energy Regulatory Commission (2026-23674)",
+      "publishedAtISO": "2026-11-20T13:30:00.000Z",
+      "title": "Records Governing Off-the-Record Communications; Public Notice (2026-23674)",
+      "summary": "Notice issued by Energy Department, Federal Energy Regulatory Commission (2026-23674).",
+      "url": "https://www.federalregister.gov/documents/2026/11/20/2026-23674/records-governing-off-the-record-communications-public-notice",
+      "severity": "info",
+      "watchlistMatches": [
+        "#8"
+      ],
+      "riskMatrixMatches": [
+        "#3",
+        "#7"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "OFAC-MARAD-DOE",
+        "DOE-FERC-Grid"
+      ],
+      "markdownRow": "| #11+ — 2026-11-20 | Energy Department, Federal Energy Regulatory Commission (Sanctions, Maritime & Grid) | Records Governing Off-the-Record Communications; Public Notice ([FR 2026-23674](https://www.federalregister.gov/documents/2026/11/20/2026-23674/records-governing-off-the-record-communications-public-notice)) | Notice directive mapped to Watchlist #8 | Live Wire (INFO) — Watchlist #8 |"
+    },
+    {
+      "id": "ofac-doe-2026-23673",
+      "sourceId": "ofac-marad-doe",
+      "sourceName": "OFAC, MARAD & DOE Directives",
+      "attributionText": "Source: U.S. Federal Register — Energy Department, Federal Energy Regulatory Commission (2026-23673)",
+      "publishedAtISO": "2026-11-20T13:30:00.000Z",
+      "title": "Nevada Irrigation District; Notice of Reasonable Period of Time for Water Quality Certification Application (2026-23673)",
+      "summary": "Notice issued by Energy Department, Federal Energy Regulatory Commission (2026-23673).",
+      "url": "https://www.federalregister.gov/documents/2026/11/20/2026-23673/nevada-irrigation-district-notice-of-reasonable-period-of-time-for-water-quality-certification",
+      "severity": "info",
+      "watchlistMatches": [
+        "#8"
+      ],
+      "riskMatrixMatches": [
+        "#3",
+        "#7"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "OFAC-MARAD-DOE",
+        "DOE-FERC-Grid"
+      ],
+      "markdownRow": "| #11+ — 2026-11-20 | Energy Department, Federal Energy Regulatory Commission (Sanctions, Maritime & Grid) | Nevada Irrigation District; Notice of Reasonable Period of Time for Water Quality Certification Application ([FR 2026-23673](https://www.federalregister.gov/documents/2026/11/20/2026-23673/nevada-irrigation-district-notice-of-reasonable-period-of-time-for-water-quality-certification)) | Notice directive mapped to Watchlist #8 | Live Wire (INFO) — Watchlist #8 |"
+    },
+    {
+      "id": "ofac-doe-2026-23672",
+      "sourceId": "ofac-marad-doe",
+      "sourceName": "OFAC, MARAD & DOE Directives",
+      "attributionText": "Source: U.S. Federal Register — Energy Department, Federal Energy Regulatory Commission (2026-23672)",
+      "publishedAtISO": "2026-11-20T13:30:00.000Z",
+      "title": "Combined Notice of Filings #1 (2026-23672)",
+      "summary": "Notice issued by Energy Department, Federal Energy Regulatory Commission (2026-23672).",
+      "url": "https://www.federalregister.gov/documents/2026/11/20/2026-23672/combined-notice-of-filings-1",
+      "severity": "info",
+      "watchlistMatches": [
+        "#8"
+      ],
+      "riskMatrixMatches": [
+        "#3",
+        "#7"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "OFAC-MARAD-DOE",
+        "DOE-FERC-Grid"
+      ],
+      "markdownRow": "| #11+ — 2026-11-20 | Energy Department, Federal Energy Regulatory Commission (Sanctions, Maritime & Grid) | Combined Notice of Filings #1 ([FR 2026-23672](https://www.federalregister.gov/documents/2026/11/20/2026-23672/combined-notice-of-filings-1)) | Notice directive mapped to Watchlist #8 | Live Wire (INFO) — Watchlist #8 |"
+    },
+    {
+      "id": "ofac-doe-2026-23671",
+      "sourceId": "ofac-marad-doe",
+      "sourceName": "OFAC, MARAD & DOE Directives",
+      "attributionText": "Source: U.S. Federal Register — Energy Department, Federal Energy Regulatory Commission (2026-23671)",
+      "publishedAtISO": "2026-11-20T13:30:00.000Z",
+      "title": "NorthWestern Corporation; Notice of Effectiveness of Withdrawal of Historic Properties Management Plan (2026-23671)",
+      "summary": "Notice issued by Energy Department, Federal Energy Regulatory Commission (2026-23671).",
+      "url": "https://www.federalregister.gov/documents/2026/11/20/2026-23671/northwestern-corporation-notice-of-effectiveness-of-withdrawal-of-historic-properties-management",
+      "severity": "info",
+      "watchlistMatches": [
+        "#8"
+      ],
+      "riskMatrixMatches": [
+        "#3",
+        "#7"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "OFAC-MARAD-DOE",
+        "DOE-FERC-Grid"
+      ],
+      "markdownRow": "| #11+ — 2026-11-20 | Energy Department, Federal Energy Regulatory Commission (Sanctions, Maritime & Grid) | NorthWestern Corporation; Notice of Effectiveness of Withdrawal of Historic Properties Management Plan ([FR 2026-23671](https://www.federalregister.gov/documents/2026/11/20/2026-23671/northwestern-corporation-notice-of-effectiveness-of-withdrawal-of-historic-properties-management)) | Notice directive mapped to Watchlist #8 | Live Wire (INFO) — Watchlist #8 |"
+    },
+    {
+      "id": "ofac-doe-2026-23670",
+      "sourceId": "ofac-marad-doe",
+      "sourceName": "OFAC, MARAD & DOE Directives",
+      "attributionText": "Source: U.S. Federal Register — Energy Department, Federal Energy Regulatory Commission (2026-23670)",
+      "publishedAtISO": "2026-11-20T13:30:00.000Z",
+      "title": "Empire Pipeline, Inc.; Notice Of Filing (2026-23670)",
+      "summary": "Notice issued by Energy Department, Federal Energy Regulatory Commission (2026-23670).",
+      "url": "https://www.federalregister.gov/documents/2026/11/20/2026-23670/empire-pipeline-inc-notice-of-filing",
+      "severity": "info",
+      "watchlistMatches": [
+        "#8"
+      ],
+      "riskMatrixMatches": [
+        "#3",
+        "#7"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "OFAC-MARAD-DOE",
+        "DOE-FERC-Grid"
+      ],
+      "markdownRow": "| #11+ — 2026-11-20 | Energy Department, Federal Energy Regulatory Commission (Sanctions, Maritime & Grid) | Empire Pipeline, Inc.; Notice Of Filing ([FR 2026-23670](https://www.federalregister.gov/documents/2026/11/20/2026-23670/empire-pipeline-inc-notice-of-filing)) | Notice directive mapped to Watchlist #8 | Live Wire (INFO) — Watchlist #8 |"
+    },
+    {
+      "id": "fedreg-2026-23697",
+      "sourceId": "federal-register",
+      "sourceName": "U.S. Federal Register",
+      "attributionText": "Source: U.S. Federal Register (2026-23697 — Transportation Department, Federal Aviation Administration)",
+      "publishedAtISO": "2026-11-20T13:00:00.000Z",
+      "title": "Airworthiness Directives; The Boeing Company Airplanes (2026-23697)",
+      "summary": "The FAA is adopting a new airworthiness directive (AD) for certain The Boeing Company Model 737-600, -700, -700C, -800, and -900 series airplanes. This AD was prompted by a review of the autothrottle (A/T) cruise thrust split monitor (MONFD) and the determina…",
+      "url": "https://www.federalregister.gov/documents/2026/11/20/2026-23697/airworthiness-directives-the-boeing-company-airplanes",
+      "severity": "info",
+      "watchlistMatches": [
+        "#5"
+      ],
+      "riskMatrixMatches": [
+        "#1"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "Federal-Register",
+        "Rule",
+        "FAA-Regulatory"
+      ],
+      "markdownRow": "| #11+ — 2026-11-20 | Transportation Department, Federal Aviation Administration (Federal Regulatory) | Airworthiness Directives; The Boeing Company Airplanes ([FR 2026-23697](https://www.federalregister.gov/documents/2026/11/20/2026-23697/airworthiness-directives-the-boeing-company-airplanes)) | Rule filing mapped to Risk #1 | Live Wire (INFO) — Watchlist #5 |"
+    },
+    {
+      "id": "fedreg-2026-23691",
+      "sourceId": "federal-register",
+      "sourceName": "U.S. Federal Register",
+      "attributionText": "Source: U.S. Federal Register (2026-23691 — Transportation Department, Federal Aviation Administration)",
+      "publishedAtISO": "2026-11-20T13:00:00.000Z",
+      "title": "Airworthiness Directives; Airbus SAS Airplanes (2026-23691)",
+      "summary": "The FAA is adopting a new airworthiness directive (AD) for all Airbus SAS Model A330-841 and A330-941 airplanes. This AD was prompted by a report of cracks on the discharge outlet of certain engine fire extinguisher bottles. This AD requires modification of a…",
+      "url": "https://www.federalregister.gov/documents/2026/11/20/2026-23691/airworthiness-directives-airbus-sas-airplanes",
+      "severity": "info",
+      "watchlistMatches": [
+        "#5"
+      ],
+      "riskMatrixMatches": [
+        "#1"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "Federal-Register",
+        "Rule",
+        "FAA-Regulatory"
+      ],
+      "markdownRow": "| #11+ — 2026-11-20 | Transportation Department, Federal Aviation Administration (Federal Regulatory) | Airworthiness Directives; Airbus SAS Airplanes ([FR 2026-23691](https://www.federalregister.gov/documents/2026/11/20/2026-23691/airworthiness-directives-airbus-sas-airplanes)) | Rule filing mapped to Risk #1 | Live Wire (INFO) — Watchlist #5 |"
+    },
+    {
+      "id": "fedreg-2026-23684",
+      "sourceId": "federal-register",
+      "sourceName": "U.S. Federal Register",
+      "attributionText": "Source: U.S. Federal Register (2026-23684 — Transportation Department, Federal Aviation Administration)",
+      "publishedAtISO": "2026-11-20T13:00:00.000Z",
+      "title": "Airworthiness Directives; Airbus Helicopters (2026-23684)",
+      "summary": "The FAA is superseding Airworthiness Directive (AD) 2025-13- 09, which applied to all Airbus Helicopters Model AS-365N2, AS 365 N3, EC 155B, EC155B1, SA-365N, and SA-365N1 helicopters. AD 2025-13-09 required inspecting the tightening torque, reporting the res…",
+      "url": "https://www.federalregister.gov/documents/2026/11/20/2026-23684/airworthiness-directives-airbus-helicopters",
+      "severity": "info",
+      "watchlistMatches": [
+        "#5"
+      ],
+      "riskMatrixMatches": [
+        "#1"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "Federal-Register",
+        "Rule",
+        "FAA-Regulatory"
+      ],
+      "markdownRow": "| #11+ — 2026-11-20 | Transportation Department, Federal Aviation Administration (Federal Regulatory) | Airworthiness Directives; Airbus Helicopters ([FR 2026-23684](https://www.federalregister.gov/documents/2026/11/20/2026-23684/airworthiness-directives-airbus-helicopters)) | Rule filing mapped to Risk #1 | Live Wire (INFO) — Watchlist #5 |"
+    },
+    {
+      "id": "fedreg-2026-23679",
+      "sourceId": "federal-register",
+      "sourceName": "U.S. Federal Register",
+      "attributionText": "Source: U.S. Federal Register (2026-23679 — Transportation Department, Federal Aviation Administration)",
+      "publishedAtISO": "2026-11-20T13:00:00.000Z",
+      "title": "Airworthiness Directives; Airbus Helicopters Deutschland GmbH (AHD) Helicopters (2026-23679)",
+      "summary": "The FAA is adopting a new airworthiness directive (AD) for all Airbus Helicopters Deutschland GmbH (AHD) Model EC135P1, EC135P2, EC135P2+, EC135P3, EC135T1, EC135T2, EC135T2+, EC135T3, and EC635T2+ helicopters. This AD was prompted by a report of a separated…",
+      "url": "https://www.federalregister.gov/documents/2026/11/20/2026-23679/airworthiness-directives-airbus-helicopters-deutschland-gmbh-ahd-helicopters",
+      "severity": "info",
+      "watchlistMatches": [
+        "#5"
+      ],
+      "riskMatrixMatches": [
+        "#1"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "Federal-Register",
+        "Rule",
+        "FAA-Regulatory"
+      ],
+      "markdownRow": "| #11+ — 2026-11-20 | Transportation Department, Federal Aviation Administration (Federal Regulatory) | Airworthiness Directives; Airbus Helicopters Deutschland GmbH (AHD) Helicopters ([FR 2026-23679](https://www.federalregister.gov/documents/2026/11/20/2026-23679/airworthiness-directives-airbus-helicopters-deutschland-gmbh-ahd-helicopters)) | Rule filing mapped to Risk #1 | Live Wire (INFO) — Watchlist #5 |"
+    },
+    {
+      "id": "faa-closure-lax-3",
       "sourceId": "faa-nas",
       "sourceName": "FAA NAS Status",
-      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 03:40:21 2026 GMT",
-      "publishedAtISO": "2026-11-20T03:40:21.000Z",
+      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 06:52:55 2026 GMT",
+      "publishedAtISO": "2026-11-20T06:52:55.000Z",
       "title": "FAA Airport Closures: LAX (GA NOTAM Restriction)",
-      "summary": "LAX: !LAX 05/277 LAX AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR CTC ATLANTIC AVIATION 310-258-9884 OR SIGNATURE AVIATION 310-410-9605 2605271826-2705281600 | Reopen: May 28 at 16:00 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 03:40:21 2026 GMT)",
+      "summary": "LAX: !LAX 05/277 LAX AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR CTC ATLANTIC AVIATION 310-258-9884 OR SIGNATURE AVIATION 310-410-9605 2605271826-2705281600 | Reopen: May 28 at 16:00 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 06:52:55 2026 GMT)",
       "url": "https://nasstatus.faa.gov/",
       "severity": "info",
       "watchlistMatches": [
@@ -2072,16 +2286,16 @@
         "Airport-Closure",
         "LAX"
       ],
-      "markdownRow": "| #11+ — Fri Nov 20 03:40:21 2026 GMT | FAA NAS — LAX (National Aviation / Airport Ops) | Airport Closures active at LAX until May 28 at 16:00 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !LAX 05/277 LAX AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR CTC ATLANTIC AVIATION 310-258-9884 OR SIGNATURE A… | Live Wire (INFO) — Watchlist #7 |"
+      "markdownRow": "| #11+ — Fri Nov 20 06:52:55 2026 GMT | FAA NAS — LAX (National Aviation / Airport Ops) | Airport Closures active at LAX until May 28 at 16:00 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !LAX 05/277 LAX AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR CTC ATLANTIC AVIATION 310-258-9884 OR SIGNATURE A… | Live Wire (INFO) — Watchlist #7 |"
     },
     {
-      "id": "faa-closure-san-7",
+      "id": "faa-closure-san-4",
       "sourceId": "faa-nas",
       "sourceName": "FAA NAS Status",
-      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 03:40:21 2026 GMT",
-      "publishedAtISO": "2026-11-20T03:40:21.000Z",
+      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 06:52:55 2026 GMT",
+      "publishedAtISO": "2026-11-20T06:52:55.000Z",
       "title": "FAA Airport Closures: SAN (GA NOTAM Restriction)",
-      "summary": "SAN: !SAN 10/004 SAN AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC PPR 619-298-7704 2610011633-2701010800 | Reopen: Jan 01 at 08:00 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 03:40:21 2026 GMT)",
+      "summary": "SAN: !SAN 10/004 SAN AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC PPR 619-298-7704 2610011633-2701010800 | Reopen: Jan 01 at 08:00 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 06:52:55 2026 GMT)",
       "url": "https://nasstatus.faa.gov/",
       "severity": "info",
       "watchlistMatches": [
@@ -2096,16 +2310,16 @@
         "Airport-Closure",
         "SAN"
       ],
-      "markdownRow": "| #11+ — Fri Nov 20 03:40:21 2026 GMT | FAA NAS — SAN (National Aviation / Airport Ops) | Airport Closures active at SAN until Jan 01 at 08:00 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !SAN 10/004 SAN AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC PPR 619-298-7704 2610011633-2701010800 | Live Wire (INFO) — Watchlist #7 |"
+      "markdownRow": "| #11+ — Fri Nov 20 06:52:55 2026 GMT | FAA NAS — SAN (National Aviation / Airport Ops) | Airport Closures active at SAN until Jan 01 at 08:00 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !SAN 10/004 SAN AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC PPR 619-298-7704 2610011633-2701010800 | Live Wire (INFO) — Watchlist #7 |"
     },
     {
-      "id": "faa-closure-las-8",
+      "id": "faa-closure-las-6",
       "sourceId": "faa-nas",
       "sourceName": "FAA NAS Status",
-      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 03:40:21 2026 GMT",
-      "publishedAtISO": "2026-11-20T03:40:21.000Z",
+      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 06:52:55 2026 GMT",
+      "publishedAtISO": "2026-11-20T06:52:55.000Z",
       "title": "FAA Airport Closures: LAS (GA NOTAM Restriction)",
-      "summary": "LAS: !LAS 10/160 LAS AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR 702-261-7775 2610281926-2701272300 | Reopen: Jan 27 at 23:00 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 03:40:21 2026 GMT)",
+      "summary": "LAS: !LAS 10/160 LAS AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR 702-261-7775 2610281926-2701272300 | Reopen: Jan 27 at 23:00 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 06:52:55 2026 GMT)",
       "url": "https://nasstatus.faa.gov/",
       "severity": "info",
       "watchlistMatches": [
@@ -2120,7 +2334,7 @@
         "Airport-Closure",
         "LAS"
       ],
-      "markdownRow": "| #11+ — Fri Nov 20 03:40:21 2026 GMT | FAA NAS — LAS (National Aviation / Airport Ops) | Airport Closures active at LAS until Jan 27 at 23:00 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !LAS 10/160 LAS AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR 702-261-7775 2610281926-2701272300 | Live Wire (INFO) — Watchlist #7 |"
+      "markdownRow": "| #11+ — Fri Nov 20 06:52:55 2026 GMT | FAA NAS — LAS (National Aviation / Airport Ops) | Airport Closures active at LAS until Jan 27 at 23:00 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !LAS 10/160 LAS AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR 702-261-7775 2610281926-2701272300 | Live Wire (INFO) — Watchlist #7 |"
     },
     {
       "id": "ofac-doe-2026-23611",
@@ -2221,150 +2435,6 @@
         "DOE-FERC-Grid"
       ],
       "markdownRow": "| #11+ — 2026-11-19 | Energy Department, Federal Energy Regulatory Commission (Sanctions, Maritime & Grid) | Combined Notice of Filings #1 ([FR 2026-23607](https://www.federalregister.gov/documents/2026/11/19/2026-23607/combined-notice-of-filings-1)) | Notice directive mapped to Watchlist #8 | Live Wire (INFO) — Watchlist #8 |"
-    },
-    {
-      "id": "fedreg-2026-23633",
-      "sourceId": "federal-register",
-      "sourceName": "U.S. Federal Register",
-      "attributionText": "Source: U.S. Federal Register (2026-23633 — Transportation Department, Federal Aviation Administration)",
-      "publishedAtISO": "2026-11-19T13:00:00.000Z",
-      "title": "Airworthiness Directives; General Atomics AeroTec Systems GmbH (Type Certificate Previously Held by RUAG Aerospace Services GmbH) Airplanes (2026-23633)",
-      "summary": "The FAA is adopting a new airworthiness directive (AD) for all General Atomics AeroTec Systems GmbH (General Atomics) Model Dornier 228-100, Dornier 228-101, Dornier 228-200, Dornier 228-201, Dornier 228-202, and Dornier 228-212 airplanes. This AD was prompte…",
-      "url": "https://www.federalregister.gov/documents/2026/11/19/2026-23633/airworthiness-directives-general-atomics-aerotec-systems-gmbh-type-certificate-previously-held-by",
-      "severity": "info",
-      "watchlistMatches": [
-        "#5"
-      ],
-      "riskMatrixMatches": [
-        "#1"
-      ],
-      "countdownMatches": [],
-      "tags": [
-        "Federal-Register",
-        "Rule",
-        "FAA-Regulatory"
-      ],
-      "markdownRow": "| #11+ — 2026-11-19 | Transportation Department, Federal Aviation Administration (Federal Regulatory) | Airworthiness Directives; General Atomics AeroTec Systems GmbH (Type Certificate Previously Held by RUAG Aerospace Services GmbH) Airplanes ([FR 2026-23633](https://www.federalregister.gov/documents/2026/11/19/2026-23633/airworthiness-directives-general-atomics-aerotec-systems-gmbh-type-certificate-previously-held-by)) | Rule filing mapped to Risk #1 | Live Wire (INFO) — Watchlist #5 |"
-    },
-    {
-      "id": "fedreg-2026-23612",
-      "sourceId": "federal-register",
-      "sourceName": "U.S. Federal Register",
-      "attributionText": "Source: U.S. Federal Register (2026-23612 — Transportation Department, Federal Aviation Administration)",
-      "publishedAtISO": "2026-11-19T13:00:00.000Z",
-      "title": "Agency Information Collection Activities: Requests for Comments; Clearance of Renewed Approval of Information Collection: Monitoring, Reporting, and Verification (MRV) Program for Annex 16, Volume IV of the Convention on Civil Aviation (2026-23612)",
-      "summary": "In accordance with the Paperwork Reduction Act of 1995, FAA invites public comments about our intention to request the Office of Management and Budget (OMB) approval for a renewed information collection. The Federal Register Notice with a 60-day comment perio…",
-      "url": "https://www.federalregister.gov/documents/2026/11/19/2026-23612/agency-information-collection-activities-requests-for-comments-clearance-of-renewed-approval-of",
-      "severity": "info",
-      "watchlistMatches": [
-        "#5"
-      ],
-      "riskMatrixMatches": [
-        "#1"
-      ],
-      "countdownMatches": [],
-      "tags": [
-        "Federal-Register",
-        "Notice",
-        "FAA-Regulatory"
-      ],
-      "markdownRow": "| #11+ — 2026-11-19 | Transportation Department, Federal Aviation Administration (Federal Regulatory) | Agency Information Collection Activities: Requests for Comments; Clearance of Renewed Approval of Information Collection: Monitoring, Repor… ([FR 2026-23612](https://www.federalregister.gov/documents/2026/11/19/2026-23612/agency-information-collection-activities-requests-for-comments-clearance-of-renewed-approval-of)) | Notice filing mapped to Risk #1 | Live Wire (INFO) — Watchlist #5 |"
-    },
-    {
-      "id": "fedreg-2026-23584",
-      "sourceId": "federal-register",
-      "sourceName": "U.S. Federal Register",
-      "attributionText": "Source: U.S. Federal Register (2026-23584 — Transportation Department, Federal Aviation Administration)",
-      "publishedAtISO": "2026-11-19T13:00:00.000Z",
-      "title": "Airworthiness Directives; Dassault Aviation Airplanes (2026-23584)",
-      "summary": "The FAA proposes to supersede Airworthiness Directive (AD) 2024-15-02, which applies to all Dassault Aviation Model MYSTERE-FALCON 900 airplanes. AD 2024-15-02 requires revising the existing maintenance or inspection program, as applicable, to incorporate new…",
-      "url": "https://www.federalregister.gov/documents/2026/11/19/2026-23584/airworthiness-directives-dassault-aviation-airplanes",
-      "severity": "info",
-      "watchlistMatches": [
-        "#5"
-      ],
-      "riskMatrixMatches": [
-        "#1"
-      ],
-      "countdownMatches": [],
-      "tags": [
-        "Federal-Register",
-        "Proposed Rule",
-        "FAA-Regulatory"
-      ],
-      "markdownRow": "| #11+ — 2026-11-19 | Transportation Department, Federal Aviation Administration (Federal Regulatory) | Airworthiness Directives; Dassault Aviation Airplanes ([FR 2026-23584](https://www.federalregister.gov/documents/2026/11/19/2026-23584/airworthiness-directives-dassault-aviation-airplanes)) | Proposed Rule filing mapped to Risk #1 | Live Wire (INFO) — Watchlist #5 |"
-    },
-    {
-      "id": "fedreg-2026-23581",
-      "sourceId": "federal-register",
-      "sourceName": "U.S. Federal Register",
-      "attributionText": "Source: U.S. Federal Register (2026-23581 — Transportation Department, Federal Aviation Administration)",
-      "publishedAtISO": "2026-11-19T13:00:00.000Z",
-      "title": "Airworthiness Directives; ATR-GIE Avions de Transport Régional Airplanes (2026-23581)",
-      "summary": "The FAA proposes to supersede Airworthiness Directive (AD) 2021-12-17, which applies to certain ATR--GIE Avions de Transport R[eacute]gional Model ATR42-300, -320, and -500 airplanes; and all Model ATR72-101, -102, -201, -202, -211, -212, and -212A airplanes.…",
-      "url": "https://www.federalregister.gov/documents/2026/11/19/2026-23581/airworthiness-directives-atr-gie-avions-de-transport-rgional-airplanes",
-      "severity": "info",
-      "watchlistMatches": [
-        "#5"
-      ],
-      "riskMatrixMatches": [
-        "#1"
-      ],
-      "countdownMatches": [],
-      "tags": [
-        "Federal-Register",
-        "Proposed Rule",
-        "FAA-Regulatory"
-      ],
-      "markdownRow": "| #11+ — 2026-11-19 | Transportation Department, Federal Aviation Administration (Federal Regulatory) | Airworthiness Directives; ATR-GIE Avions de Transport Régional Airplanes ([FR 2026-23581](https://www.federalregister.gov/documents/2026/11/19/2026-23581/airworthiness-directives-atr-gie-avions-de-transport-rgional-airplanes)) | Proposed Rule filing mapped to Risk #1 | Live Wire (INFO) — Watchlist #5 |"
-    },
-    {
-      "id": "fedreg-2026-23576",
-      "sourceId": "federal-register",
-      "sourceName": "U.S. Federal Register",
-      "attributionText": "Source: U.S. Federal Register (2026-23576 — Transportation Department, Federal Aviation Administration)",
-      "publishedAtISO": "2026-11-19T13:00:00.000Z",
-      "title": "Airworthiness Directives; Airbus Helicopters Deutschland GmbH (AHD) Helicopters (2026-23576)",
-      "summary": "The FAA proposes to adopt a new airworthiness directive (AD) for certain Airbus Helicopters Deutschland GmbH (AHD) Model EC135P1, EC135P2, EC135P2+, EC135P3, EC135T1, EC135T2, EC135T2+, EC135T3 and EC635T2+ helicopters. This proposed AD was prompted by a dete…",
-      "url": "https://www.federalregister.gov/documents/2026/11/19/2026-23576/airworthiness-directives-airbus-helicopters-deutschland-gmbh-ahd-helicopters",
-      "severity": "info",
-      "watchlistMatches": [
-        "#5"
-      ],
-      "riskMatrixMatches": [
-        "#1"
-      ],
-      "countdownMatches": [],
-      "tags": [
-        "Federal-Register",
-        "Proposed Rule",
-        "FAA-Regulatory"
-      ],
-      "markdownRow": "| #11+ — 2026-11-19 | Transportation Department, Federal Aviation Administration (Federal Regulatory) | Airworthiness Directives; Airbus Helicopters Deutschland GmbH (AHD) Helicopters ([FR 2026-23576](https://www.federalregister.gov/documents/2026/11/19/2026-23576/airworthiness-directives-airbus-helicopters-deutschland-gmbh-ahd-helicopters)) | Proposed Rule filing mapped to Risk #1 | Live Wire (INFO) — Watchlist #5 |"
-    },
-    {
-      "id": "fedreg-2026-23569",
-      "sourceId": "federal-register",
-      "sourceName": "U.S. Federal Register",
-      "attributionText": "Source: U.S. Federal Register (2026-23569 — Transportation Department, Federal Aviation Administration)",
-      "publishedAtISO": "2026-11-19T13:00:00.000Z",
-      "title": "Airworthiness Directives; Airbus Helicopters (2026-23569)",
-      "summary": "The FAA proposes to supersede Airworthiness Directive (AD) 2026-12-08, which applies to all Airbus Helicopters Model AS350B2, AS350B3, EC130B4, and EC130T2 helicopters. AD 2026-12-08 requires revising the airworthiness limitations section (ALS) of the existin…",
-      "url": "https://www.federalregister.gov/documents/2026/11/19/2026-23569/airworthiness-directives-airbus-helicopters",
-      "severity": "info",
-      "watchlistMatches": [
-        "#5"
-      ],
-      "riskMatrixMatches": [
-        "#1"
-      ],
-      "countdownMatches": [],
-      "tags": [
-        "Federal-Register",
-        "Proposed Rule",
-        "FAA-Regulatory"
-      ],
-      "markdownRow": "| #11+ — 2026-11-19 | Transportation Department, Federal Aviation Administration (Federal Regulatory) | Airworthiness Directives; Airbus Helicopters ([FR 2026-23569](https://www.federalregister.gov/documents/2026/11/19/2026-23569/airworthiness-directives-airbus-helicopters)) | Proposed Rule filing mapped to Risk #1 | Live Wire (INFO) — Watchlist #5 |"
     },
     {
       "id": "noaa-k04w-9eb2efcb",
@@ -2548,134 +2618,6 @@
         "MARAD-Maritime"
       ],
       "markdownRow": "| #11+ — 2026-11-18 | Transportation Department, Maritime Administration (Sanctions, Maritime & Grid) | Request Notice: Use of Foreign-Built Small Passenger Vessel in United States Coastwise Trade, M/V OSIRIS ([FR 2026-23510](https://www.federalregister.gov/documents/2026/11/18/2026-23510/request-notice-use-of-foreign-built-small-passenger-vessel-in-united-states-coastwise-trade-mv)) | Notice directive mapped to Watchlist #4, #6, #5 | Live Wire (INFO) — Watchlist #4, #6, #5 |"
-    },
-    {
-      "id": "ofac-doe-2026-23509",
-      "sourceId": "ofac-marad-doe",
-      "sourceName": "OFAC, MARAD & DOE Directives",
-      "attributionText": "Source: U.S. Federal Register — Transportation Department, Maritime Administration (2026-23509)",
-      "publishedAtISO": "2026-11-18T13:30:00.000Z",
-      "title": "Request Notice: Use of Foreign-Built Small Passenger Vessel in United States Coastwise Trade, M/V NEXUS (2026-23509)",
-      "summary": "The Secretary of Transportation, as represented by MARAD, is authorized to make determinations regarding the coastwise use of foreign built; certain U.S. built; and U.S. and foreign rebuilt vessels that solely carry no more than twelve passengers for hire. MARAD h…",
-      "url": "https://www.federalregister.gov/documents/2026/11/18/2026-23509/request-notice-use-of-foreign-built-small-passenger-vessel-in-united-states-coastwise-trade-mv-nexus",
-      "severity": "info",
-      "watchlistMatches": [
-        "#4",
-        "#6",
-        "#5"
-      ],
-      "riskMatrixMatches": [
-        "#3",
-        "#4",
-        "#6"
-      ],
-      "countdownMatches": [],
-      "tags": [
-        "OFAC-MARAD-DOE",
-        "OFAC-Sanctions",
-        "MARAD-Maritime"
-      ],
-      "markdownRow": "| #11+ — 2026-11-18 | Transportation Department, Maritime Administration (Sanctions, Maritime & Grid) | Request Notice: Use of Foreign-Built Small Passenger Vessel in United States Coastwise Trade, M/V NEXUS ([FR 2026-23509](https://www.federalregister.gov/documents/2026/11/18/2026-23509/request-notice-use-of-foreign-built-small-passenger-vessel-in-united-states-coastwise-trade-mv-nexus)) | Notice directive mapped to Watchlist #4, #6, #5 | Live Wire (INFO) — Watchlist #4, #6, #5 |"
-    },
-    {
-      "id": "ofac-doe-2026-23447",
-      "sourceId": "ofac-marad-doe",
-      "sourceName": "OFAC, MARAD & DOE Directives",
-      "attributionText": "Source: U.S. Federal Register — Energy Department, Federal Energy Regulatory Commission (2026-23447)",
-      "publishedAtISO": "2026-11-18T13:30:00.000Z",
-      "title": "Village of Swanton, Vermont; Notice of Availability of Environmental Assessment (2026-23447)",
-      "summary": "Notice issued by Energy Department, Federal Energy Regulatory Commission (2026-23447).",
-      "url": "https://www.federalregister.gov/documents/2026/11/18/2026-23447/village-of-swanton-vermont-notice-of-availability-of-environmental-assessment",
-      "severity": "info",
-      "watchlistMatches": [
-        "#8"
-      ],
-      "riskMatrixMatches": [
-        "#3",
-        "#7"
-      ],
-      "countdownMatches": [],
-      "tags": [
-        "OFAC-MARAD-DOE",
-        "DOE-FERC-Grid"
-      ],
-      "markdownRow": "| #11+ — 2026-11-18 | Energy Department, Federal Energy Regulatory Commission (Sanctions, Maritime & Grid) | Village of Swanton, Vermont; Notice of Availability of Environmental Assessment ([FR 2026-23447](https://www.federalregister.gov/documents/2026/11/18/2026-23447/village-of-swanton-vermont-notice-of-availability-of-environmental-assessment)) | Notice directive mapped to Watchlist #8 | Live Wire (INFO) — Watchlist #8 |"
-    },
-    {
-      "id": "ofac-doe-2026-23446",
-      "sourceId": "ofac-marad-doe",
-      "sourceName": "OFAC, MARAD & DOE Directives",
-      "attributionText": "Source: U.S. Federal Register — Energy Department, Federal Energy Regulatory Commission (2026-23446)",
-      "publishedAtISO": "2026-11-18T13:30:00.000Z",
-      "title": "Algonquin Gas Transmission, LLC; Notice of Application and Establishing Intervention Deadline (2026-23446)",
-      "summary": "Notice issued by Energy Department, Federal Energy Regulatory Commission (2026-23446).",
-      "url": "https://www.federalregister.gov/documents/2026/11/18/2026-23446/algonquin-gas-transmission-llc-notice-of-application-and-establishing-intervention-deadline",
-      "severity": "info",
-      "watchlistMatches": [
-        "#8"
-      ],
-      "riskMatrixMatches": [
-        "#3",
-        "#7"
-      ],
-      "countdownMatches": [],
-      "tags": [
-        "OFAC-MARAD-DOE",
-        "DOE-FERC-Grid"
-      ],
-      "markdownRow": "| #11+ — 2026-11-18 | Energy Department, Federal Energy Regulatory Commission (Sanctions, Maritime & Grid) | Algonquin Gas Transmission, LLC; Notice of Application and Establishing Intervention Deadline ([FR 2026-23446](https://www.federalregister.gov/documents/2026/11/18/2026-23446/algonquin-gas-transmission-llc-notice-of-application-and-establishing-intervention-deadline)) | Notice directive mapped to Watchlist #8 | Live Wire (INFO) — Watchlist #8 |"
-    },
-    {
-      "id": "ofac-doe-2026-23443",
-      "sourceId": "ofac-marad-doe",
-      "sourceName": "OFAC, MARAD & DOE Directives",
-      "attributionText": "Source: U.S. Federal Register — Energy Department, Federal Energy Regulatory Commission (2026-23443)",
-      "publishedAtISO": "2026-11-18T13:30:00.000Z",
-      "title": "Commission Information Collection Activities (FERC-510); Comment Request; Extension (2026-23443)",
-      "summary": "In compliance with the requirements of the Paperwork Reduction Act of 1995, the Federal Energy Regulatory Commission (Commission or FERC) is submitting its information collection, FERC-510 Application for Surrender of Hydropower License (OMB No 1902-0068), to the…",
-      "url": "https://www.federalregister.gov/documents/2026/11/18/2026-23443/commission-information-collection-activities-ferc-510-comment-request-extension",
-      "severity": "info",
-      "watchlistMatches": [
-        "#4",
-        "#5",
-        "#8"
-      ],
-      "riskMatrixMatches": [
-        "#3",
-        "#6",
-        "#7"
-      ],
-      "countdownMatches": [],
-      "tags": [
-        "OFAC-MARAD-DOE",
-        "MARAD-Maritime",
-        "DOE-FERC-Grid"
-      ],
-      "markdownRow": "| #11+ — 2026-11-18 | Energy Department, Federal Energy Regulatory Commission (Sanctions, Maritime & Grid) | Commission Information Collection Activities (FERC-510); Comment Request; Extension ([FR 2026-23443](https://www.federalregister.gov/documents/2026/11/18/2026-23443/commission-information-collection-activities-ferc-510-comment-request-extension)) | Notice directive mapped to Watchlist #4, #5, #8 | Live Wire (INFO) — Watchlist #4, #5, #8 |"
-    },
-    {
-      "id": "ofac-doe-2026-23442",
-      "sourceId": "ofac-marad-doe",
-      "sourceName": "OFAC, MARAD & DOE Directives",
-      "attributionText": "Source: U.S. Federal Register — Energy Department, Federal Energy Regulatory Commission (2026-23442)",
-      "publishedAtISO": "2026-11-18T13:30:00.000Z",
-      "title": "Natural Gas Pipeline of America, LLC; Horizon Pipeline Company, LLC; Notice of Schedule for the Preparation of an Environmental Assessment for the North Extension Project (2026-23442)",
-      "summary": "Notice issued by Energy Department, Federal Energy Regulatory Commission (2026-23442).",
-      "url": "https://www.federalregister.gov/documents/2026/11/18/2026-23442/natural-gas-pipeline-of-america-llc-horizon-pipeline-company-llc-notice-of-schedule-for-the",
-      "severity": "info",
-      "watchlistMatches": [
-        "#8"
-      ],
-      "riskMatrixMatches": [
-        "#3",
-        "#7"
-      ],
-      "countdownMatches": [],
-      "tags": [
-        "OFAC-MARAD-DOE",
-        "DOE-FERC-Grid"
-      ],
-      "markdownRow": "| #11+ — 2026-11-18 | Energy Department, Federal Energy Regulatory Commission (Sanctions, Maritime & Grid) | Natural Gas Pipeline of America, LLC; Horizon Pipeline Company, LLC; Notice of Schedule for the Preparation of an Environmental Assess… ([FR 2026-23442](https://www.federalregister.gov/documents/2026/11/18/2026-23442/natural-gas-pipeline-of-america-llc-horizon-pipeline-company-llc-notice-of-schedule-for-the)) | Notice directive mapped to Watchlist #8 | Live Wire (INFO) — Watchlist #8 |"
     },
     {
       "id": "cisa-adv-cisa-adds-four-known-exploited-vulnerabilities-catalog",
