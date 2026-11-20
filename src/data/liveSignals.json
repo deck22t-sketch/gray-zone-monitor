@@ -1,8 +1,88 @@
 {
-  "ingestedAtISO": "2026-11-20T06:52:57.381Z",
+  "ingestedAtISO": "2026-11-20T09:47:21.364Z",
   "ingestionMode": "ZERO_KEY_PUBLIC_FEEDS",
-  "totalSignals": 115,
+  "totalSignals": 105,
   "signals": [
+    {
+      "id": "nvd-cve-2026-133501",
+      "sourceId": "nist-nvd",
+      "sourceName": "NIST NVD Critical CVEs",
+      "attributionText": "Source: NIST National Vulnerability Database API 2.0 (nvd.nist.gov — CVSS 9.0)",
+      "publishedAtISO": "2026-11-20T09:20:07.277Z",
+      "title": "CVE-2026-133501 (CVSS 9.0): A security flaw has been discovered in Gladys Assistant up to 4.71.0. This impacts an unknown function o…",
+      "summary": "[CVSS 9.0 CRITICAL] A security flaw has been discovered in Gladys Assistant up to 4.71.0. This impacts an unknown function of the file server/lib/gateway/gateway.downloadBackup.js of the component Backup Restore Handler. The manipulation results in path traversal. The attac…",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-133501",
+      "severity": "critical",
+      "watchlistMatches": [
+        "#2",
+        "#8",
+        "#1"
+      ],
+      "riskMatrixMatches": [
+        "#2",
+        "#1"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "NIST-NVD",
+        "CVE-2026-133501",
+        "CVSS-9.0",
+        "Core-Infra-OT"
+      ],
+      "markdownRow": "| #11+ — Nov 20, 2026 | CVE-2026-133501 (Edge / OT / Cloud Infrastructure) | A security flaw has been discovered in Gladys Assistant up to 4.71.0. This impacts an unknown function of the file server/lib/gateway/… ([NIST NVD (9.0)](https://nvd.nist.gov/vuln/detail/CVE-2026-133501)) | Pre-KEV critical disclosure (CVSS 9.0) | Live Wire (CRITICAL) — Watchlist #2, #8, #1 |"
+    },
+    {
+      "id": "nvd-cve-2026-133500",
+      "sourceId": "nist-nvd",
+      "sourceName": "NIST NVD Critical CVEs",
+      "attributionText": "Source: NIST National Vulnerability Database API 2.0 (nvd.nist.gov — CVSS 9.1)",
+      "publishedAtISO": "2026-11-20T09:20:07.047Z",
+      "title": "CVE-2026-133500 (CVSS 9.1): A vulnerability was identified in Gladys Assistant up to 4.71.0. This affects an unknown function of the…",
+      "summary": "[CVSS 9.1 CRITICAL] A vulnerability was identified in Gladys Assistant up to 4.71.0. This affects an unknown function of the file gateway.downloadBackup.js of the component Backup Restore Endpoint. The manipulation of the argument file_url leads to os command injection. The…",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-133500",
+      "severity": "critical",
+      "watchlistMatches": [
+        "#2",
+        "#8",
+        "#1"
+      ],
+      "riskMatrixMatches": [
+        "#2",
+        "#1"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "NIST-NVD",
+        "CVE-2026-133500",
+        "CVSS-9.1",
+        "Core-Infra-OT"
+      ],
+      "markdownRow": "| #11+ — Nov 20, 2026 | CVE-2026-133500 (Edge / OT / Cloud Infrastructure) | A vulnerability was identified in Gladys Assistant up to 4.71.0. This affects an unknown function of the file gateway.downloadBackup.j… ([NIST NVD (9.1)](https://nvd.nist.gov/vuln/detail/CVE-2026-133500)) | Pre-KEV critical disclosure (CVSS 9.1) | Live Wire (CRITICAL) — Watchlist #2, #8, #1 |"
+    },
+    {
+      "id": "nvd-cve-2026-133493",
+      "sourceId": "nist-nvd",
+      "sourceName": "NIST NVD Critical CVEs",
+      "attributionText": "Source: NIST National Vulnerability Database API 2.0 (nvd.nist.gov — CVSS 10.0)",
+      "publishedAtISO": "2026-11-20T07:17:10.853Z",
+      "title": "CVE-2026-133493 (CVSS 10.0): A vulnerability was identified in D-Link DIR-600L 2.17b02. Affected is the function genacgi_main of the…",
+      "summary": "[CVSS 10.0 CRITICAL] A vulnerability was identified in D-Link DIR-600L 2.17b02. Affected is the function genacgi_main of the file gena.cgi of the component GENA Handler. Such manipulation leads to os command injection. The attack can be launched remotely. The exploit is pub…",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-133493",
+      "severity": "critical",
+      "watchlistMatches": [
+        "#2"
+      ],
+      "riskMatrixMatches": [
+        "#2"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "NIST-NVD",
+        "CVE-2026-133493",
+        "CVSS-10.0"
+      ],
+      "markdownRow": "| #11+ — Nov 20, 2026 | CVE-2026-133493 (Enterprise Software) | A vulnerability was identified in D-Link DIR-600L 2.17b02. Affected is the function genacgi_main of the file gena.cgi of the component… ([NIST NVD (10.0)](https://nvd.nist.gov/vuln/detail/CVE-2026-133493)) | Pre-KEV critical disclosure (CVSS 10.0) | Live Wire (CRITICAL) — Watchlist #2 |"
+    },
     {
       "id": "cisa-adv-icsa-26-323-02",
       "sourceId": "cisa-advisories",
@@ -172,30 +252,6 @@
         "CVSS-9.8"
       ],
       "markdownRow": "| #11+ — Nov 18, 2026 | CVE-2026-130733 (Enterprise Software) | Grav from 2.0.0 before 2.2.18 contains an authorization bypass vulnerability that allows publishers to overwrite pages their per-page… ([NIST NVD (9.8)](https://nvd.nist.gov/vuln/detail/CVE-2026-130733)) | Pre-KEV critical disclosure (CVSS 9.8) | Live Wire (CRITICAL) — Watchlist #2 |"
-    },
-    {
-      "id": "nvd-cve-2026-130675",
-      "sourceId": "nist-nvd",
-      "sourceName": "NIST NVD Critical CVEs",
-      "attributionText": "Source: NIST National Vulnerability Database API 2.0 (nvd.nist.gov — CVSS 9.8)",
-      "publishedAtISO": "2026-11-18T12:17:10.783Z",
-      "title": "CVE-2026-130675 (CVSS 9.8): Craft CMS from 5.0.0 before 5.11.4 contains a remote code execution vulnerability in ImageTransforms::no…",
-      "summary": "[CVSS 9.8 CRITICAL] Craft CMS from 5.0.0 before 5.11.4 contains a remote code execution vulnerability in ImageTransforms::normalizeTransform() that allows attackers to instantiate arbitrary classes by supplying class:null with a __class key. Attackers can reach the method t…",
-      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-130675",
-      "severity": "critical",
-      "watchlistMatches": [
-        "#2"
-      ],
-      "riskMatrixMatches": [
-        "#2"
-      ],
-      "countdownMatches": [],
-      "tags": [
-        "NIST-NVD",
-        "CVE-2026-130675",
-        "CVSS-9.8"
-      ],
-      "markdownRow": "| #11+ — Nov 18, 2026 | CVE-2026-130675 (Enterprise Software) | Craft CMS from 5.0.0 before 5.11.4 contains a remote code execution vulnerability in ImageTransforms::normalizeTransform() that allows… ([NIST NVD (9.8)](https://nvd.nist.gov/vuln/detail/CVE-2026-130675)) | Pre-KEV critical disclosure (CVSS 9.8) | Live Wire (CRITICAL) — Watchlist #2 |"
     },
     {
       "id": "kev-cve-2026-40217",
@@ -733,10 +789,10 @@
       "id": "faa-closure-sna-1",
       "sourceId": "faa-nas",
       "sourceName": "FAA NAS Status",
-      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 06:52:55 2026 GMT",
-      "publishedAtISO": "2026-11-20T06:52:55.000Z",
+      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 09:46:50 2026 GMT",
+      "publishedAtISO": "2026-11-20T09:46:50.000Z",
       "title": "FAA Airport Closures: SNA",
-      "summary": "SNA: !SNA 11/020 SNA AD AP CLSD DLY 0730-1415 2611150730-2611211415 | Reopen: Nov 21 at 14:15 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 06:52:55 2026 GMT)",
+      "summary": "SNA: !SNA 11/020 SNA AD AP CLSD DLY 0730-1415 2611150730-2611211415 | Reopen: Nov 21 at 14:15 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 09:46:50 2026 GMT)",
       "url": "https://nasstatus.faa.gov/",
       "severity": "elevated",
       "watchlistMatches": [
@@ -751,16 +807,16 @@
         "Airport-Closure",
         "SNA"
       ],
-      "markdownRow": "| #11+ — Fri Nov 20 06:52:55 2026 GMT | FAA NAS — SNA (National Aviation / Airport Ops) | Airport Closures active at SNA until Nov 21 at 14:15 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !SNA 11/020 SNA AD AP CLSD DLY 0730-1415 2611150730-2611211415 | Live Wire (ELEVATED) — Watchlist #7 |"
+      "markdownRow": "| #11+ — Fri Nov 20 09:46:50 2026 GMT | FAA NAS — SNA (National Aviation / Airport Ops) | Airport Closures active at SNA until Nov 21 at 14:15 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !SNA 11/020 SNA AD AP CLSD DLY 0730-1415 2611150730-2611211415 | Live Wire (ELEVATED) — Watchlist #7 |"
     },
     {
       "id": "faa-closure-pns-2",
       "sourceId": "faa-nas",
       "sourceName": "FAA NAS Status",
-      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 06:52:55 2026 GMT",
-      "publishedAtISO": "2026-11-20T06:52:55.000Z",
+      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 09:46:50 2026 GMT",
+      "publishedAtISO": "2026-11-20T09:46:50.000Z",
       "title": "FAA Airport Closures: PNS",
-      "summary": "PNS: !PNS 11/050 PNS AD AP CLSD EXC HEL OPS 2611200600-2611201100 | Reopen: Nov 20 at 11:00 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 06:52:55 2026 GMT)",
+      "summary": "PNS: !PNS 11/050 PNS AD AP CLSD EXC HEL OPS 2611200600-2611201100 | Reopen: Nov 20 at 11:00 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 09:46:50 2026 GMT)",
       "url": "https://nasstatus.faa.gov/",
       "severity": "elevated",
       "watchlistMatches": [
@@ -775,16 +831,16 @@
         "Airport-Closure",
         "PNS"
       ],
-      "markdownRow": "| #11+ — Fri Nov 20 06:52:55 2026 GMT | FAA NAS — PNS (National Aviation / Airport Ops) | Airport Closures active at PNS until Nov 20 at 11:00 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !PNS 11/050 PNS AD AP CLSD EXC HEL OPS 2611200600-2611201100 | Live Wire (ELEVATED) — Watchlist #7 |"
+      "markdownRow": "| #11+ — Fri Nov 20 09:46:50 2026 GMT | FAA NAS — PNS (National Aviation / Airport Ops) | Airport Closures active at PNS until Nov 20 at 11:00 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !PNS 11/050 PNS AD AP CLSD EXC HEL OPS 2611200600-2611201100 | Live Wire (ELEVATED) — Watchlist #7 |"
     },
     {
       "id": "faa-closure-ase-5",
       "sourceId": "faa-nas",
       "sourceName": "FAA NAS Status",
-      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 06:52:55 2026 GMT",
-      "publishedAtISO": "2026-11-20T06:52:55.000Z",
+      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 09:46:50 2026 GMT",
+      "publishedAtISO": "2026-11-20T09:46:50.000Z",
       "title": "FAA Airport Closures: ASE",
-      "summary": "ASE: !ASE 11/192 ASE AD AP CLSD EXC LIFE FLT HEL AND SAR HEL 30MIN PPR 970-379-8406 2611200617-2611201400 | Reopen: Nov 20 at 14:00 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 06:52:55 2026 GMT)",
+      "summary": "ASE: !ASE 11/192 ASE AD AP CLSD EXC LIFE FLT HEL AND SAR HEL 30MIN PPR 970-379-8406 2611200617-2611201400 | Reopen: Nov 20 at 14:00 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 09:46:50 2026 GMT)",
       "url": "https://nasstatus.faa.gov/",
       "severity": "elevated",
       "watchlistMatches": [
@@ -799,7 +855,7 @@
         "Airport-Closure",
         "ASE"
       ],
-      "markdownRow": "| #11+ — Fri Nov 20 06:52:55 2026 GMT | FAA NAS — ASE (National Aviation / Airport Ops) | Airport Closures active at ASE until Nov 20 at 14:00 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !ASE 11/192 ASE AD AP CLSD EXC LIFE FLT HEL AND SAR HEL 30MIN PPR 970-379-8406 2611200617-2611201400 | Live Wire (ELEVATED) — Watchlist #7 |"
+      "markdownRow": "| #11+ — Fri Nov 20 09:46:50 2026 GMT | FAA NAS — ASE (National Aviation / Airport Ops) | Airport Closures active at ASE until Nov 20 at 14:00 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !ASE 11/192 ASE AD AP CLSD EXC LIFE FLT HEL AND SAR HEL 30MIN PPR 970-379-8406 2611200617-2611201400 | Live Wire (ELEVATED) — Watchlist #7 |"
     },
     {
       "id": "cloudflare-status-4lv21sf5fzhm",
@@ -1378,101 +1434,6 @@
       "markdownRow": "| #11+ — Nov 18, 2026 | GitHub (Developer & CI/CD Backbone) | Degraded Availability for MAI Code 2 Flash in Copilot (minor impact; resolved) ([GitHub Status](https://stspg.io/3sbmvyy2ctyx)) | This incident has been resolved. Thank you for your patience and understanding as we addressed this issue. A detailed root cause… | Live Wire (ELEVATED) — Watchlist #2, #7 |"
     },
     {
-      "id": "nvd-cve-2026-115139",
-      "sourceId": "nist-nvd",
-      "sourceName": "NIST NVD Critical CVEs",
-      "attributionText": "Source: NIST National Vulnerability Database API 2.0 (nvd.nist.gov — CVSS 9.3)",
-      "publishedAtISO": "2026-11-17T22:18:47.437Z",
-      "title": "CVE-2026-115139 (CVSS 9.3): Vulnerability in the Oracle Hyperion Infrastructure Technology product of Oracle Hyperion (component: In…",
-      "summary": "[CVSS 9.3 CRITICAL] Vulnerability in the Oracle Hyperion Infrastructure Technology product of Oracle Hyperion (component: Installation and Configuration). The supported version that is affected is 11.2.26.0.000. Easily exploitable vulnerability allows unauthenticated attack…",
-      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-115139",
-      "severity": "elevated",
-      "watchlistMatches": [
-        "#2"
-      ],
-      "riskMatrixMatches": [
-        "#2"
-      ],
-      "countdownMatches": [],
-      "tags": [
-        "NIST-NVD",
-        "CVE-2026-115139",
-        "CVSS-9.3"
-      ],
-      "markdownRow": "| #11+ — Nov 17, 2026 | CVE-2026-115139 (Enterprise Software) | Vulnerability in the Oracle Hyperion Infrastructure Technology product of Oracle Hyperion (component: Installation and Configuration).… ([NIST NVD (9.3)](https://nvd.nist.gov/vuln/detail/CVE-2026-115139)) | Pre-KEV critical disclosure (CVSS 9.3) | Live Wire (ELEVATED) — Watchlist #2 |"
-    },
-    {
-      "id": "apple-app-store-1000005988",
-      "sourceId": "apple-status",
-      "sourceName": "Apple System Status",
-      "attributionText": "Source: Apple System Status (apple.com/support/systemstatus)",
-      "publishedAtISO": "2026-11-17T16:45:00.000Z",
-      "title": "Apple App Store: Outage [RESOLVED]",
-      "summary": "Some users may have experienced an issue with this service. (Some users were affected; Window: 11/17/2026 08:45 PST – 11/17/2026 12:00 PST) [Monitor for downstream iOS third-party auth/mail cascade noise per Watchlist #9]",
-      "url": "https://www.apple.com/support/systemstatus/",
-      "severity": "elevated",
-      "watchlistMatches": [
-        "#7",
-        "#9"
-      ],
-      "riskMatrixMatches": [
-        "#1"
-      ],
-      "countdownMatches": [],
-      "tags": [
-        "Apple-Ecosystem",
-        "App Store",
-        "Auth-Cascade-Watch"
-      ],
-      "markdownRow": "| #11+ — 11/17/2026 08:45 PST | Apple — App Store (Consumer, Payments & Enterprise) | Outage (Some users were affected); status: resolved ([Apple System Status](https://www.apple.com/support/systemstatus/)) | Some users may have experienced an issue with this service.; Watchlist #9 auth cascade check | Live Wire (ELEVATED) — Watchlist #7, #9 |"
-    },
-    {
-      "id": "apple-volume-purchase-program-1000005988",
-      "sourceId": "apple-status",
-      "sourceName": "Apple System Status",
-      "attributionText": "Source: Apple System Status (apple.com/support/systemstatus)",
-      "publishedAtISO": "2026-11-17T16:45:00.000Z",
-      "title": "Apple Volume Purchase Program: Outage [RESOLVED]",
-      "summary": "Users may have been unable to make purchases. (Some users were affected; Window: 11/17/2026 08:45 PST – 11/17/2026 12:00 PST)",
-      "url": "https://www.apple.com/support/systemstatus/",
-      "severity": "elevated",
-      "watchlistMatches": [
-        "#7"
-      ],
-      "riskMatrixMatches": [
-        "#1"
-      ],
-      "countdownMatches": [],
-      "tags": [
-        "Apple-Ecosystem",
-        "Volume Purchase Program"
-      ],
-      "markdownRow": "| #11+ — 11/17/2026 08:45 PST | Apple — Volume Purchase Program (Consumer, Payments & Enterprise) | Outage (Some users were affected); status: resolved ([Apple System Status](https://www.apple.com/support/systemstatus/)) | Users may have been unable to make purchases. | Live Wire (ELEVATED) — Watchlist #7 |"
-    },
-    {
-      "id": "apple-applecare-on-device-2000005801",
-      "sourceId": "apple-status",
-      "sourceName": "Apple System Status",
-      "attributionText": "Source: Apple System Status (apple.com/support/systemstatus)",
-      "publishedAtISO": "2026-11-17T16:15:00.000Z",
-      "title": "Apple AppleCare on Device: Outage [RESOLVED]",
-      "summary": "AppleCare purchase was temporarily unavailable. (All users were affected; Window: 11/17/2026 08:15 PST – 11/17/2026 12:39 PST)",
-      "url": "https://www.apple.com/support/systemstatus/",
-      "severity": "elevated",
-      "watchlistMatches": [
-        "#7"
-      ],
-      "riskMatrixMatches": [
-        "#1"
-      ],
-      "countdownMatches": [],
-      "tags": [
-        "Apple-Ecosystem",
-        "AppleCare on Device"
-      ],
-      "markdownRow": "| #11+ — 11/17/2026 08:15 PST | Apple — AppleCare on Device (Consumer, Payments & Enterprise) | Outage (All users were affected); status: resolved ([Apple System Status](https://www.apple.com/support/systemstatus/)) | AppleCare purchase was temporarily unavailable. | Live Wire (ELEVATED) — Watchlist #7 |"
-    },
-    {
       "id": "cisa-adv-icsa-26-321-10",
       "sourceId": "cisa-advisories",
       "sourceName": "CISA Advisories",
@@ -1831,30 +1792,6 @@
         "status:resolved"
       ],
       "markdownRow": "| #11+ — Nov 12, 2026 | GitHub (Developer & CI/CD Backbone) | Disruption with Email Delivery (minor impact; resolved) ([GitHub Status](https://stspg.io/lr8v4v8t7gs2)) | This incident has been resolved. Thank you for your patience and understanding as we addressed this issue. A detailed root cause… | Live Wire (ELEVATED) — Watchlist #2, #7 |"
-    },
-    {
-      "id": "nvd-cve-2026-118383",
-      "sourceId": "nist-nvd",
-      "sourceName": "NIST NVD Critical CVEs",
-      "attributionText": "Source: NIST National Vulnerability Database API 2.0 (nvd.nist.gov — CVSS 9.0)",
-      "publishedAtISO": "2026-11-10T21:18:58.980Z",
-      "title": "CVE-2026-118383 (CVSS 9.0): A use-after-free in the replication component of MongoDB Server can occur when a newly elected replica s…",
-      "summary": "[CVSS 9.0 CRITICAL] A use-after-free in the replication component of MongoDB Server can occur when a newly elected replica set primary completes catch-up. The condition can be caused by requests that do not require authentication, and may result in the server terminating un…",
-      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-118383",
-      "severity": "elevated",
-      "watchlistMatches": [
-        "#2"
-      ],
-      "riskMatrixMatches": [
-        "#2"
-      ],
-      "countdownMatches": [],
-      "tags": [
-        "NIST-NVD",
-        "CVE-2026-118383",
-        "CVSS-9.0"
-      ],
-      "markdownRow": "| #11+ — Nov 10, 2026 | CVE-2026-118383 (Enterprise Software) | A use-after-free in the replication component of MongoDB Server can occur when a newly elected replica set primary completes catch-up.… ([NIST NVD (9.0)](https://nvd.nist.gov/vuln/detail/CVE-2026-118383)) | Pre-KEV critical disclosure (CVSS 9.0) | Live Wire (ELEVATED) — Watchlist #2 |"
     },
     {
       "id": "kev-cve-2026-111793",
@@ -2268,10 +2205,10 @@
       "id": "faa-closure-lax-3",
       "sourceId": "faa-nas",
       "sourceName": "FAA NAS Status",
-      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 06:52:55 2026 GMT",
-      "publishedAtISO": "2026-11-20T06:52:55.000Z",
+      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 09:46:50 2026 GMT",
+      "publishedAtISO": "2026-11-20T09:46:50.000Z",
       "title": "FAA Airport Closures: LAX (GA NOTAM Restriction)",
-      "summary": "LAX: !LAX 05/277 LAX AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR CTC ATLANTIC AVIATION 310-258-9884 OR SIGNATURE AVIATION 310-410-9605 2605271826-2705281600 | Reopen: May 28 at 16:00 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 06:52:55 2026 GMT)",
+      "summary": "LAX: !LAX 05/277 LAX AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR CTC ATLANTIC AVIATION 310-258-9884 OR SIGNATURE AVIATION 310-410-9605 2605271826-2705281600 | Reopen: May 28 at 16:00 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 09:46:50 2026 GMT)",
       "url": "https://nasstatus.faa.gov/",
       "severity": "info",
       "watchlistMatches": [
@@ -2286,16 +2223,16 @@
         "Airport-Closure",
         "LAX"
       ],
-      "markdownRow": "| #11+ — Fri Nov 20 06:52:55 2026 GMT | FAA NAS — LAX (National Aviation / Airport Ops) | Airport Closures active at LAX until May 28 at 16:00 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !LAX 05/277 LAX AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR CTC ATLANTIC AVIATION 310-258-9884 OR SIGNATURE A… | Live Wire (INFO) — Watchlist #7 |"
+      "markdownRow": "| #11+ — Fri Nov 20 09:46:50 2026 GMT | FAA NAS — LAX (National Aviation / Airport Ops) | Airport Closures active at LAX until May 28 at 16:00 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !LAX 05/277 LAX AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR CTC ATLANTIC AVIATION 310-258-9884 OR SIGNATURE A… | Live Wire (INFO) — Watchlist #7 |"
     },
     {
       "id": "faa-closure-san-4",
       "sourceId": "faa-nas",
       "sourceName": "FAA NAS Status",
-      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 06:52:55 2026 GMT",
-      "publishedAtISO": "2026-11-20T06:52:55.000Z",
+      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 09:46:50 2026 GMT",
+      "publishedAtISO": "2026-11-20T09:46:50.000Z",
       "title": "FAA Airport Closures: SAN (GA NOTAM Restriction)",
-      "summary": "SAN: !SAN 10/004 SAN AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC PPR 619-298-7704 2610011633-2701010800 | Reopen: Jan 01 at 08:00 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 06:52:55 2026 GMT)",
+      "summary": "SAN: !SAN 10/004 SAN AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC PPR 619-298-7704 2610011633-2701010800 | Reopen: Jan 01 at 08:00 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 09:46:50 2026 GMT)",
       "url": "https://nasstatus.faa.gov/",
       "severity": "info",
       "watchlistMatches": [
@@ -2310,16 +2247,16 @@
         "Airport-Closure",
         "SAN"
       ],
-      "markdownRow": "| #11+ — Fri Nov 20 06:52:55 2026 GMT | FAA NAS — SAN (National Aviation / Airport Ops) | Airport Closures active at SAN until Jan 01 at 08:00 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !SAN 10/004 SAN AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC PPR 619-298-7704 2610011633-2701010800 | Live Wire (INFO) — Watchlist #7 |"
+      "markdownRow": "| #11+ — Fri Nov 20 09:46:50 2026 GMT | FAA NAS — SAN (National Aviation / Airport Ops) | Airport Closures active at SAN until Jan 01 at 08:00 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !SAN 10/004 SAN AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC PPR 619-298-7704 2610011633-2701010800 | Live Wire (INFO) — Watchlist #7 |"
     },
     {
       "id": "faa-closure-las-6",
       "sourceId": "faa-nas",
       "sourceName": "FAA NAS Status",
-      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 06:52:55 2026 GMT",
-      "publishedAtISO": "2026-11-20T06:52:55.000Z",
+      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 09:46:50 2026 GMT",
+      "publishedAtISO": "2026-11-20T09:46:50.000Z",
       "title": "FAA Airport Closures: LAS (GA NOTAM Restriction)",
-      "summary": "LAS: !LAS 10/160 LAS AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR 702-261-7775 2610281926-2701272300 | Reopen: Jan 27 at 23:00 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 06:52:55 2026 GMT)",
+      "summary": "LAS: !LAS 10/160 LAS AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR 702-261-7775 2610281926-2701272300 | Reopen: Jan 27 at 23:00 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 09:46:50 2026 GMT)",
       "url": "https://nasstatus.faa.gov/",
       "severity": "info",
       "watchlistMatches": [
@@ -2334,7 +2271,7 @@
         "Airport-Closure",
         "LAS"
       ],
-      "markdownRow": "| #11+ — Fri Nov 20 06:52:55 2026 GMT | FAA NAS — LAS (National Aviation / Airport Ops) | Airport Closures active at LAS until Jan 27 at 23:00 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !LAS 10/160 LAS AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR 702-261-7775 2610281926-2701272300 | Live Wire (INFO) — Watchlist #7 |"
+      "markdownRow": "| #11+ — Fri Nov 20 09:46:50 2026 GMT | FAA NAS — LAS (National Aviation / Airport Ops) | Airport Closures active at LAS until Jan 27 at 23:00 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !LAS 10/160 LAS AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR 702-261-7775 2610281926-2701272300 | Live Wire (INFO) — Watchlist #7 |"
     },
     {
       "id": "ofac-doe-2026-23611",
@@ -2640,177 +2577,6 @@
         "CISA-Advisory"
       ],
       "markdownRow": "| #11+ — Nov 18, 2026 | CISA Adds Four Known Exploited Vulnerabilities to Catalog (Federal Cyber Advisory) | CISA has added four new vulnerabilities to its Known Exploited Vulnerabilities (KEV) Catalog , based on evidence of active exploitation.&nbsp; CVE-2024-10441 Synology DiskStation Manager (DSM) Improper Encoding or Escaping of Output Vulnerability CVE-2026-402… ([CISA Advisory](https://www.cisa.gov/news-events/alerts/2026/11/18/cisa-adds-four-known-exploited-vulnerabilities-catalog)) | Federal cybersecurity advisory readout | Live Wire (INFO) — Watchlist #7 |"
-    },
-    {
-      "id": "apple-apple-business-2000005804",
-      "sourceId": "apple-status",
-      "sourceName": "Apple System Status",
-      "attributionText": "Source: Apple System Status (apple.com/support/systemstatus)",
-      "publishedAtISO": "2026-11-17T18:40:00.000Z",
-      "title": "Apple Apple Business: Issue [RESOLVED]",
-      "summary": "This service may have been slow or unavailable. (Some users were affected; Window: 11/17/2026 10:40 PST – 11/17/2026 14:00 PST) [Monitor for downstream iOS third-party auth/mail cascade noise per Watchlist #9]",
-      "url": "https://www.apple.com/support/systemstatus/",
-      "severity": "info",
-      "watchlistMatches": [
-        "#7",
-        "#9"
-      ],
-      "riskMatrixMatches": [
-        "#1"
-      ],
-      "countdownMatches": [],
-      "tags": [
-        "Apple-Ecosystem",
-        "Apple Business",
-        "Auth-Cascade-Watch"
-      ],
-      "markdownRow": "| #11+ — 11/17/2026 10:40 PST | Apple — Apple Business (Consumer, Payments & Enterprise) | Issue (Some users were affected); status: resolved ([Apple System Status](https://www.apple.com/support/systemstatus/)) | This service may have been slow or unavailable.; Watchlist #9 auth cascade check | Live Wire (INFO) — Watchlist #7, #9 |"
-    },
-    {
-      "id": "apple-apple-school-manager-2000005804",
-      "sourceId": "apple-status",
-      "sourceName": "Apple System Status",
-      "attributionText": "Source: Apple System Status (apple.com/support/systemstatus)",
-      "publishedAtISO": "2026-11-17T18:40:00.000Z",
-      "title": "Apple Apple School Manager: Issue [RESOLVED]",
-      "summary": "This service may have been slow or unavailable. (Some users were affected; Window: 11/17/2026 10:40 PST – 11/17/2026 14:00 PST) [Monitor for downstream iOS third-party auth/mail cascade noise per Watchlist #9]",
-      "url": "https://www.apple.com/support/systemstatus/",
-      "severity": "info",
-      "watchlistMatches": [
-        "#7",
-        "#9"
-      ],
-      "riskMatrixMatches": [
-        "#1"
-      ],
-      "countdownMatches": [],
-      "tags": [
-        "Apple-Ecosystem",
-        "Apple School Manager",
-        "Auth-Cascade-Watch"
-      ],
-      "markdownRow": "| #11+ — 11/17/2026 10:40 PST | Apple — Apple School Manager (Consumer, Payments & Enterprise) | Issue (Some users were affected); status: resolved ([Apple System Status](https://www.apple.com/support/systemstatus/)) | This service may have been slow or unavailable.; Watchlist #9 auth cascade check | Live Wire (INFO) — Watchlist #7, #9 |"
-    },
-    {
-      "id": "apple-schoolwork-2000005804",
-      "sourceId": "apple-status",
-      "sourceName": "Apple System Status",
-      "attributionText": "Source: Apple System Status (apple.com/support/systemstatus)",
-      "publishedAtISO": "2026-11-17T18:40:00.000Z",
-      "title": "Apple Schoolwork: Issue [RESOLVED]",
-      "summary": "This service may have been slow or unavailable. (Some users were affected; Window: 11/17/2026 10:40 PST – 11/17/2026 14:00 PST)",
-      "url": "https://www.apple.com/support/systemstatus/",
-      "severity": "info",
-      "watchlistMatches": [
-        "#7"
-      ],
-      "riskMatrixMatches": [
-        "#1"
-      ],
-      "countdownMatches": [],
-      "tags": [
-        "Apple-Ecosystem",
-        "Schoolwork"
-      ],
-      "markdownRow": "| #11+ — 11/17/2026 10:40 PST | Apple — Schoolwork (Consumer, Payments & Enterprise) | Issue (Some users were affected); status: resolved ([Apple System Status](https://www.apple.com/support/systemstatus/)) | This service may have been slow or unavailable. | Live Wire (INFO) — Watchlist #7 |"
-    },
-    {
-      "id": "apple-volume-purchase-program-2000005810",
-      "sourceId": "apple-status",
-      "sourceName": "Apple System Status",
-      "attributionText": "Source: Apple System Status (apple.com/support/systemstatus)",
-      "publishedAtISO": "2026-11-17T17:11:00.000Z",
-      "title": "Apple Volume Purchase Program: Issue [RESOLVED]",
-      "summary": "Users may have experienced intermittent issues with this service. (Some users were affected; Window: 11/17/2026 09:11 PST – 11/17/2026 14:00 PST)",
-      "url": "https://www.apple.com/support/systemstatus/",
-      "severity": "info",
-      "watchlistMatches": [
-        "#7"
-      ],
-      "riskMatrixMatches": [
-        "#1"
-      ],
-      "countdownMatches": [],
-      "tags": [
-        "Apple-Ecosystem",
-        "Volume Purchase Program"
-      ],
-      "markdownRow": "| #11+ — 11/17/2026 09:11 PST | Apple — Volume Purchase Program (Consumer, Payments & Enterprise) | Issue (Some users were affected); status: resolved ([Apple System Status](https://www.apple.com/support/systemstatus/)) | Users may have experienced intermittent issues with this service. | Live Wire (INFO) — Watchlist #7 |"
-    },
-    {
-      "id": "apple-icloud-account-sign-in-2000005811",
-      "sourceId": "apple-status",
-      "sourceName": "Apple System Status",
-      "attributionText": "Source: Apple System Status (apple.com/support/systemstatus)",
-      "publishedAtISO": "2026-11-17T16:45:00.000Z",
-      "title": "Apple iCloud Account & Sign In: Issue [RESOLVED]",
-      "summary": "This service may have been slow or unavailable. (Some users were affected; Window: 11/17/2026 08:45 PST – 11/17/2026 13:15 PST) [Monitor for downstream iOS third-party auth/mail cascade noise per Watchlist #9]",
-      "url": "https://www.apple.com/support/systemstatus/",
-      "severity": "info",
-      "watchlistMatches": [
-        "#7",
-        "#9"
-      ],
-      "riskMatrixMatches": [
-        "#1"
-      ],
-      "countdownMatches": [],
-      "tags": [
-        "Apple-Ecosystem",
-        "iCloud Account & Sign In",
-        "Auth-Cascade-Watch"
-      ],
-      "markdownRow": "| #11+ — 11/17/2026 08:45 PST | Apple — iCloud Account & Sign In (Consumer, Payments & Enterprise) | Issue (Some users were affected); status: resolved ([Apple System Status](https://www.apple.com/support/systemstatus/)) | This service may have been slow or unavailable.; Watchlist #9 auth cascade check | Live Wire (INFO) — Watchlist #7, #9 |"
-    },
-    {
-      "id": "apple-icloud-mail-2000005805",
-      "sourceId": "apple-status",
-      "sourceName": "Apple System Status",
-      "attributionText": "Source: Apple System Status (apple.com/support/systemstatus)",
-      "publishedAtISO": "2026-11-17T16:45:00.000Z",
-      "title": "Apple iCloud Mail: Performance [RESOLVED]",
-      "summary": "This service may have been slow or unavailable. (Some users were affected; Window: 11/17/2026 08:45 PST – 11/17/2026 13:15 PST) [Monitor for downstream iOS third-party auth/mail cascade noise per Watchlist #9]",
-      "url": "https://www.apple.com/support/systemstatus/",
-      "severity": "info",
-      "watchlistMatches": [
-        "#7",
-        "#9"
-      ],
-      "riskMatrixMatches": [
-        "#1"
-      ],
-      "countdownMatches": [],
-      "tags": [
-        "Apple-Ecosystem",
-        "iCloud Mail",
-        "Auth-Cascade-Watch"
-      ],
-      "markdownRow": "| #11+ — 11/17/2026 08:45 PST | Apple — iCloud Mail (Consumer, Payments & Enterprise) | Performance (Some users were affected); status: resolved ([Apple System Status](https://www.apple.com/support/systemstatus/)) | This service may have been slow or unavailable.; Watchlist #9 auth cascade check | Live Wire (INFO) — Watchlist #7, #9 |"
-    },
-    {
-      "id": "apple-icloud-web-apps-icloud-com--2000005805",
-      "sourceId": "apple-status",
-      "sourceName": "Apple System Status",
-      "attributionText": "Source: Apple System Status (apple.com/support/systemstatus)",
-      "publishedAtISO": "2026-11-17T16:45:00.000Z",
-      "title": "Apple iCloud Web Apps (iCloud.com): Performance [RESOLVED]",
-      "summary": "This service may have been slow or unavailable. (Some users were affected; Window: 11/17/2026 08:45 PST – 11/17/2026 13:15 PST) [Monitor for downstream iOS third-party auth/mail cascade noise per Watchlist #9]",
-      "url": "https://www.apple.com/support/systemstatus/",
-      "severity": "info",
-      "watchlistMatches": [
-        "#7",
-        "#9"
-      ],
-      "riskMatrixMatches": [
-        "#1"
-      ],
-      "countdownMatches": [],
-      "tags": [
-        "Apple-Ecosystem",
-        "iCloud Web Apps (iCloud.com)",
-        "Auth-Cascade-Watch"
-      ],
-      "markdownRow": "| #11+ — 11/17/2026 08:45 PST | Apple — iCloud Web Apps (iCloud.com) (Consumer, Payments & Enterprise) | Performance (Some users were affected); status: resolved ([Apple System Status](https://www.apple.com/support/systemstatus/)) | This service may have been slow or unavailable.; Watchlist #9 auth cascade check | Live Wire (INFO) — Watchlist #7, #9 |"
     },
     {
       "id": "usgs-us7000tymu",
