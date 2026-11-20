@@ -1,35 +1,55 @@
 {
-  "ingestedAtISO": "2026-11-20T12:48:56.909Z",
+  "ingestedAtISO": "2026-11-20T15:44:12.357Z",
   "ingestionMode": "ZERO_KEY_PUBLIC_FEEDS",
-  "totalSignals": 104,
+  "totalSignals": 106,
   "signals": [
     {
-      "id": "nvd-cve-2026-133501",
+      "id": "nvd-cve-2026-80188",
       "sourceId": "nist-nvd",
       "sourceName": "NIST NVD Critical CVEs",
-      "attributionText": "Source: NIST National Vulnerability Database API 2.0 (nvd.nist.gov — CVSS 9.0)",
-      "publishedAtISO": "2026-11-20T09:20:07.277Z",
-      "title": "CVE-2026-133501 (CVSS 9.0): A security flaw has been discovered in Gladys Assistant up to 4.71.0. This impacts an unknown function o…",
-      "summary": "[CVSS 9.0 CRITICAL] A security flaw has been discovered in Gladys Assistant up to 4.71.0. This impacts an unknown function of the file server/lib/gateway/gateway.downloadBackup.js of the component Backup Restore Handler. The manipulation results in path traversal. The attac…",
-      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-133501",
+      "attributionText": "Source: NIST National Vulnerability Database API 2.0 (nvd.nist.gov — CVSS 9.8)",
+      "publishedAtISO": "2026-11-20T14:17:54.003Z",
+      "title": "CVE-2026-80188 (CVSS 9.8): The BuddyBoss Addons plugin for WordPress is vulnerable to Authentication Bypass leading to Account Take…",
+      "summary": "[CVSS 9.8 CRITICAL] The BuddyBoss Addons plugin for WordPress is vulnerable to Authentication Bypass leading to Account Takeover in versions up to, and including, 1.2.1. This is due to the Social Login REST endpoint trusting unverified Apple and Facebook identity-token clai…",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80188",
       "severity": "critical",
       "watchlistMatches": [
-        "#2",
-        "#8",
-        "#1"
+        "#2"
       ],
       "riskMatrixMatches": [
-        "#2",
-        "#1"
+        "#2"
       ],
       "countdownMatches": [],
       "tags": [
         "NIST-NVD",
-        "CVE-2026-133501",
-        "CVSS-9.0",
-        "Core-Infra-OT"
+        "CVE-2026-80188",
+        "CVSS-9.8"
       ],
-      "markdownRow": "| #11+ — Nov 20, 2026 | CVE-2026-133501 (Edge / OT / Cloud Infrastructure) | A security flaw has been discovered in Gladys Assistant up to 4.71.0. This impacts an unknown function of the file server/lib/gateway/… ([NIST NVD (9.0)](https://nvd.nist.gov/vuln/detail/CVE-2026-133501)) | Pre-KEV critical disclosure (CVSS 9.0) | Live Wire (CRITICAL) — Watchlist #2, #8, #1 |"
+      "markdownRow": "| #11+ — Nov 20, 2026 | CVE-2026-80188 (Enterprise Software) | The BuddyBoss Addons plugin for WordPress is vulnerable to Authentication Bypass leading to Account Takeover in versions up to, and in… ([NIST NVD (9.8)](https://nvd.nist.gov/vuln/detail/CVE-2026-80188)) | Pre-KEV critical disclosure (CVSS 9.8) | Live Wire (CRITICAL) — Watchlist #2 |"
+    },
+    {
+      "id": "nvd-cve-2026-14914",
+      "sourceId": "nist-nvd",
+      "sourceName": "NIST NVD Critical CVEs",
+      "attributionText": "Source: NIST National Vulnerability Database API 2.0 (nvd.nist.gov — CVSS 10.0)",
+      "publishedAtISO": "2026-11-20T14:17:53.043Z",
+      "title": "CVE-2026-14914 (CVSS 10.0): Unrestricted upload of file with dangerous type vulnerability in Tegsoft Yönetim ve Bilişim Hizmetleri T…",
+      "summary": "[CVSS 10.0 CRITICAL] Unrestricted upload of file with dangerous type vulnerability in Tegsoft Yönetim ve Bilişim Hizmetleri Tic. Ltd. Şti. Tegsoft Contact Center allows Upload a Web Shell to a Web Server. This issue affects Tegsoft Contact Center: before latest-202611161510.",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-14914",
+      "severity": "critical",
+      "watchlistMatches": [
+        "#2"
+      ],
+      "riskMatrixMatches": [
+        "#2"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "NIST-NVD",
+        "CVE-2026-14914",
+        "CVSS-10.0"
+      ],
+      "markdownRow": "| #11+ — Nov 20, 2026 | CVE-2026-14914 (Enterprise Software) | Unrestricted upload of file with dangerous type vulnerability in Tegsoft Yönetim ve Bilişim Hizmetleri Tic. Ltd. Şti. Tegsoft Contact… ([NIST NVD (10.0)](https://nvd.nist.gov/vuln/detail/CVE-2026-14914)) | Pre-KEV critical disclosure (CVSS 10.0) | Live Wire (CRITICAL) — Watchlist #2 |"
     },
     {
       "id": "nvd-cve-2026-133500",
@@ -228,30 +248,6 @@
         "CVSS-9.8"
       ],
       "markdownRow": "| #11+ — Nov 18, 2026 | CVE-2012-20007 (Enterprise Software) | ThinkPHP 2.0 through 2.2 and 3.0 Lite mode contains an eval injection vulnerability in the Dispatcher PATH_INFO parsing, which uses pr… ([NIST NVD (9.8)](https://nvd.nist.gov/vuln/detail/CVE-2012-20007)) | Pre-KEV critical disclosure (CVSS 9.8) | Live Wire (CRITICAL) — Watchlist #2 |"
-    },
-    {
-      "id": "nvd-cve-2026-130733",
-      "sourceId": "nist-nvd",
-      "sourceName": "NIST NVD Critical CVEs",
-      "attributionText": "Source: NIST National Vulnerability Database API 2.0 (nvd.nist.gov — CVSS 9.8)",
-      "publishedAtISO": "2026-11-18T12:17:19.627Z",
-      "title": "CVE-2026-130733 (CVSS 9.8): Grav from 2.0.0 before 2.2.18 contains an authorization bypass vulnerability that allows publishers to o…",
-      "summary": "[CVSS 9.8 CRITICAL] Grav from 2.0.0 before 2.2.18 contains an authorization bypass vulnerability that allows publishers to overwrite pages their per-page permissions deny by abusing FolderStorage key delimiter collisions and PageStorage folder reconstruction. Attackers can…",
-      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-130733",
-      "severity": "critical",
-      "watchlistMatches": [
-        "#2"
-      ],
-      "riskMatrixMatches": [
-        "#2"
-      ],
-      "countdownMatches": [],
-      "tags": [
-        "NIST-NVD",
-        "CVE-2026-130733",
-        "CVSS-9.8"
-      ],
-      "markdownRow": "| #11+ — Nov 18, 2026 | CVE-2026-130733 (Enterprise Software) | Grav from 2.0.0 before 2.2.18 contains an authorization bypass vulnerability that allows publishers to overwrite pages their per-page… ([NIST NVD (9.8)](https://nvd.nist.gov/vuln/detail/CVE-2026-130733)) | Pre-KEV critical disclosure (CVSS 9.8) | Live Wire (CRITICAL) — Watchlist #2 |"
     },
     {
       "id": "kev-cve-2026-40217",
@@ -485,6 +481,129 @@
         "Priority-Edge-Vendor"
       ],
       "markdownRow": "| #11+ — 2026-11-10 | Google Chromium (Enterprise / Edge Security) | Google Chromium contains a use-after-free vulnerability in the XML component that could allow a remote attacker to execute arbitrary code i… ([CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search_api_fulltext=CVE-2026-125350)) | Active exploitation confirmed (CVE-2026-125350); due 2026-11-24 | Live Wire (CRITICAL) — Watchlist #2, #8 |"
+    },
+    {
+      "id": "faa-gdp-san-1",
+      "sourceId": "faa-nas",
+      "sourceName": "FAA NAS Status",
+      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 15:43:35 2026 GMT",
+      "publishedAtISO": "2026-11-20T15:43:35.000Z",
+      "title": "FAA Ground Delay Program: SAN (Avg 25 minutes)",
+      "summary": "GDP at SAN — Reason: airport volume, Avg delay: 25 minutes, Max: 1 hour and 37 minutes. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 15:43:35 2026 GMT)",
+      "url": "https://nasstatus.faa.gov/",
+      "severity": "elevated",
+      "watchlistMatches": [
+        "#5",
+        "#7"
+      ],
+      "riskMatrixMatches": [
+        "#1"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "FAA-NAS",
+        "Ground-Delay",
+        "SAN"
+      ],
+      "markdownRow": "| #11+ — Fri Nov 20 15:43:35 2026 GMT | FAA NAS — SAN (National Aviation / ATC) | Ground Delay Program at SAN (25 minutes) ([FAA NAS Status](https://nasstatus.faa.gov/)) | FAA NAS Ground Delay Programs: airport volume | Live Wire (ELEVATED) — Watchlist #5, #7 |"
+    },
+    {
+      "id": "faa-delay-mia-2",
+      "sourceId": "faa-nas",
+      "sourceName": "FAA NAS Status",
+      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 15:43:35 2026 GMT",
+      "publishedAtISO": "2026-11-20T15:43:35.000Z",
+      "title": "FAA Arrival/Departure Delay: MIA",
+      "summary": "General Arrival/Departure Delay Info at MIA — Reason: TM Initiatives:MIT:WX. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 15:43:35 2026 GMT)",
+      "url": "https://nasstatus.faa.gov/",
+      "severity": "elevated",
+      "watchlistMatches": [
+        "#7"
+      ],
+      "riskMatrixMatches": [
+        "#1"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "FAA-NAS",
+        "Arrival-Departure-Delay",
+        "MIA"
+      ],
+      "markdownRow": "| #11+ — Fri Nov 20 15:43:35 2026 GMT | FAA NAS — MIA (Commercial Aviation) | Arrival/Departure delays reported at MIA ([FAA NAS Status](https://nasstatus.faa.gov/)) | FAA NAS General Arrival/Departure Delay Info: TM Initiatives:MIT:WX | Live Wire (ELEVATED) — Watchlist #7 |"
+    },
+    {
+      "id": "faa-delay-tpa-3",
+      "sourceId": "faa-nas",
+      "sourceName": "FAA NAS Status",
+      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 15:43:35 2026 GMT",
+      "publishedAtISO": "2026-11-20T15:43:35.000Z",
+      "title": "FAA Arrival/Departure Delay: TPA",
+      "summary": "General Arrival/Departure Delay Info at TPA — Reason: WX:Thunderstorms. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 15:43:35 2026 GMT)",
+      "url": "https://nasstatus.faa.gov/",
+      "severity": "elevated",
+      "watchlistMatches": [
+        "#7"
+      ],
+      "riskMatrixMatches": [
+        "#1"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "FAA-NAS",
+        "Arrival-Departure-Delay",
+        "TPA"
+      ],
+      "markdownRow": "| #11+ — Fri Nov 20 15:43:35 2026 GMT | FAA NAS — TPA (Commercial Aviation) | Arrival/Departure delays reported at TPA ([FAA NAS Status](https://nasstatus.faa.gov/)) | FAA NAS General Arrival/Departure Delay Info: WX:Thunderstorms | Live Wire (ELEVATED) — Watchlist #7 |"
+    },
+    {
+      "id": "faa-closure-sna-4",
+      "sourceId": "faa-nas",
+      "sourceName": "FAA NAS Status",
+      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 15:43:35 2026 GMT",
+      "publishedAtISO": "2026-11-20T15:43:35.000Z",
+      "title": "FAA Airport Closures: SNA",
+      "summary": "SNA: !SNA 11/020 SNA AD AP CLSD DLY 0730-1415 2611150730-2611211415 | Reopen: Nov 21 at 14:15 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 15:43:35 2026 GMT)",
+      "url": "https://nasstatus.faa.gov/",
+      "severity": "elevated",
+      "watchlistMatches": [
+        "#7"
+      ],
+      "riskMatrixMatches": [
+        "#1"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "FAA-NAS",
+        "Airport-Closure",
+        "SNA"
+      ],
+      "markdownRow": "| #11+ — Fri Nov 20 15:43:35 2026 GMT | FAA NAS — SNA (National Aviation / Airport Ops) | Airport Closures active at SNA until Nov 21 at 14:15 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !SNA 11/020 SNA AD AP CLSD DLY 0730-1415 2611150730-2611211415 | Live Wire (ELEVATED) — Watchlist #7 |"
+    },
+    {
+      "id": "cloudflare-status-4lv21sf5fzhm",
+      "sourceId": "cloudflare-status",
+      "sourceName": "Cloudflare Status",
+      "attributionText": "Source: Cloudflare System Status (www.cloudflarestatus.com)",
+      "publishedAtISO": "2026-11-20T14:28:03.009Z",
+      "title": "Cloudflare: Network Performance Issues in Miami [RESOLVED]",
+      "summary": "This incident has been resolved.",
+      "url": "https://www.cloudflarestatus.com/incidents/4lv21sf5fzhm",
+      "severity": "elevated",
+      "watchlistMatches": [
+        "#6",
+        "#7"
+      ],
+      "riskMatrixMatches": [
+        "#1",
+        "#2"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "Cloudflare",
+        "impact:minor",
+        "status:resolved"
+      ],
+      "markdownRow": "| #11+ — Nov 20, 2026 | Cloudflare (Global CDN & Edge) | Network Performance Issues in Miami (minor impact; resolved) ([Cloudflare Status](https://www.cloudflarestatus.com/incidents/4lv21sf5fzhm)) | This incident has been resolved. | Live Wire (ELEVATED) — Watchlist #6, #7 |"
     },
     {
       "id": "fedreg-2026-23688",
@@ -786,54 +905,6 @@
       "markdownRow": "| #11+ — 2026-11-20 | Securities and Exchange Commission (Federal Regulatory) | Self-Regulatory Organizations; MEMX LLC; Notice of Filing and Immediate Effectiveness of a Proposed Rule Change To Amend Its Rules To Permi… ([FR 2026-23650](https://www.federalregister.gov/documents/2026/11/20/2026-23650/self-regulatory-organizations-memx-llc-notice-of-filing-and-immediate-effectiveness-of-a-proposed)) | Notice filing mapped to Risk #5, #7 | Live Wire (ELEVATED) — Watchlist #6 |"
     },
     {
-      "id": "faa-closure-sna-1",
-      "sourceId": "faa-nas",
-      "sourceName": "FAA NAS Status",
-      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 12:48:07 2026 GMT",
-      "publishedAtISO": "2026-11-20T12:48:07.000Z",
-      "title": "FAA Airport Closures: SNA",
-      "summary": "SNA: !SNA 11/020 SNA AD AP CLSD DLY 0730-1415 2611150730-2611211415 | Reopen: Nov 21 at 14:15 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 12:48:07 2026 GMT)",
-      "url": "https://nasstatus.faa.gov/",
-      "severity": "elevated",
-      "watchlistMatches": [
-        "#7"
-      ],
-      "riskMatrixMatches": [
-        "#1"
-      ],
-      "countdownMatches": [],
-      "tags": [
-        "FAA-NAS",
-        "Airport-Closure",
-        "SNA"
-      ],
-      "markdownRow": "| #11+ — Fri Nov 20 12:48:07 2026 GMT | FAA NAS — SNA (National Aviation / Airport Ops) | Airport Closures active at SNA until Nov 21 at 14:15 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !SNA 11/020 SNA AD AP CLSD DLY 0730-1415 2611150730-2611211415 | Live Wire (ELEVATED) — Watchlist #7 |"
-    },
-    {
-      "id": "faa-closure-ase-4",
-      "sourceId": "faa-nas",
-      "sourceName": "FAA NAS Status",
-      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 12:48:07 2026 GMT",
-      "publishedAtISO": "2026-11-20T12:48:07.000Z",
-      "title": "FAA Airport Closures: ASE",
-      "summary": "ASE: !ASE 11/192 ASE AD AP CLSD EXC LIFE FLT HEL AND SAR HEL 30MIN PPR 970-379-8406 2611200617-2611201400 | Reopen: Nov 20 at 14:00 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 12:48:07 2026 GMT)",
-      "url": "https://nasstatus.faa.gov/",
-      "severity": "elevated",
-      "watchlistMatches": [
-        "#7"
-      ],
-      "riskMatrixMatches": [
-        "#1"
-      ],
-      "countdownMatches": [],
-      "tags": [
-        "FAA-NAS",
-        "Airport-Closure",
-        "ASE"
-      ],
-      "markdownRow": "| #11+ — Fri Nov 20 12:48:07 2026 GMT | FAA NAS — ASE (National Aviation / Airport Ops) | Airport Closures active at ASE until Nov 20 at 14:00 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !ASE 11/192 ASE AD AP CLSD EXC LIFE FLT HEL AND SAR HEL 30MIN PPR 970-379-8406 2611200617-2611201400 | Live Wire (ELEVATED) — Watchlist #7 |"
-    },
-    {
       "id": "nvd-cve-2026-120681",
       "sourceId": "nist-nvd",
       "sourceName": "NIST NVD Critical CVEs",
@@ -856,32 +927,6 @@
         "CVSS-9.1"
       ],
       "markdownRow": "| #11+ — Nov 20, 2026 | CVE-2026-120681 (Enterprise Software) | The Mang Board plugin for WordPress is vulnerable to authorization bypass in all versions up to, and including, 2.4.7. This is due to… ([NIST NVD (9.1)](https://nvd.nist.gov/vuln/detail/CVE-2026-120681)) | Pre-KEV critical disclosure (CVSS 9.1) | Live Wire (ELEVATED) — Watchlist #2 |"
-    },
-    {
-      "id": "cloudflare-status-4lv21sf5fzhm",
-      "sourceId": "cloudflare-status",
-      "sourceName": "Cloudflare Status",
-      "attributionText": "Source: Cloudflare System Status (www.cloudflarestatus.com)",
-      "publishedAtISO": "2026-11-20T05:10:34.028Z",
-      "title": "Cloudflare: Network Performance Issues in Miami [IDENTIFIED]",
-      "summary": "The issue has been identified and a fix is being implemented.",
-      "url": "https://www.cloudflarestatus.com/incidents/4lv21sf5fzhm",
-      "severity": "elevated",
-      "watchlistMatches": [
-        "#6",
-        "#7"
-      ],
-      "riskMatrixMatches": [
-        "#1",
-        "#2"
-      ],
-      "countdownMatches": [],
-      "tags": [
-        "Cloudflare",
-        "impact:minor",
-        "status:identified"
-      ],
-      "markdownRow": "| #11+ — Nov 20, 2026 | Cloudflare (Global CDN & Edge) | Network Performance Issues in Miami (minor impact; identified) ([Cloudflare Status](https://www.cloudflarestatus.com/incidents/4lv21sf5fzhm)) | The issue has been identified and a fix is being implemented. | Live Wire (ELEVATED) — Watchlist #6, #7 |"
     },
     {
       "id": "cloudflare-status-pfwuex7qix27",
@@ -1938,6 +1983,78 @@
       "markdownRow": "| #11+ — 2026-11-09 | IBM Aspera Faspex (Enterprise / Edge Security) | IBM Aspera Faspex contains an incorrect authorization vulnerability that could allow an authenticated user to craft a specific message to b… ([CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search_api_fulltext=CVE-2026-123218)) | Active exploitation confirmed (CVE-2026-123218); due 2026-11-12 | Live Wire (ELEVATED) — Watchlist #2 |"
     },
     {
+      "id": "faa-closure-lax-5",
+      "sourceId": "faa-nas",
+      "sourceName": "FAA NAS Status",
+      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 15:43:35 2026 GMT",
+      "publishedAtISO": "2026-11-20T15:43:35.000Z",
+      "title": "FAA Airport Closures: LAX (GA NOTAM Restriction)",
+      "summary": "LAX: !LAX 05/277 LAX AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR CTC ATLANTIC AVIATION 310-258-9884 OR SIGNATURE AVIATION 310-410-9605 2605271826-2705281600 | Reopen: May 28 at 16:00 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 15:43:35 2026 GMT)",
+      "url": "https://nasstatus.faa.gov/",
+      "severity": "info",
+      "watchlistMatches": [
+        "#7"
+      ],
+      "riskMatrixMatches": [
+        "#1"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "FAA-NAS",
+        "Airport-Closure",
+        "LAX"
+      ],
+      "markdownRow": "| #11+ — Fri Nov 20 15:43:35 2026 GMT | FAA NAS — LAX (National Aviation / Airport Ops) | Airport Closures active at LAX until May 28 at 16:00 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !LAX 05/277 LAX AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR CTC ATLANTIC AVIATION 310-258-9884 OR SIGNATURE A… | Live Wire (INFO) — Watchlist #7 |"
+    },
+    {
+      "id": "faa-closure-san-6",
+      "sourceId": "faa-nas",
+      "sourceName": "FAA NAS Status",
+      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 15:43:35 2026 GMT",
+      "publishedAtISO": "2026-11-20T15:43:35.000Z",
+      "title": "FAA Airport Closures: SAN (GA NOTAM Restriction)",
+      "summary": "SAN: !SAN 10/004 SAN AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC PPR 619-298-7704 2610011633-2701010800 | Reopen: Jan 01 at 08:00 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 15:43:35 2026 GMT)",
+      "url": "https://nasstatus.faa.gov/",
+      "severity": "info",
+      "watchlistMatches": [
+        "#7"
+      ],
+      "riskMatrixMatches": [
+        "#1"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "FAA-NAS",
+        "Airport-Closure",
+        "SAN"
+      ],
+      "markdownRow": "| #11+ — Fri Nov 20 15:43:35 2026 GMT | FAA NAS — SAN (National Aviation / Airport Ops) | Airport Closures active at SAN until Jan 01 at 08:00 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !SAN 10/004 SAN AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC PPR 619-298-7704 2610011633-2701010800 | Live Wire (INFO) — Watchlist #7 |"
+    },
+    {
+      "id": "faa-closure-las-7",
+      "sourceId": "faa-nas",
+      "sourceName": "FAA NAS Status",
+      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 15:43:35 2026 GMT",
+      "publishedAtISO": "2026-11-20T15:43:35.000Z",
+      "title": "FAA Airport Closures: LAS (GA NOTAM Restriction)",
+      "summary": "LAS: !LAS 10/160 LAS AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR 702-261-7775 2610281926-2701272300 | Reopen: Jan 27 at 23:00 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 15:43:35 2026 GMT)",
+      "url": "https://nasstatus.faa.gov/",
+      "severity": "info",
+      "watchlistMatches": [
+        "#7"
+      ],
+      "riskMatrixMatches": [
+        "#1"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "FAA-NAS",
+        "Airport-Closure",
+        "LAS"
+      ],
+      "markdownRow": "| #11+ — Fri Nov 20 15:43:35 2026 GMT | FAA NAS — LAS (National Aviation / Airport Ops) | Airport Closures active at LAS until Jan 27 at 23:00 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !LAS 10/160 LAS AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR 702-261-7775 2610281926-2701272300 | Live Wire (INFO) — Watchlist #7 |"
+    },
+    {
       "id": "ofac-doe-2026-23675",
       "sourceId": "ofac-marad-doe",
       "sourceName": "OFAC, MARAD & DOE Directives",
@@ -2176,78 +2293,6 @@
         "FAA-Regulatory"
       ],
       "markdownRow": "| #11+ — 2026-11-20 | Transportation Department, Federal Aviation Administration (Federal Regulatory) | Airworthiness Directives; Airbus Helicopters Deutschland GmbH (AHD) Helicopters ([FR 2026-23679](https://www.federalregister.gov/documents/2026/11/20/2026-23679/airworthiness-directives-airbus-helicopters-deutschland-gmbh-ahd-helicopters)) | Rule filing mapped to Risk #1 | Live Wire (INFO) — Watchlist #5 |"
-    },
-    {
-      "id": "faa-closure-lax-2",
-      "sourceId": "faa-nas",
-      "sourceName": "FAA NAS Status",
-      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 12:48:07 2026 GMT",
-      "publishedAtISO": "2026-11-20T12:48:07.000Z",
-      "title": "FAA Airport Closures: LAX (GA NOTAM Restriction)",
-      "summary": "LAX: !LAX 05/277 LAX AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR CTC ATLANTIC AVIATION 310-258-9884 OR SIGNATURE AVIATION 310-410-9605 2605271826-2705281600 | Reopen: May 28 at 16:00 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 12:48:07 2026 GMT)",
-      "url": "https://nasstatus.faa.gov/",
-      "severity": "info",
-      "watchlistMatches": [
-        "#7"
-      ],
-      "riskMatrixMatches": [
-        "#1"
-      ],
-      "countdownMatches": [],
-      "tags": [
-        "FAA-NAS",
-        "Airport-Closure",
-        "LAX"
-      ],
-      "markdownRow": "| #11+ — Fri Nov 20 12:48:07 2026 GMT | FAA NAS — LAX (National Aviation / Airport Ops) | Airport Closures active at LAX until May 28 at 16:00 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !LAX 05/277 LAX AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR CTC ATLANTIC AVIATION 310-258-9884 OR SIGNATURE A… | Live Wire (INFO) — Watchlist #7 |"
-    },
-    {
-      "id": "faa-closure-san-3",
-      "sourceId": "faa-nas",
-      "sourceName": "FAA NAS Status",
-      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 12:48:07 2026 GMT",
-      "publishedAtISO": "2026-11-20T12:48:07.000Z",
-      "title": "FAA Airport Closures: SAN (GA NOTAM Restriction)",
-      "summary": "SAN: !SAN 10/004 SAN AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC PPR 619-298-7704 2610011633-2701010800 | Reopen: Jan 01 at 08:00 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 12:48:07 2026 GMT)",
-      "url": "https://nasstatus.faa.gov/",
-      "severity": "info",
-      "watchlistMatches": [
-        "#7"
-      ],
-      "riskMatrixMatches": [
-        "#1"
-      ],
-      "countdownMatches": [],
-      "tags": [
-        "FAA-NAS",
-        "Airport-Closure",
-        "SAN"
-      ],
-      "markdownRow": "| #11+ — Fri Nov 20 12:48:07 2026 GMT | FAA NAS — SAN (National Aviation / Airport Ops) | Airport Closures active at SAN until Jan 01 at 08:00 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !SAN 10/004 SAN AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC PPR 619-298-7704 2610011633-2701010800 | Live Wire (INFO) — Watchlist #7 |"
-    },
-    {
-      "id": "faa-closure-las-5",
-      "sourceId": "faa-nas",
-      "sourceName": "FAA NAS Status",
-      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 12:48:07 2026 GMT",
-      "publishedAtISO": "2026-11-20T12:48:07.000Z",
-      "title": "FAA Airport Closures: LAS (GA NOTAM Restriction)",
-      "summary": "LAS: !LAS 10/160 LAS AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR 702-261-7775 2610281926-2701272300 | Reopen: Jan 27 at 23:00 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 12:48:07 2026 GMT)",
-      "url": "https://nasstatus.faa.gov/",
-      "severity": "info",
-      "watchlistMatches": [
-        "#7"
-      ],
-      "riskMatrixMatches": [
-        "#1"
-      ],
-      "countdownMatches": [],
-      "tags": [
-        "FAA-NAS",
-        "Airport-Closure",
-        "LAS"
-      ],
-      "markdownRow": "| #11+ — Fri Nov 20 12:48:07 2026 GMT | FAA NAS — LAS (National Aviation / Airport Ops) | Airport Closures active at LAS until Jan 27 at 23:00 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !LAS 10/160 LAS AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR 702-261-7775 2610281926-2701272300 | Live Wire (INFO) — Watchlist #7 |"
     },
     {
       "id": "ofac-doe-2026-23611",
