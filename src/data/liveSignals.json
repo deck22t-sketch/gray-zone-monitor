@@ -1,33 +1,85 @@
 {
-  "ingestedAtISO": "2026-11-20T18:46:23.047Z",
+  "ingestedAtISO": "2026-11-20T21:35:59.050Z",
   "ingestionMode": "ZERO_KEY_PUBLIC_FEEDS",
-  "totalSignals": 112,
+  "totalSignals": 114,
   "signals": [
     {
-      "id": "cloudflare-status-iysf3fasf7wn",
-      "sourceId": "cloudflare-status",
-      "sourceName": "Cloudflare Status",
-      "attributionText": "Source: Cloudflare System Status (www.cloudflarestatus.com)",
-      "publishedAtISO": "2026-11-20T18:38:28.769Z",
-      "title": "Cloudflare: Cloudflare Dashboard and Cloudflare API service issues in EU region [MONITORING]",
-      "summary": "A fix has been implemented and we are monitoring the results.",
-      "url": "https://www.cloudflarestatus.com/incidents/iysf3fasf7wn",
+      "id": "faa-gs-teb-1",
+      "sourceId": "faa-nas",
+      "sourceName": "FAA NAS Status",
+      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 21:35:29 2026 GMT",
+      "publishedAtISO": "2026-11-20T21:35:29.000Z",
+      "title": "FAA Ground Stop Active: TEB (Ground Stop Programs)",
+      "summary": "Ground Stop at TEB — Reason: airport volume | Est. End: 5:45 pm EST. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 21:35:29 2026 GMT)",
+      "url": "https://nasstatus.faa.gov/",
       "severity": "critical",
       "watchlistMatches": [
-        "#6",
+        "#5",
         "#7"
       ],
       "riskMatrixMatches": [
-        "#1",
-        "#2"
+        "#1"
       ],
       "countdownMatches": [],
       "tags": [
-        "Cloudflare",
-        "impact:major",
-        "status:monitoring"
+        "FAA-NAS",
+        "Ground-Stop",
+        "TEB"
       ],
-      "markdownRow": "| #11+ — Nov 20, 2026 | Cloudflare (Global CDN & Edge) | Cloudflare Dashboard and Cloudflare API service issues in EU region (major impact; monitoring) ([Cloudflare Status](https://www.cloudflarestatus.com/incidents/iysf3fasf7wn)) | A fix has been implemented and we are monitoring the results. | Live Wire (CRITICAL) — Watchlist #6, #7 |"
+      "markdownRow": "| #11+ — Fri Nov 20 21:35:29 2026 GMT | FAA NAS — TEB (National Aviation / ATC) | Active Ground Stop at TEB through 5:45 pm EST ([FAA NAS Status](https://nasstatus.faa.gov/)) | FAA NAS Ground Stop Programs: airport volume | Live Wire (CRITICAL) — Watchlist #5, #7 |"
+    },
+    {
+      "id": "faa-json-gs-teb-13",
+      "sourceId": "faa-nas",
+      "sourceName": "FAA NAS Status",
+      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 21:35:29 2026 GMT",
+      "publishedAtISO": "2026-11-20T21:35:29.000Z",
+      "title": "FAA Ground Stop Active: TEB (Teterboro)",
+      "summary": "Ground Stop at TEB — Reason: Ground Stop. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 21:35:29 2026 GMT)",
+      "url": "https://nasstatus.faa.gov/",
+      "severity": "critical",
+      "watchlistMatches": [
+        "#5",
+        "#7"
+      ],
+      "riskMatrixMatches": [
+        "#1"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "FAA-NAS",
+        "Ground-Stop",
+        "TEB"
+      ],
+      "markdownRow": "| #11+ — Fri Nov 20 21:35:29 2026 GMT | FAA NAS — TEB (National Aviation / ATC) | Ground Stop active at TEB ([FAA NAS Status](https://nasstatus.faa.gov/)) | Ground Stop | Live Wire (CRITICAL) — Watchlist #5, #7 |"
+    },
+    {
+      "id": "nvd-cve-2026-133680",
+      "sourceId": "nist-nvd",
+      "sourceName": "NIST NVD Critical CVEs",
+      "attributionText": "Source: NIST National Vulnerability Database API 2.0 (nvd.nist.gov — CVSS 9.9)",
+      "publishedAtISO": "2026-11-20T20:17:35.750Z",
+      "title": "CVE-2026-133680 (CVSS 9.9): A vulnerability was found in D-Link DCS-935L 1.10.01. This affects the function loginRouter of the file…",
+      "summary": "[CVSS 9.9 CRITICAL] A vulnerability was found in D-Link DCS-935L 1.10.01. This affects the function loginRouter of the file web/cgi-bin/localrecording/setconf.cgi of the component Local Recording CGI. Performing a manipulation of the argument account/password results in os…",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-133680",
+      "severity": "critical",
+      "watchlistMatches": [
+        "#2",
+        "#8",
+        "#1"
+      ],
+      "riskMatrixMatches": [
+        "#2",
+        "#1"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "NIST-NVD",
+        "CVE-2026-133680",
+        "CVSS-9.9",
+        "Core-Infra-OT"
+      ],
+      "markdownRow": "| #11+ — Nov 20, 2026 | CVE-2026-133680 (Edge / OT / Cloud Infrastructure) | A vulnerability was found in D-Link DCS-935L 1.10.01. This affects the function loginRouter of the file web/cgi-bin/localrecording/set… ([NIST NVD (9.9)](https://nvd.nist.gov/vuln/detail/CVE-2026-133680)) | Pre-KEV critical disclosure (CVSS 9.9) | Live Wire (CRITICAL) — Watchlist #2, #8, #1 |"
     },
     {
       "id": "kev-cve-2026-123890",
@@ -137,30 +189,6 @@
         "ICS-OT-PLC"
       ],
       "markdownRow": "| #11+ — Nov 19, 2026 | Elecbrakes EB2, VM1, ELBC2000 (ICS / Critical OT) | View CSAF Summary Successful exploitation of these vulnerabilities could allow an attacker to gain control of the brakes of a trailer, modify the firmware, disable the brake lights, modify the brake conditions or disable other critical safety features. The fo… ([CISA Advisory](https://www.cisa.gov/news-events/ics-advisories/icsa-26-323-02)) | ICS/OT vulnerability or PLC exposure advisory | Live Wire (CRITICAL) — Watchlist #1, #8 |"
-    },
-    {
-      "id": "nvd-cve-2026-14492",
-      "sourceId": "nist-nvd",
-      "sourceName": "NIST NVD Critical CVEs",
-      "attributionText": "Source: NIST National Vulnerability Database API 2.0 (nvd.nist.gov — CVSS 9.8)",
-      "publishedAtISO": "2026-11-19T10:17:28.927Z",
-      "title": "CVE-2026-14492 (CVSS 9.8): The WP Duplicate – WordPress Migration Plugin plugin for WordPress is vulnerable to Remote Code Executio…",
-      "summary": "[CVSS 9.8 CRITICAL] The WP Duplicate – WordPress Migration Plugin plugin for WordPress is vulnerable to Remote Code Execution in all versions up to, and including, 1.1.11 via the save_single_batch_file function. This is due to a PHP type-juggling authentication bypass via l…",
-      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-14492",
-      "severity": "critical",
-      "watchlistMatches": [
-        "#2"
-      ],
-      "riskMatrixMatches": [
-        "#2"
-      ],
-      "countdownMatches": [],
-      "tags": [
-        "NIST-NVD",
-        "CVE-2026-14492",
-        "CVSS-9.8"
-      ],
-      "markdownRow": "| #11+ — Nov 19, 2026 | CVE-2026-14492 (Enterprise Software) | The WP Duplicate – WordPress Migration Plugin plugin for WordPress is vulnerable to Remote Code Execution in all versions up to, and i… ([NIST NVD (9.8)](https://nvd.nist.gov/vuln/detail/CVE-2026-14492)) | Pre-KEV critical disclosure (CVSS 9.8) | Live Wire (CRITICAL) — Watchlist #2 |"
     },
     {
       "id": "nvd-cve-2026-130786",
@@ -384,55 +412,6 @@
       "markdownRow": "| #11+ — Nov 17, 2026 | Critical Java Vulnerability Requires Immediate Patching (Federal Cyber Advisory) | Purpose CISA strongly urges organizations to immediately patch the recently disclosed Oracle Java vulnerability CVE-2026-114938 . This critical memory-corruption vulnerability, known as “Java4Shell,” affects the Base64 decoder of the x86-64 HotSpot Java Virtu… ([CISA Advisory](https://www.cisa.gov/news-events/alerts/2026/11/17/critical-java-vulnerability-requires-immediate-patching)) | Federal cybersecurity advisory readout | Live Wire (CRITICAL) — Watchlist #1 |"
     },
     {
-      "id": "cisa-adv-cisa-adds-one-known-exploited-vulnerability-catalog",
-      "sourceId": "cisa-advisories",
-      "sourceName": "CISA Advisories",
-      "attributionText": "Source: CISA Cybersecurity & ICS Advisories (cisa.gov)",
-      "publishedAtISO": "2026-11-17T12:00:00.000Z",
-      "title": "CISA Adds One Known Exploited Vulnerability to Catalog",
-      "summary": "CISA has added one new vulnerability to its&nbsp; Known Exploited Vulnerabilities (KEV) Catalog , based on evidence of active exploitation. CVE-2026-115731 Perforce Puppet Enterprise Deserialization of Untrusted Data Vulnerability This type of vulnerability i…",
-      "url": "https://www.cisa.gov/news-events/alerts/2026/11/17/cisa-adds-one-known-exploited-vulnerability-catalog",
-      "severity": "critical",
-      "watchlistMatches": [
-        "#1"
-      ],
-      "riskMatrixMatches": [
-        "#1"
-      ],
-      "countdownMatches": [],
-      "tags": [
-        "CISA-Advisory",
-        "Emergency-Directive"
-      ],
-      "markdownRow": "| #11+ — Nov 17, 2026 | CISA Adds One Known Exploited Vulnerability to Catalog (Federal Cyber Advisory) | CISA has added one new vulnerability to its&nbsp; Known Exploited Vulnerabilities (KEV) Catalog , based on evidence of active exploitation. CVE-2026-115731 Perforce Puppet Enterprise Deserialization of Untrusted Data Vulnerability This type of vulnerability i… ([CISA Advisory](https://www.cisa.gov/news-events/alerts/2026/11/17/cisa-adds-one-known-exploited-vulnerability-catalog)) | Federal cybersecurity advisory readout | Live Wire (CRITICAL) — Watchlist #1 |"
-    },
-    {
-      "id": "cisa-adv-icsa-26-321-11",
-      "sourceId": "cisa-advisories",
-      "sourceName": "CISA Advisories",
-      "attributionText": "Source: CISA Cybersecurity & ICS Advisories (cisa.gov)",
-      "publishedAtISO": "2026-11-17T12:00:00.000Z",
-      "title": "Siemens meta-iot2050",
-      "summary": "View CSAF Summary meta-iot2050 (https://github.com/siemens/meta-iot2050) from V01.03.01 contains a Command Injection vulnerability in the firmware update tool that could allow an attacker which is able to manipulate a configuration file to have arbitrary comm…",
-      "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-321-11",
-      "severity": "critical",
-      "watchlistMatches": [
-        "#1",
-        "#8"
-      ],
-      "riskMatrixMatches": [
-        "#1",
-        "#3"
-      ],
-      "countdownMatches": [],
-      "tags": [
-        "CISA-Advisory",
-        "Emergency-Directive",
-        "ICS-OT-PLC"
-      ],
-      "markdownRow": "| #11+ — Nov 17, 2026 | Siemens meta-iot2050 (ICS / Critical OT) | View CSAF Summary meta-iot2050 (https://github.com/siemens/meta-iot2050) from V01.03.01 contains a Command Injection vulnerability in the firmware update tool that could allow an attacker which is able to manipulate a configuration file to have arbitrary comm… ([CISA Advisory](https://www.cisa.gov/news-events/ics-advisories/icsa-26-321-11)) | ICS/OT vulnerability or PLC exposure advisory | Live Wire (CRITICAL) — Watchlist #1, #8 |"
-    },
-    {
       "id": "kev-cve-2026-123039",
       "sourceId": "cisa-kev",
       "sourceName": "CISA KEV Catalog",
@@ -540,13 +519,13 @@
       "markdownRow": "| #11+ — 2026-11-10 | Google Chromium (Enterprise / Edge Security) | Google Chromium contains a use-after-free vulnerability in the XML component that could allow a remote attacker to execute arbitrary code i… ([CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search_api_fulltext=CVE-2026-125350)) | Active exploitation confirmed (CVE-2026-125350); due 2026-11-24 | Live Wire (CRITICAL) — Watchlist #2, #8 |"
     },
     {
-      "id": "faa-gdp-san-1",
+      "id": "faa-gdp-san-2",
       "sourceId": "faa-nas",
       "sourceName": "FAA NAS Status",
-      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 18:46:06 2026 GMT",
-      "publishedAtISO": "2026-11-20T18:46:06.000Z",
+      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 21:35:29 2026 GMT",
+      "publishedAtISO": "2026-11-20T21:35:29.000Z",
       "title": "FAA Ground Delay Program: SAN (Avg 25 minutes)",
-      "summary": "GDP at SAN — Reason: airport volume, Avg delay: 25 minutes, Max: 1 hour and 37 minutes. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 18:46:06 2026 GMT)",
+      "summary": "GDP at SAN — Reason: airport volume, Avg delay: 25 minutes, Max: 1 hour and 37 minutes. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 21:35:29 2026 GMT)",
       "url": "https://nasstatus.faa.gov/",
       "severity": "elevated",
       "watchlistMatches": [
@@ -562,16 +541,16 @@
         "Ground-Delay",
         "SAN"
       ],
-      "markdownRow": "| #11+ — Fri Nov 20 18:46:06 2026 GMT | FAA NAS — SAN (National Aviation / ATC) | Ground Delay Program at SAN (25 minutes) ([FAA NAS Status](https://nasstatus.faa.gov/)) | FAA NAS Ground Delay Programs: airport volume | Live Wire (ELEVATED) — Watchlist #5, #7 |"
+      "markdownRow": "| #11+ — Fri Nov 20 21:35:29 2026 GMT | FAA NAS — SAN (National Aviation / ATC) | Ground Delay Program at SAN (25 minutes) ([FAA NAS Status](https://nasstatus.faa.gov/)) | FAA NAS Ground Delay Programs: airport volume | Live Wire (ELEVATED) — Watchlist #5, #7 |"
     },
     {
-      "id": "faa-delay-mco-2",
+      "id": "faa-delay-fll-3",
       "sourceId": "faa-nas",
       "sourceName": "FAA NAS Status",
-      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 18:46:06 2026 GMT",
-      "publishedAtISO": "2026-11-20T18:46:06.000Z",
-      "title": "FAA Arrival/Departure Delay: MCO",
-      "summary": "General Arrival/Departure Delay Info at MCO — Reason: TM Initiatives:MIT:WX. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 18:46:06 2026 GMT)",
+      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 21:35:29 2026 GMT",
+      "publishedAtISO": "2026-11-20T21:35:29.000Z",
+      "title": "FAA Arrival/Departure Delay: FLL",
+      "summary": "General Arrival/Departure Delay Info at FLL — Reason: TM Initiatives:MIT:WX. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 21:35:29 2026 GMT)",
       "url": "https://nasstatus.faa.gov/",
       "severity": "elevated",
       "watchlistMatches": [
@@ -584,18 +563,18 @@
       "tags": [
         "FAA-NAS",
         "Arrival-Departure-Delay",
-        "MCO"
+        "FLL"
       ],
-      "markdownRow": "| #11+ — Fri Nov 20 18:46:06 2026 GMT | FAA NAS — MCO (Commercial Aviation) | Arrival/Departure delays reported at MCO ([FAA NAS Status](https://nasstatus.faa.gov/)) | FAA NAS General Arrival/Departure Delay Info: TM Initiatives:MIT:WX | Live Wire (ELEVATED) — Watchlist #7 |"
+      "markdownRow": "| #11+ — Fri Nov 20 21:35:29 2026 GMT | FAA NAS — FLL (Commercial Aviation) | Arrival/Departure delays reported at FLL ([FAA NAS Status](https://nasstatus.faa.gov/)) | FAA NAS General Arrival/Departure Delay Info: TM Initiatives:MIT:WX | Live Wire (ELEVATED) — Watchlist #7 |"
     },
     {
-      "id": "faa-delay-mia-3",
+      "id": "faa-delay-mia-4",
       "sourceId": "faa-nas",
       "sourceName": "FAA NAS Status",
-      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 18:46:06 2026 GMT",
-      "publishedAtISO": "2026-11-20T18:46:06.000Z",
+      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 21:35:29 2026 GMT",
+      "publishedAtISO": "2026-11-20T21:35:29.000Z",
       "title": "FAA Arrival/Departure Delay: MIA",
-      "summary": "General Arrival/Departure Delay Info at MIA — Reason: TM Initiatives:MIT:WX. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 18:46:06 2026 GMT)",
+      "summary": "General Arrival/Departure Delay Info at MIA — Reason: TM Initiatives:MIT:WX. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 21:35:29 2026 GMT)",
       "url": "https://nasstatus.faa.gov/",
       "severity": "elevated",
       "watchlistMatches": [
@@ -610,16 +589,16 @@
         "Arrival-Departure-Delay",
         "MIA"
       ],
-      "markdownRow": "| #11+ — Fri Nov 20 18:46:06 2026 GMT | FAA NAS — MIA (Commercial Aviation) | Arrival/Departure delays reported at MIA ([FAA NAS Status](https://nasstatus.faa.gov/)) | FAA NAS General Arrival/Departure Delay Info: TM Initiatives:MIT:WX | Live Wire (ELEVATED) — Watchlist #7 |"
+      "markdownRow": "| #11+ — Fri Nov 20 21:35:29 2026 GMT | FAA NAS — MIA (Commercial Aviation) | Arrival/Departure delays reported at MIA ([FAA NAS Status](https://nasstatus.faa.gov/)) | FAA NAS General Arrival/Departure Delay Info: TM Initiatives:MIT:WX | Live Wire (ELEVATED) — Watchlist #7 |"
     },
     {
-      "id": "faa-delay-rsw-4",
+      "id": "faa-delay-opf-5",
       "sourceId": "faa-nas",
       "sourceName": "FAA NAS Status",
-      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 18:46:06 2026 GMT",
-      "publishedAtISO": "2026-11-20T18:46:06.000Z",
-      "title": "FAA Arrival/Departure Delay: RSW",
-      "summary": "General Arrival/Departure Delay Info at RSW — Reason: VOL:Volume. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 18:46:06 2026 GMT)",
+      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 21:35:29 2026 GMT",
+      "publishedAtISO": "2026-11-20T21:35:29.000Z",
+      "title": "FAA Arrival/Departure Delay: OPF",
+      "summary": "General Arrival/Departure Delay Info at OPF — Reason: VOL:Compacted Demand. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 21:35:29 2026 GMT)",
       "url": "https://nasstatus.faa.gov/",
       "severity": "elevated",
       "watchlistMatches": [
@@ -632,18 +611,18 @@
       "tags": [
         "FAA-NAS",
         "Arrival-Departure-Delay",
-        "RSW"
+        "OPF"
       ],
-      "markdownRow": "| #11+ — Fri Nov 20 18:46:06 2026 GMT | FAA NAS — RSW (Commercial Aviation) | Arrival/Departure delays reported at RSW ([FAA NAS Status](https://nasstatus.faa.gov/)) | FAA NAS General Arrival/Departure Delay Info: VOL:Volume | Live Wire (ELEVATED) — Watchlist #7 |"
+      "markdownRow": "| #11+ — Fri Nov 20 21:35:29 2026 GMT | FAA NAS — OPF (Commercial Aviation) | Arrival/Departure delays reported at OPF ([FAA NAS Status](https://nasstatus.faa.gov/)) | FAA NAS General Arrival/Departure Delay Info: VOL:Compacted Demand | Live Wire (ELEVATED) — Watchlist #7 |"
     },
     {
-      "id": "faa-delay-sfo-5",
+      "id": "faa-delay-sfo-6",
       "sourceId": "faa-nas",
       "sourceName": "FAA NAS Status",
-      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 18:46:06 2026 GMT",
-      "publishedAtISO": "2026-11-20T18:46:06.000Z",
+      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 21:35:29 2026 GMT",
+      "publishedAtISO": "2026-11-20T21:35:29.000Z",
       "title": "FAA Arrival/Departure Delay: SFO",
-      "summary": "General Arrival/Departure Delay Info at SFO — Reason: RWY:Rwy Change - Operational Necessity. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 18:46:06 2026 GMT)",
+      "summary": "General Arrival/Departure Delay Info at SFO — Reason: RWY:Rwy Change - Operational Necessity. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 21:35:29 2026 GMT)",
       "url": "https://nasstatus.faa.gov/",
       "severity": "elevated",
       "watchlistMatches": [
@@ -658,16 +637,40 @@
         "Arrival-Departure-Delay",
         "SFO"
       ],
-      "markdownRow": "| #11+ — Fri Nov 20 18:46:06 2026 GMT | FAA NAS — SFO (Commercial Aviation) | Arrival/Departure delays reported at SFO ([FAA NAS Status](https://nasstatus.faa.gov/)) | FAA NAS General Arrival/Departure Delay Info: RWY:Rwy Change - Operational Necessity | Live Wire (ELEVATED) — Watchlist #7 |"
+      "markdownRow": "| #11+ — Fri Nov 20 21:35:29 2026 GMT | FAA NAS — SFO (Commercial Aviation) | Arrival/Departure delays reported at SFO ([FAA NAS Status](https://nasstatus.faa.gov/)) | FAA NAS General Arrival/Departure Delay Info: RWY:Rwy Change - Operational Necessity | Live Wire (ELEVATED) — Watchlist #7 |"
     },
     {
-      "id": "faa-delay-tpa-6",
+      "id": "faa-delay-teb-7",
       "sourceId": "faa-nas",
       "sourceName": "FAA NAS Status",
-      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 18:46:06 2026 GMT",
-      "publishedAtISO": "2026-11-20T18:46:06.000Z",
+      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 21:35:29 2026 GMT",
+      "publishedAtISO": "2026-11-20T21:35:29.000Z",
+      "title": "FAA Arrival/Departure Delay: TEB",
+      "summary": "General Arrival/Departure Delay Info at TEB — Reason: VOL:Volume. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 21:35:29 2026 GMT)",
+      "url": "https://nasstatus.faa.gov/",
+      "severity": "elevated",
+      "watchlistMatches": [
+        "#7"
+      ],
+      "riskMatrixMatches": [
+        "#1"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "FAA-NAS",
+        "Arrival-Departure-Delay",
+        "TEB"
+      ],
+      "markdownRow": "| #11+ — Fri Nov 20 21:35:29 2026 GMT | FAA NAS — TEB (Commercial Aviation) | Arrival/Departure delays reported at TEB ([FAA NAS Status](https://nasstatus.faa.gov/)) | FAA NAS General Arrival/Departure Delay Info: VOL:Volume | Live Wire (ELEVATED) — Watchlist #7 |"
+    },
+    {
+      "id": "faa-delay-tpa-8",
+      "sourceId": "faa-nas",
+      "sourceName": "FAA NAS Status",
+      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 21:35:29 2026 GMT",
+      "publishedAtISO": "2026-11-20T21:35:29.000Z",
       "title": "FAA Arrival/Departure Delay: TPA",
-      "summary": "General Arrival/Departure Delay Info at TPA — Reason: WX:Thunderstorms. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 18:46:06 2026 GMT)",
+      "summary": "General Arrival/Departure Delay Info at TPA — Reason: WX:Thunderstorms. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 21:35:29 2026 GMT)",
       "url": "https://nasstatus.faa.gov/",
       "severity": "elevated",
       "watchlistMatches": [
@@ -682,16 +685,16 @@
         "Arrival-Departure-Delay",
         "TPA"
       ],
-      "markdownRow": "| #11+ — Fri Nov 20 18:46:06 2026 GMT | FAA NAS — TPA (Commercial Aviation) | Arrival/Departure delays reported at TPA ([FAA NAS Status](https://nasstatus.faa.gov/)) | FAA NAS General Arrival/Departure Delay Info: WX:Thunderstorms | Live Wire (ELEVATED) — Watchlist #7 |"
+      "markdownRow": "| #11+ — Fri Nov 20 21:35:29 2026 GMT | FAA NAS — TPA (Commercial Aviation) | Arrival/Departure delays reported at TPA ([FAA NAS Status](https://nasstatus.faa.gov/)) | FAA NAS General Arrival/Departure Delay Info: WX:Thunderstorms | Live Wire (ELEVATED) — Watchlist #7 |"
     },
     {
-      "id": "faa-closure-sna-7",
+      "id": "faa-closure-sna-9",
       "sourceId": "faa-nas",
       "sourceName": "FAA NAS Status",
-      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 18:46:06 2026 GMT",
-      "publishedAtISO": "2026-11-20T18:46:06.000Z",
+      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 21:35:29 2026 GMT",
+      "publishedAtISO": "2026-11-20T21:35:29.000Z",
       "title": "FAA Airport Closures: SNA",
-      "summary": "SNA: !SNA 11/020 SNA AD AP CLSD DLY 0730-1415 2611150730-2611211415 | Reopen: Nov 21 at 14:15 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 18:46:06 2026 GMT)",
+      "summary": "SNA: !SNA 11/020 SNA AD AP CLSD DLY 0730-1415 2611150730-2611211415 | Reopen: Nov 21 at 14:15 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 21:35:29 2026 GMT)",
       "url": "https://nasstatus.faa.gov/",
       "severity": "elevated",
       "watchlistMatches": [
@@ -706,16 +709,68 @@
         "Airport-Closure",
         "SNA"
       ],
-      "markdownRow": "| #11+ — Fri Nov 20 18:46:06 2026 GMT | FAA NAS — SNA (National Aviation / Airport Ops) | Airport Closures active at SNA until Nov 21 at 14:15 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !SNA 11/020 SNA AD AP CLSD DLY 0730-1415 2611150730-2611211415 | Live Wire (ELEVATED) — Watchlist #7 |"
+      "markdownRow": "| #11+ — Fri Nov 20 21:35:29 2026 GMT | FAA NAS — SNA (National Aviation / Airport Ops) | Airport Closures active at SNA until Nov 21 at 14:15 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !SNA 11/020 SNA AD AP CLSD DLY 0730-1415 2611150730-2611211415 | Live Wire (ELEVATED) — Watchlist #7 |"
+    },
+    {
+      "id": "cloudflare-status-akjr7qn5o622",
+      "sourceId": "cloudflare-status",
+      "sourceName": "Cloudflare Status",
+      "attributionText": "Source: Cloudflare System Status (www.cloudflarestatus.com)",
+      "publishedAtISO": "2026-11-20T20:57:12.812Z",
+      "title": "Cloudflare: Cache Purging Delays in Milan [IDENTIFIED]",
+      "summary": "The issue has been identified and a fix is being implemented.",
+      "url": "https://www.cloudflarestatus.com/incidents/akjr7qn5o622",
+      "severity": "elevated",
+      "watchlistMatches": [
+        "#6",
+        "#7"
+      ],
+      "riskMatrixMatches": [
+        "#1",
+        "#2"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "Cloudflare",
+        "impact:none",
+        "status:identified"
+      ],
+      "markdownRow": "| #11+ — Nov 20, 2026 | Cloudflare (Global CDN & Edge) | Cache Purging Delays in Milan (none impact; identified) ([Cloudflare Status](https://www.cloudflarestatus.com/incidents/akjr7qn5o622)) | The issue has been identified and a fix is being implemented. | Live Wire (ELEVATED) — Watchlist #6, #7 |"
+    },
+    {
+      "id": "cloudflare-status-oz6to8yacrxe",
+      "sourceId": "cloudflare-status",
+      "sourceName": "Cloudflare Status",
+      "attributionText": "Source: Cloudflare System Status (www.cloudflarestatus.com)",
+      "publishedAtISO": "2026-11-20T20:37:07.915Z",
+      "title": "Cloudflare: Network Performance Issues in Washington, DC datacenter (IAD) [MONITORING]",
+      "summary": "A fix has been implemented and we are monitoring the results.",
+      "url": "https://www.cloudflarestatus.com/incidents/oz6to8yacrxe",
+      "severity": "elevated",
+      "watchlistMatches": [
+        "#6",
+        "#7"
+      ],
+      "riskMatrixMatches": [
+        "#1",
+        "#2"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "Cloudflare",
+        "impact:minor",
+        "status:monitoring"
+      ],
+      "markdownRow": "| #11+ — Nov 20, 2026 | Cloudflare (Global CDN & Edge) | Network Performance Issues in Washington, DC datacenter (IAD) (minor impact; monitoring) ([Cloudflare Status](https://www.cloudflarestatus.com/incidents/oz6to8yacrxe)) | A fix has been implemented and we are monitoring the results. | Live Wire (ELEVATED) — Watchlist #6, #7 |"
     },
     {
       "id": "cloudflare-status-xsgbfncq7of7",
       "sourceId": "cloudflare-status",
       "sourceName": "Cloudflare Status",
       "attributionText": "Source: Cloudflare System Status (www.cloudflarestatus.com)",
-      "publishedAtISO": "2026-11-20T18:01:13.284Z",
-      "title": "Cloudflare: Cache Purging Delays in Amsterdam [INVESTIGATING]",
-      "summary": "Cloudflare single-file cache purging (purge by URL) called via the Dashboard/API is delayed in Amsterdam. We are working to resolve this issue as soon as possible. Until then you may use the Purge Everything feature but do be aware it may cause a surge in tra…",
+      "publishedAtISO": "2026-11-20T19:41:49.904Z",
+      "title": "Cloudflare: Cache Purging Delays in Amsterdam [RESOLVED]",
+      "summary": "This incident has been resolved.",
       "url": "https://www.cloudflarestatus.com/incidents/xsgbfncq7of7",
       "severity": "elevated",
       "watchlistMatches": [
@@ -730,9 +785,60 @@
       "tags": [
         "Cloudflare",
         "impact:minor",
-        "status:investigating"
+        "status:resolved"
       ],
-      "markdownRow": "| #11+ — Nov 20, 2026 | Cloudflare (Global CDN & Edge) | Cache Purging Delays in Amsterdam (minor impact; investigating) ([Cloudflare Status](https://www.cloudflarestatus.com/incidents/xsgbfncq7of7)) | Cloudflare single-file cache purging (purge by URL) called via the Dashboard/API is delayed in Amsterdam. We are working to resol… | Live Wire (ELEVATED) — Watchlist #6, #7 |"
+      "markdownRow": "| #11+ — Nov 20, 2026 | Cloudflare (Global CDN & Edge) | Cache Purging Delays in Amsterdam (minor impact; resolved) ([Cloudflare Status](https://www.cloudflarestatus.com/incidents/xsgbfncq7of7)) | This incident has been resolved. | Live Wire (ELEVATED) — Watchlist #6, #7 |"
+    },
+    {
+      "id": "cloudflare-status-iysf3fasf7wn",
+      "sourceId": "cloudflare-status",
+      "sourceName": "Cloudflare Status",
+      "attributionText": "Source: Cloudflare System Status (www.cloudflarestatus.com)",
+      "publishedAtISO": "2026-11-20T18:53:14.770Z",
+      "title": "Cloudflare: Cloudflare Dashboard and Cloudflare API service issues in EU region [RESOLVED]",
+      "summary": "Cloudflare has resolved API and dashboard issues in the EU region.",
+      "url": "https://www.cloudflarestatus.com/incidents/iysf3fasf7wn",
+      "severity": "elevated",
+      "watchlistMatches": [
+        "#6",
+        "#7"
+      ],
+      "riskMatrixMatches": [
+        "#1",
+        "#2"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "Cloudflare",
+        "impact:major",
+        "status:resolved"
+      ],
+      "markdownRow": "| #11+ — Nov 20, 2026 | Cloudflare (Global CDN & Edge) | Cloudflare Dashboard and Cloudflare API service issues in EU region (major impact; resolved) ([Cloudflare Status](https://www.cloudflarestatus.com/incidents/iysf3fasf7wn)) | Cloudflare has resolved API and dashboard issues in the EU region. | Live Wire (ELEVATED) — Watchlist #6, #7 |"
+    },
+    {
+      "id": "github-status-2zfqmghmg3s3",
+      "sourceId": "github-status",
+      "sourceName": "GitHub Status",
+      "attributionText": "Source: GitHub System Status (www.githubstatus.com)",
+      "publishedAtISO": "2026-11-20T18:50:41.400Z",
+      "title": "GitHub: Incident with Pull Requests [RESOLVED]",
+      "summary": "On November 16, 2026, between 09:30 and 15:55 UTC, some pull request merges on GitHub timed out. On average, 2.9% of merge attempts timed out, with a peak of 7.1% at 15:17 UTC. Some GitHub Actions workflow runs triggered by pull requests were also delayed. Gi…",
+      "url": "https://stspg.io/ljtn69jlt087",
+      "severity": "elevated",
+      "watchlistMatches": [
+        "#2",
+        "#7"
+      ],
+      "riskMatrixMatches": [
+        "#2"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "GitHub",
+        "impact:minor",
+        "status:resolved"
+      ],
+      "markdownRow": "| #11+ — Nov 16, 2026 | GitHub (Developer & CI/CD Backbone) | Incident with Pull Requests (minor impact; resolved) ([GitHub Status](https://stspg.io/ljtn69jlt087)) | On November 16, 2026, between 09:30 and 15:55 UTC, some pull request merges on GitHub timed out. On average, 2.9% of merge attemp… | Live Wire (ELEVATED) — Watchlist #2, #7 |"
     },
     {
       "id": "github-status-m310qbkfm3ww",
@@ -1133,30 +1239,6 @@
       "markdownRow": "| #11+ — 2026-11-20 | SAP NetWeaver (Enterprise / Edge Security) | SAP NetWeaver Enterprise Portal contains an improper neutralization of special elements in data query logic vulnerability that allows an un… ([CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search_api_fulltext=CVE-2025-42884)) | Active exploitation confirmed (CVE-2025-42884); due 2026-11-23 | Live Wire (ELEVATED) — Watchlist #2 |"
     },
     {
-      "id": "nvd-cve-2026-120681",
-      "sourceId": "nist-nvd",
-      "sourceName": "NIST NVD Critical CVEs",
-      "attributionText": "Source: NIST National Vulnerability Database API 2.0 (nvd.nist.gov — CVSS 9.1)",
-      "publishedAtISO": "2026-11-20T10:17:08.647Z",
-      "title": "CVE-2026-120681 (CVSS 9.1): The Mang Board plugin for WordPress is vulnerable to authorization bypass in all versions up to, and inc…",
-      "summary": "[CVSS 9.1 CRITICAL] The Mang Board plugin for WordPress is vulnerable to authorization bypass in all versions up to, and including, 2.4.7. This is due to the plugin not properly verifying that a user is authorized to perform an action. This makes it possible for unauthentic…",
-      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-120681",
-      "severity": "elevated",
-      "watchlistMatches": [
-        "#2"
-      ],
-      "riskMatrixMatches": [
-        "#2"
-      ],
-      "countdownMatches": [],
-      "tags": [
-        "NIST-NVD",
-        "CVE-2026-120681",
-        "CVSS-9.1"
-      ],
-      "markdownRow": "| #11+ — Nov 20, 2026 | CVE-2026-120681 (Enterprise Software) | The Mang Board plugin for WordPress is vulnerable to authorization bypass in all versions up to, and including, 2.4.7. This is due to… ([NIST NVD (9.1)](https://nvd.nist.gov/vuln/detail/CVE-2026-120681)) | Pre-KEV critical disclosure (CVSS 9.1) | Live Wire (ELEVATED) — Watchlist #2 |"
-    },
-    {
       "id": "cloudflare-status-pfwuex7qix27",
       "sourceId": "cloudflare-status",
       "sourceName": "Cloudflare Status",
@@ -1207,30 +1289,6 @@
         "status:resolved"
       ],
       "markdownRow": "| #11+ — Nov 19, 2026 | Cloudflare (Global CDN & Edge) | Observability ingestion delay and query failures (minor impact; resolved) ([Cloudflare Status](https://www.cloudflarestatus.com/incidents/ljrvdciu7syf)) | This incident has been resolved. | Live Wire (ELEVATED) — Watchlist #6, #7 |"
-    },
-    {
-      "id": "nvd-cve-2026-76536",
-      "sourceId": "nist-nvd",
-      "sourceName": "NIST NVD Critical CVEs",
-      "attributionText": "Source: NIST National Vulnerability Database API 2.0 (nvd.nist.gov — CVSS 9.4)",
-      "publishedAtISO": "2026-11-19T20:17:52.850Z",
-      "title": "CVE-2026-76536 (CVSS 9.4): In Splunk Enterprise versions below 10.4.5, 10.2.9, 10.0.12, and 9.4.17, an unauthenticated user could u…",
-      "summary": "[CVSS 9.4 CRITICAL] In Splunk Enterprise versions below 10.4.5, 10.2.9, 10.0.12, and 9.4.17, an unauthenticated user could use an empty clustering shared secret to read and modify clustering configuration through the cluster configuration Representational State Transfer (RE…",
-      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76536",
-      "severity": "elevated",
-      "watchlistMatches": [
-        "#2"
-      ],
-      "riskMatrixMatches": [
-        "#2"
-      ],
-      "countdownMatches": [],
-      "tags": [
-        "NIST-NVD",
-        "CVE-2026-76536",
-        "CVSS-9.4"
-      ],
-      "markdownRow": "| #11+ — Nov 19, 2026 | CVE-2026-76536 (Enterprise Software) | In Splunk Enterprise versions below 10.4.5, 10.2.9, 10.0.12, and 9.4.17, an unauthenticated user could use an empty clustering shared… ([NIST NVD (9.4)](https://nvd.nist.gov/vuln/detail/CVE-2026-76536)) | Pre-KEV critical disclosure (CVSS 9.4) | Live Wire (ELEVATED) — Watchlist #2 |"
     },
     {
       "id": "github-status-gp7nhc88bwv9",
@@ -1328,58 +1386,6 @@
         "ICS-OT-PLC"
       ],
       "markdownRow": "| #11+ — Nov 19, 2026 | Autonomy Logic OpenPLC Runtime (ICS / Critical OT) | View CSAF Summary Successful exploitation of this vulnerability could allow several unauthenticated admin accounts to be created. The following versions of Autonomy Logic OpenPLC Runtime are affected: OpenPLC Runtime CVSS Vendor Equipment v3 8.1 Autonomy Logi… ([CISA Advisory](https://www.cisa.gov/news-events/ics-advisories/icsa-26-323-01)) | ICS/OT vulnerability or PLC exposure advisory | Live Wire (ELEVATED) — Watchlist #8 |"
-    },
-    {
-      "id": "cloudflare-status-sd2sya0mc6df",
-      "sourceId": "cloudflare-status",
-      "sourceName": "Cloudflare Status",
-      "attributionText": "Source: Cloudflare System Status (www.cloudflarestatus.com)",
-      "publishedAtISO": "2026-11-19T08:56:14.612Z",
-      "title": "Cloudflare: Cloudflare Access Issue [RESOLVED]",
-      "summary": "This incident has been resolved.",
-      "url": "https://www.cloudflarestatus.com/incidents/sd2sya0mc6df",
-      "severity": "elevated",
-      "watchlistMatches": [
-        "#6",
-        "#7"
-      ],
-      "riskMatrixMatches": [
-        "#1",
-        "#2"
-      ],
-      "countdownMatches": [],
-      "tags": [
-        "Cloudflare",
-        "impact:minor",
-        "status:resolved"
-      ],
-      "markdownRow": "| #11+ — Nov 19, 2026 | Cloudflare (Global CDN & Edge) | Cloudflare Access Issue (minor impact; resolved) ([Cloudflare Status](https://www.cloudflarestatus.com/incidents/sd2sya0mc6df)) | This incident has been resolved. | Live Wire (ELEVATED) — Watchlist #6, #7 |"
-    },
-    {
-      "id": "cloudflare-status-f33c51cw0ojd",
-      "sourceId": "cloudflare-status",
-      "sourceName": "Cloudflare Status",
-      "attributionText": "Source: Cloudflare System Status (www.cloudflarestatus.com)",
-      "publishedAtISO": "2026-11-19T03:19:28.782Z",
-      "title": "Cloudflare: Degraded connectivity between Europe and Asia Pacific [RESOLVED]",
-      "summary": "This incident has been resolved.",
-      "url": "https://www.cloudflarestatus.com/incidents/f33c51cw0ojd",
-      "severity": "elevated",
-      "watchlistMatches": [
-        "#6",
-        "#7"
-      ],
-      "riskMatrixMatches": [
-        "#1",
-        "#2"
-      ],
-      "countdownMatches": [],
-      "tags": [
-        "Cloudflare",
-        "impact:minor",
-        "status:resolved"
-      ],
-      "markdownRow": "| #11+ — Nov 18, 2026 | Cloudflare (Global CDN & Edge) | Degraded connectivity between Europe and Asia Pacific (minor impact; resolved) ([Cloudflare Status](https://www.cloudflarestatus.com/incidents/f33c51cw0ojd)) | This incident has been resolved. | Live Wire (ELEVATED) — Watchlist #6, #7 |"
     },
     {
       "id": "nvd-cve-2026-132142",
@@ -1814,6 +1820,29 @@
       "markdownRow": "| #11+ — Nov 17, 2026 | Siemens Industrial Automation Software Products (ICS / Critical OT) | View CSAF Summary On October 21, 2026, the Node.js project released security updates addressing a critical vulnerability in the Brotli decoder bundled with Node.js, commonly referred to as \"Node2Shell\" (tracked as CVE-2026-111497). The vulnerability is an out… ([CISA Advisory](https://www.cisa.gov/news-events/ics-advisories/icsa-26-321-03)) | ICS/OT vulnerability or PLC exposure advisory | Live Wire (ELEVATED) — Watchlist #8 |"
     },
     {
+      "id": "cisa-adv-icsa-26-321-07",
+      "sourceId": "cisa-advisories",
+      "sourceName": "CISA Advisories",
+      "attributionText": "Source: CISA Cybersecurity & ICS Advisories (cisa.gov)",
+      "publishedAtISO": "2026-11-17T12:00:00.000Z",
+      "title": "Siemens RUGGEDCOM APE1808",
+      "summary": "View CSAF Summary Fortinet has published information on a Double Free vulnerability in FortiOS. This advisory lists the related Siemens Industrial products. Siemens recommends to update Fortigate NGFW to V7.6.9 or later following the secure update recommendat…",
+      "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-321-07",
+      "severity": "elevated",
+      "watchlistMatches": [
+        "#8"
+      ],
+      "riskMatrixMatches": [
+        "#3"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "CISA-Advisory",
+        "ICS-OT-PLC"
+      ],
+      "markdownRow": "| #11+ — Nov 17, 2026 | Siemens RUGGEDCOM APE1808 (ICS / Critical OT) | View CSAF Summary Fortinet has published information on a Double Free vulnerability in FortiOS. This advisory lists the related Siemens Industrial products. Siemens recommends to update Fortigate NGFW to V7.6.9 or later following the secure update recommendat… ([CISA Advisory](https://www.cisa.gov/news-events/ics-advisories/icsa-26-321-07)) | ICS/OT vulnerability or PLC exposure advisory | Live Wire (ELEVATED) — Watchlist #8 |"
+    },
+    {
       "id": "github-status-gl7yhd7jx00v",
       "sourceId": "github-status",
       "sourceName": "GitHub Status",
@@ -1837,31 +1866,6 @@
         "status:resolved"
       ],
       "markdownRow": "| #11+ — Nov 12, 2026 | GitHub (Developer & CI/CD Backbone) | Incident with Webhooks API (minor impact; resolved) ([GitHub Status](https://stspg.io/ns57pv7lmynl)) | On November 12, 2026, between 17:59 UTC and 19:05 UTC, the GitHub Webhooks API experienced elevated latency and timeouts. During… | Live Wire (ELEVATED) — Watchlist #2, #7 |"
-    },
-    {
-      "id": "github-status-2zfqmghmg3s3",
-      "sourceId": "github-status",
-      "sourceName": "GitHub Status",
-      "attributionText": "Source: GitHub System Status (www.githubstatus.com)",
-      "publishedAtISO": "2026-11-16T16:26:26.809Z",
-      "title": "GitHub: Incident with Pull Requests [RESOLVED]",
-      "summary": "This incident has been resolved. Thank you for your patience and understanding as we addressed this issue. A detailed root cause analysis will be shared as soon as it is available.",
-      "url": "https://stspg.io/ljtn69jlt087",
-      "severity": "elevated",
-      "watchlistMatches": [
-        "#2",
-        "#7"
-      ],
-      "riskMatrixMatches": [
-        "#2"
-      ],
-      "countdownMatches": [],
-      "tags": [
-        "GitHub",
-        "impact:minor",
-        "status:resolved"
-      ],
-      "markdownRow": "| #11+ — Nov 16, 2026 | GitHub (Developer & CI/CD Backbone) | Incident with Pull Requests (minor impact; resolved) ([GitHub Status](https://stspg.io/ljtn69jlt087)) | This incident has been resolved. Thank you for your patience and understanding as we addressed this issue. A detailed root cause… | Live Wire (ELEVATED) — Watchlist #2, #7 |"
     },
     {
       "id": "usgs-us7000tyhr",
@@ -1988,6 +1992,54 @@
         "status:resolved"
       ],
       "markdownRow": "| #11+ — Nov 12, 2026 | GitHub (Developer & CI/CD Backbone) | Disruption with Email Delivery (minor impact; resolved) ([GitHub Status](https://stspg.io/lr8v4v8t7gs2)) | This incident has been resolved. Thank you for your patience and understanding as we addressed this issue. A detailed root cause… | Live Wire (ELEVATED) — Watchlist #2, #7 |"
+    },
+    {
+      "id": "nvd-cve-2026-118383",
+      "sourceId": "nist-nvd",
+      "sourceName": "NIST NVD Critical CVEs",
+      "attributionText": "Source: NIST National Vulnerability Database API 2.0 (nvd.nist.gov — CVSS 9.0)",
+      "publishedAtISO": "2026-11-10T21:18:58.980Z",
+      "title": "CVE-2026-118383 (CVSS 9.0): A use-after-free in the replication component of MongoDB Server can occur when a newly elected replica s…",
+      "summary": "[CVSS 9.0 CRITICAL] A use-after-free in the replication component of MongoDB Server can occur when a newly elected replica set primary completes catch-up. The condition can be caused by requests that do not require authentication, and may result in the server terminating un…",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-118383",
+      "severity": "elevated",
+      "watchlistMatches": [
+        "#2"
+      ],
+      "riskMatrixMatches": [
+        "#2"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "NIST-NVD",
+        "CVE-2026-118383",
+        "CVSS-9.0"
+      ],
+      "markdownRow": "| #11+ — Nov 10, 2026 | CVE-2026-118383 (Enterprise Software) | A use-after-free in the replication component of MongoDB Server can occur when a newly elected replica set primary completes catch-up.… ([NIST NVD (9.0)](https://nvd.nist.gov/vuln/detail/CVE-2026-118383)) | Pre-KEV critical disclosure (CVSS 9.0) | Live Wire (ELEVATED) — Watchlist #2 |"
+    },
+    {
+      "id": "nvd-cve-2026-120779",
+      "sourceId": "nist-nvd",
+      "sourceName": "NIST NVD Critical CVEs",
+      "attributionText": "Source: NIST National Vulnerability Database API 2.0 (nvd.nist.gov — CVSS 9.6)",
+      "publishedAtISO": "2026-11-10T19:20:27.040Z",
+      "title": "CVE-2026-120779 (CVSS 9.6): Improper control of generation of code ('code injection') in Visual Studio Code allows an unauthorized a…",
+      "summary": "[CVSS 9.6 CRITICAL] Improper control of generation of code ('code injection') in Visual Studio Code allows an unauthorized attacker to execute code over a network.",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-120779",
+      "severity": "elevated",
+      "watchlistMatches": [
+        "#2"
+      ],
+      "riskMatrixMatches": [
+        "#2"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "NIST-NVD",
+        "CVE-2026-120779",
+        "CVSS-9.6"
+      ],
+      "markdownRow": "| #11+ — Nov 10, 2026 | CVE-2026-120779 (Enterprise Software) | Improper control of generation of code ('code injection') in Visual Studio Code allows an unauthorized attacker to execute code over a… ([NIST NVD (9.6)](https://nvd.nist.gov/vuln/detail/CVE-2026-120779)) | Pre-KEV critical disclosure (CVSS 9.6) | Live Wire (ELEVATED) — Watchlist #2 |"
     },
     {
       "id": "kev-cve-2026-111793",
@@ -2134,13 +2186,13 @@
       "markdownRow": "| #11+ — 2026-11-09 | SignalWire FreeSwitch (Enterprise / Edge Security) | SignalWire FreeSwitch contains a code injection vulnerability that permits configuration and credential disclosure, arbitrary call control,… ([CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search_api_fulltext=CVE-2026-116779)) | Active exploitation confirmed (CVE-2026-116779); due 2026-11-12 | Live Wire (ELEVATED) — Watchlist #2 |"
     },
     {
-      "id": "faa-closure-lax-8",
+      "id": "faa-closure-lax-10",
       "sourceId": "faa-nas",
       "sourceName": "FAA NAS Status",
-      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 18:46:06 2026 GMT",
-      "publishedAtISO": "2026-11-20T18:46:06.000Z",
+      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 21:35:29 2026 GMT",
+      "publishedAtISO": "2026-11-20T21:35:29.000Z",
       "title": "FAA Airport Closures: LAX (GA NOTAM Restriction)",
-      "summary": "LAX: !LAX 05/277 LAX AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR CTC ATLANTIC AVIATION 310-258-9884 OR SIGNATURE AVIATION 310-410-9605 2605271826-2705281600 | Reopen: May 28 at 16:00 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 18:46:06 2026 GMT)",
+      "summary": "LAX: !LAX 05/277 LAX AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR CTC ATLANTIC AVIATION 310-258-9884 OR SIGNATURE AVIATION 310-410-9605 2605271826-2705281600 | Reopen: May 28 at 16:00 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 21:35:29 2026 GMT)",
       "url": "https://nasstatus.faa.gov/",
       "severity": "info",
       "watchlistMatches": [
@@ -2155,16 +2207,16 @@
         "Airport-Closure",
         "LAX"
       ],
-      "markdownRow": "| #11+ — Fri Nov 20 18:46:06 2026 GMT | FAA NAS — LAX (National Aviation / Airport Ops) | Airport Closures active at LAX until May 28 at 16:00 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !LAX 05/277 LAX AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR CTC ATLANTIC AVIATION 310-258-9884 OR SIGNATURE A… | Live Wire (INFO) — Watchlist #7 |"
+      "markdownRow": "| #11+ — Fri Nov 20 21:35:29 2026 GMT | FAA NAS — LAX (National Aviation / Airport Ops) | Airport Closures active at LAX until May 28 at 16:00 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !LAX 05/277 LAX AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR CTC ATLANTIC AVIATION 310-258-9884 OR SIGNATURE A… | Live Wire (INFO) — Watchlist #7 |"
     },
     {
-      "id": "faa-closure-san-9",
+      "id": "faa-closure-san-11",
       "sourceId": "faa-nas",
       "sourceName": "FAA NAS Status",
-      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 18:46:06 2026 GMT",
-      "publishedAtISO": "2026-11-20T18:46:06.000Z",
+      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 21:35:29 2026 GMT",
+      "publishedAtISO": "2026-11-20T21:35:29.000Z",
       "title": "FAA Airport Closures: SAN (GA NOTAM Restriction)",
-      "summary": "SAN: !SAN 10/004 SAN AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC PPR 619-298-7704 2610011633-2701010800 | Reopen: Jan 01 at 08:00 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 18:46:06 2026 GMT)",
+      "summary": "SAN: !SAN 10/004 SAN AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC PPR 619-298-7704 2610011633-2701010800 | Reopen: Jan 01 at 08:00 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 21:35:29 2026 GMT)",
       "url": "https://nasstatus.faa.gov/",
       "severity": "info",
       "watchlistMatches": [
@@ -2179,16 +2231,16 @@
         "Airport-Closure",
         "SAN"
       ],
-      "markdownRow": "| #11+ — Fri Nov 20 18:46:06 2026 GMT | FAA NAS — SAN (National Aviation / Airport Ops) | Airport Closures active at SAN until Jan 01 at 08:00 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !SAN 10/004 SAN AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC PPR 619-298-7704 2610011633-2701010800 | Live Wire (INFO) — Watchlist #7 |"
+      "markdownRow": "| #11+ — Fri Nov 20 21:35:29 2026 GMT | FAA NAS — SAN (National Aviation / Airport Ops) | Airport Closures active at SAN until Jan 01 at 08:00 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !SAN 10/004 SAN AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC PPR 619-298-7704 2610011633-2701010800 | Live Wire (INFO) — Watchlist #7 |"
     },
     {
-      "id": "faa-closure-las-10",
+      "id": "faa-closure-las-12",
       "sourceId": "faa-nas",
       "sourceName": "FAA NAS Status",
-      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 18:46:06 2026 GMT",
-      "publishedAtISO": "2026-11-20T18:46:06.000Z",
+      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 21:35:29 2026 GMT",
+      "publishedAtISO": "2026-11-20T21:35:29.000Z",
       "title": "FAA Airport Closures: LAS (GA NOTAM Restriction)",
-      "summary": "LAS: !LAS 10/160 LAS AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR 702-261-7775 2610281926-2701272300 | Reopen: Jan 27 at 23:00 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 18:46:06 2026 GMT)",
+      "summary": "LAS: !LAS 10/160 LAS AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR 702-261-7775 2610281926-2701272300 | Reopen: Jan 27 at 23:00 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 21:35:29 2026 GMT)",
       "url": "https://nasstatus.faa.gov/",
       "severity": "info",
       "watchlistMatches": [
@@ -2203,7 +2255,7 @@
         "Airport-Closure",
         "LAS"
       ],
-      "markdownRow": "| #11+ — Fri Nov 20 18:46:06 2026 GMT | FAA NAS — LAS (National Aviation / Airport Ops) | Airport Closures active at LAS until Jan 27 at 23:00 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !LAS 10/160 LAS AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR 702-261-7775 2610281926-2701272300 | Live Wire (INFO) — Watchlist #7 |"
+      "markdownRow": "| #11+ — Fri Nov 20 21:35:29 2026 GMT | FAA NAS — LAS (National Aviation / Airport Ops) | Airport Closures active at LAS until Jan 27 at 23:00 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !LAS 10/160 LAS AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR 702-261-7775 2610281926-2701272300 | Live Wire (INFO) — Watchlist #7 |"
     },
     {
       "id": "ofac-doe-2026-23675",
@@ -2444,6 +2496,28 @@
         "FAA-Regulatory"
       ],
       "markdownRow": "| #11+ — 2026-11-20 | Transportation Department, Federal Aviation Administration (Federal Regulatory) | Airworthiness Directives; Airbus Helicopters Deutschland GmbH (AHD) Helicopters ([FR 2026-23679](https://www.federalregister.gov/documents/2026/11/20/2026-23679/airworthiness-directives-airbus-helicopters-deutschland-gmbh-ahd-helicopters)) | Rule filing mapped to Risk #1 | Live Wire (INFO) — Watchlist #5 |"
+    },
+    {
+      "id": "cisa-adv-cisa-adds-four-known-exploited-vulnerabilities-catalog",
+      "sourceId": "cisa-advisories",
+      "sourceName": "CISA Advisories",
+      "attributionText": "Source: CISA Cybersecurity & ICS Advisories (cisa.gov)",
+      "publishedAtISO": "2026-11-20T12:00:00.000Z",
+      "title": "CISA Adds Four Known Exploited Vulnerabilities to Catalog",
+      "summary": "CISA has added four new vulnerabilities to its Known Exploited Vulnerabilities (KEV) Catalog , based on evidence of active exploitation. CVE-2025-42884 SAP NetWeaver Improper Neutralization of Special Elements in Data Query Logic Vulnerability CVE-2026-76466…",
+      "url": "https://www.cisa.gov/news-events/alerts/2026/11/20/cisa-adds-four-known-exploited-vulnerabilities-catalog",
+      "severity": "info",
+      "watchlistMatches": [
+        "#7"
+      ],
+      "riskMatrixMatches": [
+        "#2"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "CISA-Advisory"
+      ],
+      "markdownRow": "| #11+ — Nov 20, 2026 | CISA Adds Four Known Exploited Vulnerabilities to Catalog (Federal Cyber Advisory) | CISA has added four new vulnerabilities to its Known Exploited Vulnerabilities (KEV) Catalog , based on evidence of active exploitation. CVE-2025-42884 SAP NetWeaver Improper Neutralization of Special Elements in Data Query Logic Vulnerability CVE-2026-76466… ([CISA Advisory](https://www.cisa.gov/news-events/alerts/2026/11/20/cisa-adds-four-known-exploited-vulnerabilities-catalog)) | Federal cybersecurity advisory readout | Live Wire (INFO) — Watchlist #7 |"
     },
     {
       "id": "ofac-doe-2026-23611",
@@ -2727,28 +2801,6 @@
         "MARAD-Maritime"
       ],
       "markdownRow": "| #11+ — 2026-11-18 | Transportation Department, Maritime Administration (Sanctions, Maritime & Grid) | Request Notice: Use of Foreign-Built Small Passenger Vessel in United States Coastwise Trade, M/V OSIRIS ([FR 2026-23510](https://www.federalregister.gov/documents/2026/11/18/2026-23510/request-notice-use-of-foreign-built-small-passenger-vessel-in-united-states-coastwise-trade-mv)) | Notice directive mapped to Watchlist #4, #6, #5 | Live Wire (INFO) — Watchlist #4, #6, #5 |"
-    },
-    {
-      "id": "cisa-adv-cisa-adds-four-known-exploited-vulnerabilities-catalog",
-      "sourceId": "cisa-advisories",
-      "sourceName": "CISA Advisories",
-      "attributionText": "Source: CISA Cybersecurity & ICS Advisories (cisa.gov)",
-      "publishedAtISO": "2026-11-18T12:00:00.000Z",
-      "title": "CISA Adds Four Known Exploited Vulnerabilities to Catalog",
-      "summary": "CISA has added four new vulnerabilities to its Known Exploited Vulnerabilities (KEV) Catalog , based on evidence of active exploitation.&nbsp; CVE-2024-10441 Synology DiskStation Manager (DSM) Improper Encoding or Escaping of Output Vulnerability CVE-2026-402…",
-      "url": "https://www.cisa.gov/news-events/alerts/2026/11/18/cisa-adds-four-known-exploited-vulnerabilities-catalog",
-      "severity": "info",
-      "watchlistMatches": [
-        "#7"
-      ],
-      "riskMatrixMatches": [
-        "#2"
-      ],
-      "countdownMatches": [],
-      "tags": [
-        "CISA-Advisory"
-      ],
-      "markdownRow": "| #11+ — Nov 18, 2026 | CISA Adds Four Known Exploited Vulnerabilities to Catalog (Federal Cyber Advisory) | CISA has added four new vulnerabilities to its Known Exploited Vulnerabilities (KEV) Catalog , based on evidence of active exploitation.&nbsp; CVE-2024-10441 Synology DiskStation Manager (DSM) Improper Encoding or Escaping of Output Vulnerability CVE-2026-402… ([CISA Advisory](https://www.cisa.gov/news-events/alerts/2026/11/18/cisa-adds-four-known-exploited-vulnerabilities-catalog)) | Federal cybersecurity advisory readout | Live Wire (INFO) — Watchlist #7 |"
     },
     {
       "id": "usgs-us7000tymu",
