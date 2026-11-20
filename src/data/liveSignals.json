@@ -1,31 +1,57 @@
 {
-  "ingestedAtISO": "2026-11-19T21:38:57.738Z",
+  "ingestedAtISO": "2026-11-20T00:36:33.271Z",
   "ingestionMode": "ZERO_KEY_PUBLIC_FEEDS",
   "totalSignals": 120,
   "signals": [
     {
-      "id": "nvd-cve-2026-87977",
-      "sourceId": "nist-nvd",
-      "sourceName": "NIST NVD Critical CVEs",
-      "attributionText": "Source: NIST National Vulnerability Database API 2.0 (nvd.nist.gov — CVSS 9.8)",
-      "publishedAtISO": "2026-11-19T21:18:06.517Z",
-      "title": "CVE-2026-87977 (CVSS 9.8): IBM Guardium Data Protection 12.2 is vulnerable to SQL injection in the edge-controller component. An un…",
-      "summary": "[CVSS 9.8 CRITICAL] IBM Guardium Data Protection 12.2 is vulnerable to SQL injection in the edge-controller component. An unauthenticated remote attacker could exploit this vulnerability to access or modify sensitive database information.",
-      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-87977",
+      "id": "faa-gs-san-1",
+      "sourceId": "faa-nas",
+      "sourceName": "FAA NAS Status",
+      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 00:35:58 2026 GMT",
+      "publishedAtISO": "2026-11-20T00:35:58.000Z",
+      "title": "FAA Ground Stop Active: SAN (Ground Stop Programs)",
+      "summary": "Ground Stop at SAN — Reason: low visibility | Est. End: 5:00 pm PST. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 00:35:58 2026 GMT)",
+      "url": "https://nasstatus.faa.gov/",
       "severity": "critical",
       "watchlistMatches": [
-        "#2"
+        "#5",
+        "#7"
       ],
       "riskMatrixMatches": [
-        "#2"
+        "#1"
       ],
       "countdownMatches": [],
       "tags": [
-        "NIST-NVD",
-        "CVE-2026-87977",
-        "CVSS-9.8"
+        "FAA-NAS",
+        "Ground-Stop",
+        "SAN"
       ],
-      "markdownRow": "| #11+ — Nov 19, 2026 | CVE-2026-87977 (Enterprise Software) | IBM Guardium Data Protection 12.2 is vulnerable to SQL injection in the edge-controller component. An unauthenticated remote attacker… ([NIST NVD (9.8)](https://nvd.nist.gov/vuln/detail/CVE-2026-87977)) | Pre-KEV critical disclosure (CVSS 9.8) | Live Wire (CRITICAL) — Watchlist #2 |"
+      "markdownRow": "| #11+ — Fri Nov 20 00:35:58 2026 GMT | FAA NAS — SAN (National Aviation / ATC) | Active Ground Stop at SAN through 5:00 pm PST ([FAA NAS Status](https://nasstatus.faa.gov/)) | FAA NAS Ground Stop Programs: low visibility | Live Wire (CRITICAL) — Watchlist #5, #7 |"
+    },
+    {
+      "id": "faa-json-gs-san-9",
+      "sourceId": "faa-nas",
+      "sourceName": "FAA NAS Status",
+      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 00:35:58 2026 GMT",
+      "publishedAtISO": "2026-11-20T00:35:58.000Z",
+      "title": "FAA Ground Stop Active: SAN (San Diego-Lindbergh Field)",
+      "summary": "Ground Stop at SAN — Reason: Ground Stop. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 00:35:58 2026 GMT)",
+      "url": "https://nasstatus.faa.gov/",
+      "severity": "critical",
+      "watchlistMatches": [
+        "#5",
+        "#7"
+      ],
+      "riskMatrixMatches": [
+        "#1"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "FAA-NAS",
+        "Ground-Stop",
+        "SAN"
+      ],
+      "markdownRow": "| #11+ — Fri Nov 20 00:35:58 2026 GMT | FAA NAS — SAN (National Aviation / ATC) | Ground Stop active at SAN ([FAA NAS Status](https://nasstatus.faa.gov/)) | Ground Stop | Live Wire (CRITICAL) — Watchlist #5, #7 |"
     },
     {
       "id": "nvd-cve-2026-84236",
@@ -50,30 +76,6 @@
         "CVSS-9.8"
       ],
       "markdownRow": "| #11+ — Nov 19, 2026 | CVE-2026-84236 (Enterprise Software) | IBM Guardium Data Protection 12.2 is vulnerable to insecure deserialization in the SharePoint Tap MulticastTransceiver component. An u… ([NIST NVD (9.8)](https://nvd.nist.gov/vuln/detail/CVE-2026-84236)) | Pre-KEV critical disclosure (CVSS 9.8) | Live Wire (CRITICAL) — Watchlist #2 |"
-    },
-    {
-      "id": "nvd-cve-2026-131253",
-      "sourceId": "nist-nvd",
-      "sourceName": "NIST NVD Critical CVEs",
-      "attributionText": "Source: NIST National Vulnerability Database API 2.0 (nvd.nist.gov — CVSS 9.9)",
-      "publishedAtISO": "2026-11-19T20:17:40.407Z",
-      "title": "CVE-2026-131253 (CVSS 9.9): In Splunk SOAR versions below 8.8.0, an authenticated user that holds a role with the Apps edit, Contain…",
-      "summary": "[CVSS 9.9 CRITICAL] In Splunk SOAR versions below 8.8.0, an authenticated user that holds a role with the Apps edit, Containers edit, and Playbooks execute permissions could use the App Wizard to execute arbitrary code as the user account that runs Splunk SOAR. This could c…",
-      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-131253",
-      "severity": "critical",
-      "watchlistMatches": [
-        "#2"
-      ],
-      "riskMatrixMatches": [
-        "#2"
-      ],
-      "countdownMatches": [],
-      "tags": [
-        "NIST-NVD",
-        "CVE-2026-131253",
-        "CVSS-9.9"
-      ],
-      "markdownRow": "| #11+ — Nov 19, 2026 | CVE-2026-131253 (Enterprise Software) | In Splunk SOAR versions below 8.8.0, an authenticated user that holds a role with the Apps edit, Containers edit, and Playbooks execut… ([NIST NVD (9.9)](https://nvd.nist.gov/vuln/detail/CVE-2026-131253)) | Pre-KEV critical disclosure (CVSS 9.9) | Live Wire (CRITICAL) — Watchlist #2 |"
     },
     {
       "id": "cisa-adv-icsa-26-323-02",
@@ -172,6 +174,78 @@
         "CVSS-10.0"
       ],
       "markdownRow": "| #11+ — Nov 18, 2026 | CVE-2026-130778 (Enterprise Software) | Incus before 7.6.0 contains an authentication bypass vulnerability that allows remote attackers to authenticate as any trusted certifi… ([NIST NVD (10.0)](https://nvd.nist.gov/vuln/detail/CVE-2026-130778)) | Pre-KEV critical disclosure (CVSS 10.0) | Live Wire (CRITICAL) — Watchlist #2 |"
+    },
+    {
+      "id": "nvd-cve-2026-130754",
+      "sourceId": "nist-nvd",
+      "sourceName": "NIST NVD Critical CVEs",
+      "attributionText": "Source: NIST National Vulnerability Database API 2.0 (nvd.nist.gov — CVSS 9.8)",
+      "publishedAtISO": "2026-11-18T19:17:45.940Z",
+      "title": "CVE-2026-130754 (CVSS 9.8): All versions of LaraDashboard contain an authentication bypass in SocialAuthService::findOrCreateUser(),…",
+      "summary": "[CVSS 9.8 CRITICAL] All versions of LaraDashboard contain an authentication bypass in SocialAuthService::findOrCreateUser(), which links a social login to an existing account by email without checking that the OAuth provider verified that email. Unauthenticated attackers us…",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-130754",
+      "severity": "critical",
+      "watchlistMatches": [
+        "#2"
+      ],
+      "riskMatrixMatches": [
+        "#2"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "NIST-NVD",
+        "CVE-2026-130754",
+        "CVSS-9.8"
+      ],
+      "markdownRow": "| #11+ — Nov 18, 2026 | CVE-2026-130754 (Enterprise Software) | All versions of LaraDashboard contain an authentication bypass in SocialAuthService::findOrCreateUser(), which links a social login to… ([NIST NVD (9.8)](https://nvd.nist.gov/vuln/detail/CVE-2026-130754)) | Pre-KEV critical disclosure (CVSS 9.8) | Live Wire (CRITICAL) — Watchlist #2 |"
+    },
+    {
+      "id": "nvd-cve-2012-20007",
+      "sourceId": "nist-nvd",
+      "sourceName": "NIST NVD Critical CVEs",
+      "attributionText": "Source: NIST National Vulnerability Database API 2.0 (nvd.nist.gov — CVSS 9.8)",
+      "publishedAtISO": "2026-11-18T16:17:47.560Z",
+      "title": "CVE-2012-20007 (CVSS 9.8): ThinkPHP 2.0 through 2.2 and 3.0 Lite mode contains an eval injection vulnerability in the Dispatcher PA…",
+      "summary": "[CVSS 9.8 CRITICAL] ThinkPHP 2.0 through 2.2 and 3.0 Lite mode contains an eval injection vulnerability in the Dispatcher PATH_INFO parsing, which uses preg_replace with the /e modifier and a double-quoted replacement. Unauthenticated attackers can send crafted requests to…",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2012-20007",
+      "severity": "critical",
+      "watchlistMatches": [
+        "#2"
+      ],
+      "riskMatrixMatches": [
+        "#2"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "NIST-NVD",
+        "CVE-2012-20007",
+        "CVSS-9.8"
+      ],
+      "markdownRow": "| #11+ — Nov 18, 2026 | CVE-2012-20007 (Enterprise Software) | ThinkPHP 2.0 through 2.2 and 3.0 Lite mode contains an eval injection vulnerability in the Dispatcher PATH_INFO parsing, which uses pr… ([NIST NVD (9.8)](https://nvd.nist.gov/vuln/detail/CVE-2012-20007)) | Pre-KEV critical disclosure (CVSS 9.8) | Live Wire (CRITICAL) — Watchlist #2 |"
+    },
+    {
+      "id": "nvd-cve-2026-130733",
+      "sourceId": "nist-nvd",
+      "sourceName": "NIST NVD Critical CVEs",
+      "attributionText": "Source: NIST National Vulnerability Database API 2.0 (nvd.nist.gov — CVSS 9.8)",
+      "publishedAtISO": "2026-11-18T12:17:19.627Z",
+      "title": "CVE-2026-130733 (CVSS 9.8): Grav from 2.0.0 before 2.2.18 contains an authorization bypass vulnerability that allows publishers to o…",
+      "summary": "[CVSS 9.8 CRITICAL] Grav from 2.0.0 before 2.2.18 contains an authorization bypass vulnerability that allows publishers to overwrite pages their per-page permissions deny by abusing FolderStorage key delimiter collisions and PageStorage folder reconstruction. Attackers can…",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-130733",
+      "severity": "critical",
+      "watchlistMatches": [
+        "#2"
+      ],
+      "riskMatrixMatches": [
+        "#2"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "NIST-NVD",
+        "CVE-2026-130733",
+        "CVSS-9.8"
+      ],
+      "markdownRow": "| #11+ — Nov 18, 2026 | CVE-2026-130733 (Enterprise Software) | Grav from 2.0.0 before 2.2.18 contains an authorization bypass vulnerability that allows publishers to overwrite pages their per-page… ([NIST NVD (9.8)](https://nvd.nist.gov/vuln/detail/CVE-2026-130733)) | Pre-KEV critical disclosure (CVSS 9.8) | Live Wire (CRITICAL) — Watchlist #2 |"
     },
     {
       "id": "kev-cve-2026-40217",
@@ -407,13 +481,13 @@
       "markdownRow": "| #11+ — 2026-11-10 | Google Chromium (Enterprise / Edge Security) | Google Chromium contains a use-after-free vulnerability in the XML component that could allow a remote attacker to execute arbitrary code i… ([CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search_api_fulltext=CVE-2026-125350)) | Active exploitation confirmed (CVE-2026-125350); due 2026-11-24 | Live Wire (CRITICAL) — Watchlist #2, #8 |"
     },
     {
-      "id": "faa-gdp-sfo-1",
+      "id": "faa-gdp-sfo-2",
       "sourceId": "faa-nas",
       "sourceName": "FAA NAS Status",
-      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Thu Nov 19 21:38:39 2026 GMT",
-      "publishedAtISO": "2026-11-19T21:38:39.000Z",
-      "title": "FAA Ground Delay Program: SFO (Avg 55 minutes)",
-      "summary": "GDP at SFO — Reason: LOW, Avg delay: 55 minutes, Max: 2 hours and 15 minutes. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Thu Nov 19 21:38:39 2026 GMT)",
+      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 00:35:58 2026 GMT",
+      "publishedAtISO": "2026-11-20T00:35:58.000Z",
+      "title": "FAA Ground Delay Program: SFO (Avg 1 hour and 20 minutes)",
+      "summary": "GDP at SFO — Reason: LOW, Avg delay: 1 hour and 20 minutes, Max: 5 hours and 31 minutes. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 00:35:58 2026 GMT)",
       "url": "https://nasstatus.faa.gov/",
       "severity": "elevated",
       "watchlistMatches": [
@@ -429,16 +503,16 @@
         "Ground-Delay",
         "SFO"
       ],
-      "markdownRow": "| #11+ — Thu Nov 19 21:38:39 2026 GMT | FAA NAS — SFO (National Aviation / ATC) | Ground Delay Program at SFO (55 minutes) ([FAA NAS Status](https://nasstatus.faa.gov/)) | FAA NAS Ground Delay Programs: LOW | Live Wire (ELEVATED) — Watchlist #5, #7 |"
+      "markdownRow": "| #11+ — Fri Nov 20 00:35:58 2026 GMT | FAA NAS — SFO (National Aviation / ATC) | Ground Delay Program at SFO (1 hour and 20 minutes) ([FAA NAS Status](https://nasstatus.faa.gov/)) | FAA NAS Ground Delay Programs: LOW | Live Wire (ELEVATED) — Watchlist #5, #7 |"
     },
     {
-      "id": "faa-gdp-las-2",
+      "id": "faa-gdp-las-3",
       "sourceId": "faa-nas",
       "sourceName": "FAA NAS Status",
-      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Thu Nov 19 21:38:39 2026 GMT",
-      "publishedAtISO": "2026-11-19T21:38:39.000Z",
+      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 00:35:58 2026 GMT",
+      "publishedAtISO": "2026-11-20T00:35:58.000Z",
       "title": "FAA Ground Delay Program: LAS (Avg 47 minutes)",
-      "summary": "GDP at LAS — Reason: low ceilings, Avg delay: 47 minutes, Max: 1 hour and 29 minutes. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Thu Nov 19 21:38:39 2026 GMT)",
+      "summary": "GDP at LAS — Reason: low ceilings, Avg delay: 47 minutes, Max: 1 hour and 29 minutes. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 00:35:58 2026 GMT)",
       "url": "https://nasstatus.faa.gov/",
       "severity": "elevated",
       "watchlistMatches": [
@@ -454,16 +528,16 @@
         "Ground-Delay",
         "LAS"
       ],
-      "markdownRow": "| #11+ — Thu Nov 19 21:38:39 2026 GMT | FAA NAS — LAS (National Aviation / ATC) | Ground Delay Program at LAS (47 minutes) ([FAA NAS Status](https://nasstatus.faa.gov/)) | FAA NAS Ground Delay Programs: low ceilings | Live Wire (ELEVATED) — Watchlist #5, #7 |"
+      "markdownRow": "| #11+ — Fri Nov 20 00:35:58 2026 GMT | FAA NAS — LAS (National Aviation / ATC) | Ground Delay Program at LAS (47 minutes) ([FAA NAS Status](https://nasstatus.faa.gov/)) | FAA NAS Ground Delay Programs: low ceilings | Live Wire (ELEVATED) — Watchlist #5, #7 |"
     },
     {
-      "id": "faa-delay-mco-3",
+      "id": "faa-delay-las-4",
       "sourceId": "faa-nas",
       "sourceName": "FAA NAS Status",
-      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Thu Nov 19 21:38:39 2026 GMT",
-      "publishedAtISO": "2026-11-19T21:38:39.000Z",
-      "title": "FAA Arrival/Departure Delay: MCO",
-      "summary": "General Arrival/Departure Delay Info at MCO — Reason: TM Initiatives:MIT:VOL. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Thu Nov 19 21:38:39 2026 GMT)",
+      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 00:35:58 2026 GMT",
+      "publishedAtISO": "2026-11-20T00:35:58.000Z",
+      "title": "FAA Arrival/Departure Delay: LAS",
+      "summary": "General Arrival/Departure Delay Info at LAS — Reason: WX:Low Ceilings. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 00:35:58 2026 GMT)",
       "url": "https://nasstatus.faa.gov/",
       "severity": "elevated",
       "watchlistMatches": [
@@ -476,42 +550,18 @@
       "tags": [
         "FAA-NAS",
         "Arrival-Departure-Delay",
-        "MCO"
+        "LAS"
       ],
-      "markdownRow": "| #11+ — Thu Nov 19 21:38:39 2026 GMT | FAA NAS — MCO (Commercial Aviation) | Arrival/Departure delays reported at MCO ([FAA NAS Status](https://nasstatus.faa.gov/)) | FAA NAS General Arrival/Departure Delay Info: TM Initiatives:MIT:VOL | Live Wire (ELEVATED) — Watchlist #7 |"
-    },
-    {
-      "id": "faa-delay-teb-4",
-      "sourceId": "faa-nas",
-      "sourceName": "FAA NAS Status",
-      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Thu Nov 19 21:38:39 2026 GMT",
-      "publishedAtISO": "2026-11-19T21:38:39.000Z",
-      "title": "FAA Arrival/Departure Delay: TEB",
-      "summary": "General Arrival/Departure Delay Info at TEB — Reason: VOL:Volume. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Thu Nov 19 21:38:39 2026 GMT)",
-      "url": "https://nasstatus.faa.gov/",
-      "severity": "elevated",
-      "watchlistMatches": [
-        "#7"
-      ],
-      "riskMatrixMatches": [
-        "#1"
-      ],
-      "countdownMatches": [],
-      "tags": [
-        "FAA-NAS",
-        "Arrival-Departure-Delay",
-        "TEB"
-      ],
-      "markdownRow": "| #11+ — Thu Nov 19 21:38:39 2026 GMT | FAA NAS — TEB (Commercial Aviation) | Arrival/Departure delays reported at TEB ([FAA NAS Status](https://nasstatus.faa.gov/)) | FAA NAS General Arrival/Departure Delay Info: VOL:Volume | Live Wire (ELEVATED) — Watchlist #7 |"
+      "markdownRow": "| #11+ — Fri Nov 20 00:35:58 2026 GMT | FAA NAS — LAS (Commercial Aviation) | Arrival/Departure delays reported at LAS ([FAA NAS Status](https://nasstatus.faa.gov/)) | FAA NAS General Arrival/Departure Delay Info: WX:Low Ceilings | Live Wire (ELEVATED) — Watchlist #7 |"
     },
     {
       "id": "faa-closure-sna-5",
       "sourceId": "faa-nas",
       "sourceName": "FAA NAS Status",
-      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Thu Nov 19 21:38:39 2026 GMT",
-      "publishedAtISO": "2026-11-19T21:38:39.000Z",
+      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 00:35:58 2026 GMT",
+      "publishedAtISO": "2026-11-20T00:35:58.000Z",
       "title": "FAA Airport Closures: SNA",
-      "summary": "SNA: !SNA 11/020 SNA AD AP CLSD DLY 0730-1415 2611150730-2611211415 | Reopen: Nov 21 at 14:15 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Thu Nov 19 21:38:39 2026 GMT)",
+      "summary": "SNA: !SNA 11/020 SNA AD AP CLSD DLY 0730-1415 2611150730-2611211415 | Reopen: Nov 21 at 14:15 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 00:35:58 2026 GMT)",
       "url": "https://nasstatus.faa.gov/",
       "severity": "elevated",
       "watchlistMatches": [
@@ -526,16 +576,16 @@
         "Airport-Closure",
         "SNA"
       ],
-      "markdownRow": "| #11+ — Thu Nov 19 21:38:39 2026 GMT | FAA NAS — SNA (National Aviation / Airport Ops) | Airport Closures active at SNA until Nov 21 at 14:15 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !SNA 11/020 SNA AD AP CLSD DLY 0730-1415 2611150730-2611211415 | Live Wire (ELEVATED) — Watchlist #7 |"
+      "markdownRow": "| #11+ — Fri Nov 20 00:35:58 2026 GMT | FAA NAS — SNA (National Aviation / Airport Ops) | Airport Closures active at SNA until Nov 21 at 14:15 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !SNA 11/020 SNA AD AP CLSD DLY 0730-1415 2611150730-2611211415 | Live Wire (ELEVATED) — Watchlist #7 |"
     },
     {
       "id": "cloudflare-status-ljrvdciu7syf",
       "sourceId": "cloudflare-status",
       "sourceName": "Cloudflare Status",
       "attributionText": "Source: Cloudflare System Status (www.cloudflarestatus.com)",
-      "publishedAtISO": "2026-11-19T21:23:35.842Z",
-      "title": "Cloudflare: Observability ingestion delay and query failures [MONITORING]",
-      "summary": "A fix has been implemented and we are monitoring the results.",
+      "publishedAtISO": "2026-11-19T21:55:44.489Z",
+      "title": "Cloudflare: Observability ingestion delay and query failures [RESOLVED]",
+      "summary": "This incident has been resolved.",
       "url": "https://www.cloudflarestatus.com/incidents/ljrvdciu7syf",
       "severity": "elevated",
       "watchlistMatches": [
@@ -550,9 +600,9 @@
       "tags": [
         "Cloudflare",
         "impact:minor",
-        "status:monitoring"
+        "status:resolved"
       ],
-      "markdownRow": "| #11+ — Nov 19, 2026 | Cloudflare (Global CDN & Edge) | Observability ingestion delay and query failures (minor impact; monitoring) ([Cloudflare Status](https://www.cloudflarestatus.com/incidents/ljrvdciu7syf)) | A fix has been implemented and we are monitoring the results. | Live Wire (ELEVATED) — Watchlist #6, #7 |"
+      "markdownRow": "| #11+ — Nov 19, 2026 | Cloudflare (Global CDN & Edge) | Observability ingestion delay and query failures (minor impact; resolved) ([Cloudflare Status](https://www.cloudflarestatus.com/incidents/ljrvdciu7syf)) | This incident has been resolved. | Live Wire (ELEVATED) — Watchlist #6, #7 |"
     },
     {
       "id": "nvd-cve-2026-82339",
@@ -625,54 +675,6 @@
         "CVSS-9.1"
       ],
       "markdownRow": "| #11+ — Nov 19, 2026 | CVE-2026-76535 (Enterprise Software) | In Splunk Enterprise versions below 10.6.1, 10.4.5, 10.2.9, 10.0.12, and 9.4.17, an unauthenticated user could run arbitrary Search Pr… ([NIST NVD (9.1)](https://nvd.nist.gov/vuln/detail/CVE-2026-76535)) | Pre-KEV critical disclosure (CVSS 9.1) | Live Wire (ELEVATED) — Watchlist #2 |"
-    },
-    {
-      "id": "nvd-cve-2026-131287",
-      "sourceId": "nist-nvd",
-      "sourceName": "NIST NVD Critical CVEs",
-      "attributionText": "Source: NIST National Vulnerability Database API 2.0 (nvd.nist.gov — CVSS 9.6)",
-      "publishedAtISO": "2026-11-19T20:17:44.650Z",
-      "title": "CVE-2026-131287 (CVSS 9.6): In Splunk SOAR versions below 8.8.0, a user that holds a role with the Playbooks view, edit, execute, an…",
-      "summary": "[CVSS 9.6 CRITICAL] In Splunk SOAR versions below 8.8.0, a user that holds a role with the Playbooks view, edit, execute, and delete permissions could cause existing cross-repository playbook references to run attacker-controlled playbook code. The vulnerability is possible…",
-      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-131287",
-      "severity": "elevated",
-      "watchlistMatches": [
-        "#2"
-      ],
-      "riskMatrixMatches": [
-        "#2"
-      ],
-      "countdownMatches": [],
-      "tags": [
-        "NIST-NVD",
-        "CVE-2026-131287",
-        "CVSS-9.6"
-      ],
-      "markdownRow": "| #11+ — Nov 19, 2026 | CVE-2026-131287 (Enterprise Software) | In Splunk SOAR versions below 8.8.0, a user that holds a role with the Playbooks view, edit, execute, and delete permissions could cau… ([NIST NVD (9.6)](https://nvd.nist.gov/vuln/detail/CVE-2026-131287)) | Pre-KEV critical disclosure (CVSS 9.6) | Live Wire (ELEVATED) — Watchlist #2 |"
-    },
-    {
-      "id": "nvd-cve-2026-131202",
-      "sourceId": "nist-nvd",
-      "sourceName": "NIST NVD Critical CVEs",
-      "attributionText": "Source: NIST National Vulnerability Database API 2.0 (nvd.nist.gov — CVSS 9.1)",
-      "publishedAtISO": "2026-11-19T20:17:33.250Z",
-      "title": "CVE-2026-131202 (CVSS 9.1): In Splunk Enterprise Security versions below 8.7.0, a user who holds the \"ess_admin\" Splunk Enterprise S…",
-      "summary": "[CVSS 9.1 CRITICAL] In Splunk Enterprise Security versions below 8.7.0, a user who holds the \"ess_admin\" Splunk Enterprise Security role could execute arbitrary code on the search head as the user account running Splunk Enterprise by combining lookup file upload and Configu…",
-      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-131202",
-      "severity": "elevated",
-      "watchlistMatches": [
-        "#2"
-      ],
-      "riskMatrixMatches": [
-        "#2"
-      ],
-      "countdownMatches": [],
-      "tags": [
-        "NIST-NVD",
-        "CVE-2026-131202",
-        "CVSS-9.1"
-      ],
-      "markdownRow": "| #11+ — Nov 19, 2026 | CVE-2026-131202 (Enterprise Software) | In Splunk Enterprise Security versions below 8.7.0, a user who holds the \"ess_admin\" Splunk Enterprise Security role could execute arb… ([NIST NVD (9.1)](https://nvd.nist.gov/vuln/detail/CVE-2026-131202)) | Pre-KEV critical disclosure (CVSS 9.1) | Live Wire (ELEVATED) — Watchlist #2 |"
     },
     {
       "id": "github-status-m310qbkfm3ww",
@@ -1272,6 +1274,30 @@
         "OFAC-Sanctions"
       ],
       "markdownRow": "| #11+ — 2026-11-18 | Treasury Department, Foreign Assets Control Office (Sanctions, Maritime & Grid) | Notice of OFAC Sanctions Action ([FR 2026-23456](https://www.federalregister.gov/documents/2026/11/18/2026-23456/notice-of-ofac-sanctions-action)) | Notice directive mapped to Watchlist #4, #6 | Live Wire (ELEVATED) — Watchlist #4, #6 |"
+    },
+    {
+      "id": "nvd-cve-2026-130679",
+      "sourceId": "nist-nvd",
+      "sourceName": "NIST NVD Critical CVEs",
+      "attributionText": "Source: NIST National Vulnerability Database API 2.0 (nvd.nist.gov — CVSS 9.0)",
+      "publishedAtISO": "2026-11-18T12:17:11.450Z",
+      "title": "CVE-2026-130679 (CVSS 9.0): SiYuan before 3.8.10 contains a stored cross-site scripting vulnerability in genAVValueHTML() that allow…",
+      "summary": "[CVSS 9.0 CRITICAL] SiYuan before 3.8.10 contains a stored cross-site scripting vulnerability in genAVValueHTML() that allows attackers who can store Attribute View asset values to inject script through an unescaped image src attribute. Attackers can store an image URL cont…",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-130679",
+      "severity": "elevated",
+      "watchlistMatches": [
+        "#2"
+      ],
+      "riskMatrixMatches": [
+        "#2"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "NIST-NVD",
+        "CVE-2026-130679",
+        "CVSS-9.0"
+      ],
+      "markdownRow": "| #11+ — Nov 18, 2026 | CVE-2026-130679 (Enterprise Software) | SiYuan before 3.8.10 contains a stored cross-site scripting vulnerability in genAVValueHTML() that allows attackers who can store Attr… ([NIST NVD (9.0)](https://nvd.nist.gov/vuln/detail/CVE-2026-130679)) | Pre-KEV critical disclosure (CVSS 9.0) | Live Wire (ELEVATED) — Watchlist #2 |"
     },
     {
       "id": "kev-cve-2024-10441",
@@ -2075,37 +2101,13 @@
       "markdownRow": "| #11+ — 2026-11-09 | IBM Aspera Faspex (Enterprise / Edge Security) | IBM Aspera Faspex contains an incorrect authorization vulnerability that could allow an authenticated user to craft a specific message to b… ([CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search_api_fulltext=CVE-2026-123218)) | Active exploitation confirmed (CVE-2026-123218); due 2026-11-12 | Live Wire (ELEVATED) — Watchlist #2 |"
     },
     {
-      "id": "kev-cve-2026-19868",
-      "sourceId": "cisa-kev",
-      "sourceName": "CISA KEV Catalog",
-      "attributionText": "Source: CISA Known Exploited Vulnerabilities Catalog (2026.11.18)",
-      "publishedAtISO": "2026-11-06T12:00:00.000Z",
-      "title": "CVE-2026-19868: SonicWall SonicOS SSLVPN — SonicWall SonicOS SSLVPN Use of Single-factor Authentication Vulnerability",
-      "summary": "SonicWall SonicOS SSLVPN contains a use of single-factor authentication vulnerability that may allow a user with valid credentials for an alternate authentication method to bypass SAML authentication controls. Successful exploitation may also bypass SAML-enforced multi-factor au…",
-      "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search_api_fulltext=CVE-2026-19868",
-      "severity": "elevated",
-      "watchlistMatches": [
-        "#2"
-      ],
-      "riskMatrixMatches": [
-        "#2"
-      ],
-      "countdownMatches": [],
-      "tags": [
-        "CISA-KEV",
-        "CVE-2026-19868",
-        "SonicWall"
-      ],
-      "markdownRow": "| #11+ — 2026-11-06 | SonicWall SonicOS SSLVPN (Enterprise / Edge Security) | SonicWall SonicOS SSLVPN contains a use of single-factor authentication vulnerability that may allow a user with valid credentials for an a… ([CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search_api_fulltext=CVE-2026-19868)) | Active exploitation confirmed (CVE-2026-19868); due 2026-11-20 | Live Wire (ELEVATED) — Watchlist #2 |"
-    },
-    {
       "id": "faa-closure-lax-6",
       "sourceId": "faa-nas",
       "sourceName": "FAA NAS Status",
-      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Thu Nov 19 21:38:39 2026 GMT",
-      "publishedAtISO": "2026-11-19T21:38:39.000Z",
+      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 00:35:58 2026 GMT",
+      "publishedAtISO": "2026-11-20T00:35:58.000Z",
       "title": "FAA Airport Closures: LAX (GA NOTAM Restriction)",
-      "summary": "LAX: !LAX 05/277 LAX AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR CTC ATLANTIC AVIATION 310-258-9884 OR SIGNATURE AVIATION 310-410-9605 2605271826-2705281600 | Reopen: May 28 at 16:00 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Thu Nov 19 21:38:39 2026 GMT)",
+      "summary": "LAX: !LAX 05/277 LAX AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR CTC ATLANTIC AVIATION 310-258-9884 OR SIGNATURE AVIATION 310-410-9605 2605271826-2705281600 | Reopen: May 28 at 16:00 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 00:35:58 2026 GMT)",
       "url": "https://nasstatus.faa.gov/",
       "severity": "info",
       "watchlistMatches": [
@@ -2120,16 +2122,16 @@
         "Airport-Closure",
         "LAX"
       ],
-      "markdownRow": "| #11+ — Thu Nov 19 21:38:39 2026 GMT | FAA NAS — LAX (National Aviation / Airport Ops) | Airport Closures active at LAX until May 28 at 16:00 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !LAX 05/277 LAX AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR CTC ATLANTIC AVIATION 310-258-9884 OR SIGNATURE A… | Live Wire (INFO) — Watchlist #7 |"
+      "markdownRow": "| #11+ — Fri Nov 20 00:35:58 2026 GMT | FAA NAS — LAX (National Aviation / Airport Ops) | Airport Closures active at LAX until May 28 at 16:00 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !LAX 05/277 LAX AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR CTC ATLANTIC AVIATION 310-258-9884 OR SIGNATURE A… | Live Wire (INFO) — Watchlist #7 |"
     },
     {
       "id": "faa-closure-san-7",
       "sourceId": "faa-nas",
       "sourceName": "FAA NAS Status",
-      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Thu Nov 19 21:38:39 2026 GMT",
-      "publishedAtISO": "2026-11-19T21:38:39.000Z",
+      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 00:35:58 2026 GMT",
+      "publishedAtISO": "2026-11-20T00:35:58.000Z",
       "title": "FAA Airport Closures: SAN (GA NOTAM Restriction)",
-      "summary": "SAN: !SAN 10/004 SAN AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC PPR 619-298-7704 2610011633-2701010800 | Reopen: Jan 01 at 08:00 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Thu Nov 19 21:38:39 2026 GMT)",
+      "summary": "SAN: !SAN 10/004 SAN AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC PPR 619-298-7704 2610011633-2701010800 | Reopen: Jan 01 at 08:00 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 00:35:58 2026 GMT)",
       "url": "https://nasstatus.faa.gov/",
       "severity": "info",
       "watchlistMatches": [
@@ -2144,16 +2146,16 @@
         "Airport-Closure",
         "SAN"
       ],
-      "markdownRow": "| #11+ — Thu Nov 19 21:38:39 2026 GMT | FAA NAS — SAN (National Aviation / Airport Ops) | Airport Closures active at SAN until Jan 01 at 08:00 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !SAN 10/004 SAN AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC PPR 619-298-7704 2610011633-2701010800 | Live Wire (INFO) — Watchlist #7 |"
+      "markdownRow": "| #11+ — Fri Nov 20 00:35:58 2026 GMT | FAA NAS — SAN (National Aviation / Airport Ops) | Airport Closures active at SAN until Jan 01 at 08:00 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !SAN 10/004 SAN AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC PPR 619-298-7704 2610011633-2701010800 | Live Wire (INFO) — Watchlist #7 |"
     },
     {
       "id": "faa-closure-las-8",
       "sourceId": "faa-nas",
       "sourceName": "FAA NAS Status",
-      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Thu Nov 19 21:38:39 2026 GMT",
-      "publishedAtISO": "2026-11-19T21:38:39.000Z",
+      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 00:35:58 2026 GMT",
+      "publishedAtISO": "2026-11-20T00:35:58.000Z",
       "title": "FAA Airport Closures: LAS (GA NOTAM Restriction)",
-      "summary": "LAS: !LAS 10/160 LAS AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR 702-261-7775 2610281926-2701272300 | Reopen: Jan 27 at 23:00 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Thu Nov 19 21:38:39 2026 GMT)",
+      "summary": "LAS: !LAS 10/160 LAS AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR 702-261-7775 2610281926-2701272300 | Reopen: Jan 27 at 23:00 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 00:35:58 2026 GMT)",
       "url": "https://nasstatus.faa.gov/",
       "severity": "info",
       "watchlistMatches": [
@@ -2168,7 +2170,7 @@
         "Airport-Closure",
         "LAS"
       ],
-      "markdownRow": "| #11+ — Thu Nov 19 21:38:39 2026 GMT | FAA NAS — LAS (National Aviation / Airport Ops) | Airport Closures active at LAS until Jan 27 at 23:00 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !LAS 10/160 LAS AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR 702-261-7775 2610281926-2701272300 | Live Wire (INFO) — Watchlist #7 |"
+      "markdownRow": "| #11+ — Fri Nov 20 00:35:58 2026 GMT | FAA NAS — LAS (National Aviation / Airport Ops) | Airport Closures active at LAS until Jan 27 at 23:00 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !LAS 10/160 LAS AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR 702-261-7775 2610281926-2701272300 | Live Wire (INFO) — Watchlist #7 |"
     },
     {
       "id": "ofac-doe-2026-23611",
