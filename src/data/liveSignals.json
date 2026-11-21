@@ -1,7 +1,7 @@
 {
-  "ingestedAtISO": "2026-11-21T09:37:13.711Z",
+  "ingestedAtISO": "2026-11-21T12:36:49.434Z",
   "ingestionMode": "ZERO_KEY_PUBLIC_FEEDS",
-  "totalSignals": 106,
+  "totalSignals": 109,
   "signals": [
     {
       "id": "nvd-cve-2026-120539",
@@ -686,13 +686,38 @@
       "markdownRow": "| #11+ — 2026-11-23 | Securities and Exchange Commission (Federal Regulatory) | Self-Regulatory Organizations; Cboe Clear U.S., LLC; Notice of Filing and Immediate Effectiveness of Proposed Rule Change To Amend Its Fee… ([FR 2026-23746](https://www.federalregister.gov/documents/2026/11/23/2026-23746/self-regulatory-organizations-cboe-clear-us-llc-notice-of-filing-and-immediate-effectiveness-of)) | Notice filing mapped to Risk #5, #7 | Live Wire (ELEVATED) — Watchlist #6 |"
     },
     {
-      "id": "faa-closure-sna-1",
+      "id": "faa-gdp-lga-1",
       "sourceId": "faa-nas",
       "sourceName": "FAA NAS Status",
-      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Sat Nov 21 09:36:54 2026 GMT",
-      "publishedAtISO": "2026-11-21T09:36:54.000Z",
+      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Sat Nov 21 12:35:55 2026 GMT",
+      "publishedAtISO": "2026-11-21T12:35:55.000Z",
+      "title": "FAA Ground Delay Program: LGA (Avg 22 minutes)",
+      "summary": "GDP at LGA — Reason: runway construction, Avg delay: 22 minutes, Max: 52 minutes. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Sat Nov 21 12:35:55 2026 GMT)",
+      "url": "https://nasstatus.faa.gov/",
+      "severity": "elevated",
+      "watchlistMatches": [
+        "#5",
+        "#7"
+      ],
+      "riskMatrixMatches": [
+        "#1"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "FAA-NAS",
+        "Ground-Delay",
+        "LGA"
+      ],
+      "markdownRow": "| #11+ — Sat Nov 21 12:35:55 2026 GMT | FAA NAS — LGA (National Aviation / ATC) | Ground Delay Program at LGA (22 minutes) ([FAA NAS Status](https://nasstatus.faa.gov/)) | FAA NAS Ground Delay Programs: runway construction | Live Wire (ELEVATED) — Watchlist #5, #7 |"
+    },
+    {
+      "id": "faa-closure-sna-2",
+      "sourceId": "faa-nas",
+      "sourceName": "FAA NAS Status",
+      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Sat Nov 21 12:35:55 2026 GMT",
+      "publishedAtISO": "2026-11-21T12:35:55.000Z",
       "title": "FAA Airport Closures: SNA",
-      "summary": "SNA: !SNA 11/020 SNA AD AP CLSD DLY 0730-1415 2611150730-2611211415 | Reopen: Nov 21 at 14:15 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Sat Nov 21 09:36:54 2026 GMT)",
+      "summary": "SNA: !SNA 11/020 SNA AD AP CLSD DLY 0730-1415 2611150730-2611211415 | Reopen: Nov 21 at 14:15 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Sat Nov 21 12:35:55 2026 GMT)",
       "url": "https://nasstatus.faa.gov/",
       "severity": "elevated",
       "watchlistMatches": [
@@ -707,16 +732,16 @@
         "Airport-Closure",
         "SNA"
       ],
-      "markdownRow": "| #11+ — Sat Nov 21 09:36:54 2026 GMT | FAA NAS — SNA (National Aviation / Airport Ops) | Airport Closures active at SNA until Nov 21 at 14:15 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !SNA 11/020 SNA AD AP CLSD DLY 0730-1415 2611150730-2611211415 | Live Wire (ELEVATED) — Watchlist #7 |"
+      "markdownRow": "| #11+ — Sat Nov 21 12:35:55 2026 GMT | FAA NAS — SNA (National Aviation / Airport Ops) | Airport Closures active at SNA until Nov 21 at 14:15 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !SNA 11/020 SNA AD AP CLSD DLY 0730-1415 2611150730-2611211415 | Live Wire (ELEVATED) — Watchlist #7 |"
     },
     {
-      "id": "faa-closure-pns-2",
+      "id": "faa-closure-hts-3",
       "sourceId": "faa-nas",
       "sourceName": "FAA NAS Status",
-      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Sat Nov 21 09:36:54 2026 GMT",
-      "publishedAtISO": "2026-11-21T09:36:54.000Z",
-      "title": "FAA Airport Closures: PNS",
-      "summary": "PNS: !PNS 11/069 PNS AD AP CLSD EXC HEL OPS 2611210600-2611211100 | Reopen: Nov 21 at 11:00 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Sat Nov 21 09:36:54 2026 GMT)",
+      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Sat Nov 21 12:35:55 2026 GMT",
+      "publishedAtISO": "2026-11-21T12:35:55.000Z",
+      "title": "FAA Airport Closures: HTS",
+      "summary": "HTS: !HTS 11/044 HTS AD AP CLSD EXC 20MIN &#xd;PPR 122.950/304-453-6165 2611211200-2611212200 | Reopen: Nov 21 at 22:00 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Sat Nov 21 12:35:55 2026 GMT)",
       "url": "https://nasstatus.faa.gov/",
       "severity": "elevated",
       "watchlistMatches": [
@@ -729,18 +754,18 @@
       "tags": [
         "FAA-NAS",
         "Airport-Closure",
-        "PNS"
+        "HTS"
       ],
-      "markdownRow": "| #11+ — Sat Nov 21 09:36:54 2026 GMT | FAA NAS — PNS (National Aviation / Airport Ops) | Airport Closures active at PNS until Nov 21 at 11:00 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !PNS 11/069 PNS AD AP CLSD EXC HEL OPS 2611210600-2611211100 | Live Wire (ELEVATED) — Watchlist #7 |"
+      "markdownRow": "| #11+ — Sat Nov 21 12:35:55 2026 GMT | FAA NAS — HTS (National Aviation / Airport Ops) | Airport Closures active at HTS until Nov 21 at 22:00 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !HTS 11/044 HTS AD AP CLSD EXC 20MIN &#xd;PPR 122.950/304-453-6165 2611211200-2611212200 | Live Wire (ELEVATED) — Watchlist #7 |"
     },
     {
-      "id": "faa-closure-sbp-4",
+      "id": "faa-closure-sbp-5",
       "sourceId": "faa-nas",
       "sourceName": "FAA NAS Status",
-      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Sat Nov 21 09:36:54 2026 GMT",
-      "publishedAtISO": "2026-11-21T09:36:54.000Z",
+      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Sat Nov 21 12:35:55 2026 GMT",
+      "publishedAtISO": "2026-11-21T12:35:55.000Z",
       "title": "FAA Airport Closures: SBP",
-      "summary": "SBP: !SBP 11/024 SBP AD AP CLSD 2611210727-2611211300 | Reopen: Nov 21 at 13:00 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Sat Nov 21 09:36:54 2026 GMT)",
+      "summary": "SBP: !SBP 11/024 SBP AD AP CLSD 2611210727-2611211300 | Reopen: Nov 21 at 13:00 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Sat Nov 21 12:35:55 2026 GMT)",
       "url": "https://nasstatus.faa.gov/",
       "severity": "elevated",
       "watchlistMatches": [
@@ -755,7 +780,34 @@
         "Airport-Closure",
         "SBP"
       ],
-      "markdownRow": "| #11+ — Sat Nov 21 09:36:54 2026 GMT | FAA NAS — SBP (National Aviation / Airport Ops) | Airport Closures active at SBP until Nov 21 at 13:00 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !SBP 11/024 SBP AD AP CLSD 2611210727-2611211300 | Live Wire (ELEVATED) — Watchlist #7 |"
+      "markdownRow": "| #11+ — Sat Nov 21 12:35:55 2026 GMT | FAA NAS — SBP (National Aviation / Airport Ops) | Airport Closures active at SBP until Nov 21 at 13:00 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !SBP 11/024 SBP AD AP CLSD 2611210727-2611211300 | Live Wire (ELEVATED) — Watchlist #7 |"
+    },
+    {
+      "id": "usgs-us6000ucky",
+      "sourceId": "usgs-seismic",
+      "sourceName": "USGS Subsea Chokepoint Seismic",
+      "attributionText": "Source: USGS Earthquake Hazards Program GeoJSON (earthquake.usgs.gov — M5.2, 10km depth)",
+      "publishedAtISO": "2026-11-21T10:09:05.474Z",
+      "title": "USGS M5.2 (10km depth) — 112 km SSE of Tateyama, Japan [Ryukyu, Japan Trench & Trans-Pacific Landing Zone]",
+      "summary": "Ryukyu, Japan Trench & Trans-Pacific Landing Zone: M5.2 at 34.01°, 140.21° (10km depth). Adjacent to FASTER, Unity, Jupiter, PC-1, Topaz. Cross-check optical SLTE attenuation & BGP reroutes to separate natural seabed turbidity currents from gray-zone anchor/sabotage activity.",
+      "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000ucky",
+      "severity": "elevated",
+      "watchlistMatches": [
+        "#4"
+      ],
+      "riskMatrixMatches": [
+        "#6",
+        "#8"
+      ],
+      "countdownMatches": [
+        "2027-01-08"
+      ],
+      "tags": [
+        "USGS-Seismic",
+        "M5.2",
+        "Subsea-Cable-Corridor"
+      ],
+      "markdownRow": "| #11+ — Nov 21, 2026 | Ryukyu, Japan Trench & Trans-Pacific Landing Zone (Subsea Fiber & Seabed Infrastructure) | M5.2 seismic event near 112 km SSE of Tateyama, Japan (10km depth) ([USGS GeoJSON](https://earthquake.usgs.gov/earthquakes/eventpage/us6000ucky)) | Turbidity-current / cable-fault baseline check (FASTER, Unity, Jupiter, PC-1, Topaz) | Live Wire (ELEVATED) — Watchlist #4 |"
     },
     {
       "id": "cloudflare-status-oz6to8yacrxe",
@@ -2199,13 +2251,13 @@
       "markdownRow": "| #11+ — 2026-11-23 | Transportation Department, Federal Aviation Administration (Federal Regulatory) | Airworthiness Directives; ATR-GIE Avions de Transport Régional Airplanes ([FR 2026-23749](https://www.federalregister.gov/documents/2026/11/23/2026-23749/airworthiness-directives-atr-gie-avions-de-transport-rgional-airplanes)) | Proposed Rule filing mapped to Risk #1 | Live Wire (INFO) — Watchlist #5 |"
     },
     {
-      "id": "faa-closure-lax-3",
+      "id": "faa-closure-lax-4",
       "sourceId": "faa-nas",
       "sourceName": "FAA NAS Status",
-      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Sat Nov 21 09:36:54 2026 GMT",
-      "publishedAtISO": "2026-11-21T09:36:54.000Z",
+      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Sat Nov 21 12:35:55 2026 GMT",
+      "publishedAtISO": "2026-11-21T12:35:55.000Z",
       "title": "FAA Airport Closures: LAX (GA NOTAM Restriction)",
-      "summary": "LAX: !LAX 05/277 LAX AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR CTC ATLANTIC AVIATION 310-258-9884 OR SIGNATURE AVIATION 310-410-9605 2605271826-2705281600 | Reopen: May 28 at 16:00 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Sat Nov 21 09:36:54 2026 GMT)",
+      "summary": "LAX: !LAX 05/277 LAX AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR CTC ATLANTIC AVIATION 310-258-9884 OR SIGNATURE AVIATION 310-410-9605 2605271826-2705281600 | Reopen: May 28 at 16:00 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Sat Nov 21 12:35:55 2026 GMT)",
       "url": "https://nasstatus.faa.gov/",
       "severity": "info",
       "watchlistMatches": [
@@ -2220,16 +2272,16 @@
         "Airport-Closure",
         "LAX"
       ],
-      "markdownRow": "| #11+ — Sat Nov 21 09:36:54 2026 GMT | FAA NAS — LAX (National Aviation / Airport Ops) | Airport Closures active at LAX until May 28 at 16:00 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !LAX 05/277 LAX AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR CTC ATLANTIC AVIATION 310-258-9884 OR SIGNATURE A… | Live Wire (INFO) — Watchlist #7 |"
+      "markdownRow": "| #11+ — Sat Nov 21 12:35:55 2026 GMT | FAA NAS — LAX (National Aviation / Airport Ops) | Airport Closures active at LAX until May 28 at 16:00 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !LAX 05/277 LAX AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR CTC ATLANTIC AVIATION 310-258-9884 OR SIGNATURE A… | Live Wire (INFO) — Watchlist #7 |"
     },
     {
-      "id": "faa-closure-san-5",
+      "id": "faa-closure-san-6",
       "sourceId": "faa-nas",
       "sourceName": "FAA NAS Status",
-      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Sat Nov 21 09:36:54 2026 GMT",
-      "publishedAtISO": "2026-11-21T09:36:54.000Z",
+      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Sat Nov 21 12:35:55 2026 GMT",
+      "publishedAtISO": "2026-11-21T12:35:55.000Z",
       "title": "FAA Airport Closures: SAN (GA NOTAM Restriction)",
-      "summary": "SAN: !SAN 10/004 SAN AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC PPR 619-298-7704 2610011633-2701010800 | Reopen: Jan 01 at 08:00 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Sat Nov 21 09:36:54 2026 GMT)",
+      "summary": "SAN: !SAN 10/004 SAN AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC PPR 619-298-7704 2610011633-2701010800 | Reopen: Jan 01 at 08:00 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Sat Nov 21 12:35:55 2026 GMT)",
       "url": "https://nasstatus.faa.gov/",
       "severity": "info",
       "watchlistMatches": [
@@ -2244,16 +2296,16 @@
         "Airport-Closure",
         "SAN"
       ],
-      "markdownRow": "| #11+ — Sat Nov 21 09:36:54 2026 GMT | FAA NAS — SAN (National Aviation / Airport Ops) | Airport Closures active at SAN until Jan 01 at 08:00 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !SAN 10/004 SAN AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC PPR 619-298-7704 2610011633-2701010800 | Live Wire (INFO) — Watchlist #7 |"
+      "markdownRow": "| #11+ — Sat Nov 21 12:35:55 2026 GMT | FAA NAS — SAN (National Aviation / Airport Ops) | Airport Closures active at SAN until Jan 01 at 08:00 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !SAN 10/004 SAN AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC PPR 619-298-7704 2610011633-2701010800 | Live Wire (INFO) — Watchlist #7 |"
     },
     {
-      "id": "faa-closure-las-6",
+      "id": "faa-closure-las-7",
       "sourceId": "faa-nas",
       "sourceName": "FAA NAS Status",
-      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Sat Nov 21 09:36:54 2026 GMT",
-      "publishedAtISO": "2026-11-21T09:36:54.000Z",
+      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Sat Nov 21 12:35:55 2026 GMT",
+      "publishedAtISO": "2026-11-21T12:35:55.000Z",
       "title": "FAA Airport Closures: LAS (GA NOTAM Restriction)",
-      "summary": "LAS: !LAS 10/160 LAS AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR 702-261-7775 2610281926-2701272300 | Reopen: Jan 27 at 23:00 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Sat Nov 21 09:36:54 2026 GMT)",
+      "summary": "LAS: !LAS 10/160 LAS AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR 702-261-7775 2610281926-2701272300 | Reopen: Jan 27 at 23:00 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Sat Nov 21 12:35:55 2026 GMT)",
       "url": "https://nasstatus.faa.gov/",
       "severity": "info",
       "watchlistMatches": [
@@ -2268,7 +2320,31 @@
         "Airport-Closure",
         "LAS"
       ],
-      "markdownRow": "| #11+ — Sat Nov 21 09:36:54 2026 GMT | FAA NAS — LAS (National Aviation / Airport Ops) | Airport Closures active at LAS until Jan 27 at 23:00 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !LAS 10/160 LAS AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR 702-261-7775 2610281926-2701272300 | Live Wire (INFO) — Watchlist #7 |"
+      "markdownRow": "| #11+ — Sat Nov 21 12:35:55 2026 GMT | FAA NAS — LAS (National Aviation / Airport Ops) | Airport Closures active at LAS until Jan 27 at 23:00 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !LAS 10/160 LAS AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR 702-261-7775 2610281926-2701272300 | Live Wire (INFO) — Watchlist #7 |"
+    },
+    {
+      "id": "usgs-us6000ucij",
+      "sourceId": "usgs-seismic",
+      "sourceName": "USGS Subsea Chokepoint Seismic",
+      "attributionText": "Source: USGS Earthquake Hazards Program GeoJSON (earthquake.usgs.gov — M6.8, 132km depth)",
+      "publishedAtISO": "2026-11-21T09:42:09.120Z",
+      "title": "USGS M6.8 (132km depth) — 105 km NE of Lospalos, Timor Leste [Global Baseline]",
+      "summary": "Global Tectonic Baseline (Outside Primary Cable Chokepoints): M6.8 at -7.73°, 127.54° (132km depth). Major M6.8 seismic event outside primary cable chokepoint boxes; logged as geophysical baseline.",
+      "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000ucij",
+      "severity": "info",
+      "watchlistMatches": [
+        "#7"
+      ],
+      "riskMatrixMatches": [
+        "#6"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "USGS-Seismic",
+        "M6.8",
+        "Global-Baseline"
+      ],
+      "markdownRow": "| #11+ — Nov 21, 2026 | Global Tectonic Baseline (Outside Primary Cable Chokepoints) (Subsea Fiber & Seabed Infrastructure) | M6.8 seismic event near 105 km NE of Lospalos, Timor Leste (132km depth) ([USGS GeoJSON](https://earthquake.usgs.gov/earthquakes/eventpage/us6000ucij)) | Global seismic baseline | Live Wire (INFO) — Watchlist #7 |"
     },
     {
       "id": "usgs-us6000ucfm",
