@@ -1,58 +1,8 @@
 {
-  "ingestedAtISO": "2026-11-20T21:35:59.050Z",
+  "ingestedAtISO": "2026-11-21T00:38:58.368Z",
   "ingestionMode": "ZERO_KEY_PUBLIC_FEEDS",
-  "totalSignals": 114,
+  "totalSignals": 109,
   "signals": [
-    {
-      "id": "faa-gs-teb-1",
-      "sourceId": "faa-nas",
-      "sourceName": "FAA NAS Status",
-      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 21:35:29 2026 GMT",
-      "publishedAtISO": "2026-11-20T21:35:29.000Z",
-      "title": "FAA Ground Stop Active: TEB (Ground Stop Programs)",
-      "summary": "Ground Stop at TEB — Reason: airport volume | Est. End: 5:45 pm EST. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 21:35:29 2026 GMT)",
-      "url": "https://nasstatus.faa.gov/",
-      "severity": "critical",
-      "watchlistMatches": [
-        "#5",
-        "#7"
-      ],
-      "riskMatrixMatches": [
-        "#1"
-      ],
-      "countdownMatches": [],
-      "tags": [
-        "FAA-NAS",
-        "Ground-Stop",
-        "TEB"
-      ],
-      "markdownRow": "| #11+ — Fri Nov 20 21:35:29 2026 GMT | FAA NAS — TEB (National Aviation / ATC) | Active Ground Stop at TEB through 5:45 pm EST ([FAA NAS Status](https://nasstatus.faa.gov/)) | FAA NAS Ground Stop Programs: airport volume | Live Wire (CRITICAL) — Watchlist #5, #7 |"
-    },
-    {
-      "id": "faa-json-gs-teb-13",
-      "sourceId": "faa-nas",
-      "sourceName": "FAA NAS Status",
-      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 21:35:29 2026 GMT",
-      "publishedAtISO": "2026-11-20T21:35:29.000Z",
-      "title": "FAA Ground Stop Active: TEB (Teterboro)",
-      "summary": "Ground Stop at TEB — Reason: Ground Stop. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 21:35:29 2026 GMT)",
-      "url": "https://nasstatus.faa.gov/",
-      "severity": "critical",
-      "watchlistMatches": [
-        "#5",
-        "#7"
-      ],
-      "riskMatrixMatches": [
-        "#1"
-      ],
-      "countdownMatches": [],
-      "tags": [
-        "FAA-NAS",
-        "Ground-Stop",
-        "TEB"
-      ],
-      "markdownRow": "| #11+ — Fri Nov 20 21:35:29 2026 GMT | FAA NAS — TEB (National Aviation / ATC) | Ground Stop active at TEB ([FAA NAS Status](https://nasstatus.faa.gov/)) | Ground Stop | Live Wire (CRITICAL) — Watchlist #5, #7 |"
-    },
     {
       "id": "nvd-cve-2026-133680",
       "sourceId": "nist-nvd",
@@ -519,13 +469,38 @@
       "markdownRow": "| #11+ — 2026-11-10 | Google Chromium (Enterprise / Edge Security) | Google Chromium contains a use-after-free vulnerability in the XML component that could allow a remote attacker to execute arbitrary code i… ([CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search_api_fulltext=CVE-2026-125350)) | Active exploitation confirmed (CVE-2026-125350); due 2026-11-24 | Live Wire (CRITICAL) — Watchlist #2, #8 |"
     },
     {
+      "id": "faa-gdp-ord-1",
+      "sourceId": "faa-nas",
+      "sourceName": "FAA NAS Status",
+      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Sat Nov 21 00:38:06 2026 GMT",
+      "publishedAtISO": "2026-11-21T00:38:06.000Z",
+      "title": "FAA Ground Delay Program: ORD (Avg 51 minutes)",
+      "summary": "GDP at ORD — Reason: other, Avg delay: 51 minutes, Max: 1 hour and 40 minutes. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Sat Nov 21 00:38:06 2026 GMT)",
+      "url": "https://nasstatus.faa.gov/",
+      "severity": "elevated",
+      "watchlistMatches": [
+        "#5",
+        "#7"
+      ],
+      "riskMatrixMatches": [
+        "#1"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "FAA-NAS",
+        "Ground-Delay",
+        "ORD"
+      ],
+      "markdownRow": "| #11+ — Sat Nov 21 00:38:06 2026 GMT | FAA NAS — ORD (National Aviation / ATC) | Ground Delay Program at ORD (51 minutes) ([FAA NAS Status](https://nasstatus.faa.gov/)) | FAA NAS Ground Delay Programs: other | Live Wire (ELEVATED) — Watchlist #5, #7 |"
+    },
+    {
       "id": "faa-gdp-san-2",
       "sourceId": "faa-nas",
       "sourceName": "FAA NAS Status",
-      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 21:35:29 2026 GMT",
-      "publishedAtISO": "2026-11-20T21:35:29.000Z",
+      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Sat Nov 21 00:38:06 2026 GMT",
+      "publishedAtISO": "2026-11-21T00:38:06.000Z",
       "title": "FAA Ground Delay Program: SAN (Avg 25 minutes)",
-      "summary": "GDP at SAN — Reason: airport volume, Avg delay: 25 minutes, Max: 1 hour and 37 minutes. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 21:35:29 2026 GMT)",
+      "summary": "GDP at SAN — Reason: airport volume, Avg delay: 25 minutes, Max: 1 hour and 37 minutes. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Sat Nov 21 00:38:06 2026 GMT)",
       "url": "https://nasstatus.faa.gov/",
       "severity": "elevated",
       "watchlistMatches": [
@@ -541,16 +516,16 @@
         "Ground-Delay",
         "SAN"
       ],
-      "markdownRow": "| #11+ — Fri Nov 20 21:35:29 2026 GMT | FAA NAS — SAN (National Aviation / ATC) | Ground Delay Program at SAN (25 minutes) ([FAA NAS Status](https://nasstatus.faa.gov/)) | FAA NAS Ground Delay Programs: airport volume | Live Wire (ELEVATED) — Watchlist #5, #7 |"
+      "markdownRow": "| #11+ — Sat Nov 21 00:38:06 2026 GMT | FAA NAS — SAN (National Aviation / ATC) | Ground Delay Program at SAN (25 minutes) ([FAA NAS Status](https://nasstatus.faa.gov/)) | FAA NAS Ground Delay Programs: airport volume | Live Wire (ELEVATED) — Watchlist #5, #7 |"
     },
     {
-      "id": "faa-delay-fll-3",
+      "id": "faa-delay-san-3",
       "sourceId": "faa-nas",
       "sourceName": "FAA NAS Status",
-      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 21:35:29 2026 GMT",
-      "publishedAtISO": "2026-11-20T21:35:29.000Z",
-      "title": "FAA Arrival/Departure Delay: FLL",
-      "summary": "General Arrival/Departure Delay Info at FLL — Reason: TM Initiatives:MIT:WX. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 21:35:29 2026 GMT)",
+      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Sat Nov 21 00:38:06 2026 GMT",
+      "publishedAtISO": "2026-11-21T00:38:06.000Z",
+      "title": "FAA Arrival/Departure Delay: SAN",
+      "summary": "General Arrival/Departure Delay Info at SAN — Reason: VOL:Compacted Demand. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Sat Nov 21 00:38:06 2026 GMT)",
       "url": "https://nasstatus.faa.gov/",
       "severity": "elevated",
       "watchlistMatches": [
@@ -563,138 +538,18 @@
       "tags": [
         "FAA-NAS",
         "Arrival-Departure-Delay",
-        "FLL"
+        "SAN"
       ],
-      "markdownRow": "| #11+ — Fri Nov 20 21:35:29 2026 GMT | FAA NAS — FLL (Commercial Aviation) | Arrival/Departure delays reported at FLL ([FAA NAS Status](https://nasstatus.faa.gov/)) | FAA NAS General Arrival/Departure Delay Info: TM Initiatives:MIT:WX | Live Wire (ELEVATED) — Watchlist #7 |"
+      "markdownRow": "| #11+ — Sat Nov 21 00:38:06 2026 GMT | FAA NAS — SAN (Commercial Aviation) | Arrival/Departure delays reported at SAN ([FAA NAS Status](https://nasstatus.faa.gov/)) | FAA NAS General Arrival/Departure Delay Info: VOL:Compacted Demand | Live Wire (ELEVATED) — Watchlist #7 |"
     },
     {
-      "id": "faa-delay-mia-4",
+      "id": "faa-closure-sna-4",
       "sourceId": "faa-nas",
       "sourceName": "FAA NAS Status",
-      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 21:35:29 2026 GMT",
-      "publishedAtISO": "2026-11-20T21:35:29.000Z",
-      "title": "FAA Arrival/Departure Delay: MIA",
-      "summary": "General Arrival/Departure Delay Info at MIA — Reason: TM Initiatives:MIT:WX. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 21:35:29 2026 GMT)",
-      "url": "https://nasstatus.faa.gov/",
-      "severity": "elevated",
-      "watchlistMatches": [
-        "#7"
-      ],
-      "riskMatrixMatches": [
-        "#1"
-      ],
-      "countdownMatches": [],
-      "tags": [
-        "FAA-NAS",
-        "Arrival-Departure-Delay",
-        "MIA"
-      ],
-      "markdownRow": "| #11+ — Fri Nov 20 21:35:29 2026 GMT | FAA NAS — MIA (Commercial Aviation) | Arrival/Departure delays reported at MIA ([FAA NAS Status](https://nasstatus.faa.gov/)) | FAA NAS General Arrival/Departure Delay Info: TM Initiatives:MIT:WX | Live Wire (ELEVATED) — Watchlist #7 |"
-    },
-    {
-      "id": "faa-delay-opf-5",
-      "sourceId": "faa-nas",
-      "sourceName": "FAA NAS Status",
-      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 21:35:29 2026 GMT",
-      "publishedAtISO": "2026-11-20T21:35:29.000Z",
-      "title": "FAA Arrival/Departure Delay: OPF",
-      "summary": "General Arrival/Departure Delay Info at OPF — Reason: VOL:Compacted Demand. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 21:35:29 2026 GMT)",
-      "url": "https://nasstatus.faa.gov/",
-      "severity": "elevated",
-      "watchlistMatches": [
-        "#7"
-      ],
-      "riskMatrixMatches": [
-        "#1"
-      ],
-      "countdownMatches": [],
-      "tags": [
-        "FAA-NAS",
-        "Arrival-Departure-Delay",
-        "OPF"
-      ],
-      "markdownRow": "| #11+ — Fri Nov 20 21:35:29 2026 GMT | FAA NAS — OPF (Commercial Aviation) | Arrival/Departure delays reported at OPF ([FAA NAS Status](https://nasstatus.faa.gov/)) | FAA NAS General Arrival/Departure Delay Info: VOL:Compacted Demand | Live Wire (ELEVATED) — Watchlist #7 |"
-    },
-    {
-      "id": "faa-delay-sfo-6",
-      "sourceId": "faa-nas",
-      "sourceName": "FAA NAS Status",
-      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 21:35:29 2026 GMT",
-      "publishedAtISO": "2026-11-20T21:35:29.000Z",
-      "title": "FAA Arrival/Departure Delay: SFO",
-      "summary": "General Arrival/Departure Delay Info at SFO — Reason: RWY:Rwy Change - Operational Necessity. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 21:35:29 2026 GMT)",
-      "url": "https://nasstatus.faa.gov/",
-      "severity": "elevated",
-      "watchlistMatches": [
-        "#7"
-      ],
-      "riskMatrixMatches": [
-        "#1"
-      ],
-      "countdownMatches": [],
-      "tags": [
-        "FAA-NAS",
-        "Arrival-Departure-Delay",
-        "SFO"
-      ],
-      "markdownRow": "| #11+ — Fri Nov 20 21:35:29 2026 GMT | FAA NAS — SFO (Commercial Aviation) | Arrival/Departure delays reported at SFO ([FAA NAS Status](https://nasstatus.faa.gov/)) | FAA NAS General Arrival/Departure Delay Info: RWY:Rwy Change - Operational Necessity | Live Wire (ELEVATED) — Watchlist #7 |"
-    },
-    {
-      "id": "faa-delay-teb-7",
-      "sourceId": "faa-nas",
-      "sourceName": "FAA NAS Status",
-      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 21:35:29 2026 GMT",
-      "publishedAtISO": "2026-11-20T21:35:29.000Z",
-      "title": "FAA Arrival/Departure Delay: TEB",
-      "summary": "General Arrival/Departure Delay Info at TEB — Reason: VOL:Volume. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 21:35:29 2026 GMT)",
-      "url": "https://nasstatus.faa.gov/",
-      "severity": "elevated",
-      "watchlistMatches": [
-        "#7"
-      ],
-      "riskMatrixMatches": [
-        "#1"
-      ],
-      "countdownMatches": [],
-      "tags": [
-        "FAA-NAS",
-        "Arrival-Departure-Delay",
-        "TEB"
-      ],
-      "markdownRow": "| #11+ — Fri Nov 20 21:35:29 2026 GMT | FAA NAS — TEB (Commercial Aviation) | Arrival/Departure delays reported at TEB ([FAA NAS Status](https://nasstatus.faa.gov/)) | FAA NAS General Arrival/Departure Delay Info: VOL:Volume | Live Wire (ELEVATED) — Watchlist #7 |"
-    },
-    {
-      "id": "faa-delay-tpa-8",
-      "sourceId": "faa-nas",
-      "sourceName": "FAA NAS Status",
-      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 21:35:29 2026 GMT",
-      "publishedAtISO": "2026-11-20T21:35:29.000Z",
-      "title": "FAA Arrival/Departure Delay: TPA",
-      "summary": "General Arrival/Departure Delay Info at TPA — Reason: WX:Thunderstorms. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 21:35:29 2026 GMT)",
-      "url": "https://nasstatus.faa.gov/",
-      "severity": "elevated",
-      "watchlistMatches": [
-        "#7"
-      ],
-      "riskMatrixMatches": [
-        "#1"
-      ],
-      "countdownMatches": [],
-      "tags": [
-        "FAA-NAS",
-        "Arrival-Departure-Delay",
-        "TPA"
-      ],
-      "markdownRow": "| #11+ — Fri Nov 20 21:35:29 2026 GMT | FAA NAS — TPA (Commercial Aviation) | Arrival/Departure delays reported at TPA ([FAA NAS Status](https://nasstatus.faa.gov/)) | FAA NAS General Arrival/Departure Delay Info: WX:Thunderstorms | Live Wire (ELEVATED) — Watchlist #7 |"
-    },
-    {
-      "id": "faa-closure-sna-9",
-      "sourceId": "faa-nas",
-      "sourceName": "FAA NAS Status",
-      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 21:35:29 2026 GMT",
-      "publishedAtISO": "2026-11-20T21:35:29.000Z",
+      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Sat Nov 21 00:38:06 2026 GMT",
+      "publishedAtISO": "2026-11-21T00:38:06.000Z",
       "title": "FAA Airport Closures: SNA",
-      "summary": "SNA: !SNA 11/020 SNA AD AP CLSD DLY 0730-1415 2611150730-2611211415 | Reopen: Nov 21 at 14:15 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 21:35:29 2026 GMT)",
+      "summary": "SNA: !SNA 11/020 SNA AD AP CLSD DLY 0730-1415 2611150730-2611211415 | Reopen: Nov 21 at 14:15 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Sat Nov 21 00:38:06 2026 GMT)",
       "url": "https://nasstatus.faa.gov/",
       "severity": "elevated",
       "watchlistMatches": [
@@ -709,33 +564,7 @@
         "Airport-Closure",
         "SNA"
       ],
-      "markdownRow": "| #11+ — Fri Nov 20 21:35:29 2026 GMT | FAA NAS — SNA (National Aviation / Airport Ops) | Airport Closures active at SNA until Nov 21 at 14:15 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !SNA 11/020 SNA AD AP CLSD DLY 0730-1415 2611150730-2611211415 | Live Wire (ELEVATED) — Watchlist #7 |"
-    },
-    {
-      "id": "cloudflare-status-akjr7qn5o622",
-      "sourceId": "cloudflare-status",
-      "sourceName": "Cloudflare Status",
-      "attributionText": "Source: Cloudflare System Status (www.cloudflarestatus.com)",
-      "publishedAtISO": "2026-11-20T20:57:12.812Z",
-      "title": "Cloudflare: Cache Purging Delays in Milan [IDENTIFIED]",
-      "summary": "The issue has been identified and a fix is being implemented.",
-      "url": "https://www.cloudflarestatus.com/incidents/akjr7qn5o622",
-      "severity": "elevated",
-      "watchlistMatches": [
-        "#6",
-        "#7"
-      ],
-      "riskMatrixMatches": [
-        "#1",
-        "#2"
-      ],
-      "countdownMatches": [],
-      "tags": [
-        "Cloudflare",
-        "impact:none",
-        "status:identified"
-      ],
-      "markdownRow": "| #11+ — Nov 20, 2026 | Cloudflare (Global CDN & Edge) | Cache Purging Delays in Milan (none impact; identified) ([Cloudflare Status](https://www.cloudflarestatus.com/incidents/akjr7qn5o622)) | The issue has been identified and a fix is being implemented. | Live Wire (ELEVATED) — Watchlist #6, #7 |"
+      "markdownRow": "| #11+ — Sat Nov 21 00:38:06 2026 GMT | FAA NAS — SNA (National Aviation / Airport Ops) | Airport Closures active at SNA until Nov 21 at 14:15 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !SNA 11/020 SNA AD AP CLSD DLY 0730-1415 2611150730-2611211415 | Live Wire (ELEVATED) — Watchlist #7 |"
     },
     {
       "id": "cloudflare-status-oz6to8yacrxe",
@@ -2186,13 +2015,13 @@
       "markdownRow": "| #11+ — 2026-11-09 | SignalWire FreeSwitch (Enterprise / Edge Security) | SignalWire FreeSwitch contains a code injection vulnerability that permits configuration and credential disclosure, arbitrary call control,… ([CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search_api_fulltext=CVE-2026-116779)) | Active exploitation confirmed (CVE-2026-116779); due 2026-11-12 | Live Wire (ELEVATED) — Watchlist #2 |"
     },
     {
-      "id": "faa-closure-lax-10",
+      "id": "faa-closure-lax-5",
       "sourceId": "faa-nas",
       "sourceName": "FAA NAS Status",
-      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 21:35:29 2026 GMT",
-      "publishedAtISO": "2026-11-20T21:35:29.000Z",
+      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Sat Nov 21 00:38:06 2026 GMT",
+      "publishedAtISO": "2026-11-21T00:38:06.000Z",
       "title": "FAA Airport Closures: LAX (GA NOTAM Restriction)",
-      "summary": "LAX: !LAX 05/277 LAX AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR CTC ATLANTIC AVIATION 310-258-9884 OR SIGNATURE AVIATION 310-410-9605 2605271826-2705281600 | Reopen: May 28 at 16:00 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 21:35:29 2026 GMT)",
+      "summary": "LAX: !LAX 05/277 LAX AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR CTC ATLANTIC AVIATION 310-258-9884 OR SIGNATURE AVIATION 310-410-9605 2605271826-2705281600 | Reopen: May 28 at 16:00 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Sat Nov 21 00:38:06 2026 GMT)",
       "url": "https://nasstatus.faa.gov/",
       "severity": "info",
       "watchlistMatches": [
@@ -2207,16 +2036,16 @@
         "Airport-Closure",
         "LAX"
       ],
-      "markdownRow": "| #11+ — Fri Nov 20 21:35:29 2026 GMT | FAA NAS — LAX (National Aviation / Airport Ops) | Airport Closures active at LAX until May 28 at 16:00 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !LAX 05/277 LAX AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR CTC ATLANTIC AVIATION 310-258-9884 OR SIGNATURE A… | Live Wire (INFO) — Watchlist #7 |"
+      "markdownRow": "| #11+ — Sat Nov 21 00:38:06 2026 GMT | FAA NAS — LAX (National Aviation / Airport Ops) | Airport Closures active at LAX until May 28 at 16:00 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !LAX 05/277 LAX AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR CTC ATLANTIC AVIATION 310-258-9884 OR SIGNATURE A… | Live Wire (INFO) — Watchlist #7 |"
     },
     {
-      "id": "faa-closure-san-11",
+      "id": "faa-closure-san-6",
       "sourceId": "faa-nas",
       "sourceName": "FAA NAS Status",
-      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 21:35:29 2026 GMT",
-      "publishedAtISO": "2026-11-20T21:35:29.000Z",
+      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Sat Nov 21 00:38:06 2026 GMT",
+      "publishedAtISO": "2026-11-21T00:38:06.000Z",
       "title": "FAA Airport Closures: SAN (GA NOTAM Restriction)",
-      "summary": "SAN: !SAN 10/004 SAN AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC PPR 619-298-7704 2610011633-2701010800 | Reopen: Jan 01 at 08:00 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 21:35:29 2026 GMT)",
+      "summary": "SAN: !SAN 10/004 SAN AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC PPR 619-298-7704 2610011633-2701010800 | Reopen: Jan 01 at 08:00 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Sat Nov 21 00:38:06 2026 GMT)",
       "url": "https://nasstatus.faa.gov/",
       "severity": "info",
       "watchlistMatches": [
@@ -2231,16 +2060,16 @@
         "Airport-Closure",
         "SAN"
       ],
-      "markdownRow": "| #11+ — Fri Nov 20 21:35:29 2026 GMT | FAA NAS — SAN (National Aviation / Airport Ops) | Airport Closures active at SAN until Jan 01 at 08:00 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !SAN 10/004 SAN AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC PPR 619-298-7704 2610011633-2701010800 | Live Wire (INFO) — Watchlist #7 |"
+      "markdownRow": "| #11+ — Sat Nov 21 00:38:06 2026 GMT | FAA NAS — SAN (National Aviation / Airport Ops) | Airport Closures active at SAN until Jan 01 at 08:00 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !SAN 10/004 SAN AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC PPR 619-298-7704 2610011633-2701010800 | Live Wire (INFO) — Watchlist #7 |"
     },
     {
-      "id": "faa-closure-las-12",
+      "id": "faa-closure-las-7",
       "sourceId": "faa-nas",
       "sourceName": "FAA NAS Status",
-      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 21:35:29 2026 GMT",
-      "publishedAtISO": "2026-11-20T21:35:29.000Z",
+      "attributionText": "Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Sat Nov 21 00:38:06 2026 GMT",
+      "publishedAtISO": "2026-11-21T00:38:06.000Z",
       "title": "FAA Airport Closures: LAS (GA NOTAM Restriction)",
-      "summary": "LAS: !LAS 10/160 LAS AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR 702-261-7775 2610281926-2701272300 | Reopen: Jan 27 at 23:00 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Fri Nov 20 21:35:29 2026 GMT)",
+      "summary": "LAS: !LAS 10/160 LAS AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR 702-261-7775 2610281926-2701272300 | Reopen: Jan 27 at 23:00 UTC.. (Source: FAA NAS Status (nasstatus.faa.gov) — Update_Time: Sat Nov 21 00:38:06 2026 GMT)",
       "url": "https://nasstatus.faa.gov/",
       "severity": "info",
       "watchlistMatches": [
@@ -2255,7 +2084,57 @@
         "Airport-Closure",
         "LAS"
       ],
-      "markdownRow": "| #11+ — Fri Nov 20 21:35:29 2026 GMT | FAA NAS — LAS (National Aviation / Airport Ops) | Airport Closures active at LAS until Jan 27 at 23:00 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !LAS 10/160 LAS AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR 702-261-7775 2610281926-2701272300 | Live Wire (INFO) — Watchlist #7 |"
+      "markdownRow": "| #11+ — Sat Nov 21 00:38:06 2026 GMT | FAA NAS — LAS (National Aviation / Airport Ops) | Airport Closures active at LAS until Jan 27 at 23:00 UTC. ([FAA NAS Status](https://nasstatus.faa.gov/)) | !LAS 10/160 LAS AD AP CLSD TO NON SKED TRANSIENT GA ACFT EXC 24HR PPR 702-261-7775 2610281926-2701272300 | Live Wire (INFO) — Watchlist #7 |"
+    },
+    {
+      "id": "usgs-us6000ucfm",
+      "sourceId": "usgs-seismic",
+      "sourceName": "USGS Subsea Chokepoint Seismic",
+      "attributionText": "Source: USGS Earthquake Hazards Program GeoJSON (earthquake.usgs.gov — M6.7, 108km depth)",
+      "publishedAtISO": "2026-11-21T00:09:19.667Z",
+      "title": "USGS M6.7 (108km depth) — 9 km NE of Carhuamayo, Peru [Global Baseline]",
+      "summary": "Global Tectonic Baseline (Outside Primary Cable Chokepoints): M6.7 at -10.85°, -75.98° (108km depth) · TSUNAMI ADVISORY FLAG. Major M6.7 seismic event outside primary cable chokepoint boxes; logged as geophysical baseline.",
+      "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000ucfm",
+      "severity": "info",
+      "watchlistMatches": [
+        "#7"
+      ],
+      "riskMatrixMatches": [
+        "#6"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "USGS-Seismic",
+        "M6.7",
+        "Global-Baseline"
+      ],
+      "markdownRow": "| #11+ — Nov 21, 2026 | Global Tectonic Baseline (Outside Primary Cable Chokepoints) (Subsea Fiber & Seabed Infrastructure) | M6.7 seismic event near 9 km NE of Carhuamayo, Peru (108km depth) ([USGS GeoJSON](https://earthquake.usgs.gov/earthquakes/eventpage/us6000ucfm)) | Global seismic baseline | Live Wire (INFO) — Watchlist #7 |"
+    },
+    {
+      "id": "cloudflare-status-akjr7qn5o622",
+      "sourceId": "cloudflare-status",
+      "sourceName": "Cloudflare Status",
+      "attributionText": "Source: Cloudflare System Status (www.cloudflarestatus.com)",
+      "publishedAtISO": "2026-11-20T22:25:16.933Z",
+      "title": "Cloudflare: Cache Purging Delays in Milan [RESOLVED]",
+      "summary": "This incident is now resolved.",
+      "url": "https://www.cloudflarestatus.com/incidents/akjr7qn5o622",
+      "severity": "info",
+      "watchlistMatches": [
+        "#6",
+        "#7"
+      ],
+      "riskMatrixMatches": [
+        "#1",
+        "#2"
+      ],
+      "countdownMatches": [],
+      "tags": [
+        "Cloudflare",
+        "impact:none",
+        "status:resolved"
+      ],
+      "markdownRow": "| #11+ — Nov 20, 2026 | Cloudflare (Global CDN & Edge) | Cache Purging Delays in Milan (none impact; resolved) ([Cloudflare Status](https://www.cloudflarestatus.com/incidents/akjr7qn5o622)) | This incident is now resolved. | Live Wire (INFO) — Watchlist #6, #7 |"
     },
     {
       "id": "ofac-doe-2026-23675",
