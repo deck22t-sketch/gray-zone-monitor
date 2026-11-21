@@ -1,5 +1,5 @@
 {
-  "checkedAtISO": "2026-11-21T03:39:30.426Z",
+  "checkedAtISO": "2026-11-21T04:25:23.920Z",
   "liveCount": 15,
   "totalFeeds": 15,
   "feeds": [
@@ -9,9 +9,9 @@
       "endpoint": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json",
       "status": "live",
       "httpStatus": 200,
-      "latencyMs": 292,
+      "latencyMs": 229,
       "itemCount": 20,
-      "lastSuccessAtISO": "2026-11-21T03:39:30.426Z"
+      "lastSuccessAtISO": "2026-11-21T04:25:23.920Z"
     },
     {
       "id": "cisa-advisories",
@@ -19,9 +19,9 @@
       "endpoint": "https://www.cisa.gov/cybersecurity-advisories/all.xml",
       "status": "live",
       "httpStatus": 200,
-      "latencyMs": 198,
+      "latencyMs": 89,
       "itemCount": 15,
-      "lastSuccessAtISO": "2026-11-21T03:39:30.426Z"
+      "lastSuccessAtISO": "2026-11-21T04:25:23.920Z"
     },
     {
       "id": "nist-nvd",
@@ -29,9 +29,9 @@
       "endpoint": "https://services.nvd.nist.gov/rest/json/cves/2.0?cvssV3Severity=CRITICAL&resultsPerPage=25",
       "status": "live",
       "httpStatus": 200,
-      "latencyMs": 834,
+      "latencyMs": 1187,
       "itemCount": 12,
-      "lastSuccessAtISO": "2026-11-21T03:39:30.426Z"
+      "lastSuccessAtISO": "2026-11-21T04:25:23.920Z"
     },
     {
       "id": "faa-nas",
@@ -39,10 +39,10 @@
       "endpoint": "https://nasstatus.faa.gov/api/airport-status-information",
       "status": "live",
       "httpStatus": 200,
-      "latencyMs": 265,
-      "itemCount": 7,
-      "updateTimeText": "Sat Nov 21 03:38:45 2026 GMT",
-      "lastSuccessAtISO": "2026-11-21T03:39:30.426Z"
+      "latencyMs": 288,
+      "itemCount": 6,
+      "updateTimeText": "Sat Nov 21 04:24:38 2026 GMT",
+      "lastSuccessAtISO": "2026-11-21T04:25:23.920Z"
     },
     {
       "id": "usgs-seismic",
@@ -50,9 +50,9 @@
       "endpoint": "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&minmagnitude=5.0&orderby=time&limit=40",
       "status": "live",
       "httpStatus": 200,
-      "latencyMs": 644,
+      "latencyMs": 620,
       "itemCount": 6,
-      "lastSuccessAtISO": "2026-11-21T03:39:30.426Z"
+      "lastSuccessAtISO": "2026-11-21T04:25:23.920Z"
     },
     {
       "id": "noaa-swpc",
@@ -60,9 +60,9 @@
       "endpoint": "https://services.swpc.noaa.gov/products/alerts.json",
       "status": "live",
       "httpStatus": 200,
-      "latencyMs": 308,
+      "latencyMs": 213,
       "itemCount": 6,
-      "lastSuccessAtISO": "2026-11-21T03:39:30.426Z"
+      "lastSuccessAtISO": "2026-11-21T04:25:23.920Z"
     },
     {
       "id": "federal-register",
@@ -70,9 +70,9 @@
       "endpoint": "https://www.federalregister.gov/api/v1/documents.json?per_page=25&order=newest",
       "status": "live",
       "httpStatus": 200,
-      "latencyMs": 426,
+      "latencyMs": 512,
       "itemCount": 15,
-      "lastSuccessAtISO": "2026-11-21T03:39:30.426Z"
+      "lastSuccessAtISO": "2026-11-21T04:25:23.920Z"
     },
     {
       "id": "ofac-marad-doe",
@@ -80,9 +80,9 @@
       "endpoint": "https://www.federalregister.gov/api/v1/documents.json?per_page=20&order=newest&conditions%5Bagencies%5D%5B%5D=foreign-assets-control-office&conditions%5Bagencies%5D%5B%5D=maritime-administration&conditions%5Bagencies%5D%5B%5D=energy-department&conditions%5Bagencies%5D%5B%5D=federal-energy-regulatory-commission",
       "status": "live",
       "httpStatus": 200,
-      "latencyMs": 370,
+      "latencyMs": 459,
       "itemCount": 12,
-      "lastSuccessAtISO": "2026-11-21T03:39:30.426Z"
+      "lastSuccessAtISO": "2026-11-21T04:25:23.920Z"
     },
     {
       "id": "aws-status",
@@ -90,9 +90,9 @@
       "endpoint": "https://status.aws.amazon.com/rss/all.rss",
       "status": "live",
       "httpStatus": 200,
-      "latencyMs": 568,
+      "latencyMs": 340,
       "itemCount": 0,
-      "lastSuccessAtISO": "2026-11-21T03:39:30.426Z"
+      "lastSuccessAtISO": "2026-11-21T04:25:23.920Z"
     },
     {
       "id": "gcp-status",
@@ -100,9 +100,9 @@
       "endpoint": "https://status.cloud.google.com/incidents.json",
       "status": "live",
       "httpStatus": 200,
-      "latencyMs": 377,
+      "latencyMs": 267,
       "itemCount": 0,
-      "lastSuccessAtISO": "2026-11-21T03:39:30.426Z"
+      "lastSuccessAtISO": "2026-11-21T04:25:23.920Z"
     },
     {
       "id": "azure-status",
@@ -110,9 +110,9 @@
       "endpoint": "https://rssfeed.azure.status.microsoft/en-us/status/feed/",
       "status": "live",
       "httpStatus": 200,
-      "latencyMs": 397,
+      "latencyMs": 272,
       "itemCount": 0,
-      "lastSuccessAtISO": "2026-11-21T03:39:30.426Z"
+      "lastSuccessAtISO": "2026-11-21T04:25:23.920Z"
     },
     {
       "id": "oci-status",
@@ -120,9 +120,9 @@
       "endpoint": "https://ocistatus.oraclecloud.com/api/v2/incident-summary.rss",
       "status": "live",
       "httpStatus": 200,
-      "latencyMs": 625,
+      "latencyMs": 482,
       "itemCount": 0,
-      "lastSuccessAtISO": "2026-11-21T03:39:30.426Z"
+      "lastSuccessAtISO": "2026-11-21T04:25:23.920Z"
     },
     {
       "id": "cloudflare-status",
@@ -130,9 +130,9 @@
       "endpoint": "https://www.cloudflarestatus.com/api/v2/incidents.json",
       "status": "live",
       "httpStatus": 200,
-      "latencyMs": 656,
+      "latencyMs": 595,
       "itemCount": 8,
-      "lastSuccessAtISO": "2026-11-21T03:39:30.426Z"
+      "lastSuccessAtISO": "2026-11-21T04:25:23.920Z"
     },
     {
       "id": "github-status",
@@ -140,9 +140,9 @@
       "endpoint": "https://www.githubstatus.com/api/v2/incidents.json",
       "status": "live",
       "httpStatus": 200,
-      "latencyMs": 774,
+      "latencyMs": 827,
       "itemCount": 8,
-      "lastSuccessAtISO": "2026-11-21T03:39:30.426Z"
+      "lastSuccessAtISO": "2026-11-21T04:25:23.920Z"
     },
     {
       "id": "apple-status",
@@ -150,9 +150,9 @@
       "endpoint": "https://www.apple.com/support/systemstatus/data/system_status_en_US.js",
       "status": "live",
       "httpStatus": 200,
-      "latencyMs": 673,
+      "latencyMs": 557,
       "itemCount": 1,
-      "lastSuccessAtISO": "2026-11-21T03:39:30.426Z"
+      "lastSuccessAtISO": "2026-11-21T04:25:23.920Z"
     }
   ]
 }
