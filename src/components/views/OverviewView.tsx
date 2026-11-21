@@ -32,7 +32,11 @@ import {
   SubseaChokepointAtlas,
   SubseaTheaterId,
 } from '@/components/views/SubseaChokepointAtlas';
-import { assessRiskVerification, resolveTraceNodeKey } from '@/lib/evidence';
+import {
+  assessRiskVerification,
+  resolveTraceNodeKey,
+  stripInlineMarkdownCitations,
+} from '@/lib/evidence';
 
 const PILLAR_ROUTES = [
   { href: '/geopolitics', label: 'Ideological Contrast' },
@@ -99,7 +103,7 @@ export function OverviewView() {
     incidents,
   } = bundle;
 
-  const [nowMs, setNowMs] = useState<number>(() => Date.parse('2026-11-18T14:00:00Z'));
+  const [nowMs, setNowMs] = useState<number>(() => Date.parse('2026-11-20T18:00:00Z'));
   const [mounted, setMounted] = useState(false);
   const [overviewMode, setOverviewMode] = useState<'console' | 'brief'>('console');
   const [focusedCrosswalkKey, setFocusedCrosswalkKey] = useState<string>('inc:#2');
@@ -709,7 +713,7 @@ export function OverviewView() {
         {/* Proportional 120-Day Horizon Rail */}
         <div className="obsidian-surface rounded-md px-4 py-3 space-y-2 hidden sm:block">
           <div className="flex items-center justify-between font-mono-tactical text-[10px] text-gray-400 uppercase">
-            <span>Nov 18, 2026 (House Hearing &amp; ANT IPO)</span>
+            <span>Nov 20–23, 2026 (M365 PIR &amp; CISA 72h Cliff)</span>
             <span>Dec 31 – Jan 10 (Clearing, DFARS &amp; REE Cliffs)</span>
             <span>Mar 15, 2027 (100-Day TLS Cliff)</span>
           </div>
@@ -730,7 +734,7 @@ export function OverviewView() {
                 : 'bg-[#38BDF8]';
               return (
                 <button
-                  key={cliff.targetDateISO}
+                  key={`${cliff.targetDateISO}-${idx}`}
                   type="button"
                   onClick={() => setSelectedCliffIdx(idx)}
                   style={{ left: `${clampedPct}%` }}
@@ -761,7 +765,7 @@ export function OverviewView() {
 
             return (
               <button
-                key={cliff.targetDateISO}
+                key={`${cliff.targetDateISO}-card-${idx}`}
                 type="button"
                 onClick={() => setSelectedCliffIdx(idx)}
                 className={`text-left rounded-md p-4 transition cursor-pointer border ${
@@ -833,7 +837,7 @@ export function OverviewView() {
             Executive Summary — 6 Strategic Synthesis Pillars
           </h2>
           <span className="font-mono-tactical text-xs text-gray-400">
-            Click any inline citation chip to inspect primary source provenance
+            Click any source chip to inspect primary reference provenance
           </span>
         </div>
 
@@ -844,6 +848,7 @@ export function OverviewView() {
               label: 'Explore Watchlist',
             };
             const isExpanded = Boolean(expandedPillars[pillar.id]);
+            const cleanBody = stripInlineMarkdownCitations(pillar.body, false);
             return (
               <article
                 key={pillar.id}
@@ -867,10 +872,16 @@ export function OverviewView() {
                     }`}
                   >
                     <RichTextWithCitations
-                      text={pillar.body}
+                      text={cleanBody}
                       contextLabel={`Executive Summary — ${pillar.title}`}
                     />
                   </div>
+                  {isExpanded && pillar.sources.length > 0 && (
+                    <CitationChipList
+                      sources={pillar.sources}
+                      contextLabel={`Executive Summary — ${pillar.title}`}
+                    />
+                  )}
                 </div>
 
                 <div className="pt-3 border-t border-white/[0.08] flex items-center justify-between gap-2">

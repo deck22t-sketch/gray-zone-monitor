@@ -1,7 +1,9 @@
 {
   "encrypted": false,
+  "publicMode": true,
+  "docDate": "November 20, 2026",
   "algorithm": "AES-256-GCM",
   "kdf": "PBKDF2-SHA256",
   "iterations": 210000,
-  "generatedAtISO": "2026-11-19T05:54:58.200Z"
+  "generatedAtISO": "2026-11-21T04:24:36.625Z"
 }

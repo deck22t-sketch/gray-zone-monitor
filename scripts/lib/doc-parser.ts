@@ -205,27 +205,48 @@ function parseEntityAndSector(rawCell: string): { entity: string; sector: string
 function parseTargetDateToISO(
   dateText: string,
   milestoneText: string
-): { targetDateISO: string; targetTimestampISO: string; dateLabel: string } {
-  const dateLabel = stripFormatting(dateText, false);
-  const match = /^([A-Za-z]+)\.?\s+(\d{1,2}),\s*(\d{4})$/.exec(dateLabel);
+): {
+  targetDateISO: string;
+  targetTimestampISO: string;
+  dateLabel: string;
+  inlineHeadline?: string;
+  inlineDetail?: string;
+} {
+  const fullCol0 = stripFormatting(dateText, false);
+  const match = /^([A-Za-z]+\.?)\s+(\d{1,2}),\s*(\d{4})(?:\s*[—–-]\s*(.+))?$/.exec(fullCol0);
   if (!match) {
-    throw new BriefingValidationError(`Unable to parse countdown target date: "${dateLabel}"`);
+    throw new BriefingValidationError(`Unable to parse countdown target date: "${fullCol0}"`);
   }
-  const monthKey = match[1].toLowerCase();
+  const rawMonthToken = match[1];
+  const monthKey = rawMonthToken.replace(/\.$/, '').toLowerCase();
   const month = MONTH_MAP[monthKey];
   if (!month) {
-    throw new BriefingValidationError(`Unknown month "${match[1]}" in countdown date "${dateLabel}"`);
+    throw new BriefingValidationError(`Unknown month "${rawMonthToken}" in countdown date "${fullCol0}"`);
   }
   const day = match[2].padStart(2, '0');
   const year = match[3];
   const targetDateISO = `${year}-${month}-${day}`;
+  const dateLabel = `${rawMonthToken} ${match[2]}, ${year}`;
+
+  let inlineHeadline: string | undefined;
+  let inlineDetail: string | undefined;
+  if (match[4]) {
+    const rest = match[4].trim();
+    const colonIdx = rest.indexOf(':');
+    if (colonIdx > 0) {
+      inlineHeadline = rest.slice(0, colonIdx).trim();
+      inlineDetail = rest.slice(colonIdx + 1).trim();
+    } else {
+      inlineHeadline = rest;
+    }
+  }
 
   // Use 15:00:00Z when 10:00 a.m. ET is explicitly specified, otherwise 22:00:00Z (5:00 p.m. ET)
-  const targetTimestampISO = /10:00\s*a\.m\.\s*ET/i.test(milestoneText)
+  const targetTimestampISO = /10:00\s*a\.m\.\s*ET/i.test(`${fullCol0} ${milestoneText}`)
     ? `${targetDateISO}T15:00:00.000Z`
     : `${targetDateISO}T22:00:00.000Z`;
 
-  return { targetDateISO, targetTimestampISO, dateLabel };
+  return { targetDateISO, targetTimestampISO, dateLabel, inlineHeadline, inlineDetail };
 }
 
 function inferSourceDomainTag(
@@ -234,18 +255,18 @@ function inferSourceDomainTag(
   url: string
 ): PrimarySourceEntry['domainTag'] {
   const hay = `${category} ${title} ${url}`.toLowerCase();
-  if (/merck|rakoff|debevoise|insurancejournal|njcourts|privilege|war exclusion/.test(hay)) {
+  if (/merck|rakoff|debevoise|insurancejournal|njcourts|privilege|war exclusion|claimsjournal/.test(hay)) {
     return 'Legal & Insurance';
   }
   if (
-    /faa|transportation\.gov|l3harris|gao-26-107992|aerocorner|united-airlines|wttw|spoofing|ops\.group|mashable.*faa|el-dorado|amarillo|ground-stop/.test(
+    /faa|transportation\.gov|l3harris|gao-26-107992|aerocorner|united-airlines|wttw|spoofing|ops\.group|mashable.*faa|el-dorado|amarillo|ground-stop|warrenton|fox32chicago|gvwire.*outage|router-installations/.test(
       hay
     )
   ) {
     return 'Aviation & FAA';
   }
   if (
-    /jpmorgan|chase|federalreserve|sec\.gov|dtcc|fsisac|admiralmarkets|bank-outage|schwab|anthropic|tmgm|briefs\.co|nasdaq|ipo|s-1/.test(
+    /jpmorgan|chase|visa|mastercard|federalreserve|sec\.gov|dtcc|fsisac|admiralmarkets|bank-outage|schwab|anthropic|tmgm|briefs\.co|nasdaq|ipo|s-1|benzinga|cryptobriefing/.test(
       hay
     )
   ) {
@@ -259,14 +280,14 @@ function inferSourceDomainTag(
     return 'Supply Chain & Minerals';
   }
   if (
-    /cisa|ic3\.gov|psa261013|volt-typhoon|aa24-038a|aa26-097a|optimizely|optimjack|stepsecurity|report-uri|bleepingcomputer|esxi|digicert|tls|blackkite|thehackernews|industrialcyber|puppet|perforce|java4shell|artex|nsa\.gov|cyber\.gc\.ca|cve-2026-/.test(
+    /cisa|ic3\.gov|psa261013|volt-typhoon|aa24-038a|aa26-097a|optimizely|optimjack|stepsecurity|report-uri|bleepingcomputer|esxi|vcenter|expressway|kbytechnologies|securityweek|cybersecuritydive|digicert|tls|blackkite|thehackernews|industrialcyber|puppet|perforce|java4shell|artex|nsa\.gov|cyber\.gc\.ca|cve-202/.test(
       hay
     )
   ) {
     return 'Cyber & OT Advisories';
   }
   if (
-    /bolshevi|kremlin|putin|crimea|dignity|euromaidan|rusi|taiwan|epic-fury|iran-war|soufan|oef_q3|manila|rubio|state\.gov|homeland\.house\.gov/i.test(
+    /bolshevi|kremlin|putin|crimea|dignity|euromaidan|rusi|taiwan|epic-fury|iran-war|soufan|oef_q3|manila|rubio|state\.gov|homeland\.house\.gov|cfr\.org|shenzhen|trilateral|iowapublicradio/i.test(
       hay
     )
   ) {
@@ -568,12 +589,23 @@ export function parseBriefingMarkdown(markdown: string): ParsedBriefingBundle {
         `Countdown Calendar row ${idx + 1} has ${cells.length} columns; expected 3.`
       );
     }
-    const milestone = stripFormatting(cells[1], false);
-    const actionExposure = stripFormatting(cells[2], false);
-    const { targetDateISO, targetTimestampISO, dateLabel } = parseTargetDateToISO(
-      cells[0],
-      milestone
-    );
+    const rawCol1 = stripFormatting(cells[1], false);
+    const rawCol2 = stripFormatting(cells[2], false);
+    const {
+      targetDateISO,
+      targetTimestampISO,
+      dateLabel,
+      inlineHeadline,
+      inlineDetail,
+    } = parseTargetDateToISO(cells[0], rawCol1);
+
+    const milestone = inlineHeadline || rawCol1;
+    const actionParts = [
+      ...(inlineDetail ? [inlineDetail] : []),
+      ...(inlineHeadline && rawCol1 ? [`${rawCol1}: ${rawCol2}`] : [rawCol2]),
+    ];
+    const actionExposure = actionParts.join(' ').trim();
+
     return {
       targetDateISO,
       targetTimestampISO,
@@ -581,7 +613,7 @@ export function parseBriefingMarkdown(markdown: string): ParsedBriefingBundle {
       milestone,
       actionExposure,
     };
-  });
+  }).sort((a, b) => Date.parse(a.targetTimestampISO) - Date.parse(b.targetTimestampISO));
 
   // 6. Parse Narrative Sections 1–8 (STRICTLY OMITTING Section 9)
   const narrativeSections: NarrativeSection[] = [];

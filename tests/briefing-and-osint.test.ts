@@ -124,13 +124,15 @@ describe('Phase 1: Canonical Google Doc Deterministic Parser & Fail-Safe Validat
       '#9',
     ]);
 
-    // 4. Countdown Cliffs (8 dates)
+    // 4. Countdown Cliffs (8 dates sorted chronologically)
     expect(bundle.countdownCliffs).toHaveLength(8);
-    expect(bundle.countdownCliffs[0].targetDateISO).toBe('2026-11-18');
+    expect(bundle.countdownCliffs[0].targetDateISO).toBe('2026-11-20');
+    expect(bundle.countdownCliffs[1].targetDateISO).toBe('2026-11-23');
+    expect(bundle.countdownCliffs[1].milestone).toContain('CISA 72h KEV');
     expect(bundle.countdownCliffs[7].targetDateISO).toBe('2027-03-15');
 
     // 5. Narrative Sections (Sections 1–8 preserved including Section 6.7; Section 9 strictly omitted)
-    expect(bundle.sections.docDate).toBe('November 18, 2026');
+    expect(bundle.sections.docDate).toBe('November 20, 2026');
     expect(bundle.sections.executiveSummary.pillars).toHaveLength(6);
     expect(bundle.sections.narrativeSections).toHaveLength(8);
     expect(bundle.sections.narrativeSections.map((s) => s.number)).toEqual([
@@ -144,8 +146,8 @@ describe('Phase 1: Canonical Google Doc Deterministic Parser & Fail-Safe Validat
     const sec6 = bundle.sections.narrativeSections.find((s) => s.number === 6);
     expect(sec6?.subsections.some((sub) => sub.code === '6.7')).toBe(true);
 
-    // Verify Section 10 Primary Sources Vault (Nov. 18 update expanded to 98 verified URLs)
-    expect(bundle.sections.primarySources.length).toBeGreaterThanOrEqual(90);
+    // Verify Section 10 Primary Sources Vault (Nov. 20 update expanded to 125 verified URLs)
+    expect(bundle.sections.primarySources.length).toBeGreaterThanOrEqual(120);
   });
 
   it('aborts overwriting existing src/data/*.json when malformed markdown fails Zod validation', () => {
@@ -1003,6 +1005,42 @@ describe('Phase 6: 15-Feed Federal & Hyperscaler Registry and Live Parsers', () 
     expect(ociCompSignals).toHaveLength(1);
     expect(ociCompSignals[0].title).toContain('OCI FastConnect');
   });
+
+  it('strips inline markdown links without leaving empty () or (; ) parentheses and times out hanging vault promises cleanly', async () => {
+    const { stripInlineMarkdownCitations } = await import('../src/lib/evidence');
+    const { restorePersistedPassphrase, withVaultTimeout } = await import(
+      '../src/lib/vault-crypto'
+    );
+
+    expect(
+      stripInlineMarkdownCitations(
+        'Talks deferred to Miami ([CFR](https://www.cfr.org/a); [NPR](https://www.npr.org/b)).'
+      )
+    ).toBe('Talks deferred to Miami.');
+
+    expect(
+      stripInlineMarkdownCitations(
+        'Operation Epic Fury (costing ~$38 billion through September 2026 per [Quartz / CRS](https://qz.com/a)) continues ([CISA](https://www.cisa.gov/b)).'
+      )
+    ).toBe('Operation Epic Fury (costing ~$38 billion through September 2026) continues.');
+
+    // Verify all 6 canonical synthesis pillars leave zero empty () or (; ) artifacts
+    const sections = JSON.parse(
+      fs.readFileSync(path.join(process.cwd(), 'src/data/sections.json'), 'utf8')
+    );
+    for (const pillar of sections.executiveSummary.pillars) {
+      const cleaned = stripInlineMarkdownCitations(pillar.body, false);
+      expect(cleaned).not.toMatch(/\(\s*[;:,|]*\s*\)/);
+      expect(cleaned).not.toMatch(/\bper\s*\)/i);
+    }
+
+    // Verify vault timeout guard rejects hung promises promptly and restorePersistedPassphrase never hangs without IndexedDB
+    await expect(
+      withVaultTimeout(new Promise(() => {}), 35, 'Simulated hung IndexedDB')
+    ).rejects.toThrow(/timed out/);
+    await expect(restorePersistedPassphrase()).resolves.toBeNull();
+  });
 });
+
 
 

@@ -312,6 +312,9 @@ export type FeedHistoryData = z.infer<typeof FeedHistoryDataSchema>;
 
 export const VaultMetaSchema = z.object({
   encrypted: z.boolean(),
+  publicMode: z.boolean().optional(),
+  docDate: z.string().optional(),
+  liveFeedSummary: z.string().optional(),
   algorithm: z.literal('AES-256-GCM'),
   kdf: z.literal('PBKDF2-SHA256'),
   iterations: z.number().int().positive(),

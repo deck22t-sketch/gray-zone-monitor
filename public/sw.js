@@ -1,13 +1,13 @@
 /* Gray-Zone Monitor Offline Service Worker (Encrypted-Safe Shell Cache) */
-const CACHE_NAME = 'gz-monitor-shell-e6687323b0';
+const CACHE_NAME = 'gz-monitor-shell-d9af3528-11210339';
 const PRECACHE_URLS = [
-  "/gray-zone-monitor/",
-  "/gray-zone-monitor/geopolitics/",
-  "/gray-zone-monitor/incidents/",
-  "/gray-zone-monitor/contagion/",
-  "/gray-zone-monitor/watchlist/",
-  "/gray-zone-monitor/manifest.webmanifest",
-  "/gray-zone-monitor/icon.svg"
+  "/",
+  "/geopolitics/",
+  "/incidents/",
+  "/contagion/",
+  "/watchlist/",
+  "/manifest.webmanifest",
+  "/icon.svg"
 ];
 
 self.addEventListener('install', (event) => {
@@ -50,7 +50,7 @@ self.addEventListener('fetch', (event) => {
           caches.open(CACHE_NAME).then((cache) => cache.put(req, copy));
           return res;
         })
-        .catch(() => caches.match(req).then((hit) => hit || caches.match('/gray-zone-monitor/')))
+        .catch(() => caches.match(req).then((hit) => hit || caches.match('/')))
     );
     return;
   }

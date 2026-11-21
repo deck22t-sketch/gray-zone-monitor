@@ -7,7 +7,7 @@
     "classification": "hybrid_transition_bug",
     "impact": "Disrupted Outlook, Teams, SharePoint & Copilot across 70+ countries; hospital \"Code Grey\" alerts & clinical workarounds; ~USD 7B est. global loss (DistilINFO; IVN)",
     "vector": "Dormant July 2026 gateway lock-contention bug + Teams failover + 14% maintenance outage + ~10-hr \"thundering herd\" stall; degraded Defender XDR & Purview (GeekWire)",
-    "status": "Restored; final PIR due Nov. 20, 2026.",
+    "status": "Restored; final PIR due Nov. 20 (preliminary >80% gateway failure stands entering afternoon); Microsoft Threat Intel flagged high-volume fake M365 service-health credential phishing (Security Boulevard).",
     "sources": [
       {
         "label": "DistilINFO",
@@ -20,6 +20,10 @@
       {
         "label": "GeekWire",
         "url": "https://www.geekwire.com/2026/what-went-wrong-with-outlook-microsoft-blames-thundering-herds-and-a-bug-unnoticed-for-months/"
+      },
+      {
+        "label": "Security Boulevard",
+        "url": "https://securityboulevard.com/2026/11/six-outages-in-six-days-what-each-organization-said-broke/"
       }
     ]
   },
@@ -31,7 +35,7 @@
     "classification": "hybrid_transition_bug",
     "impact": "4.5-hr nationwide ground stop; ~12,462 flight disruptions; 17 of 22 ARTCCs destabilized; ~USD 345M Big-Four airline earnings hit",
     "vector": "Two-router broadcast flood (El Dorado, AR Friday 3:30 p.m. ET cutover + 3-wk-old Amarillo, TX Juniper router on legacy TDM); HPE cites installer config; Admin. Bedford took full responsibility (mystery remains after 68 clean prior cutovers); Sec. Duffy cited L3Harris vendor lock with no timeline to resume Juniper installs (PBS NewsHour).",
-    "status": "Nov. 17: FAA halted router rollout & powered off all ~400 installed Juniper routers; Florida FBI/lab probe active. WaPo reports on-site FAA official tested & signed off on El Dorado cutover 8 mins before ground stop; White House formed multi-agency \"tiger team.\"",
+    "status": "Nov. 17: FAA halted router rollout & powered off all ~400 installed Juniper routers; Florida FBI/lab probe active. WaPo reports on-site FAA official tested & signed off on El Dorado cutover 8 mins before ground stop; White House formed multi-agency \"tiger team.\" Warrenton, VA ATCSCC national ops manager ordered the Nov. 13 halt; Florida lab probe (FAA/L3Harris/Cisco/FBI) preparing public root-cause readout ahead of Nov. 23 Senate Commerce deadline.",
     "sources": [
       {
         "label": "PBS NewsHour",
@@ -91,7 +95,7 @@
     "classification": "hybrid_transition_bug",
     "impact": "~4,800+ Chase outage reports; branch teller & ATM disruptions; counterparty Zelle/transfer delays across BofA, Wells Fargo, U.S. Bank, Capital One & Truist (AP News)",
     "vector": "Software bug in on-premise hardware systems + queued peak traffic re-crashes; non-cyber (TIME)",
-    "status": "Restored Monday night; Tuesday ACH/Zelle cleared cleanly; JPM closed -2.3% Monday.",
+    "status": "Restored Monday night; Tuesday ACH/Zelle cleared cleanly; JPM closed -2.3% Monday. Nov. 20: Chase, Visa & Mastercard confirmed separate n0n third-party marketing-vendor breaches (payment rails unaffected; unrelated to Nov. 16 outage).",
     "sources": [
       {
         "label": "AP News",

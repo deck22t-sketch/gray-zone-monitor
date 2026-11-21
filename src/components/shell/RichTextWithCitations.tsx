@@ -50,15 +50,19 @@ export function RichTextWithCitations({
 }) {
   const { openCitation, lookupSourceByUrl } = usePortal();
 
+  const normalizedText = text
+    .replace(/\*{1,2}(\[[^\]]+\]\(https?:\/\/[^)\s]+\))\*{1,2}/g, '$1')
+    .replace(/(\[[^\]]+\]\(https?:\/\/[^)\s]+\))\*;?\*\s*/g, '$1; ');
+
   const nodes: React.ReactNode[] = [];
   const linkRegex = /\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)/g;
   let lastIndex = 0;
   let match: RegExpExecArray | null;
   let idx = 0;
 
-  while ((match = linkRegex.exec(text)) !== null) {
+  while ((match = linkRegex.exec(normalizedText)) !== null) {
     if (match.index > lastIndex) {
-      const chunk = text.slice(lastIndex, match.index);
+      const chunk = normalizedText.slice(lastIndex, match.index);
       nodes.push(...renderInlineEmphasis(chunk, `chunk-${idx}`));
     }
     const label = match[1].replace(/\*\*/g, '').replace(/\*/g, '').trim();
@@ -95,8 +99,8 @@ export function RichTextWithCitations({
     lastIndex = linkRegex.lastIndex;
   }
 
-  if (lastIndex < text.length) {
-    nodes.push(...renderInlineEmphasis(text.slice(lastIndex), `tail-${idx}`));
+  if (lastIndex < normalizedText.length) {
+    nodes.push(...renderInlineEmphasis(normalizedText.slice(lastIndex), `tail-${idx}`));
   }
 
   return <span className={className}>{nodes}</span>;

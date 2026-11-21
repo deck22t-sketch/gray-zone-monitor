@@ -1,6 +1,6 @@
 {
   "docTitle": "Geopolitical Strategy, Gray-Zone Warfare & Critical Infrastructure Risk: Executive Briefing",
-  "docDate": "November 18, 2026",
+  "docDate": "November 20, 2026",
   "docScope": "Synthesis of Historical Russian/Soviet Ideology, Ukraine Escalation Dynamics (2014–2026), the Russia–China Strategic Entente (2026–2030), National Security Cyber Attribution, Insurance War Exclusions, Forensic Analysis of the November 13, 2026 Nationwide FAA Ground Stop, active 2026 third-theater attrition (Operation Epic Fury / Iran), imminent Chinese critical mineral and pharmaceutical supply-chain cliffs, AI-accelerated agentic financial contagion, sub-IP physical/infrastructure resilience (GNSS spoofing, data-center thermal limits, subsea SLTE security, and 100-day TLS certificate lifespans), non-cyber regulatory/privilege exposures, and the ten-event November 12–17, 2026 critical infrastructure, enterprise, consumer ecosystem, hospitality, financial, intelligence, and supply-chain cluster: (1) the November 12–13 Microsoft 365 global cloud and hospital communications outage (~USD 7 billion estimated global economic impact across 70+ countries per IVN / Anderson Economic Group and DistilINFO), (2) the November 13 nationwide FAA ground stop, (3) the November 16 morning JPMorgan Chase on-premise hardware software bug and Zelle counterparty cascade (TIME), (4) the November 16 afternoon United Airlines widespread mainline departure system outage (CBS News; The Guardian), (5) the November 16 Optimizely / third-party JavaScript supply-chain attack impacting at least 178 organizations including Zoom, HSBC, Equifax, Salesforce, BBC, CNN, Peacock, and GitLab (BleepingComputer; Report URI), (6) the November 13–14 Workday disaster-recovery test data-corruption outage (FAU OIT Status; Logistics Viewpoints), (7) the November 17 National Security Agency (NSANet) classified internal communications network outage at Fort Meade (CBS News; Forbes), (8) the November 17 Apple multi-service ecosystem outage across iCloud, App Store, Apple Pay, Apple Music, AppleCare, and Apple Business/School Manager (AP News; Tom's Guide; 9to5Mac), (9) the November 17 Marriott International website, Bonvoy app, and hotel check-in outage (Fox News; Gulf News), and (10) the November 17 Charles Schwab login/webpage disruption and parallel SaaS gateway outages (Fox News).",
   "executiveSummary": {
     "intro": "This briefing synthesizes an end-to-end geopolitical, economic, and national security analysis connecting early 20th-century Russian revolutionary doctrine to 21st-century great-power rivalry and homeland critical infrastructure risk. Although separated by a century, these forces form a continuous strategic arc:",
@@ -42,11 +42,19 @@
       {
         "id": "pillar-3",
         "title": "The Russia–China Transactional Entente (2026–2030)",
-        "body": "Isolated from Western capital and technology, Moscow has forged a deep operational partnership with Beijing across defense R&D, sanctions-proofed ruble/yuan settlement, satellite navigation, and dual-use supply chains ([Courthouse News / RUSI Analysis](https://www.courthousenews.com/russia-is-helping-china-to-prepare-for-a-potential-invasion-of-taiwan-defense-institute-says/)). While structural asymmetries prevent a formal NATO-style mutual-defense treaty, defense intelligence assessments highlight 2027–2030 as a peak window for opportunistic two-front crises spanning the Taiwan Strait and NATO's eastern flank.",
+        "body": "Isolated from Western capital and technology, Moscow has forged a deep operational partnership with Beijing across defense R&D, sanctions-proofed ruble/yuan settlement, satellite navigation, and dual-use supply chains ([Courthouse News / RUSI Analysis](https://www.courthousenews.com/russia-is-helping-china-to-prepare-for-a-potential-invasion-of-taiwan-defense-institute-says/)). While structural asymmetries prevent a formal NATO-style mutual-defense treaty, defense intelligence assessments highlight 2027–2030 as a peak window for opportunistic two-front crises spanning the Taiwan Strait and NATO's eastern flank. At the November 19 Shenzhen trilateral summit, Presidents Trump, Xi, and Putin issued a largely symbolic four-point \"U.S.–Russia–China Heads of State Declaration toward Peace\" (covering nuclear risk reduction, UN reform, and refined-petroleum supply) without concrete breakthroughs on Ukraine, Iran, AI chip curbs, or China's imminent Nov. 27 and Jan. 10, 2027 mineral/trade cliffs—deferring follow-on talks to the Dec. 14–15 G20 Summit in Miami ([CFR](https://www.cfr.org/articles/six-experts-on-what-trump-xi-and-putins-first-trilateral-means); [NPR](https://www.iowapublicradio.org/news-from-npr/2026-11-20/trump-touts-meeting-with-xi-and-putin-but-offers-little-results)).",
         "sources": [
           {
             "label": "Courthouse News / RUSI Analysis",
             "url": "https://www.courthousenews.com/russia-is-helping-china-to-prepare-for-a-potential-invasion-of-taiwan-defense-institute-says/"
+          },
+          {
+            "label": "CFR",
+            "url": "https://www.cfr.org/articles/six-experts-on-what-trump-xi-and-putins-first-trilateral-means"
+          },
+          {
+            "label": "NPR",
+            "url": "https://www.iowapublicradio.org/news-from-npr/2026-11-20/trump-touts-meeting-with-xi-and-putin-but-offers-little-results"
           }
         ]
       },
@@ -72,7 +80,7 @@
       {
         "id": "pillar-5",
         "title": "Attribution, Financial Contagion & \"Poison Pill\" Forensics",
-        "body": "Even where officials report no live external cyberattack, technical debt in hybrid legacy-to-IP transitions now produces continental disruptions indistinguishable from gray-zone sabotage or pre-positioned state access such as PRC-linked *Volt Typhoon* ([CISA Advisory AA24-038A](https://www.cisa.gov/news-events/cybersecurity-advisories/aa24-038a)). Should forensic teardowns reveal a supply-chain or insider \"poison pill\" rather than contractor misconfiguration—or should a similar cascade hit financial clearing backbones (Fedwire, CHIPS, DTCC)—the fallout would span market volatility, commercial insurance war-exclusion disputes ([NJ Appellate Ruling in Merck](https://www.njcourts.gov/system/files/court-opinions/2023/a1879-21a1882-21.pdf)), and acute geopolitical escalation traps. This risk is exemplified by the ten-event November 12–17, 2026 disruption cluster spanning Microsoft 365, the FAA ground stop, Workday WD1, the 178-organization Optimizely OPTIMJACK supply-chain attack, JPMorgan Chase's on-premise hardware bug, United Airlines' mainline dispatch hold, the November 17 NSA NSANet classified network outage, Apple's internal-update outage, Marriott International's booking/check-in failure, and Charles Schwab's login disruption, alongside bipartisan congressional calls for a classified Gang of Eight briefing. On November 18, U.S. Secretary of State Marco Rubio stated in Manila that federal agencies have found \"zero evidence\" linking the recent outages or tying them to foreign malign actors ([CBS News](https://www.cbsnews.com/news/marco-rubio-tech-outages-not-connected/)), even as bipartisan Senate and House lawmakers press for broader oversight at today's November 18 House Homeland Security \"Worldwide Threats\" hearing. At the hearing, DNI Jay Clayton, DHS Secretary Markwayne Mullin, and FBI Deputy Director Christopher Raia testified that the ten outages are unrelated and non-malicious, while Senate Intelligence Vice Chair Mark Warner and DNI Clayton highlighted a systemic \"AI-driven vulnerability patching rush\" straining legacy infrastructure ([CyberScoop](https://cyberscoop.com/tech-outages-ai-vulnerability-patching/); [ExecutiveGov](https://www.executivegov.com/articles/mark-warner-ai-cybersecurity-system-outages)).",
+        "body": "Even where officials report no live external cyberattack, technical debt in hybrid legacy-to-IP transitions now produces continental disruptions indistinguishable from gray-zone sabotage or pre-positioned state access such as PRC-linked *Volt Typhoon* ([CISA Advisory AA24-038A](https://www.cisa.gov/news-events/cybersecurity-advisories/aa24-038a)). Should forensic teardowns reveal a supply-chain or insider \"poison pill\" rather than contractor misconfiguration—or should a similar cascade hit financial clearing backbones (Fedwire, CHIPS, DTCC)—the fallout would span market volatility, commercial insurance war-exclusion disputes ([NJ Appellate Ruling in Merck](https://www.njcourts.gov/system/files/court-opinions/2023/a1879-21a1882-21.pdf)), and acute geopolitical escalation traps. This risk is exemplified by the ten-event November 12–17, 2026 disruption cluster spanning Microsoft 365, the FAA ground stop, Workday WD1, the 178-organization Optimizely OPTIMJACK supply-chain attack, JPMorgan Chase's on-premise hardware bug, United Airlines' mainline dispatch hold, the November 17 NSA NSANet classified network outage, Apple's internal-update outage, Marriott International's booking/check-in failure, and Charles Schwab's login disruption, alongside bipartisan congressional calls for a classified Gang of Eight briefing. On November 18, U.S. Secretary of State Marco Rubio stated in Manila that federal agencies have found \"zero evidence\" linking the recent outages or tying them to foreign malign actors ([CBS News](https://www.cbsnews.com/news/marco-rubio-tech-outages-not-connected/)), even as bipartisan Senate and House lawmakers press for broader oversight at today's November 18 House Homeland Security \"Worldwide Threats\" hearing. At the hearing, DNI Jay Clayton, DHS Secretary Markwayne Mullin, and FBI Deputy Director Christopher Raia testified that the ten outages are unrelated and non-malicious, while Senate Intelligence Vice Chair Mark Warner and DNI Clayton highlighted a systemic \"AI-driven vulnerability patching rush\" straining legacy infrastructure ([CyberScoop](https://cyberscoop.com/tech-outages-ai-vulnerability-patching/); [ExecutiveGov](https://www.executivegov.com/articles/mark-warner-ai-cybersecurity-system-outages)). On November 19–20, CISA added active zero-day exploitation of VMware vCenter (CVE-2026-123890) by Chinese APT Armory Castle and Cisco Expressway (CVE-2026-76466) to the KEV catalog with an accelerated 72-hour November 23 BOD 26-04 forensic-triage deadline ([CISA Nov. 20 KEV Alert](https://www.cisa.gov/news-events/alerts/2026/11/20/cisa-adds-four-known-exploited-vulnerabilities-catalog); [SecurityWeek](https://www.securityweek.com/newly-patched-vmware-vcenter-flaw-exploited-as-zero-day-by-chinese-apt/)), while JPMorgan Chase, Visa, and Mastercard confirmed separate third-party vendor marketing-data breaches by extortion group n0n ([Cybersecurity Dive](https://www.cybersecuritydive.com/news/jpmorgan-visa-customer-data-leaked-third-party-hacks/875333/)).",
         "sources": [
           {
             "label": "CISA Advisory AA24-038A",
@@ -93,6 +101,18 @@
           {
             "label": "ExecutiveGov",
             "url": "https://www.executivegov.com/articles/mark-warner-ai-cybersecurity-system-outages"
+          },
+          {
+            "label": "CISA Nov. 20 KEV Alert",
+            "url": "https://www.cisa.gov/news-events/alerts/2026/11/20/cisa-adds-four-known-exploited-vulnerabilities-catalog"
+          },
+          {
+            "label": "SecurityWeek",
+            "url": "https://www.securityweek.com/newly-patched-vmware-vcenter-flaw-exploited-as-zero-day-by-chinese-apt/"
+          },
+          {
+            "label": "Cybersecurity Dive",
+            "url": "https://www.cybersecuritydive.com/news/jpmorgan-visa-customer-data-leaked-third-party-hacks/875333/"
           }
         ]
       },
@@ -702,6 +722,23 @@
                       "url": "https://www.cbsnews.com/news/trump-xi-meet-china-chips-ai/"
                     }
                   ]
+                },
+                {
+                  "text": "**Nov. 19–20 Shenzhen Bilateral & Trilateral Readout:** Meeting at Kylin Villa on November 19, Presidents Trump, Xi, and Putin signed the four-point \"U.S.–Russia–China Heads of State Declaration toward Peace\" pledging nuclear risk-reduction dialogue, UN reform, and increased refined-petroleum output, while reaching zero announced agreements on Ukraine territorial/security terms, Iran, tariffs, AI chips, or rare earths ([CFR](https://www.cfr.org/articles/six-experts-on-what-trump-xi-and-putins-first-trilateral-means); [MLQ.ai](https://mlq.ai/news/xi-and-trump-open-talks-in-shenzhen-with-trump-praising-their-board-of-trade-and-xi-calling-ties-stable/)). At a November 20 White House press conference, Trump cited \"joint guardrails\" with Xi, reiterated that only \"older chips\" should be sold to China, and stated U.S. companies would not be permitted to build data centers abroad—setting up the **Dec. 14–15 Miami G20 Summit** as the next test ([NPR](https://www.iowapublicradio.org/news-from-npr/2026-11-20/trump-touts-meeting-with-xi-and-putin-but-offers-little-results)).",
+                  "sources": [
+                    {
+                      "label": "CFR",
+                      "url": "https://www.cfr.org/articles/six-experts-on-what-trump-xi-and-putins-first-trilateral-means"
+                    },
+                    {
+                      "label": "MLQ.ai",
+                      "url": "https://mlq.ai/news/xi-and-trump-open-talks-in-shenzhen-with-trump-praising-their-board-of-trade-and-xi-calling-ties-stable/"
+                    },
+                    {
+                      "label": "NPR",
+                      "url": "https://www.iowapublicradio.org/news-from-npr/2026-11-20/trump-touts-meeting-with-xi-and-putin-but-offers-little-results"
+                    }
+                  ]
                 }
               ]
             }
@@ -714,7 +751,7 @@
           "blocks": [
             {
               "type": "paragraph",
-              "text": "**Active U.S.–Iran Conflict & Hormuz Economic Shock:** Simultaneous with European and Pacific deterrence posture, the United States has been engaged in direct combat operations against Iran (*Operation Epic Fury*) since February 28, 2026. Official reporting indicates the DoD expended ~$33.4 billion through June 2026 ([DoD Lead IG Report](https://media.defense.gov/2026/Sep/09/2003993626/-1/-1/1/OEF_Q3_JUN2026_FINAL_508%20SECURE.PDF)) and ~$38 billion through September 2026, suffering 18 U.S. service members killed and 824 wounded ([Quartz / CRS](https://qz.com/us-iran-war-numbers-deaths-costs)). Combat operations have committed two Carrier Strike Groups, intercepted over 700 ballistic missiles and 1,000+ attack drones, resulted in reported radar damage to a U.S. THAAD battery, and led to a naval blockade of Iranian ports reinstated on July 14, 2026 ([The Soufan Center](https://thesoufancenter.org/intelbrief-2026-november-16/)). Escalation inside the Strait of Hormuz has disrupted ~25% of global seaborne oil, ~20% of LNG, and ~30% of global traded fertilizers—driving Brent crude from a pre-war $60.85/bbl to a March peak of $118.35/bbl ($107.63/bbl in Sept.), consuming critical U.S. precision munitions stockpiles (SM-3, SM-6, PAC-3) and creating an active third-theater attrition drain. On November 18, hostilities widened in the Persian Gulf as a UAE state oil company (ADNOC) vessel was struck in the Strait of Hormuz (11 injured, 1 missing), Iran targeted a U.S. air base in Kuwait and sites in Bahrain alongside blasts near Riyadh's airport, and U.S. forces struck Iran's Qeshm Island ([CBS News](https://www.cbsnews.com/live-updates/iran-war-us-gulf-retaliation-strikes-strait-of-hormuz/); [AP News](https://apnews.com/article/mullin-congress-ground-stop-cyber-threats-immigration-ce63a22797c61ee53d88678000236c37)).",
+              "text": "**Active U.S.–Iran Conflict & Hormuz Economic Shock:** Simultaneous with European and Pacific deterrence posture, the United States has been engaged in direct combat operations against Iran (*Operation Epic Fury*) since February 28, 2026. Official reporting indicates the DoD expended ~$33.4 billion through June 2026 ([DoD Lead IG Report](https://media.defense.gov/2026/Sep/09/2003993626/-1/-1/1/OEF_Q3_JUN2026_FINAL_508%20SECURE.PDF)) and ~$38 billion through September 2026, suffering 18 U.S. service members killed and 824 wounded ([Quartz / CRS](https://qz.com/us-iran-war-numbers-deaths-costs)). Combat operations have committed two Carrier Strike Groups, intercepted over 700 ballistic missiles and 1,000+ attack drones, resulted in reported radar damage to a U.S. THAAD battery, and led to a naval blockade of Iranian ports reinstated on July 14, 2026 ([The Soufan Center](https://thesoufancenter.org/intelbrief-2026-november-16/)). Escalation inside the Strait of Hormuz has disrupted ~25% of global seaborne oil, ~20% of LNG, and ~30% of global traded fertilizers—driving Brent crude from a pre-war $60.85/bbl to a March peak of $118.35/bbl ($107.63/bbl in Sept.), consuming critical U.S. precision munitions stockpiles (SM-3, SM-6, PAC-3) and creating an active third-theater attrition drain. On November 18, hostilities widened in the Persian Gulf as a UAE state oil company (ADNOC) vessel was struck in the Strait of Hormuz (11 injured, 1 missing), Iran targeted a U.S. air base in Kuwait and sites in Bahrain alongside blasts near Riyadh's airport, and U.S. forces struck Iran's Qeshm Island ([CBS News](https://www.cbsnews.com/live-updates/iran-war-us-gulf-retaliation-strikes-strait-of-hormuz/); [AP News](https://apnews.com/article/mullin-congress-ground-stop-cyber-threats-immigration-ce63a22797c61ee53d88678000236c37)). On November 19–20, President Trump stated there are indications Tehran may be pursuing biological or chemical weapons following strikes on its nuclear facilities, while Iran claimed two additional oil tankers struck sea mines and caught fire in the Strait of Hormuz ([CBS News](https://www.cbsnews.com/live-updates/iran-war-us-gulf-retaliation-strikes-strait-of-hormuz/)).",
               "sources": [
                 {
                   "label": "DoD Lead IG Report",
@@ -817,7 +854,7 @@
             },
             {
               "type": "paragraph",
-              "text": "**November 17 Escalation Note:** On November 16, 2026, the U.S. Bureau of Industry and Security (BIS) imposed new export license requirements across Malaysia, Thailand, Indonesia, Singapore, and Brazil to block Chinese AI developers from remotely renting overseas GPU clusters following the Nvidia scandal and Jensen Huang's resignation ([Al Jazeera](https://www.aljazeera.com/economy/2026/11/17/us-moves-to-block-chinas-remote-access-to-ai-chips-amid-nvidia-scandal); [The Next Web](https://thenextweb.com/news/china-weighs-response-to-us-chip-curbs-before-trump-summit)). Analysts warn this places immediate tactical pressure on Beijing ahead of the Trump–Xi Shenzhen meeting, heightening the risk that China allows its **November 27, 2026** export-ban suspension on gallium, germanium, and antimony to expire.",
+              "text": "**November 17 Escalation Note:** On November 16, 2026, the U.S. Bureau of Industry and Security (BIS) imposed new export license requirements across Malaysia, Thailand, Indonesia, Singapore, and Brazil to block Chinese AI developers from remotely renting overseas GPU clusters following the Nvidia scandal and Jensen Huang's resignation ([Al Jazeera](https://www.aljazeera.com/economy/2026/11/17/us-moves-to-block-chinas-remote-access-to-ai-chips-amid-nvidia-scandal); [The Next Web](https://thenextweb.com/news/china-weighs-response-to-us-chip-curbs-before-trump-summit)). Analysts warn this places immediate tactical pressure on Beijing ahead of the Trump–Xi Shenzhen meeting, heightening the risk that China allows its **November 27, 2026** export-ban suspension on gallium, germanium, and antimony to expire. Because the November 19 Shenzhen talks produced no announced extension on critical minerals, U.S. defense and semiconductor supply chains now stand seven days from the November 27, 2026 expiry of China's gallium, germanium, and antimony export-ban pause ([MLQ.ai](https://mlq.ai/news/xi-and-trump-open-talks-in-shenzhen-with-trump-praising-their-board-of-trade-and-xi-calling-ties-stable/)).",
               "sources": [
                 {
                   "label": "Al Jazeera",
@@ -826,6 +863,10 @@
                 {
                   "label": "The Next Web",
                   "url": "https://thenextweb.com/news/china-weighs-response-to-us-chip-curbs-before-trump-summit"
+                },
+                {
+                  "label": "MLQ.ai",
+                  "url": "https://mlq.ai/news/xi-and-trump-open-talks-in-shenzhen-with-trump-praising-their-board-of-trade-and-xi-calling-ties-stable/"
                 }
               ]
             }
@@ -1022,6 +1063,27 @@
                     {
                       "label": "BigGo Finance",
                       "url": "https://finance.biggo.com/news/abb6b826-1e79-47a3-b4cf-8ad459121c8b"
+                    }
+                  ]
+                },
+                {
+                  "text": "**Nov. 19–20 Warrenton Command Call, Pending Root-Cause Announcement & Nov. 23 Senate Deadline:** Reporting on November 20 revealed the operational decision to halt all nationwide departures on November 13 was made by the national operations manager on duty at the **FAA Air Traffic Control System Command Center in Warrenton, Virginia**—the same post that ordered the 9/11 ground stop ([Washington Examiner](https://www.washingtonexaminer.com/policy/infrastructure/4809217/faa-ground-stop-virginia-facility/)). FAA Administrator Bedford stated Secretary Duffy plans to publicly announce the root cause as joint FAA, L3Harris, Cisco, and FBI testing continues at L3Harris's Florida lab ([GV Wire](https://gvwire.com/2026/11/19/us-plans-to-announce-cause-of-outage-that-led-to-nationwide-ground-stop-faa-says/); [FOX 32 Chicago](https://www.fox32chicago.com/news/faa-announce-root-cause-outage-led-ground-stoppage)), while Senate Commerce Committee Democrats demanded a joint technical briefing and vulnerability readout covering all 3,648 planned routers (400 installed, 69 operational pre-halt) by **November 23, 2026** ([TradingView / Seeking Alpha](https://www.tradingview.com/news/seekingalpha:b71e02c06094b:0-faa-pauses-router-installations-as-ground-stop-investigation-puts-oversight-in-focus/)).",
+                  "sources": [
+                    {
+                      "label": "Washington Examiner",
+                      "url": "https://www.washingtonexaminer.com/policy/infrastructure/4809217/faa-ground-stop-virginia-facility/"
+                    },
+                    {
+                      "label": "GV Wire",
+                      "url": "https://gvwire.com/2026/11/19/us-plans-to-announce-cause-of-outage-that-led-to-nationwide-ground-stop-faa-says/"
+                    },
+                    {
+                      "label": "FOX 32 Chicago",
+                      "url": "https://www.fox32chicago.com/news/faa-announce-root-cause-outage-led-ground-stoppage"
+                    },
+                    {
+                      "label": "TradingView / Seeking Alpha",
+                      "url": "https://www.tradingview.com/news/seekingalpha:b71e02c06094b:0-faa-pauses-router-installations-as-ground-stop-investigation-puts-oversight-in-focus/"
                     }
                   ]
                 }
@@ -1512,6 +1574,19 @@
                       "url": "https://admiralmarkets.com/analytics/traders-blog/chase-outage-jpmorgan-bank-stocks"
                     }
                   ]
+                },
+                {
+                  "text": "**Nov. 20 Third-Party Vendor Breaches (n0n Extortion Group — Unrelated to Outage):** On November 19–20, JPMorgan Chase, Visa, and Mastercard confirmed that extortion group n0n exfiltrated limited customer marketing data (names, email addresses, and APAC campaign spreadsheets) via third-party vendor breaches, confirming core payment networks were unaffected and unrelated to earlier operational outages ([Cybersecurity Dive](https://www.cybersecuritydive.com/news/jpmorgan-visa-customer-data-leaked-third-party-hacks/875333/); [Claims Journal](https://www.claimsjournal.com/news/national/2026/11/20/341437.htm)).",
+                  "sources": [
+                    {
+                      "label": "Cybersecurity Dive",
+                      "url": "https://www.cybersecuritydive.com/news/jpmorgan-visa-customer-data-leaked-third-party-hacks/875333/"
+                    },
+                    {
+                      "label": "Claims Journal",
+                      "url": "https://www.claimsjournal.com/news/national/2026/11/20/341437.htm"
+                    }
+                  ]
                 }
               ]
             }
@@ -1543,15 +1618,15 @@
             },
             {
               "type": "paragraph",
-              "text": "*Footnote (AI Valuation Benchmark): On November 18, 2026, Anthropic priced its Nasdaq IPO (ticker ANT) above range at $83/share (exceeding a $1.4 trillion market capitalization ahead of its Nov. 19 debut per* [The Guardian](https://www.theguardian.com/technology/2026/nov/18/anthropic-share-price-stock-market-ipo) *and* [Kiplinger](https://www.kiplinger.com/investing/live/anthropic-ipo-updates-and-commentary)*), serving as a live pricing benchmark for hyperscaler and insurer AI balance-sheet concentration.*",
+              "text": "*Footnote (AI Valuation Benchmark): After pricing its record $81.3 billion Nasdaq IPO (ticker ANT) at $83/share on Nov. 18 and peaking at $115.10 on its Nov. 19 debut, Anthropic fell ~27% to ~$83.15 intraday on Nov. 20 as the S&P 500 and Dow entered correction territory and the Nasdaq Composite turned negative for 2026 (*[Benzinga](https://www.benzinga.com/opinion/26/11/63512484/anthropic-stock-the-bull-base-and-bear-case-into-nasdaq-100-entry)*;* [CryptoBriefing](https://cryptobriefing.com/polymarket-traders-anthropic-ipo-forecast/)*), underscoring hyperscaler and insurer AI balance-sheet sensitivity.*",
               "sources": [
                 {
-                  "label": "The Guardian",
-                  "url": "https://www.theguardian.com/technology/2026/nov/18/anthropic-share-price-stock-market-ipo"
+                  "label": "Benzinga",
+                  "url": "https://www.benzinga.com/opinion/26/11/63512484/anthropic-stock-the-bull-base-and-bear-case-into-nasdaq-100-entry"
                 },
                 {
-                  "label": "Kiplinger",
-                  "url": "https://www.kiplinger.com/investing/live/anthropic-ipo-updates-and-commentary"
+                  "label": "CryptoBriefing",
+                  "url": "https://cryptobriefing.com/polymarket-traders-anthropic-ipo-forecast/"
                 }
               ]
             },
@@ -1707,7 +1782,7 @@
                   ],
                   [
                     "**2. Sudden KEV Catalog Addition**",
-                    "Mid-week addition of a Juniper Junos or Cisco routing/onboarding CVE to CISA's **Known Exploited Vulnerabilities (KEV)** catalog with a 72-hour remediation deadline. On November 17, CISA added **Perforce Puppet Enterprise CVE-2026-115731** (CVSS 9.4 untrusted data deserialization RCE on Puppet configuration servers; federal patch deadline **Dec. 1, 2026** per [CISA KEV Alert](https://www.cisa.gov/news-events/alerts/2026/11/17/cisa-adds-one-known-exploited-vulnerability-catalog)) and issued an urgent alert with Canada's Cyber Centre on **\"Java4Shell\" (CVE-2026-114938)**, an unauthenticated OpenJDK/Oracle HotSpot Base64 RCE affecting Java 17/21/25/27 with working exploits demonstrated against Jira, Confluence, Jenkins, and Keycloak ([CISA Java Alert](https://www.cisa.gov/news-events/alerts/2026/11/17/critical-java-vulnerability-requires-immediate-patching)). On November 18, 2026, CISA added four additional KEVs: **BerriAI LiteLLM CVE-2026-40217** (AI proxy/gateway alternate channel flaw), **Apache Axis CVE-2026-90436**, **Vanderbilt REDCap CVE-2026-90817** (clinical research code injection), and **Synology DSM CVE-2024-10441** ([CISA Nov. 18 KEV Alert](https://www.cisa.gov/news-events/alerts/2026/11/18/cisa-adds-four-known-exploited-vulnerabilities-catalog)).",
+                    "Mid-week addition of a Juniper Junos or Cisco routing/onboarding CVE to CISA's **Known Exploited Vulnerabilities (KEV)** catalog with a 72-hour remediation deadline. On November 17, CISA added **Perforce Puppet Enterprise CVE-2026-115731** (CVSS 9.4 untrusted data deserialization RCE on Puppet configuration servers; federal patch deadline **Dec. 1, 2026** per [CISA KEV Alert](https://www.cisa.gov/news-events/alerts/2026/11/17/cisa-adds-one-known-exploited-vulnerability-catalog)) and issued an urgent alert with Canada's Cyber Centre on **\"Java4Shell\" (CVE-2026-114938)**, an unauthenticated OpenJDK/Oracle HotSpot Base64 RCE affecting Java 17/21/25/27 with working exploits demonstrated against Jira, Confluence, Jenkins, and Keycloak ([CISA Java Alert](https://www.cisa.gov/news-events/alerts/2026/11/17/critical-java-vulnerability-requires-immediate-patching)). On November 18, 2026, CISA added four additional KEVs: **BerriAI LiteLLM CVE-2026-40217** (AI proxy/gateway alternate channel flaw), **Apache Axis CVE-2026-90436**, **Vanderbilt REDCap CVE-2026-90817** (clinical research code injection), and **Synology DSM CVE-2024-10441** ([CISA Nov. 18 KEV Alert](https://www.cisa.gov/news-events/alerts/2026/11/18/cisa-adds-four-known-exploited-vulnerabilities-catalog)). On **November 20, 2026**, CISA added four more KEVs with an urgent **72-hour due date of November 23, 2026** and mandatory **BOD 26-04 forensic triage** on three of the four: **VMware vCenter CVE-2026-123890** (CVSS 9.8 auth bypass exploited as a zero-day since pre-July 2026 by Chinese APT **Armory Castle** using *Bonesaw* to forge SAML tokens, steal vCenter master keys, and pivot to ESXi hosts; no public patch for EoL vCenter 7.0 per [SecurityWeek](https://www.securityweek.com/newly-patched-vmware-vcenter-flaw-exploited-as-zero-day-by-chinese-apt/)), **Cisco Expressway CVE-2026-76466** (CVSS 9.8 hard-coded credentials exploited across cluster nodes per [KBY Technologies](https://www.kbytechnologies.com/news-security/cisco-expressway-cve-2026-76466-exploited-f6-november-2026)), **SAP NetWeaver CVE-2025-42884**, and **Apache Roller CVE-2026-129448** ([CISA Nov. 20 KEV Alert](https://www.cisa.gov/news-events/alerts/2026/11/20/cisa-adds-four-known-exploited-vulnerabilities-catalog)).",
                     "Forensics confirmed an existing onboarding or routing-daemon flaw was weaponized prior to deployment."
                   ],
                   [
@@ -1776,14 +1851,14 @@
                     "Microsoft 365 (Global Cloud, Enterprise & Healthcare)",
                     "Disrupted Outlook, Teams, SharePoint & Copilot across 70+ countries; hospital \"Code Grey\" alerts & clinical workarounds; ~USD 7B est. global loss ([DistilINFO](https://distilinfo.com/2026/11/16/microsoft-healthcare-outage/); [IVN](https://ivn.us/are-major-bank-outages-at-chase-bank-of-america-connected-to-faa-outlook-failures/))",
                     "Dormant July 2026 gateway lock-contention bug + Teams failover + 14% maintenance outage + ~10-hr \"thundering herd\" stall; degraded Defender XDR & Purview ([GeekWire](https://www.geekwire.com/2026/what-went-wrong-with-outlook-microsoft-blames-thundering-herds-and-a-bug-unnoticed-for-months/))",
-                    "Restored; final PIR due Nov. 20, 2026."
+                    "Restored; final PIR due Nov. 20 (preliminary >80% gateway failure stands entering afternoon); Microsoft Threat Intel flagged high-volume fake M365 service-health credential phishing ([Security Boulevard](https://securityboulevard.com/2026/11/six-outages-in-six-days-what-each-organization-said-broke/))."
                   ],
                   [
                     "#2 — Nov. 13, 2026 (3:54–8:15 p.m. ET)",
                     "FAA / L3Harris FTI Backbone (National Aviation / ATC)",
                     "4.5-hr nationwide ground stop; ~12,462 flight disruptions; 17 of 22 ARTCCs destabilized; ~USD 345M Big-Four airline earnings hit",
                     "Two-router broadcast flood (El Dorado, AR Friday 3:30 p.m. ET cutover + 3-wk-old Amarillo, TX Juniper router on legacy TDM); HPE cites installer config; Admin. Bedford took full responsibility (mystery remains after 68 clean prior cutovers); Sec. Duffy cited L3Harris vendor lock with no timeline to resume Juniper installs ([PBS NewsHour](https://www.pbs.org/newshour/politics/dot-secretary-sean-duffy-keeps-blaming-l3harris-after-faa-ground-stop-even-as-cause-remains-unknown)).",
-                    "Nov. 17: FAA halted router rollout & powered off all ~400 installed Juniper routers; Florida FBI/lab probe active. WaPo reports on-site FAA official tested & signed off on El Dorado cutover 8 mins before ground stop; White House formed multi-agency \"tiger team.\""
+                    "Nov. 17: FAA halted router rollout & powered off all ~400 installed Juniper routers; Florida FBI/lab probe active. WaPo reports on-site FAA official tested & signed off on El Dorado cutover 8 mins before ground stop; White House formed multi-agency \"tiger team.\" Warrenton, VA ATCSCC national ops manager ordered the Nov. 13 halt; Florida lab probe (FAA/L3Harris/Cisco/FBI) preparing public root-cause readout ahead of Nov. 23 Senate Commerce deadline."
                   ],
                   [
                     "#3 — Nov. 13–14, 2026",
@@ -1804,7 +1879,7 @@
                     "JPMorgan Chase & Zelle Rails (Tier-1 Banking / G-SIB)",
                     "~4,800+ Chase outage reports; branch teller & ATM disruptions; counterparty Zelle/transfer delays across BofA, Wells Fargo, U.S. Bank, Capital One & Truist ([AP News](https://apnews.com/article/bank-outage-chase-wells-fargo-truist-50fee2693c22f597fa6ca51a97ef2cda))",
                     "Software bug in on-premise hardware systems + queued peak traffic re-crashes; non-cyber ([TIME](https://time.com/article/2026/11/16/bank-outage-down-jpmorgan-chase-technical-issue/))",
-                    "Restored Monday night; Tuesday ACH/Zelle cleared cleanly; JPM closed -2.3% Monday."
+                    "Restored Monday night; Tuesday ACH/Zelle cleared cleanly; JPM closed -2.3% Monday. Nov. 20: Chase, Visa & Mastercard confirmed separate n0n third-party marketing-vendor breaches (payment rails unaffected; unrelated to Nov. 16 outage)."
                   ],
                   [
                     "#6 — Nov. 16, 2026 (~1:30–4:30 p.m. CST)",
@@ -1861,9 +1936,9 @@
                 ],
                 "rows": [
                   [
-                    "**Nov. 18, 2026**",
+                    "**Nov. 23, 2026 — CISA 72h KEV / BOD 26-04 Deadline (vCenter & Cisco Expressway) + Senate FAA Router Briefing:** Patch & forensically triage VMware vCenter CVE-2026-123890 (Chinese APT Armory Castle) and Cisco Expressway CVE-2026-76466; Senate Commerce deadline for FAA/L3Harris/Juniper vulnerability data.",
                     "**House Homeland Security \"Worldwide Threats\" Hearing (Completed Nov. 18)**",
-                    "DNI Clayton, Sec. Mullin & FBI Dep. Dir. Raia testified no malicious coordination exists across recent outages while flagging AI-driven patching strain and CISA staffing pressures ([CyberScoop](https://cyberscoop.com/tech-outages-ai-vulnerability-patching/))."
+                    "DNI Clayton, Sec. Mullin & FBI Dep. Dir. Raia testified no malicious coordination exists across recent outages while flagging AI-driven patching strain and CISA staffing pressures ([CyberScoop](https://cyberscoop.com/tech-outages-ai-vulnerability-patching/)). Final M365 PIR target date & post-Shenzhen White House readout (no mineral/chip truce announced)."
                   ],
                   [
                     "**Nov. 20, 2026**",
@@ -1873,7 +1948,7 @@
                   [
                     "**Nov. 27, 2026**",
                     "**China Gallium/Germanium/Antimony Pause Expiry**",
-                    "Review raw material stockpiles for U.S. AESA radar, night vision, and munitions production line continuity."
+                    "**Dec. 14–15, 2026 — G20 Leaders' Summit (Miami, FL):** Next scheduled Trump–Xi engagement on AI chip curbs, tariffs, and rare-earth truce ahead of Jan. 10, 2027 expiry."
                   ],
                   [
                     "**Dec. 31, 2026**",
@@ -1912,7 +1987,7 @@
           "blocks": [
             {
               "type": "paragraph",
-              "text": "A recurring daily tracking task (**\"Daily Update: FAA Router Forensics & FS-ISAC Telemetry\"**) is scheduled for **9:00 AM CST** as of November 18, 2026, monitoring readouts from the ten-event master ledger in Section 8.4, a general cross-sector scan for new qualifying events to append sequentially, and all nine watchlist indicators in Section 8.3 (including background awareness of CISA's Nov. 16 Dams Sector Cybersecurity Framework publication and active browser/perimeter KEV deadlines).",
+              "text": "A recurring daily tracking task (**\"Daily Update: FAA Router Forensics & FS-ISAC Telemetry\"**) is scheduled for **9:00 AM CST** as of November 20, 2026, monitoring readouts from the ten-event master ledger in Section 8.4, a general cross-sector scan for new qualifying events to append sequentially, and all nine watchlist indicators in Section 8.3 (including background awareness of CISA's Nov. 16 Dams Sector Cybersecurity Framework publication and active browser/perimeter KEV deadlines).",
               "sources": []
             }
           ]
@@ -2567,132 +2642,230 @@
     },
     {
       "id": "src-93",
+      "category": "Nov. 19–20 Updates (Shenzhen Trilateral, CISA 72h vCenter/Cisco KEVs, Chinese APT Armory Castle, FAA Warrenton/Florida Lab, n0n Vendor Breaches & ANT Reversal)",
+      "domainTag": "Aviation & FAA",
+      "title": "CISA — Nov. 20 KEV Additions (vCenter, Cisco Expressway, SAP, Apache)",
+      "url": "https://www.cisa.gov/news-events/alerts/2026/11/20/cisa-adds-four-known-exploited-vulnerabilities-catalog"
+    },
+    {
+      "id": "src-94",
+      "category": "Nov. 19–20 Updates (Shenzhen Trilateral, CISA 72h vCenter/Cisco KEVs, Chinese APT Armory Castle, FAA Warrenton/Florida Lab, n0n Vendor Breaches & ANT Reversal)",
+      "domainTag": "Aviation & FAA",
+      "title": "SecurityWeek — Chinese APT Armory Castle Zero-Day in VMware vCenter",
+      "url": "https://www.securityweek.com/newly-patched-vmware-vcenter-flaw-exploited-as-zero-day-by-chinese-apt/"
+    },
+    {
+      "id": "src-95",
+      "category": "Nov. 19–20 Updates (Shenzhen Trilateral, CISA 72h vCenter/Cisco KEVs, Chinese APT Armory Castle, FAA Warrenton/Florida Lab, n0n Vendor Breaches & ANT Reversal)",
+      "domainTag": "Aviation & FAA",
+      "title": "KBY Technologies — Cisco Expressway CVE-2026-76466 Exploitation",
+      "url": "https://www.kbytechnologies.com/news-security/cisco-expressway-cve-2026-76466-exploited-f6-november-2026"
+    },
+    {
+      "id": "src-96",
+      "category": "Nov. 19–20 Updates (Shenzhen Trilateral, CISA 72h vCenter/Cisco KEVs, Chinese APT Armory Castle, FAA Warrenton/Florida Lab, n0n Vendor Breaches & ANT Reversal)",
+      "domainTag": "Aviation & FAA",
+      "title": "CFR — Trump, Xi & Putin Shenzhen Trilateral Analysis",
+      "url": "https://www.cfr.org/articles/six-experts-on-what-trump-xi-and-putins-first-trilateral-means"
+    },
+    {
+      "id": "src-97",
+      "category": "Nov. 19–20 Updates (Shenzhen Trilateral, CISA 72h vCenter/Cisco KEVs, Chinese APT Armory Castle, FAA Warrenton/Florida Lab, n0n Vendor Breaches & ANT Reversal)",
+      "domainTag": "Aviation & FAA",
+      "title": "NPR — White House Post-Shenzhen Press Conference",
+      "url": "https://www.iowapublicradio.org/news-from-npr/2026-11-20/trump-touts-meeting-with-xi-and-putin-but-offers-little-results"
+    },
+    {
+      "id": "src-98",
+      "category": "Nov. 19–20 Updates (Shenzhen Trilateral, CISA 72h vCenter/Cisco KEVs, Chinese APT Armory Castle, FAA Warrenton/Florida Lab, n0n Vendor Breaches & ANT Reversal)",
+      "domainTag": "Aviation & FAA",
+      "title": "MLQ.ai — Shenzhen Bilateral Chip & Mineral Agenda",
+      "url": "https://mlq.ai/news/xi-and-trump-open-talks-in-shenzhen-with-trump-praising-their-board-of-trade-and-xi-calling-ties-stable/"
+    },
+    {
+      "id": "src-99",
+      "category": "Nov. 19–20 Updates (Shenzhen Trilateral, CISA 72h vCenter/Cisco KEVs, Chinese APT Armory Castle, FAA Warrenton/Florida Lab, n0n Vendor Breaches & ANT Reversal)",
+      "domainTag": "Aviation & FAA",
+      "title": "Washington Examiner — Warrenton Facility Ground Stop Decision",
+      "url": "https://www.washingtonexaminer.com/policy/infrastructure/4809217/faa-ground-stop-virginia-facility/"
+    },
+    {
+      "id": "src-100",
+      "category": "Nov. 19–20 Updates (Shenzhen Trilateral, CISA 72h vCenter/Cisco KEVs, Chinese APT Armory Castle, FAA Warrenton/Florida Lab, n0n Vendor Breaches & ANT Reversal)",
+      "domainTag": "Aviation & FAA",
+      "title": "GV Wire — FAA Plans Root-Cause Announcement",
+      "url": "https://gvwire.com/2026/11/19/us-plans-to-announce-cause-of-outage-that-led-to-nationwide-ground-stop-faa-says/"
+    },
+    {
+      "id": "src-101",
+      "category": "Nov. 19–20 Updates (Shenzhen Trilateral, CISA 72h vCenter/Cisco KEVs, Chinese APT Armory Castle, FAA Warrenton/Florida Lab, n0n Vendor Breaches & ANT Reversal)",
+      "domainTag": "Aviation & FAA",
+      "title": "Cybersecurity Dive — JPMorgan, Visa & Mastercard Third-Party Vendor Hacks",
+      "url": "https://www.cybersecuritydive.com/news/jpmorgan-visa-customer-data-leaked-third-party-hacks/875333/"
+    },
+    {
+      "id": "src-102",
+      "category": "Nov. 19–20 Updates (Shenzhen Trilateral, CISA 72h vCenter/Cisco KEVs, Chinese APT Armory Castle, FAA Warrenton/Florida Lab, n0n Vendor Breaches & ANT Reversal)",
+      "domainTag": "Aviation & FAA",
+      "title": "Security Boulevard — Microsoft 365 Outage & Phishing Lures",
+      "url": "https://securityboulevard.com/2026/11/six-outages-in-six-days-what-each-organization-said-broke/"
+    },
+    {
+      "id": "src-103",
+      "category": "Nov. 19–20 Updates (Shenzhen Trilateral, CISA 72h vCenter/Cisco KEVs, Chinese APT Armory Castle, FAA Warrenton/Florida Lab, n0n Vendor Breaches & ANT Reversal)",
+      "domainTag": "Aviation & FAA",
+      "title": "Benzinga — Anthropic Post-IPO Reversal & Equity Correction",
+      "url": "https://www.benzinga.com/opinion/26/11/63512484/anthropic-stock-the-bull-base-and-bear-case-into-nasdaq-100-entry"
+    },
+    {
+      "id": "src-104",
       "category": "Inline Briefing Citation",
       "domainTag": "Outage Telemetry",
       "title": "CBS News",
       "url": "https://www.cbsnews.com/news/trump-xi-meet-china-chips-ai/"
     },
     {
-      "id": "src-94",
+      "id": "src-105",
       "category": "Inline Briefing Citation",
       "domainTag": "Aviation & FAA",
       "title": "AP News",
       "url": "https://apnews.com/article/mullin-congress-ground-stop-cyber-threats-immigration-ce63a22797c61ee53d88678000236c37"
     },
     {
-      "id": "src-95",
+      "id": "src-106",
       "category": "Inline Briefing Citation",
       "domainTag": "Outage Telemetry",
       "title": "Shattered / Ars Technica Analysis",
       "url": "https://shattered.io/ars-live-drone-attacks-data-centers-nov-17-aws-data-deleted-2026/"
     },
     {
-      "id": "src-96",
+      "id": "src-107",
       "category": "Inline Briefing Citation",
       "domainTag": "Supply Chain & Minerals",
       "title": "The Next Web",
       "url": "https://thenextweb.com/news/china-weighs-response-to-us-chip-curbs-before-trump-summit"
     },
     {
-      "id": "src-97",
+      "id": "src-108",
       "category": "Inline Briefing Citation",
       "domainTag": "Aviation & FAA",
       "title": "FAA Q&A",
       "url": "https://www.faa.gov/newsroom/nationwide-ground-stop-questions-and-answers"
     },
     {
-      "id": "src-98",
+      "id": "src-109",
       "category": "Inline Briefing Citation",
       "domainTag": "Outage Telemetry",
       "title": "BigGo Finance",
       "url": "https://finance.biggo.com/news/abb6b826-1e79-47a3-b4cf-8ad459121c8b"
     },
     {
-      "id": "src-99",
+      "id": "src-110",
+      "category": "Inline Briefing Citation",
+      "domainTag": "Aviation & FAA",
+      "title": "FOX 32 Chicago",
+      "url": "https://www.fox32chicago.com/news/faa-announce-root-cause-outage-led-ground-stoppage"
+    },
+    {
+      "id": "src-111",
+      "category": "Inline Briefing Citation",
+      "domainTag": "Aviation & FAA",
+      "title": "TradingView / Seeking Alpha",
+      "url": "https://www.tradingview.com/news/seekingalpha:b71e02c06094b:0-faa-pauses-router-installations-as-ground-stop-investigation-puts-oversight-in-focus/"
+    },
+    {
+      "id": "src-112",
       "category": "Inline Briefing Citation",
       "domainTag": "Aviation & FAA",
       "title": "Mashable",
       "url": "https://mashable.com/tech/united-airlines-widespread-system-outage-nov-16-2026"
     },
     {
-      "id": "src-100",
+      "id": "src-113",
       "category": "Inline Briefing Citation",
       "domainTag": "Aviation & FAA",
       "title": "OPSGROUP",
       "url": "https://ops.group/blog/tag/spoofing/"
     },
     {
-      "id": "src-101",
+      "id": "src-114",
       "category": "Inline Briefing Citation",
       "domainTag": "Aviation & FAA",
       "title": "GAO Report",
       "url": "https://www.gao.gov/blog/air-travel-communications-threatened-spoofing-and-jamming-concerns"
     },
     {
-      "id": "src-102",
+      "id": "src-115",
       "category": "Inline Briefing Citation",
       "domainTag": "Outage Telemetry",
       "title": "Interactive Brokers Analysis",
       "url": "https://www.interactivebrokers.com/campus/traders-insight/investmentor/what-the-cme-outage-teaches-us-about-modern-markets/"
     },
     {
-      "id": "src-103",
+      "id": "src-116",
       "category": "Inline Briefing Citation",
       "domainTag": "Outage Telemetry",
       "title": "GameChange Energy",
       "url": "https://www.gamechangeenergy.com/news/transformer-lead-times-in-2026-what-pad-mounted-and-substation-buyers-can-expect"
     },
     {
-      "id": "src-104",
+      "id": "src-117",
       "category": "Inline Briefing Citation",
       "domainTag": "Outage Telemetry",
       "title": "Utility Dive",
       "url": "https://www.utilitydive.com/news/trump-ban-on-foreign-grid-components-sparks-industry-concern-over-practical/873752/"
     },
     {
-      "id": "src-105",
+      "id": "src-118",
       "category": "Inline Briefing Citation",
       "domainTag": "Outage Telemetry",
       "title": "CNN",
       "url": "https://www.cnn.com/2026/11/18/politics/nsa-outage-disrupts-georgia-intel-hub-middle-east-intelligence"
     },
     {
-      "id": "src-106",
+      "id": "src-119",
       "category": "Inline Briefing Citation",
       "domainTag": "Outage Telemetry",
       "title": "Anadolu Agency",
       "url": "https://aa.com.tr/en/americas/google-says-no-evidence-of-widespread-gmail-outage-despite-user-complaints/4128324"
     },
     {
-      "id": "src-107",
+      "id": "src-120",
       "category": "Inline Briefing Citation",
       "domainTag": "Outage Telemetry",
       "title": "Sportskeeda Tech",
       "url": "https://tech.sportskeeda.com/laptops/news-is-gmail-right-now-november-17-2026-outage-status-explored"
     },
     {
-      "id": "src-108",
+      "id": "src-121",
       "category": "Inline Briefing Citation",
       "domainTag": "Outage Telemetry",
       "title": "IsDown",
       "url": "https://isdown.app/status/lever/incidents/688454-lever-backend-services-outage"
     },
     {
-      "id": "src-109",
+      "id": "src-122",
       "category": "Inline Briefing Citation",
       "domainTag": "Outage Telemetry",
       "title": "Mashable",
       "url": "https://mashable.com/tech/microsoft-outage-cause-revealed"
     },
     {
-      "id": "src-110",
+      "id": "src-123",
       "category": "Inline Briefing Citation",
-      "domainTag": "Financial & Banking",
-      "title": "Kiplinger",
-      "url": "https://www.kiplinger.com/investing/live/anthropic-ipo-updates-and-commentary"
+      "domainTag": "Legal & Insurance",
+      "title": "Claims Journal",
+      "url": "https://www.claimsjournal.com/news/national/2026/11/20/341437.htm"
     },
     {
-      "id": "src-111",
+      "id": "src-124",
+      "category": "Inline Briefing Citation",
+      "domainTag": "Financial & Banking",
+      "title": "CryptoBriefing",
+      "url": "https://cryptobriefing.com/polymarket-traders-anthropic-ipo-forecast/"
+    },
+    {
+      "id": "src-125",
       "category": "Inline Briefing Citation",
       "domainTag": "Outage Telemetry",
       "title": "OFR Brief 24-05",

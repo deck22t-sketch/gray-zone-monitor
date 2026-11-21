@@ -261,10 +261,10 @@ export function IncidentsView() {
       >
         <div className="flex flex-wrap items-center justify-between gap-2">
           <p className="font-mono-tactical text-xs uppercase tracking-wider text-white">
-            Disruption Wave Chronology (Nov. 12–18) — Tap to Jump
+            Disruption Wave Chronology (Nov. 12–20) — Tap to Jump
           </p>
           <span className="font-mono-tactical text-[11px] text-gray-400">
-            {incidents.length} Tracked · {updatedEventIds.size} Nov. 18 Updates
+            {incidents.length} Tracked · {updatedEventIds.size} Latest Sync Updates ({sections.docDate})
           </span>
         </div>
 
@@ -293,7 +293,7 @@ export function IncidentsView() {
                   <div className="flex items-center gap-1">
                     {wasUpdated && (
                       <span
-                        title="Updated in Nov. 18 Canonical Sync"
+                        title={`Updated in ${sections.docDate} Canonical Sync`}
                         className="font-mono-tactical text-[8px] px-1 rounded-xs bg-[#38BDF8]/20 text-[#38BDF8]"
                       >
                         UPD

@@ -198,6 +198,37 @@ export interface CrossDomainGraph {
   adjacency: Record<string, string[]>;
 }
 
+/**
+ * Strips inline Markdown links (`[Label](https://...)`) from synthesis prose while cleanly
+ * removing parenthetical citation wrappers so empty `()` or `(; )` artifacts never remain.
+ */
+export function stripInlineMarkdownCitations(input: string, stripEmphasis = false): string {
+  let out = input
+    // Remove "per [Source](url)" / "via [Source](url)" / "citing [Source](url)" phrases cleanly
+    .replace(/\s+\b(?:per|via|citing)\s+\*{0,2}\[[^\]]+\]\(https?:\/\/[^)\s]+\)\*{0,2}/gi, '')
+    // Remove standalone inline markdown links (with optional surrounding * or ** emphasis)
+    .replace(/\*{0,2}\[[^\]]+\]\(https?:\/\/[^)\s]+\)\*{0,2}/g, '')
+    // Remove empty or punctuation-only parentheticals left behind, e.g. (), (; ), (, ), (per )
+    .replace(/\(\s*(?:[;:|,.*&/–-]|\b(?:and|or|per|see|via|citing)\b|\s)*\)/gi, '')
+    // Trim dangling "; " or ", " immediately before a closing parenthesis
+    .replace(/([;:,])\s*\)/g, ')')
+    .replace(/\(\s*([;:,])\s*/g, '(')
+    // Collapse whitespace before punctuation and normalize interior spaces
+    .replace(/\s+([.,;:!?])/g, '$1')
+    .replace(/\(\s+/g, '(')
+    .replace(/\s+\)/g, ')')
+    .replace(/\s{2,}/g, ' ')
+    .trim();
+
+  if (stripEmphasis) {
+    out = out
+      .replace(/\*\*\*([^*]+)\*\*\*/g, '$1')
+      .replace(/\*\*([^*]+)\*\*/g, '$1')
+      .replace(/\*([^*]+)\*/g, '$1');
+  }
+  return out;
+}
+
 const RISK_CORRELATIONS: Record<
   string,
   { incidents: string[]; watchlist: string[]; cliffs: string[]; tone: 'crimson' | 'amber' | 'cyan' }
@@ -205,19 +236,19 @@ const RISK_CORRELATIONS: Record<
   '#1': {
     incidents: ['#1', '#2', '#3', '#5', '#6', '#7', '#8', '#9', '#10'],
     watchlist: ['#1', '#3', '#4', '#5', '#7', '#9'],
-    cliffs: ['2026-11-18', '2026-11-20'],
+    cliffs: ['2026-11-18', '2026-11-20', '2026-11-23'],
     tone: 'amber',
   },
   '#2': {
-    incidents: ['#2', '#4'],
+    incidents: ['#2', '#4', '#5'],
     watchlist: ['#1', '#2', '#3', '#4', '#6', '#8'],
-    cliffs: ['2026-11-18'],
+    cliffs: ['2026-11-18', '2026-11-23'],
     tone: 'crimson',
   },
   '#3': {
     incidents: ['#4', '#2'],
-    watchlist: ['#1', '#5', '#8'],
-    cliffs: ['2026-11-27', '2027-01-01'],
+    watchlist: ['#1', '#2', '#5', '#8'],
+    cliffs: ['2026-11-23', '2026-11-27', '2027-01-01'],
     tone: 'crimson',
   },
   '#4': {

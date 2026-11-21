@@ -14,6 +14,8 @@ function resolveBasePath(): string {
 }
 
 const basePath = resolveBasePath();
+const rawPasscode = (process.env.SITE_PASSCODE ?? '').trim();
+const isPublicMode = !rawPasscode || rawPasscode.toUpperCase() === 'PUBLIC';
 
 const nextConfig: NextConfig = {
   output: 'export',
@@ -25,6 +27,7 @@ const nextConfig: NextConfig = {
   },
   env: {
     NEXT_PUBLIC_BASE_PATH: basePath,
+    NEXT_PUBLIC_PUBLIC_MODE: isPublicMode ? 'true' : 'false',
   },
 };
 

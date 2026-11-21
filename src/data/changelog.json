@@ -1,30 +1,71 @@
 {
-  "syncedAtISO": "2026-11-19T00:29:29.404Z",
-  "docHash": "e6687323b08de089234452aeeedf1f699ec264460fe682ed2d23c2c3478d12be",
-  "docDate": "November 18, 2026",
+  "syncedAtISO": "2026-11-21T04:22:46.793Z",
+  "docHash": "d9af3528cc65fa006580e1cfbfd9d6f20684e2df3189d6b099d7e27c91dfef87",
+  "docDate": "November 20, 2026",
   "addedIncidents": [],
   "updatedStatuses": [
     {
-      "eventId": "#2",
-      "entity": "FAA / L3Harris FTI Backbone",
-      "previousStatus": "Vector: Two-router broadcast flood (El Dorado, AR Friday 3:30 p.m. ET cutover + 3-wk-old Amarillo, TX Juniper router on legacy TDM); HPE cites installer config (WTTW / AP)",
-      "currentStatus": "Vector: Two-router broadcast flood (El Dorado, AR Friday 3:30 p.m. ET cutover + 3-wk-old Amarillo, TX Juniper router on legacy TDM); HPE cites installer config; Admin. Bedford took full responsibility (mystery remains after 68 clean prior cutovers); Sec. Duffy cited L3Harris vendor lock with no timeline to resume Juniper installs (PBS NewsHour)."
+      "eventId": "#1",
+      "entity": "Microsoft 365",
+      "previousStatus": "Restored; final PIR due Nov. 20, 2026.",
+      "currentStatus": "Restored; final PIR due Nov. 20 (preliminary >80% gateway failure stands entering afternoon); Microsoft Threat Intel flagged high-volume fake M365 service-health credential phishing (Security Boulevard)."
     },
     {
-      "eventId": "#8",
-      "entity": "National Security Agency — NSANet",
-      "previousStatus": "Official NSA statement cites routine maintenance degradation; full internal restoration timing unconfirmed entering Nov. 18 House hearing.",
-      "currentStatus": "Disrupted NSA Georgia Middle East hub & kept MD day shift home Wed; reported back up late Nov. 18 PM under ongoing \"Code Gray\" staggered sign-on limits."
+      "eventId": "#2",
+      "entity": "FAA / L3Harris FTI Backbone",
+      "previousStatus": "Nov. 17: FAA halted router rollout & powered off all ~400 installed Juniper routers; Florida FBI/lab probe active. WaPo reports on-site FAA official tested & signed off on El Dorado cutover 8 mins before ground stop; White House formed multi-agency \"tiger team.\"",
+      "currentStatus": "Nov. 17: FAA halted router rollout & powered off all ~400 installed Juniper routers; Florida FBI/lab probe active. WaPo reports on-site FAA official tested & signed off on El Dorado cutover 8 mins before ground stop; White House formed multi-agency \"tiger team.\" Warrenton, VA ATCSCC national ops manager ordered the Nov. 13 halt; Florida lab probe (FAA/L3Harris/Cisco/FBI) preparing public root-cause readout ahead of Nov. 23 Senate Commerce deadline."
+    },
+    {
+      "eventId": "#5",
+      "entity": "JPMorgan Chase & Zelle Rails",
+      "previousStatus": "Restored Monday night; Tuesday ACH/Zelle cleared cleanly; JPM closed -2.3% Monday.",
+      "currentStatus": "Restored Monday night; Tuesday ACH/Zelle cleared cleanly; JPM closed -2.3% Monday. Nov. 20: Chase, Visa & Mastercard confirmed separate n0n third-party marketing-vendor breaches (payment rails unaffected; unrelated to Nov. 16 outage)."
     }
   ],
   "riskShifts": [
     {
-      "id": "#1",
-      "domain": "Hybrid Legacy-to-IP \"Transition Trap\" & Retry Storms",
+      "id": "#2",
+      "domain": "Third-Party Web, SaaS & Insider Supply-Chain Tampering (\"Poison Pill\")",
       "field": "tripwire",
-      "previous": "Daytime edge cutovers on unsegmented TDM/IP networks (on Nov. 17 the FAA halted all new router installations and powered off installed Juniper routers, reverting to 25-year-old Cisco gear across ~400 installed sites out of 3,600+); unpoliced \"thundering herd\" recovery floods; routine software patching knocking NSANet offline (forcing Fort Meade staggered arrivals to prevent simultaneous login storms); Apple \"internal update\" knocking out iCloud sign-ins, App Store, and Apple Pay/Business services",
-      "current": "Daytime edge cutovers on unsegmented TDM/IP networks (on Nov. 17 the FAA halted all new router installations and powered off installed Juniper routers, reverting to 25-year-old Cisco gear across ~400 installed sites out of 3,600+); unpoliced \"thundering herd\" recovery floods; routine software patching knocking NSANet offline (forcing Fort Meade staggered arrivals to prevent simultaneous login storms); urgent PHP2Shell patching knocking NSANet and regional intel workflows offline; Apple \"internal update\" knocking out iCloud sign-ins, App Store, and Apple Pay/Business services"
+      "previous": "SaaS signup/staging flaws (OPTIMJACK across 178 orgs), MSP exploits (ScreenConnect), or salaried DPRK remote IT contractors (FBI PSA261013)",
+      "current": "SaaS signup/staging flaws (OPTIMJACK across 178 orgs), MSP exploits (ScreenConnect), salaried DPRK remote IT contractors (FBI PSA261013), or n0n third-party vendor data breaches across JPMorgan Chase, Visa & Mastercard"
+    },
+    {
+      "id": "#3",
+      "domain": "Active Third-Theater Attrition & Destructive OT/Wiper Intrusions",
+      "field": "tripwire",
+      "previous": "Operation Epic Fury ($38B burn / Hormuz shock), Iranian PLC attacks (CISA AA26-097A), Check Point->ESXi destroy_v6 wiper, and kinetic drone strikes on Middle East/Eastern Europe data centers",
+      "current": "Operation Epic Fury ($38B burn / Hormuz shock), Iranian PLC attacks (CISA AA26-097A), Check Point->ESXi destroy_v6 wiper, kinetic drone strikes on Middle East/Eastern Europe data centers, and Chinese APT Armory Castle (Bonesaw) zero-day vCenter->ESXi compromises (CVE-2026-123890) and Cisco Expressway cluster exploits (CVE-2026-76466)"
+    },
+    {
+      "id": "#4",
+      "domain": "Imminent Chinese Critical Mineral & API Export Chokepoints",
+      "field": "horizon",
+      "previous": "10–54 Days (Nov. 27, 2026 – Jan. 10, 2027)",
+      "current": "7–51 Days (Nov. 27, 2026 – Jan. 10, 2027)"
+    },
+    {
+      "id": "#4",
+      "domain": "Imminent Chinese Critical Mineral & API Export Chokepoints",
+      "field": "tripwire",
+      "previous": "Expiry of Ga/Ge/Sb ban pause (Nov. 27) and 0.1% extraterritorial REE waiver (Jan. 10, 2027) amid U.S.–China Shenzhen summit friction",
+      "current": "Expiry of Ga/Ge/Sb ban pause (Nov. 27) and 0.1% extraterritorial REE waiver (Jan. 10, 2027) amid U.S.–China Shenzhen summit friction (Nov. 19 Shenzhen summit concluded with no mineral-ban or AI-chip truce announced)"
+    },
+    {
+      "id": "#5",
+      "domain": "Agentic Bank Runs, $10M Instant Rails & Treasury Clearing Concentration",
+      "field": "horizon",
+      "previous": "0–44 Days (Dec. 31, 2026 Cliff)",
+      "current": "0–41 Days (Dec. 31, 2026 Cliff)"
+    },
+    {
+      "id": "#6",
+      "domain": "Sub-IP Blind Spots: Silent GNSS Spoofing, Grid Transformers & 100-Day TLS",
+      "field": "horizon",
+      "previous": "0–118 Days (Mar. 15, 2027 TLS Cliff)",
+      "current": "0–115 Days (Mar. 15, 2027 TLS Cliff)"
     }
   ],
-  "summary": "Detected 0 new incident(s), 2 status update(s), and 1 risk matrix shift(s)."
+  "summary": "Detected 0 new incident(s), 3 status update(s), and 6 risk matrix shift(s)."
 }

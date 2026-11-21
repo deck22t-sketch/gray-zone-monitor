@@ -31,6 +31,36 @@ const IDB_STORE_NAME = 'device_keys';
 const IDB_RECORD_ID = 'active_vault_grant';
 const SESSION_GRANT_KEY = 'gz_vault_session_grant_v1';
 
+export function withVaultTimeout<T>(
+  promise: Promise<T>,
+  timeoutMs: number,
+  label = 'Vault operation'
+): Promise<T> {
+  return new Promise<T>((resolve, reject) => {
+    const timer = setTimeout(() => {
+      reject(new Error(`${label} timed out after ${timeoutMs}ms`));
+    }, timeoutMs);
+    promise.then(
+      (val) => {
+        clearTimeout(timer);
+        resolve(val);
+      },
+      (err) => {
+        clearTimeout(timer);
+        reject(err);
+      }
+    );
+  });
+}
+
+function getSubtleCrypto(): SubtleCrypto {
+  const subtle = globalThis.crypto?.subtle;
+  if (!subtle) {
+    throw new Error('Web Crypto SubtleCrypto API is unavailable in this context.');
+  }
+  return subtle;
+}
+
 /**
  * Normalizes a shared passphrase so mobile auto-capitalization, leading/trailing spaces,
  * or spaces typed in place of hyphens resolve deterministically to the same key material.
@@ -68,9 +98,10 @@ async function deriveAesGcmKey(
   iterations: number,
   usage: KeyUsage[]
 ): Promise<CryptoKey> {
+  const subtle = getSubtleCrypto();
   const normalized = normalizePassphrase(passcode);
   const enc = new TextEncoder();
-  const baseKey = await globalThis.crypto.subtle.importKey(
+  const baseKey = await subtle.importKey(
     'raw',
     enc.encode(normalized),
     'PBKDF2',
@@ -78,7 +109,7 @@ async function deriveAesGcmKey(
     ['deriveKey']
   );
 
-  return globalThis.crypto.subtle.deriveKey(
+  return subtle.deriveKey(
     {
       name: 'PBKDF2',
       salt: salt as BufferSource,
@@ -96,12 +127,13 @@ export async function encryptBundleWithPasscode(
   bundle: FullBriefingDataBundle,
   passcode: string
 ): Promise<VaultMeta> {
+  const subtle = getSubtleCrypto();
   const salt = globalThis.crypto.getRandomValues(new Uint8Array(16));
   const iv = globalThis.crypto.getRandomValues(new Uint8Array(12));
   const key = await deriveAesGcmKey(passcode, salt, PBKDF2_ITERATIONS, ['encrypt']);
 
   const plaintextBytes = new TextEncoder().encode(JSON.stringify(bundle));
-  const encryptedBuffer = await globalThis.crypto.subtle.encrypt(
+  const encryptedBuffer = await subtle.encrypt(
     { name: 'AES-GCM', iv: iv as BufferSource },
     key,
     plaintextBytes
@@ -109,6 +141,7 @@ export async function encryptBundleWithPasscode(
 
   return {
     encrypted: true,
+    publicMode: false,
     algorithm: 'AES-256-GCM',
     kdf: 'PBKDF2-SHA256',
     iterations: PBKDF2_ITERATIONS,
@@ -132,12 +165,13 @@ export async function decryptBundleWithPasscode(
     throw new Error('Vault metadata does not contain an encrypted payload.');
   }
 
+  const subtle = getSubtleCrypto();
   const salt = base64ToBytes(vaultMeta.saltBase64);
   const iv = base64ToBytes(vaultMeta.ivBase64);
   const ciphertext = base64ToBytes(vaultMeta.ciphertextBase64);
   const key = await deriveAesGcmKey(passcode, salt, vaultMeta.iterations, ['decrypt']);
 
-  const decryptedBuffer = await globalThis.crypto.subtle.decrypt(
+  const decryptedBuffer = await subtle.decrypt(
     { name: 'AES-GCM', iv: iv as BufferSource },
     key,
     ciphertext as BufferSource
@@ -156,12 +190,18 @@ interface StoredDeviceGrant {
 }
 
 function openDeviceGrantDb(): Promise<IDBDatabase> {
-  return new Promise((resolve, reject) => {
+  const rawPromise = new Promise<IDBDatabase>((resolve, reject) => {
     if (typeof indexedDB === 'undefined') {
       reject(new Error('IndexedDB unavailable'));
       return;
     }
-    const req = indexedDB.open(IDB_DB_NAME, 1);
+    let req: IDBOpenDBRequest;
+    try {
+      req = indexedDB.open(IDB_DB_NAME, 1);
+    } catch (err) {
+      reject(err instanceof Error ? err : new Error('IndexedDB open threw'));
+      return;
+    }
     req.onupgradeneeded = () => {
       const db = req.result;
       if (!db.objectStoreNames.contains(IDB_STORE_NAME)) {
@@ -170,7 +210,9 @@ function openDeviceGrantDb(): Promise<IDBDatabase> {
     };
     req.onsuccess = () => resolve(req.result);
     req.onerror = () => reject(req.error ?? new Error('IndexedDB open failed'));
+    req.onblocked = () => reject(new Error('IndexedDB open blocked by another tab'));
   });
+  return withVaultTimeout(rawPromise, 1200, 'IndexedDB open');
 }
 
 /**
@@ -201,14 +243,15 @@ export async function persistVaultGrant(
   }
 
   try {
-    const deviceKey = await globalThis.crypto.subtle.generateKey(
+    const subtle = getSubtleCrypto();
+    const deviceKey = await subtle.generateKey(
       { name: 'AES-GCM', length: 256 },
       false, // non-extractable
       ['encrypt', 'decrypt']
     );
     const iv = globalThis.crypto.getRandomValues(new Uint8Array(12));
     const encoded = new TextEncoder().encode(normalized);
-    const wrapped = await globalThis.crypto.subtle.encrypt(
+    const wrapped = await subtle.encrypt(
       { name: 'AES-GCM', iv: iv as BufferSource },
       deviceKey,
       encoded
@@ -223,12 +266,16 @@ export async function persistVaultGrant(
     };
 
     const db = await openDeviceGrantDb();
-    await new Promise<void>((resolve, reject) => {
-      const tx = db.transaction(IDB_STORE_NAME, 'readwrite');
-      tx.objectStore(IDB_STORE_NAME).put(record);
-      tx.oncomplete = () => resolve();
-      tx.onerror = () => reject(tx.error);
-    });
+    await withVaultTimeout(
+      new Promise<void>((resolve, reject) => {
+        const tx = db.transaction(IDB_STORE_NAME, 'readwrite');
+        tx.objectStore(IDB_STORE_NAME).put(record);
+        tx.oncomplete = () => resolve();
+        tx.onerror = () => reject(tx.error);
+      }),
+      1200,
+      'IndexedDB write'
+    );
     db.close();
   } catch {
     // IndexedDB blocked in strict private mode; sessionStorage fallback remains active for current tab
@@ -236,36 +283,7 @@ export async function persistVaultGrant(
 }
 
 export async function restorePersistedPassphrase(): Promise<string | null> {
-  // 1. Check 30-day non-extractable IndexedDB grant first
-  try {
-    const db = await openDeviceGrantDb();
-    const record = await new Promise<StoredDeviceGrant | undefined>((resolve, reject) => {
-      const tx = db.transaction(IDB_STORE_NAME, 'readonly');
-      const req = tx.objectStore(IDB_STORE_NAME).get(IDB_RECORD_ID);
-      req.onsuccess = () => resolve(req.result as StoredDeviceGrant | undefined);
-      req.onerror = () => reject(req.error);
-    });
-    db.close();
-
-    if (record) {
-      if (Date.now() > record.expiresAtMs) {
-        await clearVaultGrants();
-        return null;
-      }
-      const iv = base64ToBytes(record.ivBase64);
-      const wrapped = base64ToBytes(record.wrappedTokenBase64);
-      const unwrapped = await globalThis.crypto.subtle.decrypt(
-        { name: 'AES-GCM', iv: iv as BufferSource },
-        record.deviceKey,
-        wrapped as BufferSource
-      );
-      return new TextDecoder().decode(unwrapped);
-    }
-  } catch {
-    // Fall through to tab session check
-  }
-
-  // 2. Check current-tab sessionStorage grant
+  // 1. Fast synchronous check in current-tab sessionStorage first (0ms, no IndexedDB lock risk)
   try {
     if (typeof sessionStorage !== 'undefined') {
       const raw = sessionStorage.getItem(SESSION_GRANT_KEY);
@@ -277,7 +295,45 @@ export async function restorePersistedPassphrase(): Promise<string | null> {
       }
     }
   } catch {
-    // Ignore
+    // Fall through to IndexedDB check
+  }
+
+  // 2. Check 30-day non-extractable IndexedDB grant with strict timeout & try/catch
+  try {
+    const subtle = getSubtleCrypto();
+    const db = await openDeviceGrantDb();
+    const record = await withVaultTimeout(
+      new Promise<StoredDeviceGrant | undefined>((resolve, reject) => {
+        const tx = db.transaction(IDB_STORE_NAME, 'readonly');
+        const req = tx.objectStore(IDB_STORE_NAME).get(IDB_RECORD_ID);
+        req.onsuccess = () => resolve(req.result as StoredDeviceGrant | undefined);
+        req.onerror = () => reject(req.error);
+      }),
+      1200,
+      'IndexedDB read'
+    );
+    db.close();
+
+    if (record) {
+      if (Date.now() > record.expiresAtMs) {
+        await clearVaultGrants();
+        return null;
+      }
+      const iv = base64ToBytes(record.ivBase64);
+      const wrapped = base64ToBytes(record.wrappedTokenBase64);
+      const unwrapped = await withVaultTimeout(
+        subtle.decrypt(
+          { name: 'AES-GCM', iv: iv as BufferSource },
+          record.deviceKey,
+          wrapped as BufferSource
+        ),
+        1200,
+        'SubtleCrypto unwrap'
+      );
+      return new TextDecoder().decode(unwrapped);
+    }
+  } catch {
+    // Clean fallback to null so caller renders passphrase prompt without hanging
   }
 
   return null;
@@ -286,12 +342,16 @@ export async function restorePersistedPassphrase(): Promise<string | null> {
 async function clearDeviceGrantOnly(): Promise<void> {
   try {
     const db = await openDeviceGrantDb();
-    await new Promise<void>((resolve) => {
-      const tx = db.transaction(IDB_STORE_NAME, 'readwrite');
-      tx.objectStore(IDB_STORE_NAME).delete(IDB_RECORD_ID);
-      tx.oncomplete = () => resolve();
-      tx.onerror = () => resolve();
-    });
+    await withVaultTimeout(
+      new Promise<void>((resolve) => {
+        const tx = db.transaction(IDB_STORE_NAME, 'readwrite');
+        tx.objectStore(IDB_STORE_NAME).delete(IDB_RECORD_ID);
+        tx.oncomplete = () => resolve();
+        tx.onerror = () => resolve();
+      }),
+      1000,
+      'IndexedDB delete'
+    );
     db.close();
   } catch {
     // Ignore

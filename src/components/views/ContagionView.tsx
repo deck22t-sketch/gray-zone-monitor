@@ -342,8 +342,9 @@ export function ContagionView() {
           <p className="text-xs sm:text-[13px] text-gray-300 leading-relaxed">
             Fed Gov. Michael Barr (Nov. 16) warned autonomous AI cash agents can trigger
             machine-speed runs on 24/7 rails—colliding with circular AI infrastructure leverage as
-            Anthropic (<code>ANT</code>) priced above range at <strong>$83/share</strong> on Nov. 18
-            (exceeding <strong>$1.4T</strong> market cap ahead of its Nov. 19 Nasdaq debut).
+            Anthropic (<code>ANT</code>) priced its record $81.3B Nasdaq IPO at{' '}
+            <strong>$83/share</strong> (Nov. 18), peaked at <strong>$115.10</strong> on Nov. 19, and
+            fell ~27% to <strong>~$83.15</strong> intraday Nov. 20 amid S&amp;P/Dow correction.
           </p>
 
           <div className="grid grid-cols-2 gap-2.5 text-xs">
@@ -356,11 +357,11 @@ export function ContagionView() {
             </div>
             <div className="obsidian-surface rounded-md p-3">
               <p className="font-mono-tactical text-base sm:text-lg font-semibold text-[#F59E0B]">
-                $83 / sh
+                -27% Rev.
               </p>
-              <p className="text-gray-200 font-medium">Anthropic (ANT) Priced Nov. 18</p>
+              <p className="text-gray-200 font-medium">Anthropic (ANT) Nov. 20 Swing</p>
               <p className="text-[11px] text-gray-400 mt-0.5">
-                &gt;$1.4T cap · Nov. 19 Nasdaq debut
+                $83 IPO → $115.10 peak → ~$83.15
               </p>
             </div>
             <div className="obsidian-surface rounded-md p-3">

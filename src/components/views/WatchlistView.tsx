@@ -322,8 +322,8 @@ export function WatchlistView() {
                 tone: 'crimson',
               },
               {
-                label: 'Nov. 18 KEV Wave',
-                value: 'LiteLLM · Axis · REDCap · Synology',
+                label: 'Nov. 20 KEV Wave',
+                value: 'vCenter · Cisco Expressway · 72h BOD',
                 tone: 'amber',
               },
               {
@@ -385,15 +385,16 @@ export function WatchlistView() {
 
               <div className="obsidian-surface rounded-md p-3.5 border-l-2 border-l-[#F59E0B] space-y-1">
                 <span className="font-mono-tactical text-[10px] text-[#F59E0B] uppercase font-semibold">
-                  NOV. 18 KEV WAVE &amp; FBI ARTEX
+                  NOV. 20 CISA 72H KEV &amp; BOD 26-04 TRIAGE
                 </span>
                 <p className="font-semibold text-white leading-snug">
-                  4 New KEVs + Autonomous LLM Intrusion Chain
+                  vCenter Armory Castle 0-Day + Cisco Expressway (Due Nov. 23)
                 </p>
                 <p className="text-gray-400 leading-relaxed">
-                  Nov. 18 CISA KEV additions: <strong>BerriAI LiteLLM</strong> (CVE-2026-40217),{' '}
-                  <strong>Apache Axis</strong>, <strong>REDCap</strong> &amp; <strong>Synology DSM</strong>,
-                  alongside FBI&rsquo;s <strong>ARTEX</strong> (&lt;3h LLM breach) warning.
+                  Nov. 20 CISA KEV wave: <strong>VMware vCenter</strong> (CVE-2026-123890, Chinese APT{' '}
+                  <em>Armory Castle / Bonesaw</em>) &amp; <strong>Cisco Expressway</strong>{' '}
+                  (CVE-2026-76466) with 72h Nov. 23 BOD 26-04 triage, following Nov. 18{' '}
+                  <strong>LiteLLM</strong> &amp; FBI <strong>ARTEX</strong>.
                 </p>
               </div>
             </div>

@@ -20,7 +20,7 @@ const DATA_FILES = [
   'feedHistory.json',
 ] as const;
 
-function buildRedactedStubs(nowISO: string): FullBriefingDataBundle {
+function buildRedactedStubs(nowISO: string, docDate: string): FullBriefingDataBundle {
   return {
     riskMatrix: [],
     incidents: [],
@@ -28,7 +28,7 @@ function buildRedactedStubs(nowISO: string): FullBriefingDataBundle {
     watchlist: [],
     sections: {
       docTitle: 'Private Executive Risk Briefing',
-      docDate: 'Restricted',
+      docDate,
       docScope: 'Enter shared access passphrase to unlock briefing locally in browser.',
       executiveSummary: {
         intro: 'Payload encrypted via PBKDF2-SHA256 + AES-256-GCM.',
@@ -40,7 +40,7 @@ function buildRedactedStubs(nowISO: string): FullBriefingDataBundle {
     changelog: {
       syncedAtISO: nowISO,
       docHash: 'encrypted-aes-256-gcm',
-      docDate: 'Restricted',
+      docDate,
       addedIncidents: [],
       updatedStatuses: [],
       riskShifts: [],
@@ -55,7 +55,7 @@ function buildRedactedStubs(nowISO: string): FullBriefingDataBundle {
     feedHealth: {
       checkedAtISO: nowISO,
       liveCount: 0,
-      totalFeeds: 8,
+      totalFeeds: 15,
       feeds: [],
     },
     feedHistory: createEmptyFeedHistory(nowISO),
@@ -67,6 +67,19 @@ async function main() {
   const dataDir = path.join(rootDir, 'src', 'data');
   const backupDir = path.join(rootDir, '.vault-backup');
   const vaultMetaPath = path.join(dataDir, 'vaultMeta.json');
+
+  const readSafeDocDate = (): string => {
+    try {
+      const secPath = path.join(dataDir, 'sections.json');
+      if (fs.existsSync(secPath)) {
+        const parsed = JSON.parse(fs.readFileSync(secPath, 'utf8')) as { docDate?: string };
+        if (parsed.docDate && parsed.docDate !== 'Restricted') return parsed.docDate;
+      }
+    } catch {
+      // Ignore
+    }
+    return 'November 2026';
+  };
 
   const isRestore = process.argv.includes('--restore-if-needed');
   if (isRestore) {
@@ -80,6 +93,8 @@ async function main() {
       fs.rmSync(backupDir, { recursive: true, force: true });
       const publicMeta: VaultMeta = {
         encrypted: false,
+        publicMode: true,
+        docDate: readSafeDocDate(),
         algorithm: 'AES-256-GCM',
         kdf: 'PBKDF2-SHA256',
         iterations: PBKDF2_ITERATIONS,
@@ -95,6 +110,8 @@ async function main() {
   if (rawPasscode.toUpperCase() === 'PUBLIC') {
     const publicMeta: VaultMeta = {
       encrypted: false,
+      publicMode: true,
+      docDate: readSafeDocDate(),
       algorithm: 'AES-256-GCM',
       kdf: 'PBKDF2-SHA256',
       iterations: PBKDF2_ITERATIONS,
@@ -136,10 +153,16 @@ async function main() {
   }
 
   const encryptedVaultMeta = await encryptBundleWithPasscode(fullBundle, rawPasscode);
-  fs.writeFileSync(vaultMetaPath, `${JSON.stringify(encryptedVaultMeta, null, 2)}\n`, 'utf8');
+  const enrichedVaultMeta: VaultMeta = {
+    ...encryptedVaultMeta,
+    publicMode: false,
+    docDate: fullBundle.sections.docDate,
+    liveFeedSummary: `${fullBundle.feedHealth.liveCount}/${fullBundle.feedHealth.totalFeeds} Public Feeds Live`,
+  };
+  fs.writeFileSync(vaultMetaPath, `${JSON.stringify(enrichedVaultMeta, null, 2)}\n`, 'utf8');
 
-  // Redact plaintext src/data/*.json during build so static Next.js chunks contain zero plaintext
-  const stubs = buildRedactedStubs(nowISO);
+  // Redact plaintext src/data/*.json during build so static Next.js chunks contain zero briefing body text
+  const stubs = buildRedactedStubs(nowISO, fullBundle.sections.docDate);
   fs.writeFileSync(path.join(dataDir, 'riskMatrix.json'), `${JSON.stringify(stubs.riskMatrix, null, 2)}\n`);
   fs.writeFileSync(path.join(dataDir, 'incidents.json'), `${JSON.stringify(stubs.incidents, null, 2)}\n`);
   fs.writeFileSync(
@@ -154,7 +177,7 @@ async function main() {
   fs.writeFileSync(path.join(dataDir, 'feedHistory.json'), `${JSON.stringify(stubs.feedHistory, null, 2)}\n`);
 
   console.log(
-    `[encrypt-bundle] Encrypted src/data/*.json (9 modules) with PBKDF2-SHA256 (${PBKDF2_ITERATIONS} iter) + AES-256-GCM.`
+    `[encrypt-bundle] Encrypted src/data/*.json (9 modules, edition=${fullBundle.sections.docDate}) with PBKDF2-SHA256 (${PBKDF2_ITERATIONS} iter) + AES-256-GCM.`
   );
 }
 

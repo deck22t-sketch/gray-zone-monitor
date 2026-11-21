@@ -1,12 +1,5 @@
 [
   {
-    "targetDateISO": "2026-11-18",
-    "targetTimestampISO": "2026-11-18T22:00:00.000Z",
-    "dateLabel": "Nov. 18, 2026",
-    "milestone": "House Homeland Security \"Worldwide Threats\" Hearing (Completed Nov. 18)",
-    "actionExposure": "DNI Clayton, Sec. Mullin & FBI Dep. Dir. Raia testified no malicious coordination exists across recent outages while flagging AI-driven patching strain and CISA staffing pressures (CyberScoop)."
-  },
-  {
     "targetDateISO": "2026-11-20",
     "targetTimestampISO": "2026-11-20T22:00:00.000Z",
     "dateLabel": "Nov. 20, 2026",
@@ -14,11 +7,18 @@
     "actionExposure": "Audit regional isolation failure and unpoliced retry-storm backoff logic across enterprise cloud services."
   },
   {
+    "targetDateISO": "2026-11-23",
+    "targetTimestampISO": "2026-11-23T22:00:00.000Z",
+    "dateLabel": "Nov. 23, 2026",
+    "milestone": "CISA 72h KEV / BOD 26-04 Deadline (vCenter & Cisco Expressway) + Senate FAA Router Briefing",
+    "actionExposure": "Patch & forensically triage VMware vCenter CVE-2026-123890 (Chinese APT Armory Castle) and Cisco Expressway CVE-2026-76466; Senate Commerce deadline for FAA/L3Harris/Juniper vulnerability data. House Homeland Security \"Worldwide Threats\" Hearing (Completed Nov. 18): DNI Clayton, Sec. Mullin & FBI Dep. Dir. Raia testified no malicious coordination exists across recent outages while flagging AI-driven patching strain and CISA staffing pressures (CyberScoop). Final M365 PIR target date & post-Shenzhen White House readout (no mineral/chip truce announced)."
+  },
+  {
     "targetDateISO": "2026-11-27",
     "targetTimestampISO": "2026-11-27T22:00:00.000Z",
     "dateLabel": "Nov. 27, 2026",
     "milestone": "China Gallium/Germanium/Antimony Pause Expiry",
-    "actionExposure": "Review raw material stockpiles for U.S. AESA radar, night vision, and munitions production line continuity."
+    "actionExposure": "Dec. 14–15, 2026 — G20 Leaders' Summit (Miami, FL): Next scheduled Trump–Xi engagement on AI chip curbs, tariffs, and rare-earth truce ahead of Jan. 10, 2027 expiry."
   },
   {
     "targetDateISO": "2026-12-31",

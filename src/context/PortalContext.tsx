@@ -30,6 +30,7 @@ import {
   FullBriefingDataBundle,
   persistVaultGrant,
   restorePersistedPassphrase,
+  withVaultTimeout,
 } from '@/lib/vault-crypto';
 import { LiveScanSummary, runBrowserLiveScan } from '@/lib/browser-live-scan';
 
@@ -44,6 +45,7 @@ export interface ActiveCitation {
 interface PortalContextValue {
   bundle: FullBriefingDataBundle;
   vaultMeta: VaultMeta;
+  isPublicMode: boolean;
   isLocked: boolean;
   isRestoringVault: boolean;
   unlockWithPasscode: (passcode: string, rememberDeviceFor30Days?: boolean) => Promise<void>;
@@ -82,12 +84,17 @@ const staticBundle: FullBriefingDataBundle = {
 };
 
 const staticVaultMeta = vaultMetaJson as VaultMeta;
+const IS_PUBLIC_MODE =
+  process.env.NEXT_PUBLIC_PUBLIC_MODE === 'true' ||
+  staticVaultMeta.publicMode === true ||
+  !staticVaultMeta.encrypted;
 
 const PortalContext = createContext<PortalContextValue | null>(null);
 
 export function PortalProvider({ children }: { children: React.ReactNode }) {
   const [unlockedBundle, setUnlockedBundle] = useState<FullBriefingDataBundle | null>(null);
-  const [isRestoringVault, setIsRestoringVault] = useState<boolean>(staticVaultMeta.encrypted);
+  // Never initialize isRestoringVault to true during static pre-render or initial hydration
+  const [isRestoringVault, setIsRestoringVault] = useState<boolean>(false);
   const [activeCitation, setActiveCitation] = useState<ActiveCitation | null>(null);
   const [isSearchOpen, setSearchOpen] = useState(false);
   const [isChangelogOpen, setChangelogOpen] = useState(false);
@@ -111,25 +118,42 @@ export function PortalProvider({ children }: { children: React.ReactNode }) {
     }
   }, []);
 
-  // Restore active 30-day IndexedDB device key or current-tab grant in memory
+  // Restore active 30-day IndexedDB device key or current-tab grant in memory (bypassed immediately in PUBLIC_MODE)
   useEffect(() => {
+    if (IS_PUBLIC_MODE || !staticVaultMeta.encrypted) {
+      setIsRestoringVault(false);
+      return;
+    }
+
     let cancelled = false;
     async function attemptRestore() {
-      if (!staticVaultMeta.encrypted) {
-        setIsRestoringVault(false);
-        return;
-      }
       try {
-        const storedPassphrase = await restorePersistedPassphrase();
+        if (typeof window === 'undefined' || !window.crypto?.subtle) {
+          return;
+        }
+        const storedPassphrase = await withVaultTimeout(
+          restorePersistedPassphrase(),
+          1800,
+          'Session lookup'
+        );
         if (storedPassphrase && !cancelled) {
-          const decrypted = await decryptBundleWithPasscode(staticVaultMeta, storedPassphrase);
+          setIsRestoringVault(true);
+          const decrypted = await withVaultTimeout(
+            decryptBundleWithPasscode(staticVaultMeta, storedPassphrase),
+            2500,
+            'Session decryption'
+          );
           if (!cancelled) {
             setUnlockedBundle(decrypted);
           }
         }
       } catch {
-        // Stored passphrase expired or rotated; clear stale grant cleanly
-        await clearVaultGrants();
+        // Stored passphrase expired, rotated, or Web Crypto failed; clear stale grant and show prompt cleanly
+        try {
+          await clearVaultGrants();
+        } catch {
+          // Ignore cleanup errors
+        }
       } finally {
         if (!cancelled) {
           setIsRestoringVault(false);
@@ -174,7 +198,7 @@ export function PortalProvider({ children }: { children: React.ReactNode }) {
     return () => window.removeEventListener('keydown', onKeyDown);
   }, []);
 
-  const isLocked = staticVaultMeta.encrypted && unlockedBundle === null;
+  const isLocked = !IS_PUBLIC_MODE && staticVaultMeta.encrypted && unlockedBundle === null;
   const bundle = unlockedBundle ?? staticBundle;
 
   const sourceMap = useMemo(() => {
@@ -253,6 +277,7 @@ export function PortalProvider({ children }: { children: React.ReactNode }) {
   const value: PortalContextValue = {
     bundle,
     vaultMeta: staticVaultMeta,
+    isPublicMode: IS_PUBLIC_MODE,
     isLocked,
     isRestoringVault,
     unlockWithPasscode,

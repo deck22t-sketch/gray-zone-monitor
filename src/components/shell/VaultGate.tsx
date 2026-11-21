@@ -6,30 +6,15 @@ import { usePortal } from '@/context/PortalContext';
 import { NON_AFFILIATION_NOTICE } from '@/lib/evidence';
 
 export function VaultGate({ children }: { children: React.ReactNode }) {
-  const { isLocked, isRestoringVault, unlockWithPasscode, vaultMeta } = usePortal();
+  const { isPublicMode, isLocked, isRestoringVault, unlockWithPasscode, vaultMeta } = usePortal();
   const [passcode, setPasscode] = useState('');
   const [showPasscode, setShowPasscode] = useState(false);
   const [rememberDevice, setRememberDevice] = useState(true);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  if (!isLocked) {
+  if (isPublicMode || !isLocked) {
     return <>{children}</>;
-  }
-
-  if (isRestoringVault) {
-    return (
-      <div className="min-h-screen flex items-center justify-center px-4">
-        <div className="glass-panel tac-frame max-w-sm w-full rounded-lg p-6 text-center space-y-3">
-          <div className="w-9 h-9 rounded-md bg-[#38BDF8]/10 border border-[#38BDF8]/30 flex items-center justify-center text-[#38BDF8] mx-auto">
-            <ShieldCheck className="w-4 h-4 animate-pulse" />
-          </div>
-          <p className="font-mono-tactical text-xs text-gray-300">
-            Verifying encrypted session in Web Crypto…
-          </p>
-        </div>
-      </div>
-    );
   }
 
   async function handleSubmit(e: React.FormEvent) {
@@ -46,22 +31,38 @@ export function VaultGate({ children }: { children: React.ReactNode }) {
     }
   }
 
+  const editionLabel = vaultMeta.docDate || 'November 2026';
+
   return (
     <div className="min-h-screen flex items-center justify-center px-4 py-8">
       <div className="glass-panel tac-frame max-w-md w-full rounded-lg p-6 sm:p-8 shadow-2xl space-y-6">
-        <div className="flex items-start gap-3.5">
-          <div className="w-10 h-10 rounded-md bg-[#0E131D] border border-white/15 flex items-center justify-center text-[#38BDF8] shrink-0">
-            <Lock className="w-4 h-4" />
-          </div>
-          <div className="space-y-1">
-            <p className="font-mono-tactical text-[10px] uppercase tracking-widest text-[#38BDF8]">
-              Private Briefing Access
-            </p>
-            <h1 className="text-lg sm:text-xl font-semibold text-white leading-snug tracking-tight">
-              Gray-Zone &amp; Infrastructure Monitor
-            </h1>
+        <div className="flex items-start justify-between gap-3">
+          <div className="flex items-start gap-3.5">
+            <div className="w-10 h-10 rounded-md bg-[#0E131D] border border-white/15 flex items-center justify-center text-[#38BDF8] shrink-0">
+              <Lock className="w-4 h-4" />
+            </div>
+            <div className="space-y-1">
+              <div className="flex flex-wrap items-center gap-2">
+                <p className="font-mono-tactical text-[10px] uppercase tracking-widest text-[#38BDF8]">
+                  Private Briefing Access
+                </p>
+                <span className="font-mono-tactical text-[10px] px-1.5 py-0.5 rounded-sm bg-white/[0.05] border border-white/12 text-gray-300">
+                  {editionLabel}
+                </span>
+              </div>
+              <h1 className="text-lg sm:text-xl font-semibold text-white leading-snug tracking-tight">
+                Gray-Zone &amp; Infrastructure Monitor
+              </h1>
+            </div>
           </div>
         </div>
+
+        {vaultMeta.liveFeedSummary && (
+          <div className="flex items-center justify-between gap-2 rounded-md bg-[#10B981]/10 border border-[#10B981]/30 px-3 py-2 text-[11px] font-mono-tactical text-[#10B981]">
+            <span>● {vaultMeta.liveFeedSummary}</span>
+            <span className="text-gray-300">Edition: {editionLabel}</span>
+          </div>
+        )}
 
         <p className="text-xs sm:text-sm text-gray-300 leading-relaxed">
           Enter the shared access passphrase provided with your link. All briefing modules and
@@ -133,11 +134,13 @@ export function VaultGate({ children }: { children: React.ReactNode }) {
           <button
             id="vault-unlock-button"
             type="submit"
-            disabled={busy || !passcode.trim()}
+            disabled={busy || isRestoringVault || !passcode.trim()}
             className="w-full rounded-md bg-[#38BDF8]/16 hover:bg-[#38BDF8]/26 border border-[#38BDF8]/45 text-[#38BDF8] font-medium py-3 text-sm transition disabled:opacity-50 cursor-pointer flex items-center justify-center gap-2"
           >
-            <ShieldCheck className="w-4 h-4" />
-            <span>{busy ? 'Decrypting Briefing…' : 'Unlock Briefing'}</span>
+            <ShieldCheck className={`w-4 h-4 ${busy || isRestoringVault ? 'animate-pulse' : ''}`} />
+            <span>
+              {busy || isRestoringVault ? 'Decrypting Briefing…' : 'Unlock Briefing'}
+            </span>
           </button>
         </form>
 

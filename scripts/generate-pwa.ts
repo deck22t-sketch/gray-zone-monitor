@@ -149,23 +149,39 @@ function main() {
   const rootDir = process.cwd();
   const publicDir = path.join(rootDir, 'public');
   const changelogPath = path.join(rootDir, 'src', 'data', 'changelog.json');
+  const liveSignalsPath = path.join(rootDir, 'src', 'data', 'liveSignals.json');
 
   let docHashPrefix = 'v1';
   if (fs.existsSync(changelogPath)) {
     try {
       const parsed = JSON.parse(fs.readFileSync(changelogPath, 'utf8')) as { docHash?: string };
       if (parsed.docHash) {
-        docHashPrefix = parsed.docHash.slice(0, 10);
+        docHashPrefix = parsed.docHash.slice(0, 8);
       }
     } catch {
       docHashPrefix = 'v1';
     }
   }
 
+  let sweepSuffix = '';
+  if (fs.existsSync(liveSignalsPath)) {
+    try {
+      const sigParsed = JSON.parse(fs.readFileSync(liveSignalsPath, 'utf8')) as {
+        ingestedAtISO?: string;
+      };
+      if (sigParsed.ingestedAtISO) {
+        sweepSuffix = `-${sigParsed.ingestedAtISO.replace(/[^0-9]/g, '').slice(4, 12)}`;
+      }
+    } catch {
+      sweepSuffix = '';
+    }
+  }
+
+  const cacheVersion = `${docHashPrefix}${sweepSuffix}`;
   const basePath = resolvePwaBasePath(process.env);
   const { iconSvg, manifestJson, swJs, robotsTxt } = buildPwaArtifacts(
     basePath,
-    docHashPrefix
+    cacheVersion
   );
 
   fs.mkdirSync(publicDir, { recursive: true });
@@ -175,7 +191,7 @@ function main() {
   fs.writeFileSync(path.join(publicDir, 'robots.txt'), robotsTxt, 'utf8');
 
   console.log(
-    `[generate-pwa] Wrote manifest.webmanifest, sw.js, icon.svg & robots.txt (scope="${basePath || ''}/", cache=${docHashPrefix}).`
+    `[generate-pwa] Wrote manifest.webmanifest, sw.js, icon.svg & robots.txt (scope="${basePath || ''}/", cache=${cacheVersion}).`
   );
 }
 
